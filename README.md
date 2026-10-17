@@ -18,8 +18,8 @@ bundle size matters:
 pnpm add @soldix/dialog solid-js @solidjs/web
 ```
 
-Solid 2 is RC-stage: `solid-js` and `@solidjs/web` must be
-`>=2.0.0-rc.15` (see [Toolchain pins](#toolchain-pins)).
+Solid 2 is RC-stage: `solid-js` and `@solidjs/web` must satisfy
+`>=2.0.0-rc.15 <2.1.0` (see [Toolchain pins](#toolchain-pins)).
 
 ## Usage
 

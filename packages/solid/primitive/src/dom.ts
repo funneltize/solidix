@@ -23,7 +23,9 @@ export function callEventHandler<E>(handler: unknown, event: E): void {
     (handler as (event: E) => void)(event);
   } else if (Array.isArray(handler)) {
     const [fn, data] = handler as [(data: unknown, event: E) => void, unknown];
-    fn(data, event);
+    // A malformed tuple (non-function first element) is ignored instead of
+    // throwing — a throw here would run inside event dispatch or an effect.
+    if (typeof fn === "function") fn(data, event);
   }
 }
 

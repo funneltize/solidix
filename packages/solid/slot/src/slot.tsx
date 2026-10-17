@@ -240,6 +240,11 @@ function applySlotProps(target: Element, slotProps: Record<string, any>): () => 
 
   for (const key of Object.keys(slotProps)) {
     const value = slotProps[key];
+    // Prototype-chain keys are never valid DOM props: `key in target` matches
+    // them via inheritance and the alias-table read below would resolve
+    // inherited members (`__proto__` reads as `Object.prototype`), crashing
+    // `setAttribute` and halting the reactive queue. Skip them outright.
+    if (key === "__proto__" || key === "constructor" || key === "prototype") continue;
     if (value === undefined || value === null || key === "children") continue;
 
     if (typeof value === "function" && /^on[A-Z]/.test(key)) {
@@ -307,6 +312,9 @@ function applySlotProps(target: Element, slotProps: Record<string, any>): () => 
       const style = (target as HTMLElement).style;
       const prev: Array<() => void> = [];
       for (const styleKey of Object.keys(value)) {
+        if (styleKey === "__proto__" || styleKey === "constructor" || styleKey === "prototype") {
+          continue;
+        }
         if (styleKey.includes("-")) {
           if (!style.getPropertyValue(styleKey)) {
             style.setProperty(styleKey, value[styleKey]);
@@ -395,7 +403,7 @@ function hyphenateAttr(key: string): string {
 }
 
 function hasAttrAnySpelling(target: Element, key: string): boolean {
-  const aliased = HTML_ATTR_ALIASES[key];
+  const aliased = attrAlias(key);
   return (
     target.hasAttribute(key) ||
     target.hasAttribute(hyphenateAttr(key)) ||
@@ -409,6 +417,17 @@ function hasAttrAnySpelling(target: Element, key: string): boolean {
  * explicit mapping). Everything else hyphenates (`acceptCharset` is already
  * correct as `accept-charset`).
  */
+/**
+ * Prototype-safe alias read: inherited members (`toString`, …) must not
+ * resolve, or the inherited value would be passed to `setAttribute` as the
+ * attribute name and throw.
+ */
+function attrAlias(key: string): string | undefined {
+  return Object.prototype.hasOwnProperty.call(HTML_ATTR_ALIASES, key)
+    ? HTML_ATTR_ALIASES[key]
+    : undefined;
+}
+
 const HTML_ATTR_ALIASES: Record<string, string> = {
   autoCapitalize: "autocapitalize",
   autoComplete: "autocomplete",
@@ -444,7 +463,7 @@ function applySlotAttribute(
   // the authored spelling; HTML attributes hyphenate, except for the known
   // lowercase aliases above (`tabIndex` is handled via the IDL property
   // and never reaches here).
-  const attr = target instanceof SVGElement ? key : (HTML_ATTR_ALIASES[key] ?? hyphenateAttr(key));
+  const attr = target instanceof SVGElement ? key : (attrAlias(key) ?? hyphenateAttr(key));
   target.setAttribute(attr, value === true ? "" : String(value));
   cleanups.push(() => target.removeAttribute(attr));
 }

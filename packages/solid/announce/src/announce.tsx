@@ -285,15 +285,38 @@ function buildLiveRegionElement(
 }
 
 function buildSelector({ type, relevant, role, atomic, id }: LiveRegionOptions) {
-  return `[${getLiveRegionPartDataAttr(id)}]${[
+  // The identifier and attribute values are consumer-controlled: escape the
+  // identifier segment and quote the values so selector-significant
+  // characters (`:`, spaces in multi-token `aria-relevant`, …) match
+  // literally instead of breaking `querySelector` (or matching the wrong
+  // region). The element itself keeps the literal attribute name.
+  return `[${escapeSelectorIdent(getLiveRegionPartDataAttr(id))}]${[
     ["aria-live", type],
     ["aria-atomic", atomic],
     ["aria-relevant", relevant],
     ["role", role],
   ]
     .filter(([, val]) => !!val)
-    .map(([attr, val]) => `[${attr}=${val}]`)
+    .map(([attr, val]) => `[${attr}="${escapeSelectorString(String(val))}"]`)
     .join("")}`;
+}
+
+/**
+ * Escapes a CSS identifier segment without depending on the `CSS.escape`
+ * global, which SSR runtimes and older DOM implementations may lack.
+ */
+function escapeSelectorIdent(value: string): string {
+  return value.replace(/[^a-zA-Z0-9-_]/g, (character) => `\\${character}`);
+}
+
+/** Escapes a value interpolated into a double-quoted selector string. */
+function escapeSelectorString(value: string): string {
+  return value.replace(/["\\\n\r\f]/g, (character) => {
+    if (character === "\n") return "\\a ";
+    if (character === "\r") return "\\d ";
+    if (character === "\f") return "\\c ";
+    return `\\${character}`;
+  });
 }
 
 function getLiveRegionPartDataAttr(id?: string) {

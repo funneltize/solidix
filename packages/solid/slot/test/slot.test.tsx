@@ -179,4 +179,27 @@ describe("Slot", () => {
     expect(button.dataset.state).toBe("open");
     expect(button.querySelector("i")?.textContent).toBe("wrapped");
   });
+
+  test("ignores prototype-polluting keys in slot props and style objects", async () => {
+    const style = JSON.parse('{"__proto__": {"polluted": true}, "color": "red"}');
+    // `toString` exercises the prototype-safe alias-table read: the inherited
+    // member must not resolve as an attribute name (which threw).
+    const slotProps = {
+      ["__proto__" as string]: "polluted",
+      ["toString" as string]: "polluted",
+      "data-state": "open",
+    };
+
+    render(() => (
+      <Slot {...slotProps} style={style}>
+        <button type="button">press</button>
+      </Slot>
+    ));
+
+    const button = (await screen.findByRole("button", { name: "press" })) as HTMLButtonElement;
+    expect(button.getAttribute("data-state")).toBe("open");
+    expect(button.hasAttribute("__proto__")).toBe(false);
+    expect(button.style.color).toBe("red");
+    expect(({} as Record<string, unknown>).polluted).toBe(undefined);
+  });
 });

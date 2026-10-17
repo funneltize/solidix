@@ -8,6 +8,14 @@ function queryRegion(identifier: string): Element | null {
   return document.querySelector(`[data-radix-announce-region-${identifier}]`);
 }
 
+function queryRegionByAttrName(attr: string): Element | null {
+  // `hasAttribute` takes the literal name, so identifiers with
+  // selector-significant characters need no escaping here.
+  return (
+    Array.from(document.body.querySelectorAll("div")).find((el) => el.hasAttribute(attr)) ?? null
+  );
+}
+
 async function findRegion(identifier: string): Promise<Element> {
   let region: Element | null = null;
   await vi.waitFor(() => {
@@ -140,5 +148,31 @@ describe("Announce", () => {
     } finally {
       delete (document as { hidden?: boolean }).hidden;
     }
+  });
+
+  test("tolerates selector-significant characters in regionIdentifier", async () => {
+    const identifier = "toast:stack.v1";
+    render(() => <Announce regionIdentifier={identifier}>Scoped message</Announce>);
+
+    const attr = `data-radix-announce-region-${identifier}`;
+    let region: Element | null = null;
+    await vi.waitFor(() => {
+      region = queryRegionByAttrName(attr);
+      expect(region).not.toBe(null);
+    });
+    await vi.waitFor(() => {
+      expect(region!.textContent).toContain("Scoped message");
+    });
+  });
+
+  test("tolerates multi-token aria-relevant values", async () => {
+    render(() => (
+      <Announce regionIdentifier="multitoken" aria-relevant="additions removals">
+        Multi
+      </Announce>
+    ));
+
+    const region = await findRegion("multitoken");
+    expect(region.getAttribute("aria-relevant")).toBe("additions removals");
   });
 });

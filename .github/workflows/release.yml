@@ -7,27 +7,37 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  # Readied for provenance/attestation; the OIDC cutover below needs the
+  # npmjs.com trusted-publisher step first, so it grants nothing yet.
+  id-token: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
         with:
           version: 11.5.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
           cache: pnpm
           registry-url: https://registry.npmjs.org
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-      - uses: changesets/action@v1
+      - uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:
           version: pnpm version-packages
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Token publish stays until every @soldix/* package exists on the
+          # registry: trusted publishers can only attach to existing packages,
+          # so the first publish of each package requires a token. The token
+          # must be granular, scoped to @soldix/*, publish-only. After the
+          # first publish, migrate to npm trusted publishing (OIDC): register
+          # each package's trusted publisher on npmjs.com, then drop
+          # NPM_TOKEN/NODE_AUTH_TOKEN and publish with `--provenance`.
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

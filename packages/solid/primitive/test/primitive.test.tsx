@@ -2,6 +2,7 @@ import { describe, expect, test, vi } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
 import {
   Primitive,
+  callEventHandler,
   canUseDOM,
   composeEventHandlers,
   dispatchDiscreteCustomEvent,
@@ -112,6 +113,24 @@ describe("dom utils", () => {
     expect(isFrame(button)).toBe(false);
     expect(isFrame(document.createElement("iframe"))).toBe(true);
     button.remove();
+  });
+
+  test("callEventHandler invokes valid tuples and ignores malformed ones", () => {
+    const calls: Array<[unknown, unknown]> = [];
+    const event = new CustomEvent("test");
+    callEventHandler(
+      [(data: unknown, e: unknown) => void calls.push([data, e]), { data: true }],
+      event,
+    );
+    expect(calls).toEqual([[{ data: true }, event]]);
+  });
+
+  test("callEventHandler ignores malformed tuples instead of throwing", () => {
+    const event = new CustomEvent("test");
+    expect(() => callEventHandler([undefined, { data: true }] as any, event)).not.toThrow();
+    expect(() => callEventHandler([null, { data: true }] as any, event)).not.toThrow();
+    expect(() => callEventHandler(null, event)).not.toThrow();
+    expect(() => callEventHandler(undefined, event)).not.toThrow();
   });
 });
 
