@@ -1,0 +1,17 @@
+{
+  "name": "@repo/builder",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "bin": {
+    "soldix-build": "./bin/soldix-build.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@solidjs/vite-plugin": "3.0.0-next.50",
+    "vite": "8.3.4"
+  }
+}

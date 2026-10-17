@@ -1,0 +1,69 @@
+{
+  "name": "@soldix/radio-group",
+  "version": "0.0.0",
+  "description": "RadioGroup primitive (port of @radix-ui/react-radio-group).",
+  "homepage": "https://github.com/funneltize/soldix",
+  "bugs": {
+    "url": "https://github.com/funneltize/soldix/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funneltize/soldix.git",
+    "directory": "packages/solid/radio-group"
+  },
+  "source": "./src/index.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "publishConfig": {
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.mjs"
+        },
+        "require": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "oxlint --max-warnings 0 src test",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@soldix/compose-refs": "workspace:*",
+    "@soldix/context": "workspace:*",
+    "@soldix/direction": "workspace:*",
+    "@soldix/presence": "workspace:*",
+    "@soldix/primitive": "workspace:*",
+    "@soldix/roving-focus": "workspace:*",
+    "@soldix/use-controllable-state": "workspace:*",
+    "@soldix/use-size": "workspace:*"
+  },
+  "devDependencies": {
+    "@repo/builder": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@solidjs/testing-library": "1.0.0-beta.3",
+    "@solidjs/web": "2.0.0-rc.15",
+    "@testing-library/user-event": "14.6.8",
+    "solid-js": "2.0.0-rc.15"
+  },
+  "peerDependencies": {
+    "@solidjs/web": ">=2.0.0-rc.15",
+    "solid-js": ">=2.0.0-rc.15"
+  }
+}

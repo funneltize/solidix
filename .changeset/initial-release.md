@@ -1,0 +1,69 @@
+---
+"@soldix/accessible-icon": minor
+"@soldix/accordion": minor
+"@soldix/alert-dialog": minor
+"@soldix/announce": minor
+"@soldix/arrow": minor
+"@soldix/aspect-ratio": minor
+"@soldix/avatar": minor
+"@soldix/checkbox": minor
+"@soldix/collapsible": minor
+"@soldix/collection": minor
+"@soldix/compose-refs": minor
+"@soldix/context": minor
+"@soldix/context-menu": minor
+"@soldix/dialog": minor
+"@soldix/direction": minor
+"@soldix/dismissable-layer": minor
+"@soldix/dropdown-menu": minor
+"@soldix/env-check": minor
+"@soldix/focus-guards": minor
+"@soldix/focus-scope": minor
+"@soldix/form": minor
+"@soldix/hover-card": minor
+"@soldix/id": minor
+"@soldix/label": minor
+"@soldix/menu": minor
+"@soldix/menubar": minor
+"@soldix/navigation-menu": minor
+"@soldix/number": minor
+"@soldix/one-time-password-field": minor
+"@soldix/password-toggle-field": minor
+"@soldix/popover": minor
+"@soldix/popper": minor
+"@soldix/portal": minor
+"@soldix/presence": minor
+"@soldix/primitive": minor
+"@soldix/progress": minor
+"@soldix/radio-group": minor
+"@soldix/rect": minor
+"@soldix/remove-scroll": minor
+"@soldix/roving-focus": minor
+"@soldix/scroll-area": minor
+"@soldix/select": minor
+"@soldix/separator": minor
+"@soldix/slider": minor
+"@soldix/slot": minor
+"@soldix/switch": minor
+"@soldix/tabs": minor
+"@soldix/toast": minor
+"@soldix/toggle": minor
+"@soldix/toggle-group": minor
+"@soldix/toolbar": minor
+"@soldix/tooltip": minor
+"@soldix/use-callback-ref": minor
+"@soldix/use-controllable-state": minor
+"@soldix/use-effect-event": minor
+"@soldix/use-escape-keydown": minor
+"@soldix/use-is-hydrated": minor
+"@soldix/use-layout-effect": minor
+"@soldix/use-previous": minor
+"@soldix/use-rect": minor
+"@soldix/use-size": minor
+"@soldix/visually-hidden": minor
+"soldix": minor
+---
+
+Initial release: the complete Radix UI primitives port to Solid 2 —
+30 component primitives plus shared internals, published as `@soldix/*`
+with the `soldix` umbrella re-exporting every component namespace.

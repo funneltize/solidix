@@ -1,0 +1,26 @@
+export {
+  createSliderScope,
+  Slider,
+  SliderTrack,
+  SliderRange,
+  SliderThumb,
+  SliderThumbProvider,
+  SliderThumbTrigger,
+  SliderBubbleInput,
+  Root,
+  Track,
+  Range,
+  Thumb,
+  ThumbProvider,
+  ThumbTrigger,
+  BubbleInput,
+} from "./slider";
+export type {
+  SliderProps,
+  SliderTrackProps,
+  SliderRangeProps,
+  SliderThumbProps,
+  SliderThumbProviderProps,
+  SliderThumbTriggerProps,
+  SliderBubbleInputProps,
+} from "./slider";

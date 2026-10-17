@@ -1,0 +1,70 @@
+{
+  "name": "@soldix/env-check",
+  "version": "0.0.0",
+  "description": "Environment checks shared by soldix packages (port of @radix-ui/env-check).",
+  "homepage": "https://github.com/funneltize/soldix",
+  "bugs": {
+    "url": "https://github.com/funneltize/soldix/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funneltize/soldix.git",
+    "directory": "packages/core/env-check"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "exports": {
+    "./is-development": "./src/internal/is-development.true.ts"
+  },
+  "publishConfig": {
+    "exports": {
+      "./is-development": {
+        "development": {
+          "import": {
+            "types": "./dist/internal/is-development.true.d.ts",
+            "default": "./dist/internal/is-development.true.mjs"
+          },
+          "require": {
+            "types": "./dist/internal/is-development.true.d.ts",
+            "default": "./dist/internal/is-development.true.js"
+          }
+        },
+        "production": {
+          "import": {
+            "types": "./dist/internal/is-development.false.d.ts",
+            "default": "./dist/internal/is-development.false.mjs"
+          },
+          "require": {
+            "types": "./dist/internal/is-development.false.d.ts",
+            "default": "./dist/internal/is-development.false.js"
+          }
+        },
+        "default": {
+          "import": {
+            "types": "./dist/internal/is-development.false.d.ts",
+            "default": "./dist/internal/is-development.false.mjs"
+          },
+          "require": {
+            "types": "./dist/internal/is-development.false.d.ts",
+            "default": "./dist/internal/is-development.false.js"
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "oxlint --max-warnings 0 src",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "soldix-build src/internal/is-development.true.ts internal/is-development.true && soldix-build src/internal/is-development.false.ts internal/is-development.false --no-empty && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@repo/builder": "workspace:*",
+    "@repo/typescript-config": "workspace:*"
+  }
+}

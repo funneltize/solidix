@@ -1,0 +1,51 @@
+{
+  "name": "@soldix/number",
+  "version": "0.0.0",
+  "description": "Number utilities (port of @radix-ui/number).",
+  "homepage": "https://github.com/funneltize/soldix",
+  "bugs": {
+    "url": "https://github.com/funneltize/soldix/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funneltize/soldix.git",
+    "directory": "packages/core/number"
+  },
+  "source": "./src/index.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "publishConfig": {
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.mjs"
+        },
+        "require": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "oxlint --max-warnings 0 src",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@repo/builder": "workspace:*",
+    "@repo/typescript-config": "workspace:*"
+  }
+}
