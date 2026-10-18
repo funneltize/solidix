@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "bin": {
-    "soldix-build": "./bin/soldix-build.js"
+    "solidix-build": "./bin/solidix-build.js"
   },
   "files": [
     "bin"

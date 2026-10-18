@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/slot",
+  "name": "@solidix/slot",
   "version": "0.0.0",
   "description": "Props-slotting components (port of @radix-ui/react-slot).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/slot"
   },
   "source": "./src/index.ts",
@@ -41,11 +41,11 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/compose-refs": "workspace:*"
+    "@solidix/compose-refs": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

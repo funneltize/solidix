@@ -1,9 +1,9 @@
 import { Show, createSignal, omit, onSettled, type Component, type Setter } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { DismissableLayer, type DismissableLayerProps } from "@soldix/dismissable-layer";
-import { useFocusGuards } from "@soldix/focus-guards";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { DismissableLayer, type DismissableLayerProps } from "@solidix/dismissable-layer";
+import { useFocusGuards } from "@solidix/focus-guards";
 import {
   FocusScope,
   FocusScopeBranchProvider,
@@ -11,8 +11,8 @@ import {
   useFocusScopeBranchRegistry,
   type FocusScopeBranchRegistry,
   type FocusScopeProps,
-} from "@soldix/focus-scope";
-import { useId } from "@soldix/id";
+} from "@solidix/focus-scope";
+import { useId } from "@solidix/id";
 import {
   Popper,
   PopperAnchor,
@@ -22,9 +22,9 @@ import {
   type PopperAnchorProps,
   type PopperArrowProps,
   type PopperContentProps,
-} from "@soldix/popper";
-import { Portal as PortalPrimitive, type PortalProps } from "@soldix/portal";
-import { Presence } from "@soldix/presence";
+} from "@solidix/popper";
+import { Portal as PortalPrimitive, type PortalProps } from "@solidix/portal";
+import { Presence } from "@solidix/presence";
 import {
   Primitive,
   ariaBoolean,
@@ -32,10 +32,10 @@ import {
   composeEventHandlers,
   hideOthers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { RemoveScroll } from "@soldix/remove-scroll";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { useLayoutEffect } from "@soldix/use-layout-effect";
+} from "@solidix/primitive";
+import { RemoveScroll } from "@solidix/remove-scroll";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { useLayoutEffect } from "@solidix/use-layout-effect";
 
 /* -------------------------------------------------------------------------------------------------
  * Popover
@@ -211,7 +211,7 @@ type PopoverPortalProps = {
 
 const PopoverPortal: Component<ScopedProps<PopoverPortalProps>> = (props) => {
   const context = usePopoverContext(PORTAL_NAME, props.__scopePopover);
-  // NOTE: Radix nests the portal inside `Presence`; Soldix inverts this.
+  // NOTE: Radix nests the portal inside `Presence`; Solidix inverts this.
   // Solid portals resolve to a text marker, so a `Presence` around the
   // portal cannot resolve (or track for exit animations) the portalled
   // content. With `Presence` inside, it resolves the content directly.
@@ -388,8 +388,8 @@ const PopoverContentNonModal: Component<ScopedProps<PopoverContentTypeProps>> = 
 type PopoverContentImplProps = Omit<PopperContentProps, "onPlaced"> &
   Omit<DismissableLayerProps, "onDismiss" | "style"> & {
     // Object-only (not `string`) so it can merge with the re-namespaced
-    // content custom properties, matching `@soldix/popper` and
-    // `@soldix/visually-hidden`.
+    // content custom properties, matching `@solidix/popper` and
+    // `@solidix/visually-hidden`.
     style?: JSX.CSSProperties | undefined;
     /**
      * Whether focus should be trapped within the `Popover`

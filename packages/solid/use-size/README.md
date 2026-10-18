@@ -1,4 +1,4 @@
-# `@soldix/use-size`
+# `@solidix/use-size`
 
 Element size observer hook. Port of `@radix-ui/react-use-size`.
 

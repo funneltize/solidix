@@ -1,17 +1,17 @@
 import { Show, createEffect, createSignal, omit, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { useComposedRefs } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { Presence } from "@soldix/presence";
+import { useComposedRefs } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { Presence } from "@solidix/presence";
 import {
   Primitive,
   ariaBoolean,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { useSize } from "@soldix/use-size";
+} from "@solidix/primitive";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { useSize } from "@solidix/use-size";
 
 const CHECKBOX_NAME = "Checkbox";
 

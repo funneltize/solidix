@@ -1,22 +1,22 @@
 import { Show, createEffect, createSignal, omit, onSettled, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { useComposedRefs } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
+import { useComposedRefs } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
 import {
   Primitive,
   ariaBoolean,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
+} from "@solidix/primitive";
 import {
   RovingFocusGroup,
   RovingFocusGroupItem,
   createRovingFocusGroupScope,
   type RovingFocusGroupProps as RovingFocusGroupRootProps,
-} from "@soldix/roving-focus";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/roving-focus";
+import { useControllableState } from "@solidix/use-controllable-state";
 import {
   RadioBubbleInput,
   RadioIndicator,

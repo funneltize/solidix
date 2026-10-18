@@ -1,4 +1,4 @@
-import { Checkbox } from "soldix";
+import { Checkbox } from "solidix";
 import { CheckIcon } from "../icons";
 
 const CheckboxDemo = () => (

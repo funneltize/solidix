@@ -8,27 +8,27 @@ import {
   type Component,
 } from "solid-js";
 import { Portal as SolidPortal } from "@solidjs/web";
-import { createCollection } from "@soldix/collection";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
+import { createCollection } from "@solidix/collection";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
 import {
   Branch as DismissableLayerBranch,
   Root as DismissableLayerRoot,
   type DismissableLayerProps,
-} from "@soldix/dismissable-layer";
-import { Portal } from "@soldix/portal";
-import { Presence } from "@soldix/presence";
+} from "@solidix/dismissable-layer";
+import { Portal } from "@solidix/portal";
+import { Presence } from "@solidix/presence";
 import {
   Primitive,
   callEventHandler,
   composeEventHandlers,
   dispatchDiscreteCustomEvent,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useCallbackRef } from "@soldix/use-callback-ref";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { useLayoutEffect } from "@soldix/use-layout-effect";
-import { VisuallyHidden, type VisuallyHiddenProps } from "@soldix/visually-hidden";
+} from "@solidix/primitive";
+import { useCallbackRef } from "@solidix/use-callback-ref";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { useLayoutEffect } from "@solidix/use-layout-effect";
+import { VisuallyHidden, type VisuallyHiddenProps } from "@solidix/visually-hidden";
 import type { JSX } from "@solidjs/web";
 
 /* -------------------------------------------------------------------------------------------------
@@ -627,7 +627,7 @@ const ToastImpl: Component<ScopedProps<ToastImplProps>> = (props) => {
 
           <ToastInteractiveProvider scope={props.__scopeToast} onClose={handleClose}>
             {/*
-             * Portalled directly (no `@soldix/portal` wrapper) so the `li`
+             * Portalled directly (no `@solidix/portal` wrapper) so the `li`
              * stays a direct child of the viewport `ol`, exactly like Radix.
              */}
             <SolidPortal mount={viewport()}>

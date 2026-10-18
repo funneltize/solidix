@@ -9,25 +9,25 @@ import {
   type Setter,
 } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { IS_DEVELOPMENT } from "@soldix/env-check/is-development";
-import { afterConnected, useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
+import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
+import { afterConnected, useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
 import {
   DismissableLayer,
   useDismissableLayerSurface,
   type DismissableLayerProps,
-} from "@soldix/dismissable-layer";
+} from "@solidix/dismissable-layer";
 import {
   FocusScope,
   FocusScopeBranchProvider,
   useFocusScopeBranchRegistry,
   type FocusScopeBranchRegistry,
   type FocusScopeProps,
-} from "@soldix/focus-scope";
-import { useFocusGuards } from "@soldix/focus-guards";
-import { useId } from "@soldix/id";
-import { Portal as PortalPrimitive } from "@soldix/portal";
-import { Presence } from "@soldix/presence";
+} from "@solidix/focus-scope";
+import { useFocusGuards } from "@solidix/focus-guards";
+import { useId } from "@solidix/id";
+import { Portal as PortalPrimitive } from "@solidix/portal";
+import { Presence } from "@solidix/presence";
 import {
   Primitive,
   ariaBoolean,
@@ -35,9 +35,9 @@ import {
   composeEventHandlers,
   hideOthers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { RemoveScroll } from "@soldix/remove-scroll";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/primitive";
+import { RemoveScroll } from "@solidix/remove-scroll";
+import { useControllableState } from "@solidix/use-controllable-state";
 
 /* -------------------------------------------------------------------------------------------------
  * Dialog

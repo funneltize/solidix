@@ -1,4 +1,4 @@
-# `@soldix/select`
+# `@solidix/select`
 
 Select primitive. Port of `@radix-ui/react-select`, including both
 `position="item-aligned"` and `position="popper"` content, the detached
@@ -10,12 +10,12 @@ ref stability (#3963), and the full bubble-input change matrix (#4102).
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` composes via
-  `@soldix/slot`.
+  `@solidix/slot`.
 - Reactive state (`open`, `value`, `userSelection`, `trigger`, `valueNode`,
   content/viewport/selected nodes, `nativeOptions`) lives in signals exposed
   through context as getters; static props and callbacks pass through
   unchanged.
-- Like `@soldix/dialog`, the modal `hideOthers` call, `DismissableLayer`
+- Like `@solidix/dialog`, the modal `hideOthers` call, `DismissableLayer`
   setup, and `Slot` delegated-listener attachment all wait until the content
   node is connected (`afterConnected`). Tests asserting content presence,
   focus, or the scroll buttons therefore settle first (`vi.waitFor`), as the

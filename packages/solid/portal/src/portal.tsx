@@ -1,7 +1,7 @@
 import { createSignal, omit, type Component } from "solid-js";
 import { Portal as SolidPortal } from "@solidjs/web";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
-import { useLayoutEffect } from "@soldix/use-layout-effect";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
+import { useLayoutEffect } from "@solidix/use-layout-effect";
 
 /* -------------------------------------------------------------------------------------------------
  * Portal

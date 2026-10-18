@@ -13,7 +13,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Separator } from \"soldix\";\n\nexport default () => <Separator.Root />;"
+    "code": "import { Separator } from \"solidix\";\n\nexport default () => <Separator.Root />;"
   },
   "parts": [
     {

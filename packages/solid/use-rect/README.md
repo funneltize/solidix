@@ -1,4 +1,4 @@
-# `@soldix/use-rect`
+# `@solidix/use-rect`
 
 Element rect observer hook. Port of `@radix-ui/react-use-rect`.
 

@@ -17,7 +17,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { HoverCard } from \"soldix\";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger />\n\t\t<HoverCard.Portal>\n\t\t\t<HoverCard.Content>\n\t\t\t\t<HoverCard.Arrow />\n\t\t\t</HoverCard.Content>\n\t\t</HoverCard.Portal>\n\t</HoverCard.Root>\n);"
+    "code": "import { HoverCard } from \"solidix\";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger />\n\t\t<HoverCard.Portal>\n\t\t\t<HoverCard.Content>\n\t\t\t\t<HoverCard.Arrow />\n\t\t\t</HoverCard.Content>\n\t\t</HoverCard.Portal>\n\t</HoverCard.Root>\n);"
   },
   "parts": [
     {
@@ -267,7 +267,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             4
           ],
-          "code": "import { HoverCard } from \"soldix\";\n\nexport default () => (\n\t<HoverCard.Root openDelay={0}>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content>…</HoverCard.Content>\n\t</HoverCard.Root>\n);"
+          "code": "import { HoverCard } from \"solidix\";\n\nexport default () => (\n\t<HoverCard.Root openDelay={0}>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content>…</HoverCard.Content>\n\t</HoverCard.Root>\n);"
         }
       ]
     },
@@ -280,7 +280,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             9
           ],
-          "code": "// index.jsx\nimport { HoverCard } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Portal>\n\t\t\t<HoverCard.Content className=\"HoverCardContent\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</HoverCard.Content>\n\t\t</HoverCard.Portal>\n\t</HoverCard.Root>\n);"
+          "code": "// index.jsx\nimport { HoverCard } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Portal>\n\t\t\t<HoverCard.Content className=\"HoverCardContent\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</HoverCard.Content>\n\t\t</HoverCard.Portal>\n\t</HoverCard.Root>\n);"
         },
         {
           "lang": "css",
@@ -298,7 +298,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             8
           ],
-          "code": "// index.jsx\nimport { HoverCard } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content className=\"HoverCardContent\">…</HoverCard.Content>\n\t</HoverCard.Root>\n);"
+          "code": "// index.jsx\nimport { HoverCard } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content className=\"HoverCardContent\">…</HoverCard.Content>\n\t</HoverCard.Root>\n);"
         },
         {
           "lang": "css",
@@ -318,7 +318,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             8
           ],
-          "code": "// index.jsx\nimport { HoverCard } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content className=\"HoverCardContent\">…</HoverCard.Content>\n\t</HoverCard.Root>\n);"
+          "code": "// index.jsx\nimport { HoverCard } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content className=\"HoverCardContent\">…</HoverCard.Content>\n\t</HoverCard.Root>\n);"
         },
         {
           "lang": "css",

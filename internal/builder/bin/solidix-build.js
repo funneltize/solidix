@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-// Shared library build for soldix packages (mirrors Radix's `radix-build`).
+// Shared library build for solidix packages (mirrors Radix's `radix-build`).
 // Run from a package directory.
 //
-//   soldix-build [entry] [outBase] [--no-empty]
+//   solidix-build [entry] [outBase] [--no-empty]
 //
 // Defaults: entry `src/index.ts`, outBase `index` (→ dist/index.mjs + dist/index.js).
 // Declarations are emitted separately via `tsc -p tsconfig.build.json`.
@@ -28,7 +28,7 @@ await build({
       fileName: (format) => `${outBase}.${format === "es" ? "mjs" : "js"}`,
     },
     rollupOptions: {
-      external: [/^solid-js$/, /^@solidjs\//, /^@soldix\//, /^@repo\//],
+      external: [/^solid-js$/, /^@solidjs\//, /^@solidix\//, /^@repo\//],
     },
   },
 });

@@ -16,7 +16,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Tabs } from \"soldix\";\n\nexport default () => (\n\t<Tabs.Root>\n\t\t<Tabs.List>\n\t\t\t<Tabs.Trigger />\n\t\t</Tabs.List>\n\t\t<Tabs.Content />\n\t</Tabs.Root>\n);"
+    "code": "import { Tabs } from \"solidix\";\n\nexport default () => (\n\t<Tabs.Root>\n\t\t<Tabs.List>\n\t\t\t<Tabs.Trigger />\n\t\t</Tabs.List>\n\t\t<Tabs.Content />\n\t</Tabs.Root>\n);"
   },
   "parts": [
     {
@@ -215,7 +215,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             4
           ],
-          "code": "import { Tabs } from \"soldix\";\n\nexport default () => (\n\t<Tabs.Root defaultValue=\"tab1\" orientation=\"vertical\">\n\t\t<Tabs.List aria-label=\"tabs example\">\n\t\t\t<Tabs.Trigger value=\"tab1\">One</Tabs.Trigger>\n\t\t\t<Tabs.Trigger value=\"tab2\">Two</Tabs.Trigger>\n\t\t\t<Tabs.Trigger value=\"tab3\">Three</Tabs.Trigger>\n\t\t</Tabs.List>\n\t\t<Tabs.Content value=\"tab1\">Tab one content</Tabs.Content>\n\t\t<Tabs.Content value=\"tab2\">Tab two content</Tabs.Content>\n\t\t<Tabs.Content value=\"tab3\">Tab three content</Tabs.Content>\n\t</Tabs.Root>\n);"
+          "code": "import { Tabs } from \"solidix\";\n\nexport default () => (\n\t<Tabs.Root defaultValue=\"tab1\" orientation=\"vertical\">\n\t\t<Tabs.List aria-label=\"tabs example\">\n\t\t\t<Tabs.Trigger value=\"tab1\">One</Tabs.Trigger>\n\t\t\t<Tabs.Trigger value=\"tab2\">Two</Tabs.Trigger>\n\t\t\t<Tabs.Trigger value=\"tab3\">Three</Tabs.Trigger>\n\t\t</Tabs.List>\n\t\t<Tabs.Content value=\"tab1\">Tab one content</Tabs.Content>\n\t\t<Tabs.Content value=\"tab2\">Tab two content</Tabs.Content>\n\t\t<Tabs.Content value=\"tab3\">Tab three content</Tabs.Content>\n\t</Tabs.Root>\n);"
         }
       ]
     }

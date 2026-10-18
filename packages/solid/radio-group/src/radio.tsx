@@ -1,16 +1,16 @@
 import { Show, createEffect, createSignal, omit, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { useComposedRefs } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useSize } from "@soldix/use-size";
-import { Presence } from "@soldix/presence";
+import { useComposedRefs } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useSize } from "@solidix/use-size";
+import { Presence } from "@solidix/presence";
 import {
   Primitive,
   ariaBoolean,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
+} from "@solidix/primitive";
 
 const RADIO_NAME = "Radio";
 

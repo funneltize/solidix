@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/toggle",
+  "name": "@solidix/toggle",
   "version": "0.0.0",
   "description": "Toggle primitive (port of @radix-ui/react-toggle).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/toggle"
   },
   "source": "./src/index.ts",
@@ -41,12 +41,12 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/primitive": "workspace:*",
-    "@soldix/use-controllable-state": "workspace:*"
+    "@solidix/primitive": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

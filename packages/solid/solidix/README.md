@@ -1,10 +1,10 @@
-# `soldix`
+# `solidix`
 
-Umbrella package re-exporting all Soldix primitives under one dependency,
+Umbrella package re-exporting all Solidix primitives under one dependency,
 mirroring the `radix-ui` meta-package.
 
 ```tsx
-import { Accordion, Dialog } from "soldix";
+import { Accordion, Dialog } from "solidix";
 
 <Dialog.Root>
   <Dialog.Trigger>Open</Dialog.Trigger>
@@ -22,10 +22,10 @@ Toggle, ToggleGroup, Toolbar, Tooltip.
 
 ## Differences from Radix
 
-- Internal utilities (`@soldix/primitive`, `@soldix/slot`, `@soldix/portal`,
-  `@soldix/presence`, collections, hooks, and the rest of `@soldix/*`) stay
+- Internal utilities (`@solidix/primitive`, `@solidix/slot`, `@solidix/portal`,
+  `@solidix/presence`, collections, hooks, and the rest of `@solidix/*`) stay
   separate imports, exactly like the `radix-ui` package excludes Radix
   internals.
 - Each namespace re-exports its package's full public API, so importing from
-  `soldix` is equivalent to importing from `@soldix/*` directly. Prefer the
+  `solidix` is equivalent to importing from `@solidix/*` directly. Prefer the
   per-primitive packages when bundle size matters.

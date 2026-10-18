@@ -1,4 +1,4 @@
-# `@soldix/switch`
+# `@solidix/switch`
 
 Switch primitive. Port of `@radix-ui/react-switch`.
 

@@ -2,8 +2,8 @@ import { afterEach, describe, expect, test, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@solidjs/testing-library";
 import { Portal as SolidPortal } from "@solidjs/web";
 import { createSignal, flush } from "solid-js";
-import { DismissableLayer } from "@soldix/dismissable-layer";
-import { useFocusScopeBranch } from "@soldix/focus-scope";
+import { DismissableLayer } from "@solidix/dismissable-layer";
+import { useFocusScopeBranch } from "@solidix/focus-scope";
 import {
   Dialog,
   DialogClose,
@@ -40,7 +40,7 @@ function cleanupModal() {
 
 describe("given a default Dialog", () => {
   // NOTE: Radix also asserts `axe` cleanliness here (default state and open
-  // state); Soldix has no axe harness yet (Phase 6), so those assertions
+  // state); Solidix has no axe harness yet (Phase 6), so those assertions
   // have no port.
 
   test("opens the content after clicking the trigger", async () => {
@@ -536,7 +536,7 @@ describe("given a Dialog with `asChild` on the Content", () => {
     ));
 
     fireEvent.keyDown(document.activeElement!, { key: "Escape" });
-    // `useControllableState` notifies asynchronously in Soldix.
+    // `useControllableState` notifies asynchronously in Solidix.
     await vi.waitFor(() => expect(onOpenChange).toHaveBeenCalledWith(false));
   });
 

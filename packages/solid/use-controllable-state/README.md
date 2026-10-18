@@ -1,4 +1,4 @@
-# `@soldix/use-controllable-state`
+# `@solidix/use-controllable-state`
 
 Controlled/uncontrolled state hooks. Port of `@radix-ui/react-use-controllable-state`.
 

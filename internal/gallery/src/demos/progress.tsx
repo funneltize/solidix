@@ -1,5 +1,5 @@
 import { createSignal, onSettled } from "solid-js";
-import { Progress } from "soldix";
+import { Progress } from "solidix";
 
 const ProgressDemo = () => {
   const [progress, setProgress] = createSignal(13);

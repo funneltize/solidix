@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/password-toggle-field",
+  "name": "@solidix/password-toggle-field",
   "version": "0.0.0",
   "description": "Password Toggle Field primitive (port of @radix-ui/react-password-toggle-field).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/password-toggle-field"
   },
   "source": "./src/index.ts",
@@ -41,19 +41,19 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/compose-refs": "workspace:*",
-    "@soldix/context": "workspace:*",
-    "@soldix/env-check": "workspace:*",
-    "@soldix/id": "workspace:*",
-    "@soldix/primitive": "workspace:*",
-    "@soldix/use-controllable-state": "workspace:*",
-    "@soldix/use-effect-event": "workspace:*",
-    "@soldix/use-is-hydrated": "workspace:*",
-    "@soldix/use-layout-effect": "workspace:*"
+    "@solidix/compose-refs": "workspace:*",
+    "@solidix/context": "workspace:*",
+    "@solidix/env-check": "workspace:*",
+    "@solidix/id": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*",
+    "@solidix/use-effect-event": "workspace:*",
+    "@solidix/use-is-hydrated": "workspace:*",
+    "@solidix/use-layout-effect": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

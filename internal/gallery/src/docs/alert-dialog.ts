@@ -16,7 +16,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { AlertDialog } from \"soldix\";\n\nexport default () => (\n\t<AlertDialog.Root>\n\t\t<AlertDialog.Trigger />\n\t\t<AlertDialog.Portal>\n\t\t\t<AlertDialog.Overlay />\n\t\t\t<AlertDialog.Content>\n\t\t\t\t<AlertDialog.Title />\n\t\t\t\t<AlertDialog.Description />\n\t\t\t\t<AlertDialog.Cancel />\n\t\t\t\t<AlertDialog.Action />\n\t\t\t</AlertDialog.Content>\n\t\t</AlertDialog.Portal>\n\t</AlertDialog.Root>\n);"
+    "code": "import { AlertDialog } from \"solidix\";\n\nexport default () => (\n\t<AlertDialog.Root>\n\t\t<AlertDialog.Trigger />\n\t\t<AlertDialog.Portal>\n\t\t\t<AlertDialog.Overlay />\n\t\t\t<AlertDialog.Content>\n\t\t\t\t<AlertDialog.Title />\n\t\t\t\t<AlertDialog.Description />\n\t\t\t\t<AlertDialog.Cancel />\n\t\t\t\t<AlertDialog.Action />\n\t\t\t</AlertDialog.Content>\n\t\t</AlertDialog.Portal>\n\t</AlertDialog.Root>\n);"
   },
   "parts": [
     {
@@ -234,7 +234,7 @@ export const doc: PrimitiveDoc = {
             15,
             17
           ],
-          "code": "import { AlertDialog } from \"soldix\";\n\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1000));\n\nexport default () => {\n\tconst [open, setOpen] = createSignal(false);\n\n\treturn (\n\t\t<AlertDialog.Root open={open()} onOpenChange={setOpen}>\n\t\t\t<AlertDialog.Trigger>Open</AlertDialog.Trigger>\n\t\t\t<AlertDialog.Portal>\n\t\t\t\t<AlertDialog.Overlay />\n\t\t\t\t<AlertDialog.Content>\n\t\t\t\t\t<form\n\t\t\t\t\t\tonSubmit={(event) => {\n\t\t\t\t\t\t\twait().then(() => setOpen(false));\n\t\t\t\t\t\t\tevent.preventDefault();\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* some inputs */}\n\t\t\t\t\t\t<button type=\"submit\">Submit</button>\n\t\t\t\t\t</form>\n\t\t\t\t</AlertDialog.Content>\n\t\t\t</AlertDialog.Portal>\n\t\t</AlertDialog.Root>\n\t);\n};"
+          "code": "import { AlertDialog } from \"solidix\";\n\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1000));\n\nexport default () => {\n\tconst [open, setOpen] = createSignal(false);\n\n\treturn (\n\t\t<AlertDialog.Root open={open()} onOpenChange={setOpen}>\n\t\t\t<AlertDialog.Trigger>Open</AlertDialog.Trigger>\n\t\t\t<AlertDialog.Portal>\n\t\t\t\t<AlertDialog.Overlay />\n\t\t\t\t<AlertDialog.Content>\n\t\t\t\t\t<form\n\t\t\t\t\t\tonSubmit={(event) => {\n\t\t\t\t\t\t\twait().then(() => setOpen(false));\n\t\t\t\t\t\t\tevent.preventDefault();\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* some inputs */}\n\t\t\t\t\t\t<button type=\"submit\">Submit</button>\n\t\t\t\t\t</form>\n\t\t\t\t</AlertDialog.Content>\n\t\t\t</AlertDialog.Portal>\n\t\t</AlertDialog.Root>\n\t);\n};"
         }
       ]
     },

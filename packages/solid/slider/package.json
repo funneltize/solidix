@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/slider",
+  "name": "@solidix/slider",
   "version": "0.0.0",
   "description": "Slider primitive (port of @radix-ui/react-slider).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/slider"
   },
   "source": "./src/index.ts",
@@ -41,18 +41,18 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/collection": "workspace:*",
-    "@soldix/compose-refs": "workspace:*",
-    "@soldix/context": "workspace:*",
-    "@soldix/direction": "workspace:*",
-    "@soldix/number": "workspace:*",
-    "@soldix/primitive": "workspace:*",
-    "@soldix/use-controllable-state": "workspace:*",
-    "@soldix/use-size": "workspace:*"
+    "@solidix/collection": "workspace:*",
+    "@solidix/compose-refs": "workspace:*",
+    "@solidix/context": "workspace:*",
+    "@solidix/direction": "workspace:*",
+    "@solidix/number": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*",
+    "@solidix/use-size": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

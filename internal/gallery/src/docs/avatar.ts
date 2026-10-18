@@ -15,7 +15,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Avatar } from \"soldix\";\n\nexport default () => (\n\t<Avatar.Root>\n\t\t<Avatar.Image />\n\t\t<Avatar.Fallback />\n\t</Avatar.Root>\n);"
+    "code": "import { Avatar } from \"solidix\";\n\nexport default () => (\n\t<Avatar.Root>\n\t\t<Avatar.Image />\n\t\t<Avatar.Fallback />\n\t</Avatar.Root>\n);"
   },
   "parts": [
     {
@@ -93,7 +93,7 @@ export const doc: PrimitiveDoc = {
             12,
             13
           ],
-          "code": "import { Avatar, Tooltip } from \"soldix\";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>\n\t\t\t<Avatar.Root>…</Avatar.Root>\n\t\t</Tooltip.Trigger>\n\n\t\t<Tooltip.Content side=\"top\">\n\t\t\tTooltip content\n\t\t\t<Tooltip.Arrow />\n\t\t</Tooltip.Content>\n\t</Tooltip.Root>\n);"
+          "code": "import { Avatar, Tooltip } from \"solidix\";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>\n\t\t\t<Avatar.Root>…</Avatar.Root>\n\t\t</Tooltip.Trigger>\n\n\t\t<Tooltip.Content side=\"top\">\n\t\t\tTooltip content\n\t\t\t<Tooltip.Arrow />\n\t\t</Tooltip.Content>\n\t</Tooltip.Root>\n);"
         }
       ]
     }

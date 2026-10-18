@@ -1,4 +1,4 @@
-import { OneTimePasswordField } from "soldix";
+import { OneTimePasswordField } from "solidix";
 
 const OneTimePasswordFieldDemo = () => (
   <OneTimePasswordField.Root class="OTPRoot">

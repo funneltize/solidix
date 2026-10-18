@@ -15,6 +15,7 @@ import FormDemo from "../src/demos/form";
 import HoverCardDemo from "../src/demos/hover-card";
 import LabelDemo from "../src/demos/label";
 import MenubarDemo from "../src/demos/menubar";
+import MotionDemo from "../src/demos/motion";
 import NavigationMenuDemo from "../src/demos/navigation-menu";
 import OneTimePasswordFieldDemo from "../src/demos/one-time-password-field";
 import PasswordToggleFieldDemo from "../src/demos/password-toggle-field";
@@ -117,7 +118,7 @@ describe("gallery demos", () => {
 
   test("hover-card renders its trigger", async () => {
     render(() => <HoverCardDemo />);
-    expect(await screen.findByRole("link", { name: "soldix" })).not.toBe(null);
+    expect(await screen.findByRole("link", { name: "solidix" })).not.toBe(null);
   });
 
   test("label associates with its input", async () => {
@@ -130,6 +131,56 @@ describe("gallery demos", () => {
     render(() => <MenubarDemo />);
     expect(await screen.findByRole("menubar")).not.toBe(null);
     expect(screen.getByRole("menuitem", { name: "File" })).not.toBe(null);
+  });
+
+  test("motion switches spring presets and morphs tabs", async () => {
+    const { container } = render(() => <MotionDemo />);
+    fireEvent.click(await screen.findByRole("button", { name: "Bouncy" }));
+    expect(await screen.findByText("Bouncy · 550ms")).not.toBe(null);
+    fireEvent.click(screen.getByRole("button", { name: "Ping" }));
+    await vi.waitFor(() => {
+      expect(
+        (container.querySelector(".MotionDot") as HTMLElement).style.transform,
+      ).toContain("216");
+    });
+    // No startViewTransition in jsdom — the helper applies the update instantly.
+    fireEvent.click(screen.getByRole("tab", { name: "Morphing" }));
+    expect(await screen.findByText(/Shared view-transition names morph/)).not.toBe(null);
+    expect(screen.getByRole("tab", { name: "Morphing" }).getAttribute("aria-selected")).toBe(
+      "true",
+    );
+  });
+
+  test("motion dismisses its swipe card", async () => {
+    render(() => <MotionDemo />);
+    const card = (await screen.findByText("Drag me left or right")).closest(
+      ".MotionSwipeCard",
+    ) as HTMLElement;
+    const pointer = (type: string, clientX: number) => {
+      const event = new MouseEvent(type, { bubbles: true, cancelable: true, clientX });
+      (event as unknown as { pointerId: number }).pointerId = 1;
+      card.dispatchEvent(event);
+    };
+    // Zero layout in jsdom: the 24px threshold floor decides.
+    pointer("pointerdown", 100);
+    pointer("pointermove", 130);
+    pointer("pointermove", 170);
+    pointer("pointerup", 170);
+    expect(await screen.findByText("Card dismissed.")).not.toBe(null);
+    fireEvent.click(screen.getByRole("button", { name: "Reset" }));
+    expect(await screen.findByText("Drag me left or right")).not.toBe(null);
+  });
+
+  test("motion dismisses its swipe card from the keyboard with focus recovery", async () => {
+    render(() => <MotionDemo />);
+    const dismiss = await screen.findByRole("button", { name: "Dismiss" });
+    dismiss.focus();
+    fireEvent.click(dismiss);
+    expect(await screen.findByText("Card dismissed.")).not.toBe(null);
+    // Focus rode along to Reset instead of being lost with the card.
+    await vi.waitFor(() => {
+      expect(document.activeElement).toBe(screen.getByRole("button", { name: "Reset" }));
+    });
   });
 
   test("navigation-menu renders triggers and links", async () => {

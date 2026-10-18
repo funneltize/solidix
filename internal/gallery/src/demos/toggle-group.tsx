@@ -1,4 +1,4 @@
-import { ToggleGroup } from "soldix";
+import { ToggleGroup } from "solidix";
 import { TextAlignCenterIcon, TextAlignLeftIcon, TextAlignRightIcon } from "../icons";
 
 const ToggleGroupDemo = () => (

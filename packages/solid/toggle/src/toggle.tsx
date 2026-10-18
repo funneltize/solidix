@@ -5,8 +5,8 @@ import {
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/primitive";
+import { useControllableState } from "@solidix/use-controllable-state";
 
 /* -------------------------------------------------------------------------------------------------
  * Toggle

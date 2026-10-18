@@ -1,5 +1,5 @@
 import { omit, type Component } from "solid-js";
-import { Accordion } from "soldix";
+import { Accordion } from "solidix";
 import { ChevronDownIcon } from "../icons";
 
 const AccordionDemo = () => (

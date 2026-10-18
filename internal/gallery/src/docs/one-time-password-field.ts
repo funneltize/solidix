@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { OneTimePasswordField } from \"soldix\";\n\nexport default () => (\n\t<OneTimePasswordField.Root>\n\t\t{/* one Input for each character of the value */}\n\t\t<OneTimePasswordField.Input />\n\t\t{/* single HiddenInput to store the full value */}\n\t\t<OneTimePasswordField.HiddenInput />\n\t</OneTimePasswordField.Root>\n);"
+    "code": "import { OneTimePasswordField } from \"solidix\";\n\nexport default () => (\n\t<OneTimePasswordField.Root>\n\t\t{/* one Input for each character of the value */}\n\t\t<OneTimePasswordField.Input />\n\t\t{/* single HiddenInput to store the full value */}\n\t\t<OneTimePasswordField.HiddenInput />\n\t</OneTimePasswordField.Root>\n);"
   },
   "parts": [
     {

@@ -1,4 +1,4 @@
-# `@soldix/presence`
+# `@solidix/presence`
 
 Presence stays mounted through exit animations. Port of
 `@radix-ui/react-presence`.

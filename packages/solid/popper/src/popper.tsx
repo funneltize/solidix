@@ -13,13 +13,13 @@ import {
   type Middleware,
   type Placement,
 } from "@floating-ui/dom";
-import { Arrow as ArrowPrimitive, type ArrowProps } from "@soldix/arrow";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
-import { useCallbackRef } from "@soldix/use-callback-ref";
-import { useSize } from "@soldix/use-size";
-import type { Measurable } from "@soldix/rect";
+import { Arrow as ArrowPrimitive, type ArrowProps } from "@solidix/arrow";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
+import { useCallbackRef } from "@solidix/use-callback-ref";
+import { useSize } from "@solidix/use-size";
+import type { Measurable } from "@solidix/rect";
 
 const SIDE_OPTIONS = ["top", "right", "bottom", "left"] as const;
 const ALIGN_OPTIONS = ["start", "center", "end"] as const;

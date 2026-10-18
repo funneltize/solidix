@@ -1,7 +1,7 @@
 import { createEffect, createSignal, omit, onCleanup, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { IS_DEVELOPMENT } from "@soldix/env-check/is-development";
-import { createContextScope, type Scope } from "@soldix/context";
+import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
+import { createContextScope, type Scope } from "@solidix/context";
 import {
   Menu as MenuRoot,
   MenuAnchor,
@@ -34,14 +34,14 @@ import {
   type MenuSubContentProps,
   type MenuSubProps,
   type MenuSubTriggerProps,
-} from "@soldix/menu";
+} from "@solidix/menu";
 import {
   Primitive,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/primitive";
+import { useControllableState } from "@solidix/use-controllable-state";
 
 /* -------------------------------------------------------------------------------------------------
  * ContextMenu

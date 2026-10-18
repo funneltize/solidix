@@ -20,7 +20,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Select } from \"soldix\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>\n\t\t\t<Select.Value />\n\t\t\t<Select.Icon />\n\t\t</Select.Trigger>\n\n\t\t<Select.Portal>\n\t\t\t<Select.Content>\n\t\t\t\t<Select.ScrollUpButton />\n\t\t\t\t<Select.Viewport>\n\t\t\t\t\t<Select.Item>\n\t\t\t\t\t\t<Select.ItemText />\n\t\t\t\t\t\t<Select.ItemIndicator />\n\t\t\t\t\t</Select.Item>\n\n\t\t\t\t\t<Select.Group>\n\t\t\t\t\t\t<Select.Label />\n\t\t\t\t\t\t<Select.Item>\n\t\t\t\t\t\t\t<Select.ItemText />\n\t\t\t\t\t\t\t<Select.ItemIndicator />\n\t\t\t\t\t\t</Select.Item>\n\t\t\t\t\t</Select.Group>\n\n\t\t\t\t\t<Select.Separator />\n\t\t\t\t</Select.Viewport>\n\t\t\t\t<Select.ScrollDownButton />\n\t\t\t\t<Select.Arrow />\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
+    "code": "import { Select } from \"solidix\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>\n\t\t\t<Select.Value />\n\t\t\t<Select.Icon />\n\t\t</Select.Trigger>\n\n\t\t<Select.Portal>\n\t\t\t<Select.Content>\n\t\t\t\t<Select.ScrollUpButton />\n\t\t\t\t<Select.Viewport>\n\t\t\t\t\t<Select.Item>\n\t\t\t\t\t\t<Select.ItemText />\n\t\t\t\t\t\t<Select.ItemIndicator />\n\t\t\t\t\t</Select.Item>\n\n\t\t\t\t\t<Select.Group>\n\t\t\t\t\t\t<Select.Label />\n\t\t\t\t\t\t<Select.Item>\n\t\t\t\t\t\t\t<Select.ItemText />\n\t\t\t\t\t\t\t<Select.ItemIndicator />\n\t\t\t\t\t\t</Select.Item>\n\t\t\t\t\t</Select.Group>\n\n\t\t\t\t\t<Select.Separator />\n\t\t\t\t</Select.Viewport>\n\t\t\t\t<Select.ScrollDownButton />\n\t\t\t\t<Select.Arrow />\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
   },
   "parts": [
     {
@@ -543,7 +543,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             8
           ],
-          "code": "// index.jsx\nimport { Select } from \"soldix\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content position=\"popper\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
+          "code": "// index.jsx\nimport { Select } from \"solidix\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content position=\"popper\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
         }
       ]
     },
@@ -556,7 +556,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             9
           ],
-          "code": "// index.jsx\nimport { Select } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content\n\t\t\t\tclassName=\"SelectContent\"\n\t\t\t\tposition=\"popper\"\n\t\t\t\tsideOffset={5}\n\t\t\t>\n\t\t\t\t…\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
+          "code": "// index.jsx\nimport { Select } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content\n\t\t\t\tclassName=\"SelectContent\"\n\t\t\t\tposition=\"popper\"\n\t\t\t\tsideOffset={5}\n\t\t\t>\n\t\t\t\t…\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
         },
         {
           "lang": "css",
@@ -574,7 +574,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             11
           ],
-          "code": "// index.jsx\nimport { Select } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>\n\t\t\t\t<Select.Viewport>\n\t\t\t\t\t<Select.Item className=\"SelectItem\" disabled>\n\t\t\t\t\t\t…\n\t\t\t\t\t</Select.Item>\n\t\t\t\t\t<Select.Item>…</Select.Item>\n\t\t\t\t\t<Select.Item>…</Select.Item>\n\t\t\t\t</Select.Viewport>\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
+          "code": "// index.jsx\nimport { Select } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>\n\t\t\t\t<Select.Viewport>\n\t\t\t\t\t<Select.Item className=\"SelectItem\" disabled>\n\t\t\t\t\t\t…\n\t\t\t\t\t</Select.Item>\n\t\t\t\t\t<Select.Item>…</Select.Item>\n\t\t\t\t\t<Select.Item>…</Select.Item>\n\t\t\t\t</Select.Viewport>\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
         },
         {
           "lang": "css",
@@ -595,7 +595,7 @@ export const doc: PrimitiveDoc = {
             7,
             8
           ],
-          "code": "// index.jsx\nimport { Select } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger className=\"SelectTrigger\">\n\t\t\t<Select.Value placeholder=\"Pick an option\" />\n\t\t\t<Select.Icon />\n\t\t</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>…</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
+          "code": "// index.jsx\nimport { Select } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger className=\"SelectTrigger\">\n\t\t\t<Select.Value placeholder=\"Pick an option\" />\n\t\t\t<Select.Icon />\n\t\t</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>…</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
         },
         {
           "lang": "css",
@@ -643,7 +643,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             11
           ],
-          "code": "import { Select } from \"soldix\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>\n\t\t\t\t<Select.Viewport>\n\t\t\t\t\t<Select.Item>\n\t\t\t\t\t\t<Select.ItemText>\n\t\t\t\t\t\t\t<img src=\"…\" />\n\t\t\t\t\t\t\tAdolfo Hess\n\t\t\t\t\t\t</Select.ItemText>\n\t\t\t\t\t\t<Select.ItemIndicator>…</Select.ItemIndicator>\n\t\t\t\t\t</Select.Item>\n\t\t\t\t\t<Select.Item>…</Select.Item>\n\t\t\t\t\t<Select.Item>…</Select.Item>\n\t\t\t\t</Select.Viewport>\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
+          "code": "import { Select } from \"solidix\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>\n\t\t\t\t<Select.Viewport>\n\t\t\t\t\t<Select.Item>\n\t\t\t\t\t\t<Select.ItemText>\n\t\t\t\t\t\t\t<img src=\"…\" />\n\t\t\t\t\t\t\tAdolfo Hess\n\t\t\t\t\t\t</Select.ItemText>\n\t\t\t\t\t\t<Select.ItemIndicator>…</Select.ItemIndicator>\n\t\t\t\t\t</Select.Item>\n\t\t\t\t\t<Select.Item>…</Select.Item>\n\t\t\t\t\t<Select.Item>…</Select.Item>\n\t\t\t\t</Select.Viewport>\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
         }
       ]
     },
@@ -675,7 +675,7 @@ export const doc: PrimitiveDoc = {
             19,
             20
           ],
-          "code": "// index.jsx\nimport { Select, ScrollArea } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>\n\t\t\t\t<ScrollArea.Root className=\"ScrollAreaRoot\" type=\"auto\">\n\t\t\t\t\t<Select.Viewport asChild>\n\t\t\t\t\t\t<ScrollArea.Viewport className=\"ScrollAreaViewport\">\n\t\t\t\t\t\t\t<StyledItem>…</StyledItem>\n\t\t\t\t\t\t\t<StyledItem>…</StyledItem>\n\t\t\t\t\t\t\t<StyledItem>…</StyledItem>\n\t\t\t\t\t\t</ScrollArea.Viewport>\n\t\t\t\t\t</Select.Viewport>\n\t\t\t\t\t<ScrollArea.Scrollbar\n\t\t\t\t\t\tclassName=\"ScrollAreaScrollbar\"\n\t\t\t\t\t\torientation=\"vertical\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<ScrollArea.Thumb className=\"ScrollAreaThumb\" />\n\t\t\t\t\t</ScrollArea.Scrollbar>\n\t\t\t\t</ScrollArea.Root>\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
+          "code": "// index.jsx\nimport { Select, ScrollArea } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Select.Root>\n\t\t<Select.Trigger>…</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>\n\t\t\t\t<ScrollArea.Root className=\"ScrollAreaRoot\" type=\"auto\">\n\t\t\t\t\t<Select.Viewport asChild>\n\t\t\t\t\t\t<ScrollArea.Viewport className=\"ScrollAreaViewport\">\n\t\t\t\t\t\t\t<StyledItem>…</StyledItem>\n\t\t\t\t\t\t\t<StyledItem>…</StyledItem>\n\t\t\t\t\t\t\t<StyledItem>…</StyledItem>\n\t\t\t\t\t\t</ScrollArea.Viewport>\n\t\t\t\t\t</Select.Viewport>\n\t\t\t\t\t<ScrollArea.Scrollbar\n\t\t\t\t\t\tclassName=\"ScrollAreaScrollbar\"\n\t\t\t\t\t\torientation=\"vertical\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<ScrollArea.Thumb className=\"ScrollAreaThumb\" />\n\t\t\t\t\t</ScrollArea.Scrollbar>\n\t\t\t\t</ScrollArea.Root>\n\t\t\t</Select.Content>\n\t\t</Select.Portal>\n\t</Select.Root>\n);"
         },
         {
           "lang": "css",
@@ -691,7 +691,7 @@ export const doc: PrimitiveDoc = {
         {
           "lang": "jsx",
           "highlights": [],
-          "code": "import { Select } from \"soldix\";\n\nexport default () => (\n\t<Select.Provider name=\"fruit\">\n\t\t<Select.Trigger>\n\t\t\t<Select.Value placeholder=\"Pick an option\" />\n\t\t\t<Select.Icon />\n\t\t</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>{/* Your content */}</Select.Content>\n\t\t</Select.Portal>\n\t\t<Select.BubbleInput />\n\t</Select.Provider>\n);"
+          "code": "import { Select } from \"solidix\";\n\nexport default () => (\n\t<Select.Provider name=\"fruit\">\n\t\t<Select.Trigger>\n\t\t\t<Select.Value placeholder=\"Pick an option\" />\n\t\t\t<Select.Icon />\n\t\t</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>{/* Your content */}</Select.Content>\n\t\t</Select.Portal>\n\t\t<Select.BubbleInput />\n\t</Select.Provider>\n);"
         }
       ]
     }
@@ -709,7 +709,7 @@ export const doc: PrimitiveDoc = {
         {
           "lang": "jsx",
           "highlights": [],
-          "code": "// your-select.jsx\nimport { omit } from \"solid-js\";\nimport { Select as SelectPrimitive } from \"soldix\";\nimport {\n\tCheckIcon,\n\tChevronDownIcon,\n\tChevronUpIcon,\n} from \"@radix-ui/react-icons\";\n\nexport const Select = (props) => {\n\tconst rest = omit(props, \"children\", \"ref\");\n\treturn (\n\t\t<SelectPrimitive.Root {...rest}>\n\t\t\t<SelectPrimitive.Trigger ref={props.ref}>\n\t\t\t\t<SelectPrimitive.Value />\n\t\t\t\t<SelectPrimitive.Icon>\n\t\t\t\t\t<ChevronDownIcon />\n\t\t\t\t\t</SelectPrimitive.Icon>\n\t\t\t</SelectPrimitive.Trigger>\n\t\t\t<SelectPrimitive.Portal>\n\t\t\t\t<SelectPrimitive.Content>\n\t\t\t\t\t<SelectPrimitive.ScrollUpButton>\n\t\t\t\t\t\t<ChevronUpIcon />\n\t\t\t\t\t</SelectPrimitive.ScrollUpButton>\n\t\t\t\t\t<SelectPrimitive.Viewport>{props.children}</SelectPrimitive.Viewport>\n\t\t\t\t\t<SelectPrimitive.ScrollDownButton>\n\t\t\t\t\t\t<ChevronDownIcon />\n\t\t\t\t\t</SelectPrimitive.ScrollDownButton>\n\t\t\t\t</SelectPrimitive.Content>\n\t\t\t</SelectPrimitive.Portal>\n\t\t</SelectPrimitive.Root>\n\t);\n};\n\nexport const SelectItem = (props) => {\n\tconst rest = omit(props, \"children\", \"ref\");\n\treturn (\n\t\t<SelectPrimitive.Item {...rest} ref={props.ref}>\n\t\t\t<SelectPrimitive.ItemText>{props.children}</SelectPrimitive.ItemText>\n\t\t\t<SelectPrimitive.ItemIndicator>\n\t\t\t\t<CheckIcon />\n\t\t\t\t</SelectPrimitive.ItemIndicator>\n\t\t</SelectPrimitive.Item>\n\t);\n};"
+          "code": "// your-select.jsx\nimport { omit } from \"solid-js\";\nimport { Select as SelectPrimitive } from \"solidix\";\nimport {\n\tCheckIcon,\n\tChevronDownIcon,\n\tChevronUpIcon,\n} from \"@radix-ui/react-icons\";\n\nexport const Select = (props) => {\n\tconst rest = omit(props, \"children\", \"ref\");\n\treturn (\n\t\t<SelectPrimitive.Root {...rest}>\n\t\t\t<SelectPrimitive.Trigger ref={props.ref}>\n\t\t\t\t<SelectPrimitive.Value />\n\t\t\t\t<SelectPrimitive.Icon>\n\t\t\t\t\t<ChevronDownIcon />\n\t\t\t\t\t</SelectPrimitive.Icon>\n\t\t\t</SelectPrimitive.Trigger>\n\t\t\t<SelectPrimitive.Portal>\n\t\t\t\t<SelectPrimitive.Content>\n\t\t\t\t\t<SelectPrimitive.ScrollUpButton>\n\t\t\t\t\t\t<ChevronUpIcon />\n\t\t\t\t\t</SelectPrimitive.ScrollUpButton>\n\t\t\t\t\t<SelectPrimitive.Viewport>{props.children}</SelectPrimitive.Viewport>\n\t\t\t\t\t<SelectPrimitive.ScrollDownButton>\n\t\t\t\t\t\t<ChevronDownIcon />\n\t\t\t\t\t</SelectPrimitive.ScrollDownButton>\n\t\t\t\t</SelectPrimitive.Content>\n\t\t\t</SelectPrimitive.Portal>\n\t\t</SelectPrimitive.Root>\n\t);\n};\n\nexport const SelectItem = (props) => {\n\tconst rest = omit(props, \"children\", \"ref\");\n\treturn (\n\t\t<SelectPrimitive.Item {...rest} ref={props.ref}>\n\t\t\t<SelectPrimitive.ItemText>{props.children}</SelectPrimitive.ItemText>\n\t\t\t<SelectPrimitive.ItemIndicator>\n\t\t\t\t<CheckIcon />\n\t\t\t\t</SelectPrimitive.ItemIndicator>\n\t\t</SelectPrimitive.Item>\n\t);\n};"
         }
       ]
     }

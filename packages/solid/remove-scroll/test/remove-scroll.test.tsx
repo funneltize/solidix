@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@solidjs/testing-library";
 import { RemoveScroll } from "../src/index";
 
 function lockStyle(): HTMLStyleElement | null {
-  return document.head.querySelector('style[data-soldix="remove-scroll-bar"]');
+  return document.head.querySelector('style[data-solidix="remove-scroll-bar"]');
 }
 
 describe("RemoveScroll", () => {

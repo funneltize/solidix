@@ -1,4 +1,4 @@
-import { Form } from "soldix";
+import { Form } from "solidix";
 
 const FormDemo = () => (
   <Form.Root class="FormRoot">

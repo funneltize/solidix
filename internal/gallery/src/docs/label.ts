@@ -14,7 +14,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Label } from \"soldix\";\n\nexport default () => <Label.Root />;"
+    "code": "import { Label } from \"solidix\";\n\nexport default () => <Label.Root />;"
   },
   "parts": [
     {

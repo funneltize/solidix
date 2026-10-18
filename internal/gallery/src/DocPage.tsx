@@ -26,7 +26,7 @@ const DocPage: Component<{ demo: DemoEntry; prev?: DemoEntry; next?: DemoEntry }
         <h1 class="doc-title">{props.demo.title}</h1>
         <p class="doc-lede">{doc().metaDescription || doc().description}</p>
         <div class="doc-meta">
-          <code class="pkg-chip">@soldix/{props.demo.slug}</code>
+          <code class="pkg-chip">@solidix/{props.demo.slug}</code>
           <Show when={doc().ariaLink !== ""}>
             <a class="aria-link" href={doc().ariaLink} target="_blank" rel="noreferrer">
               WAI-ARIA pattern

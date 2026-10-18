@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
-// NOTE: neither `radix-ui` nor `soldix` re-exports Announce from the
+// NOTE: neither `radix-ui` nor `solidix` re-exports Announce from the
 // meta-package (parity) — importing the primitive directly.
-import { Announce } from "@soldix/announce";
+import { Announce } from "@solidix/announce";
 
 const AnnounceDemo = () => {
   const [count, setCount] = createSignal(0);

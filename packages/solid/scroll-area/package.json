@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/scroll-area",
+  "name": "@solidix/scroll-area",
   "version": "0.0.0",
   "description": "Scroll Area primitive (port of @radix-ui/react-scroll-area).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/scroll-area"
   },
   "source": "./src/index.ts",
@@ -41,20 +41,20 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/compose-refs": "workspace:*",
-    "@soldix/context": "workspace:*",
-    "@soldix/direction": "workspace:*",
-    "@soldix/env-check": "workspace:*",
-    "@soldix/number": "workspace:*",
-    "@soldix/presence": "workspace:*",
-    "@soldix/primitive": "workspace:*",
-    "@soldix/slot": "workspace:*",
-    "@soldix/use-callback-ref": "workspace:*",
-    "@soldix/use-layout-effect": "workspace:*"
+    "@solidix/compose-refs": "workspace:*",
+    "@solidix/context": "workspace:*",
+    "@solidix/direction": "workspace:*",
+    "@solidix/env-check": "workspace:*",
+    "@solidix/number": "workspace:*",
+    "@solidix/presence": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/slot": "workspace:*",
+    "@solidix/use-callback-ref": "workspace:*",
+    "@solidix/use-layout-effect": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

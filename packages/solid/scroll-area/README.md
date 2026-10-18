@@ -1,4 +1,4 @@
-# `@soldix/scroll-area`
+# `@solidix/scroll-area`
 
 Scroll-area primitive. Port of `@radix-ui/react-scroll-area`, including all
 four scrollbar types (`hover`/`scroll`/`auto`/`always`), both orientations,
@@ -8,7 +8,7 @@ out, the corner (#2383), and ref stability (#3963).
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` composes via
-  `@soldix/slot`.
+  `@solidix/slot`.
 - Collected nodes and flags (`scrollArea`, `viewport`, `content`,
   `scrollbarX`/`scrollbarY`, enabled flags, thumb `sizes`) live in signals
   exposed through context as getters; static props pass through unchanged.
@@ -21,7 +21,7 @@ out, the corner (#2383), and ref stability (#3963).
   tuple handlers keep working.
 - Solid JSX provides no `onPointerDownCapture`, so `ScrollAreaThumbImpl`
   accepts it explicitly and attaches it imperatively with capture, following
-  the `@soldix/dismissable-layer` pattern. Consumer-first composition with
+  the `@solidix/dismissable-layer` pattern. Consumer-first composition with
   `defaultPrevented` short-circuit matches `composeEventHandlers`.
 - Effects return their cleanup functions (the house pattern); the corner's
   unmount reset uses `useLayoutEffect`'s cleanup.

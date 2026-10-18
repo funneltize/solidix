@@ -1,3 +1,3 @@
-# `@soldix/number`
+# `@solidix/number`
 
 Number utilities. Port of `@radix-ui/number` (verbatim).

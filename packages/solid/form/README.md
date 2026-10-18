@@ -1,4 +1,4 @@
-# `@soldix/form`
+# `@solidix/form`
 
 Form primitive. Port of `@radix-ui/react-form`, including native-validity
 tracking, sync/async custom matchers, server-invalid handling, message-id
@@ -7,7 +7,7 @@ tracking, sync/async custom matchers, server-invalid handling, message-id
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces
-  Radix's `Slot`/`asChild` composition via `@soldix/slot`.
+  Radix's `Slot`/`asChild` composition via `@solidix/slot`.
 - Validity, custom-error, matcher-entry, and message-id maps live in Solid
   signals; consumers read them through getters so `data-valid`/`data-invalid`,
   `aria-describedby`, message matching, and `FormValidityState` stay reactive

@@ -16,7 +16,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { ScrollArea } from \"soldix\";\n\nexport default () => (\n\t<ScrollArea.Root>\n\t\t<ScrollArea.Viewport />\n\t\t<ScrollArea.Scrollbar orientation=\"horizontal\">\n\t\t\t<ScrollArea.Thumb />\n\t\t</ScrollArea.Scrollbar>\n\t\t<ScrollArea.Scrollbar orientation=\"vertical\">\n\t\t\t<ScrollArea.Thumb />\n\t\t</ScrollArea.Scrollbar>\n\t\t<ScrollArea.Corner />\n\t</ScrollArea.Root>\n);"
+    "code": "import { ScrollArea } from \"solidix\";\n\nexport default () => (\n\t<ScrollArea.Root>\n\t\t<ScrollArea.Viewport />\n\t\t<ScrollArea.Scrollbar orientation=\"horizontal\">\n\t\t\t<ScrollArea.Thumb />\n\t\t</ScrollArea.Scrollbar>\n\t\t<ScrollArea.Scrollbar orientation=\"vertical\">\n\t\t\t<ScrollArea.Thumb />\n\t\t</ScrollArea.Scrollbar>\n\t\t<ScrollArea.Corner />\n\t</ScrollArea.Root>\n);"
   },
   "parts": [
     {

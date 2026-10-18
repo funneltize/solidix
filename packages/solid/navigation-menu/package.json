@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/navigation-menu",
+  "name": "@solidix/navigation-menu",
   "version": "0.0.0",
   "description": "Navigation Menu primitive (port of @radix-ui/react-navigation-menu).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/navigation-menu"
   },
   "source": "./src/index.ts",
@@ -41,24 +41,24 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/collection": "workspace:*",
-    "@soldix/compose-refs": "workspace:*",
-    "@soldix/context": "workspace:*",
-    "@soldix/direction": "workspace:*",
-    "@soldix/dismissable-layer": "workspace:*",
-    "@soldix/id": "workspace:*",
-    "@soldix/presence": "workspace:*",
-    "@soldix/primitive": "workspace:*",
-    "@soldix/slot": "workspace:*",
-    "@soldix/use-callback-ref": "workspace:*",
-    "@soldix/use-controllable-state": "workspace:*",
-    "@soldix/use-layout-effect": "workspace:*",
-    "@soldix/use-previous": "workspace:*",
-    "@soldix/visually-hidden": "workspace:*"
+    "@solidix/collection": "workspace:*",
+    "@solidix/compose-refs": "workspace:*",
+    "@solidix/context": "workspace:*",
+    "@solidix/direction": "workspace:*",
+    "@solidix/dismissable-layer": "workspace:*",
+    "@solidix/id": "workspace:*",
+    "@solidix/presence": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/slot": "workspace:*",
+    "@solidix/use-callback-ref": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*",
+    "@solidix/use-layout-effect": "workspace:*",
+    "@solidix/use-previous": "workspace:*",
+    "@solidix/visually-hidden": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

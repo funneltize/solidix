@@ -1,5 +1,5 @@
 import { createEffect, createSignal } from "solid-js";
-import { observeElementRect, type Measurable } from "@soldix/rect";
+import { observeElementRect, type Measurable } from "@solidix/rect";
 
 /**
  * Use this custom hook to get access to an element's rect (getBoundingClientRect)

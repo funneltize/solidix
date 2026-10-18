@@ -21,7 +21,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Menubar } from \"soldix\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger />\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Label />\n\t\t\t\t\t<Menubar.Item />\n\n\t\t\t\t\t<Menubar.Group>\n\t\t\t\t\t\t<Menubar.Item />\n\t\t\t\t\t</Menubar.Group>\n\n\t\t\t\t\t<Menubar.CheckboxItem>\n\t\t\t\t\t\t<Menubar.ItemIndicator />\n\t\t\t\t\t</Menubar.CheckboxItem>\n\n\t\t\t\t\t<Menubar.RadioGroup>\n\t\t\t\t\t\t<Menubar.RadioItem>\n\t\t\t\t\t\t\t<Menubar.ItemIndicator />\n\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t</Menubar.RadioGroup>\n\n\t\t\t\t\t<Menubar.Sub>\n\t\t\t\t\t\t<Menubar.SubTrigger />\n\t\t\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t\t\t<Menubar.SubContent />\n\t\t\t\t\t\t</Menubar.Portal>\n\t\t\t\t\t</Menubar.Sub>\n\n\t\t\t\t\t<Menubar.Separator />\n\t\t\t\t\t<Menubar.Arrow />\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
+    "code": "import { Menubar } from \"solidix\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger />\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Label />\n\t\t\t\t\t<Menubar.Item />\n\n\t\t\t\t\t<Menubar.Group>\n\t\t\t\t\t\t<Menubar.Item />\n\t\t\t\t\t</Menubar.Group>\n\n\t\t\t\t\t<Menubar.CheckboxItem>\n\t\t\t\t\t\t<Menubar.ItemIndicator />\n\t\t\t\t\t</Menubar.CheckboxItem>\n\n\t\t\t\t\t<Menubar.RadioGroup>\n\t\t\t\t\t\t<Menubar.RadioItem>\n\t\t\t\t\t\t\t<Menubar.ItemIndicator />\n\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t</Menubar.RadioGroup>\n\n\t\t\t\t\t<Menubar.Sub>\n\t\t\t\t\t\t<Menubar.SubTrigger />\n\t\t\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t\t\t<Menubar.SubContent />\n\t\t\t\t\t\t</Menubar.Portal>\n\t\t\t\t\t</Menubar.Sub>\n\n\t\t\t\t\t<Menubar.Separator />\n\t\t\t\t\t<Menubar.Arrow />\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
   },
   "parts": [
     {
@@ -868,7 +868,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             11
           ],
-          "code": "// index.jsx\nimport { Menubar } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Item className=\"MenubarItem\" disabled>\n\t\t\t\t\t\t…\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t\t<Menubar.Item class=\"MenubarItem\">…</Menubar.Item>\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
+          "code": "// index.jsx\nimport { Menubar } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Item className=\"MenubarItem\" disabled>\n\t\t\t\t\t\t…\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t\t<Menubar.Item class=\"MenubarItem\">…</Menubar.Item>\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
         },
         {
           "lang": "css",
@@ -921,7 +921,7 @@ export const doc: PrimitiveDoc = {
             21,
             22
           ],
-          "code": "import { CheckIcon } from \"@radix-ui/react-icons\";\nimport { Menubar } from \"soldix\";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal(true);\n\n\treturn (\n\t\t<Menubar.Root>\n\t\t\t<Menubar.Menu>\n\t\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t<Menubar.Content>\n\t\t\t\t\t\t<Menubar.Item>…</Menubar.Item>\n\t\t\t\t\t\t<Menubar.Item>…</Menubar.Item>\n\t\t\t\t\t\t<Menubar.Separator />\n\t\t\t\t\t\t<Menubar.CheckboxItem\n\t\t\t\t\t\t\tchecked={checked()}\n\t\t\t\t\t\t\tonCheckedChange={setChecked}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\tCheckbox item\n\t\t\t\t\t\t</Menubar.CheckboxItem>\n\t\t\t\t\t</Menubar.Content>\n\t\t\t\t</Menubar.Portal>\n\t\t\t</Menubar.Menu>\n\t\t</Menubar.Root>\n\t);\n};"
+          "code": "import { CheckIcon } from \"@radix-ui/react-icons\";\nimport { Menubar } from \"solidix\";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal(true);\n\n\treturn (\n\t\t<Menubar.Root>\n\t\t\t<Menubar.Menu>\n\t\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t<Menubar.Content>\n\t\t\t\t\t\t<Menubar.Item>…</Menubar.Item>\n\t\t\t\t\t\t<Menubar.Item>…</Menubar.Item>\n\t\t\t\t\t\t<Menubar.Separator />\n\t\t\t\t\t\t<Menubar.CheckboxItem\n\t\t\t\t\t\t\tchecked={checked()}\n\t\t\t\t\t\t\tonCheckedChange={setChecked}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\tCheckbox item\n\t\t\t\t\t\t</Menubar.CheckboxItem>\n\t\t\t\t\t</Menubar.Content>\n\t\t\t\t</Menubar.Portal>\n\t\t\t</Menubar.Menu>\n\t\t</Menubar.Root>\n\t);\n};"
         }
       ]
     },
@@ -948,7 +948,7 @@ export const doc: PrimitiveDoc = {
             26,
             27
           ],
-          "code": "import { CheckIcon } from \"@radix-ui/react-icons\";\nimport { Menubar } from \"soldix\";\n\nexport default () => {\n\tconst [color, setColor] = createSignal(\"blue\");\n\n\treturn (\n\t\t<Menubar.Root>\n\t\t\t<Menubar.Menu>\n\t\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t<Menubar.Content>\n\t\t\t\t\t\t<Menubar.RadioGroup value={color()} onValueChange={setColor}>\n\t\t\t\t\t\t\t<Menubar.RadioItem value=\"red\">\n\t\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\tRed\n\t\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t\t\t<Menubar.RadioItem value=\"blue\">\n\t\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\tBlue\n\t\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t\t</Menubar.RadioGroup>\n\t\t\t\t\t</Menubar.Content>\n\t\t\t\t</Menubar.Portal>\n\t\t\t</Menubar.Menu>\n\t\t</Menubar.Root>\n\t);\n};"
+          "code": "import { CheckIcon } from \"@radix-ui/react-icons\";\nimport { Menubar } from \"solidix\";\n\nexport default () => {\n\tconst [color, setColor] = createSignal(\"blue\");\n\n\treturn (\n\t\t<Menubar.Root>\n\t\t\t<Menubar.Menu>\n\t\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t<Menubar.Content>\n\t\t\t\t\t\t<Menubar.RadioGroup value={color()} onValueChange={setColor}>\n\t\t\t\t\t\t\t<Menubar.RadioItem value=\"red\">\n\t\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\tRed\n\t\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t\t\t<Menubar.RadioItem value=\"blue\">\n\t\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\tBlue\n\t\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t\t</Menubar.RadioGroup>\n\t\t\t\t\t</Menubar.Content>\n\t\t\t\t</Menubar.Portal>\n\t\t\t</Menubar.Menu>\n\t\t</Menubar.Root>\n\t);\n};"
         }
       ]
     },
@@ -962,7 +962,7 @@ export const doc: PrimitiveDoc = {
             10,
             14
           ],
-          "code": "import { Menubar } from \"soldix\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Item>\n\t\t\t\t\t\t<img src=\"…\" />\n\t\t\t\t\t\tAdolfo Hess\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t\t<Menubar.Item>\n\t\t\t\t\t\t<img src=\"…\" />\n\t\t\t\t\t\tMiyah Myles\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
+          "code": "import { Menubar } from \"solidix\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Item>\n\t\t\t\t\t\t<img src=\"…\" />\n\t\t\t\t\t\tAdolfo Hess\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t\t<Menubar.Item>\n\t\t\t\t\t\t<img src=\"…\" />\n\t\t\t\t\t\tMiyah Myles\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
         }
       ]
     },
@@ -975,7 +975,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             9
           ],
-          "code": "// index.jsx\nimport { Menubar } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t<Menubar.Portal>\n\t\t\t<Menubar.Content className=\"MenubarContent\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Menubar.Content>\n\t\t</Menubar.Portal>\n\t</Menubar.Root>\n);"
+          "code": "// index.jsx\nimport { Menubar } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t<Menubar.Portal>\n\t\t\t<Menubar.Content className=\"MenubarContent\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Menubar.Content>\n\t\t</Menubar.Portal>\n\t</Menubar.Root>\n);"
         },
         {
           "lang": "css",
@@ -993,7 +993,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             10
           ],
-          "code": "// index.jsx\nimport { Menubar } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content className=\"MenubarContent\">…</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
+          "code": "// index.jsx\nimport { Menubar } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content className=\"MenubarContent\">…</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
         },
         {
           "lang": "css",
@@ -1013,7 +1013,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             10
           ],
-          "code": "// index.jsx\nimport { Menubar } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content className=\"MenubarContent\">…</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
+          "code": "// index.jsx\nimport { Menubar } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content className=\"MenubarContent\">…</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);"
         },
         {
           "lang": "css",

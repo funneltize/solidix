@@ -1,4 +1,4 @@
-import { Tabs } from "soldix";
+import { Tabs } from "solidix";
 
 const TabsDemo = () => (
   <Tabs.Root class="TabsRoot" defaultValue="tab1">

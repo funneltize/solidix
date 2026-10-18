@@ -1,4 +1,4 @@
-# `@soldix/avatar`
+# `@solidix/avatar`
 
 Avatar primitive. Port of `@radix-ui/react-avatar`.
 

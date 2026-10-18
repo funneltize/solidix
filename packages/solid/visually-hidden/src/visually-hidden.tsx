@@ -1,6 +1,6 @@
 import { omit, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 
 /* -------------------------------------------------------------------------------------------------
  * VisuallyHidden

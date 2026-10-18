@@ -1,7 +1,7 @@
 import { createEffect, omit, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { Slot } from "@soldix/slot";
-import { composeRefs, type Ref, type RefObject } from "@soldix/compose-refs";
+import { Slot } from "@solidix/slot";
+import { composeRefs, type Ref, type RefObject } from "@solidix/compose-refs";
 
 /**
  * Removes the page scrollbar and contains scroll within the lock.
@@ -163,7 +163,7 @@ function addLockStyle(css: string): () => void {
   if (typeof document === "undefined") return () => {};
   if (!lockStyleElement) {
     lockStyleElement = document.createElement("style");
-    lockStyleElement.setAttribute("data-soldix", "remove-scroll-bar");
+    lockStyleElement.setAttribute("data-solidix", "remove-scroll-bar");
     lockStyleElement.textContent = css;
     document.head.appendChild(lockStyleElement);
   }

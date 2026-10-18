@@ -1,4 +1,4 @@
-# `@soldix/slider`
+# `@solidix/slider`
 
 Slider primitive. Port of `@radix-ui/react-slider`.
 

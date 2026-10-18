@@ -1,4 +1,4 @@
-# `@soldix/announce`
+# `@solidix/announce`
 
 Announce primitive. Port of `@radix-ui/react-announce`.
 

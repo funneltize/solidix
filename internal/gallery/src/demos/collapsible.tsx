@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import { Collapsible } from "soldix";
+import { Collapsible } from "solidix";
 import { Cross2Icon, RowSpacingIcon } from "../icons";
 
 const CollapsibleDemo = () => {

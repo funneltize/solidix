@@ -41,6 +41,9 @@ import LabelCss from "./label.css?url";
 import MenubarDemo from "./menubar";
 import MenubarDemoCode from "./menubar?raw";
 import MenubarCss from "./menubar.css?url";
+import MotionDemo from "./motion";
+import MotionDemoCode from "./motion?raw";
+import MotionCss from "./motion.css?url";
 import NavigationMenuDemo from "./navigation-menu";
 import NavigationMenuDemoCode from "./navigation-menu?raw";
 import NavigationMenuCss from "./navigation-menu.css?url";
@@ -132,6 +135,7 @@ export const demos: DemoEntry[] = [
   { slug: "hover-card", title: "Hover Card", component: HoverCardDemo, css: HoverCardCss, code: HoverCardDemoCode },
   { slug: "label", title: "Label", component: LabelDemo, css: LabelCss, code: LabelDemoCode },
   { slug: "menubar", title: "Menubar", component: MenubarDemo, css: MenubarCss, code: MenubarDemoCode },
+  { slug: "motion", title: "Motion", component: MotionDemo, css: MotionCss, code: MotionDemoCode },
   {
     slug: "navigation-menu",
     title: "Navigation Menu",

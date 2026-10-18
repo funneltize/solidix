@@ -1,4 +1,4 @@
-# `@soldix/collection`
+# `@solidix/collection`
 
 Ordered item collections. Port of `@radix-ui/react-collection`, including
 `unstable_createCollection`.

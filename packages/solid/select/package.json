@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/select",
+  "name": "@solidix/select",
   "version": "0.0.0",
   "description": "Select primitive (port of @radix-ui/react-select).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/select"
   },
   "source": "./src/index.ts",
@@ -41,29 +41,29 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/collection": "workspace:*",
-    "@soldix/compose-refs": "workspace:*",
-    "@soldix/context": "workspace:*",
-    "@soldix/direction": "workspace:*",
-    "@soldix/dismissable-layer": "workspace:*",
-    "@soldix/focus-guards": "workspace:*",
-    "@soldix/focus-scope": "workspace:*",
-    "@soldix/id": "workspace:*",
-    "@soldix/number": "workspace:*",
-    "@soldix/popper": "workspace:*",
-    "@soldix/portal": "workspace:*",
-    "@soldix/presence": "workspace:*",
-    "@soldix/primitive": "workspace:*",
-    "@soldix/remove-scroll": "workspace:*",
-    "@soldix/slot": "workspace:*",
-    "@soldix/use-callback-ref": "workspace:*",
-    "@soldix/use-controllable-state": "workspace:*",
-    "@soldix/use-layout-effect": "workspace:*",
-    "@soldix/visually-hidden": "workspace:*"
+    "@solidix/collection": "workspace:*",
+    "@solidix/compose-refs": "workspace:*",
+    "@solidix/context": "workspace:*",
+    "@solidix/direction": "workspace:*",
+    "@solidix/dismissable-layer": "workspace:*",
+    "@solidix/focus-guards": "workspace:*",
+    "@solidix/focus-scope": "workspace:*",
+    "@solidix/id": "workspace:*",
+    "@solidix/number": "workspace:*",
+    "@solidix/popper": "workspace:*",
+    "@solidix/portal": "workspace:*",
+    "@solidix/presence": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/remove-scroll": "workspace:*",
+    "@solidix/slot": "workspace:*",
+    "@solidix/use-callback-ref": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*",
+    "@solidix/use-layout-effect": "workspace:*",
+    "@solidix/visually-hidden": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

@@ -1,4 +1,4 @@
-# `@soldix/accordion`
+# `@solidix/accordion`
 
 Accordion primitive. Port of `@radix-ui/react-accordion`.
 

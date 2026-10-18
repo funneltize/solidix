@@ -1,4 +1,4 @@
-# `@soldix/dismissable-layer`
+# `@solidix/dismissable-layer`
 
 Dismissable layer with outside interaction. Port of
 `@radix-ui/react-dismissable-layer`.

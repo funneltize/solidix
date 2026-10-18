@@ -1,7 +1,7 @@
 import { flush, omit, type Component } from "solid-js";
 import { Dynamic, type JSX } from "@solidjs/web";
-import { createSlot } from "@soldix/slot";
-import type { Ref } from "@soldix/compose-refs";
+import { createSlot } from "@solidix/slot";
+import type { Ref } from "@solidix/compose-refs";
 
 const NODES = [
   "a",

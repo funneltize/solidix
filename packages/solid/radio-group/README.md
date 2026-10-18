@@ -1,4 +1,4 @@
-# `@soldix/radio-group`
+# `@solidix/radio-group`
 
 RadioGroup primitive. Port of `@radix-ui/react-radio-group`.
 

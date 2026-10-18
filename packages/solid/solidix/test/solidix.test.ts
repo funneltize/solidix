@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import * as Soldix from "../src/index";
+import * as Solidix from "../src/index";
 
 const NAMESPACES = [
   "Accordion",
@@ -34,14 +34,14 @@ const NAMESPACES = [
   "Tooltip",
 ];
 
-describe("soldix meta-package", () => {
+describe("solidix meta-package", () => {
   it("re-exports every primitive namespace", () => {
-    expect(Object.keys(Soldix).sort()).toEqual([...NAMESPACES].sort());
+    expect(Object.keys(Solidix).sort()).toEqual([...NAMESPACES].sort());
   });
 
   it("exposes a Root component in every namespace", () => {
     for (const name of NAMESPACES) {
-      const namespace = Soldix[name as keyof typeof Soldix] as Record<string, unknown>;
+      const namespace = Solidix[name as keyof typeof Solidix] as Record<string, unknown>;
       expect(namespace.Root, name).toBeDefined();
     }
   });

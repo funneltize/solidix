@@ -16,7 +16,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Tooltip } from \"soldix\";\n\nexport default () => (\n\t<Tooltip.Provider>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger />\n\t\t\t<Tooltip.Portal>\n\t\t\t\t<Tooltip.Content>\n\t\t\t\t\t<Tooltip.Arrow />\n\t\t\t\t</Tooltip.Content>\n\t\t\t</Tooltip.Portal>\n\t\t</Tooltip.Root>\n\t</Tooltip.Provider>\n);"
+    "code": "import { Tooltip } from \"solidix\";\n\nexport default () => (\n\t<Tooltip.Provider>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger />\n\t\t\t<Tooltip.Portal>\n\t\t\t\t<Tooltip.Content>\n\t\t\t\t\t<Tooltip.Arrow />\n\t\t\t\t</Tooltip.Content>\n\t\t\t</Tooltip.Portal>\n\t\t</Tooltip.Root>\n\t</Tooltip.Provider>\n);"
   },
   "parts": [
     {
@@ -310,7 +310,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             4
           ],
-          "code": "import { Tooltip } from \"soldix\";\n\nexport default () => (\n\t<Tooltip.Provider delayDuration={800} skipDelayDuration={500}>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t\t<Tooltip.Content>…</Tooltip.Content>\n\t\t</Tooltip.Root>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t\t<Tooltip.Content>…</Tooltip.Content>\n\t\t</Tooltip.Root>\n\t</Tooltip.Provider>\n);"
+          "code": "import { Tooltip } from \"solidix\";\n\nexport default () => (\n\t<Tooltip.Provider delayDuration={800} skipDelayDuration={500}>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t\t<Tooltip.Content>…</Tooltip.Content>\n\t\t</Tooltip.Root>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t\t<Tooltip.Content>…</Tooltip.Content>\n\t\t</Tooltip.Root>\n\t</Tooltip.Provider>\n);"
         }
       ]
     },
@@ -323,7 +323,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             4
           ],
-          "code": "import { Tooltip } from \"soldix\";\n\nexport default () => (\n\t<Tooltip.Root delayDuration={0}>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content>…</Tooltip.Content>\n\t</Tooltip.Root>\n);"
+          "code": "import { Tooltip } from \"solidix\";\n\nexport default () => (\n\t<Tooltip.Root delayDuration={0}>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content>…</Tooltip.Content>\n\t</Tooltip.Root>\n);"
         }
       ]
     },
@@ -336,7 +336,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             9
           ],
-          "code": "// index.jsx\nimport { Tooltip } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Portal>\n\t\t\t<Tooltip.Content className=\"TooltipContent\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Tooltip.Content>\n\t\t</Tooltip.Portal>\n\t</Tooltip.Root>\n);"
+          "code": "// index.jsx\nimport { Tooltip } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Portal>\n\t\t\t<Tooltip.Content className=\"TooltipContent\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Tooltip.Content>\n\t\t</Tooltip.Portal>\n\t</Tooltip.Root>\n);"
         },
         {
           "lang": "css",
@@ -354,7 +354,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             8
           ],
-          "code": "// index.jsx\nimport { Tooltip } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content className=\"TooltipContent\">…</Tooltip.Content>\n\t</Tooltip.Root>\n);"
+          "code": "// index.jsx\nimport { Tooltip } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content className=\"TooltipContent\">…</Tooltip.Content>\n\t</Tooltip.Root>\n);"
         },
         {
           "lang": "css",
@@ -375,7 +375,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             8
           ],
-          "code": "// index.jsx\nimport { Tooltip } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content className=\"TooltipContent\">…</Tooltip.Content>\n\t</Tooltip.Root>\n);"
+          "code": "// index.jsx\nimport { Tooltip } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content className=\"TooltipContent\">…</Tooltip.Content>\n\t</Tooltip.Root>\n);"
         },
         {
           "lang": "css",
@@ -405,7 +405,7 @@ export const doc: PrimitiveDoc = {
             9,
             10
           ],
-          "code": "// your-tooltip.jsx\nimport { Tooltip as TooltipPrimitive } from \"soldix\";\n\nexport function Tooltip({\n\tchildren,\n\tcontent,\n\topen,\n\tdefaultOpen,\n\tonOpenChange,\n\t...props\n}) {\n\treturn (\n\t\t<TooltipPrimitive.Root\n\t\t\topen={open}\n\t\t\tdefaultOpen={defaultOpen}\n\t\t\tonOpenChange={onOpenChange}\n\t\t>\n\t\t\t<TooltipPrimitive.Trigger asChild>\n\t\t\t\t{children}\n\t\t\t</TooltipPrimitive.Trigger>\n\t\t\t<TooltipPrimitive.Content side=\"top\" align=\"center\" {...props}>\n\t\t\t\t{content}\n\t\t\t\t<TooltipPrimitive.Arrow width={11} height={5} />\n\t\t\t</TooltipPrimitive.Content>\n\t\t</TooltipPrimitive.Root>\n\t);\n}"
+          "code": "// your-tooltip.jsx\nimport { Tooltip as TooltipPrimitive } from \"solidix\";\n\nexport function Tooltip({\n\tchildren,\n\tcontent,\n\topen,\n\tdefaultOpen,\n\tonOpenChange,\n\t...props\n}) {\n\treturn (\n\t\t<TooltipPrimitive.Root\n\t\t\topen={open}\n\t\t\tdefaultOpen={defaultOpen}\n\t\t\tonOpenChange={onOpenChange}\n\t\t>\n\t\t\t<TooltipPrimitive.Trigger asChild>\n\t\t\t\t{children}\n\t\t\t</TooltipPrimitive.Trigger>\n\t\t\t<TooltipPrimitive.Content side=\"top\" align=\"center\" {...props}>\n\t\t\t\t{content}\n\t\t\t\t<TooltipPrimitive.Arrow width={11} height={5} />\n\t\t\t</TooltipPrimitive.Content>\n\t\t</TooltipPrimitive.Root>\n\t);\n}"
         }
       ]
     }

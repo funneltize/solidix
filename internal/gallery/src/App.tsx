@@ -68,12 +68,12 @@ const App: Component = () => {
       <header class="site-header">
         <a class="brand" href="#/">
           <span class="brand-mark" aria-hidden="true" />
-          <span class="brand-word">soldix</span>
+          <span class="brand-word">solidix</span>
           <span class="brand-tag">Solid 2 port of Radix UI</span>
         </a>
         <div class="header-right">
           <span class="version-chip">0.x</span>
-          <a href="https://github.com/funneltize/soldix" target="_blank" rel="noreferrer">
+          <a href="https://github.com/eggfloat/solidix" target="_blank" rel="noreferrer">
             GitHub
           </a>
         </div>

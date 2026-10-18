@@ -1,24 +1,24 @@
 import { createEffect, createMemo, createSignal, omit, type Component } from "solid-js";
-import { clamp } from "@soldix/number";
-import { unstable_createCollection as createCollection } from "@soldix/collection";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
+import { clamp } from "@solidix/number";
+import { unstable_createCollection as createCollection } from "@solidix/collection";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
 import {
   Primitive,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
+} from "@solidix/primitive";
 import {
   Item as RovingFocusGroupItem,
   Root as RovingFocusGroupRoot,
   createRovingFocusGroupScope,
   type RovingFocusGroupProps,
-} from "@soldix/roving-focus";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { useIsHydrated } from "@soldix/use-is-hydrated";
-import { useLayoutEffect } from "@soldix/use-layout-effect";
+} from "@solidix/roving-focus";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { useIsHydrated } from "@solidix/use-is-hydrated";
+import { useLayoutEffect } from "@solidix/use-layout-effect";
 
 const InputValidationType = {
   Alpha: "alpha",

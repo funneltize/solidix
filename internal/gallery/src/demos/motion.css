@@ -1,0 +1,212 @@
+@import "@solidix/motion/springs.css";
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
+
+/* reset */
+button {
+  all: unset;
+}
+
+.MotionDemo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 420px;
+  max-width: 80vw;
+}
+
+.MotionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.MotionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mauve-11);
+}
+
+.MotionPresetRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.MotionPresetButton {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 12px;
+  border-radius: 9999px;
+  background-color: white;
+  color: var(--violet-11);
+  box-shadow: 0 2px 10px var(--black-a7);
+  cursor: pointer;
+}
+
+.MotionPresetButton[data-active="true"] {
+  background-color: var(--violet-9);
+  color: white;
+}
+
+.MotionPresetButton:focus-visible {
+  outline: 2px solid var(--violet-11);
+  outline-offset: 2px;
+}
+
+.MotionPingButton {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 12px;
+  border-radius: 9999px;
+  background-color: var(--black-a9);
+  color: white;
+  cursor: pointer;
+}
+
+.MotionPingButton:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.MotionTrack {
+  position: relative;
+  height: 24px;
+  border-radius: 9999px;
+  background-color: var(--mauve-4);
+}
+
+.MotionDot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  background-color: var(--violet-9);
+  box-shadow: 0 2px 10px var(--black-a7);
+  transition-property: transform;
+}
+
+.MotionStatus {
+  font-size: 13px;
+  color: var(--mauve-11);
+  font-variant-numeric: tabular-nums;
+}
+
+.MotionTabs {
+  position: relative;
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 2px 10px var(--black-a7);
+}
+
+.MotionPill {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 104px;
+  height: calc(100% - 8px);
+  border-radius: 6px;
+  background-color: var(--violet-4);
+  view-transition-name: motion-demo-pill;
+}
+
+::view-transition-group(motion-demo-pill) {
+  animation-duration: 320ms;
+  animation-timing-function: ease;
+  animation-timing-function: var(--solidix-spring-snappy);
+}
+
+.MotionTab {
+  position: relative;
+  z-index: 1;
+  width: 104px;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mauve-11);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.MotionTab[aria-selected="true"] {
+  color: var(--violet-12);
+}
+
+.MotionTab:focus-visible {
+  outline: 2px solid var(--violet-11);
+  outline-offset: -2px;
+}
+
+.MotionPanel {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--mauve-12);
+  min-height: 44px;
+}
+
+.MotionPanel[hidden] {
+  display: none;
+}
+
+.MotionSwipeCard {
+  background-color: white;
+  border-radius: 8px;
+  padding: 18px;
+  font-size: 14px;
+  color: var(--mauve-12);
+  box-shadow: 0 2px 10px var(--black-a7);
+  cursor: grab;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.MotionDismissButton {
+  font-size: 13px;
+  color: var(--violet-11);
+  border: 1px solid var(--violet-7);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.MotionDismissButton:hover {
+  background-color: var(--violet-3);
+}
+
+.MotionSwipeCard:active {
+  cursor: grabbing;
+}
+
+.MotionDismissed {
+  font-size: 14px;
+  color: var(--mauve-11);
+}
+
+.MotionResetButton {
+  font-size: 14px;
+  color: var(--violet-11);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .MotionDot {
+    transition-duration: 0.01ms;
+  }
+
+  .MotionPill {
+    view-transition-name: none;
+  }
+}

@@ -9,9 +9,9 @@ import {
   type Component,
 } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { useComposedRefs } from "@soldix/compose-refs";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
-import { useCallbackRef } from "@soldix/use-callback-ref";
+import { useComposedRefs } from "@solidix/compose-refs";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
+import { useCallbackRef } from "@solidix/use-callback-ref";
 
 const AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
 const AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";

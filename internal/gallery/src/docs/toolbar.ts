@@ -13,7 +13,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Toolbar } from \"soldix\";\n\nexport default () => (\n\t<Toolbar.Root>\n\t\t<Toolbar.Button />\n\t\t<Toolbar.Separator />\n\t\t<Toolbar.Link />\n\t\t<Toolbar.ToggleGroup>\n\t\t\t<Toolbar.ToggleItem />\n\t\t</Toolbar.ToggleGroup>\n\t</Toolbar.Root>\n);"
+    "code": "import { Toolbar } from \"solidix\";\n\nexport default () => (\n\t<Toolbar.Root>\n\t\t<Toolbar.Button />\n\t\t<Toolbar.Separator />\n\t\t<Toolbar.Link />\n\t\t<Toolbar.ToggleGroup>\n\t\t\t<Toolbar.ToggleItem />\n\t\t</Toolbar.ToggleGroup>\n\t</Toolbar.Root>\n);"
   },
   "parts": [
     {
@@ -259,7 +259,7 @@ export const doc: PrimitiveDoc = {
             9,
             10
           ],
-          "code": "import { Toolbar, DropdownMenu } from \"soldix\";\n\nexport default () => (\n\t<Toolbar.Root>\n\t\t<Toolbar.Button>Action 1</Toolbar.Button>\n\t\t<Toolbar.Separator />\n\t\t<DropdownMenu.Root>\n\t\t\t<Toolbar.Button asChild>\n\t\t\t\t<DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>\n\t\t\t</Toolbar.Button>\n\t\t\t<DropdownMenu.Content>…</DropdownMenu.Content>\n\t\t</DropdownMenu.Root>\n\t</Toolbar.Root>\n);"
+          "code": "import { Toolbar, DropdownMenu } from \"solidix\";\n\nexport default () => (\n\t<Toolbar.Root>\n\t\t<Toolbar.Button>Action 1</Toolbar.Button>\n\t\t<Toolbar.Separator />\n\t\t<DropdownMenu.Root>\n\t\t\t<Toolbar.Button asChild>\n\t\t\t\t<DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>\n\t\t\t</Toolbar.Button>\n\t\t\t<DropdownMenu.Content>…</DropdownMenu.Content>\n\t\t</DropdownMenu.Root>\n\t</Toolbar.Root>\n);"
         }
       ]
     }

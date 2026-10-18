@@ -1,4 +1,4 @@
-# `@soldix/checkbox`
+# `@solidix/checkbox`
 
 Checkbox primitive. Port of `@radix-ui/react-checkbox`.
 

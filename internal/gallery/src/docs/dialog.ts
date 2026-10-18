@@ -17,7 +17,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Dialog } from \"soldix\";\n\nexport default () => (\n\t<Dialog.Root>\n\t\t<Dialog.Trigger />\n\t\t<Dialog.Portal>\n\t\t\t<Dialog.Overlay />\n\t\t\t<Dialog.Content>\n\t\t\t\t<Dialog.Title />\n\t\t\t\t<Dialog.Description />\n\t\t\t\t<Dialog.Close />\n\t\t\t</Dialog.Content>\n\t\t</Dialog.Portal>\n\t</Dialog.Root>\n);"
+    "code": "import { Dialog } from \"solidix\";\n\nexport default () => (\n\t<Dialog.Root>\n\t\t<Dialog.Trigger />\n\t\t<Dialog.Portal>\n\t\t\t<Dialog.Overlay />\n\t\t\t<Dialog.Content>\n\t\t\t\t<Dialog.Title />\n\t\t\t\t<Dialog.Description />\n\t\t\t\t<Dialog.Close />\n\t\t\t</Dialog.Content>\n\t\t</Dialog.Portal>\n\t</Dialog.Root>\n);"
   },
   "parts": [
     {
@@ -239,7 +239,7 @@ export const doc: PrimitiveDoc = {
             15,
             17
           ],
-          "code": "import { Dialog } from \"soldix\";\n\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1000));\n\nexport default () => {\n\tconst [open, setOpen] = createSignal(false);\n\n\treturn (\n\t\t<Dialog.Root open={open()} onOpenChange={setOpen}>\n\t\t\t<Dialog.Trigger>Open</Dialog.Trigger>\n\t\t\t<Dialog.Portal>\n\t\t\t\t<Dialog.Overlay />\n\t\t\t\t<Dialog.Content>\n\t\t\t\t\t<form\n\t\t\t\t\t\tonSubmit={(event) => {\n\t\t\t\t\t\t\twait().then(() => setOpen(false));\n\t\t\t\t\t\t\tevent.preventDefault();\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* some inputs */}\n\t\t\t\t\t\t<button type=\"submit\">Submit</button>\n\t\t\t\t\t</form>\n\t\t\t\t</Dialog.Content>\n\t\t\t</Dialog.Portal>\n\t\t</Dialog.Root>\n\t);\n};"
+          "code": "import { Dialog } from \"solidix\";\n\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1000));\n\nexport default () => {\n\tconst [open, setOpen] = createSignal(false);\n\n\treturn (\n\t\t<Dialog.Root open={open()} onOpenChange={setOpen}>\n\t\t\t<Dialog.Trigger>Open</Dialog.Trigger>\n\t\t\t<Dialog.Portal>\n\t\t\t\t<Dialog.Overlay />\n\t\t\t\t<Dialog.Content>\n\t\t\t\t\t<form\n\t\t\t\t\t\tonSubmit={(event) => {\n\t\t\t\t\t\t\twait().then(() => setOpen(false));\n\t\t\t\t\t\t\tevent.preventDefault();\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* some inputs */}\n\t\t\t\t\t\t<button type=\"submit\">Submit</button>\n\t\t\t\t\t</form>\n\t\t\t\t</Dialog.Content>\n\t\t\t</Dialog.Portal>\n\t\t</Dialog.Root>\n\t);\n};"
         }
       ]
     },
@@ -250,7 +250,7 @@ export const doc: PrimitiveDoc = {
         {
           "lang": "jsx",
           "highlights": [],
-          "code": "// index.jsx\nimport { Dialog } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => {\n\treturn (\n\t\t<Dialog.Root>\n\t\t\t<Dialog.Trigger />\n\t\t\t<Dialog.Portal>\n\t\t\t\t<Dialog.Overlay class=\"DialogOverlay\">\n\t\t\t\t\t<Dialog.Content class=\"DialogContent\">...</Dialog.Content>\n\t\t\t\t</Dialog.Overlay>\n\t\t\t</Dialog.Portal>\n\t\t</Dialog.Root>\n\t);\n};"
+          "code": "// index.jsx\nimport { Dialog } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => {\n\treturn (\n\t\t<Dialog.Root>\n\t\t\t<Dialog.Trigger />\n\t\t\t<Dialog.Portal>\n\t\t\t\t<Dialog.Overlay class=\"DialogOverlay\">\n\t\t\t\t\t<Dialog.Content class=\"DialogContent\">...</Dialog.Content>\n\t\t\t\t</Dialog.Overlay>\n\t\t\t</Dialog.Portal>\n\t\t</Dialog.Root>\n\t);\n};"
         },
         {
           "lang": "css",
@@ -270,7 +270,7 @@ export const doc: PrimitiveDoc = {
             10,
             16
           ],
-          "code": "import { Dialog } from \"soldix\";\n\nexport default () => {\n\tconst [container, setContainer] = createSignal(null);\n\treturn (\n\t\t<div>\n\t\t\t<Dialog.Root>\n\t\t\t\t<Dialog.Trigger />\n\t\t\t\t<Dialog.Portal container={container()}>\n\t\t\t\t\t<Dialog.Overlay />\n\t\t\t\t\t<Dialog.Content>...</Dialog.Content>\n\t\t\t\t</Dialog.Portal>\n\t\t\t</Dialog.Root>\n\n\t\t\t<div ref={setContainer} />\n\t\t</div>\n\t);\n};"
+          "code": "import { Dialog } from \"solidix\";\n\nexport default () => {\n\tconst [container, setContainer] = createSignal(null);\n\treturn (\n\t\t<div>\n\t\t\t<Dialog.Root>\n\t\t\t\t<Dialog.Trigger />\n\t\t\t\t<Dialog.Portal container={container()}>\n\t\t\t\t\t<Dialog.Overlay />\n\t\t\t\t\t<Dialog.Content>...</Dialog.Content>\n\t\t\t\t</Dialog.Portal>\n\t\t\t</Dialog.Root>\n\n\t\t\t<div ref={setContainer} />\n\t\t</div>\n\t);\n};"
         }
       ]
     }
@@ -288,7 +288,7 @@ export const doc: PrimitiveDoc = {
         {
           "lang": "jsx",
           "highlights": [],
-          "code": "// your-dialog.jsx\nimport { omit } from \"solid-js\";\nimport { Dialog as DialogPrimitive } from \"soldix\";\nimport { Cross1Icon } from \"@radix-ui/react-icons\";\n\nexport const DialogContent = (props) => {\n\tconst rest = omit(props, \"children\", \"ref\");\n\treturn (\n\t\t<DialogPrimitive.Portal>\n\t\t\t<DialogPrimitive.Overlay />\n\t\t\t<DialogPrimitive.Content {...rest} ref={props.ref}>\n\t\t\t\t{props.children}\n\t\t\t\t<DialogPrimitive.Close aria-label=\"Close\">\n\t\t\t\t\t<Cross1Icon />\n\t\t\t\t</DialogPrimitive.Close>\n\t\t\t</DialogPrimitive.Content>\n\t\t</DialogPrimitive.Portal>\n\t);\n};\n\nexport const Dialog = DialogPrimitive.Root;\nexport const DialogTrigger = DialogPrimitive.Trigger;"
+          "code": "// your-dialog.jsx\nimport { omit } from \"solid-js\";\nimport { Dialog as DialogPrimitive } from \"solidix\";\nimport { Cross1Icon } from \"@radix-ui/react-icons\";\n\nexport const DialogContent = (props) => {\n\tconst rest = omit(props, \"children\", \"ref\");\n\treturn (\n\t\t<DialogPrimitive.Portal>\n\t\t\t<DialogPrimitive.Overlay />\n\t\t\t<DialogPrimitive.Content {...rest} ref={props.ref}>\n\t\t\t\t{props.children}\n\t\t\t\t<DialogPrimitive.Close aria-label=\"Close\">\n\t\t\t\t\t<Cross1Icon />\n\t\t\t\t</DialogPrimitive.Close>\n\t\t\t</DialogPrimitive.Content>\n\t\t</DialogPrimitive.Portal>\n\t);\n};\n\nexport const Dialog = DialogPrimitive.Root;\nexport const DialogTrigger = DialogPrimitive.Trigger;"
         }
       ]
     }

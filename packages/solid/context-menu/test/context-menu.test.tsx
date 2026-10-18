@@ -89,7 +89,7 @@ describe("rendering and opening", () => {
     expect(screen.getByText(TRIGGER_TEXT).getAttribute("data-state")).toBe("closed");
   });
 
-  // NOTE: Radix also asserts `axe` cleanliness here; Soldix has no axe harness
+  // NOTE: Radix also asserts `axe` cleanliness here; Solidix has no axe harness
   // yet (Phase 6), so that assertion has no port.
 });
 
@@ -449,7 +449,7 @@ describe("controlled `open` state", () => {
 
     expect(await screen.findByText(ITEM_TEXT)).toBeTruthy();
     expect(trigger.getAttribute("data-state")).toBe("open");
-    // `useControllableState` notifies asynchronously in Soldix.
+    // `useControllableState` notifies asynchronously in Solidix.
     await vi.waitFor(() => expect(onOpenChange).toHaveBeenCalledWith(true));
   });
 

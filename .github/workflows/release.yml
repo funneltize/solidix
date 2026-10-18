@@ -32,10 +32,10 @@ jobs:
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Token publish stays until every @soldix/* package exists on the
+          # Token publish stays until every @solidix/* package exists on the
           # registry: trusted publishers can only attach to existing packages,
           # so the first publish of each package requires a token. The token
-          # must be granular, scoped to @soldix/*, publish-only. After the
+          # must be granular, scoped to @solidix/*, publish-only. After the
           # first publish, migrate to npm trusted publishing (OIDC): register
           # each package's trusted publisher on npmjs.com, then drop
           # NPM_TOKEN/NODE_AUTH_TOKEN and publish with `--provenance`.

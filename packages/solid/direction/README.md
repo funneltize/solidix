@@ -1,4 +1,4 @@
-# `@soldix/direction`
+# `@solidix/direction`
 
 Direction provider and hook. Port of `@radix-ui/react-direction` (behavior-identical).
 

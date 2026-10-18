@@ -1,4 +1,4 @@
-# `@soldix/remove-scroll`
+# `@solidix/remove-scroll`
 
 RemoveScroll primitive. Port of `react-remove-scroll` (+ `react-remove-scroll-bar`).
 

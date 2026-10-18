@@ -1,8 +1,8 @@
 import { Show, createEffect, createSignal, omit, onSettled, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { composeRefs } from "@soldix/compose-refs";
-import { Portal } from "@soldix/portal";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
+import { composeRefs } from "@solidix/compose-refs";
+import { Portal } from "@solidix/portal";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 
 const RegionType = {
   Polite: "polite",

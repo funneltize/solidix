@@ -1,23 +1,23 @@
-import { createCollection } from "@soldix/collection";
-import { useComposedRefs, type Ref, type RefObject } from "@soldix/compose-refs";
-import { createContextScope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
-import { DismissableLayer } from "@soldix/dismissable-layer";
-import { useId } from "@soldix/id";
-import { Presence } from "@soldix/presence";
+import { createCollection } from "@solidix/collection";
+import { useComposedRefs, type Ref, type RefObject } from "@solidix/compose-refs";
+import { createContextScope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
+import { DismissableLayer } from "@solidix/dismissable-layer";
+import { useId } from "@solidix/id";
+import { Presence } from "@solidix/presence";
 import {
   ariaBoolean,
   callEventHandler,
   composeEventHandlers,
   dispatchDiscreteCustomEvent,
   Primitive,
-} from "@soldix/primitive";
-import { createSlottable } from "@soldix/slot";
-import { useCallbackRef } from "@soldix/use-callback-ref";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { useLayoutEffect } from "@soldix/use-layout-effect";
-import { usePrevious } from "@soldix/use-previous";
-import * as VisuallyHiddenPrimitive from "@soldix/visually-hidden";
+} from "@solidix/primitive";
+import { createSlottable } from "@solidix/slot";
+import { useCallbackRef } from "@solidix/use-callback-ref";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { useLayoutEffect } from "@solidix/use-layout-effect";
+import { usePrevious } from "@solidix/use-previous";
+import * as VisuallyHiddenPrimitive from "@solidix/visually-hidden";
 import { Portal as SolidPortal } from "@solidjs/web";
 import {
   children,
@@ -32,9 +32,9 @@ import {
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import type { Scope } from "@soldix/context";
-import type { DismissableLayerProps } from "@soldix/dismissable-layer";
-import type { PrimitivePropsWithRef } from "@soldix/primitive";
+import type { Scope } from "@solidix/context";
+import type { DismissableLayerProps } from "@solidix/dismissable-layer";
+import type { PrimitivePropsWithRef } from "@solidix/primitive";
 
 const ActivationMode = {
   Automatic: "automatic",

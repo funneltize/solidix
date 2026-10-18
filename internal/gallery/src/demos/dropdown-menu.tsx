@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import { DropdownMenu } from "soldix";
+import { DropdownMenu } from "solidix";
 import { CheckIcon, ChevronRightIcon, DotFilledIcon, HamburgerMenuIcon } from "../icons";
 
 const DropdownMenuDemo = () => {

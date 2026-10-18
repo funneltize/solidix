@@ -1,7 +1,7 @@
 import { omit, type Component } from "solid-js";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useId } from "@soldix/id";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useId } from "@solidix/id";
 import {
   Menu as MenuRoot,
   MenuAnchor,
@@ -34,15 +34,15 @@ import {
   type MenuSubContentProps,
   type MenuSubProps,
   type MenuSubTriggerProps,
-} from "@soldix/menu";
+} from "@solidix/menu";
 import {
   Primitive,
   ariaBoolean,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/primitive";
+import { useControllableState } from "@solidix/use-controllable-state";
 
 /* -------------------------------------------------------------------------------------------------
  * DropdownMenu

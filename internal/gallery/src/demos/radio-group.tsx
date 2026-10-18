@@ -1,4 +1,4 @@
-import { RadioGroup } from "soldix";
+import { RadioGroup } from "solidix";
 
 const RadioGroupDemo = () => (
   <form>

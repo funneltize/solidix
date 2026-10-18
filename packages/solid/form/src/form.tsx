@@ -1,16 +1,16 @@
 import { Show, createEffect, createSignal, omit, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useId } from "@soldix/id";
-import { Label as LabelPrimitive, type LabelProps } from "@soldix/label";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useId } from "@solidix/id";
+import { Label as LabelPrimitive, type LabelProps } from "@solidix/label";
 import {
   Primitive,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useLayoutEffect } from "@soldix/use-layout-effect";
+} from "@solidix/primitive";
+import { useLayoutEffect } from "@solidix/use-layout-effect";
 
 type ScopedProps<P> = P & { __scopeForm?: Scope | undefined };
 const [createFormContext, createFormScope] = createContextScope("Form");

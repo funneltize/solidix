@@ -19,7 +19,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { NavigationMenu } from \"soldix\";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger />\n\t\t\t\t<NavigationMenu.Content>\n\t\t\t\t\t<NavigationMenu.Link />\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Link />\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger />\n\t\t\t\t<NavigationMenu.Content>\n\t\t\t\t\t<NavigationMenu.Sub>\n\t\t\t\t\t\t<NavigationMenu.List />\n\t\t\t\t\t\t<NavigationMenu.Viewport />\n\t\t\t\t\t</NavigationMenu.Sub>\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Indicator />\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport />\n\t</NavigationMenu.Root>\n);"
+    "code": "import { NavigationMenu } from \"solidix\";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger />\n\t\t\t\t<NavigationMenu.Content>\n\t\t\t\t\t<NavigationMenu.Link />\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Link />\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger />\n\t\t\t\t<NavigationMenu.Content>\n\t\t\t\t\t<NavigationMenu.Sub>\n\t\t\t\t\t\t<NavigationMenu.List />\n\t\t\t\t\t\t<NavigationMenu.Viewport />\n\t\t\t\t\t</NavigationMenu.Sub>\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Indicator />\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport />\n\t</NavigationMenu.Root>\n);"
   },
   "parts": [
     {
@@ -428,7 +428,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             17
           ],
-          "code": "// index.jsx\nimport { NavigationMenu } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content>Item one content</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content>Item two content</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Indicator className=\"NavigationMenuIndicator\" />\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport />\n\t</NavigationMenu.Root>\n);"
+          "code": "// index.jsx\nimport { NavigationMenu } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content>Item one content</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content>Item two content</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Indicator className=\"NavigationMenuIndicator\" />\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport />\n\t</NavigationMenu.Root>\n);"
         },
         {
           "lang": "css",
@@ -471,7 +471,7 @@ export const doc: PrimitiveDoc = {
             22,
             25
           ],
-          "code": "// index.jsx\nimport { usePathname } from \"next/navigation\";\nimport NextLink from \"next/link\";\nimport { NavigationMenu } from \"soldix\";\nimport \"./styles.css\";\n\nconst Link = ({ href, ...props }) => {\n\tconst pathname = usePathname();\n\tconst isActive = href === pathname;\n\n\treturn (\n\t\t<NavigationMenu.Link asChild active={isActive}>\n\t\t\t<NextLink href={href} class=\"NavigationMenuLink\" {...props} />\n\t\t</NavigationMenu.Link>\n\t);\n};\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<Link href=\"/\">Home</Link>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<Link href=\"/about\">About</Link>\n\t\t\t</NavigationMenu.Item>\n\t\t</NavigationMenu.List>\n\t</NavigationMenu.Root>\n);"
+          "code": "// index.jsx\nimport { usePathname } from \"next/navigation\";\nimport NextLink from \"next/link\";\nimport { NavigationMenu } from \"solidix\";\nimport \"./styles.css\";\n\nconst Link = ({ href, ...props }) => {\n\tconst pathname = usePathname();\n\tconst isActive = href === pathname;\n\n\treturn (\n\t\t<NavigationMenu.Link asChild active={isActive}>\n\t\t\t<NextLink href={href} class=\"NavigationMenuLink\" {...props} />\n\t\t</NavigationMenu.Link>\n\t);\n};\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<Link href=\"/\">Home</Link>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<Link href=\"/about\">About</Link>\n\t\t\t</NavigationMenu.Item>\n\t\t</NavigationMenu.List>\n\t</NavigationMenu.Root>\n);"
         },
         {
           "lang": "css",
@@ -495,7 +495,7 @@ export const doc: PrimitiveDoc = {
             18,
             22
           ],
-          "code": "// index.jsx\nimport { NavigationMenu } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content className=\"NavigationMenuContent\">\n\t\t\t\t\tItem one content\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content className=\"NavigationMenuContent\">\n\t\t\t\t\tItem two content\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport className=\"NavigationMenuViewport\" />\n\t</NavigationMenu.Root>\n);"
+          "code": "// index.jsx\nimport { NavigationMenu } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content className=\"NavigationMenuContent\">\n\t\t\t\t\tItem one content\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content className=\"NavigationMenuContent\">\n\t\t\t\t\tItem two content\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport className=\"NavigationMenuViewport\" />\n\t</NavigationMenu.Root>\n);"
         },
         {
           "lang": "css",

@@ -1,5 +1,5 @@
 import { omit, type Component } from "solid-js";
-import { Select } from "soldix";
+import { Select } from "solidix";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "../icons";
 
 const SelectDemo = () => (

@@ -1,4 +1,4 @@
-# `@soldix/context`
+# `@solidix/context`
 
 Context factories with scopes. Port of `@radix-ui/react-context`.
 

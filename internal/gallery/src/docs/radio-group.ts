@@ -15,7 +15,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { RadioGroup } from \"soldix\";\n\nexport default () => (\n\t<RadioGroup.Root>\n\t\t<RadioGroup.Item>\n\t\t\t<RadioGroup.Indicator />\n\t\t</RadioGroup.Item>\n\t</RadioGroup.Root>\n);"
+    "code": "import { RadioGroup } from \"solidix\";\n\nexport default () => (\n\t<RadioGroup.Root>\n\t\t<RadioGroup.Item>\n\t\t\t<RadioGroup.Indicator />\n\t\t</RadioGroup.Item>\n\t</RadioGroup.Root>\n);"
   },
   "parts": [
     {
@@ -180,7 +180,7 @@ export const doc: PrimitiveDoc = {
         {
           "lang": "jsx",
           "highlights": [],
-          "code": "import { RadioGroup } from \"soldix\";\n\nexport default () => (\n\t<RadioGroup.Root>\n\t\t{[\"one\", \"two\", \"three\"].map((value) => (\n\t\t\t<RadioGroup.ItemProvider key={value} value={value}>\n\t\t\t\t<RadioGroup.ItemTrigger>\n\t\t\t\t\t<RadioGroup.Indicator />\n\t\t\t\t</RadioGroup.ItemTrigger>\n\t\t\t\t<RadioGroup.ItemBubbleInput />\n\t\t\t</RadioGroup.ItemProvider>\n\t\t))}\n\t</RadioGroup.Root>\n);"
+          "code": "import { RadioGroup } from \"solidix\";\n\nexport default () => (\n\t<RadioGroup.Root>\n\t\t{[\"one\", \"two\", \"three\"].map((value) => (\n\t\t\t<RadioGroup.ItemProvider key={value} value={value}>\n\t\t\t\t<RadioGroup.ItemTrigger>\n\t\t\t\t\t<RadioGroup.Indicator />\n\t\t\t\t</RadioGroup.ItemTrigger>\n\t\t\t\t<RadioGroup.ItemBubbleInput />\n\t\t\t</RadioGroup.ItemProvider>\n\t\t))}\n\t</RadioGroup.Root>\n);"
         }
       ]
     }

@@ -1,4 +1,4 @@
-# `@soldix/use-is-hydrated`
+# `@solidix/use-is-hydrated`
 
 Hydration-state accessor. Port of `@radix-ui/react-use-is-hydrated`.
 

@@ -1,23 +1,23 @@
-import { clamp } from "@soldix/number";
-import { ariaBoolean, callEventHandler, composeEventHandlers } from "@soldix/primitive";
-import { hideOthers } from "@soldix/primitive";
-import { createCollection } from "@soldix/collection";
-import { afterConnected, useComposedRefs } from "@soldix/compose-refs";
-import { createContextScope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
-import { DismissableLayer } from "@soldix/dismissable-layer";
-import { useFocusGuards } from "@soldix/focus-guards";
-import { FocusScope } from "@soldix/focus-scope";
-import { useId } from "@soldix/id";
-import * as PopperPrimitive from "@soldix/popper";
-import { Portal as PortalPrimitive } from "@soldix/portal";
-import { Presence } from "@soldix/presence";
-import { Primitive } from "@soldix/primitive";
-import { useCallbackRef } from "@soldix/use-callback-ref";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { useLayoutEffect } from "@soldix/use-layout-effect";
-import { VISUALLY_HIDDEN_STYLES } from "@soldix/visually-hidden";
-import { RemoveScroll } from "@soldix/remove-scroll";
+import { clamp } from "@solidix/number";
+import { ariaBoolean, callEventHandler, composeEventHandlers } from "@solidix/primitive";
+import { hideOthers } from "@solidix/primitive";
+import { createCollection } from "@solidix/collection";
+import { afterConnected, useComposedRefs } from "@solidix/compose-refs";
+import { createContextScope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
+import { DismissableLayer } from "@solidix/dismissable-layer";
+import { useFocusGuards } from "@solidix/focus-guards";
+import { FocusScope } from "@solidix/focus-scope";
+import { useId } from "@solidix/id";
+import * as PopperPrimitive from "@solidix/popper";
+import { Portal as PortalPrimitive } from "@solidix/portal";
+import { Presence } from "@solidix/presence";
+import { Primitive } from "@solidix/primitive";
+import { useCallbackRef } from "@solidix/use-callback-ref";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { useLayoutEffect } from "@solidix/use-layout-effect";
+import { VISUALLY_HIDDEN_STYLES } from "@solidix/visually-hidden";
+import { RemoveScroll } from "@solidix/remove-scroll";
 import { Portal as SolidPortal } from "@solidjs/web";
 import {
   children,
@@ -34,11 +34,11 @@ import {
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import type { Scope } from "@soldix/context";
-import type { DismissableLayerProps } from "@soldix/dismissable-layer";
-import type { FocusScopeProps } from "@soldix/focus-scope";
-import type { PopperArrowProps, PopperContentProps } from "@soldix/popper";
-import type { PrimitivePropsWithRef } from "@soldix/primitive";
+import type { Scope } from "@solidix/context";
+import type { DismissableLayerProps } from "@solidix/dismissable-layer";
+import type { FocusScopeProps } from "@solidix/focus-scope";
+import type { PopperArrowProps, PopperContentProps } from "@solidix/popper";
+import type { PrimitivePropsWithRef } from "@solidix/primitive";
 
 const Position = {
   ItemAligned: "item-aligned",
@@ -116,7 +116,7 @@ const [SelectProviderImpl, useSelectContext] = createSelectContext<SelectContext
 
 /**
  * Unlike Radix, which collects React `<option>` elements built by each
- * `Select.ItemText`, Soldix collects plain option data plus a getter for the
+ * `Select.ItemText`, Solidix collects plain option data plus a getter for the
  * item text. The JSX `<option>` elements are rendered by `SelectBubbleInput`
  * so the text stays reactive after it has been collected.
  */

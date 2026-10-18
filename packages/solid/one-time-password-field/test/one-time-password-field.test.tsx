@@ -25,7 +25,7 @@ describe("given a default OneTimePasswordField", () => {
     ));
   });
 
-  // NOTE: Radix also asserts `axe` cleanliness here; Soldix has no axe harness
+  // NOTE: Radix also asserts `axe` cleanliness here; Solidix has no axe harness
   // yet (Phase 6), so that assertion has no port.
 
   test("should mask input value when type is password", async () => {

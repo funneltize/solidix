@@ -1,4 +1,4 @@
-import { AlertDialog } from "soldix";
+import { AlertDialog } from "solidix";
 
 const AlertDialogDemo = () => (
   <AlertDialog.Root>

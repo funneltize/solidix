@@ -1,4 +1,4 @@
-import { Toolbar } from "soldix";
+import { Toolbar } from "solidix";
 import {
   FontBoldIcon,
   FontItalicIcon,

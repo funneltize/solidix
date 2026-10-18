@@ -1,20 +1,20 @@
-import { clamp } from "@soldix/number";
-import { callEventHandler, composeEventHandlers } from "@soldix/primitive";
-import { useComposedRefs } from "@soldix/compose-refs";
-import { createContextScope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
-import { IS_DEVELOPMENT } from "@soldix/env-check/is-development";
-import { Presence } from "@soldix/presence";
-import { Primitive } from "@soldix/primitive";
-import { createSlottable } from "@soldix/slot";
-import { useCallbackRef } from "@soldix/use-callback-ref";
-import { useLayoutEffect } from "@soldix/use-layout-effect";
+import { clamp } from "@solidix/number";
+import { callEventHandler, composeEventHandlers } from "@solidix/primitive";
+import { useComposedRefs } from "@solidix/compose-refs";
+import { createContextScope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
+import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
+import { Presence } from "@solidix/presence";
+import { Primitive } from "@solidix/primitive";
+import { createSlottable } from "@solidix/slot";
+import { useCallbackRef } from "@solidix/use-callback-ref";
+import { useLayoutEffect } from "@solidix/use-layout-effect";
 import { children, createEffect, createSignal, onCleanup, Show, type Component } from "solid-js";
 import { omit } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
-import type { Scope } from "@soldix/context";
-import type { PrimitivePropsWithRef } from "@soldix/primitive";
+import type { Scope } from "@solidix/context";
+import type { PrimitivePropsWithRef } from "@solidix/primitive";
 
 const ScrollAreaType = {
   Auto: "auto",
@@ -976,7 +976,7 @@ const ScrollAreaThumb: Component<ScopedProps<ScrollAreaThumbProps>> = (props) =>
 
 type ScrollAreaThumbImplElement = HTMLDivElement;
 export interface ScrollAreaThumbImplProps extends PrimitiveDivProps {
-  // Solid JSX provides no `onPointerDownCapture` (see `@soldix/dismissable-layer`):
+  // Solid JSX provides no `onPointerDownCapture` (see `@solidix/dismissable-layer`):
   // accepted explicitly and attached imperatively below.
   onPointerDownCapture?: JSX.EventHandlerUnion<HTMLDivElement, PointerEvent> | undefined;
 }
@@ -989,7 +989,7 @@ const ScrollAreaThumbImpl: Component<ScopedProps<ScrollAreaThumbImplProps>> = (p
 
   // Capture-phase pointerdown (the Solid equivalent of React's
   // `onPointerDownCapture`): attached imperatively on the thumb node, following
-  // the `@soldix/dismissable-layer` pattern.
+  // the `@solidix/dismissable-layer` pattern.
   const handlePointerDownCapture = (event: PointerEvent) => {
     callEventHandler(props.onPointerDownCapture, event);
     if (event.defaultPrevented) return;

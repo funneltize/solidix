@@ -1,4 +1,4 @@
-# `@soldix/popper`
+# `@solidix/popper`
 
 Positioning primitives. Port of `@radix-ui/react-popper`.
 

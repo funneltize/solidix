@@ -1,4 +1,4 @@
-# `@soldix/password-toggle-field`
+# `@solidix/password-toggle-field`
 
 Password toggle field primitive. Port of
 `@radix-ui/react-password-toggle-field`, including the controllable
@@ -8,7 +8,7 @@ handling, the icon slot, and the aria-label inference.
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces
-  Radix's `Slot`/`asChild` composition via `@soldix/slot`.
+  Radix's `Slot`/`asChild` composition via `@solidix/slot`.
 - The misspelled `onVisiblityChange` back-compat (including the development
   warning) is ported verbatim.
 - No `flushSync` equivalent is needed on toggle: Solid applies the signal

@@ -29,7 +29,7 @@ describe("given a default PasswordToggleField", () => {
     ));
   });
 
-  // NOTE: Radix also asserts `axe` cleanliness here; Soldix has no axe harness
+  // NOTE: Radix also asserts `axe` cleanliness here; Solidix has no axe harness
   // yet (Phase 6), so that assertion has no port.
 
   test("should initially be hidden", () => {
@@ -103,7 +103,7 @@ describe("given a PasswordToggleField with an Icon", () => {
     ));
   });
 
-  // NOTE: Radix also asserts `axe` cleanliness here; Soldix has no axe harness
+  // NOTE: Radix also asserts `axe` cleanliness here; Solidix has no axe harness
   // yet (Phase 6), so that assertion has no port.
 
   test("should initially be hidden", () => {

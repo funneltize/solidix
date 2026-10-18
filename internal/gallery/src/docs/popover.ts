@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Popover } from \"soldix\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger />\n\t\t<Popover.Anchor />\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content>\n\t\t\t\t<Popover.Close />\n\t\t\t\t<Popover.Arrow />\n\t\t\t</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
+    "code": "import { Popover } from \"solidix\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger />\n\t\t<Popover.Anchor />\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content>\n\t\t\t\t<Popover.Close />\n\t\t\t\t<Popover.Arrow />\n\t\t\t</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
   },
   "parts": [
     {
@@ -329,7 +329,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             9
           ],
-          "code": "// index.jsx\nimport { Popover } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content className=\"PopoverContent\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
+          "code": "// index.jsx\nimport { Popover } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content className=\"PopoverContent\" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
         },
         {
           "lang": "css",
@@ -347,7 +347,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             9
           ],
-          "code": "// index.jsx\nimport { Popover } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content className=\"PopoverContent\">…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
+          "code": "// index.jsx\nimport { Popover } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content className=\"PopoverContent\">…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
         },
         {
           "lang": "css",
@@ -367,7 +367,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             9
           ],
-          "code": "// index.jsx\nimport { Popover } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content className=\"PopoverContent\">…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
+          "code": "// index.jsx\nimport { Popover } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content className=\"PopoverContent\">…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
         },
         {
           "lang": "css",
@@ -396,7 +396,7 @@ export const doc: PrimitiveDoc = {
             10,
             11
           ],
-          "code": "// index.jsx\nimport { Popover } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Anchor asChild>\n\t\t\t<div class=\"Row\">\n\t\t\t\tRow as anchor <Popover.Trigger>Trigger</Popover.Trigger>\n\t\t\t</div>\n\t\t</Popover.Anchor>\n\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content>…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
+          "code": "// index.jsx\nimport { Popover } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Anchor asChild>\n\t\t\t<div class=\"Row\">\n\t\t\t\tRow as anchor <Popover.Trigger>Trigger</Popover.Trigger>\n\t\t\t</div>\n\t\t</Popover.Anchor>\n\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content>…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);"
         },
         {
           "lang": "css",

@@ -13,6 +13,7 @@ import { doc as form } from "./form";
 import { doc as hoverCard } from "./hover-card";
 import { doc as label } from "./label";
 import { doc as menubar } from "./menubar";
+import { doc as motion } from "./motion";
 import { doc as navigationMenu } from "./navigation-menu";
 import { doc as oneTimePasswordField } from "./one-time-password-field";
 import { doc as passwordToggleField } from "./password-toggle-field";
@@ -46,6 +47,7 @@ export const docs: Record<string, PrimitiveDoc> = {
   "hover-card": hoverCard,
   label: label,
   menubar: menubar,
+  motion: motion,
   "navigation-menu": navigationMenu,
   "one-time-password-field": oneTimePasswordField,
   "password-toggle-field": passwordToggleField,

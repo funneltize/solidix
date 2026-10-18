@@ -1,4 +1,4 @@
-# `@soldix/slot`
+# `@solidix/slot`
 
 Props-slotting components. Port of `@radix-ui/react-slot`.
 

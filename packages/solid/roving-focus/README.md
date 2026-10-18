@@ -1,4 +1,4 @@
-# `@soldix/roving-focus`
+# `@solidix/roving-focus`
 
 Roving tabindex group. Port of `@radix-ui/react-roving-focus`.
 

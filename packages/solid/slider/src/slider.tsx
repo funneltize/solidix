@@ -1,18 +1,18 @@
 import { Show, createEffect, createSignal, flush, omit, untrack, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { clamp } from "@soldix/number";
-import { unstable_createCollection as createCollection } from "@soldix/collection";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
+import { clamp } from "@solidix/number";
+import { unstable_createCollection as createCollection } from "@solidix/collection";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
 import {
   Primitive,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { useSize } from "@soldix/use-size";
+} from "@solidix/primitive";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { useSize } from "@solidix/use-size";
 
 const Orientation = {
   Vertical: "vertical",

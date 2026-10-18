@@ -1,17 +1,17 @@
 import { createEffect, createSignal, omit, onSettled, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { useComposedRefs } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useId } from "@soldix/id";
-import { Presence } from "@soldix/presence";
+import { useComposedRefs } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useId } from "@solidix/id";
+import { Presence } from "@solidix/presence";
 import {
   Primitive,
   ariaBoolean,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/primitive";
+import { useControllableState } from "@solidix/use-controllable-state";
 
 /* -------------------------------------------------------------------------------------------------
  * Collapsible

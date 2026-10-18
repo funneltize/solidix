@@ -1,4 +1,4 @@
-import { PasswordToggleField } from "soldix";
+import { PasswordToggleField } from "solidix";
 import { EyeClosedIcon, EyeOpenIcon } from "../icons";
 
 const PasswordToggleFieldDemo = () => (

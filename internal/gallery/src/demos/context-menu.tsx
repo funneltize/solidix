@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import { ContextMenu } from "soldix";
+import { ContextMenu } from "solidix";
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from "../icons";
 
 const ContextMenuDemo = () => {

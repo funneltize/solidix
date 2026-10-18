@@ -1,7 +1,7 @@
 import { children as resolveChildren, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { createSlot } from "@soldix/slot";
-import { Root as VisuallyHidden } from "@soldix/visually-hidden";
+import { createSlot } from "@solidix/slot";
+import { Root as VisuallyHidden } from "@solidix/visually-hidden";
 
 interface AccessibleIconProps {
   children?: JSX.Element | undefined;

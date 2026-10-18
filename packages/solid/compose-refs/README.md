@@ -1,4 +1,4 @@
-# `@soldix/compose-refs`
+# `@solidix/compose-refs`
 
 Ref composition utilities. Port of `@radix-ui/react-compose-refs`.
 

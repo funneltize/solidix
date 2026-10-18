@@ -1,4 +1,4 @@
-# `@soldix/focus-scope`
+# `@solidix/focus-scope`
 
 Focus trapping and looping. Port of `@radix-ui/react-focus-scope`.
 

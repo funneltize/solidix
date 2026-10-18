@@ -1,15 +1,15 @@
 import { createEffect, createSignal, omit, onSettled, untrack, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { callEventHandler, composeEventHandlers } from "@soldix/primitive";
-import { createCollection } from "@soldix/collection";
-import { useComposedRefs } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useId } from "@soldix/id";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
-import { useCallbackRef } from "@soldix/use-callback-ref";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { useDirection } from "@soldix/direction";
-import { useIsHydrated } from "@soldix/use-is-hydrated";
+import { callEventHandler, composeEventHandlers } from "@solidix/primitive";
+import { createCollection } from "@solidix/collection";
+import { useComposedRefs } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useId } from "@solidix/id";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
+import { useCallbackRef } from "@solidix/use-callback-ref";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { useDirection } from "@solidix/direction";
+import { useIsHydrated } from "@solidix/use-is-hydrated";
 
 const ENTRY_FOCUS = "rovingFocusGroup.onEntryFocus";
 const EVENT_OPTIONS = { bubbles: false, cancelable: true };

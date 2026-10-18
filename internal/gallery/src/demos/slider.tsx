@@ -1,4 +1,4 @@
-import { Slider } from "soldix";
+import { Slider } from "solidix";
 
 const SliderDemo = () => (
   <form>

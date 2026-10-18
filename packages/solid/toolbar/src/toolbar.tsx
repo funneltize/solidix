@@ -1,18 +1,18 @@
 import { omit, type Component } from "solid-js";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
 import {
   Primitive,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
+} from "@solidix/primitive";
 import {
   RovingFocusGroup,
   RovingFocusGroupItem,
   createRovingFocusGroupScope,
-} from "@soldix/roving-focus";
-import { Separator, type SeparatorProps } from "@soldix/separator";
+} from "@solidix/roving-focus";
+import { Separator, type SeparatorProps } from "@solidix/separator";
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -20,7 +20,7 @@ import {
   type ToggleGroupItemProps,
   type ToggleGroupMultipleProps,
   type ToggleGroupSingleProps,
-} from "@soldix/toggle-group";
+} from "@solidix/toggle-group";
 
 /* -------------------------------------------------------------------------------------------------
  * Toolbar

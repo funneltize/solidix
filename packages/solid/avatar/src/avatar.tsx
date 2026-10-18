@@ -8,10 +8,10 @@ import {
   type Component,
   type Setter,
 } from "solid-js";
-import { IS_DEVELOPMENT } from "@soldix/env-check/is-development";
-import { createContextScope, type Scope } from "@soldix/context";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
-import { useCallbackRef } from "@soldix/use-callback-ref";
+import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
+import { createContextScope, type Scope } from "@solidix/context";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
+import { useCallbackRef } from "@solidix/use-callback-ref";
 
 /* -------------------------------------------------------------------------------------------------
  * Avatar

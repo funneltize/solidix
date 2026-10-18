@@ -1,15 +1,15 @@
 import { Show, omit, type Component } from "solid-js";
-import { unstable_createCollection as createCollection } from "@soldix/collection";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
-import { useId } from "@soldix/id";
+import { unstable_createCollection as createCollection } from "@solidix/collection";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
+import { useId } from "@solidix/id";
 import {
   Primitive,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/primitive";
+import { useControllableState } from "@solidix/use-controllable-state";
 import {
   Collapsible,
   CollapsibleContent,
@@ -18,7 +18,7 @@ import {
   type CollapsibleContentProps,
   type CollapsibleProps,
   type CollapsibleTriggerProps,
-} from "@soldix/collapsible";
+} from "@solidix/collapsible";
 
 const AccordionType = {
   Single: "single",

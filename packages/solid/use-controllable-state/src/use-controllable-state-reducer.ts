@@ -1,6 +1,6 @@
 import { createEffect, createSignal, untrack } from "solid-js";
-import { IS_DEVELOPMENT } from "@soldix/env-check/is-development";
-import { useEffectEvent } from "@soldix/use-effect-event";
+import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
+import { useEffectEvent } from "@solidix/use-effect-event";
 
 type ChangeHandler<T> = (state: T) => void;
 

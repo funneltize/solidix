@@ -1,5 +1,5 @@
 import { createEffect } from "solid-js";
-import { useCallbackRef } from "@soldix/use-callback-ref";
+import { useCallbackRef } from "@solidix/use-callback-ref";
 
 /**
  * Listens for when the escape key is down

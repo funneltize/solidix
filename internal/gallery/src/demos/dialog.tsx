@@ -1,4 +1,4 @@
-import { Dialog } from "soldix";
+import { Dialog } from "solidix";
 import { Cross2Icon } from "../icons";
 
 const DialogDemo = () => (

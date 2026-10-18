@@ -1,4 +1,4 @@
-import { Popover } from "soldix";
+import { Popover } from "solidix";
 import { Cross2Icon, MixerHorizontalIcon } from "../icons";
 
 const PopoverDemo = () => (

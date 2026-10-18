@@ -15,7 +15,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Checkbox } from \"soldix\";\n\nexport default () => (\n\t<Checkbox.Root>\n\t\t<Checkbox.Indicator />\n\t</Checkbox.Root>\n);"
+    "code": "import { Checkbox } from \"solidix\";\n\nexport default () => (\n\t<Checkbox.Root>\n\t\t<Checkbox.Indicator />\n\t</Checkbox.Root>\n);"
   },
   "parts": [
     {
@@ -138,7 +138,7 @@ export const doc: PrimitiveDoc = {
             14,
             16
           ],
-          "code": "import { DividerHorizontalIcon, CheckIcon } from \"@radix-ui/react-icons\";\nimport { Checkbox } from \"soldix\";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal(\"indeterminate\");\n\n\treturn (\n\t\t<>\n\t\t\t<StyledCheckbox checked={checked()} onCheckedChange={setChecked}>\n\t\t\t\t<Checkbox.Indicator>\n\t\t\t\t\t{checked() === \"indeterminate\" && <DividerHorizontalIcon />}\n\t\t\t\t\t{checked() === true && <CheckIcon />}\n\t\t\t\t</Checkbox.Indicator>\n\t\t\t</StyledCheckbox>\n\n\t\t\t<button\n\t\t\t\ttype=\"button\"\n\t\t\t\tonClick={() =>\n\t\t\t\t\tsetChecked((prevIsChecked) =>\n\t\t\t\t\t\tprevIsChecked === \"indeterminate\" ? false : \"indeterminate\",\n\t\t\t\t\t)\n\t\t\t\t}\n\t\t\t>\n\t\t\t\tToggle indeterminate\n\t\t\t</button>\n\t\t</>\n\t);\n};"
+          "code": "import { DividerHorizontalIcon, CheckIcon } from \"@radix-ui/react-icons\";\nimport { Checkbox } from \"solidix\";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal(\"indeterminate\");\n\n\treturn (\n\t\t<>\n\t\t\t<StyledCheckbox checked={checked()} onCheckedChange={setChecked}>\n\t\t\t\t<Checkbox.Indicator>\n\t\t\t\t\t{checked() === \"indeterminate\" && <DividerHorizontalIcon />}\n\t\t\t\t\t{checked() === true && <CheckIcon />}\n\t\t\t\t</Checkbox.Indicator>\n\t\t\t</StyledCheckbox>\n\n\t\t\t<button\n\t\t\t\ttype=\"button\"\n\t\t\t\tonClick={() =>\n\t\t\t\t\tsetChecked((prevIsChecked) =>\n\t\t\t\t\t\tprevIsChecked === \"indeterminate\" ? false : \"indeterminate\",\n\t\t\t\t\t)\n\t\t\t\t}\n\t\t\t>\n\t\t\t\tToggle indeterminate\n\t\t\t</button>\n\t\t</>\n\t);\n};"
         }
       ]
     },
@@ -149,7 +149,7 @@ export const doc: PrimitiveDoc = {
         {
           "lang": "jsx",
           "highlights": [],
-          "code": "import { Checkbox } from \"soldix\";\n\nexport default () => (\n\t<Checkbox.Provider name=\"terms\">\n\t\t<Checkbox.Trigger>\n\t\t\t<Checkbox.Indicator />\n\t\t</Checkbox.Trigger>\n\t\t<Checkbox.BubbleInput />\n\t</Checkbox.Provider>\n);"
+          "code": "import { Checkbox } from \"solidix\";\n\nexport default () => (\n\t<Checkbox.Provider name=\"terms\">\n\t\t<Checkbox.Trigger>\n\t\t\t<Checkbox.Indicator />\n\t\t</Checkbox.Trigger>\n\t\t<Checkbox.BubbleInput />\n\t</Checkbox.Provider>\n);"
         }
       ]
     }

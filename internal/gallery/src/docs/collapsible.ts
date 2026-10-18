@@ -14,7 +14,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Collapsible } from \"soldix\";\n\nexport default () => (\n\t<Collapsible.Root>\n\t\t<Collapsible.Trigger />\n\t\t<Collapsible.Content />\n\t</Collapsible.Root>\n);"
+    "code": "import { Collapsible } from \"solidix\";\n\nexport default () => (\n\t<Collapsible.Root>\n\t\t<Collapsible.Trigger />\n\t\t<Collapsible.Content />\n\t</Collapsible.Root>\n);"
   },
   "parts": [
     {
@@ -150,7 +150,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             8
           ],
-          "code": "// index.jsx\nimport { Collapsible } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Collapsible.Root>\n\t\t<Collapsible.Trigger>…</Collapsible.Trigger>\n\t\t<Collapsible.Content className=\"CollapsibleContent\">\n\t\t\t…\n\t\t</Collapsible.Content>\n\t</Collapsible.Root>\n);"
+          "code": "// index.jsx\nimport { Collapsible } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Collapsible.Root>\n\t\t<Collapsible.Trigger>…</Collapsible.Trigger>\n\t\t<Collapsible.Content className=\"CollapsibleContent\">\n\t\t\t…\n\t\t</Collapsible.Content>\n\t</Collapsible.Root>\n);"
         },
         {
           "lang": "css",

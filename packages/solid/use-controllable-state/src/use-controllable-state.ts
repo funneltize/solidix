@@ -1,5 +1,5 @@
 import { createEffect, createSignal } from "solid-js";
-import { IS_DEVELOPMENT } from "@soldix/env-check/is-development";
+import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
 
 type ChangeHandler<T> = (state: T) => void;
 

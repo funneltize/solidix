@@ -13,7 +13,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { AspectRatio } from \"soldix\";\n\nexport default () => <AspectRatio.Root />;"
+    "code": "import { AspectRatio } from \"solidix\";\n\nexport default () => <AspectRatio.Root />;"
   },
   "parts": [
     {

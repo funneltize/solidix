@@ -1,6 +1,6 @@
 import { createEffect, omit, type Component } from "solid-js";
-import { createContextScope, type Scope } from "@soldix/context";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
+import { createContextScope, type Scope } from "@solidix/context";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 
 /* -------------------------------------------------------------------------------------------------
  * Progress

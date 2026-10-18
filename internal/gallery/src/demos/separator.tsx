@@ -1,4 +1,4 @@
-import { Separator } from "soldix";
+import { Separator } from "solidix";
 
 const SeparatorDemo = () => (
   <div style={{ width: "100%", "max-width": "300px", margin: "0 15px" }}>

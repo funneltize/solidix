@@ -1,4 +1,4 @@
-# `@soldix/popover`
+# `@solidix/popover`
 
 Popover primitive. Port of `@radix-ui/react-popover`.
 
@@ -13,6 +13,6 @@ Popover primitive. Port of `@radix-ui/react-popover`.
   fragment). Both are unstyled and inert.
 - The `style` prop of `PopoverContent` is object-only (not `string`) so it can
   merge with the re-namespaced content custom properties, matching
-  `@soldix/popper` and `@soldix/visually-hidden`.
+  `@solidix/popper` and `@solidix/visually-hidden`.
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces
-  Radix's `Slot`/`asChild` composition via `@soldix/slot`.
+  Radix's `Slot`/`asChild` composition via `@solidix/slot`.

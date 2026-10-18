@@ -1,4 +1,4 @@
-import { AspectRatio } from "soldix";
+import { AspectRatio } from "solidix";
 
 const AspectRatioDemo = () => (
   <div class="Container">

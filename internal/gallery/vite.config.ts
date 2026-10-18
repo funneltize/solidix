@@ -3,11 +3,11 @@ import { join } from "node:path";
 import { defineConfig } from "vite";
 import solid from "@solidjs/vite-plugin";
 
-// Workspace-linked @soldix/* packages resolve to raw TS source
+// Workspace-linked @solidix/* packages resolve to raw TS source
 // (`main: ./src/index.ts`), so keep them out of esbuild pre-bundling —
 // only the Solid transform understands the JSX.
-function soldixDepNames(): string[] {
-  const names = new Set<string>(["soldix"]);
+function solidixDepNames(): string[] {
+  const names = new Set<string>(["solidix"]);
   for (const area of ["core", "solid"]) {
     const dir = join(import.meta.dirname, "..", "..", "packages", area);
     for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -31,5 +31,5 @@ export default defineConfig({
     // Linked workspace sources live outside the app root.
     fs: { allow: [join(import.meta.dirname, "..", "..")] },
   },
-  optimizeDeps: { exclude: soldixDepNames() },
+  optimizeDeps: { exclude: solidixDepNames() },
 });

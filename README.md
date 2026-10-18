@@ -1,4 +1,4 @@
-# Soldix
+# Solidix
 
 A port of [Radix UI Primitives](https://www.radix-ui.com/primitives) to
 [Solid 2](https://github.com/solidjs/solid): unstyled, accessible UI
@@ -7,15 +7,15 @@ primitives with close API/behavior parity, written as idiomatic Solid.
 ## Install
 
 ```sh
-pnpm add soldix solid-js @solidjs/web
+pnpm add solidix solid-js @solidjs/web
 ```
 
-`soldix` is the umbrella package (mirrors `radix-ui`), re-exporting every
+`solidix` is the umbrella package (mirrors `radix-ui`), re-exporting every
 component primitive as a namespace. Prefer the per-primitive packages when
 bundle size matters:
 
 ```sh
-pnpm add @soldix/dialog solid-js @solidjs/web
+pnpm add @solidix/dialog solid-js @solidjs/web
 ```
 
 Solid 2 is RC-stage: `solid-js` and `@solidjs/web` must satisfy
@@ -24,8 +24,8 @@ Solid 2 is RC-stage: `solid-js` and `@solidjs/web` must satisfy
 ## Usage
 
 ```tsx
-import { Dialog } from "soldix";
-// or: import * as Dialog from "@soldix/dialog";
+import { Dialog } from "solidix";
+// or: import * as Dialog from "@solidix/dialog";
 
 function Example() {
   return (
@@ -47,7 +47,7 @@ function Example() {
 The API mapping from Radix is small and uniform:
 
 - `className` becomes `class`; `ref` is a plain prop.
-- `asChild` composes via `@soldix/slot` (same semantics, including `Slottable`).
+- `asChild` composes via `@solidix/slot` (same semantics, including `Slottable`).
 - `style` props are objects with kebab-case keys (Solid semantics).
 - Everything else — props, data attributes, keyboard behavior, ARIA —
   matches Radix; per-package deviations are documented in each package's
@@ -58,14 +58,15 @@ The API mapping from Radix is small and uniform:
 All 63 packages live under `packages/` and publish at version 0.x while the
 API tracks Radix:
 
-- `soldix` — umbrella re-exporting the 30 component namespaces.
-- `packages/solid/*` — Solid primitives, published as `@soldix/<name>`:
+- `solidix` — umbrella re-exporting the 30 component namespaces.
+- `packages/solid/*` — Solid primitives, published as `@solidix/<name>`:
   the 30 components (Accordion, AlertDialog, AspectRatio, Avatar, Checkbox,
   Collapsible, ContextMenu, Dialog, DropdownMenu, Form, HoverCard, Label,
   Menubar, NavigationMenu, OneTimePasswordField, PasswordToggleField, Popover,
   Progress, RadioGroup, ScrollArea, Select, Separator, Slider, Switch, Tabs,
   Toast, Toggle, ToggleGroup, Toolbar, Tooltip) plus shared internals
-  (`primitive`, `slot`, `portal`, `presence`, collections, hooks, …).
+  (`primitive`, `slot`, `portal`, `presence`, collections, hooks, …) and the
+  CSS-first motion utilities (`motion`).
 - `packages/core/*` — framework-agnostic utilities (mirrors Radix
   `packages/core`).
 - `internal/*` — private workspace tooling (`@repo/builder`,
@@ -94,8 +95,8 @@ Versions are managed with [Changesets](https://github.com/changesets/changesets)
 Every PR that changes a publishable package must add a changeset
 (`pnpm changeset`); pushing to `main` opens a Version Packages PR, and
 merging it publishes to npm via the `release` workflow (needs an
-`NPM_TOKEN` repo secret with publish access to the `@soldix` scope and the
-`soldix` package).
+`NPM_TOKEN` repo secret with publish access to the `@solidix` scope and the
+`solidix` package).
 
 ## Toolchain pins
 

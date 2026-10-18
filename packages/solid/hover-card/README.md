@@ -1,4 +1,4 @@
-# `@soldix/hover-card`
+# `@solidix/hover-card`
 
 HoverCard primitive. Port of `@radix-ui/react-hover-card`.
 
@@ -15,4 +15,4 @@ HoverCard primitive. Port of `@radix-ui/react-hover-card`.
   the content node sets. Content children are static in practice; dynamically
   added tabbables would keep their tab order until the node swaps.
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces
-  Radix's `Slot`/`asChild` composition via `@soldix/slot`.
+  Radix's `Slot`/`asChild` composition via `@solidix/slot`.

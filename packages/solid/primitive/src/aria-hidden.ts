@@ -5,7 +5,7 @@
  * Copyright (c) 2017 Anton Korzunov
  */
 
-import { IS_DEVELOPMENT } from "@soldix/env-check/is-development";
+import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
 
 type Undo = () => void;
 
@@ -74,7 +74,7 @@ function applyAttributeToOthers(
   markerName: string,
   controlAttribute: string,
 ): Undo {
-  // Soldix hardening (no Radix equivalent): a detached target has no usable parent
+  // Solidix hardening (no Radix equivalent): a detached target has no usable parent
   // (e.g. `ownerDocument.body` is null before portal insertion adopts the node).
   // Hiding "others" is meaningless then, so do nothing instead of crashing.
   if (!parentNode || typeof (parentNode as Element).querySelectorAll !== "function") {

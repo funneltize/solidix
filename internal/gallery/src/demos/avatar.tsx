@@ -1,4 +1,4 @@
-import { Avatar } from "soldix";
+import { Avatar } from "solidix";
 
 const AvatarDemo = () => (
   <div style={{ display: "flex", gap: "20px" }}>

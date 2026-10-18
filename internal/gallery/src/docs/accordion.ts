@@ -17,7 +17,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Accordion } from \"soldix\";\n\nexport default () => (\n\t<Accordion.Root>\n\t\t<Accordion.Item>\n\t\t\t<Accordion.Header>\n\t\t\t\t<Accordion.Trigger />\n\t\t\t</Accordion.Header>\n\t\t\t<Accordion.Content />\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);"
+    "code": "import { Accordion } from \"solidix\";\n\nexport default () => (\n\t<Accordion.Root>\n\t\t<Accordion.Item>\n\t\t\t<Accordion.Header>\n\t\t\t\t<Accordion.Trigger />\n\t\t\t</Accordion.Header>\n\t\t\t<Accordion.Content />\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);"
   },
   "parts": [
     {
@@ -341,7 +341,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             12
           ],
-          "code": "// index.jsx\nimport { Accordion } from \"soldix\";\nimport { ChevronDownIcon } from \"@radix-ui/react-icons\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Accordion.Root type=\"single\">\n\t\t<Accordion.Item value=\"item-1\">\n\t\t\t<Accordion.Header>\n\t\t\t\t<Accordion.Trigger class=\"AccordionTrigger\">\n\t\t\t\t\t<span>Trigger text</span>\n\t\t\t\t\t<ChevronDownIcon className=\"AccordionChevron\" aria-hidden />\n\t\t\t\t</Accordion.Trigger>\n\t\t\t</Accordion.Header>\n\t\t\t<Accordion.Content>…</Accordion.Content>\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);"
+          "code": "// index.jsx\nimport { Accordion } from \"solidix\";\nimport { ChevronDownIcon } from \"@radix-ui/react-icons\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Accordion.Root type=\"single\">\n\t\t<Accordion.Item value=\"item-1\">\n\t\t\t<Accordion.Header>\n\t\t\t\t<Accordion.Trigger class=\"AccordionTrigger\">\n\t\t\t\t\t<span>Trigger text</span>\n\t\t\t\t\t<ChevronDownIcon className=\"AccordionChevron\" aria-hidden />\n\t\t\t\t</Accordion.Trigger>\n\t\t\t</Accordion.Header>\n\t\t\t<Accordion.Content>…</Accordion.Content>\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);"
         },
         {
           "lang": "css",
@@ -376,7 +376,7 @@ export const doc: PrimitiveDoc = {
           "highlights": [
             9
           ],
-          "code": "// index.jsx\nimport { Accordion } from \"soldix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Accordion.Root type=\"single\">\n\t\t<Accordion.Item value=\"item-1\">\n\t\t\t<Accordion.Header>…</Accordion.Header>\n\t\t\t<Accordion.Content className=\"AccordionContent\">…</Accordion.Content>\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);"
+          "code": "// index.jsx\nimport { Accordion } from \"solidix\";\nimport \"./styles.css\";\n\nexport default () => (\n\t<Accordion.Root type=\"single\">\n\t\t<Accordion.Item value=\"item-1\">\n\t\t\t<Accordion.Header>…</Accordion.Header>\n\t\t\t<Accordion.Content className=\"AccordionContent\">…</Accordion.Content>\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);"
         },
         {
           "lang": "css",

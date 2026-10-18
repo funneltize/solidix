@@ -1,4 +1,4 @@
-# `@soldix/use-layout-effect`
+# `@solidix/use-layout-effect`
 
 Client-only settled effect. Port of `@radix-ui/react-use-layout-effect`.
 

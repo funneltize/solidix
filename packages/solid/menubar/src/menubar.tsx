@@ -1,9 +1,9 @@
 import { createEffect, createSignal, omit, type Component } from "solid-js";
-import { createCollection } from "@soldix/collection";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { Direction, useDirection } from "@soldix/direction";
-import { useId } from "@soldix/id";
+import { createCollection } from "@solidix/collection";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { Direction, useDirection } from "@solidix/direction";
+import { useId } from "@solidix/id";
 import {
   Menu as MenuRoot,
   MenuAnchor,
@@ -36,20 +36,20 @@ import {
   type MenuSubContentProps,
   type MenuSubProps,
   type MenuSubTriggerProps,
-} from "@soldix/menu";
+} from "@solidix/menu";
 import {
   Primitive,
   ariaBoolean,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
+} from "@solidix/primitive";
 import {
   RovingFocusGroup,
   RovingFocusGroupItem,
   createRovingFocusGroupScope,
-} from "@soldix/roving-focus";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/roving-focus";
+import { useControllableState } from "@solidix/use-controllable-state";
 
 /* -------------------------------------------------------------------------------------------------
  * Menubar

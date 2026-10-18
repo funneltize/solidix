@@ -1,5 +1,5 @@
 import { For, createSignal } from "solid-js";
-import { Menubar } from "soldix";
+import { Menubar } from "solidix";
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from "../icons";
 
 const RADIO_ITEMS = ["Andy", "Benoît", "Luis"];

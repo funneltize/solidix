@@ -863,7 +863,7 @@ describe("NavigationMenu.Indicator", () => {
   afterEach(cleanup);
 
   // Radix's shared test setup fires `ResizeObserver` callbacks on observe;
-  // the Soldix setup stub never delivers, so install a delivering observer
+  // the Solidix setup stub never delivers, so install a delivering observer
   // (the indicator only renders once it has measured the active trigger).
   beforeEach(() => {
     vi.stubGlobal(
@@ -1057,7 +1057,7 @@ describe("NavigationMenu.Viewport", () => {
   });
 });
 
-// Soldix port guards (no Radix equivalent — the Radix suite only renders one
+// Solidix port guards (no Radix equivalent — the Radix suite only renders one
 // item): switching the value must swap the proxied content, including through
 // the `asChild` viewport portal wiring.
 describe("NavigationMenu viewport switching", () => {

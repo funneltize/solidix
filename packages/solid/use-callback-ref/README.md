@@ -1,4 +1,4 @@
-# `@soldix/use-callback-ref`
+# `@solidix/use-callback-ref`
 
 Stable callback wrapper. Port of `@radix-ui/react-use-callback-ref`.
 

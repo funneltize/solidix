@@ -1,19 +1,19 @@
 import { createEffect, createSignal, omit, onCleanup, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { createCollection } from "@soldix/collection";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useDirection, type Direction } from "@soldix/direction";
-import { DismissableLayer, type DismissableLayerProps } from "@soldix/dismissable-layer";
-import { useFocusGuards } from "@soldix/focus-guards";
-import { useId } from "@soldix/id";
+import { createCollection } from "@solidix/collection";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useDirection, type Direction } from "@solidix/direction";
+import { DismissableLayer, type DismissableLayerProps } from "@solidix/dismissable-layer";
+import { useFocusGuards } from "@solidix/focus-guards";
+import { useId } from "@solidix/id";
 import {
   FocusScope,
   FocusScopeBranchProvider,
   useFocusScopeBranch,
   useFocusScopeBranchRegistry,
   type FocusScopeProps,
-} from "@soldix/focus-scope";
+} from "@solidix/focus-scope";
 import {
   Popper,
   PopperAnchor,
@@ -23,9 +23,9 @@ import {
   type PopperAnchorProps,
   type PopperArrowProps,
   type PopperContentProps,
-} from "@soldix/popper";
-import { Portal as PortalPrimitive, type PortalProps } from "@soldix/portal";
-import { Presence } from "@soldix/presence";
+} from "@solidix/popper";
+import { Portal as PortalPrimitive, type PortalProps } from "@solidix/portal";
+import { Presence } from "@solidix/presence";
 import {
   Primitive,
   ariaBoolean,
@@ -34,15 +34,15 @@ import {
   dispatchDiscreteCustomEvent,
   hideOthers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
+} from "@solidix/primitive";
 import {
   RovingFocusGroup,
   RovingFocusGroupItem,
   createRovingFocusGroupScope,
   type RovingFocusGroupProps,
-} from "@soldix/roving-focus";
-import { RemoveScroll } from "@soldix/remove-scroll";
-import { useCallbackRef } from "@soldix/use-callback-ref";
+} from "@solidix/roving-focus";
+import { RemoveScroll } from "@solidix/remove-scroll";
+import { useCallbackRef } from "@solidix/use-callback-ref";
 
 const SELECTION_KEYS = ["Enter", " "];
 const FIRST_KEYS = ["ArrowDown", "PageUp", "Home"];
@@ -210,7 +210,7 @@ type MenuPortalProps = {
 
 const MenuPortal: Component<ScopedProps<MenuPortalProps>> = (props) => {
   const context = useMenuContext(PORTAL_NAME, props.__scopeMenu);
-  // NOTE: Radix nests the portal inside `Presence`; Soldix inverts this.
+  // NOTE: Radix nests the portal inside `Presence`; Solidix inverts this.
   // Solid portals resolve to a text marker, so a `Presence` around the
   // portal cannot resolve (or track for exit animations) the portalled
   // content. With `Presence` inside, it resolves the content directly.

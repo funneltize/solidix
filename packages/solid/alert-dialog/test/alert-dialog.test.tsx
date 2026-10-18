@@ -43,7 +43,7 @@ function cleanupModal() {
 describe("given a default AlertDialog", () => {
   afterEach(cleanupModal);
   // NOTE: Radix also asserts `axe` cleanliness here (default state and open
-  // state); Soldix has no axe harness yet (Phase 6), so those assertions
+  // state); Solidix has no axe harness yet (Phase 6), so those assertions
   // have no port.
 
   test("opens the content after clicking the trigger", async () => {
@@ -256,7 +256,7 @@ describe("AlertDialog.Content", () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  // Soldix-authored: Radix prevents outside dismissal unconditionally
+  // Solidix-authored: Radix prevents outside dismissal unconditionally
   // (`onPointerDownOutside`/`onInteractOutside` both `preventDefault`, see
   // `alert-dialog.tsx` Content), but its suite has no test for it.
   test("does not dismiss on outside interaction", async () => {

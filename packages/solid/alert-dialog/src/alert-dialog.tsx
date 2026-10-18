@@ -1,6 +1,6 @@
 import { omit, type Component } from "solid-js";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
 import {
   Dialog,
   DialogClose,
@@ -19,8 +19,8 @@ import {
   type DialogProps,
   type DialogTitleProps,
   type DialogTriggerProps,
-} from "@soldix/dialog";
-import { composeEventHandlers } from "@soldix/primitive";
+} from "@solidix/dialog";
+import { composeEventHandlers } from "@solidix/primitive";
 
 /* -------------------------------------------------------------------------------------------------
  * AlertDialog

@@ -1,5 +1,5 @@
 import { omit, type Component } from "solid-js";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 
 /* -------------------------------------------------------------------------------------------------
  * Separator

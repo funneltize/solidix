@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/collection",
+  "name": "@solidix/collection",
   "version": "0.0.0",
   "description": "Ordered item collections (port of @radix-ui/react-collection).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/collection"
   },
   "source": "./src/index.ts",
@@ -41,15 +41,15 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/compose-refs": "workspace:*",
-    "@soldix/context": "workspace:*",
-    "@soldix/primitive": "workspace:*",
-    "@soldix/slot": "workspace:*",
-    "@soldix/use-layout-effect": "workspace:*"
+    "@solidix/compose-refs": "workspace:*",
+    "@solidix/context": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/slot": "workspace:*",
+    "@solidix/use-layout-effect": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

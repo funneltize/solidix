@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/tooltip",
+  "name": "@solidix/tooltip",
   "version": "0.0.0",
   "description": "Tooltip primitive (port of @radix-ui/react-tooltip).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/tooltip"
   },
   "source": "./src/index.ts",
@@ -41,23 +41,23 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/compose-refs": "workspace:*",
-    "@soldix/context": "workspace:*",
-    "@soldix/dismissable-layer": "workspace:*",
-    "@soldix/focus-scope": "workspace:*",
-    "@soldix/id": "workspace:*",
-    "@soldix/popper": "workspace:*",
-    "@soldix/portal": "workspace:*",
-    "@soldix/presence": "workspace:*",
-    "@soldix/primitive": "workspace:*",
-    "@soldix/slot": "workspace:*",
-    "@soldix/use-controllable-state": "workspace:*",
-    "@soldix/use-layout-effect": "workspace:*",
-    "@soldix/visually-hidden": "workspace:*"
+    "@solidix/compose-refs": "workspace:*",
+    "@solidix/context": "workspace:*",
+    "@solidix/dismissable-layer": "workspace:*",
+    "@solidix/focus-scope": "workspace:*",
+    "@solidix/id": "workspace:*",
+    "@solidix/popper": "workspace:*",
+    "@solidix/portal": "workspace:*",
+    "@solidix/presence": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/slot": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*",
+    "@solidix/use-layout-effect": "workspace:*",
+    "@solidix/visually-hidden": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

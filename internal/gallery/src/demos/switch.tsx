@@ -1,4 +1,4 @@
-import { Switch } from "soldix";
+import { Switch } from "solidix";
 
 const SwitchDemo = () => (
   <form>

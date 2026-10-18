@@ -1,10 +1,10 @@
 import { createEffect, createSignal, omit, onCleanup, type Component, type Setter } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { useComposedRefs } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { DismissableLayer, type DismissableLayerProps } from "@soldix/dismissable-layer";
-import { useFocusScopeBranch } from "@soldix/focus-scope";
-import { useId } from "@soldix/id";
+import { useComposedRefs } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { DismissableLayer, type DismissableLayerProps } from "@solidix/dismissable-layer";
+import { useFocusScopeBranch } from "@solidix/focus-scope";
+import { useId } from "@solidix/id";
 import {
   Popper,
   PopperAnchor,
@@ -13,18 +13,18 @@ import {
   createPopperScope,
   type PopperArrowProps,
   type PopperContentProps,
-} from "@soldix/popper";
-import { Portal as PortalPrimitive, type PortalProps } from "@soldix/portal";
-import { Presence } from "@soldix/presence";
+} from "@solidix/popper";
+import { Portal as PortalPrimitive, type PortalProps } from "@solidix/portal";
+import { Presence } from "@solidix/presence";
 import {
   Primitive,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { createSlottable } from "@soldix/slot";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { Root as VisuallyHidden } from "@soldix/visually-hidden";
+} from "@solidix/primitive";
+import { createSlottable } from "@solidix/slot";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { Root as VisuallyHidden } from "@solidix/visually-hidden";
 
 /* -------------------------------------------------------------------------------------------------
  * TooltipProvider
@@ -355,7 +355,7 @@ type TooltipPortalProps = {
 
 const TooltipPortal: Component<ScopedProps<TooltipPortalProps>> = (props) => {
   const context = useTooltipContext(PORTAL_NAME, props.__scopeTooltip);
-  // NOTE: Radix nests the portal inside `Presence`; Soldix inverts this.
+  // NOTE: Radix nests the portal inside `Presence`; Solidix inverts this.
   // Solid portals resolve to a text marker, so a `Presence` around the
   // portal cannot resolve (or track for exit animations) the portalled
   // content. With `Presence` inside, it resolves the content directly.

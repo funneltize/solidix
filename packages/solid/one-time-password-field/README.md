@@ -1,4 +1,4 @@
-# `@soldix/one-time-password-field`
+# `@solidix/one-time-password-field`
 
 One-time-password field primitive. Port of
 `@radix-ui/react-one-time-password-field`, including per-character inputs
@@ -8,7 +8,7 @@ navigation, auto-submit, form reset, and the aggregated hidden input.
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces
-  Radix's `Slot`/`asChild` composition via `@soldix/slot`.
+  Radix's `Slot`/`asChild` composition via `@solidix/slot`.
 - React's `onChange` fires per keystroke (it listens to the native `input`
   event); Solid's `onChange` is the native `change` event (blur/Enter). The
   per-keystroke logic therefore lives on `onInput`, with the consumer's

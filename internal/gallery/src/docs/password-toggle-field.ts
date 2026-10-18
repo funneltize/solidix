@@ -16,7 +16,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { PasswordToggleField } from \"soldix\";\nimport { EyeClosedIcon, EyeOpenIcon } from \"@radix-ui/react-icons\";\n\nexport default () => (\n\t<PasswordToggleField.Root>\n\t\t<PasswordToggleField.Input />\n\t\t<PasswordToggleField.Toggle>\n\t\t\t<PasswordToggleField.Icon\n\t\t\t\tvisible={<EyeOpenIcon />}\n\t\t\t\thidden={<EyeClosedIcon />}\n\t\t\t/>\n\t\t</PasswordToggleField.Toggle>\n\t</PasswordToggleField.Root>\n);"
+    "code": "import { PasswordToggleField } from \"solidix\";\nimport { EyeClosedIcon, EyeOpenIcon } from \"@radix-ui/react-icons\";\n\nexport default () => (\n\t<PasswordToggleField.Root>\n\t\t<PasswordToggleField.Input />\n\t\t<PasswordToggleField.Toggle>\n\t\t\t<PasswordToggleField.Icon\n\t\t\t\tvisible={<EyeOpenIcon />}\n\t\t\t\thidden={<EyeClosedIcon />}\n\t\t\t/>\n\t\t</PasswordToggleField.Toggle>\n\t</PasswordToggleField.Root>\n);"
   },
   "parts": [
     {

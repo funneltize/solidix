@@ -1,0 +1,65 @@
+{
+  "name": "@solidix/motion",
+  "version": "0.0.0",
+  "description": "CSS-first motion utilities: spring easing compiler, preset tokens, and animation recipes.",
+  "homepage": "https://github.com/eggfloat/solidix",
+  "bugs": {
+    "url": "https://github.com/eggfloat/solidix/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
+    "directory": "packages/solid/motion"
+  },
+  "source": "./src/index.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./springs.css": "./src/springs.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.mjs"
+        },
+        "require": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
+        }
+      },
+      "./springs.css": "./src/springs.css",
+      "./package.json": "./package.json"
+    }
+  },
+  "scripts": {
+    "lint": "oxlint --max-warnings 0 src test",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "gen:springs": "node scripts/gen-springs.mjs"
+  },
+  "devDependencies": {
+    "@repo/builder": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "solid-js": "2.0.0-rc.15"
+  },
+  "peerDependencies": {
+    "solid-js": ">=2.0.0-rc.15 <2.1.0"
+  }
+}

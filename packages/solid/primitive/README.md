@@ -1,4 +1,4 @@
-# `@soldix/primitive`
+# `@solidix/primitive`
 
 Primitive components and DOM utilities. Port of `@radix-ui/react-primitive`
 **and** `@radix-ui/primitive` (merged — see below).

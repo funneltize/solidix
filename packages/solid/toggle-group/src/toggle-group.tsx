@@ -1,15 +1,15 @@
 import { Show, omit, type Component } from "solid-js";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
-import { Primitive, ariaBoolean, type PrimitivePropsWithRef } from "@soldix/primitive";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
+import { Primitive, ariaBoolean, type PrimitivePropsWithRef } from "@solidix/primitive";
 import {
   RovingFocusGroup,
   RovingFocusGroupItem,
   createRovingFocusGroupScope,
   type RovingFocusGroupProps as RovingFocusGroupRootProps,
-} from "@soldix/roving-focus";
-import { Toggle, type ToggleProps } from "@soldix/toggle";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/roving-focus";
+import { Toggle, type ToggleProps } from "@solidix/toggle";
+import { useControllableState } from "@solidix/use-controllable-state";
 
 /* -------------------------------------------------------------------------------------------------
  * ToggleGroup

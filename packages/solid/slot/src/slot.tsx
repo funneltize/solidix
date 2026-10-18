@@ -1,6 +1,6 @@
 import { children, createEffect, omit, onCleanup, untrack, type Component } from "solid-js";
 import { DelegatedEvents, type JSX } from "@solidjs/web";
-import { afterConnected, composeRefs, type Ref } from "@soldix/compose-refs";
+import { afterConnected, composeRefs, type Ref } from "@solidix/compose-refs";
 
 /* -------------------------------------------------------------------------------------------------
  * Slot

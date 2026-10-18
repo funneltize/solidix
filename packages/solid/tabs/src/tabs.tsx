@@ -1,23 +1,23 @@
 import { createSignal, omit, onSettled, untrack, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { createContextScope, type Scope } from "@soldix/context";
-import { useDirection } from "@soldix/direction";
-import { useId } from "@soldix/id";
-import { Presence } from "@soldix/presence";
+import { createContextScope, type Scope } from "@solidix/context";
+import { useDirection } from "@solidix/direction";
+import { useId } from "@solidix/id";
+import { Presence } from "@solidix/presence";
 import {
   Primitive,
   ariaBoolean,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
+} from "@solidix/primitive";
 import {
   RovingFocusGroup,
   RovingFocusGroupItem,
   createRovingFocusGroupScope,
   type RovingFocusGroupProps as RovingFocusGroupRootProps,
-} from "@soldix/roving-focus";
-import { useControllableState } from "@soldix/use-controllable-state";
+} from "@solidix/roving-focus";
+import { useControllableState } from "@solidix/use-controllable-state";
 
 /* -------------------------------------------------------------------------------------------------
  * Tabs

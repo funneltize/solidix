@@ -1100,7 +1100,7 @@ describe("Menubar.SubContent", () => {
 });
 
 // NOTE: Radix's menubar suite only covers `aria-controls` linkage and prop
-// spreading — the interactions below are Soldix-authored against the Radix
+// spreading — the interactions below are Solidix-authored against the Radix
 // source (`menubar.tsx` trigger/content handlers).
 describe("menus", () => {
   function TwoMenuBar(props: { loop?: boolean } = {}) {

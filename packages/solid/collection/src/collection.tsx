@@ -1,8 +1,8 @@
 import { createEffect, createSignal, omit, untrack, type Component, type Setter } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { createContextScope } from "@soldix/context";
-import { useComposedRefs, type Ref, type RefObject } from "@soldix/compose-refs";
-import { createSlot, type SlotProps } from "@soldix/slot";
+import { createContextScope } from "@solidix/context";
+import { useComposedRefs, type Ref, type RefObject } from "@solidix/compose-refs";
+import { createSlot, type SlotProps } from "@solidix/slot";
 import type { EntryOf } from "./ordered-dictionary";
 import { OrderedDict, type ReadOnlyOrderedDict } from "./ordered-dictionary";
 

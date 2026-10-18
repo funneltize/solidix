@@ -1,5 +1,5 @@
 import { createSignal, onCleanup } from "solid-js";
-import { Toast } from "soldix";
+import { Toast } from "solidix";
 
 const ToastDemo = () => {
   const [open, setOpen] = createSignal(false);

@@ -1,8 +1,8 @@
-# `@soldix/menu`
+# `@solidix/menu`
 
 Menu primitive. Port of `@radix-ui/react-menu`. This is the shared
-foundation that `@soldix/dropdown-menu`, `@soldix/context-menu`, and
-`@soldix/menubar` compose on, exactly as in Radix.
+foundation that `@solidix/dropdown-menu`, `@solidix/context-menu`, and
+`@solidix/menubar` compose on, exactly as in Radix.
 
 ## Differences from Radix
 
@@ -15,9 +15,9 @@ foundation that `@soldix/dropdown-menu`, `@soldix/context-menu`, and
   fragment). Both are unstyled and inert.
 - The `style` prop of `MenuContent`/`MenuSubContent` is object-only (not
   `string`) so it can merge with the re-namespaced content custom
-  properties, matching `@soldix/popper`.
+  properties, matching `@solidix/popper`.
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces
-  Radix's `Slot`/`asChild` composition via `@soldix/slot`.
+  Radix's `Slot`/`asChild` composition via `@solidix/slot`.
 - Typeahead resolves item labels from the live DOM at match time (an
   explicit `textValue` prop still wins): Solid props freeze at setup and
   cannot pick up the post-mount `.textContent` sync the way Radix's

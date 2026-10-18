@@ -1,4 +1,4 @@
-# `@soldix/id`
+# `@solidix/id`
 
 Unique id hook. Port of `@radix-ui/react-id`.
 

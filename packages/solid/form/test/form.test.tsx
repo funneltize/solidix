@@ -14,7 +14,7 @@ import {
 describe("Form", () => {
   afterEach(cleanup);
   // NOTE: Radix also asserts `axe` cleanliness here (field wiring and
-  // explicit wiring); Soldix has no axe harness yet (Phase 6), so those
+  // explicit wiring); Solidix has no axe harness yet (Phase 6), so those
   // assertions have no port.
 
   describe("given components used within `Form.Field`", () => {

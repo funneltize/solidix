@@ -1,6 +1,6 @@
 import { omit, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { NavigationMenu } from "soldix";
+import { NavigationMenu } from "solidix";
 import { CaretDownIcon } from "../icons";
 
 const NavigationMenuDemo = () => {
@@ -20,7 +20,7 @@ const NavigationMenuDemo = () => {
                       <rect width="38" height="38" rx="9" fill="white" />
                       <rect x="21" y="21" width="12" height="12" rx="3" fill="#c2410c" />
                     </svg>
-                    <div class="CalloutHeading">Soldix</div>
+                    <div class="CalloutHeading">Solidix</div>
                     <p class="CalloutText">Unstyled, accessible primitives for Solid 2.</p>
                   </a>
                 </NavigationMenu.Link>
@@ -50,15 +50,15 @@ const NavigationMenuDemo = () => {
               </ListItem>
               <ListItem
                 title="Releases"
-                href="https://github.com/funneltize/soldix/releases"
+                href="https://github.com/eggfloat/solidix/releases"
               >
                 Changelog and version history.
               </ListItem>
-              <ListItem title="Issues" href="https://github.com/funneltize/soldix/issues">
+              <ListItem title="Issues" href="https://github.com/eggfloat/solidix/issues">
                 Report bugs and request features.
               </ListItem>
               <ListItem title="Radix UI" href="https://www.radix-ui.com/primitives">
-                The React library Soldix ports to Solid 2.
+                The React library Solidix ports to Solid 2.
               </ListItem>
               <ListItem title="Solid" href="https://www.solidjs.com/">
                 Fine-grained reactivity with no virtual DOM.
@@ -71,7 +71,7 @@ const NavigationMenuDemo = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Link class="NavigationMenuLink" href="https://github.com/funneltize/soldix">
+          <NavigationMenu.Link class="NavigationMenuLink" href="https://github.com/eggfloat/solidix">
             GitHub
           </NavigationMenu.Link>
         </NavigationMenu.Item>

@@ -1,4 +1,4 @@
-# `@soldix/tooltip`
+# `@solidix/tooltip`
 
 Tooltip primitive. Port of `@radix-ui/react-tooltip`.
 
@@ -15,4 +15,4 @@ Tooltip primitive. Port of `@radix-ui/react-tooltip`.
   reading `ref.current` during render, so the pointer-grace-area listeners
   attach deterministically. Observable behavior matches.
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces
-  Radix's `Slot`/`asChild` composition via `@soldix/slot`.
+  Radix's `Slot`/`asChild` composition via `@solidix/slot`.

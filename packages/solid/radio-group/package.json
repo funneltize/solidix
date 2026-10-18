@@ -1,15 +1,15 @@
 {
-  "name": "@soldix/radio-group",
+  "name": "@solidix/radio-group",
   "version": "0.0.0",
   "description": "RadioGroup primitive (port of @radix-ui/react-radio-group).",
-  "homepage": "https://github.com/funneltize/soldix",
+  "homepage": "https://github.com/eggfloat/solidix",
   "bugs": {
-    "url": "https://github.com/funneltize/soldix/issues"
+    "url": "https://github.com/eggfloat/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funneltize/soldix.git",
+    "url": "git+https://github.com/eggfloat/solidix.git",
     "directory": "packages/solid/radio-group"
   },
   "source": "./src/index.ts",
@@ -41,18 +41,18 @@
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "soldix-build && tsc -p tsconfig.build.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@soldix/compose-refs": "workspace:*",
-    "@soldix/context": "workspace:*",
-    "@soldix/direction": "workspace:*",
-    "@soldix/presence": "workspace:*",
-    "@soldix/primitive": "workspace:*",
-    "@soldix/roving-focus": "workspace:*",
-    "@soldix/use-controllable-state": "workspace:*",
-    "@soldix/use-size": "workspace:*"
+    "@solidix/compose-refs": "workspace:*",
+    "@solidix/context": "workspace:*",
+    "@solidix/direction": "workspace:*",
+    "@solidix/presence": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/roving-focus": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*",
+    "@solidix/use-size": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

@@ -8,10 +8,10 @@ import {
   useContext as useSolidContext,
   type Component,
 } from "solid-js";
-import { composeEventHandlers, dispatchDiscreteCustomEvent } from "@soldix/primitive";
-import { Primitive, type PrimitivePropsWithRef } from "@soldix/primitive";
-import { afterConnected, useComposedRefs } from "@soldix/compose-refs";
-import { useCallbackRef } from "@soldix/use-callback-ref";
+import { composeEventHandlers, dispatchDiscreteCustomEvent } from "@solidix/primitive";
+import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
+import { afterConnected, useComposedRefs } from "@solidix/compose-refs";
+import { useCallbackRef } from "@solidix/use-callback-ref";
 
 /* -------------------------------------------------------------------------------------------------
  * DismissableLayer

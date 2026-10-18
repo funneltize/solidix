@@ -11,19 +11,19 @@ const Landing: Component = () => (
         Accessible, unstyled UI primitives <span class="hero-accent">for Solid&nbsp;2.</span>
       </h1>
       <p class="lede">
-        Soldix ports Radix Primitives to Solid 2 with full API parity: the same parts, behavior, and
+        Solidix ports Radix Primitives to Solid 2 with full API parity: the same parts, behavior, and
         accessibility — on fine-grained reactivity, with zero virtual DOM.
       </p>
       <div class="hero-cta">
         <a class="btn primary" href="#/accordion">
           Browse primitives
         </a>
-        <a class="btn" href="https://github.com/funneltize/soldix" target="_blank" rel="noreferrer">
+        <a class="btn" href="https://github.com/eggfloat/solidix" target="_blank" rel="noreferrer">
           GitHub
         </a>
       </div>
       <div class="hero-install">
-        <CodeBlock code="pnpm add soldix solid-js @solidjs/web" lang="bash" title="terminal" />
+        <CodeBlock code="pnpm add solidix solid-js @solidjs/web" lang="bash" title="terminal" />
       </div>
     </section>
 
@@ -90,7 +90,7 @@ const Landing: Component = () => (
     <footer class="site-footer">
       <span class="footer-brand">
         <span class="brand-mark" aria-hidden="true" />
-        soldix
+        solidix
       </span>
       <span>
         MIT · A Solid 2 port of Radix Primitives · Not affiliated with Radix UI or WorkOS.

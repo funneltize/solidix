@@ -1,4 +1,4 @@
-import { Label } from "soldix";
+import { Label } from "solidix";
 
 const LabelDemo = () => (
   <div

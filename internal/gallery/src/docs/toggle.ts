@@ -14,7 +14,7 @@ export const doc: PrimitiveDoc = {
   "anatomy": {
     "lang": "jsx",
     "highlights": [],
-    "code": "import { Toggle } from \"soldix\";\n\nexport default () => <Toggle.Root />;"
+    "code": "import { Toggle } from \"solidix\";\n\nexport default () => <Toggle.Root />;"
   },
   "parts": [
     {

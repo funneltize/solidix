@@ -1,19 +1,19 @@
 import { Show, createEffect, createSignal, omit, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
-import { useComposedRefs, type RefObject } from "@soldix/compose-refs";
-import { createContextScope, type Scope } from "@soldix/context";
-import { IS_DEVELOPMENT } from "@soldix/env-check/is-development";
-import { useId } from "@soldix/id";
+import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
+import { createContextScope, type Scope } from "@solidix/context";
+import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
+import { useId } from "@solidix/id";
 import {
   Primitive,
   callEventHandler,
   composeEventHandlers,
   type PrimitivePropsWithRef,
-} from "@soldix/primitive";
-import { useControllableState } from "@soldix/use-controllable-state";
-import { useEffectEvent } from "@soldix/use-effect-event";
-import { useIsHydrated } from "@soldix/use-is-hydrated";
-import { useLayoutEffect } from "@soldix/use-layout-effect";
+} from "@solidix/primitive";
+import { useControllableState } from "@solidix/use-controllable-state";
+import { useEffectEvent } from "@solidix/use-effect-event";
+import { useIsHydrated } from "@solidix/use-is-hydrated";
+import { useLayoutEffect } from "@solidix/use-layout-effect";
 
 const PASSWORD_TOGGLE_FIELD_NAME = "PasswordToggleField";
 
@@ -332,7 +332,7 @@ const PasswordToggleFieldToggle: Component<ScopedProps<PasswordToggleFieldToggle
       ref={ref}
       id={context.inputId()}
       // Radix computes the pre-hydration `tabIndex` but never renders it;
-      // Soldix renders it so the button is actually unfocusable pre-hydration.
+      // Solidix renders it so the button is actually unfocusable pre-hydration.
       tabindex={tabIndex()}
       {...rest}
       onPointerDown={composeEventHandlers(

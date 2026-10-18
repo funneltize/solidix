@@ -1,5 +1,5 @@
 import { omit, type Component } from "solid-js";
-import { Primitive, callEventHandler, type PrimitivePropsWithRef } from "@soldix/primitive";
+import { Primitive, callEventHandler, type PrimitivePropsWithRef } from "@solidix/primitive";
 
 /* -------------------------------------------------------------------------------------------------
  * Label

@@ -1,4 +1,4 @@
-# `@soldix/use-previous`
+# `@solidix/use-previous`
 
 Previous-value accessor. Port of `@radix-ui/react-use-previous`.
 

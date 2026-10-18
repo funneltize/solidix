@@ -1,4 +1,4 @@
-import { Toggle } from "soldix";
+import { Toggle } from "solidix";
 import { FontItalicIcon } from "../icons";
 
 const ToggleDemo = () => (

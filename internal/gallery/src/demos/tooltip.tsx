@@ -1,4 +1,4 @@
-import { Tooltip } from "soldix";
+import { Tooltip } from "solidix";
 import { PlusIcon } from "../icons";
 
 const TooltipDemo = () => {

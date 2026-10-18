@@ -59,105 +59,108 @@ importers:
       '@radix-ui/themes':
         specifier: 3.3.0
         version: 3.3.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
-      '@soldix/accordion':
+      '@solidix/accordion':
         specifier: workspace:*
         version: link:../../packages/solid/accordion
-      '@soldix/alert-dialog':
+      '@solidix/alert-dialog':
         specifier: workspace:*
         version: link:../../packages/solid/alert-dialog
-      '@soldix/announce':
+      '@solidix/announce':
         specifier: workspace:*
         version: link:../../packages/solid/announce
-      '@soldix/aspect-ratio':
+      '@solidix/aspect-ratio':
         specifier: workspace:*
         version: link:../../packages/solid/aspect-ratio
-      '@soldix/avatar':
+      '@solidix/avatar':
         specifier: workspace:*
         version: link:../../packages/solid/avatar
-      '@soldix/checkbox':
+      '@solidix/checkbox':
         specifier: workspace:*
         version: link:../../packages/solid/checkbox
-      '@soldix/collapsible':
+      '@solidix/collapsible':
         specifier: workspace:*
         version: link:../../packages/solid/collapsible
-      '@soldix/context-menu':
+      '@solidix/context-menu':
         specifier: workspace:*
         version: link:../../packages/solid/context-menu
-      '@soldix/dialog':
+      '@solidix/dialog':
         specifier: workspace:*
         version: link:../../packages/solid/dialog
-      '@soldix/dropdown-menu':
+      '@solidix/dropdown-menu':
         specifier: workspace:*
         version: link:../../packages/solid/dropdown-menu
-      '@soldix/form':
+      '@solidix/form':
         specifier: workspace:*
         version: link:../../packages/solid/form
-      '@soldix/hover-card':
+      '@solidix/hover-card':
         specifier: workspace:*
         version: link:../../packages/solid/hover-card
-      '@soldix/label':
+      '@solidix/label':
         specifier: workspace:*
         version: link:../../packages/solid/label
-      '@soldix/menubar':
+      '@solidix/menubar':
         specifier: workspace:*
         version: link:../../packages/solid/menubar
-      '@soldix/navigation-menu':
+      '@solidix/motion':
+        specifier: workspace:*
+        version: link:../../packages/solid/motion
+      '@solidix/navigation-menu':
         specifier: workspace:*
         version: link:../../packages/solid/navigation-menu
-      '@soldix/one-time-password-field':
+      '@solidix/one-time-password-field':
         specifier: workspace:*
         version: link:../../packages/solid/one-time-password-field
-      '@soldix/password-toggle-field':
+      '@solidix/password-toggle-field':
         specifier: workspace:*
         version: link:../../packages/solid/password-toggle-field
-      '@soldix/popover':
+      '@solidix/popover':
         specifier: workspace:*
         version: link:../../packages/solid/popover
-      '@soldix/progress':
+      '@solidix/progress':
         specifier: workspace:*
         version: link:../../packages/solid/progress
-      '@soldix/radio-group':
+      '@solidix/radio-group':
         specifier: workspace:*
         version: link:../../packages/solid/radio-group
-      '@soldix/scroll-area':
+      '@solidix/scroll-area':
         specifier: workspace:*
         version: link:../../packages/solid/scroll-area
-      '@soldix/select':
+      '@solidix/select':
         specifier: workspace:*
         version: link:../../packages/solid/select
-      '@soldix/separator':
+      '@solidix/separator':
         specifier: workspace:*
         version: link:../../packages/solid/separator
-      '@soldix/slider':
+      '@solidix/slider':
         specifier: workspace:*
         version: link:../../packages/solid/slider
-      '@soldix/switch':
+      '@solidix/switch':
         specifier: workspace:*
         version: link:../../packages/solid/switch
-      '@soldix/tabs':
+      '@solidix/tabs':
         specifier: workspace:*
         version: link:../../packages/solid/tabs
-      '@soldix/toast':
+      '@solidix/toast':
         specifier: workspace:*
         version: link:../../packages/solid/toast
-      '@soldix/toggle':
+      '@solidix/toggle':
         specifier: workspace:*
         version: link:../../packages/solid/toggle
-      '@soldix/toggle-group':
+      '@solidix/toggle-group':
         specifier: workspace:*
         version: link:../../packages/solid/toggle-group
-      '@soldix/toolbar':
+      '@solidix/toolbar':
         specifier: workspace:*
         version: link:../../packages/solid/toolbar
-      '@soldix/tooltip':
+      '@solidix/tooltip':
         specifier: workspace:*
         version: link:../../packages/solid/tooltip
       '@solidjs/web':
         specifier: 2.0.0-rc.15
         version: 2.0.0-rc.15(solid-js@2.0.0-rc.15)
-      soldix:
+      solidix:
         specifier: workspace:*
-        version: link:../../packages/solid/soldix
+        version: link:../../packages/solid/solidix
       solid-js:
         specifier: 2.0.0-rc.15
         version: 2.0.0-rc.15
@@ -240,10 +243,10 @@ importers:
 
   packages/solid/accessible-icon:
     dependencies:
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/visually-hidden':
+      '@solidix/visually-hidden':
         specifier: workspace:*
         version: link:../visually-hidden
     devDependencies:
@@ -265,28 +268,28 @@ importers:
 
   packages/solid/accordion:
     dependencies:
-      '@soldix/collapsible':
+      '@solidix/collapsible':
         specifier: workspace:*
         version: link:../collapsible
-      '@soldix/collection':
+      '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
     devDependencies:
@@ -311,16 +314,16 @@ importers:
 
   packages/solid/alert-dialog:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/dialog':
+      '@solidix/dialog':
         specifier: workspace:*
         version: link:../dialog
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
     devDependencies:
@@ -345,13 +348,13 @@ importers:
 
   packages/solid/announce:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/portal':
+      '@solidix/portal':
         specifier: workspace:*
         version: link:../portal
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
     devDependencies:
@@ -376,7 +379,7 @@ importers:
 
   packages/solid/arrow:
     dependencies:
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
     devDependencies:
@@ -398,7 +401,7 @@ importers:
 
   packages/solid/aspect-ratio:
     dependencies:
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
     devDependencies:
@@ -423,16 +426,16 @@ importers:
 
   packages/solid/avatar:
     dependencies:
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/env-check':
+      '@solidix/env-check':
         specifier: workspace:*
         version: link:../../core/env-check
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
     devDependencies:
@@ -457,22 +460,22 @@ importers:
 
   packages/solid/checkbox:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-size':
+      '@solidix/use-size':
         specifier: workspace:*
         version: link:../use-size
     devDependencies:
@@ -497,22 +500,22 @@ importers:
 
   packages/solid/collapsible:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
     devDependencies:
@@ -537,19 +540,19 @@ importers:
 
   packages/solid/collection:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
     devDependencies:
@@ -604,28 +607,28 @@ importers:
 
   packages/solid/context-menu:
     dependencies:
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/env-check':
+      '@solidix/env-check':
         specifier: workspace:*
         version: link:../../core/env-check
-      '@soldix/focus-scope':
+      '@solidix/focus-scope':
         specifier: workspace:*
         version: link:../focus-scope
-      '@soldix/menu':
+      '@solidix/menu':
         specifier: workspace:*
         version: link:../menu
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/remove-scroll':
+      '@solidix/remove-scroll':
         specifier: workspace:*
         version: link:../remove-scroll
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
     devDependencies:
@@ -650,46 +653,46 @@ importers:
 
   packages/solid/dialog:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/dismissable-layer':
+      '@solidix/dismissable-layer':
         specifier: workspace:*
         version: link:../dismissable-layer
-      '@soldix/env-check':
+      '@solidix/env-check':
         specifier: workspace:*
         version: link:../../core/env-check
-      '@soldix/focus-guards':
+      '@solidix/focus-guards':
         specifier: workspace:*
         version: link:../focus-guards
-      '@soldix/focus-scope':
+      '@solidix/focus-scope':
         specifier: workspace:*
         version: link:../focus-scope
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/portal':
+      '@solidix/portal':
         specifier: workspace:*
         version: link:../portal
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/remove-scroll':
+      '@solidix/remove-scroll':
         specifier: workspace:*
         version: link:../remove-scroll
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
     devDependencies:
@@ -732,13 +735,13 @@ importers:
 
   packages/solid/dismissable-layer:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
     devDependencies:
@@ -763,31 +766,31 @@ importers:
 
   packages/solid/dropdown-menu:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/focus-scope':
+      '@solidix/focus-scope':
         specifier: workspace:*
         version: link:../focus-scope
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/menu':
+      '@solidix/menu':
         specifier: workspace:*
         version: link:../menu
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/remove-scroll':
+      '@solidix/remove-scroll':
         specifier: workspace:*
         version: link:../remove-scroll
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
     devDependencies:
@@ -830,13 +833,13 @@ importers:
 
   packages/solid/focus-scope:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
     devDependencies:
@@ -861,22 +864,22 @@ importers:
 
   packages/solid/form:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/label':
+      '@solidix/label':
         specifier: workspace:*
         version: link:../label
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
     devDependencies:
@@ -901,34 +904,34 @@ importers:
 
   packages/solid/hover-card:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/dismissable-layer':
+      '@solidix/dismissable-layer':
         specifier: workspace:*
         version: link:../dismissable-layer
-      '@soldix/focus-scope':
+      '@solidix/focus-scope':
         specifier: workspace:*
         version: link:../focus-scope
-      '@soldix/popper':
+      '@solidix/popper':
         specifier: workspace:*
         version: link:../popper
-      '@soldix/portal':
+      '@solidix/portal':
         specifier: workspace:*
         version: link:../portal
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
     devDependencies:
@@ -971,7 +974,7 @@ importers:
 
   packages/solid/label:
     dependencies:
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
     devDependencies:
@@ -996,52 +999,52 @@ importers:
 
   packages/solid/menu:
     dependencies:
-      '@soldix/collection':
+      '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/dismissable-layer':
+      '@solidix/dismissable-layer':
         specifier: workspace:*
         version: link:../dismissable-layer
-      '@soldix/focus-guards':
+      '@solidix/focus-guards':
         specifier: workspace:*
         version: link:../focus-guards
-      '@soldix/focus-scope':
+      '@solidix/focus-scope':
         specifier: workspace:*
         version: link:../focus-scope
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/popper':
+      '@solidix/popper':
         specifier: workspace:*
         version: link:../popper
-      '@soldix/portal':
+      '@solidix/portal':
         specifier: workspace:*
         version: link:../portal
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/remove-scroll':
+      '@solidix/remove-scroll':
         specifier: workspace:*
         version: link:../remove-scroll
-      '@soldix/roving-focus':
+      '@solidix/roving-focus':
         specifier: workspace:*
         version: link:../roving-focus
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
     devDependencies:
@@ -1066,40 +1069,40 @@ importers:
 
   packages/solid/menubar:
     dependencies:
-      '@soldix/collection':
+      '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/focus-scope':
+      '@solidix/focus-scope':
         specifier: workspace:*
         version: link:../focus-scope
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/menu':
+      '@solidix/menu':
         specifier: workspace:*
         version: link:../menu
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/remove-scroll':
+      '@solidix/remove-scroll':
         specifier: workspace:*
         version: link:../remove-scroll
-      '@soldix/roving-focus':
+      '@solidix/roving-focus':
         specifier: workspace:*
         version: link:../roving-focus
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
     devDependencies:
@@ -1122,48 +1125,60 @@ importers:
         specifier: 2.0.0-rc.15
         version: 2.0.0-rc.15
 
+  packages/solid/motion:
+    devDependencies:
+      '@repo/builder':
+        specifier: workspace:*
+        version: link:../../../internal/builder
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../../internal/typescript-config
+      solid-js:
+        specifier: 2.0.0-rc.15
+        version: 2.0.0-rc.15
+
   packages/solid/navigation-menu:
     dependencies:
-      '@soldix/collection':
+      '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/dismissable-layer':
+      '@solidix/dismissable-layer':
         specifier: workspace:*
         version: link:../dismissable-layer
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
-      '@soldix/use-previous':
+      '@solidix/use-previous':
         specifier: workspace:*
         version: link:../use-previous
-      '@soldix/visually-hidden':
+      '@solidix/visually-hidden':
         specifier: workspace:*
         version: link:../visually-hidden
     devDependencies:
@@ -1188,34 +1203,34 @@ importers:
 
   packages/solid/one-time-password-field:
     dependencies:
-      '@soldix/collection':
+      '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/number':
+      '@solidix/number':
         specifier: workspace:*
         version: link:../../core/number
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/roving-focus':
+      '@solidix/roving-focus':
         specifier: workspace:*
         version: link:../roving-focus
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-is-hydrated':
+      '@solidix/use-is-hydrated':
         specifier: workspace:*
         version: link:../use-is-hydrated
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
     devDependencies:
@@ -1240,31 +1255,31 @@ importers:
 
   packages/solid/password-toggle-field:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/env-check':
+      '@solidix/env-check':
         specifier: workspace:*
         version: link:../../core/env-check
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-effect-event':
+      '@solidix/use-effect-event':
         specifier: workspace:*
         version: link:../use-effect-event
-      '@soldix/use-is-hydrated':
+      '@solidix/use-is-hydrated':
         specifier: workspace:*
         version: link:../use-is-hydrated
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
     devDependencies:
@@ -1289,43 +1304,43 @@ importers:
 
   packages/solid/popover:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/dismissable-layer':
+      '@solidix/dismissable-layer':
         specifier: workspace:*
         version: link:../dismissable-layer
-      '@soldix/focus-guards':
+      '@solidix/focus-guards':
         specifier: workspace:*
         version: link:../focus-guards
-      '@soldix/focus-scope':
+      '@solidix/focus-scope':
         specifier: workspace:*
         version: link:../focus-scope
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/popper':
+      '@solidix/popper':
         specifier: workspace:*
         version: link:../popper
-      '@soldix/portal':
+      '@solidix/portal':
         specifier: workspace:*
         version: link:../portal
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/remove-scroll':
+      '@solidix/remove-scroll':
         specifier: workspace:*
         version: link:../remove-scroll
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
     devDependencies:
@@ -1353,25 +1368,25 @@ importers:
       '@floating-ui/dom':
         specifier: 1.8.0
         version: 1.8.0
-      '@soldix/arrow':
+      '@solidix/arrow':
         specifier: workspace:*
         version: link:../arrow
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/rect':
+      '@solidix/rect':
         specifier: workspace:*
         version: link:../../core/rect
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
-      '@soldix/use-size':
+      '@solidix/use-size':
         specifier: workspace:*
         version: link:../use-size
     devDependencies:
@@ -1393,10 +1408,10 @@ importers:
 
   packages/solid/portal:
     dependencies:
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
     devDependencies:
@@ -1436,13 +1451,13 @@ importers:
 
   packages/solid/primitive:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/env-check':
+      '@solidix/env-check':
         specifier: workspace:*
         version: link:../../core/env-check
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
     devDependencies:
@@ -1464,10 +1479,10 @@ importers:
 
   packages/solid/progress:
     dependencies:
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
     devDependencies:
@@ -1492,28 +1507,28 @@ importers:
 
   packages/solid/radio-group:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/roving-focus':
+      '@solidix/roving-focus':
         specifier: workspace:*
         version: link:../roving-focus
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-size':
+      '@solidix/use-size':
         specifier: workspace:*
         version: link:../use-size
     devDependencies:
@@ -1538,10 +1553,10 @@ importers:
 
   packages/solid/remove-scroll:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
     devDependencies:
@@ -1566,31 +1581,31 @@ importers:
 
   packages/solid/roving-focus:
     dependencies:
-      '@soldix/collection':
+      '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-is-hydrated':
+      '@solidix/use-is-hydrated':
         specifier: workspace:*
         version: link:../use-is-hydrated
     devDependencies:
@@ -1615,34 +1630,34 @@ importers:
 
   packages/solid/scroll-area:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/env-check':
+      '@solidix/env-check':
         specifier: workspace:*
         version: link:../../core/env-check
-      '@soldix/number':
+      '@solidix/number':
         specifier: workspace:*
         version: link:../../core/number
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
     devDependencies:
@@ -1667,61 +1682,61 @@ importers:
 
   packages/solid/select:
     dependencies:
-      '@soldix/collection':
+      '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/dismissable-layer':
+      '@solidix/dismissable-layer':
         specifier: workspace:*
         version: link:../dismissable-layer
-      '@soldix/focus-guards':
+      '@solidix/focus-guards':
         specifier: workspace:*
         version: link:../focus-guards
-      '@soldix/focus-scope':
+      '@solidix/focus-scope':
         specifier: workspace:*
         version: link:../focus-scope
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/number':
+      '@solidix/number':
         specifier: workspace:*
         version: link:../../core/number
-      '@soldix/popper':
+      '@solidix/popper':
         specifier: workspace:*
         version: link:../popper
-      '@soldix/portal':
+      '@solidix/portal':
         specifier: workspace:*
         version: link:../portal
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/remove-scroll':
+      '@solidix/remove-scroll':
         specifier: workspace:*
         version: link:../remove-scroll
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
-      '@soldix/visually-hidden':
+      '@solidix/visually-hidden':
         specifier: workspace:*
         version: link:../visually-hidden
     devDependencies:
@@ -1746,7 +1761,7 @@ importers:
 
   packages/solid/separator:
     dependencies:
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
     devDependencies:
@@ -1771,28 +1786,28 @@ importers:
 
   packages/solid/slider:
     dependencies:
-      '@soldix/collection':
+      '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/number':
+      '@solidix/number':
         specifier: workspace:*
         version: link:../../core/number
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-size':
+      '@solidix/use-size':
         specifier: workspace:*
         version: link:../use-size
     devDependencies:
@@ -1817,7 +1832,7 @@ importers:
 
   packages/solid/slot:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
     devDependencies:
@@ -1840,96 +1855,96 @@ importers:
         specifier: 2.0.0-rc.15
         version: 2.0.0-rc.15
 
-  packages/solid/soldix:
+  packages/solid/solidix:
     dependencies:
-      '@soldix/accordion':
+      '@solidix/accordion':
         specifier: workspace:*
         version: link:../accordion
-      '@soldix/alert-dialog':
+      '@solidix/alert-dialog':
         specifier: workspace:*
         version: link:../alert-dialog
-      '@soldix/aspect-ratio':
+      '@solidix/aspect-ratio':
         specifier: workspace:*
         version: link:../aspect-ratio
-      '@soldix/avatar':
+      '@solidix/avatar':
         specifier: workspace:*
         version: link:../avatar
-      '@soldix/checkbox':
+      '@solidix/checkbox':
         specifier: workspace:*
         version: link:../checkbox
-      '@soldix/collapsible':
+      '@solidix/collapsible':
         specifier: workspace:*
         version: link:../collapsible
-      '@soldix/context-menu':
+      '@solidix/context-menu':
         specifier: workspace:*
         version: link:../context-menu
-      '@soldix/dialog':
+      '@solidix/dialog':
         specifier: workspace:*
         version: link:../dialog
-      '@soldix/dropdown-menu':
+      '@solidix/dropdown-menu':
         specifier: workspace:*
         version: link:../dropdown-menu
-      '@soldix/form':
+      '@solidix/form':
         specifier: workspace:*
         version: link:../form
-      '@soldix/hover-card':
+      '@solidix/hover-card':
         specifier: workspace:*
         version: link:../hover-card
-      '@soldix/label':
+      '@solidix/label':
         specifier: workspace:*
         version: link:../label
-      '@soldix/menubar':
+      '@solidix/menubar':
         specifier: workspace:*
         version: link:../menubar
-      '@soldix/navigation-menu':
+      '@solidix/navigation-menu':
         specifier: workspace:*
         version: link:../navigation-menu
-      '@soldix/one-time-password-field':
+      '@solidix/one-time-password-field':
         specifier: workspace:*
         version: link:../one-time-password-field
-      '@soldix/password-toggle-field':
+      '@solidix/password-toggle-field':
         specifier: workspace:*
         version: link:../password-toggle-field
-      '@soldix/popover':
+      '@solidix/popover':
         specifier: workspace:*
         version: link:../popover
-      '@soldix/progress':
+      '@solidix/progress':
         specifier: workspace:*
         version: link:../progress
-      '@soldix/radio-group':
+      '@solidix/radio-group':
         specifier: workspace:*
         version: link:../radio-group
-      '@soldix/scroll-area':
+      '@solidix/scroll-area':
         specifier: workspace:*
         version: link:../scroll-area
-      '@soldix/select':
+      '@solidix/select':
         specifier: workspace:*
         version: link:../select
-      '@soldix/separator':
+      '@solidix/separator':
         specifier: workspace:*
         version: link:../separator
-      '@soldix/slider':
+      '@solidix/slider':
         specifier: workspace:*
         version: link:../slider
-      '@soldix/switch':
+      '@solidix/switch':
         specifier: workspace:*
         version: link:../switch
-      '@soldix/tabs':
+      '@solidix/tabs':
         specifier: workspace:*
         version: link:../tabs
-      '@soldix/toast':
+      '@solidix/toast':
         specifier: workspace:*
         version: link:../toast
-      '@soldix/toggle':
+      '@solidix/toggle':
         specifier: workspace:*
         version: link:../toggle
-      '@soldix/toggle-group':
+      '@solidix/toggle-group':
         specifier: workspace:*
         version: link:../toggle-group
-      '@soldix/toolbar':
+      '@solidix/toolbar':
         specifier: workspace:*
         version: link:../toolbar
-      '@soldix/tooltip':
+      '@solidix/tooltip':
         specifier: workspace:*
         version: link:../tooltip
     devDependencies:
@@ -1948,19 +1963,19 @@ importers:
 
   packages/solid/switch:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-size':
+      '@solidix/use-size':
         specifier: workspace:*
         version: link:../use-size
     devDependencies:
@@ -1985,25 +2000,25 @@ importers:
 
   packages/solid/tabs:
     dependencies:
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/roving-focus':
+      '@solidix/roving-focus':
         specifier: workspace:*
         version: link:../roving-focus
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
     devDependencies:
@@ -2028,37 +2043,37 @@ importers:
 
   packages/solid/toast:
     dependencies:
-      '@soldix/collection':
+      '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/dismissable-layer':
+      '@solidix/dismissable-layer':
         specifier: workspace:*
         version: link:../dismissable-layer
-      '@soldix/portal':
+      '@solidix/portal':
         specifier: workspace:*
         version: link:../portal
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
-      '@soldix/visually-hidden':
+      '@solidix/visually-hidden':
         specifier: workspace:*
         version: link:../visually-hidden
     devDependencies:
@@ -2083,10 +2098,10 @@ importers:
 
   packages/solid/toggle:
     dependencies:
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
     devDependencies:
@@ -2111,22 +2126,22 @@ importers:
 
   packages/solid/toggle-group:
     dependencies:
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/roving-focus':
+      '@solidix/roving-focus':
         specifier: workspace:*
         version: link:../roving-focus
-      '@soldix/toggle':
+      '@solidix/toggle':
         specifier: workspace:*
         version: link:../toggle
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
     devDependencies:
@@ -2151,22 +2166,22 @@ importers:
 
   packages/solid/toolbar:
     dependencies:
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/direction':
+      '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/roving-focus':
+      '@solidix/roving-focus':
         specifier: workspace:*
         version: link:../roving-focus
-      '@soldix/separator':
+      '@solidix/separator':
         specifier: workspace:*
         version: link:../separator
-      '@soldix/toggle-group':
+      '@solidix/toggle-group':
         specifier: workspace:*
         version: link:../toggle-group
     devDependencies:
@@ -2191,43 +2206,43 @@ importers:
 
   packages/solid/tooltip:
     dependencies:
-      '@soldix/compose-refs':
+      '@solidix/compose-refs':
         specifier: workspace:*
         version: link:../compose-refs
-      '@soldix/context':
+      '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@soldix/dismissable-layer':
+      '@solidix/dismissable-layer':
         specifier: workspace:*
         version: link:../dismissable-layer
-      '@soldix/focus-scope':
+      '@solidix/focus-scope':
         specifier: workspace:*
         version: link:../focus-scope
-      '@soldix/id':
+      '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@soldix/popper':
+      '@solidix/popper':
         specifier: workspace:*
         version: link:../popper
-      '@soldix/portal':
+      '@solidix/portal':
         specifier: workspace:*
         version: link:../portal
-      '@soldix/presence':
+      '@solidix/presence':
         specifier: workspace:*
         version: link:../presence
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@soldix/slot':
+      '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@soldix/use-controllable-state':
+      '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@soldix/use-layout-effect':
+      '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
-      '@soldix/visually-hidden':
+      '@solidix/visually-hidden':
         specifier: workspace:*
         version: link:../visually-hidden
     devDependencies:
@@ -2267,10 +2282,10 @@ importers:
 
   packages/solid/use-controllable-state:
     dependencies:
-      '@soldix/env-check':
+      '@solidix/env-check':
         specifier: workspace:*
         version: link:../../core/env-check
-      '@soldix/use-effect-event':
+      '@solidix/use-effect-event':
         specifier: workspace:*
         version: link:../use-effect-event
     devDependencies:
@@ -2307,7 +2322,7 @@ importers:
 
   packages/solid/use-escape-keydown:
     dependencies:
-      '@soldix/use-callback-ref':
+      '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
     devDependencies:
@@ -2377,7 +2392,7 @@ importers:
 
   packages/solid/use-rect:
     dependencies:
-      '@soldix/rect':
+      '@solidix/rect':
         specifier: workspace:*
         version: link:../../core/rect
     devDependencies:
@@ -2411,7 +2426,7 @@ importers:
 
   packages/solid/visually-hidden:
     dependencies:
-      '@soldix/primitive':
+      '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
     devDependencies:
