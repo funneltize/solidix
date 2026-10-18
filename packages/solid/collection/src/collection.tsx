@@ -38,7 +38,7 @@ type CollectionDict<ItemElement extends HTMLElement, ItemData> = ReadOnlyOrdered
  *
  * Item data passed to `ItemSlot` (every prop other than `scope`, `children`
  * and `ref`) is snapshotted and compared shallowly; changes re-register the
- * item. Unlike Radix there is no render to memoize against — reactive item
+ * item. Unlike Radix there is no render to memoize against - reactive item
  * props are tracked automatically.
  */
 /* @__NO_SIDE_EFFECTS__ */ function createCollection<
@@ -234,7 +234,7 @@ type CollectionDict<ItemElement extends HTMLElement, ItemData> = ReadOnlyOrdered
         }
         return () => {
           // The closure owns `current`, so this runs deterministically on
-          // re-run and on disposal — unlike an `onCleanup` reading the
+          // re-run and on disposal - unlike an `onCleanup` reading the
           // `element` signal, which the ref detach may already have nulled.
           if (current) registry.delete(current);
           setCollection((map) => {

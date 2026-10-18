@@ -3,11 +3,11 @@ import type { PrimitiveDoc } from "./types";
 export const doc: PrimitiveDoc = {
   "slug": "motion",
   "title": "Motion",
-  "metaDescription": "Spring easing compiler, preset motion tokens, and a View Transitions helper — CSS-first animation with no engine.",
+  "metaDescription": "Spring easing compiler, preset motion tokens, and a View Transitions helper - CSS-first animation with no engine.",
   "ariaLink": "",
-  "description": "Compiles spring physics to CSS `linear()` easings that run on the compositor, ships preset tokens, wraps same-document View Transitions, and tracks velocity-aware swipe gestures — with reduced-motion and fallback handling throughout. Primitives stay headless; all animation lives in userland CSS keyed off `data-state`.",
+  "description": "Compiles spring physics to CSS `linear()` easings that run on the compositor, ships preset tokens, wraps same-document View Transitions, and tracks velocity-aware swipe gestures - with reduced-motion and fallback handling throughout. Primitives stay headless; all animation lives in userland CSS keyed off `data-state`.",
   "features": [
-    "Springs compile to `linear()` — zero main-thread cost per frame.",
+    "Springs compile to `linear()` - zero main-thread cost per frame.",
     "Four preset tokens with starting-point durations.",
     "`viewTransition` morphs layout natively, instantly otherwise.",
     "`createSwipe` settles flicks and drags with spring physics.",
@@ -23,7 +23,7 @@ export const doc: PrimitiveDoc = {
   "parts": [
     {
       "name": "createSpring",
-      "description": "Simulates a damped harmonic oscillator from rest toward `1` until it settles, then samples the motion into a CSS `linear()` timing function. Simulation runs in normalized time, so only the damping ratio shapes the output — equal ratios compile identically at any timescale. Results are cached by parameters.",
+      "description": "Simulates a damped harmonic oscillator from rest toward `1` until it settles, then samples the motion into a CSS `linear()` timing function. Simulation runs in normalized time, so only the damping ratio shapes the output - equal ratios compile identically at any timescale. Results are cached by parameters.",
       "props": [
         {
           "name": "stiffness",
@@ -35,7 +35,7 @@ export const doc: PrimitiveDoc = {
           "name": "damping",
           "type": "number",
           "default": 22,
-          "description": "Damping coefficient. Lower values bounce more. Must be positive — undamped springs never settle."
+          "description": "Damping coefficient. Lower values bounce more. Must be positive - undamped springs never settle."
         },
         {
           "name": "mass",
@@ -69,7 +69,7 @@ export const doc: PrimitiveDoc = {
     },
     {
       "name": "createSwipe",
-      "description": "Tracks a pointer drag with touch and mouse support, decides dismiss versus snap-back from displacement and flick velocity, and settles with a spring transition — no rAF loop. Returns a `ref` to attach, a reactive `state` (`idle`, `dragging`, `settling`, `dismissed`, mirrored to `data-state`), and `dispose()` for explicit teardown. Callbacks and `now` read live from the options object; other options are snapshotted at creation.",
+      "description": "Tracks a pointer drag with touch and mouse support, decides dismiss versus snap-back from displacement and flick velocity, and settles with a spring transition - no rAF loop. Returns a `ref` to attach, a reactive `state` (`idle`, `dragging`, `settling`, `dismissed`, mirrored to `data-state`), and `dispose()` for explicit teardown. Callbacks and `now` read live from the options object; other options are snapshotted at creation.",
       "props": [
         {
           "name": "axis",
@@ -219,7 +219,7 @@ export const doc: PrimitiveDoc = {
     }
   ],
   "customApis": [],
-  "accessibility": "Motion must always have an off-ramp: `viewTransition` skips animation under `prefers-reduced-motion`, and every CSS recipe should pair with shortened durations inside a reduced-motion media query. Keep vestibular triggers (large parallax, spin, rapid flashing) out of essential UI, and never convey information by motion alone. Swipe dismissal needs a keyboard equivalent — pair it with a visible control performing the same action — and move focus to a sensible target when dismissal removes the focused element.",
+  "accessibility": "Motion must always have an off-ramp: `viewTransition` skips animation under `prefers-reduced-motion`, and every CSS recipe should pair with shortened durations inside a reduced-motion media query. Keep vestibular triggers (large parallax, spin, rapid flashing) out of essential UI, and never convey information by motion alone. Swipe dismissal needs a keyboard equivalent - pair it with a visible control performing the same action - and move focus to a sensible target when dismissal removes the focused element.",
   "keyboard": [],
   "notes": ""
 };

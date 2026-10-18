@@ -1948,7 +1948,7 @@ const SelectBubbleInput: Component<ScopedProps<SelectBubbleInputProps>> = (props
   // Apply the current value to the native `select` once its `<option>`
   // children exist. Refs fire before children are inserted (so a ref-time set
   // never matches an option and insertion then auto-selects the first one),
-  // while this effect runs after the options are in the DOM — matching
+  // while this effect runs after the options are in the DOM - matching
   // React's `defaultValue` semantics: establish the selection without binding
   // `value`, which would swallow the programmatic `change` dispatch above.
   // Plain `.value` assignment dispatches no event, so this never double-fires.
@@ -1959,7 +1959,7 @@ const SelectBubbleInput: Component<ScopedProps<SelectBubbleInputProps>> = (props
     () => ({ options: context.nativeOptions(), node: selectRef.current }),
     ({ options, node }, prev) => {
       // Re-apply whenever the options were rebuilt or the node itself is new;
-      // skip when only the value changed — the bubble effect above owns that
+      // skip when only the value changed - the bubble effect above owns that
       // sync (with its dispatch semantics).
       if (node && (!prev || prev.options !== options || prev.node !== node)) {
         node.value = selectValue();

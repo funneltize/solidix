@@ -125,7 +125,7 @@ const RadioTrigger: Component<ScopedProps<RadioTriggerProps>> = (props) => {
     (event: MouseEvent) => callEventHandler(props.onClick, event),
     (event) => {
       // Solid handlers receive native events, which have no
-      // `isPropagationStopped` — `cancelBubble` reports the same thing.
+      // `isPropagationStopped` - `cancelBubble` reports the same thing.
       const hasConsumerStoppedPropagation = event.cancelBubble;
       // radios cannot be unchecked so we only communicate a checked state.
       if (!context.checked()) {
@@ -347,7 +347,7 @@ const RadioBubbleInput: Component<ScopedProps<RadioBubbleInputProps>> = (props) 
   return (
     <Primitive.input
       type="radio"
-      // NOTE: explicit `"true"` — Solid renders a bare boolean as `""`, which
+      // NOTE: explicit `"true"` - Solid renders a bare boolean as `""`, which
       // does not hide the element from assistive technology.
       aria-hidden="true"
       defaultChecked={defaultCheckedInitial}
@@ -381,7 +381,7 @@ const RadioBubbleInput: Component<ScopedProps<RadioBubbleInputProps>> = (props) 
 /**
  * Notifies ancestors and forms of a user click. The `click` preserves Radix's
  * ancestor-notification semantics exactly; `input`/`change` additionally notify
- * forms, which Solid — unlike React — does not derive from clicks (React
+ * forms, which Solid - unlike React - does not derive from clicks (React
  * synthesizes `onChange` from bubbling clicks, Solid listens natively). Form
  * events fire only when `checked` actually changed (matching React's change
  * detection) and are withheld when the click must not propagate, so a consumer

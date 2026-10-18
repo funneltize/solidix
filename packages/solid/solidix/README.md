@@ -23,7 +23,7 @@ Toggle, ToggleGroup, Toolbar, Tooltip.
 ## Motion
 
 Animation lives outside the component namespaces: pair any primitive with
-`@solidix/motion` — spring easings, preset tokens, View Transitions, and
+`@solidix/motion` - spring easings, preset tokens, View Transitions, and
 swipe gestures, all keyed off the `data-state` attributes every primitive
 exposes.
 

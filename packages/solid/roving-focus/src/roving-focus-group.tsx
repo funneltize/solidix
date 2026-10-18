@@ -335,7 +335,7 @@ const RovingFocusGroupItem: Component<ScopedProps<RovingFocusItemProps>> = (prop
             // NOTE: dynamic component children also arrive as functions
             // (zero-arg thunks, which ignore the argument), so every function
             // child is invoked with tab-stop accessors. Reading live state
-            // through the accessors — instead of re-invoking per change —
+            // through the accessors - instead of re-invoking per change -
             // keeps component children mounted across tab-stop updates.
             return typeof child === "function"
               ? (

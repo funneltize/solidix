@@ -26,7 +26,7 @@ focus-outside refinements (#3473) and ref stability (#3963).
   content always carries the current state.
 - With `asChild`, the viewport portals the proxied content list into the
   consumer's element. React clones the child with the contents inside, while
-  Solidix `Slot` can only move siblings in a deferred effect — which would
+  Solidix `Slot` can only move siblings in a deferred effect - which would
   leave `Presence` resolving two top-level elements and break
   exit-animation tracking. The rendered DOM is identical.
 - `Presence` now ignores Solid-only resolution artifacts (comment anchors

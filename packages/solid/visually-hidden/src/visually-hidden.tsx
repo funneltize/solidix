@@ -8,7 +8,7 @@ import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 
 const VISUALLY_HIDDEN_STYLES = Object.freeze({
   // See: https://github.com/twbs/bootstrap/blob/main/scss/mixins/_visually-hidden.scss
-  // Note: lengths are explicit `px` strings — Solid does not append `px` to
+  // Note: lengths are explicit `px` strings - Solid does not append `px` to
   // numeric style values the way React does.
   position: "absolute",
   border: 0,

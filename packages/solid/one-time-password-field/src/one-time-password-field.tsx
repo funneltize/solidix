@@ -105,7 +105,7 @@ const [OneTimePasswordFieldContext, useOneTimePasswordFieldContext] =
 
 type OneTimePasswordFieldOwnProps = {
   /**
-   * Specifies what—if any—permission the user agent has to provide automated
+   * Specifies what - if any - permission the user agent has to provide automated
    * assistance in filling out form field values, as well as guidance to the
    * browser as to the type of information expected in the field. Allows
    * `"one-time-code"` or `"off"`.

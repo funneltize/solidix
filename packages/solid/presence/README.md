@@ -21,6 +21,6 @@ Presence stays mounted through exit animations. Port of
 - Render-prop children stay mounted while closed once detected (Radix
   `forceMount` parity), but detection happens on first resolution: an
   initially-closed render prop mounts on first open rather than immediately.
-  Closed content renders nothing anyway, so the difference is invisible —
+  Closed content renders nothing anyway, so the difference is invisible -
   and resolving any earlier would instantiate orphan subtrees whose ref
   callbacks fire on detached elements.

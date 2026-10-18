@@ -226,7 +226,7 @@ export function CodeBlock(props: {
       window.clearTimeout(timer);
       timer = window.setTimeout(() => setCopied(false), 1500);
     } catch {
-      // Clipboard unavailable — leave the button idle.
+      // Clipboard unavailable - leave the button idle.
     }
   };
   const lines = (): Tok[][] => {

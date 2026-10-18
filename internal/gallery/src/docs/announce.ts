@@ -7,7 +7,7 @@ export const doc: PrimitiveDoc = {
   "ariaLink": "https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/",
   "description": "Renders its children into a visually hidden mirror element while a shared live region announces content changes to assistive technologies.",
   "features": [
-    "Shared live region per identifier — several announcers cooperate.",
+    "Shared live region per identifier - several announcers cooperate.",
     "Politeness, role, atomicity, and relevance are all configurable.",
     "Content is mirrored, so what sighted users read stays intact.",
     "No visual output; styling is never required."

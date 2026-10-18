@@ -2,7 +2,7 @@
 
 CSS-first motion for Solidix: a spring easing compiler, ready-made spring
 tokens, a View Transitions helper, and copy-paste animation recipes. No
-animation engine, no rAF loops — springs compile to CSS `linear()` easings
+animation engine, no rAF loops - springs compile to CSS `linear()` easings
 that run on the compositor, enter/exit lifecycles use `@starting-style` plus
 `transition-behavior: allow-discrete`, and layout morphs use the platform
 View Transitions API. The compiler and tokens have zero dependencies;
@@ -36,16 +36,16 @@ createSpring({ stiffness: 170, damping: 22 }); // "linear(0, 0.0386 3.13%, …)"
 | `stops`     | `33`    | Integer from 2 to 1000. More stops, smoother curve.    |
 
 Results are cached by parameters. Simulation runs in normalized time, so
-only the damping ratio shapes the output — springs with equal ratios but
+only the damping ratio shapes the output - springs with equal ratios but
 different timescales compile identically. Throws a `RangeError` for invalid
-input or for springs too underdamped to settle (damping ratio below 0.05 —
+input or for springs too underdamped to settle (damping ratio below 0.05 -
 increase damping).
 
 ### Preset tokens
 
 `springs.css` defines four presets (plus starting-point durations) as custom
-properties. Always declare a plain easing first so older engines — Chrome
-\< 113, Firefox \< 112, Safari \< 17.2 — fall back instead of jumping:
+properties. Always declare a plain easing first so older engines - Chrome
+\< 113, Firefox \< 112, Safari \< 17.2 - fall back instead of jumping:
 
 ```css
 @import "@solidix/motion/springs.css";
@@ -57,21 +57,21 @@ properties. Always declare a plain easing first so older engines — Chrome
 }
 ```
 
-| Token                     | Feel                              | Duration |
-| ------------------------- | --------------------------------- | -------- |
+| Token                      | Feel                              | Duration |
+| -------------------------- | --------------------------------- | -------- |
 | `--solidix-spring-gentle`  | Soft, slow settle, mild overshoot | `450ms`  |
 | `--solidix-spring-default` | Balanced, barely overshoots       | `320ms`  |
 | `--solidix-spring-snappy`  | Fast with a small kick            | `220ms`  |
 | `--solidix-spring-bouncy`  | Playful, visible wobble           | `550ms`  |
 
-The file is generated — see "Regenerating" below. A test fails if it drifts
+The file is generated - see "Regenerating" below. A test fails if it drifts
 from compiler output.
 
 ## View transitions
 
 `viewTransition` runs a synchronous state update inside
 `document.startViewTransition()`, so elements sharing a
-`view-transition-name` morph natively — tab indicators, list reorders,
+`view-transition-name` morph natively - tab indicators, list reorders,
 expanding cards. Solid's queued writes are flushed inside the update
 callback, so the "after" snapshot always sees the new DOM:
 
@@ -98,14 +98,14 @@ function selectTab(id: string) {
 It returns the `ViewTransition` (await `finished` to sequence follow-ups),
 or `null` when the update ran instantly: no `document` (SSR), no
 `startViewTransition` support, or `prefers-reduced-motion: reduce`. Names
-must be unique per morph — concurrent same-name transitions collapse into
-one — and only one transition runs document-wide at a time; rapid updates
+must be unique per morph - concurrent same-name transitions collapse into
+one - and only one transition runs document-wide at a time; rapid updates
 skip the in-flight transition and start over, which is the correct behavior
 for toggles and tabs.
 
 ## Swipe gestures
 
-`createSwipe` tracks a pointer drag and settles with a spring — the one
+`createSwipe` tracks a pointer drag and settles with a spring - the one
 piece that needs JavaScript (release velocity has no CSS source). Live
 feedback writes `transform` directly, so dragging never re-renders; the
 settle runs as a CSS transition, so there is no rAF loop.
@@ -123,20 +123,20 @@ const swipe = createSwipe({
 </div>;
 ```
 
-| Option              | Default                               | Notes                                                                           |
-| ------------------- | ------------------------------------- | ------------------------------------------------------------------------------- |
-| `axis`              | `"x"`                                 | `"x"` or `"y"`. Perpendicular movement is ignored.                              |
-| `direction`         | `"both"`                              | `"positive"`, `"negative"`, or `"both"`. Clamps the drag.                       |
-| `threshold`         | `0.4`                                 | Displacement completing the swipe, as a fraction of element                     |
-|                     |                                       | size (floored at 24px). Must be positive.                                       |
-| `velocityThreshold` | `0.5`                                 | Flick velocity in px/ms completing the swipe. Must be                           |
-|                     |                                       | positive. Spans under 16ms report zero (tap jitter guard).                      |
-| `duration`          | `220`                                 | Settle length in ms. `0` settles instantly, still async.                        |
+| Option              | Default                                | Notes                                                                           |
+| ------------------- | -------------------------------------- | ------------------------------------------------------------------------------- |
+| `axis`              | `"x"`                                  | `"x"` or `"y"`. Perpendicular movement is ignored.                              |
+| `direction`         | `"both"`                               | `"positive"`, `"negative"`, or `"both"`. Clamps the drag.                       |
+| `threshold`         | `0.4`                                  | Displacement completing the swipe, as a fraction of element                     |
+|                     |                                        | size (floored at 24px). Must be positive.                                       |
+| `velocityThreshold` | `0.5`                                  | Flick velocity in px/ms completing the swipe. Must be                           |
+|                     |                                        | positive. Spans under 16ms report zero (tap jitter guard).                      |
+| `duration`          | `220`                                  | Settle length in ms. `0` settles instantly, still async.                        |
 | `easing`            | `"var(--solidix-spring-snappy, ease)"` | Settle easing. Works with or without `springs.css`.                             |
-| `now`               | `performance.now`                     | Time source in ms (testing seam). Read live, like callbacks.                    |
-| `onDrag`            | —                                     | Per move: `{ displacement, velocity }`. Keep light.                             |
-| `onRelease`         | —                                     | At release: `{ dismissed, displacement, velocity, cancelled }`.                 |
-| `onSettled`         | —                                     | Exactly once per completed settle: `"dismissed" \| "snapped-back"`. Never sync. |
+| `now`               | `performance.now`                      | Time source in ms (testing seam). Read live, like callbacks.                    |
+| `onDrag`            | -                                      | Per move: `{ displacement, velocity }`. Keep light.                             |
+| `onRelease`         | -                                      | At release: `{ dismissed, displacement, velocity, cancelled }`.                 |
+| `onSettled`         | -                                      | Exactly once per completed settle: `"dismissed" \| "snapped-back"`. Never sync. |
 
 Decision rule: a hard flick wins over position (acute intent); otherwise
 displacement past threshold dismisses. Dismissed elements travel past the
@@ -152,36 +152,36 @@ Behavior contract:
   off-element.
 - `touch-action` constrains the perpendicular axis while attached (scroll
   keeps working); text selection pauses mid-drag. Both restore after.
-- Author `transform` transitions are suppressed mid-gesture — drag feedback
-  and instant settles stay instant — and restored after.
-- Re-grabs mid-settle freeze at the visual position and continue — no
+- Author `transform` transitions are suppressed mid-gesture - drag feedback
+  and instant settles stay instant - and restored after.
+- Re-grabs mid-settle freeze at the visual position and continue - no
   jumps. A tap mid-settle resumes the interrupted animation.
 - Reduced motion skips the settle animation (end state applies, `onSettled`
-  still fires async). Live drag feedback stays — it is user-driven.
+  still fires async). Live drag feedback stays - it is user-driven.
 - Detaching mid-settle cancels silently: `onSettled` never fires for the
   abandoned settle.
 - Callbacks (`onDrag`, `onRelease`, `onSettled`) and `now` read live from
-  the options object — replacing them takes effect immediately. Every other
+  the options object - replacing them takes effect immediately. Every other
   option is snapshotted at creation.
 - `state()` (`"idle" | "dragging" | "settling" | "dismissed"`, mirrored to
   `data-state`) is the styling hook. The helper owns the element's inline
   `transform` while attached; cleanup runs on `ref(null)` and on owner
   disposal, or explicitly via `dispose()`. Creation is SSR-safe (no DOM
   access until attach).
-- Accessibility: swipe needs a keyboard equivalent — pair it with a visible
+- Accessibility: swipe needs a keyboard equivalent - pair it with a visible
   control performing the same action, and move focus to a sensible target
   when dismissal removes the focused element (see the gallery demo).
 
 ## Exit timing with Presence
 
 `Presence` (and every primitive built on it) unmounts closed content after
-its **keyframe** exit animations end — it listens for `animationend`, Radix
+its **keyframe** exit animations end - it listens for `animationend`, Radix
 parity. It does not track transitions. That decides the pattern:
 
 | Exit mechanism                       | Unmounts after exit? | Needs         |
 | ------------------------------------ | -------------------- | ------------- |
 | `@keyframes` exit animation          | Yes                  | Nothing extra |
-| `transition` + `allow-discrete` exit | No — instant unmount | `forceMount`  |
+| `transition` + `allow-discrete` exit | No - instant unmount | `forceMount`  |
 
 For transition-based exits, keep the part mounted with `forceMount`: the
 closed state renders `display: none`, so it stays hidden from assistive
@@ -195,7 +195,7 @@ plain keyframes on mount.
 
 Every Solidix primitive exposes its state as `data-state` (plus `data-side` /
 `data-align` on floating content), so one pattern animates them all. These
-are userland CSS — copy, adapt, own.
+are userland CSS - copy, adapt, own.
 
 ### Scale + fade enter/exit (dialog, popover, alert dialog)
 
@@ -228,7 +228,7 @@ are userland CSS — copy, adapt, own.
 
 On entry, `display` flips at 0% and the transition runs from
 `@starting-style`. On exit it runs toward the closed values and `display`
-flips at 100%. Unsupported engines show/hide instantly — always correct,
+flips at 100%. Unsupported engines show/hide instantly - always correct,
 just not animated.
 
 **Mounting matters.** CSS cannot keep a removed node alive: with conditional
@@ -243,7 +243,7 @@ assistive tech and unfocusable) …
 </Dialog.Portal>
 ```
 
-… or unmount after exit with keyframe animations instead of transitions —
+… or unmount after exit with keyframe animations instead of transitions -
 `Presence` waits for `animationend` (Radix parity; it does not track
 transitions):
 
@@ -325,7 +325,7 @@ from its anchor:
 
 ### Height expand (accordion, collapsible)
 
-Animate `grid-template-rows` between `0fr` and `1fr` — no content measuring,
+Animate `grid-template-rows` between `0fr` and `1fr` - no content measuring,
 no `height: auto` hack:
 
 ```css
@@ -388,12 +388,12 @@ pnpm vitest run packages/solid/motion
 ## Design notes
 
 - Primitives stay headless: this package ships tokens, a compiler, and
-  documentation — never component styles. Nothing here is imported by the
+  documentation - never component styles. Nothing here is imported by the
   primitives themselves.
 - Physics lives in easing shape, not JS: stiffness/damping/mass pick the
   curve; CSS duration scales it. Timing-accurate springs (fixed real-time
-  settle) would need `duration` plumbed from simulation — deliberately out
+  settle) would need `duration` plumbed from simulation - deliberately out
   of scope.
 - Gestures need JavaScript only for velocity: `createSwipe` tracks pointers
   and decides dismiss versus snap-back, but the settle itself is a CSS
-  transition — no rAF loop, no per-frame main-thread work.
+  transition - no rAF loop, no per-frame main-thread work.

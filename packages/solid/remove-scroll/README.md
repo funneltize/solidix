@@ -12,7 +12,7 @@ listeners. Nested locks stack; only the topmost decides.
 
 - No SSR sidecar medium: the lock is purely client-side (effects don't run on
   the server). Callback indirection the original needs for fresh React
-  closures (`setCallbacks`, `lastProps`) is dropped — Solid closures read
+  closures (`setCallbacks`, `lastProps`) is dropped - Solid closures read
   reactive state lazily.
 - `as={Slot}` becomes the standard `asChild` prop; the `as` (string/component),
   `forwardProps`, and `sideCar` props are not supported.

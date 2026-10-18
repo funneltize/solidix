@@ -1057,7 +1057,7 @@ describe("NavigationMenu.Viewport", () => {
   });
 });
 
-// Solidix port guards (no Radix equivalent — the Radix suite only renders one
+// Solidix port guards (no Radix equivalent - the Radix suite only renders one
 // item): switching the value must swap the proxied content, including through
 // the `asChild` viewport portal wiring.
 describe("NavigationMenu viewport switching", () => {

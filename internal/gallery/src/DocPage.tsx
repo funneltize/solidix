@@ -138,14 +138,14 @@ const DocPage: Component<{ demo: DemoEntry; prev?: DemoEntry; next?: DemoEntry }
                               </Show>
                             </td>
                             <td class="cell-type">
-                              <Show when={p.type} fallback={<span class="na">—</span>}>
+                              <Show when={p.type} fallback={<span class="na"> - </span>}>
                                 <code>{p.type}</code>
                               </Show>
                             </td>
                             <td class="cell-default">
                               <Show
                                 when={p.default !== undefined}
-                                fallback={<span class="na">—</span>}
+                                fallback={<span class="na"> - </span>}
                               >
                                 <code>{String(p.default)}</code>
                               </Show>

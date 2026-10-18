@@ -3,9 +3,9 @@ import type { PrimitiveDoc } from "./types";
 export const doc: PrimitiveDoc = {
   "slug": "dropdown-menu",
   "title": "Dropdown Menu",
-  "metaDescription": "Displays a menu to the user—such as a set of actions or functions—triggered by a button.",
+  "metaDescription": "Displays a menu to the user - such as a set of actions or functions - triggered by a button.",
   "ariaLink": "https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/",
-  "description": "Displays a menu to the user—such as a set of actions or functions—triggered by\n\ta button.",
+  "description": "Displays a menu to the user - such as a set of actions or functions - triggered by\n\ta button.",
   "features": [
     "Can be controlled or uncontrolled.",
     "Supports submenus with configurable reading direction.",

@@ -39,7 +39,7 @@ export const doc: PrimitiveDoc = {
         {
           "name": "open",
           "type": "boolean",
-          "description": "The controlled open state of the context menu. Must be used in conjunction with `onOpenChange`. This is intended for reading the open state and closing the menu programmatically—we discourage opening the menu programmatically, since opening it depends on user interaction to position the menu."
+          "description": "The controlled open state of the context menu. Must be used in conjunction with `onOpenChange`. This is intended for reading the open state and closing the menu programmatically - we discourage opening the menu programmatically, since opening it depends on user interaction to position the menu."
         },
         {
           "name": "onOpenChange",

@@ -14,7 +14,7 @@ handling, the icon slot, and the aria-label inference.
 - No `flushSync` equivalent is needed on toggle: Solid applies the signal
   update synchronously and the `type` attribute flush follows in a
   microtask, ahead of the `requestAnimationFrame` that restores the
-  selection — the same ordering Radix relies on.
+  selection - the same ordering Radix relies on.
 - React-cased attributes render lowercase (`autocapitalize`, `spellcheck`,
   `autocomplete`, `tabindex`, `for`): Solid outputs `htmlFor`-style props
   literally, which associates nothing.

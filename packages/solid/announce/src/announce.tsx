@@ -160,8 +160,8 @@ const Announce: Component<AnnounceProps> = (props) => {
   // https://inclusive-components.design/notifications/#restrictingmessagestocontexts
   createEffect(
     // We need to hide `aria-live` regions via a global event listener, as noted in the comment
-    // above. We only need one listener per region — each `Announce` does not necessarily generate
-    // a unique live region element — so we track attached listeners in a map to skip the setup
+    // above. We only need one listener per region - each `Announce` does not necessarily generate
+    // a unique live region element - so we track attached listeners in a map to skip the setup
     // after `Announce` is used again with a shared live region.
     () => getLiveRegionElement(),
     (regionElement) => {
@@ -209,7 +209,7 @@ const Announce: Component<AnnounceProps> = (props) => {
  *
  * React re-renders the same `children` descriptor in both places; Solid children are live DOM
  * nodes, which can only be mounted once. So the mirror renders a clone and re-syncs it through a
- * `MutationObserver`, keeping both copies — and dynamic updates — in sync.
+ * `MutationObserver`, keeping both copies - and dynamic updates - in sync.
  */
 const RegionMirror: Component<{
   region: Element;

@@ -281,7 +281,7 @@ describe("createSwipe", () => {
     expect(onRelease).toHaveBeenCalledTimes(1);
     down(element, 190);
     up(element, 190);
-    // No second release decision — the original settle resumes instead.
+    // No second release decision - the original settle resumes instead.
     expect(onRelease).toHaveBeenCalledTimes(1);
     await vi.waitFor(() => expect(onSettled).toHaveBeenCalledWith("dismissed"));
     dispose();

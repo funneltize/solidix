@@ -1,7 +1,7 @@
 # `@solidix/primitive`
 
 Primitive components and DOM utilities. Port of `@radix-ui/react-primitive`
-**and** `@radix-ui/primitive` (merged — see below).
+**and** `@radix-ui/primitive` (merged - see below).
 
 ## Differences from Radix
 
@@ -12,7 +12,7 @@ Primitive components and DOM utilities. Port of `@radix-ui/react-primitive`
   here, so they are merged into this single package rather than inventing a
   second name.
 - `Primitive` renders through Solid's `Dynamic` for tags and `Slot` for
-  `asChild`. There are no `forwardRef` wrappers — `ref` is a plain prop.
+  `asChild`. There are no `forwardRef` wrappers - `ref` is a plain prop.
 - `dispatchDiscreteCustomEvent` flushes with Solid's `flush` instead of
   `ReactDOM.flushSync`.
 - The `--radix-*` CSS variable typing Radix declares is already covered by

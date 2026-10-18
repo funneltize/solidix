@@ -903,7 +903,7 @@ export interface ViewportContentMounterProps extends NavigationMenuContentImplPr
 const ViewportContentMounter: Component<ScopedProps<ViewportContentMounterProps>> = (props) => {
   const context = useNavigationMenuContext(CONTENT_NAME, props.__scopeNavigationMenu);
 
-  // Props never change identity in Solid, so register once — matching the
+  // Props never change identity in Solid, so register once - matching the
   // net effect of Radix's layout effect, which re-registers every render.
   // (`data-state` is recomputed reactively downstream in
   // `NavigationMenuViewportItem` instead.)

@@ -143,7 +143,7 @@ describe("gallery demos", () => {
         (container.querySelector(".MotionDot") as HTMLElement).style.transform,
       ).toContain("216");
     });
-    // No startViewTransition in jsdom — the helper applies the update instantly.
+    // No startViewTransition in jsdom - the helper applies the update instantly.
     fireEvent.click(screen.getByRole("tab", { name: "Morphing" }));
     expect(await screen.findByText(/Shared view-transition names morph/)).not.toBe(null);
     expect(screen.getByRole("tab", { name: "Morphing" }).getAttribute("aria-selected")).toBe(
@@ -302,7 +302,7 @@ describe("gallery demos", () => {
 
   test("toolbar renders its controls", async () => {
     render(() => <ToolbarDemo />);
-    // Nested toggle groups are toolbars too — disambiguate by name.
+    // Nested toggle groups are toolbars too - disambiguate by name.
     expect(await screen.findByRole("toolbar", { name: "Formatting options" })).not.toBe(null);
     expect(screen.getByRole("button", { name: "Bold" })).not.toBe(null);
     expect(screen.getByRole("link", { name: /edited 2 hours ago/i })).not.toBe(null);

@@ -3,9 +3,9 @@ import type { PrimitiveDoc } from "./types";
 export const doc: PrimitiveDoc = {
   "slug": "tabs",
   "title": "Tabs",
-  "metaDescription": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+  "metaDescription": "A set of layered sections of content - known as tab panels - that are displayed one at a time.",
   "ariaLink": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs",
-  "description": "A set of layered sections of content—known as tab panels—that are displayed\n\tone at a time.",
+  "description": "A set of layered sections of content - known as tab panels - that are displayed\n\tone at a time.",
   "features": [
     "Can be controlled or uncontrolled.",
     "Supports horizontal/vertical orientation.",

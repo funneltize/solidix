@@ -3,9 +3,9 @@ import type { PrimitiveDoc } from "./types";
 export const doc: PrimitiveDoc = {
   "slug": "select",
   "title": "Select",
-  "metaDescription": "Displays a list of options for the user to pick from—triggered by a button.",
+  "metaDescription": "Displays a list of options for the user to pick from - triggered by a button.",
   "ariaLink": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox",
-  "description": "Displays a list of options for the user to pick from—triggered by a button.",
+  "description": "Displays a list of options for the user to pick from - triggered by a button.",
   "features": [
     "Can be controlled or uncontrolled.",
     "Offers 2 positioning modes.",

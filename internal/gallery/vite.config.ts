@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 import solid from "@solidjs/vite-plugin";
 
 // Workspace-linked @solidix/* packages resolve to raw TS source
-// (`main: ./src/index.ts`), so keep them out of esbuild pre-bundling —
+// (`main: ./src/index.ts`), so keep them out of esbuild pre-bundling -
 // only the Solid transform understands the JSX.
 function solidixDepNames(): string[] {
   const names = new Set<string>(["solidix"]);
@@ -18,7 +18,7 @@ function solidixDepNames(): string[] {
         ) as { name?: unknown };
         if (typeof manifest.name === "string") names.add(manifest.name);
       } catch {
-        // Not a package dir — ignore.
+        // Not a package dir - ignore.
       }
     }
   }

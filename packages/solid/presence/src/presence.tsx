@@ -12,11 +12,11 @@ const Presence: Component<PresenceProps> = (props) => {
     typeof props.present === "function" ? props.present() : props.present,
   );
 
-  // NOTE: `props.children` is a lazy getter — every raw read re-instantiates
+  // NOTE: `props.children` is a lazy getter - every raw read re-instantiates
   // the subtree, so resolve it exactly once through this memo. Solid's
   // `children()` only unwraps zero-arg thunks, so a render prop (which
   // declares parameters) passes through uncalled and is detected from the
-  // resolved value — no speculative read, no orphan instances, no leaked
+  // resolved value - no speculative read, no orphan instances, no leaked
   // ref calls from discarded setups.
   const resolved = children(() => props.children as JSX.Element);
   // NOTE: dynamic component children also arrive as functions (zero-arg
@@ -40,7 +40,7 @@ const Presence: Component<PresenceProps> = (props) => {
   // of a lazy getter would instantiate the subtree): value-form children
   // expose `value` on the descriptor, so a function with declared parameters
   // is a render prop. Render-prop children mount while closed (Radix
-  // `forceMount` parity — e.g. Select keeps its items mounted in a detached
+  // `forceMount` parity - e.g. Select keeps its items mounted in a detached
   // fragment for data collection). Getter-form children keep the lazy
   // detection below. Element children are unaffected either way.
   const childrenDescriptor = Object.getOwnPropertyDescriptor(props, "children");
@@ -50,7 +50,7 @@ const Presence: Component<PresenceProps> = (props) => {
     typeof childrenValue === "function" &&
     (childrenValue as (...args: never[]) => unknown).length > 0;
 
-  // NOTE: the memos stay lazy — resolving while unmounted would
+  // NOTE: the memos stay lazy - resolving while unmounted would
   // instantiate the subtree without inserting it, leaving effects to run on
   // detached DOM. Track reactively so late opens are observed too; the
   // change guard skips the null-blip that would corrupt exit animations.
@@ -66,7 +66,7 @@ const Presence: Component<PresenceProps> = (props) => {
   );
 
   // NOTE: Radix always mounts render-prop children (`forceMount`), even
-  // while closed — the render prop itself decides what `present: false`
+  // while closed - the render prop itself decides what `present: false`
   // looks like. Element children unmount when closed instead.
   let detectedRenderProp: boolean | undefined;
   return (
@@ -261,7 +261,7 @@ function resolvedSingleElement(nodes: ReadonlyArray<unknown>): HTMLElement | nul
   const elements = nodes.filter((node): node is HTMLElement => node instanceof HTMLElement);
   // Solid control flow (`Show`, keyed branches, `Portal` placeholders) leaves
   // comment anchors and empty text markers behind; React has no equivalent
-  // artifacts, so ignore them (Radix tolerates null renders — there is simply
+  // artifacts, so ignore them (Radix tolerates null renders - there is simply
   // nothing to track for exit animations). Anything else that is not the
   // single element is still an error.
   const content = nodes.filter((node) => !isIgnorableMarker(node));

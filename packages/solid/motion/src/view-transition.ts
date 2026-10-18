@@ -5,7 +5,7 @@
 import { flush } from "solid-js";
 
 /**
- * Runs `update` — a synchronous state change — inside a same-document view
+ * Runs `update` - a synchronous state change - inside a same-document view
  * transition. Morphs between elements sharing a `view-transition-name`.
  *
  * Returns the `ViewTransition` (await `finished` to sequence follow-ups), or

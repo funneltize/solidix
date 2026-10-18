@@ -173,7 +173,7 @@ const CheckboxTrigger: Component<ScopedProps<CheckboxTriggerProps>> = (props) =>
     (event: MouseEvent) => callEventHandler(props.onClick, event),
     (event) => {
       // Solid handlers receive native events, which have no
-      // `isPropagationStopped` — `cancelBubble` reports the same thing.
+      // `isPropagationStopped` - `cancelBubble` reports the same thing.
       const hasConsumerStoppedPropagation = event.cancelBubble;
       const checked = context.checked();
       context.onUserClick({
@@ -407,7 +407,7 @@ const CheckboxBubbleInput: Component<ScopedProps<CheckboxBubbleInputProps>> = (p
   return (
     <Primitive.input
       type="checkbox"
-      // NOTE: explicit `"true"` — Solid renders a bare boolean as `""`, which
+      // NOTE: explicit `"true"` - Solid renders a bare boolean as `""`, which
       // does not hide the element from assistive technology.
       aria-hidden="true"
       defaultChecked={context.defaultChecked() ?? defaultCheckedInitial}
@@ -450,7 +450,7 @@ function getAriaChecked(checked: CheckedState | boolean): "true" | "false" | "mi
 /**
  * Notifies ancestors and forms of a user click. The `click` preserves Radix's
  * ancestor-notification semantics exactly; `input`/`change` additionally notify
- * forms, which Solid — unlike React — does not derive from clicks (React
+ * forms, which Solid - unlike React - does not derive from clicks (React
  * synthesizes `onChange` from bubbling clicks, Solid listens natively). Form
  * events fire only when `checked` actually changed (matching React's change
  * detection) and are withheld when the click must not propagate, so a consumer

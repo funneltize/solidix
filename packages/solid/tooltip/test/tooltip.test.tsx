@@ -313,7 +313,7 @@ describe("Tooltip rendering", () => {
 describe("Tooltip behavior", () => {
   // Adaptation of Radix's Profiler regression test for
   // https://github.com/radix-ui/primitives/issues/2375: Solid has no
-  // re-renders — fine-grained reactivity updates only the hovered tooltip's
+  // re-renders - fine-grained reactivity updates only the hovered tooltip's
   // subscribers by construction. Assert the user-visible essence instead.
   test("hovering one tooltip does not open sibling tooltips", async () => {
     const user = userEvent.setup();

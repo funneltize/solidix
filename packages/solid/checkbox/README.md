@@ -8,7 +8,7 @@ Checkbox primitive. Port of `@radix-ui/react-checkbox`.
   carried as accessors (internal context shape; required for reactivity
   without re-renders).
 - "The consumer stopped propagation" is read from the native event's
-  `cancelBubble` — Solid handlers receive native events, which have no
+  `cancelBubble` - Solid handlers receive native events, which have no
   React-style `isPropagationStopped`.
 - The bubble input dispatches `click` plus `input`/`change` (Radix dispatches
   only `click`, which React translates into `onChange`). Solid performs no

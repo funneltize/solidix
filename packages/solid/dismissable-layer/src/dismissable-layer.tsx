@@ -123,8 +123,8 @@ const DismissableLayer: Component<DismissableLayerProps> = (props) => {
   const [node, setNode] = createSignal<DismissableLayerElement | null>(null);
   // Solid JSX has no `onXCapture` props, so capture listeners are attached
   // manually and composed with the user's capture handlers. They attach in
-  // the ref callback — synchronously with element creation, like Radix's JSX
-  // props — so the inside/outside flag is always correct before any effect
+  // the ref callback - synchronously with element creation, like Radix's JSX
+  // props - so the inside/outside flag is always correct before any effect
   // (eg. `FocusScope` autofocus) can move focus. Attaching in an effect races:
   // autofocus effects can run before the node signal propagates.
   // NOTE: `focusOutside`/`pointerDownOutside` are defined below; these

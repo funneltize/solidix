@@ -414,7 +414,7 @@ const MenuContentImpl: Component<ScopedProps<MenuContentImplProps>> = (props) =>
   const { nodes: branchNodes, registry: branchRegistry } = useFocusScopeBranchRegistry();
   // Only modal menus trap focus / lock scroll, so only they need to host branches. Non-modal
   // menus stay transparent and let nested layers register against the next modal ancestor.
-  // NOTE: a thunk, not a setup-time const — the props can flip while mounted
+  // NOTE: a thunk, not a setup-time const - the props can flip while mounted
   // (modal content untraps while animating out) and a frozen read would also
   // trip Solid 2's strict untracked-read diagnostic.
   const isModal = () => Boolean(props.trapFocus || props.disableOutsideScroll);
@@ -478,7 +478,7 @@ const MenuContentImpl: Component<ScopedProps<MenuContentImplProps>> = (props) =>
   // NOTE: built by a render function called inside the JSX below (not a
   // hoisted value): Solid context flows through setup nesting, so the
   // subtree must instantiate while resolving through `MenuContentProvider`
-  // above — a value created here would miss its context.
+  // above - a value created here would miss its context.
   const renderFocusScopeTree = () => (
     <FocusScope
       asChild
@@ -766,7 +766,7 @@ const MenuItemImpl: Component<ScopedProps<MenuItemImplProps>> = (props) => {
       disabled={disabled()}
       // NOTE: with no explicit `textValue`, typeahead reads the live DOM
       // text at match time (`getItemTextValue`) instead of the registered
-      // value — Solid props freeze at setup and can't pick up the post-mount
+      // value - Solid props freeze at setup and can't pick up the post-mount
       // `.textContent` sync the way Radix's re-render does.
       textValue={props.textValue ?? ""}
     >

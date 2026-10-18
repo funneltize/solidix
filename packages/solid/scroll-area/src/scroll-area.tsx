@@ -189,7 +189,7 @@ const ScrollAreaViewport: Component<ScopedProps<ScrollAreaViewportProps>> = (pro
 
   // Resolved once: the branches below read the children, and every raw
   // `props.children` read would re-instantiate the subtree. Safe to memoize
-  // here — the viewport provides no context of its own.
+  // here - the viewport provides no context of its own.
   const resolvedChildren = children(() => props.children);
 
   // `Slot` can only redirect props onto a single element, so `asChild` can

@@ -3,9 +3,9 @@ import type { PrimitiveDoc } from "./types";
 export const doc: PrimitiveDoc = {
   "slug": "radio-group",
   "title": "Radio Group",
-  "metaDescription": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+  "metaDescription": "A set of checkable buttons - known as radio buttons - where no more than one of the buttons can be checked at a time.",
   "ariaLink": "https://www.w3.org/WAI/ARIA/apg/patterns/radio",
-  "description": "A set of checkable buttons—known as radio buttons—where no more than one of\n\tthe buttons can be checked at a time.",
+  "description": "A set of checkable buttons - known as radio buttons - where no more than one of\n\tthe buttons can be checked at a time.",
   "features": [
     "Full keyboard navigation.",
     "Supports horizontal/vertical orientation.",

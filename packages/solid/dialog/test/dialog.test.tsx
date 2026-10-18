@@ -378,8 +378,8 @@ describe("aria-labelledby / aria-describedby references", () => {
   });
 
   // Adaptation of Radix's React strict-mode remount test: Solid has no
-  // remounts, so the user-visible essence — id references stay correct
-  // across a full unmount/remount cycle — is asserted instead.
+  // remounts, so the user-visible essence - id references stay correct
+  // across a full unmount/remount cycle - is asserted instead.
   test("keeps custom id references across an unmount/remount cycle", () => {
     const tree = () => (
       <Dialog defaultOpen>

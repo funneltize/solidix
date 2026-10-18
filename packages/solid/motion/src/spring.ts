@@ -1,6 +1,6 @@
 // Spring easing compiler: simulates a damped harmonic oscillator and samples
 // the motion into a CSS `linear()` timing function, so spring physics runs on
-// the compositor with zero runtime cost. Pure math — no dependencies.
+// the compositor with zero runtime cost. Pure math - no dependencies.
 
 export type SpringOptions = {
   /** Spring stiffness. Higher values move faster. Defaults to `170`. */
@@ -29,14 +29,14 @@ export const springPresets: Record<
 
 const DEFAULT_STOPS = 33;
 // Normalized-time simulation (ω = 1): with timescale factored out, the motion
-// shape depends only on the damping ratio ζ — which is all a `linear()`
+// shape depends only on the damping ratio ζ - which is all a `linear()`
 // easing encodes. Fixed-step semi-implicit Euler at ω·dt ≪ 2 is stable for
 // any stiffness, including springs an absolute-time simulation rejects.
 const STEP_HZ = 240;
 const SETTLE_EPSILON = 0.0005;
 // ζ below this rings too long to sample; ζ = 0.05 already overshoots ~85%.
-// Above MAX_ZETA the motion is single-exponential creep with no overshoot —
-// visually identical at any larger ratio once normalized to its duration —
+// Above MAX_ZETA the motion is single-exponential creep with no overshoot -
+// visually identical at any larger ratio once normalized to its duration -
 // so clamp instead of simulating (this also absorbs overflow/underflow in the
 // ratio arithmetic into a sane, finite value). Both bounds settle within the
 // step budget below.
@@ -65,7 +65,7 @@ function trim(value: number, digits: number): string {
  *
  * The motion is simulated from rest (`0`) toward `1` until it settles, then
  * sampled into evenly spaced stops. Simulation runs in normalized time, so
- * only the damping ratio shapes the output — springs with equal ratios but
+ * only the damping ratio shapes the output - springs with equal ratios but
  * different timescales compile identically, and absolute timescale is
  * absorbed by the transition duration you declare in CSS. Results are cached
  * by parameters. Throws when the parameters are invalid or the spring is too
@@ -97,7 +97,7 @@ export function createSpring(options: SpringOptions = {}): string {
   const zetaRaw = damping / (2 * Math.sqrt(stiffness * mass));
   if (!(zetaRaw >= MIN_ZETA)) {
     throw new RangeError(
-      `[motion] spring did not settle — damping ratio ${trim(zetaRaw, 4)} is below ${String(MIN_ZETA)}; increase damping (or lower stiffness / mass).`,
+      `[motion] spring did not settle - damping ratio ${trim(zetaRaw, 4)} is below ${String(MIN_ZETA)}; increase damping (or lower stiffness / mass).`,
     );
   }
   const zeta = Math.min(zetaRaw, MAX_ZETA);
@@ -122,7 +122,7 @@ export function createSpring(options: SpringOptions = {}): string {
   // kept as a backstop so simulation can never loop unboundedly.
   if (step >= MAX_STEPS) {
     throw new RangeError(
-      "[motion] spring did not settle — increase damping (or lower stiffness / mass).",
+      "[motion] spring did not settle - increase damping (or lower stiffness / mass).",
     );
   }
 

@@ -64,6 +64,6 @@
 "solidix": minor
 ---
 
-Initial release: the complete Radix UI primitives port to Solid 2 —
+Initial release: the complete Radix UI primitives port to Solid 2 -
 30 component primitives plus shared internals, published as `@solidix/*`
 with the `solidix` umbrella re-exporting every component namespace.

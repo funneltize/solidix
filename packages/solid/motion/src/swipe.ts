@@ -43,7 +43,7 @@ export type SwipeOptions = {
    * Read live, like the callbacks below.
    */
   now?: (() => number) | undefined;
-  /** Fired per move while dragging. Keep light — write styles directly. */
+  /** Fired per move while dragging. Keep light - write styles directly. */
   onDrag?: ((info: SwipeDragInfo) => void) | undefined;
   /** Fired at release with the settle decision, before the animation runs. */
   onRelease?: ((decision: SwipeRelease) => void) | undefined;
@@ -62,7 +62,7 @@ export type SwipeApi = {
   state: Accessor<SwipeState>;
   /**
    * Detach from the element, restore inline styles, and reset to idle.
-   * Runs automatically on `ref(null)` and owner disposal — call it directly
+   * Runs automatically on `ref(null)` and owner disposal - call it directly
    * for non-JSX usage.
    */
   dispose: () => void;
@@ -318,7 +318,7 @@ export function createSwipe(options: SwipeOptions = {}): SwipeApi {
         // Tap during a settle: resume the interrupted animation.
         settle(pendingTarget, pendingOutcome);
       } else {
-        // A plain tap restores the pre-gesture state — a kept-mounted
+        // A plain tap restores the pre-gesture state - a kept-mounted
         // dismissed element stays dismissed, everything else is untouched.
         lastApplied = downApplied;
         node.style.transform = downTransform;
@@ -326,7 +326,7 @@ export function createSwipe(options: SwipeOptions = {}): SwipeApi {
       }
       return;
     }
-    // A drag ending over the surface would click through — swallow it.
+    // A drag ending over the surface would click through - swallow it.
     node.addEventListener(
       "click",
       (event) => {

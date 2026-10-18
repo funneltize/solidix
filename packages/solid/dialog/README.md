@@ -12,7 +12,7 @@ slotted-content regression (#4077), and the iOS overlay tap handling.
   `Children.map` behavior for `Overlay`/`Content` siblings.
 - The modal `hideOthers` call waits until the content node is connected
   (`afterConnected` from `@solidix/compose-refs`). Solid calls `ref` at
-  element creation — before portal insertion adopts the node — and slotted
+  element creation - before portal insertion adopts the node - and slotted
   children resolve lazily, so a set ref does not imply a connected node.
   Before adoption a template-cloned node's `ownerDocument` can even point at
   a detached template-contents document whose `body` is `null`. Running

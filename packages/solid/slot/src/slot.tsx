@@ -102,7 +102,7 @@ type SlottableProps = SlottableRenderFnProps | SlottableChildrenProps;
         const nodes = resolved.toArray();
         const element = nodes.length === 1 && nodes[0] instanceof Element ? nodes[0] : null;
 
-        // NOTE: like Radix, the element form is a pure passthrough marker —
+        // NOTE: like Radix, the element form is a pure passthrough marker -
         // non-element children (eg. tooltip text) are fine and simply mark
         // nothing. A `Slot` that cannot find a target still throws via
         // `findSlotTarget`. Only the render-fn form requires its element.
@@ -110,7 +110,7 @@ type SlottableProps = SlottableRenderFnProps | SlottableChildrenProps;
           if (!element) {
             throw new Error(createSlottableError(ownerName));
           }
-          // NOTE: read the render fn exactly once — `props.children` is a
+          // NOTE: read the render fn exactly once - `props.children` is a
           // lazy getter and every read re-invokes it (see Presence).
           const renderFn = props.children as unknown;
           if (typeof renderFn === "function") {
@@ -223,7 +223,7 @@ function normalizeSlottableChildren(value: unknown): Array<Node | string> {
  * Applies slot props to an already-created element, mirroring Radix's
  * `mergeProps` semantics:
  *
- * - event handlers compose (the child's runs first — it was attached first)
+ * - event handlers compose (the child's runs first - it was attached first)
  * - `class` tokens merge, `style` objects merge with the child winning,
  *   `aria-describedby` concatenates
  * - other attributes are only set when absent (child wins); DOM properties
@@ -272,7 +272,7 @@ function applySlotProps(target: Element, slotProps: Record<string, any>): () => 
                 // as if the listener were attached there.
                 (value as EventListener)(
                   new Proxy(event, {
-                    // NOTE: no `receiver` passthrough — Event IDL getters throw
+                    // NOTE: no `receiver` passthrough - Event IDL getters throw
                     // ("Illegal invocation") when `this` is not a real Event.
                     get(other, property) {
                       if (property === "currentTarget") return target;
@@ -371,7 +371,7 @@ function applySlotProps(target: Element, slotProps: Record<string, any>): () => 
         // No explicit attribute: the current value is an implicit DOM default
         // (eg. `type="text"` on an `<input>`), so the slot's explicit value
         // wins, matching Radix `mergeProps` where the child declared no such
-        // prop — including falsy-but-meaningful values like `0` or `""`.
+        // prop - including falsy-but-meaningful values like `0` or `""`.
         (target as unknown as Record<string, unknown>)[key] = value;
         cleanups.push(() => {
           (target as unknown as Record<string, unknown>)[key] = prev;

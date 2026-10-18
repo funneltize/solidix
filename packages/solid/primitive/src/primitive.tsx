@@ -90,7 +90,7 @@ type PrimitivePropsWithRef<E extends (typeof NODES)[number]> = Omit<
  * from inside another event handler (which Radix does for e.g. pointer-down
  * → dismiss flows), updates from the inner handlers would otherwise apply a
  * microtask later, unpredictably interleaved with the outer handler. Flushing
- * around the dispatch keeps them predictable — the Solid equivalent of Radix's
+ * around the dispatch keeps them predictable - the Solid equivalent of Radix's
  * `ReactDOM.flushSync` wrapper.
  */
 function dispatchDiscreteCustomEvent<E extends CustomEvent>(target: E["target"], event: E) {

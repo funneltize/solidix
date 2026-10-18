@@ -322,7 +322,7 @@ describe("DropdownMenu", () => {
   // Adaptation of Radix's ref-stability regression test for
   // https://github.com/radix-ui/primitives/issues/3963: Solid has no
   // re-renders and composed refs are created once per setup, so assert the
-  // user-visible essence — refs fire exactly on mount/unmount, never
+  // user-visible essence - refs fire exactly on mount/unmount, never
   // spuriously across open/close cycles.
   test("trigger and sub-trigger refs fire exactly on mount and unmount", async () => {
     const triggerCalls: Array<unknown> = [];

@@ -39,7 +39,7 @@ describe("Presence", () => {
       </Presence>
     ));
 
-    // Radix always mounts render-prop children, even while closed — the render
+    // Radix always mounts render-prop children, even while closed - the render
     // prop itself decides what `present: false` looks like (e.g. Select keeps
     // its items mounted in a detached fragment for data collection).
     expect(await screen.findByText("hidden")).toBeDefined();
@@ -115,7 +115,7 @@ describe("Presence", () => {
 
   test("never resolves children to detached DOM while closed", async () => {
     // Regression: resolving (not just instantiating) closed children runs
-    // their effects on detached nodes — eg. floating-ui `autoUpdate` throws
+    // their effects on detached nodes - eg. floating-ui `autoUpdate` throws
     // on a parentless floating element and halts the reactive queue.
     const seen: boolean[] = [];
     const Content = () => {

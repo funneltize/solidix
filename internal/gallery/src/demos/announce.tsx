@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 // NOTE: neither `radix-ui` nor `solidix` re-exports Announce from the
-// meta-package (parity) — importing the primitive directly.
+// meta-package (parity) - importing the primitive directly.
 import { Announce } from "@solidix/announce";
 
 const AnnounceDemo = () => {

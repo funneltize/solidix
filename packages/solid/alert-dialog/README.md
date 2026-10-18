@@ -11,8 +11,8 @@ unconditional prevention of outside dismissal.
   Radix's `Slot`/`asChild` composition via `@solidix/slot`.
 - `AlertDialogContent` passes `children` through to the dialog content
   unread. Reading `props.children` during setup would instantiate the
-  subtree in the setup's owner scope — outside the cancel-ref provider the
-  content renders — so `AlertDialogCancel` would miss its context.
+  subtree in the setup's owner scope - outside the cancel-ref provider the
+  content renders - so `AlertDialogCancel` would miss its context.
 - The `style` props are object-only (not `string`), matching `@solidix/dialog`
   and the other portalled primitives.
 - Tests asserting the slotted click handlers settle first (`findBy*`), as in

@@ -265,8 +265,8 @@ const FocusScope: Component<FocusScopeProps> = (props) => {
  * -----------------------------------------------------------------------------------------------*/
 
 /**
- * Lets portalled content that is a Solid descendant of a (modal) layer — but rendered outside of
- * that layer's DOM subtree — register itself as a "branch" of the layer's focus scope.
+ * Lets portalled content that is a Solid descendant of a (modal) layer - but rendered outside of
+ * that layer's DOM subtree - register itself as a "branch" of the layer's focus scope.
  *
  * A modal container (eg. `Dialog`) creates a registry via `useFocusScopeBranchRegistry`, renders a
  * `FocusScopeBranchProvider` around its children, and passes the collected `nodes` to its trapped

@@ -904,7 +904,7 @@ const SliderBubbleInput: Component<ScopedProps<SliderBubbleInputProps>> = (props
   const inputRef: RefObject<HTMLInputElement | null> = { current: null };
   const composedRefs = useComposedRefs(inputRef, props.ref);
 
-  // NOTE: setup must not read `value()` / `userRequestedValues()` — not even
+  // NOTE: setup must not read `value()` / `userRequestedValues()` - not even
   // under `untrack`. Solid 2 dev wraps components in transparent HMR memos
   // that track bare setup reads as deps, so a signal that resolves after
   // setup (the value is `undefined` until the thumb registers, then snaps
@@ -912,7 +912,7 @@ const SliderBubbleInput: Component<ScopedProps<SliderBubbleInputProps>> = (props
   // leaking orphan instances whose ref callbacks fire on detached elements.
   // `defaultValue` reads through its own JSX binding memo instead, and the
   // previous-value bookkeeping initializes on the effect's first run (which
-  // dispatches nothing — Radix never bubbles on mount).
+  // dispatches nothing - Radix never bubbles on mount).
   let shouldStopInputPropagation = false;
   let firstRun = true;
   let prevValue: number | undefined;

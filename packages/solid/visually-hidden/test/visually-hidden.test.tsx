@@ -14,7 +14,7 @@ describe("VisuallyHidden", () => {
     expect(element.style.margin).toBe("-1px");
     expect(element.style.overflow).toBe("hidden");
     expect(element.style.clip).toBe("rect(0px, 0px, 0px, 0px)");
-    // (jsdom's CSSOM does not implement every property — check the cssText)
+    // (jsdom's CSSOM does not implement every property - check the cssText)
     expect(element.style.cssText).toContain("white-space: nowrap");
     expect(element.style.cssText).toContain("word-wrap: normal");
     expect(element.style.cssText).toContain("border");

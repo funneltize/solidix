@@ -7,7 +7,7 @@ import { composeRefs, type Ref, type RefObject } from "@solidix/compose-refs";
  * Removes the page scrollbar and contains scroll within the lock.
  *
  * Port of `react-remove-scroll` (minus its SSR sidecar medium, which Solid
- * doesn't need — the lock is purely client-side here). The scroll-decision
+ * doesn't need - the lock is purely client-side here). The scroll-decision
  * logic (`handleScroll`, `locationCouldBeScrolled`), the style singleton, the
  * `data-scroll-locked` counter, and the document listener lifecycle match the
  * original. Callback indirection the original needs for fresh React closures
@@ -199,9 +199,9 @@ if (typeof window !== "undefined") {
         return true;
       },
     });
-    // @ts-expect-error — feature-detecting passive listener support
+    // @ts-expect-error - feature-detecting passive listener support
     window.addEventListener("test", options, options);
-    // @ts-expect-error — feature-detecting passive listener support
+    // @ts-expect-error - feature-detecting passive listener support
     window.removeEventListener("test", options, options);
   } catch {
     passiveSupported = false;

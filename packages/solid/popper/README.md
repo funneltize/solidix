@@ -8,12 +8,12 @@ Positioning primitives. Port of `@radix-ui/react-popper`.
   `autoUpdate`) instead of `@floating-ui/react-dom`'s `useFloating` hook.
   Middleware, update strategies, CSS variables, and data attributes all match.
 - The popper/content contexts carry changing values (anchor, placement,
-  arrow coordinates) as accessors — an internal shape change required for
+  arrow coordinates) as accessors - an internal shape change required for
   reactivity without re-renders.
 - `PopperAnchor`'s `virtualRef` additionally accepts a reactive getter; plain
   ref objects sync once settled.
 - Styles that Radix passes as numbers (`left`/`top` arrow offsets) are
-  emitted as `px` strings — Solid does not append `px` like React does.
+  emitted as `px` strings - Solid does not append `px` like React does.
 - `PopperContent`'s `style` prop is object-only so it can merge with the
   positioning styles.
 - `data-radix-popper-side` / `data-radix-popper-align` /

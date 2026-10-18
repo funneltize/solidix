@@ -69,7 +69,7 @@ export const doc: PrimitiveDoc = {
           "type": "\"current-password\" | \"new-password\" | \"off\"",
           "typeSimple": "enum",
           "default": "\"current-password\"",
-          "description": "Specifies what—if any—permission the user agent has to provide automated assistance in filling out form field values, as well as guidance to the browser as to the type of information expected in the field."
+          "description": "Specifies what - if any - permission the user agent has to provide automated assistance in filling out form field values, as well as guidance to the browser as to the type of information expected in the field."
         }
       ],
       "dataAttributes": [],
