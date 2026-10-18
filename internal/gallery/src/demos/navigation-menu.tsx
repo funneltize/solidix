@@ -50,11 +50,11 @@ const NavigationMenuDemo = () => {
               </ListItem>
               <ListItem
                 title="Releases"
-                href="https://github.com/eggfloat/solidix/releases"
+                href="https://github.com/funneltize/solidix/releases"
               >
                 Changelog and version history.
               </ListItem>
-              <ListItem title="Issues" href="https://github.com/eggfloat/solidix/issues">
+              <ListItem title="Issues" href="https://github.com/funneltize/solidix/issues">
                 Report bugs and request features.
               </ListItem>
               <ListItem title="Radix UI" href="https://www.radix-ui.com/primitives">
@@ -71,7 +71,7 @@ const NavigationMenuDemo = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Link class="NavigationMenuLink" href="https://github.com/eggfloat/solidix">
+          <NavigationMenu.Link class="NavigationMenuLink" href="https://github.com/funneltize/solidix">
             GitHub
           </NavigationMenu.Link>
         </NavigationMenu.Item>

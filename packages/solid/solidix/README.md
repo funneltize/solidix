@@ -20,6 +20,13 @@ NavigationMenu, OneTimePasswordField, PasswordToggleField, Popover, Progress,
 RadioGroup, ScrollArea, Select, Separator, Slider, Switch, Tabs, Toast,
 Toggle, ToggleGroup, Toolbar, Tooltip.
 
+## Motion
+
+Animation lives outside the component namespaces: pair any primitive with
+`@solidix/motion` — spring easings, preset tokens, View Transitions, and
+swipe gestures, all keyed off the `data-state` attributes every primitive
+exposes.
+
 ## Differences from Radix
 
 - Internal utilities (`@solidix/primitive`, `@solidix/slot`, `@solidix/portal`,

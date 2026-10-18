@@ -2,14 +2,14 @@
   "name": "@solidix/number",
   "version": "0.0.0",
   "description": "Number utilities (port of @radix-ui/number).",
-  "homepage": "https://github.com/eggfloat/solidix",
+  "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
-    "url": "https://github.com/eggfloat/solidix/issues"
+    "url": "https://github.com/funneltize/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggfloat/solidix.git",
+    "url": "git+https://github.com/funneltize/solidix.git",
     "directory": "packages/core/number"
   },
   "source": "./src/index.ts",

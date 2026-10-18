@@ -2,14 +2,14 @@
   "name": "@solidix/use-size",
   "version": "0.0.0",
   "description": "Element size observer hook (port of @radix-ui/react-use-size).",
-  "homepage": "https://github.com/eggfloat/solidix",
+  "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
-    "url": "https://github.com/eggfloat/solidix/issues"
+    "url": "https://github.com/funneltize/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggfloat/solidix.git",
+    "url": "git+https://github.com/funneltize/solidix.git",
     "directory": "packages/solid/use-size"
   },
   "source": "./src/index.ts",

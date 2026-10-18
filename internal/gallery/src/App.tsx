@@ -73,7 +73,7 @@ const App: Component = () => {
         </a>
         <div class="header-right">
           <span class="version-chip">0.x</span>
-          <a href="https://github.com/eggfloat/solidix" target="_blank" rel="noreferrer">
+          <a href="https://github.com/funneltize/solidix" target="_blank" rel="noreferrer">
             GitHub
           </a>
         </div>

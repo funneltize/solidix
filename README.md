@@ -2,7 +2,10 @@
 
 A port of [Radix UI Primitives](https://www.radix-ui.com/primitives) to
 [Solid 2](https://github.com/solidjs/solid): unstyled, accessible UI
-primitives with close API/behavior parity, written as idiomatic Solid.
+primitives with close API/behavior parity, written as idiomatic Solid. Beyond
+parity, Solidix ships a built-in CSS-first motion system — spring physics,
+View Transitions, and swipe gestures with no animation engine (see
+[Motion](#motion)).
 
 ## Install
 
@@ -53,20 +56,39 @@ The API mapping from Radix is small and uniform:
   matches Radix; per-package deviations are documented in each package's
   README under "Differences from Radix".
 
+## Motion
+
+Primitives stay headless, but animation is a first-class citizen:
+`@solidix/motion` compiles spring physics to CSS `linear()` easings that run
+on the compositor, wraps same-document View Transitions for layout morphing,
+and tracks velocity-aware swipe gestures — all keyed off the `data-state`
+attributes every primitive already exposes. No `AnimatePresence` wrappers, no
+rAF loops, no JS animation engine:
+
+```sh
+pnpm add @solidix/motion
+```
+
+See the [package README](./packages/solid/motion/README.md) for the full API
+and copy-paste recipes — the local gallery (`internal/gallery`) demos it live
+on the Motion page.
+
 ## Packages
 
 All 63 packages live under `packages/` and publish at version 0.x while the
 API tracks Radix:
 
 - `solidix` — umbrella re-exporting the 30 component namespaces.
+- `@solidix/motion` — the built-in motion system (see
+  [Motion](#motion)): spring easing compiler, preset tokens, View
+  Transitions helper, and swipe gestures.
 - `packages/solid/*` — Solid primitives, published as `@solidix/<name>`:
   the 30 components (Accordion, AlertDialog, AspectRatio, Avatar, Checkbox,
   Collapsible, ContextMenu, Dialog, DropdownMenu, Form, HoverCard, Label,
   Menubar, NavigationMenu, OneTimePasswordField, PasswordToggleField, Popover,
   Progress, RadioGroup, ScrollArea, Select, Separator, Slider, Switch, Tabs,
   Toast, Toggle, ToggleGroup, Toolbar, Tooltip) plus shared internals
-  (`primitive`, `slot`, `portal`, `presence`, collections, hooks, …) and the
-  CSS-first motion utilities (`motion`).
+  (`primitive`, `slot`, `portal`, `presence`, collections, hooks, …).
 - `packages/core/*` — framework-agnostic utilities (mirrors Radix
   `packages/core`).
 - `internal/*` — private workspace tooling (`@repo/builder`,

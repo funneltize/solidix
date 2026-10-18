@@ -2,14 +2,14 @@
   "name": "@solidix/accordion",
   "version": "0.0.0",
   "description": "Accordion primitive (port of @radix-ui/react-accordion).",
-  "homepage": "https://github.com/eggfloat/solidix",
+  "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
-    "url": "https://github.com/eggfloat/solidix/issues"
+    "url": "https://github.com/funneltize/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggfloat/solidix.git",
+    "url": "git+https://github.com/funneltize/solidix.git",
     "directory": "packages/solid/accordion"
   },
   "source": "./src/index.ts",

@@ -2,14 +2,14 @@
   "name": "@solidix/alert-dialog",
   "version": "0.0.0",
   "description": "Alert Dialog primitive (port of @radix-ui/react-alert-dialog).",
-  "homepage": "https://github.com/eggfloat/solidix",
+  "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
-    "url": "https://github.com/eggfloat/solidix/issues"
+    "url": "https://github.com/funneltize/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggfloat/solidix.git",
+    "url": "git+https://github.com/funneltize/solidix.git",
     "directory": "packages/solid/alert-dialog"
   },
   "source": "./src/index.ts",

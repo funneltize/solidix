@@ -8,7 +8,7 @@ const HoverCardDemo = () => (
     <HoverCard.Trigger asChild>
       <a
         class="ImageTrigger"
-        href="https://github.com/eggfloat/solidix"
+        href="https://github.com/funneltize/solidix"
         target="_blank"
         rel="noreferrer noopener"
       >

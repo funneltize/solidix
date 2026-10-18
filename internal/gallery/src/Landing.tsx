@@ -11,14 +11,15 @@ const Landing: Component = () => (
         Accessible, unstyled UI primitives <span class="hero-accent">for Solid&nbsp;2.</span>
       </h1>
       <p class="lede">
-        Solidix ports Radix Primitives to Solid 2 with full API parity: the same parts, behavior, and
-        accessibility — on fine-grained reactivity, with zero virtual DOM.
+        Solidix ports Radix Primitives to Solid 2 with full API parity: the same parts, behavior,
+        and accessibility — on fine-grained reactivity, with zero virtual DOM. A built-in motion
+        system adds spring physics, View Transitions, and swipe gestures with no animation engine.
       </p>
       <div class="hero-cta">
         <a class="btn primary" href="#/accordion">
           Browse primitives
         </a>
-        <a class="btn" href="https://github.com/eggfloat/solidix" target="_blank" rel="noreferrer">
+        <a class="btn" href="https://github.com/funneltize/solidix" target="_blank" rel="noreferrer">
           GitHub
         </a>
       </div>
@@ -83,7 +84,9 @@ const Landing: Component = () => (
       <p>
         Component set, behavior, keyboard interaction, and ARIA mirror Radix UI. Where React and
         Solid differ, the API adapts to Solid conventions — and every deliberate deviation is
-        documented in the primitive&apos;s README.
+        documented in the primitive&apos;s README. Beyond parity, a built-in{" "}
+        <a href="#/motion">motion system</a> covers springs, layout morphs, and gestures in pure
+        CSS.
       </p>
     </section>
 

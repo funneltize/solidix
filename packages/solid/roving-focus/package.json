@@ -2,14 +2,14 @@
   "name": "@solidix/roving-focus",
   "version": "0.0.0",
   "description": "Roving tabindex group (port of @radix-ui/react-roving-focus).",
-  "homepage": "https://github.com/eggfloat/solidix",
+  "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
-    "url": "https://github.com/eggfloat/solidix/issues"
+    "url": "https://github.com/funneltize/solidix/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggfloat/solidix.git",
+    "url": "git+https://github.com/funneltize/solidix.git",
     "directory": "packages/solid/roving-focus"
   },
   "source": "./src/index.ts",
