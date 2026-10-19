@@ -73,70 +73,73 @@ const App: Component = () => {
   const full = () => (isFull() ? activeDemo() : undefined);
 
   return (
-    <Show when={full()} fallback={
-    <div class="app">
-      <header class="site-header">
-        <a class="brand" href="#/">
-          <span class="brand-mark" aria-hidden="true" />
-          <span class="brand-word">solidix</span>
-          <span class="brand-tag">Solid 2 port of Radix UI</span>
-        </a>
-        <div class="header-right">
-          <span class="version-chip">0.x</span>
-          <a href="https://github.com/funneltize/solidix" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-        </div>
-      </header>
-      <Show
-        when={isDoc()}
-        fallback={
-          <main class="landing-wrap">
-            <Landing />
-          </main>
-        }
-      >
-        <div class="shell">
-          <aside class="sidebar">
-            <div class="search-wrap">
-              <input
-                type="search"
-                class="search"
-                placeholder="Filter primitives…"
-                aria-label="Filter primitives"
-                value={query()}
-                onInput={(event) => setQuery(event.currentTarget.value)}
-              />
+    <Show
+      when={full()}
+      fallback={
+        <div class="app">
+          <header class="site-header">
+            <a class="brand" href="#/">
+              <span class="brand-mark" aria-hidden="true" />
+              <span class="brand-word">solidix</span>
+              <span class="brand-tag">Solid 2 port of Radix UI</span>
+            </a>
+            <div class="header-right">
+              <span class="version-chip">0.x</span>
+              <a href="https://github.com/funneltize/solidix" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
             </div>
-            <h2>Primitives</h2>
-            <nav>
-              <ul>
-                <For each={filtered()} fallback={<li class="no-match">No matches.</li>}>
-                  {(demo) => (
-                    <li>
-                      <a
-                        href={`#/${demo.slug}`}
-                        class={path() === demo.slug ? "active" : undefined}
-                      >
-                        {demo.title}
-                      </a>
-                    </li>
-                  )}
-                </For>
-              </ul>
-            </nav>
-          </aside>
-          <main class="doc-wrap">
-            <DocPage
-              demo={demos[index()]!}
-              prev={index() > 0 ? demos[index() - 1] : undefined}
-              next={index() < demos.length - 1 ? demos[index() + 1] : undefined}
-            />
-          </main>
+          </header>
+          <Show
+            when={isDoc()}
+            fallback={
+              <main class="landing-wrap">
+                <Landing />
+              </main>
+            }
+          >
+            <div class="shell">
+              <aside class="sidebar">
+                <div class="search-wrap">
+                  <input
+                    type="search"
+                    class="search"
+                    placeholder="Filter primitives…"
+                    aria-label="Filter primitives"
+                    value={query()}
+                    onInput={(event) => setQuery(event.currentTarget.value)}
+                  />
+                </div>
+                <h2>Primitives</h2>
+                <nav>
+                  <ul>
+                    <For each={filtered()} fallback={<li class="no-match">No matches.</li>}>
+                      {(demo) => (
+                        <li>
+                          <a
+                            href={`#/${demo.slug}`}
+                            class={path() === demo.slug ? "active" : undefined}
+                          >
+                            {demo.title}
+                          </a>
+                        </li>
+                      )}
+                    </For>
+                  </ul>
+                </nav>
+              </aside>
+              <main class="doc-wrap">
+                <DocPage
+                  demo={demos[index()]!}
+                  prev={index() > 0 ? demos[index() - 1] : undefined}
+                  next={index() < demos.length - 1 ? demos[index() + 1] : undefined}
+                />
+              </main>
+            </div>
+          </Show>
         </div>
-      </Show>
-    </div>
-    }>
+      }
+    >
       {(demo) => <FullDemo demo={demo()} />}
     </Show>
   );

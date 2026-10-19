@@ -165,9 +165,7 @@ describe("primary tactile treatment", () => {
     readFileSync(workspaceFile("packages", "solid", "funnel", "src", "blocks.css"), "utf8");
 
   test("primary builds depth from the CTA token with flat fallbacks", () => {
-    const primary = css().match(
-      /\.fx-cta-button\[data-variant="primary"\] \{[^}]*\}/s,
-    )![0];
+    const primary = css().match(/\.fx-cta-button\[data-variant="primary"\] \{[^}]*\}/s)![0];
     expect(primary).toContain("linear-gradient");
     expect(primary).toContain("color-mix(in srgb, var(--solidix-funnel-cta)");
     expect(primary).toContain("inset 0 1px 0");
@@ -180,13 +178,9 @@ describe("primary tactile treatment", () => {
 
   test("hover lifts and press compresses; dark theme drops the emboss", () => {
     const text = css();
-    const hover = text.match(
-      /\.fx-cta-button\[data-variant="primary"\]:hover \{[^}]*\}/s,
-    )![0];
+    const hover = text.match(/\.fx-cta-button\[data-variant="primary"\]:hover \{[^}]*\}/s)![0];
     expect(hover).toContain("transform: translateY(-1px);");
-    const active = text.match(
-      /\.fx-cta-button\[data-variant="primary"\]:active \{[^}]*\}/s,
-    )![0];
+    const active = text.match(/\.fx-cta-button\[data-variant="primary"\]:active \{[^}]*\}/s)![0];
     expect(active).toContain("inset 0 2px 4px");
     expect(active).toContain("transform: translateY(1px);");
     expect(text).toContain('[data-funnel-theme="dark"] .fx-cta-button[data-variant="primary"]');

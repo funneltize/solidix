@@ -48,10 +48,7 @@ const NavigationMenuDemo = () => {
               <ListItem title="Documentation" href="#/">
                 Guides and API reference for every primitive.
               </ListItem>
-              <ListItem
-                title="Releases"
-                href="https://github.com/funneltize/solidix/releases"
-              >
+              <ListItem title="Releases" href="https://github.com/funneltize/solidix/releases">
                 Changelog and version history.
               </ListItem>
               <ListItem title="Issues" href="https://github.com/funneltize/solidix/issues">
@@ -71,7 +68,10 @@ const NavigationMenuDemo = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Link class="NavigationMenuLink" href="https://github.com/funneltize/solidix">
+          <NavigationMenu.Link
+            class="NavigationMenuLink"
+            href="https://github.com/funneltize/solidix"
+          >
             GitHub
           </NavigationMenu.Link>
         </NavigationMenu.Item>

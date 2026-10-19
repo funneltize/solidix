@@ -23,9 +23,7 @@ function ruleBody(css: string, selector: string): string {
   if (start === -1) throw new Error(`selector not found: ${selector}`);
   const open = css.indexOf("{", start);
   const close = css.indexOf("}", open);
-  return css
-    .slice(open + 1, close)
-    .replace(/\/\*[\s\S]*?\*\//g, "");
+  return css.slice(open + 1, close).replace(/\/\*[\s\S]*?\*\//g, "");
 }
 
 // jsdom does not resolve custom properties, so these tests pin the

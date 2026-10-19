@@ -1,10 +1,5 @@
 import { For, Show, createSignal } from "solid-js";
-import {
-  createSwipe,
-  springPresets,
-  viewTransition,
-  type SpringPresetName,
-} from "@solidix/motion";
+import { createSwipe, springPresets, viewTransition, type SpringPresetName } from "@solidix/motion";
 
 const PRESETS = Object.keys(springPresets) as SpringPresetName[];
 const DURATIONS: Record<SpringPresetName, string> = {
@@ -15,9 +10,21 @@ const DURATIONS: Record<SpringPresetName, string> = {
 };
 
 const TABS = [
-  { id: "springs", label: "Springs", text: "Stiffness, damping, and mass compile to a single linear() easing." },
-  { id: "transitions", label: "Transitions", text: "Enter and exit lifecycles run on @starting-style and allow-discrete." },
-  { id: "morphing", label: "Morphing", text: "Shared view-transition names morph layout natively." },
+  {
+    id: "springs",
+    label: "Springs",
+    text: "Stiffness, damping, and mass compile to a single linear() easing.",
+  },
+  {
+    id: "transitions",
+    label: "Transitions",
+    text: "Enter and exit lifecycles run on @starting-style and allow-discrete.",
+  },
+  {
+    id: "morphing",
+    label: "Morphing",
+    text: "Shared view-transition names morph layout natively.",
+  },
 ];
 
 const LABELS: Record<SpringPresetName, string> = {

@@ -12,11 +12,7 @@ const AnnounceDemo = () => {
           <span class="AnnounceDot" aria-hidden="true" />
           Live region · polite
         </div>
-        <Announce
-          regionIdentifier="gallery-notifications"
-          type="polite"
-          class="AnnounceMirror"
-        >
+        <Announce regionIdentifier="gallery-notifications" type="polite" class="AnnounceMirror">
           {count() === 0
             ? "No notifications yet."
             : `You have ${count()} notification${count() === 1 ? "" : "s"}.`}

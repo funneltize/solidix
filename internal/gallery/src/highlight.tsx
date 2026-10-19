@@ -12,7 +12,22 @@ const KEYWORDS = new Set(
 type TsxState = { blockComment: boolean };
 type CssState = { blockComment: boolean; depth: number };
 
-const MULTI_PUNCT = ["===", "!==", "=>", "?.", "??", "&&", "||", "<=", ">=", "==", "!=", "...", "++", "--"];
+const MULTI_PUNCT = [
+  "===",
+  "!==",
+  "=>",
+  "?.",
+  "??",
+  "&&",
+  "||",
+  "<=",
+  ">=",
+  "==",
+  "!=",
+  "...",
+  "++",
+  "--",
+];
 
 function readString(line: string, i: number): number {
   const quote = line[i]!;
@@ -254,13 +269,7 @@ export function CodeBlock(props: {
             {(toks, index) => (
               <span class={highlighted(index()) ? "code-line code-line-hl" : "code-line"}>
                 <For each={toks}>
-                  {(tok) =>
-                    tok.cls === "" ? (
-                      tok.text
-                    ) : (
-                      <span class={tok.cls}>{tok.text}</span>
-                    )
-                  }
+                  {(tok) => (tok.cls === "" ? tok.text : <span class={tok.cls}>{tok.text}</span>)}
                 </For>
                 {"\n"}
               </span>

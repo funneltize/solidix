@@ -1,6 +1,14 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { fireEvent, render, screen } from "@solidjs/testing-library";
-import { Countdown, ExitIntent, Footer, Hero, OptInForm, StickyBar, VideoFrame } from "../src/index";
+import {
+  Countdown,
+  ExitIntent,
+  Footer,
+  Hero,
+  OptInForm,
+  StickyBar,
+  VideoFrame,
+} from "../src/index";
 
 afterEach(() => {
   vi.useRealTimers();
@@ -211,10 +219,16 @@ describe("StickyBar", () => {
       const bar = screen.getByText("Cohort 12 closes Friday.").closest("[data-funnel-block]")!;
       expect(observe).toHaveBeenCalledTimes(1);
       // Trigger still in view: bar stays hidden.
-      callback!([{ isIntersecting: true, boundingClientRect: { top: 100 } }] as never, null as never);
+      callback!(
+        [{ isIntersecting: true, boundingClientRect: { top: 100 } }] as never,
+        null as never,
+      );
       expect(bar.hasAttribute("data-visible")).toBe(false);
       // Scrolled past: bar reveals.
-      callback!([{ isIntersecting: false, boundingClientRect: { top: -50 } }] as never, null as never);
+      callback!(
+        [{ isIntersecting: false, boundingClientRect: { top: -50 } }] as never,
+        null as never,
+      );
       await vi.waitFor(() => expect(bar.hasAttribute("data-visible")).toBe(true));
     } finally {
       vi.unstubAllGlobals();

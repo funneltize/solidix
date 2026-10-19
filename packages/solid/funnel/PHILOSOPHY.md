@@ -77,16 +77,16 @@ consequences, not just vibes.
 High-converting funnels compose these stages in order. Tones alternate to
 create chapter breaks; `inverse` is reserved for stage 4.
 
-| Stage | Section | Layout | Tone | Container | Job |
-| ----- | ------- | ------ | ---- | --------- | --- |
-| 1. Hook | Zero-escape Header + Hero | Split 55/45 or centered 680px | primary | standard | Match ad intent, state outcome + timeframe, CTA above fold |
-| 2. Authority | Trust bar (LogoBar, stars) | Full-bleed strip | subtle, compact | standard | Neutralize skepticism in 3 seconds |
-| 3. Agitation | Problem | Centered single column | primary | reading | Articulate pain so the prospect feels understood |
-| 4. Mechanism | Solution reveal (HowItWorks) | Headline + 3-card flow | inverse | standard | Proprietary mechanism: why past attempts failed |
-| 5. Value | Benefits | Alternating 50/50 zig-zag | primary | standard | Product visuals + outcome headlines + 3-bullet lists |
-| 6. Validation | Proof wall | 3-column grid (1200px) | subtle | wide | Metric outcomes, pull quotes, verified avatars |
-| 7. Conversion | Offer stack / Pricing | 1-card or 3-tier anchor grid | primary | wide, then reading for form | Anchor value vs cost, isolate checkout trigger |
-| 8. Reassurance | Guarantee + FAQ + final CTA | Seal box + accordion (680px) | subtle | reading | Reverse risk, answer objections, final CTA dam |
+| Stage          | Section                      | Layout                        | Tone            | Container                   | Job                                                        |
+| -------------- | ---------------------------- | ----------------------------- | --------------- | --------------------------- | ---------------------------------------------------------- |
+| 1. Hook        | Zero-escape Header + Hero    | Split 55/45 or centered 680px | primary         | standard                    | Match ad intent, state outcome + timeframe, CTA above fold |
+| 2. Authority   | Trust bar (LogoBar, stars)   | Full-bleed strip              | subtle, compact | standard                    | Neutralize skepticism in 3 seconds                         |
+| 3. Agitation   | Problem                      | Centered single column        | primary         | reading                     | Articulate pain so the prospect feels understood           |
+| 4. Mechanism   | Solution reveal (HowItWorks) | Headline + 3-card flow        | inverse         | standard                    | Proprietary mechanism: why past attempts failed            |
+| 5. Value       | Benefits                     | Alternating 50/50 zig-zag     | primary         | standard                    | Product visuals + outcome headlines + 3-bullet lists       |
+| 6. Validation  | Proof wall                   | 3-column grid (1200px)        | subtle          | wide                        | Metric outcomes, pull quotes, verified avatars             |
+| 7. Conversion  | Offer stack / Pricing        | 1-card or 3-tier anchor grid  | primary         | wide, then reading for form | Anchor value vs cost, isolate checkout trigger             |
+| 8. Reassurance | Guarantee + FAQ + final CTA  | Seal box + accordion (680px)  | subtle          | reading                     | Reverse risk, answer objections, final CTA dam             |
 
 Composition rules:
 
@@ -407,18 +407,18 @@ How blocks are built (follow these exactly for new blocks):
 Each test file pins one contract. Touching a contract means updating its
 test in the same change:
 
-| Test file | Contract |
-| --------- | -------- |
-| `tokens.test.ts` | Generated CSS matches `tokens.ts`; contrast pairs meet minima; README ratio table matches computed values |
-| `css-budget.test.ts` | Byte budgets for both stylesheets |
-| `css-scopes.test.ts` | Tone-scope literals, field-token isolation, container tiers, one-chrome-per-viewport, comparison containment |
-| `motion.test.ts` | Token-only timing, `fx-` keyframes resolve, `data-state` hooks exist, reduced-motion guard |
-| `cta-button.test.tsx` | Tactile variants, sizes, loading/disabled, anchor/button union, event emission |
-| `layout.test.tsx` | Containers, tones, header zero-escape, prose/highlight |
-| `proof.test.tsx` | Ratings, logos, testimonials, carousel remount + live region |
-| `consideration.test.tsx` | Benefits, comparison, pricing toggle, guarantee, FAQ deep links |
-| `conversion.test.tsx` | Hero, forms (no PII in events), countdown honesty, sticky reveal, exit intent caps, footer containment/variants/badges |
-| `events.test.ts` | Event contract shape (bubbles, composed, detail) |
+| Test file                | Contract                                                                                                               |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `tokens.test.ts`         | Generated CSS matches `tokens.ts`; contrast pairs meet minima; README ratio table matches computed values              |
+| `css-budget.test.ts`     | Byte budgets for both stylesheets                                                                                      |
+| `css-scopes.test.ts`     | Tone-scope literals, field-token isolation, container tiers, one-chrome-per-viewport, comparison containment           |
+| `motion.test.ts`         | Token-only timing, `fx-` keyframes resolve, `data-state` hooks exist, reduced-motion guard                             |
+| `cta-button.test.tsx`    | Tactile variants, sizes, loading/disabled, anchor/button union, event emission                                         |
+| `layout.test.tsx`        | Containers, tones, header zero-escape, prose/highlight                                                                 |
+| `proof.test.tsx`         | Ratings, logos, testimonials, carousel remount + live region                                                           |
+| `consideration.test.tsx` | Benefits, comparison, pricing toggle, guarantee, FAQ deep links                                                        |
+| `conversion.test.tsx`    | Hero, forms (no PII in events), countdown honesty, sticky reveal, exit intent caps, footer containment/variants/badges |
+| `events.test.ts`         | Event contract shape (bubbles, composed, detail)                                                                       |
 
 Verification for any funnel change: `pnpm --filter @solidix/funnel
 typecheck`, `npx vitest run packages/solid/funnel`, package `lint`, and
@@ -453,44 +453,44 @@ jsdom alone.
 
 ## 17. Anti-patterns
 
-| Never | Why | Do instead |
-| ----- | --- | ---------- |
-| Hand-edit `tokens.css` | Drift test fails; source is `tokens.ts` | Edit `tokens.ts`, run `pnpm gen:tokens` |
-| Put values in components | Breaks zero-JS theming | Reference tokens in CSS |
-| Share one token for brand and CTA | Destroys isolation effect | Keep `brand-*` and `cta-*` distinct |
-| Pure black text on white | Halation fatigue on long pages | Slate `ink` on `paper` |
-| 14px sales copy | Kills reading velocity | 18px body, 1.65 leading |
-| Placeholder-only labels | Fails NN/g, hurts completion | Static labels above inputs |
-| Side-by-side form fields | Breaks single-column law | Stack vertically |
-| Social icons in footer | Near-100% conversion killer | Trust badges |
-| Same-tab legal links | Destroys session momentum | `target="_blank" rel="noopener noreferrer"` |
-| Sticky header + sticky bar on one viewport | Competing chrome reads as spam | Exactly one persistent element per viewport |
-| Fake urgency (resetting timers) | Erodes trust; out of scope | Honest `endsAt` deadlines |
-| Scroll-triggered reveals | Observer cost + a11y risk, low value | `data-state` CSS transitions only |
-| Literal durations/easings in CSS | Motion test fails | Motion tokens |
-| JS animation runtime | Weight + reduced-motion risk | Pure CSS keyed on `data-state` |
-| PII in event detail | Privacy violation | Field names only; values to `onSubmit` |
-| Analytics SDK in package | Bundle + coupling | `funnel:*` CustomEvents, consumer snippet |
-| `asChild` on blocks | Breaks fixed-structure guarantee | Tokens + `.fx-*` overrides |
-| Autoplay anywhere | A11y + attention cost | User-triggered motion only |
+| Never                                      | Why                                     | Do instead                                  |
+| ------------------------------------------ | --------------------------------------- | ------------------------------------------- |
+| Hand-edit `tokens.css`                     | Drift test fails; source is `tokens.ts` | Edit `tokens.ts`, run `pnpm gen:tokens`     |
+| Put values in components                   | Breaks zero-JS theming                  | Reference tokens in CSS                     |
+| Share one token for brand and CTA          | Destroys isolation effect               | Keep `brand-*` and `cta-*` distinct         |
+| Pure black text on white                   | Halation fatigue on long pages          | Slate `ink` on `paper`                      |
+| 14px sales copy                            | Kills reading velocity                  | 18px body, 1.65 leading                     |
+| Placeholder-only labels                    | Fails NN/g, hurts completion            | Static labels above inputs                  |
+| Side-by-side form fields                   | Breaks single-column law                | Stack vertically                            |
+| Social icons in footer                     | Near-100% conversion killer             | Trust badges                                |
+| Same-tab legal links                       | Destroys session momentum               | `target="_blank" rel="noopener noreferrer"` |
+| Sticky header + sticky bar on one viewport | Competing chrome reads as spam          | Exactly one persistent element per viewport |
+| Fake urgency (resetting timers)            | Erodes trust; out of scope              | Honest `endsAt` deadlines                   |
+| Scroll-triggered reveals                   | Observer cost + a11y risk, low value    | `data-state` CSS transitions only           |
+| Literal durations/easings in CSS           | Motion test fails                       | Motion tokens                               |
+| JS animation runtime                       | Weight + reduced-motion risk            | Pure CSS keyed on `data-state`              |
+| PII in event detail                        | Privacy violation                       | Field names only; values to `onSubmit`      |
+| Analytics SDK in package                   | Bundle + coupling                       | `funnel:*` CustomEvents, consumer snippet   |
+| `asChild` on blocks                        | Breaks fixed-structure guarantee        | Tokens + `.fx-*` overrides                  |
+| Autoplay anywhere                          | A11y + attention cost                   | User-triggered motion only                  |
 
 ## 18. File map
 
-| Path | Role |
-| ---- | ---- |
-| `PHILOSOPHY.md` (this file) | Intent and rules agents implement from |
-| `README.md` | Consumer reference: install, tokens, contrast table, blocks, motion |
-| `src/tokens.ts` | Token source of truth + contrast pairs + CSS renderer |
-| `src/tokens.css` (generated) | Zero-JS theme layer, dark variant, CTA hues, focus/selection, reduced-motion guard |
-| `src/blocks.css` | All block visuals; `.fx-*` public API |
-| `src/root.tsx` | Theme/CTA/variant scope |
-| `src/layout.tsx` | Section, Container, Header, SectionHeading, Eyebrow, Prose |
-| `src/cta-button.tsx` | CTAButton, CtaCluster |
-| `src/conversion.tsx` | Hero, OptInForm, VideoFrame, Countdown, StickyBar, ExitIntent, Footer |
-| `src/consideration.tsx` | Benefits, HowItWorks, ComparisonTable, Pricing, Guarantee, Faq |
-| `src/proof.tsx` | LogoBar, Testimonials, TestimonialCarousel, StatsBar, StarRating |
-| `src/events.ts` | `funnel:*` event contract |
-| `src/index.ts` | Public exports (components + types together) |
-| `test/*` | Contracts in section 15 |
-| `internal/gallery/src/demos/funnel.tsx` | 8-stage reference implementation |
-| `internal/gallery/src/docs/funnel.ts` | Live docs for the gallery site |
+| Path                                    | Role                                                                               |
+| --------------------------------------- | ---------------------------------------------------------------------------------- |
+| `PHILOSOPHY.md` (this file)             | Intent and rules agents implement from                                             |
+| `README.md`                             | Consumer reference: install, tokens, contrast table, blocks, motion                |
+| `src/tokens.ts`                         | Token source of truth + contrast pairs + CSS renderer                              |
+| `src/tokens.css` (generated)            | Zero-JS theme layer, dark variant, CTA hues, focus/selection, reduced-motion guard |
+| `src/blocks.css`                        | All block visuals; `.fx-*` public API                                              |
+| `src/root.tsx`                          | Theme/CTA/variant scope                                                            |
+| `src/layout.tsx`                        | Section, Container, Header, SectionHeading, Eyebrow, Prose                         |
+| `src/cta-button.tsx`                    | CTAButton, CtaCluster                                                              |
+| `src/conversion.tsx`                    | Hero, OptInForm, VideoFrame, Countdown, StickyBar, ExitIntent, Footer              |
+| `src/consideration.tsx`                 | Benefits, HowItWorks, ComparisonTable, Pricing, Guarantee, Faq                     |
+| `src/proof.tsx`                         | LogoBar, Testimonials, TestimonialCarousel, StatsBar, StarRating                   |
+| `src/events.ts`                         | `funnel:*` event contract                                                          |
+| `src/index.ts`                          | Public exports (components + types together)                                       |
+| `test/*`                                | Contracts in section 15                                                            |
+| `internal/gallery/src/demos/funnel.tsx` | 8-stage reference implementation                                                   |
+| `internal/gallery/src/docs/funnel.ts`   | Live docs for the gallery site                                                     |

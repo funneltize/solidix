@@ -1,0 +1,6 @@
+# Generated stylesheets: drift tests pin them byte-for-byte against their
+# renderers (`renderTokensCss`, `createSpring`), so the formatter must not
+# rewrap them. Regenerate with `pnpm gen:tokens` /
+# `pnpm --filter @solidix/motion gen:springs` instead of editing.
+packages/solid/funnel/src/tokens.css
+packages/solid/motion/src/springs.css

@@ -36,7 +36,8 @@ export const doc: PrimitiveDoc = {
           name: "cta",
           type: '"orange" | "emerald" | "cobalt"',
           default: "orange",
-          description: "Isolation-color hue; emerald suits fintech/health, cobalt enterprise/medical.",
+          description:
+            "Isolation-color hue; emerald suits fintech/health, cobalt enterprise/medical.",
         },
         {
           name: "variant",
@@ -199,7 +200,8 @@ export const doc: PrimitiveDoc = {
         {
           name: "periods",
           type: '"monthly" | "annual"[]',
-          description: "Billing periods offered; a single period hides the toggle (one-time offers).",
+          description:
+            "Billing periods offered; a single period hides the toggle (one-time offers).",
         },
         {
           name: "defaultBilling",

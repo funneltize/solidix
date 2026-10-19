@@ -26,8 +26,7 @@ export function viewTransition(update: () => void): ViewTransition | null {
       ? document.startViewTransition.bind(document)
       : undefined;
   const reduceMotion =
-    typeof matchMedia === "function" &&
-    matchMedia("(prefers-reduced-motion: reduce)").matches;
+    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (startViewTransition === undefined || reduceMotion) {
     update();
     return null;

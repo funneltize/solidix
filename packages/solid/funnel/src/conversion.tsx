@@ -784,9 +784,7 @@ const Footer: Component<FooterProps> = (props) => {
       </Show>
       <Show when={props.legalLinks?.length}>
         <nav class="fx-footer-legal-nav" aria-label="Legal">
-          <For each={props.legalLinks!}>
-            {(link) => <FooterAnchor link={link} forceLegal />}
-          </For>
+          <For each={props.legalLinks!}>{(link) => <FooterAnchor link={link} forceLegal />}</For>
         </nav>
       </Show>
       <Show when={props.legal}>

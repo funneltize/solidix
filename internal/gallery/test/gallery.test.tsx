@@ -139,9 +139,9 @@ describe("gallery demos", () => {
     expect(await screen.findByText("Bouncy · 550ms")).not.toBe(null);
     fireEvent.click(screen.getByRole("button", { name: "Ping" }));
     await vi.waitFor(() => {
-      expect(
-        (container.querySelector(".MotionDot") as HTMLElement).style.transform,
-      ).toContain("216");
+      expect((container.querySelector(".MotionDot") as HTMLElement).style.transform).toContain(
+        "216",
+      );
     });
     // No startViewTransition in jsdom - the helper applies the update instantly.
     fireEvent.click(screen.getByRole("tab", { name: "Morphing" }));

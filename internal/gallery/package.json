@@ -50,8 +50,8 @@
     "@solidix/toolbar": "workspace:*",
     "@solidix/tooltip": "workspace:*",
     "@solidjs/web": "2.0.0-rc.15",
-    "solidix": "workspace:*",
-    "solid-js": "2.0.0-rc.15"
+    "solid-js": "2.0.0-rc.15",
+    "solidix": "workspace:*"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",

@@ -19,9 +19,7 @@ describe("Benefits", () => {
 
   test("media items become lazy zig-zag rows", () => {
     render(() => (
-      <Benefits
-        items={[{ title: "See it live", media: { src: "/ui.png", alt: "Product UI" } }]}
-      />
+      <Benefits items={[{ title: "See it live", media: { src: "/ui.png", alt: "Product UI" } }]} />
     ));
     const art = screen.getByAltText("Product UI");
     expect(art.getAttribute("loading")).toBe("lazy");
@@ -52,7 +50,10 @@ describe("ComparisonTable", () => {
 
   test("honors an explicit featured column", () => {
     render(() => (
-      <ComparisonTable columns={[{ label: "Legacy" }, { label: "Acme", featured: true }]} rows={rows} />
+      <ComparisonTable
+        columns={[{ label: "Legacy" }, { label: "Acme", featured: true }]}
+        rows={rows}
+      />
     ));
     expect(screen.getByText("Acme").hasAttribute("data-featured")).toBe(true);
     expect(screen.getByText("Legacy").hasAttribute("data-featured")).toBe(false);

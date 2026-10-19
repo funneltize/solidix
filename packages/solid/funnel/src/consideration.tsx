@@ -40,10 +40,7 @@ const Benefits: Component<BenefitsProps> = (props) => {
       <Primitive.ul class="fx-benefits-list">
         <For each={props.items}>
           {(item) => (
-            <Primitive.li
-              class="fx-benefits-item"
-              data-media={item.media ? "" : undefined}
-            >
+            <Primitive.li class="fx-benefits-item" data-media={item.media ? "" : undefined}>
               <span class="fx-benefits-marker" aria-hidden="true">
                 {item.icon ?? (
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -366,10 +363,7 @@ const ComparisonCell: Component<{ value: boolean | string; featured: boolean }> 
   const value = () => props.value;
   return (
     <td class="fx-comparison-value" data-featured={props.featured ? "" : undefined}>
-      <Show
-        when={typeof value() === "boolean"}
-        fallback={<span>{value() as string}</span>}
-      >
+      <Show when={typeof value() === "boolean"} fallback={<span>{value() as string}</span>}>
         <Show
           when={value() as boolean}
           fallback={

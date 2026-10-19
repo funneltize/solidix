@@ -22,9 +22,7 @@ describe("motion", () => {
   test("every animation name resolves to a defined fx- keyframe", () => {
     const css = readSrc("blocks.css");
     const used = [...css.matchAll(/animation:\s*([a-z][a-z0-9-]*)/g)].map((m) => m[1]!);
-    const defined = new Set(
-      [...css.matchAll(/@keyframes\s+([a-z][a-z0-9-]*)/g)].map((m) => m[1]!),
-    );
+    const defined = new Set([...css.matchAll(/@keyframes\s+([a-z][a-z0-9-]*)/g)].map((m) => m[1]!));
     expect(used.length).toBeGreaterThan(0);
     for (const name of used) {
       expect(name.startsWith("fx-")).toBe(true);
@@ -34,9 +32,7 @@ describe("motion", () => {
 
   test("motion timing comes from duration/ease tokens, never literals", () => {
     const css = readSrc("blocks.css");
-    const declarations = [...css.matchAll(/(?:animation|transition)\s*:[^;]+;/gs)].map(
-      (m) => m[0],
-    );
+    const declarations = [...css.matchAll(/(?:animation|transition)\s*:[^;]+;/gs)].map((m) => m[0]);
     expect(declarations.length).toBeGreaterThan(0);
     for (const declaration of declarations) {
       expect(declaration).not.toMatch(/\d+m?s/);

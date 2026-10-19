@@ -19,7 +19,12 @@ const Landing: Component = () => (
         <a class="btn primary" href="#/accordion">
           Browse primitives
         </a>
-        <a class="btn" href="https://github.com/funneltize/solidix" target="_blank" rel="noreferrer">
+        <a
+          class="btn"
+          href="https://github.com/funneltize/solidix"
+          target="_blank"
+          rel="noreferrer"
+        >
           GitHub
         </a>
       </div>
