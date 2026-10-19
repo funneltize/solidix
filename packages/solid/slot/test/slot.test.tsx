@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
 import userEvent from "@testing-library/user-event";
 import { createSignal } from "solid-js";
@@ -91,6 +91,34 @@ describe("Slot", () => {
       "dataset.state",
       "open",
     );
+  });
+
+  test("updates reactive props in place without transient removal", async () => {
+    let setTabIndex!: (value: number) => void;
+    render(() => {
+      const [index, set] = createSignal(-1);
+      setTabIndex = set;
+      return (
+        <Slot tabindex={index()}>
+          <button type="button">press</button>
+        </Slot>
+      );
+    });
+
+    const button = (await screen.findByRole("button", { name: "press" })) as HTMLButtonElement;
+    expect(button.getAttribute("tabindex")).toBe("-1");
+    button.focus();
+
+    // A remove-then-reapply cycle drops focus in real browsers (removing
+    // `tabindex` makes the element unfocusable); jsdom never drops it, so
+    // assert the update mechanism directly instead.
+    const removeAttribute = vi.spyOn(button, "removeAttribute");
+    const setAttribute = vi.spyOn(button, "setAttribute");
+    setTabIndex(0);
+    await vi.waitFor(() => expect(button.getAttribute("tabindex")).toBe("0"));
+    expect(document.activeElement).toBe(button);
+    expect(removeAttribute).not.toHaveBeenCalledWith("tabindex");
+    expect(setAttribute).toHaveBeenCalledWith("tabindex", "0");
   });
 
   test("follows reactive children changes", async () => {

@@ -1,5 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
+import { Portal } from "@solidjs/web";
 import userEvent from "@testing-library/user-event";
 import { DismissableLayer, DismissableLayerBranch } from "../src/index";
 
@@ -63,6 +64,53 @@ describe("DismissableLayer", () => {
 
     await user.click(screen.getByText("branch"));
     expect(onDismiss).not.toHaveBeenCalled();
+  });
+
+  test("does not dismiss for focus or pointerdown inside a nested portalled layer", async () => {
+    const user = userEvent.setup();
+    const onDismiss = vi.fn();
+    render(() => (
+      <DismissableLayer onDismiss={onDismiss}>
+        <button type="button">inside</button>
+        <Portal>
+          <DismissableLayer>
+            <button type="button">nested</button>
+          </DismissableLayer>
+        </Portal>
+      </DismissableLayer>
+    ));
+    await screen.findByText("nested");
+    await tick();
+
+    // Native capture listeners cannot see portal-crossing focus the way React
+    // synthetic events do; the nesting record must classify it as inside.
+    (screen.getByText("nested") as HTMLElement).focus();
+    await tick();
+    expect(onDismiss).not.toHaveBeenCalled();
+
+    await user.click(screen.getByText("nested"));
+    expect(onDismiss).not.toHaveBeenCalled();
+  });
+
+  test("still dismisses for focus inside a sibling layer", async () => {
+    const onDismiss = vi.fn();
+    render(() => (
+      <>
+        <DismissableLayer onDismiss={onDismiss}>
+          <button type="button">inside</button>
+        </DismissableLayer>
+        <DismissableLayer>
+          <button type="button">sibling</button>
+        </DismissableLayer>
+      </>
+    ));
+    const inside = (await screen.findByText("inside")) as HTMLElement;
+    const sibling = screen.getByText("sibling") as HTMLElement;
+    await tick();
+
+    inside.focus();
+    sibling.focus();
+    expect(onDismiss).toHaveBeenCalledTimes(1);
   });
 
   test("dismisses on focus outside", async () => {

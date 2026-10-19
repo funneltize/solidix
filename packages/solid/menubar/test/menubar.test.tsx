@@ -1012,6 +1012,116 @@ describe("Menubar.SubTrigger", () => {
     fireEvent.click(subTrigger);
     expect(onClick).toHaveBeenCalled();
   });
+
+  test("focusing the trigger keeps tabindex applied without transient removal", async () => {
+    render(() => (
+      <Menubar defaultValue="file">
+        <MenubarMenu value="file">
+          <MenubarTrigger>File</MenubarTrigger>
+          <MenubarPortal>
+            <MenubarContent>
+              <MenubarItem>New</MenubarItem>
+              <MenubarSub>
+                <MenubarSubTrigger>Share</MenubarSubTrigger>
+                <MenubarPortal>
+                  <MenubarSubContent>
+                    <MenubarItem>Email Link</MenubarItem>
+                  </MenubarSubContent>
+                </MenubarPortal>
+              </MenubarSub>
+            </MenubarContent>
+          </MenubarPortal>
+        </MenubarMenu>
+      </Menubar>
+    ));
+
+    const subTrigger = (await screen.findByText("Share")) as HTMLElement;
+    // The roving tab stop flips tabindex on focus; Slot must update it in
+    // place, because a transient removal drops focus in real browsers and
+    // makes the submenu unreachable (jsdom never drops it, so assert the
+    // mechanism directly instead).
+    const removeAttribute = vi.spyOn(subTrigger, "removeAttribute");
+    subTrigger.focus();
+    await vi.waitFor(() => expect(subTrigger.getAttribute("tabindex")).toBe("0"));
+    expect(document.activeElement).toBe(subTrigger);
+    expect(removeAttribute).not.toHaveBeenCalledWith("tabindex");
+  });
+
+  test("keyboard travels from the trigger into the submenu", async () => {
+    render(() => (
+      <Menubar defaultValue="file">
+        <MenubarMenu value="file">
+          <MenubarTrigger>File</MenubarTrigger>
+          <MenubarPortal>
+            <MenubarContent>
+              <MenubarItem>New</MenubarItem>
+              <MenubarSub>
+                <MenubarSubTrigger>Share</MenubarSubTrigger>
+                <MenubarPortal>
+                  <MenubarSubContent>
+                    <MenubarItem>Email Link</MenubarItem>
+                  </MenubarSubContent>
+                </MenubarPortal>
+              </MenubarSub>
+            </MenubarContent>
+          </MenubarPortal>
+        </MenubarMenu>
+      </Menubar>
+    ));
+
+    const subTrigger = (await screen.findByText("Share")) as HTMLElement;
+    subTrigger.focus();
+    fireEvent.keyDown(subTrigger, { key: "ArrowRight" });
+    const subItem = (await screen.findByText("Email Link")) as HTMLElement;
+    expect(subTrigger.getAttribute("aria-expanded")).toBe("true");
+    // The submenu content itself must be focusable (roving `tabindex` lands
+    // on it, not the popper wrapper) so keyboard can travel into the submenu.
+    const subContent = subItem.closest('[role="menu"]') as HTMLElement;
+    expect(subContent.hasAttribute("tabindex")).toBe(true);
+    subItem.focus();
+    expect(document.activeElement).toBe(subItem);
+    // Focus moving into the portalled submenu must not read as outside to
+    // the parent layer; flush first so a wrongful dismissal would unmount.
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(screen.queryByText("New")).not.toBe(null);
+    expect(screen.queryByText("Email Link")).not.toBe(null);
+  });
+
+  test("pointerdown inside the submenu does not dismiss the parent menu", async () => {
+    render(() => (
+      <Menubar defaultValue="file">
+        <MenubarMenu value="file">
+          <MenubarTrigger>File</MenubarTrigger>
+          <MenubarPortal>
+            <MenubarContent>
+              <MenubarItem>New</MenubarItem>
+              <MenubarSub>
+                <MenubarSubTrigger>Share</MenubarSubTrigger>
+                <MenubarPortal>
+                  <MenubarSubContent>
+                    <MenubarItem>Email Link</MenubarItem>
+                  </MenubarSubContent>
+                </MenubarPortal>
+              </MenubarSub>
+            </MenubarContent>
+          </MenubarPortal>
+        </MenubarMenu>
+      </Menubar>
+    ));
+
+    const subTrigger = (await screen.findByText("Share")) as HTMLElement;
+    subTrigger.focus();
+    fireEvent.keyDown(subTrigger, { key: "ArrowRight" });
+    const subItem = (await screen.findByText("Email Link")) as HTMLElement;
+    // Pointerdown alone never legitimately closes anything; if the parent
+    // layer reads the portalled submenu as outside, it dismisses here. The
+    // tick matters: document pointerdown listeners register on a timeout.
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    fireEvent.pointerDown(subItem, { button: 0 });
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(screen.queryByText("New")).not.toBe(null);
+    expect(screen.queryByText("Email Link")).not.toBe(null);
+  });
 });
 
 describe("Menubar.SubContent", () => {
@@ -1265,5 +1375,72 @@ describe("menus", () => {
     fireEvent.click(await screen.findByText("New"));
     await vi.waitFor(() => expect(onSelect).toHaveBeenCalledTimes(1));
     await vi.waitFor(() => expect(screen.queryByRole("menu")).toBe(null));
+  });
+});
+
+describe("submenus", () => {
+  function SubmenuBar() {
+    return (
+      <Menubar defaultValue="file">
+        <MenubarMenu value="file">
+          <MenubarTrigger>File</MenubarTrigger>
+          <MenubarPortal>
+            <MenubarContent aria-label="file menu">
+              <MenubarItem>New</MenubarItem>
+              <MenubarSub>
+                <MenubarSubTrigger>Share</MenubarSubTrigger>
+                <MenubarPortal>
+                  <MenubarSubContent aria-label="share menu">
+                    <MenubarItem>Email Link</MenubarItem>
+                  </MenubarSubContent>
+                </MenubarPortal>
+              </MenubarSub>
+            </MenubarContent>
+          </MenubarPortal>
+        </MenubarMenu>
+      </Menubar>
+    );
+  }
+
+  const openMenuLabels = () =>
+    screen.queryAllByRole("menu").map((menu) => menu.getAttribute("aria-label"));
+
+  function rect(x: number, y: number, width: number, height: number): DOMRect {
+    return {
+      x,
+      y,
+      width,
+      height,
+      top: y,
+      left: x,
+      right: x + width,
+      bottom: y + height,
+      toJSON: () => {},
+    } as DOMRect;
+  }
+
+  test("keeps the root menu open when the pointer crosses into an open submenu", async () => {
+    render(() => <SubmenuBar />);
+    const share = (await screen.findByText("Share")) as HTMLElement;
+
+    // Hovering the subtrigger opens the submenu after a short delay.
+    fireEvent.pointerMove(share, { pointerType: "mouse", clientX: 100, clientY: 120 });
+    const email = (await screen.findByText("Email Link")) as HTMLElement;
+
+    // jsdom reports zero rects, which collapses the submenu grace area; give
+    // both menus realistic geometry so the crossing stays inside it, as in a
+    // real browser (root dropdown with the submenu docked to its right edge).
+    const rootMenu = screen.getByLabelText("file menu") as HTMLElement;
+    rootMenu.getBoundingClientRect = () => rect(8, 40, 200, 160);
+    const subMenu = screen.getByLabelText("share menu") as HTMLElement;
+    subMenu.getBoundingClientRect = () => rect(208, 90, 180, 100);
+
+    // Moving the mouse off the root menu into the submenu must not dismiss it.
+    fireEvent.pointerMove(share, { pointerType: "mouse", clientX: 180, clientY: 120 });
+    fireEvent.pointerLeave(share, { pointerType: "mouse", clientX: 205, clientY: 120 });
+    fireEvent.pointerMove(email, { pointerType: "mouse", clientX: 250, clientY: 130 });
+
+    await vi.waitFor(() => expect(document.activeElement).toBe(email));
+    expect(openMenuLabels()).toEqual(["file menu", "share menu"]);
   });
 });

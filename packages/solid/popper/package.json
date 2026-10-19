@@ -51,6 +51,7 @@
     "@solidix/context": "workspace:*",
     "@solidix/primitive": "workspace:*",
     "@solidix/rect": "workspace:*",
+    "@solidix/slot": "workspace:*",
     "@solidix/use-callback-ref": "workspace:*",
     "@solidix/use-size": "workspace:*"
   },

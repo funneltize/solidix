@@ -46,6 +46,47 @@ const DismissableLayerContext = createSolidContext<DismissableLayerContextValue>
   dismissableSurfaces: new Set<DismissableLayerBranchElement>(),
 });
 
+/**
+ * Layer ancestry through the Solid owner tree, which - unlike the DOM tree -
+ * spans portals. Radix learns nesting from React's synthetic event bubbling
+ * through portals; native capture listeners cannot see it, so without this
+ * record an interaction inside a portalled nested layer (eg. a submenu)
+ * looks like an outside interaction to every ancestor layer, dismissing the
+ * whole stack. Each layer provides its own record; the `parent` chain leads
+ * back through every enclosing layer.
+ */
+interface LayerNesting {
+  readonly parent: LayerNesting | null;
+}
+
+const DismissableLayerNestingContext = createSolidContext<LayerNesting | null>(null);
+
+// Layer node -> its nesting record. Populated synchronously in the ref
+// callback (like the capture listeners) so outside handlers - which can run
+// before any effect - always resolve the target's layer.
+const layerNestingByNode = new WeakMap<Element, LayerNesting>();
+
+function isTargetInNestedLayer(self: LayerNesting, target: EventTarget | null): boolean {
+  if (!(target instanceof Element)) return false;
+  // Find the innermost layer containing the target, then walk its ancestry:
+  // a descendant of `self` counts as inside, anything else (a sibling layer
+  // or no layer at all) stays outside.
+  let node: Element | null = target;
+  while (node) {
+    const record = layerNestingByNode.get(node);
+    if (record) {
+      let current: LayerNesting | null = record;
+      while (current) {
+        if (current === self) return true;
+        current = current.parent;
+      }
+      return false;
+    }
+    node = node.parentElement;
+  }
+  return false;
+}
+
 type DismissableLayerProps = PrimitivePropsWithRef<"div"> & {
   /**
    * When `true`, hover/focus/click interactions will be disabled on elements outside
@@ -120,6 +161,8 @@ const DismissableLayer: Component<DismissableLayerProps> = (props) => {
     "ref",
   );
   const context = useSolidContext(DismissableLayerContext);
+  const parentNesting = useSolidContext(DismissableLayerNestingContext);
+  const nesting: LayerNesting = { parent: parentNesting };
   const [node, setNode] = createSignal<DismissableLayerElement | null>(null);
   // Solid JSX has no `onXCapture` props, so capture listeners are attached
   // manually and composed with the user's capture handlers. They attach in
@@ -160,11 +203,19 @@ const DismissableLayer: Component<DismissableLayerProps> = (props) => {
       captureNode.addEventListener("pointerdown", handlePointerDownCapture as EventListener, true);
     }
   };
+  let registeredNode: DismissableLayerElement | null = null;
   const composedRefs = useComposedRefs(props.ref, (next: DismissableLayerElement | null) => {
     attachCaptureListeners(next);
+    if (registeredNode) layerNestingByNode.delete(registeredNode);
+    registeredNode = next;
+    if (next) layerNestingByNode.set(next, nesting);
     setNode(() => next);
   });
-  onCleanup(() => attachCaptureListeners(null));
+  onCleanup(() => {
+    attachCaptureListeners(null);
+    if (registeredNode) layerNestingByNode.delete(registeredNode);
+    registeredNode = null;
+  });
 
   // Layer sets mutate without signals; mirror Radix's `force({})` re-render
   // with a version counter that computations read to stay subscribed.
@@ -226,6 +277,7 @@ const DismissableLayer: Component<DismissableLayerProps> = (props) => {
         );
         return untrack(isPointerEventsEnabled) && !isPointerDownOnBranch;
       },
+      selfNesting: nesting,
     },
   );
 
@@ -243,6 +295,7 @@ const DismissableLayer: Component<DismissableLayerProps> = (props) => {
     },
     ownerDocument,
     node,
+    nesting,
   );
 
   const handleKeyDown = useCallbackRef((event: KeyboardEvent) => {
@@ -349,22 +402,24 @@ const DismissableLayer: Component<DismissableLayerProps> = (props) => {
   });
 
   return (
-    <Primitive.div
-      {...rest}
-      ref={composedRefs}
-      style={(() => {
-        const disabled = isBodyPointerEventsDisabled();
-        const enabled = isPointerEventsEnabled();
-        const pointerEvents = disabled ? (enabled ? "auto" : "none") : undefined;
-        const user = props.style;
-        if (typeof user === "string") {
-          return user + (pointerEvents ? `;pointer-events:${pointerEvents}` : "");
-        }
-        return { "pointer-events": pointerEvents, ...user };
-      })()}
-    >
-      {props.children}
-    </Primitive.div>
+    <DismissableLayerNestingContext value={nesting}>
+      <Primitive.div
+        {...rest}
+        ref={composedRefs}
+        style={(() => {
+          const disabled = isBodyPointerEventsDisabled();
+          const enabled = isPointerEventsEnabled();
+          const pointerEvents = disabled ? (enabled ? "auto" : "none") : undefined;
+          const user = props.style;
+          if (typeof user === "string") {
+            return user + (pointerEvents ? `;pointer-events:${pointerEvents}` : "");
+          }
+          return { "pointer-events": pointerEvents, ...user };
+        })()}
+      >
+        {props.children}
+      </Primitive.div>
+    </DismissableLayerNestingContext>
   );
 };
 
@@ -450,6 +505,7 @@ function usePointerDownOutside(
     shouldHandlePointerDownOutside?:
       | { bivarianceHack(target: EventTarget | null): boolean }["bivarianceHack"]
       | undefined;
+    selfNesting: LayerNesting;
   },
 ) {
   const {
@@ -459,6 +515,7 @@ function usePointerDownOutside(
     isDeferredPointerDownOutsideRef,
     dismissableSurfaces,
     shouldHandlePointerDownOutside = IS_TRUE,
+    selfNesting,
   } = args;
   const getOwnerDocument =
     typeof ownerDocumentOption === "function"
@@ -520,7 +577,11 @@ function usePointerDownOutside(
       }
 
       const handlePointerDown = (event: PointerEvent) => {
-        if (event.target && !isPointerInsideTree) {
+        if (
+          event.target &&
+          !isPointerInsideTree &&
+          !isTargetInNestedLayer(selfNesting, event.target)
+        ) {
           if (!shouldHandlePointerDownOutside(event.target)) {
             doc.removeEventListener("click", handleClickRef);
             resetOutsideInteraction();
@@ -673,6 +734,7 @@ function useFocusOutside(
   onFocusOutside: ((event: FocusOutsideEvent) => void) | undefined,
   ownerDocument: Document | undefined | (() => Document | undefined) = globalThis?.document,
   layerNode: () => Element | null = () => null,
+  selfNesting: LayerNesting | null = null,
 ) {
   const handleFocusOutside = useCallbackRef(onFocusOutside) as EventListener;
   let isFocusInsideTree = false;
@@ -686,7 +748,11 @@ function useFocusOutside(
     ({ document: doc, layer }) => {
       if (!doc) return;
       const handleFocus = (event: FocusEvent) => {
-        if (event.target && !isFocusInsideTree) {
+        if (
+          event.target &&
+          !isFocusInsideTree &&
+          !(selfNesting && isTargetInNestedLayer(selfNesting, event.target))
+        ) {
           const eventDetail = { originalEvent: event };
           handleAndDispatchCustomEvent(FOCUS_OUTSIDE, handleFocusOutside, eventDetail, {
             discrete: false,

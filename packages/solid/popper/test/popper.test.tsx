@@ -1,5 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
+import { Slot } from "@solidix/slot";
 import { Popper, PopperAnchor, PopperContent, PopperArrow } from "../src/index";
 
 describe("Popper", () => {
@@ -80,5 +81,30 @@ describe("Popper", () => {
     const arrow = (await screen.findByTestId("arrow")) as unknown as SVGSVGElement;
     expect(arrow.tagName).toBe("svg");
     expect(arrow.querySelector("polygon")).toBeDefined();
+  });
+
+  test("directs slot props above the content to the inner element, not the wrapper", async () => {
+    render(() => (
+      <Popper>
+        <PopperAnchor>
+          <button type="button">anchor</button>
+        </PopperAnchor>
+        <Slot data-testid="slotted" tabindex={0}>
+          <PopperContent>content</PopperContent>
+        </Slot>
+      </Popper>
+    ));
+
+    await screen.findByText("anchor");
+    const wrapper = (await screen.findByText("content")).closest(
+      "[data-radix-popper-content-wrapper]",
+    ) as HTMLElement;
+    const inner = wrapper.querySelector("[data-side]") as HTMLElement;
+    // Like Radix (whose slot props flow through as component props), slotted
+    // props belong on the content element; the wrapper keeps only positioning.
+    expect(inner.getAttribute("tabindex")).toBe("0");
+    expect(inner.getAttribute("data-testid")).toBe("slotted");
+    expect(wrapper.hasAttribute("tabindex")).toBe(false);
+    expect(wrapper.hasAttribute("data-testid")).toBe(false);
   });
 });

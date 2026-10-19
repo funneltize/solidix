@@ -158,12 +158,12 @@ importers:
       '@solidjs/web':
         specifier: 2.0.0-rc.15
         version: 2.0.0-rc.15(solid-js@2.0.0-rc.15)
-      solidix:
-        specifier: workspace:*
-        version: link:../../packages/solid/solidix
       solid-js:
         specifier: 2.0.0-rc.15
         version: 2.0.0-rc.15
+      solidix:
+        specifier: workspace:*
+        version: link:../../packages/solid/solidix
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
@@ -1383,6 +1383,9 @@ importers:
       '@solidix/rect':
         specifier: workspace:*
         version: link:../../core/rect
+      '@solidix/slot':
+        specifier: workspace:*
+        version: link:../slot
       '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref

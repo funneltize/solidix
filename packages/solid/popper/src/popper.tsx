@@ -17,6 +17,7 @@ import { Arrow as ArrowPrimitive, type ArrowProps } from "@solidix/arrow";
 import { useComposedRefs, type RefObject } from "@solidix/compose-refs";
 import { createContextScope, type Scope } from "@solidix/context";
 import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
+import { createSlottable } from "@solidix/slot";
 import { useCallbackRef } from "@solidix/use-callback-ref";
 import { useSize } from "@solidix/use-size";
 import type { Measurable } from "@solidix/rect";
@@ -144,6 +145,8 @@ const PopperAnchor: Component<ScopedProps<PopperAnchorProps>> = (props) => {
  * -----------------------------------------------------------------------------------------------*/
 
 const CONTENT_NAME = "PopperContent";
+
+const Slottable = createSlottable(CONTENT_NAME);
 
 type Boundary = Element | null;
 type PopperContentElement = HTMLDivElement;
@@ -422,21 +425,29 @@ const PopperContent: Component<ScopedProps<PopperContentProps>> = (props) => {
         }}
         dir={props.dir}
       >
-        <Primitive.div
-          data-side={placedSide()}
-          data-align={placedAlign()}
-          {...contentProps}
-          ref={composedRefs}
-          style={{
-            // if the PopperContent hasn't been placed yet (not all measurements done)
-            // we prevent animations so that users's animation don't kick in too early referring wrong sides
-            animation: !isPositioned() ? "none" : undefined,
-            ...props.style,
-          }}
-          data-floating-ui-inert={!isPositioned() ? "" : undefined}
-        >
-          {props.children}
-        </Primitive.div>
+        {/*
+          Mark the inner element as the slot target: like Radix (whose slot
+          props flow through as component props), props from any `Slot` above
+          this content (eg. roving-focus `tabindex`) belong on the content
+          element, not the positioning wrapper.
+        */}
+        <Slottable>
+          <Primitive.div
+            data-side={placedSide()}
+            data-align={placedAlign()}
+            {...contentProps}
+            ref={composedRefs}
+            style={{
+              // if the PopperContent hasn't been placed yet (not all measurements done)
+              // we prevent animations so that users's animation don't kick in too early referring wrong sides
+              animation: !isPositioned() ? "none" : undefined,
+              ...props.style,
+            }}
+            data-floating-ui-inert={!isPositioned() ? "" : undefined}
+          >
+            {props.children}
+          </Primitive.div>
+        </Slottable>
       </div>
     </PopperContentProvider>
   );
