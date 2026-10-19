@@ -1,6 +1,6 @@
 {
   "name": "@solidix/radio-group",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "RadioGroup primitive (port of @radix-ui/react-radio-group).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

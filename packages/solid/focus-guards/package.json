@@ -1,6 +1,6 @@
 {
   "name": "@solidix/focus-guards",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Document-edge focus guards (port of @radix-ui/react-focus-guards).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

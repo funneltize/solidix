@@ -1,6 +1,6 @@
 {
   "name": "@solidix/menubar",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Menubar primitive (port of @radix-ui/react-menubar).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

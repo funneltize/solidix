@@ -1,6 +1,6 @@
 {
   "name": "@solidix/funnel",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Design language for direct-response landing pages: design tokens plus themed funnel blocks built on Solidix primitives.",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
