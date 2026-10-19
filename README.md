@@ -111,6 +111,25 @@ See [AGENTS.md](./AGENTS.md) for working agreements.
 
 Requires [pnpm](https://pnpm.io) 11.5.0 (see `packageManager`) and Node 24+.
 
+## Docs site
+
+The gallery (`internal/gallery`) is the docs site: every primitive's demo
+plus API docs, as a client-rendered static app (hash-routed, so it serves
+from any static host with no rewrite rules). It builds to
+`internal/gallery/dist`:
+
+```sh
+pnpm --filter @repo/gallery build
+```
+
+To host it on Cloudflare Pages (Git integration), use these project settings:
+
+- Root directory: `/` (the repo root)
+- Build command: `pnpm --filter @repo/gallery build`
+- Build output directory: `internal/gallery/dist`
+- Node version: 24 (pinned via `.nvmrc`; `pnpm-lock.yaml` makes Pages use
+  pnpm automatically)
+
 ## Versioning and releases
 
 Versions are managed with [Changesets](https://github.com/changesets/changesets).
