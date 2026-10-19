@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm -r --filter \"./packages/**/*\" run build",
-    "typecheck": "pnpm -r --parallel --no-bail run typecheck",
+    "typecheck": "pnpm -r --no-bail --workspace-concurrency=4 run typecheck",
     "lint": "pnpm -r --no-bail run lint",
     "test": "vitest run",
     "test:watch": "vitest",
