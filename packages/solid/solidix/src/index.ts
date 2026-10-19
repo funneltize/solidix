@@ -8,6 +8,7 @@ export * as ContextMenu from "@solidix/context-menu";
 export * as Dialog from "@solidix/dialog";
 export * as DropdownMenu from "@solidix/dropdown-menu";
 export * as Form from "@solidix/form";
+export * as Funnel from "@solidix/funnel";
 export * as HoverCard from "@solidix/hover-card";
 export * as Label from "@solidix/label";
 export * as Menubar from "@solidix/menubar";

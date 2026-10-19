@@ -32,6 +32,9 @@ import DropdownMenuCss from "./dropdown-menu.css?url";
 import FormDemo from "./form";
 import FormDemoCode from "./form?raw";
 import FormCss from "./form.css?url";
+import FunnelDemo from "./funnel";
+import FunnelDemoCode from "./funnel?raw";
+import FunnelCss from "./funnel.css?url";
 import HoverCardDemo from "./hover-card";
 import HoverCardDemoCode from "./hover-card?raw";
 import HoverCardCss from "./hover-card.css?url";
@@ -106,16 +109,54 @@ export type DemoEntry = {
   code: string;
   /** Stage that grows to contain overlays opening downward inside it. */
   stage?: "tall" | undefined;
+  /** Full-page demo: gets a chromeless `#/<slug>/full` route plus a link. */
+  fullPage?: boolean | undefined;
 };
 
 export const demos: DemoEntry[] = [
-  { slug: "accordion", title: "Accordion", component: AccordionDemo, css: AccordionCss, code: AccordionDemoCode },
-  { slug: "alert-dialog", title: "Alert Dialog", component: AlertDialogDemo, css: AlertDialogCss, code: AlertDialogDemoCode },
-  { slug: "announce", title: "Announce", component: AnnounceDemo, css: AnnounceCss, code: AnnounceDemoCode },
-  { slug: "aspect-ratio", title: "Aspect Ratio", component: AspectRatioDemo, css: AspectRatioCss, code: AspectRatioDemoCode },
+  {
+    slug: "accordion",
+    title: "Accordion",
+    component: AccordionDemo,
+    css: AccordionCss,
+    code: AccordionDemoCode,
+  },
+  {
+    slug: "alert-dialog",
+    title: "Alert Dialog",
+    component: AlertDialogDemo,
+    css: AlertDialogCss,
+    code: AlertDialogDemoCode,
+  },
+  {
+    slug: "announce",
+    title: "Announce",
+    component: AnnounceDemo,
+    css: AnnounceCss,
+    code: AnnounceDemoCode,
+  },
+  {
+    slug: "aspect-ratio",
+    title: "Aspect Ratio",
+    component: AspectRatioDemo,
+    css: AspectRatioCss,
+    code: AspectRatioDemoCode,
+  },
   { slug: "avatar", title: "Avatar", component: AvatarDemo, css: AvatarCss, code: AvatarDemoCode },
-  { slug: "checkbox", title: "Checkbox", component: CheckboxDemo, css: CheckboxCss, code: CheckboxDemoCode },
-  { slug: "collapsible", title: "Collapsible", component: CollapsibleDemo, css: CollapsibleCss, code: CollapsibleDemoCode },
+  {
+    slug: "checkbox",
+    title: "Checkbox",
+    component: CheckboxDemo,
+    css: CheckboxCss,
+    code: CheckboxDemoCode,
+  },
+  {
+    slug: "collapsible",
+    title: "Collapsible",
+    component: CollapsibleDemo,
+    css: CollapsibleCss,
+    code: CollapsibleDemoCode,
+  },
   {
     slug: "context-menu",
     title: "Context Menu",
@@ -132,9 +173,29 @@ export const demos: DemoEntry[] = [
     code: DropdownMenuDemoCode,
   },
   { slug: "form", title: "Form", component: FormDemo, css: FormCss, code: FormDemoCode },
-  { slug: "hover-card", title: "Hover Card", component: HoverCardDemo, css: HoverCardCss, code: HoverCardDemoCode },
+  {
+    slug: "funnel",
+    title: "Funnel",
+    component: FunnelDemo,
+    css: FunnelCss,
+    code: FunnelDemoCode,
+    fullPage: true,
+  },
+  {
+    slug: "hover-card",
+    title: "Hover Card",
+    component: HoverCardDemo,
+    css: HoverCardCss,
+    code: HoverCardDemoCode,
+  },
   { slug: "label", title: "Label", component: LabelDemo, css: LabelCss, code: LabelDemoCode },
-  { slug: "menubar", title: "Menubar", component: MenubarDemo, css: MenubarCss, code: MenubarDemoCode },
+  {
+    slug: "menubar",
+    title: "Menubar",
+    component: MenubarDemo,
+    css: MenubarCss,
+    code: MenubarDemoCode,
+  },
   { slug: "motion", title: "Motion", component: MotionDemo, css: MotionCss, code: MotionDemoCode },
   {
     slug: "navigation-menu",
@@ -149,25 +210,75 @@ export const demos: DemoEntry[] = [
     title: "One-Time Password Field",
     component: OneTimePasswordFieldDemo,
     css: OneTimePasswordFieldCss,
-  code: OneTimePasswordFieldDemoCode },
+    code: OneTimePasswordFieldDemoCode,
+  },
   {
     slug: "password-toggle-field",
     title: "Password Toggle Field",
     component: PasswordToggleFieldDemo,
     css: PasswordToggleFieldCss,
-  code: PasswordToggleFieldDemoCode },
-  { slug: "popover", title: "Popover", component: PopoverDemo, css: PopoverCss, code: PopoverDemoCode },
-  { slug: "progress", title: "Progress", component: ProgressDemo, css: ProgressCss, code: ProgressDemoCode },
-  { slug: "radio-group", title: "Radio Group", component: RadioGroupDemo, css: RadioGroupCss, code: RadioGroupDemoCode },
-  { slug: "scroll-area", title: "Scroll Area", component: ScrollAreaDemo, css: ScrollAreaCss, code: ScrollAreaDemoCode },
+    code: PasswordToggleFieldDemoCode,
+  },
+  {
+    slug: "popover",
+    title: "Popover",
+    component: PopoverDemo,
+    css: PopoverCss,
+    code: PopoverDemoCode,
+  },
+  {
+    slug: "progress",
+    title: "Progress",
+    component: ProgressDemo,
+    css: ProgressCss,
+    code: ProgressDemoCode,
+  },
+  {
+    slug: "radio-group",
+    title: "Radio Group",
+    component: RadioGroupDemo,
+    css: RadioGroupCss,
+    code: RadioGroupDemoCode,
+  },
+  {
+    slug: "scroll-area",
+    title: "Scroll Area",
+    component: ScrollAreaDemo,
+    css: ScrollAreaCss,
+    code: ScrollAreaDemoCode,
+  },
   { slug: "select", title: "Select", component: SelectDemo, css: SelectCss, code: SelectDemoCode },
-  { slug: "separator", title: "Separator", component: SeparatorDemo, css: SeparatorCss, code: SeparatorDemoCode },
+  {
+    slug: "separator",
+    title: "Separator",
+    component: SeparatorDemo,
+    css: SeparatorCss,
+    code: SeparatorDemoCode,
+  },
   { slug: "slider", title: "Slider", component: SliderDemo, css: SliderCss, code: SliderDemoCode },
   { slug: "switch", title: "Switch", component: SwitchDemo, css: SwitchCss, code: SwitchDemoCode },
   { slug: "tabs", title: "Tabs", component: TabsDemo, css: TabsCss, code: TabsDemoCode },
   { slug: "toast", title: "Toast", component: ToastDemo, css: ToastCss, code: ToastDemoCode },
   { slug: "toggle", title: "Toggle", component: ToggleDemo, css: ToggleCss, code: ToggleDemoCode },
-  { slug: "toggle-group", title: "Toggle Group", component: ToggleGroupDemo, css: ToggleGroupCss, code: ToggleGroupDemoCode },
-  { slug: "toolbar", title: "Toolbar", component: ToolbarDemo, css: ToolbarCss, code: ToolbarDemoCode },
-  { slug: "tooltip", title: "Tooltip", component: TooltipDemo, css: TooltipCss, code: TooltipDemoCode },
+  {
+    slug: "toggle-group",
+    title: "Toggle Group",
+    component: ToggleGroupDemo,
+    css: ToggleGroupCss,
+    code: ToggleGroupDemoCode,
+  },
+  {
+    slug: "toolbar",
+    title: "Toolbar",
+    component: ToolbarDemo,
+    css: ToolbarCss,
+    code: ToolbarDemoCode,
+  },
+  {
+    slug: "tooltip",
+    title: "Tooltip",
+    component: TooltipDemo,
+    css: TooltipCss,
+    code: TooltipDemoCode,
+  },
 ];

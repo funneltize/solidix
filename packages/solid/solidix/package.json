@@ -55,6 +55,7 @@
     "@solidix/dialog": "workspace:*",
     "@solidix/dropdown-menu": "workspace:*",
     "@solidix/form": "workspace:*",
+    "@solidix/funnel": "workspace:*",
     "@solidix/hover-card": "workspace:*",
     "@solidix/label": "workspace:*",
     "@solidix/menubar": "workspace:*",

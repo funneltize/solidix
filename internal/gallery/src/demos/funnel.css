@@ -1,0 +1,28 @@
+@import "@solidix/funnel/blocks.css";
+
+/* Funnel reference page. Blocks bring their own styles; this file only frames
+ * the demo canvas inside the docs shell. */
+.fx-root {
+  background: var(--solidix-funnel-paper);
+  color: var(--solidix-funnel-ink);
+  font-family: var(--solidix-funnel-sans);
+}
+
+/* Preview containment: the docs stage is an overview frame, not a page.
+ * Sticky/fixed chrome would escape the box on docs scroll, so neutralize it
+ * here; evaluate real persistence in the full-page view. */
+.demo-stage .fx-header[data-sticky] {
+  position: static;
+}
+
+.demo-stage .fx-sticky-bar {
+  display: none;
+}
+
+/* The stage is a flex row, so the page root would size to min-content (the
+ * comparison table's width) and overflow narrow screens. Constrain it to
+ * the stage like the full-page block layout does. */
+.demo-stage .fx-root {
+  min-width: 0;
+  width: 100%;
+}

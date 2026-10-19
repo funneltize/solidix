@@ -92,6 +92,9 @@ importers:
       '@solidix/form':
         specifier: workspace:*
         version: link:../../packages/solid/form
+      '@solidix/funnel':
+        specifier: workspace:*
+        version: link:../../packages/solid/funnel
       '@solidix/hover-card':
         specifier: workspace:*
         version: link:../../packages/solid/hover-card
@@ -882,6 +885,46 @@ importers:
       '@solidix/use-layout-effect':
         specifier: workspace:*
         version: link:../use-layout-effect
+    devDependencies:
+      '@repo/builder':
+        specifier: workspace:*
+        version: link:../../../internal/builder
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../../internal/typescript-config
+      '@solidjs/testing-library':
+        specifier: 1.0.0-beta.3
+        version: 1.0.0-beta.3(@solidjs/web@2.0.0-rc.15(solid-js@2.0.0-rc.15))(solid-js@2.0.0-rc.15)
+      '@solidjs/web':
+        specifier: 2.0.0-rc.15
+        version: 2.0.0-rc.15(solid-js@2.0.0-rc.15)
+      '@testing-library/user-event':
+        specifier: 14.6.8
+        version: 14.6.8(@testing-library/dom@10.4.2)
+      solid-js:
+        specifier: 2.0.0-rc.15
+        version: 2.0.0-rc.15
+
+  packages/solid/funnel:
+    dependencies:
+      '@solidix/accordion':
+        specifier: workspace:*
+        version: link:../accordion
+      '@solidix/aspect-ratio':
+        specifier: workspace:*
+        version: link:../aspect-ratio
+      '@solidix/dialog':
+        specifier: workspace:*
+        version: link:../dialog
+      '@solidix/form':
+        specifier: workspace:*
+        version: link:../form
+      '@solidix/primitive':
+        specifier: workspace:*
+        version: link:../primitive
+      '@solidix/radio-group':
+        specifier: workspace:*
+        version: link:../radio-group
     devDependencies:
       '@repo/builder':
         specifier: workspace:*
@@ -1890,6 +1933,9 @@ importers:
       '@solidix/form':
         specifier: workspace:*
         version: link:../form
+      '@solidix/funnel':
+        specifier: workspace:*
+        version: link:../funnel
       '@solidix/hover-card':
         specifier: workspace:*
         version: link:../hover-card

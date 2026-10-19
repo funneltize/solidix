@@ -9,7 +9,10 @@ import {
 } from "solid-js";
 import { demos } from "./demos/registry";
 import DocPage from "./DocPage";
+import FullDemo from "./FullDemo";
 import Landing from "./Landing";
+
+const FULL_SUFFIX = "/full";
 
 function routeFromHash(): string | null {
   const hash = window.location.hash;
@@ -27,8 +30,12 @@ const App: Component = () => {
   window.addEventListener("hashchange", onHashChange);
   onCleanup(() => window.removeEventListener("hashchange", onHashChange));
 
-  const index = createMemo(() => demos.findIndex((demo) => demo.slug === path()));
-  const isDoc = () => index() >= 0;
+  const isFullRoute = () => path().endsWith(FULL_SUFFIX);
+  const baseSlug = () => (isFullRoute() ? path().slice(0, -FULL_SUFFIX.length) : path());
+  const index = createMemo(() => demos.findIndex((demo) => demo.slug === baseSlug()));
+  const activeDemo = () => (index() >= 0 ? demos[index()] : undefined);
+  const isDoc = () => index() >= 0 && !isFullRoute();
+  const isFull = () => activeDemo()?.fullPage === true && isFullRoute();
   const filtered = createMemo(() => {
     const q = query().trim().toLowerCase();
     if (q === "") return demos;
@@ -36,9 +43,9 @@ const App: Component = () => {
   });
 
   // One demo stylesheet at a time (see DocPage): swap it on navigation, drop
-  // it entirely on the landing page.
+  // it entirely on the landing page. Full routes keep their demo's sheet.
   createEffect(
-    () => (isDoc() ? demos[index()]!.css : null),
+    () => activeDemo()?.css ?? null,
     (css) => {
       const existing = document.getElementById("demo-css") as HTMLLinkElement | null;
       if (css === null || css === undefined) {
@@ -63,7 +70,10 @@ const App: Component = () => {
     },
   );
 
+  const full = () => (isFull() ? activeDemo() : undefined);
+
   return (
+    <Show when={full()} fallback={
     <div class="app">
       <header class="site-header">
         <a class="brand" href="#/">
@@ -126,6 +136,9 @@ const App: Component = () => {
         </div>
       </Show>
     </div>
+    }>
+      {(demo) => <FullDemo demo={demo()} />}
+    </Show>
   );
 };
 

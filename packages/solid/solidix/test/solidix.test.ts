@@ -12,6 +12,7 @@ const NAMESPACES = [
   "Dialog",
   "DropdownMenu",
   "Form",
+  "Funnel",
   "HoverCard",
   "Label",
   "Menubar",

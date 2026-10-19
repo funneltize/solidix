@@ -1,0 +1,1685 @@
+/* Funnel block styles. Tokens ship separately so pages can theme without
+ * components: this file pulls them in, so one import styles everything.
+ * Class names (`.fx-*`) are public API for theme overrides. */
+@import "./tokens.css";
+
+/* Section: vertical rhythm plus tone scopes that re-map surface tokens. */
+.fx-section {
+  background: var(--solidix-funnel-paper);
+  color: var(--solidix-funnel-ink);
+  padding-block: var(--solidix-funnel-section-pad);
+}
+
+.fx-section[data-tone="subtle"] {
+  --solidix-funnel-paper: var(--solidix-funnel-subtle);
+}
+
+.fx-section[data-compact] {
+  padding-block: var(--solidix-funnel-space-8);
+}
+
+.fx-section[data-tone="inverse"] {
+  /* Literals, not vars: custom properties resolve against the overrides in
+   * this same block, which would keep the light values. */
+  --solidix-funnel-paper: #0f172a;
+  --solidix-funnel-ink: #f8fafc;
+  --solidix-funnel-ink-body: #cbd5e1;
+  --solidix-funnel-muted: #94a3b8;
+  --solidix-funnel-line: #334155;
+  --solidix-funnel-line-soft: #1e293b;
+  --solidix-funnel-subtle: #1e293b;
+  --solidix-funnel-brand: #fb923c;
+  --solidix-funnel-brand-strong: #fdba74;
+  --solidix-funnel-danger: #f87171;
+  --solidix-funnel-star-empty: #334155;
+}
+
+/* Container: three strict tiers with fluid gutters. */
+.fx-container {
+  margin-inline: auto;
+  max-width: var(--solidix-funnel-container-standard);
+  padding-inline: var(--solidix-funnel-container-pad);
+  width: 100%;
+}
+
+.fx-container[data-size="wide"] {
+  max-width: var(--solidix-funnel-container-wide);
+}
+
+.fx-container[data-size="reading"] {
+  max-width: var(--solidix-funnel-container-reading);
+}
+
+/* Stacked sections and blocks get uniform vertical rhythm. */
+.fx-section > * + *,
+.fx-container > * + * {
+  margin-top: var(--solidix-funnel-space-12);
+}
+
+/* Eyebrow: short kicker line. Sparing by design (not every section needs one). */
+.fx-eyebrow {
+  color: var(--solidix-funnel-brand-strong);
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  letter-spacing: 0.04em;
+  line-height: var(--solidix-funnel-leading-snug);
+  margin: 0 0 var(--solidix-funnel-space-3);
+}
+
+/* SectionHeading: eyebrow plus balanced title plus lede. */
+.fx-section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-3);
+}
+
+.fx-section-heading[data-align="center"] {
+  align-items: center;
+  text-align: center;
+}
+
+.fx-section-heading[data-align="left"] {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.fx-section-heading .fx-eyebrow {
+  margin-bottom: 0;
+}
+
+.fx-section-title {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-h2);
+  font-weight: var(--solidix-funnel-weight-extrabold);
+  letter-spacing: var(--solidix-funnel-tracking-tight);
+  line-height: 1.15;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.fx-section-lede {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-lead);
+  line-height: var(--solidix-funnel-leading-relaxed);
+  margin: 0;
+  max-width: 44rem;
+  text-wrap: pretty;
+}
+
+/* Serif accent: italic keyword inside a headline. */
+.fx-serif-accent {
+  font-family: var(--solidix-funnel-serif-accent);
+  font-style: italic;
+  font-weight: var(--solidix-funnel-weight-regular);
+}
+
+/* Prose: long-form sales copy with skimmer bolds and highlighter marks. */
+.fx-prose {
+  color: var(--solidix-funnel-ink-body);
+  display: flex;
+  flex-direction: column;
+  font-size: var(--solidix-funnel-text-body);
+  gap: var(--solidix-funnel-space-4);
+  line-height: var(--solidix-funnel-leading-relaxed);
+}
+
+.fx-prose p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.fx-prose strong {
+  color: var(--solidix-funnel-ink);
+  font-weight: var(--solidix-funnel-weight-semibold);
+}
+
+.fx-prose mark {
+  background: var(--solidix-funnel-highlight);
+  border-radius: 2px;
+  color: inherit;
+  padding-inline: 0.1em;
+}
+
+.fx-prose a {
+  color: var(--solidix-funnel-brand-strong);
+}
+
+/* Header: zero-escape bar with wordmark and a single CTA. */
+.fx-header {
+  background: var(--solidix-funnel-paper);
+  background: color-mix(in srgb, var(--solidix-funnel-paper) 92%, transparent);
+  border-bottom: 1px solid var(--solidix-funnel-line);
+}
+
+.fx-header[data-sticky] {
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: var(--solidix-funnel-z-sticky);
+}
+
+/* On mobile the sticky bottom bar owns persistence: the header scrolls away
+ * instead of competing with it. Complements the bar hiding on desktop. */
+@media (max-width: 767px) {
+  .fx-header[data-sticky] {
+    position: static;
+  }
+}
+
+.fx-header-inner {
+  align-items: center;
+  display: flex;
+  gap: var(--solidix-funnel-space-4);
+  justify-content: space-between;
+  margin-inline: auto;
+  max-width: var(--solidix-funnel-container-standard);
+  padding: var(--solidix-funnel-space-3) var(--solidix-funnel-container-pad);
+}
+
+.fx-header-wordmark {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-body);
+  font-weight: var(--solidix-funnel-weight-extrabold);
+  letter-spacing: var(--solidix-funnel-tracking-tight);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fx-header .fx-cta-button {
+  flex: none;
+  width: auto;
+}
+
+.fx-header-logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+}
+
+/* CTAButton: the page-level action. Full width on small screens. */
+.fx-cta-button {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--solidix-funnel-radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--solidix-funnel-sans);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  gap: var(--solidix-funnel-space-2);
+  justify-content: center;
+  line-height: var(--solidix-funnel-leading-snug);
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background var(--solidix-funnel-duration-fast) var(--solidix-funnel-ease-out),
+    border-color var(--solidix-funnel-duration-fast) var(--solidix-funnel-ease-out),
+    box-shadow var(--solidix-funnel-duration-fast) var(--solidix-funnel-ease-out),
+    transform var(--solidix-funnel-duration-instant) var(--solidix-funnel-ease-out);
+}
+
+.fx-cta-button[data-size="md"] {
+  font-size: var(--solidix-funnel-text-body);
+  min-height: 3.5rem;
+  padding: var(--solidix-funnel-space-3) var(--solidix-funnel-space-8);
+}
+
+.fx-cta-button[data-size="lg"] {
+  font-size: var(--solidix-funnel-text-lead);
+  min-height: 4rem;
+  padding: var(--solidix-funnel-space-4) var(--solidix-funnel-space-8);
+}
+
+.fx-cta-button[data-pill] {
+  border-radius: var(--solidix-funnel-radius-full);
+}
+
+/* CtaCluster: action button plus friction-killer microcopy. */
+.fx-cta-cluster {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-2);
+}
+
+.fx-cta-cluster-microcopy {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  margin: 0;
+  text-align: center;
+}
+
+/* Primary: tactile micro-skeuomorphism. A top specular light, a pressed
+ * bottom edge, and a CTA-hued ambient shadow make the page-level action
+ * look physically pressable; secondary/ghost stay flat so the primary is
+ * isolated. Flat fallbacks precede each color-mix declaration. */
+.fx-cta-button[data-variant="primary"] {
+  background: var(--solidix-funnel-cta);
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--solidix-funnel-cta) 86%, white),
+    var(--solidix-funnel-cta) 48%,
+    color-mix(in srgb, var(--solidix-funnel-cta) 90%, black)
+  );
+  border-color: var(--solidix-funnel-cta-strong);
+  border-color: color-mix(in srgb, var(--solidix-funnel-cta) 72%, black);
+  box-shadow: var(--solidix-funnel-shadow-md);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    inset 0 -2px 0 rgb(0 0 0 / 0.2),
+    0 1px 2px rgb(28 25 23 / 0.25),
+    0 16px 32px -16px color-mix(in srgb, var(--solidix-funnel-cta) 55%, transparent);
+  color: var(--solidix-funnel-cta-ink);
+  text-shadow: 0 1px 1px rgb(0 0 0 / 0.2);
+}
+
+.fx-cta-button[data-variant="primary"]:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    inset 0 -2px 0 rgb(0 0 0 / 0.2),
+    0 1px 2px rgb(28 25 23 / 0.25),
+    0 20px 40px -16px color-mix(in srgb, var(--solidix-funnel-cta) 65%, transparent);
+  transform: translateY(-1px);
+}
+
+.fx-cta-button[data-variant="primary"]:active {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.2),
+    inset 0 2px 4px rgb(0 0 0 / 0.25),
+    0 4px 8px -4px color-mix(in srgb, var(--solidix-funnel-cta) 40%, transparent);
+  /* Beats the :hover lift above (equal specificity, later source). */
+  transform: translateY(1px);
+}
+
+/* Dark theme pairs dark text with a light CTA, so the emboss would muddy it. */
+[data-funnel-theme="dark"] .fx-cta-button[data-variant="primary"] {
+  text-shadow: none;
+}
+
+.fx-cta-button[data-variant="secondary"] {
+  background: var(--solidix-funnel-paper);
+  border-color: var(--solidix-funnel-line);
+  color: var(--solidix-funnel-ink);
+}
+
+.fx-cta-button[data-variant="secondary"]:hover {
+  border-color: var(--solidix-funnel-muted);
+}
+
+.fx-cta-button[data-variant="ghost"] {
+  background: transparent;
+  color: var(--solidix-funnel-ink);
+}
+
+.fx-cta-button[data-variant="ghost"]:hover {
+  background: var(--solidix-funnel-subtle);
+}
+
+.fx-cta-button:active {
+  transform: translateY(1px);
+}
+
+.fx-cta-button[data-loading],
+.fx-cta-button:disabled,
+.fx-cta-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.fx-cta-button[data-loading]:active {
+  transform: none;
+}
+
+.fx-cta-button[data-full-width] {
+  width: 100%;
+}
+
+@media (max-width: 639px) {
+  .fx-cta-button {
+    width: 100%;
+  }
+}
+
+.fx-cta-button-spinner {
+  animation: fx-spin var(--solidix-funnel-duration-slow) linear infinite;
+  border: 2px solid currentcolor;
+  border-radius: var(--solidix-funnel-radius-full);
+  border-top-color: transparent;
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+}
+
+@keyframes fx-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* StarRating: clipped fill row over an empty track. */
+.fx-star-rating {
+  display: inline-block;
+  position: relative;
+}
+
+.fx-star-rating-track,
+.fx-star-rating-fill {
+  display: inline-flex;
+  gap: var(--solidix-funnel-space-1);
+}
+
+.fx-star-rating-track svg {
+  fill: var(--solidix-funnel-star-empty);
+  height: 1.125rem;
+  width: 1.125rem;
+}
+
+.fx-star-rating-fill svg {
+  fill: var(--solidix-funnel-star);
+  height: 1.125rem;
+  width: 1.125rem;
+}
+
+.fx-star-rating-clip {
+  display: inline-block;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+/* LogoBar: muted outlet row. */
+.fx-logo-bar-caption {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  margin: 0 0 var(--solidix-funnel-space-4);
+  text-align: center;
+}
+
+.fx-logo-bar-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--solidix-funnel-space-6) var(--solidix-funnel-space-8);
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fx-logo-bar-logo {
+  filter: grayscale(1);
+  height: 1.75rem;
+  opacity: 0.75;
+  width: auto;
+}
+
+.fx-logo-bar-wordmark {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-body);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Testimonials: editorial quote cards. */
+.fx-testimonials {
+  display: grid;
+  gap: var(--solidix-funnel-space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .fx-testimonials {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fx-testimonial-card {
+  background: var(--solidix-funnel-paper);
+  border: 1px solid var(--solidix-funnel-line);
+  border-radius: var(--solidix-funnel-radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-3);
+  margin: 0;
+  padding: var(--solidix-funnel-space-6);
+}
+
+.fx-testimonial-quote {
+  margin: 0;
+}
+
+.fx-testimonial-quote p {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-body);
+  line-height: var(--solidix-funnel-leading-relaxed);
+  margin: 0;
+}
+
+.fx-testimonial-quote p::before {
+  content: "\201C";
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.5em;
+  line-height: 0;
+  margin-right: 0.1em;
+  vertical-align: -0.25em;
+}
+
+.fx-testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-1);
+  margin-top: auto;
+  padding-top: var(--solidix-funnel-space-2);
+}
+
+.fx-testimonial-name {
+  color: var(--solidix-funnel-ink);
+  font-weight: var(--solidix-funnel-weight-semibold);
+}
+
+.fx-testimonial-role {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+}
+
+/* TestimonialCarousel: one quote at a time with explicit controls. */
+.fx-testimonial-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-4);
+}
+
+.fx-testimonial-carousel-view > * {
+  animation: fx-carousel-in var(--solidix-funnel-duration-base) var(--solidix-funnel-ease-out);
+}
+
+@keyframes fx-carousel-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.fx-testimonial-carousel-controls {
+  align-items: center;
+  display: flex;
+  gap: var(--solidix-funnel-space-4);
+  justify-content: center;
+}
+
+.fx-testimonial-carousel-button {
+  align-items: center;
+  background: var(--solidix-funnel-paper);
+  border: 1px solid var(--solidix-funnel-line);
+  border-radius: var(--solidix-funnel-radius-full);
+  color: var(--solidix-funnel-ink);
+  cursor: pointer;
+  display: inline-flex;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.fx-testimonial-carousel-button:hover {
+  border-color: var(--solidix-funnel-muted);
+}
+
+.fx-testimonial-carousel-count {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  margin: 0;
+  min-width: 3rem;
+  text-align: center;
+}
+
+/* StatsBar: big-number description list. */
+.fx-stats-bar-list {
+  display: grid;
+  gap: var(--solidix-funnel-space-6);
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .fx-stats-bar-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.fx-stats-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-1);
+}
+
+.fx-stats-bar-value {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-h2);
+  font-weight: var(--solidix-funnel-weight-extrabold);
+  letter-spacing: var(--solidix-funnel-tracking-tight);
+  margin: 0;
+  order: -1;
+}
+
+.fx-stats-bar-label {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+}
+
+/* Benefits: editorial checklist, auto-fit columns. */
+.fx-benefits-list {
+  display: grid;
+  gap: var(--solidix-funnel-space-5) var(--solidix-funnel-space-8);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fx-benefits-item {
+  align-items: flex-start;
+  display: flex;
+  gap: var(--solidix-funnel-space-3);
+}
+
+.fx-benefits-marker {
+  align-items: center;
+  background: var(--solidix-funnel-brand-tint);
+  border-radius: var(--solidix-funnel-radius-full);
+  color: var(--solidix-funnel-brand-strong);
+  display: inline-flex;
+  flex: none;
+  height: 1.75rem;
+  justify-content: center;
+  width: 1.75rem;
+}
+
+.fx-benefits-marker svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.fx-benefits-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-1);
+}
+
+.fx-benefits-title {
+  color: var(--solidix-funnel-ink);
+  font-weight: var(--solidix-funnel-weight-semibold);
+}
+
+.fx-benefits-description {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  line-height: var(--solidix-funnel-leading-relaxed);
+}
+
+/* Media items span the row and zig-zag on desktop. */
+.fx-benefits-item[data-media] {
+  align-items: center;
+  display: grid;
+  gap: var(--solidix-funnel-space-6);
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr;
+}
+
+.fx-benefits-item[data-media] .fx-benefits-marker {
+  display: none;
+}
+
+.fx-benefits-item[data-media] .fx-benefits-title {
+  font-size: var(--solidix-funnel-text-h3);
+}
+
+.fx-benefits-media img {
+  border-radius: var(--solidix-funnel-radius-xl);
+  display: block;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .fx-benefits-item[data-media] {
+    gap: var(--solidix-funnel-space-12);
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .fx-benefits-item[data-media]:nth-child(even) .fx-benefits-media {
+    order: -1;
+  }
+}
+
+/* HowItWorks: numbered sequence, timeline rail on desktop. */
+.fx-how-it-works-list {
+  counter-reset: fx-step;
+  display: grid;
+  gap: var(--solidix-funnel-space-6);
+  grid-template-columns: 1fr;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .fx-how-it-works-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fx-how-it-works-step {
+  counter-increment: fx-step;
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-2);
+}
+
+.fx-how-it-works-step::before {
+  color: var(--solidix-funnel-brand);
+  content: "0" counter(fx-step);
+  font-size: var(--solidix-funnel-text-h2);
+  font-weight: var(--solidix-funnel-weight-extrabold);
+  letter-spacing: var(--solidix-funnel-tracking-tight);
+}
+
+.fx-how-it-works-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-1);
+}
+
+.fx-how-it-works-title {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-h3);
+  font-weight: var(--solidix-funnel-weight-semibold);
+}
+
+.fx-how-it-works-description {
+  color: var(--solidix-funnel-muted);
+  line-height: var(--solidix-funnel-leading-relaxed);
+}
+
+/* Pricing: billing toggle plus plan cards; highlighted plan inverts. */
+.fx-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-8);
+}
+
+.fx-pricing-toggle {
+  align-items: center;
+  align-self: center;
+  background: var(--solidix-funnel-subtle);
+  border-radius: var(--solidix-funnel-radius-full);
+  display: inline-flex;
+  gap: var(--solidix-funnel-space-1);
+  padding: var(--solidix-funnel-space-1);
+}
+
+.fx-pricing-toggle-option {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: var(--solidix-funnel-radius-full);
+  color: var(--solidix-funnel-muted);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  gap: var(--solidix-funnel-space-2);
+  padding: var(--solidix-funnel-space-2) var(--solidix-funnel-space-4);
+  transition:
+    background var(--solidix-funnel-duration-fast) var(--solidix-funnel-ease-out),
+    box-shadow var(--solidix-funnel-duration-fast) var(--solidix-funnel-ease-out),
+    color var(--solidix-funnel-duration-fast) var(--solidix-funnel-ease-out);
+}
+
+.fx-pricing-toggle-option[data-state="checked"] {
+  background: var(--solidix-funnel-paper);
+  box-shadow: var(--solidix-funnel-shadow-sm);
+  color: var(--solidix-funnel-ink);
+}
+
+.fx-pricing-toggle-dot {
+  background: var(--solidix-funnel-brand);
+  border-radius: var(--solidix-funnel-radius-full);
+  display: none;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.fx-pricing-toggle-option[data-state="checked"] .fx-pricing-toggle-dot {
+  animation: fx-toggle-dot-in var(--solidix-funnel-duration-fast) var(--solidix-funnel-ease-out);
+  display: inline-block;
+}
+
+@keyframes fx-toggle-dot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+.fx-pricing-plans {
+  display: grid;
+  gap: var(--solidix-funnel-space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .fx-pricing-plans {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+}
+
+.fx-pricing-plan {
+  background: var(--solidix-funnel-paper);
+  border: 1px solid var(--solidix-funnel-line);
+  border-radius: var(--solidix-funnel-radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-3);
+  padding: var(--solidix-funnel-space-8) var(--solidix-funnel-space-6);
+  position: relative;
+}
+
+.fx-pricing-plan[data-highlighted] {
+  --solidix-funnel-paper: #0f172a;
+  --solidix-funnel-ink: #f8fafc;
+  --solidix-funnel-muted: #94a3b8;
+  --solidix-funnel-line: #334155;
+  background: var(--solidix-funnel-paper);
+  border-color: var(--solidix-funnel-paper);
+  color: var(--solidix-funnel-ink);
+}
+
+.fx-pricing-badge {
+  color: var(--solidix-funnel-brand-strong);
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  margin: 0;
+}
+
+.fx-pricing-plan[data-highlighted] .fx-pricing-badge {
+  color: var(--solidix-funnel-brand-line);
+}
+
+.fx-pricing-name {
+  font-size: var(--solidix-funnel-text-h3);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  margin: 0;
+}
+
+.fx-pricing-price {
+  font-size: var(--solidix-funnel-text-h1);
+  font-weight: var(--solidix-funnel-weight-extrabold);
+  letter-spacing: var(--solidix-funnel-tracking-tight);
+  margin: 0;
+}
+
+.fx-pricing-blurb {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  margin: 0;
+}
+
+.fx-pricing-plan[data-highlighted] .fx-pricing-blurb {
+  color: var(--solidix-funnel-muted);
+}
+
+.fx-pricing-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-2);
+  list-style: none;
+  margin: var(--solidix-funnel-space-2) 0 var(--solidix-funnel-space-4);
+  padding: 0;
+}
+
+.fx-pricing-feature {
+  padding-left: var(--solidix-funnel-space-5);
+  position: relative;
+}
+
+.fx-pricing-feature::before {
+  color: var(--solidix-funnel-brand);
+  content: "\2713";
+  font-weight: var(--solidix-funnel-weight-bold);
+  left: 0;
+  position: absolute;
+}
+
+.fx-pricing-plan[data-highlighted] .fx-pricing-feature::before {
+  color: var(--solidix-funnel-brand-line);
+}
+
+.fx-pricing-plan .fx-cta-button {
+  margin-top: auto;
+}
+
+.fx-pricing-note {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  margin: 0;
+  text-align: center;
+}
+
+/* Guarantee: seal band. */
+.fx-guarantee {
+  align-items: center;
+  background: var(--solidix-funnel-elevated);
+  border: 1px solid var(--solidix-funnel-line);
+  border-radius: var(--solidix-funnel-radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-4);
+  padding: var(--solidix-funnel-space-8) var(--solidix-funnel-space-6);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .fx-guarantee {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+.fx-guarantee-seal {
+  align-items: center;
+  background: var(--solidix-funnel-ink);
+  border-radius: var(--solidix-funnel-radius-full);
+  color: var(--solidix-funnel-paper);
+  display: inline-flex;
+  flex: none;
+  height: 6rem;
+  justify-content: center;
+  width: 6rem;
+}
+
+.fx-guarantee-seal svg {
+  height: 2.75rem;
+  width: 2.75rem;
+}
+
+.fx-guarantee-title {
+  font-size: var(--solidix-funnel-text-h3);
+  margin: 0 0 var(--solidix-funnel-space-2);
+}
+
+.fx-guarantee-description {
+  color: var(--solidix-funnel-muted);
+  line-height: var(--solidix-funnel-leading-relaxed);
+  margin: 0;
+}
+
+/* Screen-reader-only text (boolean table cells, corner headers). */
+.fx-sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* ComparisonTable: featured column elevated, rivals muted. Crosses stay gray
+ * (not red) so attention rests on our column, per Von Restorff. */
+.fx-comparison-scroll {
+  overflow-x: auto;
+  /* Containing block for clipped cell labels: without it their static
+   * positions inside the scrolled region expand the page scrollWidth. */
+  position: relative;
+}
+
+.fx-comparison {
+  border-collapse: collapse;
+  min-width: 36rem;
+  width: 100%;
+}
+
+.fx-comparison-caption {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  padding-bottom: var(--solidix-funnel-space-4);
+  text-align: center;
+}
+
+.fx-comparison-head,
+.fx-comparison-value {
+  border-bottom: 1px solid var(--solidix-funnel-line);
+  padding: var(--solidix-funnel-space-3) var(--solidix-funnel-space-4);
+  text-align: center;
+}
+
+.fx-comparison-head {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-semibold);
+}
+
+.fx-comparison-feature {
+  border-bottom: 1px solid var(--solidix-funnel-line);
+  color: var(--solidix-funnel-ink-body);
+  font-weight: var(--solidix-funnel-weight-medium);
+  padding: var(--solidix-funnel-space-3) var(--solidix-funnel-space-4);
+  text-align: left;
+}
+
+.fx-comparison-value {
+  color: var(--solidix-funnel-muted);
+}
+
+.fx-comparison-head[data-featured],
+.fx-comparison-value[data-featured] {
+  background: var(--solidix-funnel-brand-tint);
+  color: var(--solidix-funnel-ink);
+  font-weight: var(--solidix-funnel-weight-semibold);
+}
+
+.fx-comparison-head[data-featured] {
+  border-top: 2px solid var(--solidix-funnel-brand);
+  font-size: var(--solidix-funnel-text-body);
+}
+
+.fx-comparison-check {
+  color: var(--solidix-funnel-success);
+  font-weight: var(--solidix-funnel-weight-bold);
+}
+
+.fx-comparison-cross {
+  color: var(--solidix-funnel-muted);
+  font-weight: var(--solidix-funnel-weight-bold);
+}
+
+/* FAQ: divider accordion with rotating plus marker. */
+.fx-faq-item {
+  border-bottom: 1px solid var(--solidix-funnel-line);
+}
+
+.fx-faq-item:first-child {
+  border-top: 1px solid var(--solidix-funnel-line);
+}
+
+.fx-faq-header {
+  margin: 0;
+}
+
+.fx-faq-trigger {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: var(--solidix-funnel-ink);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--solidix-funnel-text-body);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  gap: var(--solidix-funnel-space-4);
+  justify-content: space-between;
+  padding: var(--solidix-funnel-space-5) 0;
+  text-align: left;
+  width: 100%;
+}
+
+.fx-faq-icon {
+  flex: none;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+}
+
+.fx-faq-icon::before,
+.fx-faq-icon::after {
+  background: currentcolor;
+  content: "";
+  position: absolute;
+}
+
+.fx-faq-icon::before {
+  height: 2px;
+  left: 0;
+  top: calc(50% - 1px);
+  width: 100%;
+}
+
+.fx-faq-icon::after {
+  height: 100%;
+  left: calc(50% - 1px);
+  top: 0;
+  transition: transform var(--solidix-funnel-duration-fast) var(--solidix-funnel-ease-out);
+  width: 2px;
+}
+
+.fx-faq-trigger[data-state="open"] .fx-faq-icon::after {
+  transform: scaleY(0);
+}
+
+.fx-faq-content {
+  overflow: hidden;
+}
+
+.fx-faq-content[data-state="open"] {
+  animation: fx-faq-open var(--solidix-funnel-duration-base) var(--solidix-funnel-ease-out);
+}
+
+.fx-faq-content[data-state="closed"] {
+  animation: fx-faq-close var(--solidix-funnel-duration-base) var(--solidix-funnel-ease-out);
+}
+
+@keyframes fx-faq-open {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes fx-faq-close {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+.fx-faq-answer {
+  color: var(--solidix-funnel-muted);
+  line-height: var(--solidix-funnel-leading-relaxed);
+  margin: 0;
+  padding-bottom: var(--solidix-funnel-space-5);
+}
+
+/* Hero: editorial split, centered variant available. */
+.fx-hero {
+  align-items: center;
+  display: grid;
+  gap: var(--solidix-funnel-space-8);
+  grid-template-columns: 1fr;
+  padding-block: var(--solidix-funnel-space-16) var(--solidix-funnel-space-12);
+}
+
+@media (min-width: 1024px) {
+  .fx-hero[data-align="split"] {
+    gap: var(--solidix-funnel-space-12);
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.fx-hero[data-align="centered"] {
+  justify-items: center;
+  text-align: center;
+}
+
+.fx-hero[data-align="centered"] .fx-hero-copy {
+  align-items: center;
+  max-width: var(--solidix-funnel-container-reading);
+}
+
+.fx-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-4);
+}
+
+.fx-hero-eyebrow {
+  color: var(--solidix-funnel-brand-strong);
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.fx-hero-title {
+  font-size: var(--solidix-funnel-text-display);
+  font-weight: var(--solidix-funnel-weight-extrabold);
+  letter-spacing: var(--solidix-funnel-tracking-display);
+  line-height: var(--solidix-funnel-leading-display);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.fx-hero-subtitle {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-lead);
+  line-height: var(--solidix-funnel-leading-relaxed);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.fx-hero-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-3);
+  margin-top: var(--solidix-funnel-space-2);
+}
+
+@media (min-width: 640px) {
+  .fx-hero-ctas {
+    flex-direction: row;
+  }
+
+  .fx-hero-ctas .fx-cta-button {
+    width: auto;
+  }
+}
+
+@media (max-width: 639px) {
+  /* Mobile hero shows the single primary action; the supporting link
+   * returns at sm and up alongside the row layout. */
+  .fx-hero-secondary {
+    display: none;
+  }
+}
+
+.fx-hero-media {
+  min-width: 0;
+}
+
+.fx-hero-frame {
+  border-radius: var(--solidix-funnel-radius-xl);
+  overflow: hidden;
+}
+
+.fx-hero-image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* VideoFrame: VSL thumbnail with a linked play affordance. */
+.fx-video-frame {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-3);
+  margin: 0;
+}
+
+.fx-video-box {
+  border-radius: var(--solidix-funnel-radius-xl);
+  overflow: hidden;
+}
+
+.fx-video-thumbnail {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.fx-video-play {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  position: absolute;
+}
+
+.fx-video-play svg {
+  fill: rgb(15 23 42 / 0.82);
+  height: 4.5rem;
+  transition: transform var(--solidix-funnel-duration-fast) var(--solidix-funnel-ease-out);
+  width: 4.5rem;
+}
+
+.fx-video-play svg path {
+  fill: #ffffff;
+}
+
+.fx-video-play:hover svg {
+  transform: scale(1.06);
+}
+
+.fx-video-caption {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  margin: 0;
+  text-align: center;
+}
+
+/* OptInForm: short stacked form, labels above inputs. */
+.fx-opt-in-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-4);
+}
+
+.fx-opt-in-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-1-5);
+}
+
+.fx-opt-in-label {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-medium);
+}
+
+.fx-opt-in-optional {
+  color: var(--solidix-funnel-muted);
+  font-weight: var(--solidix-funnel-weight-regular);
+}
+
+.fx-opt-in-input {
+  background: var(--solidix-funnel-field-bg);
+  border: 1px solid var(--solidix-funnel-field-line);
+  border-radius: var(--solidix-funnel-radius-md);
+  color: var(--solidix-funnel-field-ink);
+  font-size: var(--solidix-funnel-text-body);
+  min-height: 3rem;
+  padding: var(--solidix-funnel-space-3) var(--solidix-funnel-space-4);
+  width: 100%;
+}
+
+.fx-opt-in-input::placeholder {
+  color: var(--solidix-funnel-field-placeholder);
+}
+
+.fx-opt-in-input:focus-visible {
+  outline: 3px solid var(--solidix-funnel-brand);
+  outline-offset: 1px;
+}
+
+.fx-opt-in-input[aria-invalid="true"] {
+  border-color: var(--solidix-funnel-danger);
+}
+
+.fx-opt-in-error {
+  color: var(--solidix-funnel-danger);
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-medium);
+  margin: 0;
+}
+
+.fx-opt-in-submit {
+  margin-top: var(--solidix-funnel-space-2);
+  width: 100%;
+}
+
+.fx-opt-in-privacy {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  margin: 0;
+  text-align: center;
+}
+
+.fx-opt-in-success-title {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-h3);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  margin: 0 0 var(--solidix-funnel-space-2);
+}
+
+.fx-opt-in-success-message {
+  color: var(--solidix-funnel-muted);
+  margin: 0;
+}
+
+/* Countdown: tabular units with caption. */
+.fx-countdown {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-3);
+}
+
+.fx-countdown-caption {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-align: center;
+}
+
+.fx-countdown-units {
+  display: flex;
+  gap: var(--solidix-funnel-space-3);
+  justify-content: center;
+  width: 100%;
+}
+
+.fx-countdown-unit {
+  align-items: center;
+  background: var(--solidix-funnel-ink);
+  border-radius: var(--solidix-funnel-radius-md);
+  color: var(--solidix-funnel-paper);
+  display: inline-flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 8rem;
+  min-width: 0;
+  padding: var(--solidix-funnel-space-2) var(--solidix-funnel-space-3);
+}
+
+.fx-countdown-icon {
+  background: var(--solidix-funnel-subtle);
+  box-shadow: inset 0 0 0 1px var(--solidix-funnel-line);
+  color: var(--solidix-funnel-ink);
+}
+
+.fx-countdown-icon svg {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.fx-countdown-value {
+  font-size: var(--solidix-funnel-text-h2);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--solidix-funnel-weight-bold);
+  line-height: var(--solidix-funnel-leading-snug);
+}
+
+.fx-countdown-label {
+  font-size: var(--solidix-funnel-text-caption);
+  opacity: 0.75;
+}
+
+@media (max-width: 639px) {
+  .fx-countdown-unit {
+    padding-inline: var(--solidix-funnel-space-2);
+  }
+
+  .fx-countdown-value {
+    font-size: var(--solidix-funnel-text-h3);
+  }
+}
+
+/* StickyBar: mobile bottom conversion bar, translated away until visible. */
+.fx-sticky-bar {
+  align-items: center;
+  backdrop-filter: blur(8px);
+  background: var(--solidix-funnel-paper);
+  background: color-mix(in srgb, var(--solidix-funnel-paper) 95%, transparent);
+  border-top: 1px solid var(--solidix-funnel-line);
+  bottom: 0;
+  color: var(--solidix-funnel-ink-body);
+  display: flex;
+  gap: var(--solidix-funnel-space-3);
+  justify-content: space-between;
+  left: 0;
+  padding: var(--solidix-funnel-space-3) var(--solidix-funnel-space-4);
+  position: fixed;
+  right: 0;
+  transform: translateY(110%);
+  transition: transform var(--solidix-funnel-duration-base) var(--solidix-funnel-ease-out);
+  visibility: hidden;
+  z-index: var(--solidix-funnel-z-sticky);
+}
+
+.fx-sticky-bar[data-visible] {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.fx-sticky-bar-message {
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-medium);
+  margin: 0;
+}
+
+/* The bar CTA keeps its intrinsic width; page CTAs go full width on mobile. */
+.fx-sticky-bar .fx-cta-button {
+  flex: none;
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .fx-sticky-bar {
+    display: none;
+  }
+}
+
+/* ExitIntent: modal popup. */
+.fx-exit-intent-overlay {
+  background: rgb(28 25 23 / 0.55);
+  inset: 0;
+  position: fixed;
+  z-index: var(--solidix-funnel-z-overlay);
+}
+
+.fx-exit-intent-overlay[data-state="open"] {
+  animation: fx-overlay-in var(--solidix-funnel-duration-base) var(--solidix-funnel-ease-out);
+}
+
+.fx-exit-intent-content[data-state="open"] {
+  animation: fx-dialog-in var(--solidix-funnel-duration-base) var(--solidix-funnel-ease-out);
+}
+
+@keyframes fx-overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fx-dialog-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 0.75rem));
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.fx-exit-intent-content {
+  background: var(--solidix-funnel-paper);
+  border-radius: var(--solidix-funnel-radius-xl);
+  box-shadow: var(--solidix-funnel-shadow-lg);
+  left: 50%;
+  max-height: calc(100vh - var(--solidix-funnel-space-8));
+  max-width: min(28rem, calc(100vw - var(--solidix-funnel-space-8)));
+  overflow-y: auto;
+  padding: var(--solidix-funnel-space-8) var(--solidix-funnel-space-6);
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: var(--solidix-funnel-z-overlay);
+}
+
+.fx-exit-intent-title {
+  font-size: var(--solidix-funnel-text-h2);
+  letter-spacing: var(--solidix-funnel-tracking-tight);
+  margin: 0 0 var(--solidix-funnel-space-2);
+}
+
+.fx-exit-intent-description {
+  color: var(--solidix-funnel-muted);
+  margin: 0 0 var(--solidix-funnel-space-5);
+}
+
+.fx-exit-intent-close {
+  align-items: center;
+  background: var(--solidix-funnel-subtle);
+  border: 0;
+  border-radius: var(--solidix-funnel-radius-full);
+  color: var(--solidix-funnel-ink);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--solidix-funnel-text-h3);
+  height: 2.25rem;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  right: var(--solidix-funnel-space-4);
+  top: var(--solidix-funnel-space-4);
+  width: 2.25rem;
+}
+
+/* Footer: brand plus link columns plus legal line. */
+.fx-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-8);
+}
+
+.fx-footer-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-8);
+}
+
+@media (min-width: 768px) {
+  .fx-footer[data-variant="trust"] .fx-footer-main {
+    display: grid;
+    gap: var(--solidix-funnel-space-12);
+    grid-template-columns: 1.1fr 1.9fr;
+  }
+}
+
+.fx-footer[data-variant="utility"] .fx-footer-main {
+  align-items: center;
+  gap: var(--solidix-funnel-space-4);
+  text-align: center;
+}
+
+.fx-footer-name {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-h3);
+  font-weight: var(--solidix-funnel-weight-bold);
+  letter-spacing: var(--solidix-funnel-tracking-tight);
+  margin: 0 0 var(--solidix-funnel-space-1);
+}
+
+.fx-footer-tagline {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  margin: 0;
+}
+
+.fx-footer-nav {
+  display: grid;
+  gap: var(--solidix-funnel-space-6);
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+}
+
+.fx-footer-heading {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-small);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  margin: 0 0 var(--solidix-funnel-space-2);
+}
+
+.fx-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fx-footer-link {
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-small);
+  text-decoration: none;
+}
+
+.fx-footer-link:hover {
+  color: var(--solidix-funnel-ink);
+  text-decoration: underline;
+}
+
+/* Utility archetype: one centered link row, headings dropped. */
+.fx-footer-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--solidix-funnel-space-2) var(--solidix-funnel-space-6);
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Trust archetype: verified-business identity block. */
+.fx-footer-identity {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--solidix-funnel-text-small);
+  gap: var(--solidix-funnel-space-1);
+}
+
+.fx-footer-identity-name {
+  color: var(--solidix-funnel-ink);
+  font-size: var(--solidix-funnel-text-body);
+  font-weight: var(--solidix-funnel-weight-semibold);
+  margin: 0 0 var(--solidix-funnel-space-1);
+}
+
+.fx-footer-identity-line {
+  color: var(--solidix-funnel-muted);
+  margin: 0;
+}
+
+/* Trust pills stand where social icons would leak attention. */
+.fx-footer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--solidix-funnel-space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fx-footer[data-variant="utility"] .fx-footer-badges {
+  justify-content: center;
+}
+
+.fx-footer-badge {
+  align-items: center;
+  border: 1px solid var(--solidix-funnel-line);
+  border-radius: var(--solidix-funnel-radius-full);
+  color: var(--solidix-funnel-muted);
+  display: inline-flex;
+  font-size: var(--solidix-funnel-text-caption);
+  gap: var(--solidix-funnel-space-1);
+  padding: var(--solidix-funnel-space-1) var(--solidix-funnel-space-3);
+  white-space: nowrap;
+}
+
+.fx-footer-badge svg {
+  flex: none;
+  height: 0.875rem;
+  width: 0.875rem;
+}
+
+.fx-footer-legal-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--solidix-funnel-space-2) var(--solidix-funnel-space-4);
+}
+
+.fx-footer[data-variant="utility"] .fx-footer-legal-nav {
+  justify-content: center;
+}
+
+.fx-footer-legal {
+  border-top: 1px solid var(--solidix-funnel-line);
+  color: var(--solidix-funnel-muted);
+  font-size: var(--solidix-funnel-text-caption);
+  margin: 0;
+  padding-top: var(--solidix-funnel-space-4);
+}
+
+.fx-footer[data-variant="utility"] .fx-footer-legal {
+  margin-inline: auto;
+  max-width: 52.5rem;
+  text-align: center;
+}

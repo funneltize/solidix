@@ -78,6 +78,11 @@ const DocPage: Component<{ demo: DemoEntry; prev?: DemoEntry; next?: DemoEntry }
           >
             Code
           </button>
+          <Show when={props.demo.fullPage}>
+            <a class="demo-tab full-page-link" href={`#/${props.demo.slug}/full`}>
+              View full page <span aria-hidden="true">→</span>
+            </a>
+          </Show>
         </div>
         <Show
           when={tab() === "preview"}

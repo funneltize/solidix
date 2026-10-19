@@ -10,6 +10,7 @@ import { doc as contextMenu } from "./context-menu";
 import { doc as dialog } from "./dialog";
 import { doc as dropdownMenu } from "./dropdown-menu";
 import { doc as form } from "./form";
+import { doc as funnel } from "./funnel";
 import { doc as hoverCard } from "./hover-card";
 import { doc as label } from "./label";
 import { doc as menubar } from "./menubar";
@@ -44,6 +45,7 @@ export const docs: Record<string, PrimitiveDoc> = {
   dialog: dialog,
   "dropdown-menu": dropdownMenu,
   form: form,
+  funnel: funnel,
   "hover-card": hoverCard,
   label: label,
   menubar: menubar,

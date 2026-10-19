@@ -23,6 +23,7 @@ Solidix is a port of [Radix UI](https://www.radix-ui.com) to **Solid 2**.
 - **No styling opinions**: primitives ship unstyled (data attributes for styling hooks), same as Radix.
 - **Document deviations**: any intentional API/behavior difference from Radix goes in the primitive's README with rationale.
 - **No em-dashes**: never write the em-dash character (U+2014) in prose, comments, docs, strings, or tests. Use a spaced hyphen (` - `) or restructure the sentence with commas or a colon.
+- **Funnel system**: `@solidix/funnel` is opinionated by design (tokens + themed blocks, the deliberate exception to headless). Its rules live in `packages/solid/funnel/PHILOSOPHY.md` - read that file before touching any funnel token, block, style, test, demo, or doc, and implement from it exactly.
 
 ## Repo workflow
 
