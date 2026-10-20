@@ -1619,7 +1619,7 @@ describe("Select.Arrow", () => {
   });
 });
 
-describe("Select.BubbleInput", () => {
+describe("Select.unstable_BubbleInput", () => {
   afterEach(cleanupModal);
 
   it("spreads props it does not consume onto the element it renders", () => {
@@ -1627,15 +1627,15 @@ describe("Select.BubbleInput", () => {
     const onClick = vi.fn();
 
     render(() => (
-      <Select.Provider>
-        <Select.BubbleInput
+      <Select.unstable_Provider>
+        <Select.unstable_BubbleInput
           ref={(node) => void (element = node)}
           data-testid="bubble-input"
           class="custom-class"
           style={{ "outline-color": "rgb(1, 2, 3)" }}
           onClick={onClick}
         />
-      </Select.Provider>
+      </Select.unstable_Provider>
     ));
 
     const bubbleInput = screen.getByTestId("bubble-input");

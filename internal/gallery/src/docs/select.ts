@@ -692,7 +692,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: 'import { Select } from "@solidix/solidix";\n\nexport default () => (\n\t<Select.Provider name="fruit">\n\t\t<Select.Trigger>\n\t\t\t<Select.Value placeholder="Pick an option" />\n\t\t\t<Select.Icon />\n\t\t</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>{/* Your content */}</Select.Content>\n\t\t</Select.Portal>\n\t\t<Select.BubbleInput />\n\t</Select.Provider>\n);',
+          code: 'import { Select } from "@solidix/solidix";\n\nexport default () => (\n\t<Select.unstable_Provider name="fruit">\n\t\t<Select.Trigger>\n\t\t\t<Select.Value placeholder="Pick an option" />\n\t\t\t<Select.Icon />\n\t\t</Select.Trigger>\n\t\t<Select.Portal>\n\t\t\t<Select.Content>{/* Your content */}</Select.Content>\n\t\t</Select.Portal>\n\t\t<Select.unstable_BubbleInput />\n\t</Select.unstable_Provider>\n);',
         },
       ],
     },
