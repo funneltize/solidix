@@ -135,9 +135,11 @@ To host it on Cloudflare Pages (Git integration), use these project settings:
 Versions are managed with [Changesets](https://github.com/changesets/changesets).
 Every PR that changes a publishable package must add a changeset
 (`pnpm changeset`); pushing to `main` opens a Version Packages PR, and
-merging it publishes to npm via the `release` workflow (needs an
-`NPM_TOKEN` repo secret with publish access to the `@solidix` scope and the
-`solidix` package).
+merging it publishes to npm via the `release` workflow, which
+authenticates with OIDC trusted publishing (no npm token stored). A
+brand-new package needs its first version published interactively first,
+then gets the release workflow registered as a trusted publisher on
+npmjs.com; see the comments in `.github/workflows/release.yml`.
 
 ## Toolchain pins
 
