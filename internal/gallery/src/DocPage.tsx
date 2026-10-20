@@ -11,7 +11,11 @@ const TocLink: Component<{ id: string; label: string }> = (props) => (
   </li>
 );
 
-const DocPage: Component<{ demo: DemoEntry; prev?: DemoEntry; next?: DemoEntry }> = (props) => {
+const DocPage: Component<{
+  demo: DemoEntry;
+  prev?: DemoEntry | undefined;
+  next?: DemoEntry | undefined;
+}> = (props) => {
   const doc = () => docs[props.demo.slug]!;
   const [tab, setTab] = createSignal<"preview" | "code">("preview");
 

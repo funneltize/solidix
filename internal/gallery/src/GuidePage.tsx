@@ -2,9 +2,11 @@ import { For, Show, type Component } from "solid-js";
 import type { GuideEntry } from "./guides";
 import { Markdown, guideHeadings } from "./md";
 
-const GuidePage: Component<{ guide: GuideEntry; prev?: GuideEntry; next?: GuideEntry }> = (
-  props,
-) => {
+const GuidePage: Component<{
+  guide: GuideEntry;
+  prev?: GuideEntry | undefined;
+  next?: GuideEntry | undefined;
+}> = (props) => {
   const headings = () => guideHeadings(props.guide.markdown);
   // The registry carries title and description; the markdown h1 is for GitHub readers.
   const body = () => props.guide.markdown.replace(/^# [^\n]*\n/, "");

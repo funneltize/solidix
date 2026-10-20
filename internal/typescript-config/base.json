@@ -8,6 +8,7 @@
     "jsx": "preserve",
     "jsxImportSource": "@solidjs/web",
     "strict": true,
+    "exactOptionalPropertyTypes": true,
     "skipLibCheck": true,
     "declaration": true,
     "declarationMap": true,

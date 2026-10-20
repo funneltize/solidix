@@ -43,6 +43,7 @@ Solidix is a port of [Radix UI](https://www.radix-ui.com) to **Solid 2**.
 - Tests live in `test/*.test.tsx` per package and run from the root `vitest run` (jsdom). Use `findBy*` queries - Solid 2 setters flush on microtask, not synchronously.
 - Toolchain versions are pinned exactly (Solid 2 is RC-stage); see README. `@repo/smoke` is the private pipeline check - never publish it.
 - Package READMEs follow the header template (summary, Solid API mapping + guide links, docs-site route, `Differences from Radix`); task-oriented docs live in `docs/*.md`, single-sourced into the gallery Guides section (`internal/gallery/src/guides.ts` `?raw` imports, rendered by `GuidePage`/`md.tsx`).
+- `exactOptionalPropertyTypes` is on in the base tsconfig (matching the upstream Radix wave): write optional props as `prop?: T | undefined`, never bare `prop?: T`.
 
 ## Solid 2 porting patterns (Phase 1 learnings)
 
