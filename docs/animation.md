@@ -13,10 +13,10 @@ part) keeps closed content mounted through its exit, but only for keyframe
 animations: it unmounts after `animationend`, Radix parity. It does not track
 transitions.
 
-| Exit mechanism                       | Unmounts after exit? | Needs        |
-| ------------------------------------ | -------------------- | ------------ |
-| `@keyframes` exit animation          | Yes                  | Nothing extra |
-| `transition` plus `allow-discrete` exit | No, instant unmount | `forceMount` |
+| Exit mechanism                          | Unmounts after exit? | Needs         |
+| --------------------------------------- | -------------------- | ------------- |
+| `@keyframes` exit animation             | Yes                  | Nothing extra |
+| `transition` plus `allow-discrete` exit | No, instant unmount  | `forceMount`  |
 
 For transition-based exits, keep the part mounted with `forceMount`: the
 closed state renders `display: none`, so it stays hidden from assistive
@@ -63,6 +63,29 @@ transitions, plain keyframes on mount).
 resolves to a text marker, so a `Presence` around a portal sees nothing to
 follow. Primitives already place `Presence` inside their portals; if you build
 custom portalled content, do the same (`Portal` outside, `Presence` inside).
+
+## Render-prop children
+
+`Presence` also accepts a function child for cases where the closed state
+renders something other than nothing. Only functions with declared parameters
+count: component children arrive as zero-arg thunks, so `({ present }) => …`
+is a render prop and `() => …` is not. The render prop receives `present` as
+an accessor inside a props object; call it in the returned JSX so the child
+updates without remounting:
+
+```tsx
+import { Presence } from "@solidix/solidix/presence";
+
+<Presence present={open()}>
+  {({ present }) => <div data-state={present() ? "open" : "closed"}>Panel</div>}
+</Presence>;
+```
+
+Render-prop children stay mounted once opened and decide themselves what
+closed looks like (the `forceMount` equivalent), so they suit custom
+transitions. An initially-closed render prop mounts on first open rather than
+immediately; closed content renders nothing anyway, so the difference is
+invisible.
 
 ## The motion package
 

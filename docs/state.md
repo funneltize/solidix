@@ -4,10 +4,10 @@ Interactive primitives follow one uniform pattern, ported from Radix: every
 piece of state can be uncontrolled (the component owns it) or controlled (you
 own it). The prop names tell you which mode you are in.
 
-| Mode         | Props                              | Example                                  |
-| ------------ | ---------------------------------- | ---------------------------------------- |
-| Uncontrolled | `defaultValue`                     | `<Select.Root defaultValue="apple">`     |
-| Controlled   | `value` plus `onValueChange`       | `<Select.Root value={v()} onValueChange={setV}>` |
+| Mode         | Props                        | Example                                          |
+| ------------ | ---------------------------- | ------------------------------------------------ |
+| Uncontrolled | `defaultValue`               | `<Select.Root defaultValue="apple">`             |
+| Controlled   | `value` plus `onValueChange` | `<Select.Root value={v()} onValueChange={setV}>` |
 
 The state key varies (`open`, `value`, `checked`, `pressed`, `active`), but
 the shape is always the same: `defaultX` seeds internal state, while `x` plus
