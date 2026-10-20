@@ -26,7 +26,7 @@ import * as Dialog from "@solidix/solidix/dialog";
 [JSR npm-compatibility docs](https://jsr.io/docs/npm-compatibility)).
 
 Solid 2 is RC-stage: `solid-js` and `@solidjs/web` must satisfy
-`>=2.0.0-rc.15 <2.1.0` (see [Toolchain pins](#toolchain-pins)).
+`>=2.0.0-rc.16 <2.1.0` (see [Toolchain pins](#toolchain-pins)).
 
 ## Usage
 
@@ -247,10 +247,14 @@ Solid 2 RC notes that bite on first contact:
 
 Solid 2 is RC-stage; versions are pinned exactly until stable:
 
-- `solid-js` / `@solidjs/web`: `2.0.0-rc.15`
+- `solid-js` / `@solidjs/web`: `2.0.0-rc.16`
 - `@solidjs/vite-plugin`: `3.0.0-next.50`
 - `@solidjs/testing-library`: `1.0.0-beta.3`
 - `vite` 8.3.4, `vitest` 5.0.5, `typescript` 5.9.3
+
+Track the `next` dist-tag, not `latest`, when checking for new RCs: the
+`@solidjs/web` `latest` tag is stale (rc.0) while `next` carries the current
+RC.
 
 When Solid 2 goes stable, re-verify before unpinning: bump the pins, run the
 full gates (`format`, `lint`, `typecheck`, `test`, `build`), and re-check

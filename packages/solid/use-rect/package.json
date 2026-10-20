@@ -28,11 +28,11 @@
   "devDependencies": {
     "@repo/builder": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@solidjs/web": "2.0.0-rc.15",
-    "solid-js": "2.0.0-rc.15"
+    "@solidjs/web": "2.0.0-rc.16",
+    "solid-js": "2.0.0-rc.16"
   },
   "peerDependencies": {
-    "@solidjs/web": ">=2.0.0-rc.15 <2.1.0",
-    "solid-js": ">=2.0.0-rc.15 <2.1.0"
+    "@solidjs/web": ">=2.0.0-rc.16 <2.1.0",
+    "solid-js": ">=2.0.0-rc.16 <2.1.0"
   }
 }

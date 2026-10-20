@@ -49,8 +49,8 @@
     "@solidix/toggle-group": "workspace:*",
     "@solidix/toolbar": "workspace:*",
     "@solidix/tooltip": "workspace:*",
-    "@solidjs/web": "2.0.0-rc.15",
-    "solid-js": "2.0.0-rc.15",
+    "@solidjs/web": "2.0.0-rc.16",
+    "solid-js": "2.0.0-rc.16",
     "solidix": "workspace:*"
   },
   "devDependencies": {
