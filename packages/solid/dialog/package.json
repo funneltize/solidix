@@ -1,6 +1,6 @@
 {
   "name": "@solidix/dialog",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Dialog primitive (port of @radix-ui/react-dialog).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

@@ -1,6 +1,6 @@
 {
   "name": "@solidix/label",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Label primitive (port of @radix-ui/react-label).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

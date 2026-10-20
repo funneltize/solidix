@@ -1,6 +1,6 @@
 {
   "name": "@solidix/password-toggle-field",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Password Toggle Field primitive (port of @radix-ui/react-password-toggle-field).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

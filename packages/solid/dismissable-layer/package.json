@@ -1,6 +1,6 @@
 {
   "name": "@solidix/dismissable-layer",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Dismissable layer with outside interaction (port of @radix-ui/react-dismissable-layer).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

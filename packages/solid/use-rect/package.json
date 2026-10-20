@@ -1,6 +1,6 @@
 {
   "name": "@solidix/use-rect",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Element rect observer hook (port of @radix-ui/react-use-rect).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

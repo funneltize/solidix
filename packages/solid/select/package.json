@@ -1,6 +1,6 @@
 {
   "name": "@solidix/select",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Select primitive (port of @radix-ui/react-select).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

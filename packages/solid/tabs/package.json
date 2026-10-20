@@ -1,6 +1,6 @@
 {
   "name": "@solidix/tabs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Tabs primitive (port of @radix-ui/react-tabs).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
