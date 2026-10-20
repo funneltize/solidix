@@ -204,7 +204,7 @@ type PopoverPortalProps = {
   container?: PortalProps["container"] | undefined;
   /**
    * Used to force mounting when more control is needed. Useful when
-   * controlling animation with React animation libraries.
+   * controlling animation with CSS (see the Animation guide).
    */
   forceMount?: true | undefined;
 };
@@ -234,7 +234,7 @@ const CONTENT_NAME = "PopoverContent";
 type PopoverContentProps = PopoverContentTypeProps & {
   /**
    * Used to force mounting when more control is needed. Useful when
-   * controlling animation with React animation libraries.
+   * controlling animation with CSS (see the Animation guide).
    */
   forceMount?: true | undefined;
 };

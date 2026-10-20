@@ -12,7 +12,9 @@ triggers.
   so a `Presence` around the portal cannot resolve (or track for exit
   animations) the portalled content. Consequences: empty portal markers stay
   in the container while closed, and the portal renders its plain wrapper
-  `div`. Both are unstyled and inert.
+  `div`. Both are unstyled and inert. The marker nodes are non-elements, so
+  `querySelector` and `.children` skip them; only the wrapper `div`
+  itself is selectable.
 - The `style` prop of `MenubarContent`/`MenubarSubContent` is object-only
   (not `string`) so it can merge with the re-namespaced content custom
   properties, matching `@solidix/popper`.

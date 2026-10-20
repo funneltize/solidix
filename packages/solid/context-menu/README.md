@@ -10,7 +10,9 @@ on `@solidix/menu` exactly as Radix composes on `@radix-ui/react-menu`.
   so a `Presence` around the portal cannot resolve (or track for exit
   animations) the portalled content. Consequences: empty portal markers stay
   in the container while closed, and the portal renders its plain wrapper
-  `div`. Both are unstyled and inert.
+  `div`. Both are unstyled and inert. The marker nodes are non-elements, so
+  `querySelector` and `.children` skip them; only the wrapper `div`
+  itself is selectable.
 - The `style` prop of `ContextMenuTrigger`, `ContextMenuContent`, and
   `ContextMenuSubContent` is object-only (not `string`) so it can merge with
   the trigger's `-webkit-touch-callout` reset and the re-namespaced content

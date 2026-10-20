@@ -14,3 +14,6 @@ Dismissable layer with outside interaction. Port of
   iframe-hosted layers re-subscribe correctly.
 - Pointer/focus outside detection, dismissal ordering, interception, and the
   iOS Safari affordances are otherwise ported verbatim.
+- Improvement over upstream: Escape during an IME composition (`isComposing`
+  or `keyCode` 229) does not dismiss, since the keystroke belongs to the
+  input method. Upstream dismisses on the key alone.

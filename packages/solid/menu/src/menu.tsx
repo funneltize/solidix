@@ -203,7 +203,7 @@ type MenuPortalProps = {
   container?: PortalProps["container"] | undefined;
   /**
    * Used to force mounting when more control is needed. Useful when
-   * controlling animation with React animation libraries.
+   * controlling animation with CSS (see the Animation guide).
    */
   forceMount?: true | undefined;
 };
@@ -250,7 +250,7 @@ type MenuContentElement = MenuRootContentTypeElement;
 type MenuContentProps = MenuRootContentTypeProps & {
   /**
    * Used to force mounting when more control is needed. Useful when
-   * controlling animation with React animation libraries.
+   * controlling animation with CSS (see the Animation guide).
    */
   forceMount?: true | undefined;
 };
@@ -712,11 +712,9 @@ const MenuItem: Component<ScopedProps<MenuItemProps>> = (props) => {
       onKeyDown={composeEventHandlers(
         (event: KeyboardEvent) => callEventHandler(props.onKeyDown, event),
         (event) => {
-          // Only react to keys originating from the item itself. Focusable
-          // descendants (eg. an `input` inside a `Dialog` rendered within the
-          // item) bubble their key events here through React's event system
-          // even when portaled out of the item's DOM subtree, which would
-          // otherwise let the item swallow selection keys.
+          // Only react to keys originating from the item itself. Keys from
+          // focusable descendants in the item's DOM subtree (eg. an `input`)
+          // bubble here natively and must not trigger selection.
           // See: https://github.com/radix-ui/primitives/issues/3232
           if (disabled() || event.target !== event.currentTarget) {
             return;
@@ -940,7 +938,7 @@ const [ItemIndicatorProvider, useItemIndicatorContext] = createMenuContext<Check
 type MenuItemIndicatorProps = PrimitivePropsWithRef<"span"> & {
   /**
    * Used to force mounting when more control is needed. Useful when
-   * controlling animation with React animation libraries.
+   * controlling animation with CSS (see the Animation guide).
    */
   forceMount?: true | undefined;
 };
@@ -1163,10 +1161,10 @@ const MenuSubTrigger: Component<ScopedProps<MenuSubTriggerProps>> = (props) => {
         onKeyDown={composeEventHandlers(
           (event: KeyboardEvent) => callEventHandler(props.onKeyDown, event),
           (event) => {
-            // Only react to keys originating from the trigger itself. Focusable descendants
-            // (eg. content rendered within the trigger) bubble their key events here through
-            // React's event system even when portaled, which would otherwise let the trigger
-            // swallow them. See: https://github.com/radix-ui/primitives/issues/3232
+            // Only react to keys originating from the trigger itself. Keys from
+            // focusable descendants in the trigger's DOM subtree bubble here
+            // natively and must not trigger submenu behavior.
+            // See: https://github.com/radix-ui/primitives/issues/3232
             if (props.disabled || event.target !== event.currentTarget) {
               return;
             }
@@ -1203,7 +1201,7 @@ type MenuSubContentProps = Omit<
 > & {
   /**
    * Used to force mounting when more control is needed. Useful when
-   * controlling animation with React animation libraries.
+   * controlling animation with CSS (see the Animation guide).
    */
   forceMount?: true | undefined;
 
