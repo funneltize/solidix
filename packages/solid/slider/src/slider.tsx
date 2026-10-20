@@ -38,19 +38,19 @@ const BACK_KEYS: Record<SlideDirection, string[]> = {
   "from-top": ["Home", "PageDown", "ArrowUp", "ArrowLeft"],
 };
 
-declare global {
-  interface FocusOptions {
-    /**
-     * A boolean value that should be set to `true` to force, or `false` to prevent
-     * visible indication that the element is focused. If the property is not
-     * specified, a browser will provide visible indication if it determines
-     * that this would improve accessibility for users.
-     *
-     * @see
-     * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#focusvisible
-     */
-    focusVisible?: boolean | undefined;
-  }
+// `focusVisible` is not in TS's DOM lib yet. Kept module-local (not a global
+// augmentation) so consumers' type environments stay clean.
+interface FocusOptionsWithVisibleIndicator extends FocusOptions {
+  /**
+   * A boolean value that should be set to `true` to force, or `false` to prevent
+   * visible indication that the element is focused. If the property is not
+   * specified, a browser will provide visible indication if it determines
+   * that this would improve accessibility for users.
+   *
+   * @see
+   * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#focusvisible
+   */
+  focusVisible?: boolean | undefined;
 }
 
 /* -------------------------------------------------------------------------------------------------
@@ -156,7 +156,7 @@ const Slider: Component<ScopedProps<SliderProps>> = (props) => {
       thumbsArray[valueIndexToChangeRef.current]?.focus({
         preventScroll: true,
         focusVisible: isKeyboardInteraction,
-      });
+      } as FocusOptionsWithVisibleIndicator);
       isKeyboardInteraction = false;
       props.onValueChange?.(value);
     },
@@ -590,7 +590,10 @@ const SliderImpl: Component<ScopedProps<SliderImplProps>> = (props) => {
       // away from target (sliding). We want thumb to focus regardless.
       if (context.thumbs.has(target)) {
         // Pointer interaction, so avoid showing the focus ring (`:focus-visible`).
-        target.focus({ preventScroll: true, focusVisible: false });
+        target.focus({
+          preventScroll: true,
+          focusVisible: false,
+        } as FocusOptionsWithVisibleIndicator);
       } else {
         props.onSlideStart(event);
       }

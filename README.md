@@ -10,16 +10,20 @@ View Transitions, and swipe gestures with no animation engine (see
 ## Install
 
 ```sh
-pnpm add solidix solid-js @solidjs/web
+pnpm add jsr:@solidix/solidix
 ```
 
-`solidix` is the umbrella package (mirrors `radix-ui`), re-exporting every
-component primitive as a namespace. Prefer the per-primitive packages when
-bundle size matters:
+`@solidix/solidix` is the umbrella package (mirrors `radix-ui`),
+re-exporting every component primitive as a namespace. Prefer the
+per-primitive subpath imports when bundle size matters:
 
-```sh
-pnpm add @solidix/dialog solid-js @solidjs/web
+```tsx
+import * as Dialog from "@solidix/solidix/dialog";
 ```
+
+`pnpm` 10.9 and later install `jsr:` packages natively; otherwise use
+`npx jsr add @solidix/solidix` (see the
+[JSR npm-compatibility docs](https://jsr.io/docs/npm-compatibility)).
 
 Solid 2 is RC-stage: `solid-js` and `@solidjs/web` must satisfy
 `>=2.0.0-rc.15 <2.1.0` (see [Toolchain pins](#toolchain-pins)).
@@ -27,8 +31,8 @@ Solid 2 is RC-stage: `solid-js` and `@solidjs/web` must satisfy
 ## Usage
 
 ```tsx
-import { Dialog } from "solidix";
-// or: import * as Dialog from "@solidix/dialog";
+import { Dialog } from "@solidix/solidix";
+// or: import * as Dialog from "@solidix/solidix/dialog";
 
 function Example() {
   return (
@@ -65,8 +69,8 @@ and tracks velocity-aware swipe gestures - all keyed off the `data-state`
 attributes every primitive already exposes. No `AnimatePresence` wrappers, no
 rAF loops, no JS animation engine:
 
-```sh
-pnpm add @solidix/motion
+```tsx
+import { createSpring } from "@solidix/solidix/motion";
 ```
 
 See the [package README](./packages/solid/motion/README.md) for the full API
@@ -75,14 +79,17 @@ on the Motion page.
 
 ## Packages
 
-All 63 packages live under `packages/` and publish at version 0.x while the
-API tracks Radix:
+All 65 packages live under `packages/` and ship together as the single JSR
+package `@solidix/solidix` (one version; every workspace package is a
+subpath export, e.g. `@solidix/solidix/dialog`). The API tracks Radix at
+version 0.x:
 
-- `solidix` - umbrella re-exporting the 30 component namespaces.
-- `@solidix/motion` - the built-in motion system (see
+- `solidix` - umbrella re-exporting the 30 component namespaces at the
+  package root.
+- `@solidix/solidix/motion` - the built-in motion system (see
   [Motion](#motion)): spring easing compiler, preset tokens, View
   Transitions helper, and swipe gestures.
-- `packages/solid/*` - Solid primitives, published as `@solidix/<name>`:
+- `packages/solid/*` - Solid primitives:
   the 30 components (Accordion, AlertDialog, AspectRatio, Avatar, Checkbox,
   Collapsible, ContextMenu, Dialog, DropdownMenu, Form, HoverCard, Label,
   Menubar, NavigationMenu, OneTimePasswordField, PasswordToggleField, Popover,
@@ -93,6 +100,10 @@ API tracks Radix:
   `packages/core`).
 - `internal/*` - private workspace tooling (`@repo/builder`,
   `@repo/typescript-config`, `@repo/smoke`).
+
+JSR exports must be JS modules, so the funnel and motion stylesheets
+(`tokens.css`, `blocks.css`, `springs.css`) are not in the package: copy
+them from the repo into your project (see the funnel and motion READMEs).
 
 See [AGENTS.md](./AGENTS.md) for working agreements.
 
@@ -135,11 +146,13 @@ To host it on Cloudflare Pages (Git integration), use these project settings:
 Versions are managed with [Changesets](https://github.com/changesets/changesets).
 Every PR that changes a publishable package must add a changeset
 (`pnpm changeset`); pushing to `main` opens a Version Packages PR, and
-merging it publishes to npm via the `release` workflow, which
-authenticates with OIDC trusted publishing (no npm token stored). A
-brand-new package needs its first version published interactively first,
-then gets the release workflow registered as a trusted publisher on
-npmjs.com; see the comments in `.github/workflows/release.yml`.
+merging it publishes `@solidix/solidix` to JSR via the `release`
+workflow, which authenticates with OIDC trusted publishing (no token
+stored). The release assembles every workspace package's `dist/` into the
+single versioned package (`scripts/jsr-publish.mjs`); `pnpm release:dry-run`
+validates the assembly without uploading. One-time setup: link
+`@solidix/solidix` to this repo in its JSR package settings so the OIDC
+handshake is trusted.
 
 ## Toolchain pins
 

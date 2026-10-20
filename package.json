@@ -15,7 +15,8 @@
     "clean": "pnpm -r run clean",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "node scripts/oidc-publish.mjs"
+    "release": "node scripts/jsr-publish.mjs",
+    "release:dry-run": "node scripts/jsr-publish.mjs --dry-run"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",

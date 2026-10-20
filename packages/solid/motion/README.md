@@ -9,12 +9,12 @@ View Transitions API. The compiler and tokens have zero dependencies;
 `viewTransition` and `createSwipe` need Solid (peer) and the DOM.
 
 ```bash
-pnpm add @solidix/motion
+pnpm add jsr:@solidix/solidix
 ```
 
 ```tsx
-import { createSpring, createSwipe, viewTransition } from "@solidix/motion";
-import "@solidix/motion/springs.css";
+import { createSpring, createSwipe, viewTransition } from "@solidix/solidix/motion";
+import "./springs.css"; // vendored copy, see below
 ```
 
 ## Springs
@@ -44,11 +44,14 @@ increase damping).
 ### Preset tokens
 
 `springs.css` defines four presets (plus starting-point durations) as custom
-properties. Always declare a plain easing first so older engines - Chrome
-\< 113, Firefox \< 112, Safari \< 17.2 - fall back instead of jumping:
+properties. JSR ships JS only, so the stylesheet is not in the package: copy
+`packages/solid/motion/src/springs.css` from the repo next to your own CSS
+and import it relatively (re-copy after upgrading). Always declare a plain
+easing first so older engines - Chrome \< 113, Firefox \< 112, Safari
+\< 17.2 - fall back instead of jumping:
 
 ```css
-@import "@solidix/motion/springs.css";
+@import "./springs.css";
 
 .popover {
   transition-timing-function: ease-out;
@@ -76,7 +79,7 @@ expanding cards. Solid's queued writes are flushed inside the update
 callback, so the "after" snapshot always sees the new DOM:
 
 ```tsx
-import { viewTransition } from "@solidix/motion";
+import { viewTransition } from "@solidix/solidix/motion";
 
 function selectTab(id: string) {
   viewTransition(() => setActiveTab(id));

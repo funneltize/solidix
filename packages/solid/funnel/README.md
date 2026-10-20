@@ -12,19 +12,24 @@ Implementing or reviewing funnel work? Read
 truth for the system's principles, patterns, budgets, and anti-patterns.
 
 ```bash
-pnpm add @solidix/funnel
+pnpm add jsr:@solidix/solidix
 ```
 
 ```tsx
-import "@solidix/funnel/blocks.css"; // pulls tokens.css in too
-import { Section, CTAButton } from "@solidix/funnel";
+import "./blocks.css"; // vendored copy, pulls tokens.css in too
+import { Section, CTAButton } from "@solidix/solidix/funnel";
 ```
 
 Or theme without components:
 
 ```css
-@import "@solidix/funnel/tokens.css";
+@import "./tokens.css";
 ```
+
+JSR ships JS only, so the stylesheets are not in the package: copy
+`tokens.css` and `blocks.css` from `packages/solid/funnel/src/` in the repo
+into your project, side by side, and import them relatively (re-copy after
+upgrading).
 
 ## Tokens
 

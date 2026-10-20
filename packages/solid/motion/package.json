@@ -13,11 +13,6 @@
     "directory": "packages/solid/motion"
   },
   "source": "./src/index.ts",
-  "files": [
-    "dist",
-    "src",
-    "README.md"
-  ],
   "sideEffects": [
     "*.css"
   ],
@@ -27,26 +22,6 @@
     ".": "./src/index.ts",
     "./springs.css": "./src/springs.css",
     "./package.json": "./package.json"
-  },
-  "publishConfig": {
-    "main": "./dist/index.js",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
-    "exports": {
-      ".": {
-        "import": {
-          "types": "./dist/index.d.ts",
-          "default": "./dist/index.mjs"
-        },
-        "require": {
-          "types": "./dist/index.d.ts",
-          "default": "./dist/index.js"
-        }
-      },
-      "./springs.css": "./src/springs.css",
-      "./package.json": "./package.json"
-    },
-    "access": "public"
   },
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",

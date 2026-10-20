@@ -7,8 +7,8 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  # OIDC trusted publishing mints a short-lived npm token per run; no
-  # long-lived npm credential exists anywhere.
+  # `jsr publish` mints its auth from this OIDC token; no JSR credential
+  # exists anywhere.
   id-token: write
 
 jobs:
@@ -19,9 +19,6 @@ jobs:
       - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
         with:
           version: 11.5.0
-      # No registry-url here on purpose: it would write an auth token line
-      # into .npmrc, and any configured token disables the OIDC exchange.
-      # Reads use the default registry anonymously; writes mint via OIDC.
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
@@ -29,16 +26,14 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       # changesets/action owns versioning (the Version Packages PR). Its
-      # publish step runs scripts/oidc-publish.mjs, which packs with pnpm
-      # and publishes tarballs with the npm CLI so the OIDC handshake and
-      # provenance happen there (changeset publish shells to pnpm publish,
-      # and pnpm 11.5.0 cannot do the OIDC exchange).
+      # publish step runs scripts/jsr-publish.mjs, which assembles the
+      # single `@solidix/solidix` package from every workspace package's
+      # dist and publishes it to JSR. `jsr publish` no-ops when the
+      # umbrella version is already published, so pushes that only bump
+      # internals are harmless.
       #
-      # First-publish bootstrap: npm cannot create packages via OIDC, so a
-      # brand-new package's first version is published interactively from a
-      # maintainer machine, then gets this workflow registered as a trusted
-      # publisher (package Settings on npmjs.com, allowing the npm publish
-      # action). Afterwards releases are fully automatic.
+      # One-time setup: link @solidix/solidix to this repo in its JSR
+      # package settings so the OIDC handshake is trusted.
       - uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:
           version: pnpm version-packages

@@ -12,51 +12,9 @@
     "url": "git+https://github.com/funneltize/solidix.git",
     "directory": "packages/core/env-check"
   },
-  "files": [
-    "dist",
-    "src",
-    "README.md"
-  ],
   "sideEffects": false,
   "exports": {
     "./is-development": "./src/internal/is-development.true.ts"
-  },
-  "publishConfig": {
-    "exports": {
-      "./is-development": {
-        "development": {
-          "import": {
-            "types": "./dist/internal/is-development.true.d.ts",
-            "default": "./dist/internal/is-development.true.mjs"
-          },
-          "require": {
-            "types": "./dist/internal/is-development.true.d.ts",
-            "default": "./dist/internal/is-development.true.js"
-          }
-        },
-        "production": {
-          "import": {
-            "types": "./dist/internal/is-development.false.d.ts",
-            "default": "./dist/internal/is-development.false.mjs"
-          },
-          "require": {
-            "types": "./dist/internal/is-development.false.d.ts",
-            "default": "./dist/internal/is-development.false.js"
-          }
-        },
-        "default": {
-          "import": {
-            "types": "./dist/internal/is-development.false.d.ts",
-            "default": "./dist/internal/is-development.false.mjs"
-          },
-          "require": {
-            "types": "./dist/internal/is-development.false.d.ts",
-            "default": "./dist/internal/is-development.false.js"
-          }
-        }
-      }
-    },
-    "access": "public"
   },
   "scripts": {
     "lint": "oxlint --max-warnings 0 src",
