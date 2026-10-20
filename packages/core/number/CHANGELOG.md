@@ -1,5 +1,11 @@
 # @solidix/number
 
+## 0.1.1
+
+### Patch Changes
+
+- e32b499: Drop npm packaging config; the registry artifact is now the consolidated @solidix/solidix JSR package.
+
 ## 0.1.0
 
 ### Minor Changes

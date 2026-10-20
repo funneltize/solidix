@@ -30,7 +30,7 @@ Solidix is a port of [Radix UI](https://www.radix-ui.com) to **Solid 2**.
 - One focused change per commit/PR (e.g. one primitive or one shared utility).
 - Add/extend tests for behavior ported from Radix; run the relevant package tests before finishing.
 - Any PR touching a publishable package adds a changeset (`pnpm changeset`); `patch` for fixes, `minor` for features (all packages are 0.x, so minor bumps stay non-breaking by convention).
-- **Release numbering (0.x)**: versions increment by change size - `minor` moves `0.x` (new primitive, new feature, behavior addition), `patch` moves `0.0.x` (bug fix, types-only, internal refactor with no API change). Never `major` while 0.x; the 1.0 decision is a deliberate release, not a changeset label. Merging to `main` opens a Version Packages PR via the `release` workflow; merging that PR publishes the single `@solidix/solidix` JSR package automatically (OIDC trusted publishing, no token).
+- **Release numbering (0.x)**: versions increment by change size - `minor` moves `0.x` (new primitive, new feature, behavior addition), `patch` moves `0.0.x` (bug fix, types-only, internal refactor with no API change). Never `major` while 0.x; the 1.0 decision is a deliberate release, not a changeset label. To release, run `pnpm version-packages` locally, commit, and push to `main`; the `release` workflow publishes the single `@solidix/solidix` JSR package automatically (OIDC trusted publishing, no token). Actions cannot open PRs in this repo, so there is no Version Packages PR.
 - Keep diffs minimal and rooted at the cause; don't refactor unrelated primitives.
 - Match existing code style and reuse shared helpers - check sibling primitives before adding new utilities.
 

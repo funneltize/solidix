@@ -1,5 +1,43 @@
 # solidix
 
+## 0.1.1
+
+### Patch Changes
+
+- e32b499: Drop npm packaging config; the registry artifact is now the consolidated @solidix/solidix JSR package.
+- Updated dependencies [e32b499]
+  - @solidix/accordion@0.1.1
+  - @solidix/alert-dialog@0.1.1
+  - @solidix/aspect-ratio@0.1.1
+  - @solidix/avatar@0.1.1
+  - @solidix/checkbox@0.1.1
+  - @solidix/collapsible@0.1.1
+  - @solidix/context-menu@0.1.1
+  - @solidix/dialog@0.1.1
+  - @solidix/dropdown-menu@0.1.1
+  - @solidix/form@0.1.1
+  - @solidix/funnel@0.1.1
+  - @solidix/hover-card@0.1.1
+  - @solidix/label@0.1.1
+  - @solidix/menubar@0.1.1
+  - @solidix/navigation-menu@0.1.1
+  - @solidix/one-time-password-field@0.1.1
+  - @solidix/password-toggle-field@0.1.1
+  - @solidix/popover@0.1.1
+  - @solidix/progress@0.1.1
+  - @solidix/radio-group@0.1.1
+  - @solidix/scroll-area@0.1.1
+  - @solidix/select@0.1.1
+  - @solidix/separator@0.1.1
+  - @solidix/slider@0.1.1
+  - @solidix/switch@0.1.1
+  - @solidix/tabs@0.1.1
+  - @solidix/toast@0.1.1
+  - @solidix/toggle@0.1.1
+  - @solidix/toggle-group@0.1.1
+  - @solidix/toolbar@0.1.1
+  - @solidix/tooltip@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes

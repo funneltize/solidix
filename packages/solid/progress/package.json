@@ -1,6 +1,6 @@
 {
   "name": "@solidix/progress",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Progress primitive (port of @radix-ui/react-progress).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

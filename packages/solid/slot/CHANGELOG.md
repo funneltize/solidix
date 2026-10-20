@@ -1,5 +1,13 @@
 # @solidix/slot
 
+## 0.1.1
+
+### Patch Changes
+
+- e32b499: Drop npm packaging config; the registry artifact is now the consolidated @solidix/solidix JSR package.
+- Updated dependencies [e32b499]
+  - @solidix/compose-refs@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes

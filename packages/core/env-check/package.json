@@ -1,6 +1,6 @@
 {
   "name": "@solidix/env-check",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Environment checks shared by solidix packages (port of @radix-ui/env-check).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

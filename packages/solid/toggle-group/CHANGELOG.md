@@ -1,5 +1,18 @@
 # @solidix/toggle-group
 
+## 0.1.1
+
+### Patch Changes
+
+- e32b499: Drop npm packaging config; the registry artifact is now the consolidated @solidix/solidix JSR package.
+- Updated dependencies [e32b499]
+  - @solidix/context@0.1.1
+  - @solidix/direction@0.1.1
+  - @solidix/primitive@0.1.1
+  - @solidix/roving-focus@0.1.1
+  - @solidix/toggle@0.1.1
+  - @solidix/use-controllable-state@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes

@@ -1,5 +1,18 @@
 # @solidix/funnel
 
+## 0.1.1
+
+### Patch Changes
+
+- e32b499: Drop npm packaging config; the registry artifact is now the consolidated @solidix/solidix JSR package.
+- Updated dependencies [e32b499]
+  - @solidix/accordion@0.1.1
+  - @solidix/aspect-ratio@0.1.1
+  - @solidix/dialog@0.1.1
+  - @solidix/form@0.1.1
+  - @solidix/primitive@0.1.1
+  - @solidix/radio-group@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes

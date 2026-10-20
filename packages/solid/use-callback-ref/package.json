@@ -1,6 +1,6 @@
 {
   "name": "@solidix/use-callback-ref",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Stable callback wrapper (port of @radix-ui/react-use-callback-ref).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

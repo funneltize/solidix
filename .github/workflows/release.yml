@@ -5,8 +5,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
   # `jsr publish` mints its auth from this OIDC token; no JSR credential
   # exists anywhere.
   id-token: write
@@ -25,18 +24,12 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-      # changesets/action owns versioning (the Version Packages PR). Its
-      # publish step runs scripts/jsr-publish.mjs, which assembles the
-      # single `@solidix/solidix` package from every workspace package's
-      # dist and publishes it to JSR. `jsr publish` no-ops when the
-      # umbrella version is already published, so pushes that only bump
-      # internals are harmless.
+      # Publish @solidix/solidix to JSR. `jsr publish` no-ops when the
+      # umbrella version is already published, so this is safe on every
+      # push; a new version ships only when the tree carries one.
       #
-      # One-time setup: link @solidix/solidix to this repo in its JSR
-      # package settings so the OIDC handshake is trusted.
-      - uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
-        with:
-          version: pnpm version-packages
-          publish: pnpm release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Versioning runs locally because Actions may not open PRs in this
+      # repo (no changesets/action Version Packages PR): `pnpm changeset`
+      # records a change, `pnpm version-packages` consumes changesets into
+      # bumps + changelogs, then commit and push.
+      - run: pnpm release

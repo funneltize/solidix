@@ -1,5 +1,23 @@
 # @solidix/toast
 
+## 0.1.1
+
+### Patch Changes
+
+- e32b499: Drop npm packaging config; the registry artifact is now the consolidated @solidix/solidix JSR package.
+- Updated dependencies [e32b499]
+  - @solidix/collection@0.1.1
+  - @solidix/compose-refs@0.1.1
+  - @solidix/context@0.1.1
+  - @solidix/dismissable-layer@0.1.1
+  - @solidix/portal@0.1.1
+  - @solidix/presence@0.1.1
+  - @solidix/primitive@0.1.1
+  - @solidix/use-callback-ref@0.1.1
+  - @solidix/use-controllable-state@0.1.1
+  - @solidix/use-layout-effect@0.1.1
+  - @solidix/visually-hidden@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes

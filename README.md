@@ -145,14 +145,18 @@ To host it on Cloudflare Pages (Git integration), use these project settings:
 
 Versions are managed with [Changesets](https://github.com/changesets/changesets).
 Every PR that changes a publishable package must add a changeset
-(`pnpm changeset`); pushing to `main` opens a Version Packages PR, and
-merging it publishes `@solidix/solidix` to JSR via the `release`
-workflow, which authenticates with OIDC trusted publishing (no token
-stored). The release assembles every workspace package's `dist/` into the
-single versioned package (`scripts/jsr-publish.mjs`); `pnpm release:dry-run`
-validates the assembly without uploading. One-time setup: link
-`@solidix/solidix` to this repo in its JSR package settings so the OIDC
-handshake is trusted.
+(`pnpm changeset`). To cut a release, run `pnpm version-packages` to
+consume pending changesets into version bumps and changelogs, commit, and
+push to `main`: the `release` workflow builds and publishes
+`@solidix/solidix` to JSR, authenticating with OIDC trusted publishing (no
+token stored). The release assembles every workspace package's `dist/`
+into the single versioned package (`scripts/jsr-publish.mjs`) and no-ops
+when the version is already published, so pushes without a version bump
+ship nothing. `pnpm release:dry-run` validates the assembly without
+uploading. One-time setup: link `@solidix/solidix` to this repo in its JSR
+package settings so the OIDC handshake is trusted. (Actions may not open
+PRs in this repo, so there is no Version Packages PR - versioning runs
+locally instead.)
 
 ## Toolchain pins
 

@@ -1,6 +1,6 @@
 {
   "name": "@solidix/use-effect-event",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Effect-event callback wrapper (port of @radix-ui/react-use-effect-event).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

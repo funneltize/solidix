@@ -1,6 +1,6 @@
 {
   "name": "@solidix/accordion",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Accordion primitive (port of @radix-ui/react-accordion).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
