@@ -42,6 +42,7 @@ Solidix is a port of [Radix UI](https://www.radix-ui.com) to **Solid 2**.
 - JS builds via `solidix-build` (`@repo/builder`: Vite lib mode + `@solidjs/vite-plugin`, ESM + CJS); types via `tsc -p tsconfig.build.json`.
 - Tests live in `test/*.test.tsx` per package and run from the root `vitest run` (jsdom). Use `findBy*` queries - Solid 2 setters flush on microtask, not synchronously.
 - Toolchain versions are pinned exactly (Solid 2 is RC-stage); see README. `@repo/smoke` is the private pipeline check - never publish it.
+- Package READMEs follow the header template (summary, Solid API mapping + guide links, docs-site route, `Differences from Radix`); task-oriented docs live in `docs/*.md`, single-sourced into the gallery Guides section (`internal/gallery/src/guides.ts` `?raw` imports, rendered by `GuidePage`/`md.tsx`).
 
 ## Solid 2 porting patterns (Phase 1 learnings)
 

@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Toast } from "solidix";\n\nexport default () => (\n\t<Toast.Provider>\n\t\t<Toast.Root>\n\t\t\t<Toast.Title />\n\t\t\t<Toast.Description />\n\t\t\t<Toast.Action />\n\t\t\t<Toast.Close />\n\t\t</Toast.Root>\n\n\t\t<Toast.Viewport />\n\t</Toast.Provider>\n);',
+    code: 'import { Toast } from "@solidix/solidix";\n\nexport default () => (\n\t<Toast.Provider>\n\t\t<Toast.Root>\n\t\t\t<Toast.Title />\n\t\t\t<Toast.Description />\n\t\t\t<Toast.Action />\n\t\t\t<Toast.Close />\n\t\t</Toast.Root>\n\n\t\t<Toast.Viewport />\n\t</Toast.Provider>\n);',
   },
   parts: [
     {
@@ -78,7 +78,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "hotkey",
@@ -109,7 +109,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "type",
@@ -197,7 +197,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -243,7 +243,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -259,7 +259,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -276,7 +276,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "altText",
@@ -300,7 +300,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -339,7 +339,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [6, 11, 12, 13, 14, 15],
-          code: 'import { For, createSignal } from "solid-js";\n\nexport default () => {\n\tconst [savedCount, setSavedCount] = createSignal(0);\n\n\treturn (\n\t\t<div>\n\t\t\t<form onSubmit={() => setSavedCount((count) => count + 1)}>\n\t\t\t\t{/* ... */}\n\t\t\t\t<button>save</button>\n\t\t\t</form>\n\n\t\t\t<For each={Array.from({ length: savedCount() })}>\n\t\t\t\t{() => (\n\t\t\t\t\t<Toast.Root>\n\t\t\t\t\t\t<Toast.Description>Saved!</Toast.Description>\n\t\t\t\t\t</Toast.Root>\n\t\t\t\t)}\n\t\t\t</For>\n\t\t</div>\n\t);\n};',
+          code: 'import { For, createSignal } from "solid-js";\nimport { Toast } from "@solidix/solidix";\n\nexport default () => {\n\tconst [savedCount, setSavedCount] = createSignal(0);\n\n\treturn (\n\t\t<div>\n\t\t\t<form onSubmit={() => setSavedCount((count) => count + 1)}>\n\t\t\t\t{/* ... */}\n\t\t\t\t<button>save</button>\n\t\t\t</form>\n\n\t\t\t<For each={Array.from({ length: savedCount() })}>\n\t\t\t\t{() => (\n\t\t\t\t\t<Toast.Root>\n\t\t\t\t\t\t<Toast.Description>Saved!</Toast.Description>\n\t\t\t\t\t</Toast.Root>\n\t\t\t\t)}\n\t\t\t</For>\n\t\t</div>\n\t);\n};',
         },
       ],
     },
@@ -351,7 +351,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [6, 7],
-          code: '// index.jsx\nimport { Toast } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Toast.Provider swipeDirection="right">\n\t\t<Toast.Root className="ToastRoot">...</Toast.Root>\n\t\t<Toast.Viewport />\n\t</Toast.Provider>\n);',
+          code: '// index.tsx\nimport { Toast } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Toast.Provider swipeDirection="right">\n\t\t<Toast.Root class="ToastRoot">...</Toast.Root>\n\t\t<Toast.Viewport />\n\t</Toast.Provider>\n);',
         },
         {
           lang: "css",
@@ -375,7 +375,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: '// your-toast.jsx\nimport { Toast as ToastPrimitive } from "solidix";\n\nexport const Toast = ({ title, content, children, ...props }) => {\n\treturn (\n\t\t<ToastPrimitive.Root {...props}>\n\t\t\t{title && <ToastPrimitive.Title>{title}</ToastPrimitive.Title>}\n\t\t\t<ToastPrimitive.Description>{content}</ToastPrimitive.Description>\n\t\t\t{children && (\n\t\t\t\t<ToastPrimitive.Action asChild>{children}</ToastPrimitive.Action>\n\t\t\t)}\n\t\t\t<ToastPrimitive.Close aria-label="Close">\n\t\t\t\t<span aria-hidden>×</span>\n\t\t\t</ToastPrimitive.Close>\n\t\t</ToastPrimitive.Root>\n\t);\n};',
+          code: '// your-toast.tsx\nimport { Toast as ToastPrimitive } from "@solidix/solidix";\n\nexport const Toast = ({ title, content, children, ...props }) => {\n\treturn (\n\t\t<ToastPrimitive.Root {...props}>\n\t\t\t{title && <ToastPrimitive.Title>{title}</ToastPrimitive.Title>}\n\t\t\t<ToastPrimitive.Description>{content}</ToastPrimitive.Description>\n\t\t\t{children && (\n\t\t\t\t<ToastPrimitive.Action asChild>{children}</ToastPrimitive.Action>\n\t\t\t)}\n\t\t\t<ToastPrimitive.Close aria-label="Close">\n\t\t\t\t<span aria-hidden="true">×</span>\n\t\t\t</ToastPrimitive.Close>\n\t\t</ToastPrimitive.Root>\n\t);\n};',
         },
       ],
     },
@@ -392,7 +392,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: '// your-toast.jsx\nimport { For, createSignal, omit } from "solid-js";\nimport { Toast as ToastPrimitive } from "solidix";\n\nexport const Toast = (props) => {\n\tconst rest = omit(props, "children", "ref");\n\tconst [count, setCount] = createSignal(0);\n\n\t// Expose an imperative handle through the ref callback.\n\tprops.ref?.({ publish: () => setCount((count) => count + 1) });\n\n\treturn (\n\t\t<For each={Array.from({ length: count() })}>\n\t\t\t{() => (\n\t\t\t\t<ToastPrimitive.Root {...rest}>\n\t\t\t\t\t<ToastPrimitive.Description>{props.children}</ToastPrimitive.Description>\n\t\t\t\t\t<ToastPrimitive.Close>Dismiss</ToastPrimitive.Close>\n\t\t\t\t</ToastPrimitive.Root>\n\t\t\t\t)}\n\t\t\t</For>\n\t);\n};',
+          code: '// your-toast.tsx\nimport { For, createSignal, omit } from "solid-js";\nimport { Toast as ToastPrimitive } from "@solidix/solidix";\n\nexport const Toast = (props) => {\n\tconst rest = omit(props, "children", "ref");\n\tconst [count, setCount] = createSignal(0);\n\n\t// Expose an imperative handle through the ref callback.\n\tprops.ref?.({ publish: () => setCount((count) => count + 1) });\n\n\treturn (\n\t\t<For each={Array.from({ length: count() })}>\n\t\t\t{() => (\n\t\t\t\t<ToastPrimitive.Root {...rest}>\n\t\t\t\t\t<ToastPrimitive.Description>{props.children}</ToastPrimitive.Description>\n\t\t\t\t\t<ToastPrimitive.Close>Dismiss</ToastPrimitive.Close>\n\t\t\t\t</ToastPrimitive.Root>\n\t\t\t\t)}\n\t\t\t</For>\n\t);\n};',
         },
       ],
     },

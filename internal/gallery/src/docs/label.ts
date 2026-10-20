@@ -14,7 +14,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Label } from "solidix";\n\nexport default () => <Label.Root />;',
+    code: 'import { Label } from "@solidix/solidix";\n\nexport default () => <Label.Root />;',
   },
   parts: [
     {
@@ -27,12 +27,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
-          name: "htmlFor",
+          name: "for",
           type: "string",
-          description: "The id of the element the label is associated with.",
+          description:
+            "The id of the element the label is associated with. (Radix names this prop `htmlFor`; Solid uses the native `for` attribute, which associates the label with its control.)",
         },
       ],
       dataAttributes: [],
@@ -42,7 +43,7 @@ export const doc: PrimitiveDoc = {
   examples: [],
   customApis: [],
   accessibility:
-    "This component is based on the native `label` element, it will automatically apply the correct labelling when wrapping controls or using the `htmlFor` attribute. For your own custom controls to work correctly, ensure they use native elements such as `button` or `input` as a base.",
+    "This component is based on the native `label` element, it will automatically apply the correct labelling when wrapping controls or using the `for` attribute. For your own custom controls to work correctly, ensure they use native elements such as `button` or `input` as a base.",
   keyboard: [],
   notes: "",
 };

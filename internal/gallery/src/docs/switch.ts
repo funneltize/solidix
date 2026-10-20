@@ -11,7 +11,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Switch } from "solidix";\n\nexport default () => (\n\t<Switch.Root>\n\t\t<Switch.Thumb />\n\t</Switch.Root>\n);',
+    code: 'import { Switch } from "@solidix/solidix";\n\nexport default () => (\n\t<Switch.Root>\n\t\t<Switch.Thumb />\n\t</Switch.Root>\n);',
   },
   parts: [
     {
@@ -25,7 +25,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "defaultChecked",
@@ -91,7 +91,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -116,7 +116,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: 'import { Switch } from "solidix";\n\nexport default () => (\n\t<Switch.Provider name="airplane-mode">\n\t\t<Switch.Trigger>\n\t\t\t<Switch.Thumb />\n\t\t</Switch.Trigger>\n\t\t{/* The hidden input can be omitted if you don\'t need form submission */}\n\t\t<Switch.BubbleInput />\n\t</Switch.Provider>\n);',
+          code: 'import { Switch } from "@solidix/solidix";\n\nexport default () => (\n\t<Switch.Provider name="airplane-mode">\n\t\t<Switch.Trigger>\n\t\t\t<Switch.Thumb />\n\t\t</Switch.Trigger>\n\t\t{/* The hidden input can be omitted if you don\'t need form submission */}\n\t\t<Switch.BubbleInput />\n\t</Switch.Provider>\n);',
         },
       ],
     },

@@ -15,7 +15,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Checkbox } from "solidix";\n\nexport default () => (\n\t<Checkbox.Root>\n\t\t<Checkbox.Indicator />\n\t</Checkbox.Root>\n);',
+    code: 'import { Checkbox } from "@solidix/solidix";\n\nexport default () => (\n\t<Checkbox.Root>\n\t\t<Checkbox.Indicator />\n\t</Checkbox.Root>\n);',
   },
   parts: [
     {
@@ -29,7 +29,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "defaultChecked",
@@ -96,13 +96,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -126,7 +126,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [5, 9, 10, 11, 12, 13, 14, 16],
-          code: 'import { DividerHorizontalIcon, CheckIcon } from "@radix-ui/react-icons";\nimport { Checkbox } from "solidix";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal("indeterminate");\n\n\treturn (\n\t\t<>\n\t\t\t<StyledCheckbox checked={checked()} onCheckedChange={setChecked}>\n\t\t\t\t<Checkbox.Indicator>\n\t\t\t\t\t{checked() === "indeterminate" && <DividerHorizontalIcon />}\n\t\t\t\t\t{checked() === true && <CheckIcon />}\n\t\t\t\t</Checkbox.Indicator>\n\t\t\t</StyledCheckbox>\n\n\t\t\t<button\n\t\t\t\ttype="button"\n\t\t\t\tonClick={() =>\n\t\t\t\t\tsetChecked((prevIsChecked) =>\n\t\t\t\t\t\tprevIsChecked === "indeterminate" ? false : "indeterminate",\n\t\t\t\t\t)\n\t\t\t\t}\n\t\t\t>\n\t\t\t\tToggle indeterminate\n\t\t\t</button>\n\t\t</>\n\t);\n};',
+          code: 'import { createSignal } from "solid-js";\nimport { Checkbox } from "@solidix/solidix";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal("indeterminate");\n\n\treturn (\n\t\t<>\n\t\t\t<StyledCheckbox checked={checked()} onCheckedChange={setChecked}>\n\t\t\t\t<Checkbox.Indicator>\n\t\t\t\t\t{checked() === "indeterminate" && <span aria-hidden="true">-</span>}\n\t\t\t\t\t{checked() === true && <span aria-hidden="true">✓</span>}\n\t\t\t\t</Checkbox.Indicator>\n\t\t\t</StyledCheckbox>\n\n\t\t\t<button\n\t\t\t\ttype="button"\n\t\t\t\tonClick={() =>\n\t\t\t\t\tsetChecked((prevIsChecked) =>\n\t\t\t\t\t\tprevIsChecked === "indeterminate" ? false : "indeterminate",\n\t\t\t\t\t)\n\t\t\t\t}\n\t\t\t>\n\t\t\t\tToggle indeterminate\n\t\t\t</button>\n\t\t</>\n\t);\n};',
         },
       ],
     },
@@ -138,7 +138,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: 'import { Checkbox } from "solidix";\n\nexport default () => (\n\t<Checkbox.Provider name="terms">\n\t\t<Checkbox.Trigger>\n\t\t\t<Checkbox.Indicator />\n\t\t</Checkbox.Trigger>\n\t\t<Checkbox.BubbleInput />\n\t</Checkbox.Provider>\n);',
+          code: 'import { Checkbox } from "@solidix/solidix";\n\nexport default () => (\n\t<Checkbox.Provider name="terms">\n\t\t<Checkbox.Trigger>\n\t\t\t<Checkbox.Indicator />\n\t\t</Checkbox.Trigger>\n\t\t<Checkbox.BubbleInput />\n\t</Checkbox.Provider>\n);',
         },
       ],
     },

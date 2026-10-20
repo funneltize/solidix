@@ -17,7 +17,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { HoverCard } from "solidix";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger />\n\t\t<HoverCard.Portal>\n\t\t\t<HoverCard.Content>\n\t\t\t\t<HoverCard.Arrow />\n\t\t\t</HoverCard.Content>\n\t\t</HoverCard.Portal>\n\t</HoverCard.Root>\n);',
+    code: 'import { HoverCard } from "@solidix/solidix";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger />\n\t\t<HoverCard.Portal>\n\t\t\t<HoverCard.Content>\n\t\t\t\t<HoverCard.Arrow />\n\t\t\t</HoverCard.Content>\n\t\t</HoverCard.Portal>\n\t</HoverCard.Root>\n);',
   },
   parts: [
     {
@@ -70,7 +70,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -89,7 +89,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by `HoverCard.Content`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). If used on this part, it will be inherited by `HoverCard.Content`.",
         },
         {
           name: "container",
@@ -111,13 +111,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from `HoverCard.Portal`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). It inherits from `HoverCard.Portal`.",
         },
         {
           name: "side",
@@ -241,7 +241,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "width",
@@ -269,7 +269,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [4],
-          code: 'import { HoverCard } from "solidix";\n\nexport default () => (\n\t<HoverCard.Root openDelay={0}>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content>…</HoverCard.Content>\n\t</HoverCard.Root>\n);',
+          code: 'import { HoverCard } from "@solidix/solidix";\n\nexport default () => (\n\t<HoverCard.Root openDelay={0}>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content>…</HoverCard.Content>\n\t</HoverCard.Root>\n);',
         },
       ],
     },
@@ -281,7 +281,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { HoverCard } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Portal>\n\t\t\t<HoverCard.Content className="HoverCardContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</HoverCard.Content>\n\t\t</HoverCard.Portal>\n\t</HoverCard.Root>\n);',
+          code: '// index.tsx\nimport { HoverCard } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Portal>\n\t\t\t<HoverCard.Content class="HoverCardContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</HoverCard.Content>\n\t\t</HoverCard.Portal>\n\t</HoverCard.Root>\n);',
         },
         {
           lang: "css",
@@ -298,7 +298,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [8],
-          code: '// index.jsx\nimport { HoverCard } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content className="HoverCardContent">…</HoverCard.Content>\n\t</HoverCard.Root>\n);',
+          code: '// index.tsx\nimport { HoverCard } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content class="HoverCardContent">…</HoverCard.Content>\n\t</HoverCard.Root>\n);',
         },
         {
           lang: "css",
@@ -315,7 +315,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [8],
-          code: '// index.jsx\nimport { HoverCard } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content className="HoverCardContent">…</HoverCard.Content>\n\t</HoverCard.Root>\n);',
+          code: '// index.tsx\nimport { HoverCard } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<HoverCard.Root>\n\t\t<HoverCard.Trigger>…</HoverCard.Trigger>\n\t\t<HoverCard.Content class="HoverCardContent">…</HoverCard.Content>\n\t</HoverCard.Root>\n);',
         },
         {
           lang: "css",

@@ -11,7 +11,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Separator } from "solidix";\n\nexport default () => <Separator.Root />;',
+    code: 'import { Separator } from "@solidix/solidix";\n\nexport default () => <Separator.Root />;',
   },
   parts: [
     {
@@ -24,7 +24,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "orientation",

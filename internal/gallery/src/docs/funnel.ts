@@ -9,7 +9,7 @@ export const doc: PrimitiveDoc = {
   description:
     "The funnel system is an opinionated design language for landing pages and funnels: a zero-JavaScript token stylesheet plus themed blocks (hero, proof, pricing, opt-in, urgency) composed from Solidix primitives. Import one stylesheet and every block below is styled; rebrand by overriding tokens, never component code.",
   features: [
-    "Zero-JS token layer with a dark variant (`data-funnel-theme).",
+    'Zero-JS token layer with a dark variant (`data-funnel-theme="dark"`).',
     "Themed blocks for the full funnel arc: hero, proof, consideration, conversion.",
     "Behavior comes from Solidix primitives, so keyboard interaction and ARIA stay consistent.",
     "Analytics-friendly: blocks dispatch `funnel:cta`, `funnel:submit`, and `funnel:view` events with no SDK bundled.",
@@ -20,7 +20,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Funnel } from "solidix";\nimport "@solidix/funnel/blocks.css";\n\nexport default () => (\n\t<Funnel.Root variant="b">\n\t\t<Funnel.Section>\n\t\t\t<Funnel.Container>\n\t\t\t\t<Funnel.Hero\n\t\t\t\t\ttitle="Ship a landing page that pays for itself"\n\t\t\t\t\tprimaryCta={{ label: "Claim your seat", href: "#pricing" }}\n\t\t\t\t/>\n\t\t\t</Funnel.Container>\n\t\t</Funnel.Section>\n\t\t<Funnel.Section tone="subtle">\n\t\t\t<Funnel.Container>\n\t\t\t\t<Funnel.Pricing plans={plans} />\n\t\t\t</Funnel.Container>\n\t\t</Funnel.Section>\n\t</Funnel.Root>\n);',
+    code: 'import { Funnel } from "@solidix/solidix";\nimport "./blocks.css"; // vendored copy, see the Funnel README\n\nexport default () => (\n\t<Funnel.Root variant="b">\n\t\t<Funnel.Section>\n\t\t\t<Funnel.Container>\n\t\t\t\t<Funnel.Hero\n\t\t\t\t\ttitle="Ship a landing page that pays for itself"\n\t\t\t\t\tprimaryCta={{ label: "Claim your seat", href: "#pricing" }}\n\t\t\t\t/>\n\t\t\t</Funnel.Container>\n\t\t</Funnel.Section>\n\t\t<Funnel.Section tone="subtle">\n\t\t\t<Funnel.Container>\n\t\t\t\t<Funnel.Pricing plans={plans} />\n\t\t\t</Funnel.Container>\n\t\t</Funnel.Section>\n\t</Funnel.Root>\n);',
   },
   parts: [
     {
@@ -389,7 +389,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "css",
           highlights: [],
-          code: '@import "@solidix/funnel/blocks.css";\n\n:root {\n\t--solidix-funnel-brand: #1d4ed8;\n\t--solidix-funnel-brand-strong: #1e40af;\n\t--solidix-funnel-cta: #1d4ed8;\n\t--solidix-funnel-cta-strong: #1e40af;\n}',
+          code: '@import "./blocks.css"; /* vendored copy, see the Funnel README */\n\n:root {\n\t--solidix-funnel-brand: #1d4ed8;\n\t--solidix-funnel-brand-strong: #1e40af;\n\t--solidix-funnel-cta: #1d4ed8;\n\t--solidix-funnel-cta-strong: #1e40af;\n}',
         },
       ],
     },

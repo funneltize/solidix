@@ -11,7 +11,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { AspectRatio } from "solidix";\n\nexport default () => <AspectRatio.Root />;',
+    code: 'import { AspectRatio } from "@solidix/solidix";\n\nexport default () => <AspectRatio.Root />;',
   },
   parts: [
     {
@@ -24,7 +24,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "ratio",

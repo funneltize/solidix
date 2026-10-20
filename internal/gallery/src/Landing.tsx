@@ -1,6 +1,7 @@
 import { For, type Component } from "solid-js";
 import { demos } from "./demos/registry";
 import { docs } from "./docs/index";
+import { guides } from "./guides";
 import { CodeBlock } from "./highlight";
 
 const Landing: Component = () => (
@@ -29,7 +30,7 @@ const Landing: Component = () => (
         </a>
       </div>
       <div class="hero-install">
-        <CodeBlock code="pnpm add solidix solid-js @solidjs/web" lang="bash" title="terminal" />
+        <CodeBlock code="pnpm add jsr:@solidix/solidix" lang="bash" title="terminal" />
       </div>
     </section>
 
@@ -74,6 +75,28 @@ const Landing: Component = () => (
                 <span class="primitive-card-desc">
                   {docs[demo.slug]?.metaDescription || docs[demo.slug]?.description || ""}
                 </span>
+                <span class="primitive-card-go" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </li>
+          )}
+        </For>
+      </ul>
+    </section>
+
+    <section class="primitive-index" id="guides">
+      <div class="primitive-index-head">
+        <h2>Guides</h2>
+        <span class="count">{guides.length}</span>
+      </div>
+      <ul class="primitive-grid">
+        <For each={guides}>
+          {(guide) => (
+            <li>
+              <a class="primitive-card" href={`#/guides/${guide.slug}`}>
+                <span class="primitive-card-title">{guide.title}</span>
+                <span class="primitive-card-desc">{guide.description}</span>
                 <span class="primitive-card-go" aria-hidden="true">
                   →
                 </span>

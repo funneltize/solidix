@@ -19,7 +19,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Accordion } from "solidix";\n\nexport default () => (\n\t<Accordion.Root>\n\t\t<Accordion.Item>\n\t\t\t<Accordion.Header>\n\t\t\t\t<Accordion.Trigger />\n\t\t\t</Accordion.Header>\n\t\t\t<Accordion.Content />\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);',
+    code: 'import { Accordion } from "@solidix/solidix";\n\nexport default () => (\n\t<Accordion.Root>\n\t\t<Accordion.Item>\n\t\t\t<Accordion.Header>\n\t\t\t\t<Accordion.Trigger />\n\t\t\t</Accordion.Header>\n\t\t\t<Accordion.Content />\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);',
   },
   parts: [
     {
@@ -32,7 +32,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "type",
@@ -139,7 +139,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "disabled",
@@ -182,7 +182,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -212,7 +212,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -241,13 +241,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -318,7 +318,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [12],
-          code: '// index.jsx\nimport { Accordion } from "solidix";\nimport { ChevronDownIcon } from "@radix-ui/react-icons";\nimport "./styles.css";\n\nexport default () => (\n\t<Accordion.Root type="single">\n\t\t<Accordion.Item value="item-1">\n\t\t\t<Accordion.Header>\n\t\t\t\t<Accordion.Trigger class="AccordionTrigger">\n\t\t\t\t\t<span>Trigger text</span>\n\t\t\t\t\t<ChevronDownIcon className="AccordionChevron" aria-hidden />\n\t\t\t\t</Accordion.Trigger>\n\t\t\t</Accordion.Header>\n\t\t\t<Accordion.Content>…</Accordion.Content>\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);',
+          code: '// index.tsx\nimport { Accordion } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Accordion.Root type="single">\n\t\t<Accordion.Item value="item-1">\n\t\t\t<Accordion.Header>\n\t\t\t\t<Accordion.Trigger class="AccordionTrigger">\n\t\t\t\t\t<span>Trigger text</span>\n\t\t\t\t\t<span class="AccordionChevron" aria-hidden="true">▾</span>\n\t\t\t\t</Accordion.Trigger>\n\t\t\t</Accordion.Header>\n\t\t\t<Accordion.Content>…</Accordion.Content>\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);',
         },
         {
           lang: "css",
@@ -346,7 +346,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { Accordion } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Accordion.Root type="single">\n\t\t<Accordion.Item value="item-1">\n\t\t\t<Accordion.Header>…</Accordion.Header>\n\t\t\t<Accordion.Content className="AccordionContent">…</Accordion.Content>\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);',
+          code: '// index.tsx\nimport { Accordion } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Accordion.Root type="single">\n\t\t<Accordion.Item value="item-1">\n\t\t\t<Accordion.Header>…</Accordion.Header>\n\t\t\t<Accordion.Content class="AccordionContent">…</Accordion.Content>\n\t\t</Accordion.Item>\n\t</Accordion.Root>\n);',
         },
         {
           lang: "css",

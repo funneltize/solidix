@@ -11,7 +11,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Collapsible } from "solidix";\n\nexport default () => (\n\t<Collapsible.Root>\n\t\t<Collapsible.Trigger />\n\t\t<Collapsible.Content />\n\t</Collapsible.Root>\n);',
+    code: 'import { Collapsible } from "@solidix/solidix";\n\nexport default () => (\n\t<Collapsible.Root>\n\t\t<Collapsible.Trigger />\n\t\t<Collapsible.Content />\n\t</Collapsible.Root>\n);',
   },
   parts: [
     {
@@ -24,7 +24,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "defaultOpen",
@@ -72,7 +72,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -97,13 +97,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -137,7 +137,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [8],
-          code: '// index.jsx\nimport { Collapsible } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Collapsible.Root>\n\t\t<Collapsible.Trigger>…</Collapsible.Trigger>\n\t\t<Collapsible.Content className="CollapsibleContent">\n\t\t\t…\n\t\t</Collapsible.Content>\n\t</Collapsible.Root>\n);',
+          code: '// index.tsx\nimport { Collapsible } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Collapsible.Root>\n\t\t<Collapsible.Trigger>…</Collapsible.Trigger>\n\t\t<Collapsible.Content class="CollapsibleContent">\n\t\t\t…\n\t\t</Collapsible.Content>\n\t</Collapsible.Root>\n);',
         },
         {
           lang: "css",

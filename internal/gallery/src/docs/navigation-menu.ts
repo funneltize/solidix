@@ -19,7 +19,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { NavigationMenu } from "solidix";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger />\n\t\t\t\t<NavigationMenu.Content>\n\t\t\t\t\t<NavigationMenu.Link />\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Link />\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger />\n\t\t\t\t<NavigationMenu.Content>\n\t\t\t\t\t<NavigationMenu.Sub>\n\t\t\t\t\t\t<NavigationMenu.List />\n\t\t\t\t\t\t<NavigationMenu.Viewport />\n\t\t\t\t\t</NavigationMenu.Sub>\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Indicator />\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport />\n\t</NavigationMenu.Root>\n);',
+    code: 'import { NavigationMenu } from "@solidix/solidix";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger />\n\t\t\t\t<NavigationMenu.Content>\n\t\t\t\t\t<NavigationMenu.Link />\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Link />\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger />\n\t\t\t\t<NavigationMenu.Content>\n\t\t\t\t\t<NavigationMenu.Sub>\n\t\t\t\t\t\t<NavigationMenu.List />\n\t\t\t\t\t\t<NavigationMenu.Viewport />\n\t\t\t\t\t</NavigationMenu.Sub>\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Indicator />\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport />\n\t</NavigationMenu.Root>\n);',
   },
   parts: [
     {
@@ -138,7 +138,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -159,7 +159,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -182,7 +182,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -207,7 +207,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "onEscapeKeyDown",
@@ -241,7 +241,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -270,7 +270,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "active",
@@ -306,13 +306,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -349,13 +349,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -414,7 +414,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [17],
-          code: '// index.jsx\nimport { NavigationMenu } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content>Item one content</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content>Item two content</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Indicator className="NavigationMenuIndicator" />\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport />\n\t</NavigationMenu.Root>\n);',
+          code: '// index.tsx\nimport { NavigationMenu } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content>Item one content</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content>Item two content</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\n\t\t\t<NavigationMenu.Indicator class="NavigationMenuIndicator" />\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport />\n\t</NavigationMenu.Root>\n);',
         },
         {
           lang: "css",
@@ -443,7 +443,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 22, 25],
-          code: '// index.jsx\nimport { usePathname } from "next/navigation";\nimport NextLink from "next/link";\nimport { NavigationMenu } from "solidix";\nimport "./styles.css";\n\nconst Link = ({ href, ...props }) => {\n\tconst pathname = usePathname();\n\tconst isActive = href === pathname;\n\n\treturn (\n\t\t<NavigationMenu.Link asChild active={isActive}>\n\t\t\t<NextLink href={href} class="NavigationMenuLink" {...props} />\n\t\t</NavigationMenu.Link>\n\t);\n};\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<Link href="/">Home</Link>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<Link href="/about">About</Link>\n\t\t\t</NavigationMenu.Item>\n\t\t</NavigationMenu.List>\n\t</NavigationMenu.Root>\n);',
+          code: '// index.tsx\nimport { usePathname } from "next/navigation";\nimport NextLink from "next/link";\nimport { NavigationMenu } from "@solidix/solidix";\nimport "./styles.css";\n\nconst Link = ({ href, ...props }) => {\n\tconst pathname = usePathname();\n\tconst isActive = href === pathname;\n\n\treturn (\n\t\t<NavigationMenu.Link asChild active={isActive}>\n\t\t\t<NextLink href={href} class="NavigationMenuLink" {...props} />\n\t\t</NavigationMenu.Link>\n\t);\n};\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<Link href="/">Home</Link>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<Link href="/about">About</Link>\n\t\t\t</NavigationMenu.Item>\n\t\t</NavigationMenu.List>\n\t</NavigationMenu.Root>\n);',
         },
         {
           lang: "css",
@@ -460,7 +460,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [10, 11, 12, 16, 17, 18, 22],
-          code: '// index.jsx\nimport { NavigationMenu } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content className="NavigationMenuContent">\n\t\t\t\t\tItem one content\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content className="NavigationMenuContent">\n\t\t\t\t\tItem two content\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport className="NavigationMenuViewport" />\n\t</NavigationMenu.Root>\n);',
+          code: '// index.tsx\nimport { NavigationMenu } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<NavigationMenu.Root>\n\t\t<NavigationMenu.List>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item one</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content class="NavigationMenuContent">\n\t\t\t\t\tItem one content\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t\t<NavigationMenu.Item>\n\t\t\t\t<NavigationMenu.Trigger>Item two</NavigationMenu.Trigger>\n\t\t\t\t<NavigationMenu.Content class="NavigationMenuContent">\n\t\t\t\t\tItem two content\n\t\t\t\t</NavigationMenu.Content>\n\t\t\t</NavigationMenu.Item>\n\t\t</NavigationMenu.List>\n\n\t\t<NavigationMenu.Viewport class="NavigationMenuViewport" />\n\t</NavigationMenu.Root>\n);',
         },
         {
           lang: "css",

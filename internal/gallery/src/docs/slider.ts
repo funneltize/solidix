@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Slider } from "solidix";\n\nexport default () => (\n\t<Slider.Root>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb />\n\t</Slider.Root>\n);',
+    code: 'import { Slider } from "@solidix/solidix";\n\nexport default () => (\n\t<Slider.Root>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb />\n\t</Slider.Root>\n);',
   },
   parts: [
     {
@@ -32,7 +32,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "defaultValue",
@@ -158,7 +158,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -183,7 +183,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -208,7 +208,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -232,7 +232,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [6],
-          code: '// index.jsx\nimport { Slider } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Slider.Root\n\t\tclass="SliderRoot"\n\t\tdefaultValue={[50]}\n\t\torientation="vertical"\n\t>\n\t\t<Slider.Track class="SliderTrack">\n\t\t\t<Slider.Range class="SliderRange" />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb class="SliderThumb" />\n\t</Slider.Root>\n);',
+          code: '// index.tsx\nimport { Slider } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Slider.Root\n\t\tclass="SliderRoot"\n\t\tdefaultValue={[50]}\n\t\torientation="vertical"\n\t>\n\t\t<Slider.Track class="SliderTrack">\n\t\t\t<Slider.Range class="SliderRange" />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb class="SliderThumb" />\n\t</Slider.Root>\n);',
         },
         {
           lang: "css",
@@ -248,7 +248,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [4, 8, 9],
-          code: 'import { Slider } from "solidix";\n\nexport default () => (\n\t<Slider.Root defaultValue={[25, 75]}>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb />\n\t\t<Slider.Thumb />\n\t</Slider.Root>\n);',
+          code: 'import { Slider } from "@solidix/solidix";\n\nexport default () => (\n\t<Slider.Root defaultValue={[25, 75]}>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb />\n\t\t<Slider.Thumb />\n\t</Slider.Root>\n);',
         },
       ],
     },
@@ -259,7 +259,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [4],
-          code: 'import { Slider } from "solidix";\n\nexport default () => (\n\t<Slider.Root defaultValue={[50]} step={10}>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb />\n\t</Slider.Root>\n);',
+          code: 'import { Slider } from "@solidix/solidix";\n\nexport default () => (\n\t<Slider.Root defaultValue={[50]} step={10}>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb />\n\t</Slider.Root>\n);',
         },
       ],
     },
@@ -270,7 +270,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [4],
-          code: 'import { Slider } from "solidix";\n\nexport default () => (\n\t<Slider.Root defaultValue={[25, 75]} step={10} minStepsBetweenThumbs={1}>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb />\n\t\t<Slider.Thumb />\n\t</Slider.Root>\n);',
+          code: 'import { Slider } from "@solidix/solidix";\n\nexport default () => (\n\t<Slider.Root defaultValue={[25, 75]} step={10} minStepsBetweenThumbs={1}>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\t\t<Slider.Thumb />\n\t\t<Slider.Thumb />\n\t</Slider.Root>\n);',
         },
       ],
     },
@@ -282,7 +282,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: 'import { Slider } from "solidix";\n\nexport default () => (\n\t<Slider.Root defaultValue={[25, 75]}>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\n\t\t<Slider.ThumbProvider name="price[min]">\n\t\t\t<Slider.ThumbTrigger />\n\t\t\t<Slider.BubbleInput />\n\t\t</Slider.ThumbProvider>\n\n\t\t<Slider.ThumbProvider name="price[max]">\n\t\t\t<Slider.ThumbTrigger />\n\t\t\t<Slider.BubbleInput />\n\t\t</Slider.ThumbProvider>\n\t</Slider.Root>\n);',
+          code: 'import { Slider } from "@solidix/solidix";\n\nexport default () => (\n\t<Slider.Root defaultValue={[25, 75]}>\n\t\t<Slider.Track>\n\t\t\t<Slider.Range />\n\t\t</Slider.Track>\n\n\t\t<Slider.ThumbProvider name="price[min]">\n\t\t\t<Slider.ThumbTrigger />\n\t\t\t<Slider.BubbleInput />\n\t\t</Slider.ThumbProvider>\n\n\t\t<Slider.ThumbProvider name="price[max]">\n\t\t\t<Slider.ThumbTrigger />\n\t\t\t<Slider.BubbleInput />\n\t\t</Slider.ThumbProvider>\n\t</Slider.Root>\n);',
         },
       ],
     },
@@ -301,7 +301,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: '// your-slider.jsx\nimport { For, omit } from "solid-js";\nimport { Slider as SliderPrimitive } from "solidix";\n\nexport const Slider = (props) => {\n\tconst rest = omit(props, "ref");\n\tconst value = () => props.value ?? props.defaultValue ?? [];\n\n\treturn (\n\t\t<SliderPrimitive.Root {...rest} ref={props.ref}>\n\t\t\t<SliderPrimitive.Track>\n\t\t\t\t<SliderPrimitive.Range />\n\t\t\t</SliderPrimitive.Track>\n\t\t\t<For each={value()}>{() => <SliderPrimitive.Thumb />}</For>\n\t\t</SliderPrimitive.Root>\n\t);\n};',
+          code: '// your-slider.tsx\nimport { For, omit } from "solid-js";\nimport { Slider as SliderPrimitive } from "@solidix/solidix";\n\nexport const Slider = (props) => {\n\tconst rest = omit(props, "ref");\n\tconst value = () => props.value ?? props.defaultValue ?? [];\n\n\treturn (\n\t\t<SliderPrimitive.Root {...rest} ref={props.ref}>\n\t\t\t<SliderPrimitive.Track>\n\t\t\t\t<SliderPrimitive.Range />\n\t\t\t</SliderPrimitive.Track>\n\t\t\t<For each={value()}>{() => <SliderPrimitive.Thumb />}</For>\n\t\t</SliderPrimitive.Root>\n\t);\n};',
         },
       ],
     },

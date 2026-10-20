@@ -2,6 +2,8 @@
 
 Avatar primitive. Port of `@radix-ui/react-avatar`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Avatar page (`#/avatar` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `Avatar.Image` accepts lowercase `crossorigin`/`referrerpolicy` props, matching

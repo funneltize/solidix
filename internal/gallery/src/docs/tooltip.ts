@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Tooltip } from "solidix";\n\nexport default () => (\n\t<Tooltip.Provider>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger />\n\t\t\t<Tooltip.Portal>\n\t\t\t\t<Tooltip.Content>\n\t\t\t\t\t<Tooltip.Arrow />\n\t\t\t\t</Tooltip.Content>\n\t\t\t</Tooltip.Portal>\n\t\t</Tooltip.Root>\n\t</Tooltip.Provider>\n);',
+    code: 'import { Tooltip } from "@solidix/solidix";\n\nexport default () => (\n\t<Tooltip.Provider>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger />\n\t\t\t<Tooltip.Portal>\n\t\t\t\t<Tooltip.Content>\n\t\t\t\t\t<Tooltip.Arrow />\n\t\t\t\t</Tooltip.Content>\n\t\t\t</Tooltip.Portal>\n\t\t</Tooltip.Root>\n\t</Tooltip.Provider>\n);',
   },
   parts: [
     {
@@ -100,7 +100,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -119,7 +119,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by `Tooltip.Content`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). If used on this part, it will be inherited by `Tooltip.Content`.",
         },
         {
           name: "container",
@@ -141,7 +141,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "aria-label",
@@ -167,7 +167,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from `Tooltip.Portal`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). It inherits from `Tooltip.Portal`.",
         },
         {
           name: "side",
@@ -291,7 +291,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "width",
@@ -319,7 +319,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [4],
-          code: 'import { Tooltip } from "solidix";\n\nexport default () => (\n\t<Tooltip.Provider delayDuration={800} skipDelayDuration={500}>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t\t<Tooltip.Content>…</Tooltip.Content>\n\t\t</Tooltip.Root>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t\t<Tooltip.Content>…</Tooltip.Content>\n\t\t</Tooltip.Root>\n\t</Tooltip.Provider>\n);',
+          code: 'import { Tooltip } from "@solidix/solidix";\n\nexport default () => (\n\t<Tooltip.Provider delayDuration={800} skipDelayDuration={500}>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t\t<Tooltip.Content>…</Tooltip.Content>\n\t\t</Tooltip.Root>\n\t\t<Tooltip.Root>\n\t\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t\t<Tooltip.Content>…</Tooltip.Content>\n\t\t</Tooltip.Root>\n\t</Tooltip.Provider>\n);',
         },
       ],
     },
@@ -331,7 +331,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [4],
-          code: 'import { Tooltip } from "solidix";\n\nexport default () => (\n\t<Tooltip.Root delayDuration={0}>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content>…</Tooltip.Content>\n\t</Tooltip.Root>\n);',
+          code: 'import { Tooltip } from "@solidix/solidix";\n\nexport default () => (\n\t<Tooltip.Root delayDuration={0}>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content>…</Tooltip.Content>\n\t</Tooltip.Root>\n);',
         },
       ],
     },
@@ -343,7 +343,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { Tooltip } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Portal>\n\t\t\t<Tooltip.Content className="TooltipContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Tooltip.Content>\n\t\t</Tooltip.Portal>\n\t</Tooltip.Root>\n);',
+          code: '// index.tsx\nimport { Tooltip } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Portal>\n\t\t\t<Tooltip.Content class="TooltipContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Tooltip.Content>\n\t\t</Tooltip.Portal>\n\t</Tooltip.Root>\n);',
         },
         {
           lang: "css",
@@ -360,7 +360,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [8],
-          code: '// index.jsx\nimport { Tooltip } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content className="TooltipContent">…</Tooltip.Content>\n\t</Tooltip.Root>\n);',
+          code: '// index.tsx\nimport { Tooltip } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content class="TooltipContent">…</Tooltip.Content>\n\t</Tooltip.Root>\n);',
         },
         {
           lang: "css",
@@ -377,7 +377,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [8],
-          code: '// index.jsx\nimport { Tooltip } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content className="TooltipContent">…</Tooltip.Content>\n\t</Tooltip.Root>\n);',
+          code: '// index.tsx\nimport { Tooltip } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Tooltip.Root>\n\t\t<Tooltip.Trigger>…</Tooltip.Trigger>\n\t\t<Tooltip.Content class="TooltipContent">…</Tooltip.Content>\n\t</Tooltip.Root>\n);',
         },
         {
           lang: "css",
@@ -401,7 +401,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [8, 9, 10],
-          code: '// your-tooltip.jsx\nimport { Tooltip as TooltipPrimitive } from "solidix";\n\nexport function Tooltip({\n\tchildren,\n\tcontent,\n\topen,\n\tdefaultOpen,\n\tonOpenChange,\n\t...props\n}) {\n\treturn (\n\t\t<TooltipPrimitive.Root\n\t\t\topen={open}\n\t\t\tdefaultOpen={defaultOpen}\n\t\t\tonOpenChange={onOpenChange}\n\t\t>\n\t\t\t<TooltipPrimitive.Trigger asChild>\n\t\t\t\t{children}\n\t\t\t</TooltipPrimitive.Trigger>\n\t\t\t<TooltipPrimitive.Content side="top" align="center" {...props}>\n\t\t\t\t{content}\n\t\t\t\t<TooltipPrimitive.Arrow width={11} height={5} />\n\t\t\t</TooltipPrimitive.Content>\n\t\t</TooltipPrimitive.Root>\n\t);\n}',
+          code: '// your-tooltip.tsx\nimport { Tooltip as TooltipPrimitive } from "@solidix/solidix";\n\nexport function Tooltip({\n\tchildren,\n\tcontent,\n\topen,\n\tdefaultOpen,\n\tonOpenChange,\n\t...props\n}) {\n\treturn (\n\t\t<TooltipPrimitive.Root\n\t\t\topen={open}\n\t\t\tdefaultOpen={defaultOpen}\n\t\t\tonOpenChange={onOpenChange}\n\t\t>\n\t\t\t<TooltipPrimitive.Trigger asChild>\n\t\t\t\t{children}\n\t\t\t</TooltipPrimitive.Trigger>\n\t\t\t<TooltipPrimitive.Content side="top" align="center" {...props}>\n\t\t\t\t{content}\n\t\t\t\t<TooltipPrimitive.Arrow width={11} height={5} />\n\t\t\t</TooltipPrimitive.Content>\n\t\t</TooltipPrimitive.Root>\n\t);\n}',
         },
       ],
     },

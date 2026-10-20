@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Popover } from "solidix";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger />\n\t\t<Popover.Anchor />\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content>\n\t\t\t\t<Popover.Close />\n\t\t\t\t<Popover.Arrow />\n\t\t\t</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
+    code: 'import { Popover } from "@solidix/solidix";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger />\n\t\t<Popover.Anchor />\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content>\n\t\t\t\t<Popover.Close />\n\t\t\t\t<Popover.Arrow />\n\t\t\t</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
   },
   parts: [
     {
@@ -66,7 +66,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -88,7 +88,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -102,7 +102,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by `Popover.Content`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). If used on this part, it will be inherited by `Popover.Content`.",
         },
         {
           name: "container",
@@ -124,7 +124,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "onOpenAutoFocus",
@@ -172,7 +172,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from `Popover.Portal`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). It inherits from `Popover.Portal`.",
         },
         {
           name: "side",
@@ -296,7 +296,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "width",
@@ -324,7 +324,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -340,7 +340,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { Popover } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content className="PopoverContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
+          code: '// index.tsx\nimport { Popover } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content class="PopoverContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
         },
         {
           lang: "css",
@@ -357,7 +357,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { Popover } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content className="PopoverContent">…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
+          code: '// index.tsx\nimport { Popover } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content class="PopoverContent">…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
         },
         {
           lang: "css",
@@ -374,7 +374,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { Popover } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content className="PopoverContent">…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
+          code: '// index.tsx\nimport { Popover } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Trigger>…</Popover.Trigger>\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content class="PopoverContent">…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
         },
         {
           lang: "css",
@@ -391,7 +391,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [7, 8, 9, 10, 11],
-          code: '// index.jsx\nimport { Popover } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Anchor asChild>\n\t\t\t<div class="Row">\n\t\t\t\tRow as anchor <Popover.Trigger>Trigger</Popover.Trigger>\n\t\t\t</div>\n\t\t</Popover.Anchor>\n\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content>…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
+          code: '// index.tsx\nimport { Popover } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Popover.Root>\n\t\t<Popover.Anchor asChild>\n\t\t\t<div class="Row">\n\t\t\t\tRow as anchor <Popover.Trigger>Trigger</Popover.Trigger>\n\t\t\t</div>\n\t\t</Popover.Anchor>\n\n\t\t<Popover.Portal>\n\t\t\t<Popover.Content>…</Popover.Content>\n\t\t</Popover.Portal>\n\t</Popover.Root>\n);',
         },
         {
           lang: "css",

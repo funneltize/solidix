@@ -18,11 +18,14 @@ import { Accordion, Dialog } from "@solidix/solidix";
 
 ## Members
 
-Accordion, AlertDialog, AspectRatio, Avatar, Checkbox, Collapsible,
-ContextMenu, Dialog, DropdownMenu, Form, HoverCard, Label, Menubar,
-NavigationMenu, OneTimePasswordField, PasswordToggleField, Popover, Progress,
-RadioGroup, ScrollArea, Select, Separator, Slider, Switch, Tabs, Toast,
-Toggle, ToggleGroup, Toolbar, Tooltip.
+31 namespaces: Accordion, AlertDialog, AspectRatio, Avatar, Checkbox,
+Collapsible, ContextMenu, Dialog, DropdownMenu, Form, Funnel, HoverCard,
+Label, Menubar, NavigationMenu, OneTimePasswordField, PasswordToggleField,
+Popover, Progress, RadioGroup, ScrollArea, Select, Separator, Slider, Switch,
+Tabs, Toast, Toggle, ToggleGroup, Toolbar, Tooltip.
+
+Announce and motion stay subpath-only (`@solidix/solidix/announce`,
+`@solidix/solidix/motion`), like the internals below.
 
 ## Subpath imports
 

@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Tabs } from "solidix";\n\nexport default () => (\n\t<Tabs.Root>\n\t\t<Tabs.List>\n\t\t\t<Tabs.Trigger />\n\t\t</Tabs.List>\n\t\t<Tabs.Content />\n\t</Tabs.Root>\n);',
+    code: 'import { Tabs } from "@solidix/solidix";\n\nexport default () => (\n\t<Tabs.Root>\n\t\t<Tabs.List>\n\t\t\t<Tabs.Trigger />\n\t\t</Tabs.List>\n\t\t<Tabs.Content />\n\t</Tabs.Root>\n);',
   },
   parts: [
     {
@@ -31,7 +31,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "defaultValue",
@@ -98,7 +98,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "loop",
@@ -127,7 +127,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -169,7 +169,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -181,7 +181,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -205,7 +205,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [4],
-          code: 'import { Tabs } from "solidix";\n\nexport default () => (\n\t<Tabs.Root defaultValue="tab1" orientation="vertical">\n\t\t<Tabs.List aria-label="tabs example">\n\t\t\t<Tabs.Trigger value="tab1">One</Tabs.Trigger>\n\t\t\t<Tabs.Trigger value="tab2">Two</Tabs.Trigger>\n\t\t\t<Tabs.Trigger value="tab3">Three</Tabs.Trigger>\n\t\t</Tabs.List>\n\t\t<Tabs.Content value="tab1">Tab one content</Tabs.Content>\n\t\t<Tabs.Content value="tab2">Tab two content</Tabs.Content>\n\t\t<Tabs.Content value="tab3">Tab three content</Tabs.Content>\n\t</Tabs.Root>\n);',
+          code: 'import { Tabs } from "@solidix/solidix";\n\nexport default () => (\n\t<Tabs.Root defaultValue="tab1" orientation="vertical">\n\t\t<Tabs.List aria-label="tabs example">\n\t\t\t<Tabs.Trigger value="tab1">One</Tabs.Trigger>\n\t\t\t<Tabs.Trigger value="tab2">Two</Tabs.Trigger>\n\t\t\t<Tabs.Trigger value="tab3">Three</Tabs.Trigger>\n\t\t</Tabs.List>\n\t\t<Tabs.Content value="tab1">Tab one content</Tabs.Content>\n\t\t<Tabs.Content value="tab2">Tab two content</Tabs.Content>\n\t\t<Tabs.Content value="tab3">Tab three content</Tabs.Content>\n\t</Tabs.Root>\n);',
         },
       ],
     },

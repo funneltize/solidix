@@ -16,7 +16,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { ScrollArea } from "solidix";\n\nexport default () => (\n\t<ScrollArea.Root>\n\t\t<ScrollArea.Viewport />\n\t\t<ScrollArea.Scrollbar orientation="horizontal">\n\t\t\t<ScrollArea.Thumb />\n\t\t</ScrollArea.Scrollbar>\n\t\t<ScrollArea.Scrollbar orientation="vertical">\n\t\t\t<ScrollArea.Thumb />\n\t\t</ScrollArea.Scrollbar>\n\t\t<ScrollArea.Corner />\n\t</ScrollArea.Root>\n);',
+    code: 'import { ScrollArea } from "@solidix/solidix";\n\nexport default () => (\n\t<ScrollArea.Root>\n\t\t<ScrollArea.Viewport />\n\t\t<ScrollArea.Scrollbar orientation="horizontal">\n\t\t\t<ScrollArea.Thumb />\n\t\t</ScrollArea.Scrollbar>\n\t\t<ScrollArea.Scrollbar orientation="vertical">\n\t\t\t<ScrollArea.Thumb />\n\t\t</ScrollArea.Scrollbar>\n\t\t<ScrollArea.Corner />\n\t</ScrollArea.Root>\n);',
   },
   parts: [
     {
@@ -29,7 +29,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "type",
@@ -75,7 +75,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -92,13 +92,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
         {
           name: "orientation",
@@ -131,7 +131,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -152,7 +152,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],

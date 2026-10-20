@@ -10,9 +10,12 @@ import {
 import { demos } from "./demos/registry";
 import DocPage from "./DocPage";
 import FullDemo from "./FullDemo";
+import GuidePage from "./GuidePage";
 import Landing from "./Landing";
+import { guides } from "./guides";
 
 const FULL_SUFFIX = "/full";
+const GUIDES_PREFIX = "guides/";
 
 function routeFromHash(): string | null {
   const hash = window.location.hash;
@@ -36,6 +39,12 @@ const App: Component = () => {
   const activeDemo = () => (index() >= 0 ? demos[index()] : undefined);
   const isDoc = () => index() >= 0 && !isFullRoute();
   const isFull = () => activeDemo()?.fullPage === true && isFullRoute();
+  const guideIndex = createMemo(() =>
+    path().startsWith(GUIDES_PREFIX)
+      ? guides.findIndex((guide) => guide.slug === path().slice(GUIDES_PREFIX.length))
+      : -1,
+  );
+  const isGuide = () => guideIndex() >= 0;
   const filtered = createMemo(() => {
     const q = query().trim().toLowerCase();
     if (q === "") return demos;
@@ -91,7 +100,7 @@ const App: Component = () => {
             </div>
           </header>
           <Show
-            when={isDoc()}
+            when={isDoc() || isGuide()}
             fallback={
               <main class="landing-wrap">
                 <Landing />
@@ -110,8 +119,27 @@ const App: Component = () => {
                     onInput={(event) => setQuery(event.currentTarget.value)}
                   />
                 </div>
+                <h2>Guides</h2>
+                <nav aria-label="Guides">
+                  <ul>
+                    <For each={guides}>
+                      {(guide) => (
+                        <li>
+                          <a
+                            href={`#/${GUIDES_PREFIX}${guide.slug}`}
+                            class={
+                              path() === `${GUIDES_PREFIX}${guide.slug}` ? "active" : undefined
+                            }
+                          >
+                            {guide.title}
+                          </a>
+                        </li>
+                      )}
+                    </For>
+                  </ul>
+                </nav>
                 <h2>Primitives</h2>
-                <nav>
+                <nav aria-label="Primitives">
                   <ul>
                     <For each={filtered()} fallback={<li class="no-match">No matches.</li>}>
                       {(demo) => (
@@ -129,11 +157,19 @@ const App: Component = () => {
                 </nav>
               </aside>
               <main class="doc-wrap">
-                <DocPage
-                  demo={demos[index()]!}
-                  prev={index() > 0 ? demos[index() - 1] : undefined}
-                  next={index() < demos.length - 1 ? demos[index() + 1] : undefined}
-                />
+                {isDoc() ? (
+                  <DocPage
+                    demo={demos[index()]!}
+                    prev={index() > 0 ? demos[index() - 1] : undefined}
+                    next={index() < demos.length - 1 ? demos[index() + 1] : undefined}
+                  />
+                ) : (
+                  <GuidePage
+                    guide={guides[guideIndex()]!}
+                    prev={guideIndex() > 0 ? guides[guideIndex() - 1] : undefined}
+                    next={guideIndex() < guides.length - 1 ? guides[guideIndex() + 1] : undefined}
+                  />
+                )}
               </main>
             </div>
           </Show>

@@ -25,7 +25,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { DropdownMenu } from "solidix";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger />\n\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content>\n\t\t\t\t<DropdownMenu.Label />\n\t\t\t\t<DropdownMenu.Item />\n\n\t\t\t\t<DropdownMenu.Group>\n\t\t\t\t\t<DropdownMenu.Item />\n\t\t\t\t</DropdownMenu.Group>\n\n\t\t\t\t<DropdownMenu.CheckboxItem>\n\t\t\t\t\t<DropdownMenu.ItemIndicator />\n\t\t\t\t</DropdownMenu.CheckboxItem>\n\n\t\t\t\t<DropdownMenu.RadioGroup>\n\t\t\t\t\t<DropdownMenu.RadioItem>\n\t\t\t\t\t\t<DropdownMenu.ItemIndicator />\n\t\t\t\t\t</DropdownMenu.RadioItem>\n\t\t\t\t</DropdownMenu.RadioGroup>\n\n\t\t\t\t<DropdownMenu.Sub>\n\t\t\t\t\t<DropdownMenu.SubTrigger />\n\t\t\t\t\t<DropdownMenu.Portal>\n\t\t\t\t\t\t<DropdownMenu.SubContent />\n\t\t\t\t\t</DropdownMenu.Portal>\n\t\t\t\t</DropdownMenu.Sub>\n\n\t\t\t\t<DropdownMenu.Separator />\n\t\t\t\t<DropdownMenu.Arrow />\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
+    code: 'import { DropdownMenu } from "@solidix/solidix";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger />\n\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content>\n\t\t\t\t<DropdownMenu.Label />\n\t\t\t\t<DropdownMenu.Item />\n\n\t\t\t\t<DropdownMenu.Group>\n\t\t\t\t\t<DropdownMenu.Item />\n\t\t\t\t</DropdownMenu.Group>\n\n\t\t\t\t<DropdownMenu.CheckboxItem>\n\t\t\t\t\t<DropdownMenu.ItemIndicator />\n\t\t\t\t</DropdownMenu.CheckboxItem>\n\n\t\t\t\t<DropdownMenu.RadioGroup>\n\t\t\t\t\t<DropdownMenu.RadioItem>\n\t\t\t\t\t\t<DropdownMenu.ItemIndicator />\n\t\t\t\t\t</DropdownMenu.RadioItem>\n\t\t\t\t</DropdownMenu.RadioGroup>\n\n\t\t\t\t<DropdownMenu.Sub>\n\t\t\t\t\t<DropdownMenu.SubTrigger />\n\t\t\t\t\t<DropdownMenu.Portal>\n\t\t\t\t\t\t<DropdownMenu.SubContent />\n\t\t\t\t\t</DropdownMenu.Portal>\n\t\t\t\t</DropdownMenu.Sub>\n\n\t\t\t\t<DropdownMenu.Separator />\n\t\t\t\t<DropdownMenu.Arrow />\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
   },
   parts: [
     {
@@ -81,7 +81,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -104,7 +104,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by `DropdownMenu.Content` and `DropdownMenu.SubContent` respectively.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). If used on this part, it will be inherited by `DropdownMenu.Content` and `DropdownMenu.SubContent` respectively.",
         },
         {
           name: "container",
@@ -126,7 +126,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "loop",
@@ -175,7 +175,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from `DropdownMenu.Portal`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). It inherits from `DropdownMenu.Portal`.",
         },
         {
           name: "side",
@@ -303,7 +303,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "width",
@@ -331,7 +331,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "disabled",
@@ -378,7 +378,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -394,7 +394,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -410,7 +410,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "checked",
@@ -469,7 +469,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -496,7 +496,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -550,13 +550,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -577,7 +577,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -619,7 +619,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "disabled",
@@ -682,7 +682,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "loop",
@@ -724,7 +724,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from `DropdownMenu.Portal`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). It inherits from `DropdownMenu.Portal`.",
         },
         {
           name: "sideOffset",
@@ -833,7 +833,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [10],
-          code: '// index.jsx\nimport { DropdownMenu } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content>\n\t\t\t\t<DropdownMenu.Item className="DropdownMenuItem" disabled>\n\t\t\t\t\t…\n\t\t\t\t</DropdownMenu.Item>\n\t\t\t\t<DropdownMenu.Item class="DropdownMenuItem">…</DropdownMenu.Item>\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
+          code: '// index.tsx\nimport { DropdownMenu } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content>\n\t\t\t\t<DropdownMenu.Item class="DropdownMenuItem" disabled>\n\t\t\t\t\t…\n\t\t\t\t</DropdownMenu.Item>\n\t\t\t\t<DropdownMenu.Item class="DropdownMenuItem">…</DropdownMenu.Item>\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
         },
         {
           lang: "css",
@@ -871,7 +871,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [6, 16, 17, 18, 19, 20, 21],
-          code: 'import { CheckIcon } from "@radix-ui/react-icons";\nimport { DropdownMenu } from "solidix";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal(true);\n\n\treturn (\n\t\t<DropdownMenu.Root>\n\t\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t\t<DropdownMenu.Portal>\n\t\t\t\t<DropdownMenu.Content>\n\t\t\t\t\t<DropdownMenu.Item>…</DropdownMenu.Item>\n\t\t\t\t\t<DropdownMenu.Item>…</DropdownMenu.Item>\n\t\t\t\t\t<DropdownMenu.Separator />\n\t\t\t\t\t<DropdownMenu.CheckboxItem\n\t\t\t\t\t\tchecked={checked()}\n\t\t\t\t\t\tonCheckedChange={setChecked}\n\t\t\t\t\t>\n\t\t\t\t\t\t<DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t</DropdownMenu.ItemIndicator>\n\t\t\t\t\t\tCheckbox item\n\t\t\t\t\t</DropdownMenu.CheckboxItem>\n\t\t\t\t</DropdownMenu.Content>\n\t\t\t</DropdownMenu.Portal>\n\t\t</DropdownMenu.Root>\n\t);\n};',
+          code: 'import { createSignal } from "solid-js";\nimport { DropdownMenu } from "@solidix/solidix";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal(true);\n\n\treturn (\n\t\t<DropdownMenu.Root>\n\t\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t\t<DropdownMenu.Portal>\n\t\t\t\t<DropdownMenu.Content>\n\t\t\t\t\t<DropdownMenu.Item>…</DropdownMenu.Item>\n\t\t\t\t\t<DropdownMenu.Item>…</DropdownMenu.Item>\n\t\t\t\t\t<DropdownMenu.Separator />\n\t\t\t\t\t<DropdownMenu.CheckboxItem\n\t\t\t\t\t\tchecked={checked()}\n\t\t\t\t\t\tonCheckedChange={setChecked}\n\t\t\t\t\t>\n\t\t\t\t\t\t<DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\t<span aria-hidden="true">✓</span>\n\t\t\t\t\t\t</DropdownMenu.ItemIndicator>\n\t\t\t\t\t\tCheckbox item\n\t\t\t\t\t</DropdownMenu.CheckboxItem>\n\t\t\t\t</DropdownMenu.Content>\n\t\t\t</DropdownMenu.Portal>\n\t\t</DropdownMenu.Root>\n\t);\n};',
         },
       ],
     },
@@ -885,7 +885,7 @@ export const doc: PrimitiveDoc = {
           highlights: [
             6, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
           ],
-          code: 'import { CheckIcon } from "@radix-ui/react-icons";\nimport { DropdownMenu } from "solidix";\n\nexport default () => {\n\tconst [color, setColor] = createSignal("blue");\n\n\treturn (\n\t\t<DropdownMenu.Root>\n\t\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t\t<DropdownMenu.Portal>\n\t\t\t\t<DropdownMenu.Content>\n\t\t\t\t\t<DropdownMenu.RadioGroup value={color()} onValueChange={setColor}>\n\t\t\t\t\t\t<DropdownMenu.RadioItem value="red">\n\t\t\t\t\t\t\t<DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t</DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\tRed\n\t\t\t\t\t\t</DropdownMenu.RadioItem>\n\t\t\t\t\t\t<DropdownMenu.RadioItem value="blue">\n\t\t\t\t\t\t\t<DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t</DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\tBlue\n\t\t\t\t\t\t</DropdownMenu.RadioItem>\n\t\t\t\t\t\t<DropdownMenu.RadioItem value="green">\n\t\t\t\t\t\t\t<DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t</DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\tGreen\n\t\t\t\t\t\t</DropdownMenu.RadioItem>\n\t\t\t\t\t</DropdownMenu.RadioGroup>\n\t\t\t\t</DropdownMenu.Content>\n\t\t\t</DropdownMenu.Portal>\n\t\t</DropdownMenu.Root>\n\t);\n};',
+          code: 'import { createSignal } from "solid-js";\nimport { DropdownMenu } from "@solidix/solidix";\n\nexport default () => {\n\tconst [color, setColor] = createSignal("blue");\n\n\treturn (\n\t\t<DropdownMenu.Root>\n\t\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t\t<DropdownMenu.Portal>\n\t\t\t\t<DropdownMenu.Content>\n\t\t\t\t\t<DropdownMenu.RadioGroup value={color()} onValueChange={setColor}>\n\t\t\t\t\t\t<DropdownMenu.RadioItem value="red">\n\t\t\t\t\t\t\t<DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\t\t<span aria-hidden="true">✓</span>\n\t\t\t\t\t\t\t</DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\tRed\n\t\t\t\t\t\t</DropdownMenu.RadioItem>\n\t\t\t\t\t\t<DropdownMenu.RadioItem value="blue">\n\t\t\t\t\t\t\t<DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\t\t<span aria-hidden="true">✓</span>\n\t\t\t\t\t\t\t</DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\tBlue\n\t\t\t\t\t\t</DropdownMenu.RadioItem>\n\t\t\t\t\t\t<DropdownMenu.RadioItem value="green">\n\t\t\t\t\t\t\t<DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\t\t<span aria-hidden="true">✓</span>\n\t\t\t\t\t\t\t</DropdownMenu.ItemIndicator>\n\t\t\t\t\t\t\tGreen\n\t\t\t\t\t\t</DropdownMenu.RadioItem>\n\t\t\t\t\t</DropdownMenu.RadioGroup>\n\t\t\t\t</DropdownMenu.Content>\n\t\t\t</DropdownMenu.Portal>\n\t\t</DropdownMenu.Root>\n\t);\n};',
         },
       ],
     },
@@ -896,7 +896,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9, 13],
-          code: 'import { DropdownMenu } from "solidix";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content>\n\t\t\t\t<DropdownMenu.Item>\n\t\t\t\t\t<img src="…" />\n\t\t\t\t\tAdolfo Hess\n\t\t\t\t</DropdownMenu.Item>\n\t\t\t\t<DropdownMenu.Item>\n\t\t\t\t\t<img src="…" />\n\t\t\t\t\tMiyah Myles\n\t\t\t\t</DropdownMenu.Item>\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
+          code: 'import { DropdownMenu } from "@solidix/solidix";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content>\n\t\t\t\t<DropdownMenu.Item>\n\t\t\t\t\t<img src="…" />\n\t\t\t\t\tAdolfo Hess\n\t\t\t\t</DropdownMenu.Item>\n\t\t\t\t<DropdownMenu.Item>\n\t\t\t\t\t<img src="…" />\n\t\t\t\t\tMiyah Myles\n\t\t\t\t</DropdownMenu.Item>\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
         },
       ],
     },
@@ -908,7 +908,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { DropdownMenu } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content className="DropdownMenuContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
+          code: '// index.tsx\nimport { DropdownMenu } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content class="DropdownMenuContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
         },
         {
           lang: "css",
@@ -925,7 +925,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { DropdownMenu } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content className="DropdownMenuContent">\n\t\t\t\t…\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
+          code: '// index.tsx\nimport { DropdownMenu } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content class="DropdownMenuContent">\n\t\t\t\t…\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
         },
         {
           lang: "css",
@@ -942,7 +942,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { DropdownMenu } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content className="DropdownMenuContent">\n\t\t\t\t…\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
+          code: '// index.tsx\nimport { DropdownMenu } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<DropdownMenu.Root>\n\t\t<DropdownMenu.Trigger>…</DropdownMenu.Trigger>\n\t\t<DropdownMenu.Portal>\n\t\t\t<DropdownMenu.Content class="DropdownMenuContent">\n\t\t\t\t…\n\t\t\t</DropdownMenu.Content>\n\t\t</DropdownMenu.Portal>\n\t</DropdownMenu.Root>\n);',
         },
         {
           lang: "css",
@@ -966,7 +966,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: '// your-dropdown-menu.jsx\nimport { omit } from "solid-js";\nimport { DropdownMenu as DropdownMenuPrimitive } from "solidix";\nimport { CheckIcon, DividerHorizontalIcon } from "@radix-ui/react-icons";\n\nexport const DropdownMenu = DropdownMenuPrimitive.Root;\nexport const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;\n\nexport const DropdownMenuContent = (props) => {\n\tconst rest = omit(props, "children", "ref");\n\treturn (\n\t\t<DropdownMenuPrimitive.Portal>\n\t\t\t<DropdownMenuPrimitive.Content {...rest} ref={props.ref}>\n\t\t\t\t{props.children}\n\t\t\t\t<DropdownMenuPrimitive.Arrow />\n\t\t\t</DropdownMenuPrimitive.Content>\n\t\t</DropdownMenuPrimitive.Portal>\n\t);\n};\n\nexport const DropdownMenuLabel = DropdownMenuPrimitive.Label;\nexport const DropdownMenuItem = DropdownMenuPrimitive.Item;\nexport const DropdownMenuGroup = DropdownMenuPrimitive.Group;\n\nexport const DropdownMenuCheckboxItem = (props) => {\n\tconst rest = omit(props, "children", "ref");\n\treturn (\n\t\t<DropdownMenuPrimitive.CheckboxItem {...rest} ref={props.ref}>\n\t\t\t{props.children}\n\t\t\t<DropdownMenuPrimitive.ItemIndicator>\n\t\t\t\t{props.checked === "indeterminate" && <DividerHorizontalIcon />}\n\t\t\t\t{props.checked === true && <CheckIcon />}\n\t\t\t</DropdownMenuPrimitive.ItemIndicator>\n\t\t</DropdownMenuPrimitive.CheckboxItem>\n\t);\n};\n\nexport const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;\n\nexport const DropdownMenuRadioItem = (props) => {\n\tconst rest = omit(props, "children", "ref");\n\treturn (\n\t\t<DropdownMenuPrimitive.RadioItem {...rest} ref={props.ref}>\n\t\t\t{props.children}\n\t\t\t<DropdownMenuPrimitive.ItemIndicator>\n\t\t\t\t<CheckIcon />\n\t\t\t\t</DropdownMenuPrimitive.ItemIndicator>\n\t\t</DropdownMenuPrimitive.RadioItem>\n\t);\n};\n\nexport const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;',
+          code: '// your-dropdown-menu.tsx\nimport { omit } from "solid-js";\nimport { DropdownMenu as DropdownMenuPrimitive } from "@solidix/solidix";\n\nexport const DropdownMenu = DropdownMenuPrimitive.Root;\nexport const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;\n\nexport const DropdownMenuContent = (props) => {\n\tconst rest = omit(props, "children", "ref");\n\treturn (\n\t\t<DropdownMenuPrimitive.Portal>\n\t\t\t<DropdownMenuPrimitive.Content {...rest} ref={props.ref}>\n\t\t\t\t{props.children}\n\t\t\t\t<DropdownMenuPrimitive.Arrow />\n\t\t\t</DropdownMenuPrimitive.Content>\n\t\t</DropdownMenuPrimitive.Portal>\n\t);\n};\n\nexport const DropdownMenuLabel = DropdownMenuPrimitive.Label;\nexport const DropdownMenuItem = DropdownMenuPrimitive.Item;\nexport const DropdownMenuGroup = DropdownMenuPrimitive.Group;\n\nexport const DropdownMenuCheckboxItem = (props) => {\n\tconst rest = omit(props, "children", "ref");\n\treturn (\n\t\t<DropdownMenuPrimitive.CheckboxItem {...rest} ref={props.ref}>\n\t\t\t{props.children}\n\t\t\t<DropdownMenuPrimitive.ItemIndicator>\n\t\t\t\t{props.checked === "indeterminate" && <span aria-hidden="true">-</span>}\n\t\t\t\t{props.checked === true && <span aria-hidden="true">✓</span>}\n\t\t\t</DropdownMenuPrimitive.ItemIndicator>\n\t\t</DropdownMenuPrimitive.CheckboxItem>\n\t);\n};\n\nexport const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;\n\nexport const DropdownMenuRadioItem = (props) => {\n\tconst rest = omit(props, "children", "ref");\n\treturn (\n\t\t<DropdownMenuPrimitive.RadioItem {...rest} ref={props.ref}>\n\t\t\t{props.children}\n\t\t\t<DropdownMenuPrimitive.ItemIndicator>\n\t\t\t\t<span aria-hidden="true">✓</span>\n\t\t\t\t</DropdownMenuPrimitive.ItemIndicator>\n\t\t</DropdownMenuPrimitive.RadioItem>\n\t);\n};\n\nexport const DropdownMenuSeparator = DropdownMenuPrimitive.Separator;',
         },
       ],
     },

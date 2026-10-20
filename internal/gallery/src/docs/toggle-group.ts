@@ -16,7 +16,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { ToggleGroup } from "solidix";\n\nexport default () => (\n\t<ToggleGroup.Root>\n\t\t<ToggleGroup.Item />\n\t</ToggleGroup.Root>\n);',
+    code: 'import { ToggleGroup } from "@solidix/solidix";\n\nexport default () => (\n\t<ToggleGroup.Root>\n\t\t<ToggleGroup.Item />\n\t</ToggleGroup.Root>\n);',
   },
   parts: [
     {
@@ -29,7 +29,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "type",
@@ -144,7 +144,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -183,7 +183,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [5, 8],
-          code: 'import { ToggleGroup } from "solidix";\n\nexport default () => {\n\tconst [value, setValue] = createSignal("left");\n\n\treturn (\n\t\t<ToggleGroup.Root\n\t\t\ttype="single"\n\t\t\tvalue={value()}\n\t\t\tonValueChange={(value) => {\n\t\t\t\tif (value) setValue(value);\n\t\t\t}}\n\t\t>\n\t\t\t<ToggleGroup.Item value="left">\n\t\t\t\t<TextAlignLeftIcon />\n\t\t\t</ToggleGroup.Item>\n\t\t\t<ToggleGroup.Item value="center">\n\t\t\t\t<TextAlignCenterIcon />\n\t\t\t</ToggleGroup.Item>\n\t\t\t<ToggleGroup.Item value="right">\n\t\t\t\t<TextAlignRightIcon />\n\t\t\t</ToggleGroup.Item>\n\t\t</ToggleGroup.Root>\n\t);\n};',
+          code: 'import { createSignal } from "solid-js";\nimport { ToggleGroup } from "@solidix/solidix";\n\nexport default () => {\n\tconst [value, setValue] = createSignal("left");\n\n\treturn (\n\t\t<ToggleGroup.Root\n\t\t\ttype="single"\n\t\t\tvalue={value()}\n\t\t\tonValueChange={(value) => {\n\t\t\t\tif (value) setValue(value);\n\t\t\t}}\n\t\t>\n\t\t\t<ToggleGroup.Item value="left">\n\t\t\t\tLeft\n\t\t\t</ToggleGroup.Item>\n\t\t\t<ToggleGroup.Item value="center">\n\t\t\t\tCenter\n\t\t\t</ToggleGroup.Item>\n\t\t\t<ToggleGroup.Item value="right">\n\t\t\t\tRight\n\t\t\t</ToggleGroup.Item>\n\t\t</ToggleGroup.Root>\n\t);\n};',
         },
       ],
     },

@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { AlertDialog } from "solidix";\n\nexport default () => (\n\t<AlertDialog.Root>\n\t\t<AlertDialog.Trigger />\n\t\t<AlertDialog.Portal>\n\t\t\t<AlertDialog.Overlay />\n\t\t\t<AlertDialog.Content>\n\t\t\t\t<AlertDialog.Title />\n\t\t\t\t<AlertDialog.Description />\n\t\t\t\t<AlertDialog.Cancel />\n\t\t\t\t<AlertDialog.Action />\n\t\t\t</AlertDialog.Content>\n\t\t</AlertDialog.Portal>\n\t</AlertDialog.Root>\n);',
+    code: 'import { AlertDialog } from "@solidix/solidix";\n\nexport default () => (\n\t<AlertDialog.Root>\n\t\t<AlertDialog.Trigger />\n\t\t<AlertDialog.Portal>\n\t\t\t<AlertDialog.Overlay />\n\t\t\t<AlertDialog.Content>\n\t\t\t\t<AlertDialog.Title />\n\t\t\t\t<AlertDialog.Description />\n\t\t\t\t<AlertDialog.Cancel />\n\t\t\t\t<AlertDialog.Action />\n\t\t\t</AlertDialog.Content>\n\t\t</AlertDialog.Portal>\n\t</AlertDialog.Root>\n);',
   },
   parts: [
     {
@@ -57,7 +57,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -76,7 +76,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by `AlertDialog.Overlay` and `AlertDialog.Content`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). If used on this part, it will be inherited by `AlertDialog.Overlay` and `AlertDialog.Content`.",
         },
         {
           name: "container",
@@ -98,13 +98,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from `AlertDialog.Portal`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). It inherits from `AlertDialog.Portal`.",
         },
       ],
       dataAttributes: [
@@ -125,13 +125,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from `AlertDialog.Portal`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). It inherits from `AlertDialog.Portal`.",
         },
         {
           name: "onOpenAutoFocus",
@@ -174,7 +174,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -191,7 +191,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -208,7 +208,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -225,7 +225,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -241,7 +241,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [4, 7, 10, 15, 17],
-          code: 'import { AlertDialog } from "solidix";\n\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1000));\n\nexport default () => {\n\tconst [open, setOpen] = createSignal(false);\n\n\treturn (\n\t\t<AlertDialog.Root open={open()} onOpenChange={setOpen}>\n\t\t\t<AlertDialog.Trigger>Open</AlertDialog.Trigger>\n\t\t\t<AlertDialog.Portal>\n\t\t\t\t<AlertDialog.Overlay />\n\t\t\t\t<AlertDialog.Content>\n\t\t\t\t\t<form\n\t\t\t\t\t\tonSubmit={(event) => {\n\t\t\t\t\t\t\twait().then(() => setOpen(false));\n\t\t\t\t\t\t\tevent.preventDefault();\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* some inputs */}\n\t\t\t\t\t\t<button type="submit">Submit</button>\n\t\t\t\t\t</form>\n\t\t\t\t</AlertDialog.Content>\n\t\t\t</AlertDialog.Portal>\n\t\t</AlertDialog.Root>\n\t);\n};',
+          code: 'import { createSignal } from "solid-js";\nimport { AlertDialog } from "@solidix/solidix";\n\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1000));\n\nexport default () => {\n\tconst [open, setOpen] = createSignal(false);\n\n\treturn (\n\t\t<AlertDialog.Root open={open()} onOpenChange={setOpen}>\n\t\t\t<AlertDialog.Trigger>Open</AlertDialog.Trigger>\n\t\t\t<AlertDialog.Portal>\n\t\t\t\t<AlertDialog.Overlay />\n\t\t\t\t<AlertDialog.Content>\n\t\t\t\t\t<form\n\t\t\t\t\t\tonSubmit={(event) => {\n\t\t\t\t\t\t\twait().then(() => setOpen(false));\n\t\t\t\t\t\t\tevent.preventDefault();\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* some inputs */}\n\t\t\t\t\t\t<button type="submit">Submit</button>\n\t\t\t\t\t</form>\n\t\t\t\t</AlertDialog.Content>\n\t\t\t</AlertDialog.Portal>\n\t\t</AlertDialog.Root>\n\t);\n};',
         },
       ],
     },
@@ -252,7 +252,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [2, 13],
-          code: "export default () => {\n\tconst [container, setContainer] = createSignal(null);\n\treturn (\n\t\t<div>\n\t\t\t<AlertDialog.Root>\n\t\t\t\t<AlertDialog.Trigger />\n\t\t\t\t<AlertDialog.Portal container={container()}>\n\t\t\t\t\t<AlertDialog.Overlay />\n\t\t\t\t\t<AlertDialog.Content>...</AlertDialog.Content>\n\t\t\t\t</AlertDialog.Portal>\n\t\t\t</AlertDialog.Root>\n\n\t\t\t<div ref={setContainer} />\n\t\t</div>\n\t);\n};",
+          code: 'import { createSignal } from "solid-js";\nimport { AlertDialog } from "@solidix/solidix";\n\nexport default () => {\n\tconst [container, setContainer] = createSignal(null);\n\treturn (\n\t\t<div>\n\t\t\t<AlertDialog.Root>\n\t\t\t\t<AlertDialog.Trigger />\n\t\t\t\t<AlertDialog.Portal container={container()}>\n\t\t\t\t\t<AlertDialog.Overlay />\n\t\t\t\t\t<AlertDialog.Content>...</AlertDialog.Content>\n\t\t\t\t</AlertDialog.Portal>\n\t\t\t</AlertDialog.Root>\n\n\t\t\t<div ref={setContainer} />\n\t\t</div>\n\t);\n};',
         },
       ],
     },

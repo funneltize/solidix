@@ -2,6 +2,8 @@
 
 Controlled/uncontrolled state hooks. Port of `@radix-ui/react-use-controllable-state`.
 
+Pair with the [State management guide](../../../docs/state.md) for the controlled/uncontrolled ownership pattern these hooks implement.
+
 ## Differences from Radix
 
 - Returns an accessor plus setter (`[() => T, setValue]`) instead of a snapshot tuple, so controlled values stay reactive.

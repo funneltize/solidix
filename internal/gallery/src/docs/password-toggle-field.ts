@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { PasswordToggleField } from "solidix";\nimport { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";\n\nexport default () => (\n\t<PasswordToggleField.Root>\n\t\t<PasswordToggleField.Input />\n\t\t<PasswordToggleField.Toggle>\n\t\t\t<PasswordToggleField.Icon\n\t\t\t\tvisible={<EyeOpenIcon />}\n\t\t\t\thidden={<EyeClosedIcon />}\n\t\t\t/>\n\t\t</PasswordToggleField.Toggle>\n\t</PasswordToggleField.Root>\n);',
+    code: 'import { PasswordToggleField } from "@solidix/solidix";\nexport default () => (\n\t<PasswordToggleField.Root>\n\t\t<PasswordToggleField.Input />\n\t\t<PasswordToggleField.Toggle>\n\t\t\t<PasswordToggleField.Icon\n\t\t\t\tvisible={<span aria-hidden="true">Hide</span>}\n\t\t\t\thidden={<span aria-hidden="true">Show</span>}\n\t\t\t/>\n\t\t</PasswordToggleField.Toggle>\n\t</PasswordToggleField.Root>\n);',
   },
   parts: [
     {
@@ -67,7 +67,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "autoComplete",
@@ -92,7 +92,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -105,22 +105,22 @@ export const doc: PrimitiveDoc = {
         {
           name: "render",
           required: false,
-          type: "(props: { visible: boolean }) => void",
+          type: "(args: { visible: boolean }) => JSX.Element",
           typeSimple: "function",
           description:
-            "A function that returns a React node to render. Can be used for more control over rendering.",
+            "A function that returns JSX to render. Can be used for more control over rendering.",
         },
         {
           name: "visible",
           required: false,
-          type: "boolean",
-          description: "The React node to render when the field's visibility state is visible.",
+          type: "JSX.Element",
+          description: "The content to render when the field's visibility state is visible.",
         },
         {
           name: "hidden",
           required: false,
-          type: "boolean",
-          description: "The React node to render when the field's visibility state is hidden.",
+          type: "JSX.Element",
+          description: "The content to render when the field's visibility state is hidden.",
         },
       ],
       dataAttributes: [],
@@ -136,19 +136,19 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "visible",
           required: true,
-          type: "boolean",
-          description: "The SVG icon to render when the field's visibility state is visible.",
+          type: "JSX.Element",
+          description: "The icon to render when the field's visibility state is visible.",
         },
         {
           name: "hidden",
           required: true,
-          type: "boolean",
-          description: "The SVG icon to render when the field's visibility state is hidden.",
+          type: "JSX.Element",
+          description: "The icon to render when the field's visibility state is hidden.",
         },
       ],
       dataAttributes: [],
@@ -163,7 +163,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: "<PasswordToggleField.Root>\n\t<PasswordToggleField.Input />\n\t<PasswordToggleField.Toggle>\n\t\t<PasswordToggleField.Icon\n\t\t\tvisible={<EyeOpenIcon />}\n\t\t\thidden={<EyeClosedIcon />}\n\t\t/>\n\t</PasswordToggleField.Toggle>\n</PasswordToggleField.Root>",
+          code: '<PasswordToggleField.Root>\n\t<PasswordToggleField.Input />\n\t<PasswordToggleField.Toggle>\n\t\t<PasswordToggleField.Icon\n\t\t\tvisible={<span aria-hidden="true">Hide</span>}\n\t\t\thidden={<span aria-hidden="true">Show</span>}\n\t\t/>\n\t</PasswordToggleField.Toggle>\n</PasswordToggleField.Root>',
         },
       ],
     },
@@ -185,7 +185,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: '<PasswordToggleField.Root>\n\t<PasswordToggleField.Input />\n\t<PasswordToggleField.Toggle>\n\t\t<PasswordToggleField.Slot\n\t\t\trender={({ visible }) => (\n\t\t\t\t<svg aria-hidden viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">\n\t\t\t\t\t<path d={visible ? "M1 1 L2 2" : "M2 1 L1 2"} />\n\t\t\t\t</svg>\n\t\t\t)}\n\t\t/>\n\t</PasswordToggleField.Toggle>\n</PasswordToggleField.Root>',
+          code: '<PasswordToggleField.Root>\n\t<PasswordToggleField.Input />\n\t<PasswordToggleField.Toggle>\n\t\t<PasswordToggleField.Slot\n\t\t\trender={({ visible }) => (\n\t\t\t\t<svg aria-hidden="true" viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">\n\t\t\t\t\t<path d={visible ? "M1 1 L2 2" : "M2 1 L1 2"} />\n\t\t\t\t</svg>\n\t\t\t)}\n\t\t/>\n\t</PasswordToggleField.Toggle>\n</PasswordToggleField.Root>',
         },
       ],
     },

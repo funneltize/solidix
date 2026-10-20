@@ -22,7 +22,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Menubar } from "solidix";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger />\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Label />\n\t\t\t\t\t<Menubar.Item />\n\n\t\t\t\t\t<Menubar.Group>\n\t\t\t\t\t\t<Menubar.Item />\n\t\t\t\t\t</Menubar.Group>\n\n\t\t\t\t\t<Menubar.CheckboxItem>\n\t\t\t\t\t\t<Menubar.ItemIndicator />\n\t\t\t\t\t</Menubar.CheckboxItem>\n\n\t\t\t\t\t<Menubar.RadioGroup>\n\t\t\t\t\t\t<Menubar.RadioItem>\n\t\t\t\t\t\t\t<Menubar.ItemIndicator />\n\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t</Menubar.RadioGroup>\n\n\t\t\t\t\t<Menubar.Sub>\n\t\t\t\t\t\t<Menubar.SubTrigger />\n\t\t\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t\t\t<Menubar.SubContent />\n\t\t\t\t\t\t</Menubar.Portal>\n\t\t\t\t\t</Menubar.Sub>\n\n\t\t\t\t\t<Menubar.Separator />\n\t\t\t\t\t<Menubar.Arrow />\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
+    code: 'import { Menubar } from "@solidix/solidix";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger />\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Label />\n\t\t\t\t\t<Menubar.Item />\n\n\t\t\t\t\t<Menubar.Group>\n\t\t\t\t\t\t<Menubar.Item />\n\t\t\t\t\t</Menubar.Group>\n\n\t\t\t\t\t<Menubar.CheckboxItem>\n\t\t\t\t\t\t<Menubar.ItemIndicator />\n\t\t\t\t\t</Menubar.CheckboxItem>\n\n\t\t\t\t\t<Menubar.RadioGroup>\n\t\t\t\t\t\t<Menubar.RadioItem>\n\t\t\t\t\t\t\t<Menubar.ItemIndicator />\n\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t</Menubar.RadioGroup>\n\n\t\t\t\t\t<Menubar.Sub>\n\t\t\t\t\t\t<Menubar.SubTrigger />\n\t\t\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t\t\t<Menubar.SubContent />\n\t\t\t\t\t\t</Menubar.Portal>\n\t\t\t\t\t</Menubar.Sub>\n\n\t\t\t\t\t<Menubar.Separator />\n\t\t\t\t\t<Menubar.Arrow />\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
   },
   parts: [
     {
@@ -35,7 +35,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "defaultValue",
@@ -88,7 +88,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -112,7 +112,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -139,7 +139,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. If used on this part, it will be inherited by `Menubar.Content` and `Menubar.SubContent` respectively.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). If used on this part, it will be inherited by `Menubar.Content` and `Menubar.SubContent` respectively.",
         },
         {
           name: "container",
@@ -161,7 +161,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "loop",
@@ -210,7 +210,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from `Menubar.Portal`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). It inherits from `Menubar.Portal`.",
         },
         {
           name: "side",
@@ -334,7 +334,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "width",
@@ -362,7 +362,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "disabled",
@@ -405,7 +405,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -421,7 +421,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -437,7 +437,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "checked",
@@ -496,7 +496,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -523,7 +523,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -577,13 +577,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -604,7 +604,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -646,7 +646,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "disabled",
@@ -687,7 +687,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "loop",
@@ -729,7 +729,7 @@ export const doc: PrimitiveDoc = {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries. It inherits from `Menubar.Portal`.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide). It inherits from `Menubar.Portal`.",
         },
         {
           name: "sideOffset",
@@ -859,7 +859,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [11],
-          code: '// index.jsx\nimport { Menubar } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Item className="MenubarItem" disabled>\n\t\t\t\t\t\t…\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t\t<Menubar.Item class="MenubarItem">…</Menubar.Item>\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
+          code: '// index.tsx\nimport { Menubar } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Item class="MenubarItem" disabled>\n\t\t\t\t\t\t…\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t\t<Menubar.Item class="MenubarItem">…</Menubar.Item>\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
         },
         {
           lang: "css",
@@ -897,7 +897,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [6, 17, 18, 19, 20, 21, 22],
-          code: 'import { CheckIcon } from "@radix-ui/react-icons";\nimport { Menubar } from "solidix";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal(true);\n\n\treturn (\n\t\t<Menubar.Root>\n\t\t\t<Menubar.Menu>\n\t\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t<Menubar.Content>\n\t\t\t\t\t\t<Menubar.Item>…</Menubar.Item>\n\t\t\t\t\t\t<Menubar.Item>…</Menubar.Item>\n\t\t\t\t\t\t<Menubar.Separator />\n\t\t\t\t\t\t<Menubar.CheckboxItem\n\t\t\t\t\t\t\tchecked={checked()}\n\t\t\t\t\t\t\tonCheckedChange={setChecked}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\tCheckbox item\n\t\t\t\t\t\t</Menubar.CheckboxItem>\n\t\t\t\t\t</Menubar.Content>\n\t\t\t\t</Menubar.Portal>\n\t\t\t</Menubar.Menu>\n\t\t</Menubar.Root>\n\t);\n};',
+          code: 'import { createSignal } from "solid-js";\nimport { Menubar } from "@solidix/solidix";\n\nexport default () => {\n\tconst [checked, setChecked] = createSignal(true);\n\n\treturn (\n\t\t<Menubar.Root>\n\t\t\t<Menubar.Menu>\n\t\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t<Menubar.Content>\n\t\t\t\t\t\t<Menubar.Item>…</Menubar.Item>\n\t\t\t\t\t\t<Menubar.Item>…</Menubar.Item>\n\t\t\t\t\t\t<Menubar.Separator />\n\t\t\t\t\t\t<Menubar.CheckboxItem\n\t\t\t\t\t\t\tchecked={checked()}\n\t\t\t\t\t\t\tonCheckedChange={setChecked}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t<span aria-hidden="true">✓</span>\n\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\tCheckbox item\n\t\t\t\t\t\t</Menubar.CheckboxItem>\n\t\t\t\t\t</Menubar.Content>\n\t\t\t\t</Menubar.Portal>\n\t\t\t</Menubar.Menu>\n\t\t</Menubar.Root>\n\t);\n};',
         },
       ],
     },
@@ -909,7 +909,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [6, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
-          code: 'import { CheckIcon } from "@radix-ui/react-icons";\nimport { Menubar } from "solidix";\n\nexport default () => {\n\tconst [color, setColor] = createSignal("blue");\n\n\treturn (\n\t\t<Menubar.Root>\n\t\t\t<Menubar.Menu>\n\t\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t<Menubar.Content>\n\t\t\t\t\t\t<Menubar.RadioGroup value={color()} onValueChange={setColor}>\n\t\t\t\t\t\t\t<Menubar.RadioItem value="red">\n\t\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\tRed\n\t\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t\t\t<Menubar.RadioItem value="blue">\n\t\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t\t<CheckIcon />\n\t\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\tBlue\n\t\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t\t</Menubar.RadioGroup>\n\t\t\t\t\t</Menubar.Content>\n\t\t\t\t</Menubar.Portal>\n\t\t\t</Menubar.Menu>\n\t\t</Menubar.Root>\n\t);\n};',
+          code: 'import { createSignal } from "solid-js";\nimport { Menubar } from "@solidix/solidix";\n\nexport default () => {\n\tconst [color, setColor] = createSignal("blue");\n\n\treturn (\n\t\t<Menubar.Root>\n\t\t\t<Menubar.Menu>\n\t\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t\t<Menubar.Portal>\n\t\t\t\t\t<Menubar.Content>\n\t\t\t\t\t\t<Menubar.RadioGroup value={color()} onValueChange={setColor}>\n\t\t\t\t\t\t\t<Menubar.RadioItem value="red">\n\t\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t\t<span aria-hidden="true">✓</span>\n\t\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\tRed\n\t\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t\t\t<Menubar.RadioItem value="blue">\n\t\t\t\t\t\t\t\t<Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\t\t<span aria-hidden="true">✓</span>\n\t\t\t\t\t\t\t\t</Menubar.ItemIndicator>\n\t\t\t\t\t\t\t\tBlue\n\t\t\t\t\t\t\t</Menubar.RadioItem>\n\t\t\t\t\t\t</Menubar.RadioGroup>\n\t\t\t\t\t</Menubar.Content>\n\t\t\t\t</Menubar.Portal>\n\t\t\t</Menubar.Menu>\n\t\t</Menubar.Root>\n\t);\n};',
         },
       ],
     },
@@ -920,7 +920,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [10, 14],
-          code: 'import { Menubar } from "solidix";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Item>\n\t\t\t\t\t\t<img src="…" />\n\t\t\t\t\t\tAdolfo Hess\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t\t<Menubar.Item>\n\t\t\t\t\t\t<img src="…" />\n\t\t\t\t\t\tMiyah Myles\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
+          code: 'import { Menubar } from "@solidix/solidix";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content>\n\t\t\t\t\t<Menubar.Item>\n\t\t\t\t\t\t<img src="…" />\n\t\t\t\t\t\tAdolfo Hess\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t\t<Menubar.Item>\n\t\t\t\t\t\t<img src="…" />\n\t\t\t\t\t\tMiyah Myles\n\t\t\t\t\t</Menubar.Item>\n\t\t\t\t</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
         },
       ],
     },
@@ -932,7 +932,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [9],
-          code: '// index.jsx\nimport { Menubar } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t<Menubar.Portal>\n\t\t\t<Menubar.Content className="MenubarContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Menubar.Content>\n\t\t</Menubar.Portal>\n\t</Menubar.Root>\n);',
+          code: '// index.tsx\nimport { Menubar } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t<Menubar.Portal>\n\t\t\t<Menubar.Content class="MenubarContent" sideOffset={5}>\n\t\t\t\t…\n\t\t\t</Menubar.Content>\n\t\t</Menubar.Portal>\n\t</Menubar.Root>\n);',
         },
         {
           lang: "css",
@@ -949,7 +949,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [10],
-          code: '// index.jsx\nimport { Menubar } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content className="MenubarContent">…</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
+          code: '// index.tsx\nimport { Menubar } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content class="MenubarContent">…</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
         },
         {
           lang: "css",
@@ -966,7 +966,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [10],
-          code: '// index.jsx\nimport { Menubar } from "solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content className="MenubarContent">…</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
+          code: '// index.tsx\nimport { Menubar } from "@solidix/solidix";\nimport "./styles.css";\n\nexport default () => (\n\t<Menubar.Root>\n\t\t<Menubar.Menu>\n\t\t\t<Menubar.Trigger>…</Menubar.Trigger>\n\t\t\t<Menubar.Portal>\n\t\t\t\t<Menubar.Content class="MenubarContent">…</Menubar.Content>\n\t\t\t</Menubar.Portal>\n\t\t</Menubar.Menu>\n\t</Menubar.Root>\n);',
         },
         {
           lang: "css",

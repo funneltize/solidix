@@ -13,7 +13,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Toolbar } from "solidix";\n\nexport default () => (\n\t<Toolbar.Root>\n\t\t<Toolbar.Button />\n\t\t<Toolbar.Separator />\n\t\t<Toolbar.Link />\n\t\t<Toolbar.ToggleGroup>\n\t\t\t<Toolbar.ToggleItem />\n\t\t</Toolbar.ToggleGroup>\n\t</Toolbar.Root>\n);',
+    code: 'import { Toolbar } from "@solidix/solidix";\n\nexport default () => (\n\t<Toolbar.Root>\n\t\t<Toolbar.Button />\n\t\t<Toolbar.Separator />\n\t\t<Toolbar.Link />\n\t\t<Toolbar.ToggleGroup>\n\t\t\t<Toolbar.ToggleItem />\n\t\t</Toolbar.ToggleGroup>\n\t</Toolbar.Root>\n);',
   },
   parts: [
     {
@@ -26,7 +26,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "orientation",
@@ -71,7 +71,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -92,7 +92,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -108,7 +108,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "type",
@@ -190,7 +190,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -230,7 +230,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -251,7 +251,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [8, 9, 10],
-          code: 'import { Toolbar, DropdownMenu } from "solidix";\n\nexport default () => (\n\t<Toolbar.Root>\n\t\t<Toolbar.Button>Action 1</Toolbar.Button>\n\t\t<Toolbar.Separator />\n\t\t<DropdownMenu.Root>\n\t\t\t<Toolbar.Button asChild>\n\t\t\t\t<DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>\n\t\t\t</Toolbar.Button>\n\t\t\t<DropdownMenu.Content>…</DropdownMenu.Content>\n\t\t</DropdownMenu.Root>\n\t</Toolbar.Root>\n);',
+          code: 'import { Toolbar, DropdownMenu } from "@solidix/solidix";\n\nexport default () => (\n\t<Toolbar.Root>\n\t\t<Toolbar.Button>Action 1</Toolbar.Button>\n\t\t<Toolbar.Separator />\n\t\t<DropdownMenu.Root>\n\t\t\t<Toolbar.Button asChild>\n\t\t\t\t<DropdownMenu.Trigger>Trigger</DropdownMenu.Trigger>\n\t\t\t</Toolbar.Button>\n\t\t\t<DropdownMenu.Content>…</DropdownMenu.Content>\n\t\t</DropdownMenu.Root>\n\t</Toolbar.Root>\n);',
         },
       ],
     },

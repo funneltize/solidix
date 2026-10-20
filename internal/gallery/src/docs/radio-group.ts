@@ -17,7 +17,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { RadioGroup } from "solidix";\n\nexport default () => (\n\t<RadioGroup.Root>\n\t\t<RadioGroup.Item>\n\t\t\t<RadioGroup.Indicator />\n\t\t</RadioGroup.Item>\n\t</RadioGroup.Root>\n);',
+    code: 'import { RadioGroup } from "@solidix/solidix";\n\nexport default () => (\n\t<RadioGroup.Root>\n\t\t<RadioGroup.Item>\n\t\t\t<RadioGroup.Indicator />\n\t\t</RadioGroup.Item>\n\t</RadioGroup.Root>\n);',
   },
   parts: [
     {
@@ -30,7 +30,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "defaultValue",
@@ -111,7 +111,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "value",
@@ -153,13 +153,13 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "forceMount",
           type: "boolean",
           description:
-            "Used to force mounting when more control is needed. Useful when controlling animation with React animation libraries.",
+            "Used to force mounting when more control is needed. Useful when controlling animation with CSS (see the Animation guide).",
         },
       ],
       dataAttributes: [
@@ -184,7 +184,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: 'import { RadioGroup } from "solidix";\n\nexport default () => (\n\t<RadioGroup.Root>\n\t\t{["one", "two", "three"].map((value) => (\n\t\t\t<RadioGroup.ItemProvider key={value} value={value}>\n\t\t\t\t<RadioGroup.ItemTrigger>\n\t\t\t\t\t<RadioGroup.Indicator />\n\t\t\t\t</RadioGroup.ItemTrigger>\n\t\t\t\t<RadioGroup.ItemBubbleInput />\n\t\t\t</RadioGroup.ItemProvider>\n\t\t))}\n\t</RadioGroup.Root>\n);',
+          code: 'import { RadioGroup } from "@solidix/solidix";\n\nexport default () => (\n\t<RadioGroup.Root>\n\t\t{["one", "two", "three"].map((value) => (\n\t\t\t<RadioGroup.ItemProvider key={value} value={value}>\n\t\t\t\t<RadioGroup.ItemTrigger>\n\t\t\t\t\t<RadioGroup.Indicator />\n\t\t\t\t</RadioGroup.ItemTrigger>\n\t\t\t\t<RadioGroup.ItemBubbleInput />\n\t\t\t</RadioGroup.ItemProvider>\n\t\t))}\n\t</RadioGroup.Root>\n);',
         },
       ],
     },

@@ -20,7 +20,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { createSpring, viewTransition } from "@solidix/motion";\nimport "@solidix/motion/springs.css";',
+    code: 'import { createSpring, viewTransition } from "@solidix/solidix/motion";\nimport "./springs.css"; // vendored copy, see the Motion README',
   },
   parts: [
     {
@@ -152,7 +152,7 @@ export const doc: PrimitiveDoc = {
     {
       name: "Spring tokens",
       description:
-        "Preset easings and starting-point durations from `@solidix/motion/springs.css`. Declare a plain easing first so older engines fall back instead of jumping.",
+        "Preset easings and starting-point durations from the vendored `springs.css` (copy it from the package repo; see the package README). Declare a plain easing first so older engines fall back instead of jumping.",
       props: [],
       dataAttributes: [],
       cssVariables: [
@@ -212,7 +212,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "tsx",
           highlights: [],
-          code: 'import { viewTransition } from "@solidix/motion";\n\nfunction selectTab(id: string) {\n  viewTransition(() => setActiveTab(id));\n}',
+          code: 'import { viewTransition } from "@solidix/solidix/motion";\n\nfunction selectTab(id: string) {\n  viewTransition(() => setActiveTab(id));\n}',
         },
         {
           lang: "css",
@@ -229,7 +229,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "tsx",
           highlights: [],
-          code: 'const swipe = createSwipe({\n  threshold: 0.35,\n  onSettled: (outcome) => {\n    if (outcome === "dismissed") removeItem(id);\n  },\n});\n\n<div ref={swipe.ref} class="swipe-card">\n  Drag me\n</div>',
+          code: 'import { createSwipe } from "@solidix/solidix/motion";\n\nconst swipe = createSwipe({\n  threshold: 0.35,\n  onSettled: (outcome) => {\n    if (outcome === "dismissed") removeItem(id);\n  },\n});\n\n<div ref={swipe.ref} class="swipe-card">\n  Drag me\n</div>',
         },
       ],
     },

@@ -2,6 +2,8 @@
 
 Ref composition utilities. Port of `@radix-ui/react-compose-refs`.
 
+Refs are plain props throughout Solidix; see the [Composition guide](../../../docs/composition.md) for how they compose with `asChild`.
+
 ## Differences from Radix
 
 - Refs are framework-neutral: a callback `(element) => void` or a `{ current }` object. There is no React 19 ref-cleanup protocol, so returned cleanups are not composed - register unmount work with `onCleanup` instead.

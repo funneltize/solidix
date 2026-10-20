@@ -20,7 +20,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { OneTimePasswordField } from "solidix";\n\nexport default () => (\n\t<OneTimePasswordField.Root>\n\t\t{/* one Input for each character of the value */}\n\t\t<OneTimePasswordField.Input />\n\t\t{/* single HiddenInput to store the full value */}\n\t\t<OneTimePasswordField.HiddenInput />\n\t</OneTimePasswordField.Root>\n);',
+    code: 'import { OneTimePasswordField } from "@solidix/solidix";\n\nexport default () => (\n\t<OneTimePasswordField.Root>\n\t\t{/* one Input for each character of the value */}\n\t\t<OneTimePasswordField.Input />\n\t\t{/* single HiddenInput to store the full value */}\n\t\t<OneTimePasswordField.HiddenInput />\n\t</OneTimePasswordField.Root>\n);',
   },
   parts: [
     {
@@ -33,7 +33,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "autoComplete",
@@ -182,7 +182,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -205,7 +205,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -232,7 +232,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [3, 5, 7],
-          code: "<OneTimePasswordField.Root>\n\t<OneTimePasswordField.Input />\n\t<Separator.Root aria-hidden />\n\t<OneTimePasswordField.Input />\n\t<Separator.Root aria-hidden />\n\t<OneTimePasswordField.Input />\n\t<Separator.Root aria-hidden />\n\t<OneTimePasswordField.Input />\n\t<OneTimePasswordField.HiddenInput />\n</OneTimePasswordField.Root>",
+          code: '<OneTimePasswordField.Root>\n\t<OneTimePasswordField.Input />\n\t<Separator.Root aria-hidden="true" />\n\t<OneTimePasswordField.Input />\n\t<Separator.Root aria-hidden="true" />\n\t<OneTimePasswordField.Input />\n\t<Separator.Root aria-hidden="true" />\n\t<OneTimePasswordField.Input />\n\t<OneTimePasswordField.HiddenInput />\n</OneTimePasswordField.Root>',
         },
       ],
     },
@@ -255,7 +255,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [],
-          code: 'import { For, createSignal } from "solid-js";\n\nfunction Verify({ validCode }) {\n\tconst [value, setValue] = createSignal("");\n\tconst PASSWORD_LENGTH = 6;\n\tfunction handleSubmit() {\n\t\tif (value() === validCode) {\n\t\t\tredirect("/authenticated");\n\t\t} else {\n\t\t\twindow.alert("Invalid code");\n\t\t}\n\t}\n\treturn (\n\t\t<OneTimePasswordField.Root\n\t\t\tautoSubmit\n\t\t\tvalue={value()}\n\t\t\tonAutoSubmit={handleSubmit}\n\t\t\t\tonValueChange={setValue}\n\t\t>\n\t\t\t<For each={Array.from({ length: PASSWORD_LENGTH })}>\n\t\t\t\t{() => <OneTimePasswordField.Input />}\n\t\t\t</For>\n\t\t</OneTimePasswordField.Root>\n\t);\n}',
+          code: 'import { For, createSignal } from "solid-js";\nimport { OneTimePasswordField } from "@solidix/solidix";\n\nfunction Verify({ validCode }) {\n\tconst [value, setValue] = createSignal("");\n\tconst PASSWORD_LENGTH = 6;\n\tfunction handleSubmit() {\n\t\tif (value() === validCode) {\n\t\t\tredirect("/authenticated");\n\t\t} else {\n\t\t\twindow.alert("Invalid code");\n\t\t}\n\t}\n\treturn (\n\t\t<OneTimePasswordField.Root\n\t\t\tautoSubmit\n\t\t\tvalue={value()}\n\t\t\tonAutoSubmit={handleSubmit}\n\t\t\t\tonValueChange={setValue}\n\t\t>\n\t\t\t<For each={Array.from({ length: PASSWORD_LENGTH })}>\n\t\t\t\t{() => <OneTimePasswordField.Input />}\n\t\t\t</For>\n\t\t</OneTimePasswordField.Root>\n\t);\n}',
         },
       ],
     },

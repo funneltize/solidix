@@ -18,7 +18,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Announce } from "@solidix/announce";\n\nexport default () => (\n\t<Announce regionIdentifier="notifications" type="polite">\n\t\tYou have 3 notifications.\n\t</Announce>\n);',
+    code: 'import { Announce } from "@solidix/solidix/announce";\n\nexport default () => (\n\t<Announce regionIdentifier="notifications" type="polite">\n\t\tYou have 3 notifications.\n\t</Announce>\n);',
   },
   parts: [
     {

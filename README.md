@@ -53,12 +53,29 @@ function Example() {
 
 The API mapping from Radix is small and uniform:
 
-- `className` becomes `class`; `ref` is a plain prop.
-- `asChild` composes via `@solidix/slot` (same semantics, including `Slottable`).
-- `style` props are objects with kebab-case keys (Solid semantics).
-- Everything else - props, data attributes, keyboard behavior, ARIA -
-  matches Radix; per-package deviations are documented in each package's
-  README under "Differences from Radix".
+| Radix                          | Solidix                        | Notes                                                        |
+| ------------------------------ | ------------------------------ | ------------------------------------------------------------ |
+| `className`                    | `class`                        | Native attribute name.                                       |
+| `style` object, camelCase      | `style` object, kebab-case     | `style={{ "background-color": ... }}`; object-only on parts that merge base styles. |
+| `ref` callback / object        | `ref` plain prop               | Composed internally; no `forwardRef`.                        |
+| `asChild` + `Slot`             | `asChild` via `@solidix/slot`  | Same merge semantics, including `Slottable`.                 |
+| `children`                     | `children`                     | Same API; dynamic children arrive as thunks internally.      |
+| `onX` handlers                 | `onX` handlers                 | Native events; `[handler, data]` tuples supported.           |
+| `value` / `defaultValue` / `onValueChange` | Same names           | Feed controlled values from signal reads.                    |
+| `htmlFor` on Label             | `for`                          | Native attribute (`Form.Label` still accepts `htmlFor`).     |
+| Props, data attributes, keyboard behavior, ARIA | Same            | Per-package deviations live under "Differences from Radix" in each package README. |
+
+## Guides
+
+Task-oriented docs that apply across primitives (also served as the Guides
+section of the docs site):
+
+- [Composition](./docs/composition.md) - `asChild`, prop merging, refs.
+- [State management](./docs/state.md) - controlled/uncontrolled, signals.
+- [Styling](./docs/styling.md) - data attributes, classes, theming.
+- [Animation](./docs/animation.md) - exits, `forceMount`, the motion package.
+- [Forms](./docs/forms.md) - bubble inputs, labels, validation.
+- [Testing](./docs/testing.md) - flushing, settling, jsdom stubs.
 
 ## Motion
 
@@ -84,26 +101,74 @@ package `@solidix/solidix` (one version; every workspace package is a
 subpath export, e.g. `@solidix/solidix/dialog`). The API tracks Radix at
 version 0.x:
 
-- `solidix` - umbrella re-exporting the 30 component namespaces at the
-  package root.
+- `solidix` - umbrella re-exporting 31 namespaces at the package root:
+  the 30 components plus Funnel.
 - `@solidix/solidix/motion` - the built-in motion system (see
   [Motion](#motion)): spring easing compiler, preset tokens, View
-  Transitions helper, and swipe gestures.
-- `packages/solid/*` - Solid primitives:
-  the 30 components (Accordion, AlertDialog, AspectRatio, Avatar, Checkbox,
-  Collapsible, ContextMenu, Dialog, DropdownMenu, Form, HoverCard, Label,
-  Menubar, NavigationMenu, OneTimePasswordField, PasswordToggleField, Popover,
-  Progress, RadioGroup, ScrollArea, Select, Separator, Slider, Switch, Tabs,
-  Toast, Toggle, ToggleGroup, Toolbar, Tooltip) plus shared internals
-  (`primitive`, `slot`, `portal`, `presence`, collections, hooks, …).
+  Transitions helper, and swipe gestures. Subpath-only, like Announce.
+- `packages/solid/*` - Solid primitives: the 30 components (table below)
+  plus shared internals (`primitive`, `slot`, `portal`, `presence`,
+  collections, hooks, …).
 - `packages/core/*` - framework-agnostic utilities (mirrors Radix
   `packages/core`).
 - `internal/*` - private workspace tooling (`@repo/builder`,
-  `@repo/typescript-config`, `@repo/smoke`).
+  `@repo/typescript-config`, `@repo/smoke`) and the docs site
+  (`@repo/gallery`).
 
-JSR exports must be JS modules, so the funnel and motion stylesheets
-(`tokens.css`, `blocks.css`, `springs.css`) are not in the package: copy
-them from the repo into your project (see the funnel and motion READMEs).
+Every component is importable from the umbrella root
+(`import { Dialog } from "@solidix/solidix"`) and from its subpath
+(`import * as Dialog from "@solidix/solidix/dialog"`); the docs site serves
+each primitive's demo plus API reference at its route.
+
+| Primitive | Package | Docs route |
+| --------- | ------- | ---------- |
+| Accordion | [accordion](./packages/solid/accordion) | `#/accordion` |
+| AlertDialog | [alert-dialog](./packages/solid/alert-dialog) | `#/alert-dialog` |
+| AspectRatio | [aspect-ratio](./packages/solid/aspect-ratio) | `#/aspect-ratio` |
+| Avatar | [avatar](./packages/solid/avatar) | `#/avatar` |
+| Checkbox | [checkbox](./packages/solid/checkbox) | `#/checkbox` |
+| Collapsible | [collapsible](./packages/solid/collapsible) | `#/collapsible` |
+| ContextMenu | [context-menu](./packages/solid/context-menu) | `#/context-menu` |
+| Dialog | [dialog](./packages/solid/dialog) | `#/dialog` |
+| DropdownMenu | [dropdown-menu](./packages/solid/dropdown-menu) | `#/dropdown-menu` |
+| Form | [form](./packages/solid/form) | `#/form` |
+| HoverCard | [hover-card](./packages/solid/hover-card) | `#/hover-card` |
+| Label | [label](./packages/solid/label) | `#/label` |
+| Menubar | [menubar](./packages/solid/menubar) | `#/menubar` |
+| NavigationMenu | [navigation-menu](./packages/solid/navigation-menu) | `#/navigation-menu` |
+| OneTimePasswordField | [one-time-password-field](./packages/solid/one-time-password-field) | `#/one-time-password-field` |
+| PasswordToggleField | [password-toggle-field](./packages/solid/password-toggle-field) | `#/password-toggle-field` |
+| Popover | [popover](./packages/solid/popover) | `#/popover` |
+| Progress | [progress](./packages/solid/progress) | `#/progress` |
+| RadioGroup | [radio-group](./packages/solid/radio-group) | `#/radio-group` |
+| ScrollArea | [scroll-area](./packages/solid/scroll-area) | `#/scroll-area` |
+| Select | [select](./packages/solid/select) | `#/select` |
+| Separator | [separator](./packages/solid/separator) | `#/separator` |
+| Slider | [slider](./packages/solid/slider) | `#/slider` |
+| Switch | [switch](./packages/solid/switch) | `#/switch` |
+| Tabs | [tabs](./packages/solid/tabs) | `#/tabs` |
+| Toast | [toast](./packages/solid/toast) | `#/toast` |
+| Toggle | [toggle](./packages/solid/toggle) | `#/toggle` |
+| ToggleGroup | [toggle-group](./packages/solid/toggle-group) | `#/toggle-group` |
+| Toolbar | [toolbar](./packages/solid/toolbar) | `#/toolbar` |
+| Tooltip | [tooltip](./packages/solid/tooltip) | `#/tooltip` |
+| Funnel | [funnel](./packages/solid/funnel) | `#/funnel` |
+| Announce (subpath-only) | [announce](./packages/solid/announce) | `#/announce` |
+| Motion (subpath-only) | [motion](./packages/solid/motion) | `#/motion` |
+
+### Vendoring stylesheets
+
+JSR exports must be JS modules, so stylesheets are not in the package. Copy
+them from the repo into your project:
+
+1. Funnel: copy `packages/solid/funnel/src/tokens.css` and
+   `packages/solid/funnel/src/blocks.css` into your project side by side,
+   then `import "./blocks.css"` (it pulls the tokens in). To theme without
+   components, `@import "./tokens.css"` alone.
+2. Motion: copy `packages/solid/motion/src/springs.css` next to your CSS
+   and `@import "./springs.css"`.
+
+Re-copy after upgrading. See the funnel and motion READMEs for the token APIs.
 
 See [AGENTS.md](./AGENTS.md) for working agreements.
 
@@ -157,6 +222,26 @@ uploading. One-time setup: link `@solidix/solidix` to this repo in its JSR
 package settings so the OIDC handshake is trusted. (Actions may not open
 PRs in this repo, so there is no Version Packages PR - versioning runs
 locally instead.)
+
+## Troubleshooting
+
+Solid 2 RC notes that bite on first contact:
+
+- Styles silently not applying: style objects need kebab-case keys
+  (`"font-size"`), and parts that merge base styles reject string styles.
+  See the [Styling guide](./docs/styling.md).
+- `asChild` trigger renders nested buttons: put `asChild` on the part so it
+  merges onto your element instead of wrapping it. See the
+  [Composition guide](./docs/composition.md).
+- Exit animation never plays: `Presence` tracks keyframe `animationend`,
+  not transitions, so use `@keyframes` or add `forceMount`. Never wrap a
+  portal in `Presence` directly; put `Presence` inside the portal. See the
+  [Animation guide](./docs/animation.md).
+- Tests see stale DOM after clicks: Solid flushes on microtask, so `await
+  findBy*`/`vi.waitFor` and `flush()` from `solid-js` before asserting. See
+  the [Testing guide](./docs/testing.md).
+- SSR: `useId` determinism is best-effort until Solid 2 stable re-verifies,
+  and this RC has no `Suspense`, `Key`, or `startTransition`.
 
 ## Toolchain pins
 

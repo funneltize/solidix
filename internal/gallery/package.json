@@ -2,7 +2,7 @@
   "name": "@repo/gallery",
   "version": "0.0.0",
   "private": true,
-  "description": "Private dogfood gallery: Radix docs demos ported to Solid 2 + Solidix. Never published. Verification harness, not a product surface.",
+  "description": "Docs site for Solidix: guides plus Radix docs demos ported to Solid 2. Private; never published.",
   "license": "MIT",
   "type": "module",
   "scripts": {

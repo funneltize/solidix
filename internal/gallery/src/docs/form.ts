@@ -20,7 +20,7 @@ export const doc: PrimitiveDoc = {
   anatomy: {
     lang: "jsx",
     highlights: [],
-    code: 'import { Form } from "solidix";\n\nexport default () => (\n\t<Form.Root>\n\t\t<Form.Field>\n\t\t\t<Form.Label />\n\t\t\t<Form.Control />\n\t\t\t<Form.Message />\n\t\t\t<Form.ValidityState />\n\t\t</Form.Field>\n\n\t\t<Form.Message />\n\t\t<Form.ValidityState />\n\n\t\t<Form.Submit />\n\t</Form.Root>\n);',
+    code: 'import { Form } from "@solidix/solidix";\n\nexport default () => (\n\t<Form.Root>\n\t\t<Form.Field>\n\t\t\t<Form.Label />\n\t\t\t<Form.Control />\n\t\t\t<Form.Message />\n\t\t\t<Form.ValidityState />\n\t\t</Form.Field>\n\n\t\t<Form.Message />\n\t\t<Form.ValidityState />\n\n\t\t<Form.Submit />\n\t</Form.Root>\n);',
   },
   parts: [
     {
@@ -33,7 +33,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "onClearServerErrors",
@@ -58,7 +58,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "name",
@@ -97,7 +97,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -123,7 +123,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [
@@ -149,7 +149,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
         {
           name: "match",
@@ -210,7 +210,7 @@ export const doc: PrimitiveDoc = {
           type: "boolean",
           default: "false",
           description:
-            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead our Composition guide for more details.",
+            "Change the default rendered element for the one passed as a child, merging their props and behavior.\n\nRead the [Composition guide](#/guides/composition) for more details.",
         },
       ],
       dataAttributes: [],
@@ -272,7 +272,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [8],
-          code: '//index.jsx\nimport { Form } from "solidix";\n\nexport default () => (\n\t<Form.Root>\n\t\t<Form.Field name="email">\n\t\t\t<Form.Label className="FormLabel">Email</Form.Label>\n\t\t\t<Form.Control type="email" />\n\t\t</Form.Field>\n\t</Form.Root>\n);',
+          code: '// index.tsx\nimport { Form } from "@solidix/solidix";\n\nexport default () => (\n\t<Form.Root>\n\t\t<Form.Field name="email">\n\t\t\t<Form.Label class="FormLabel">Email</Form.Label>\n\t\t\t<Form.Control type="email" />\n\t\t</Form.Field>\n\t</Form.Root>\n);',
         },
         {
           lang: "css",
@@ -301,7 +301,7 @@ export const doc: PrimitiveDoc = {
         {
           lang: "jsx",
           highlights: [5, 6, 7, 8, 13, 23, 28, 29, 30, 49, 50, 51, 52, 53, 54],
-          code: 'import { Form } from "solidix";\n\nfunction Page() {\n\tconst [serverErrors, setServerErrors] = createSignal({\n\t\temail: false,\n\t\tpassword: false,\n\t});\n\n\treturn (\n\t\t<Form.Root\n\t\t\t// `onSubmit` only triggered if it passes client-side validation\n\t\t\tonSubmit={(event) => {\n\t\t\t\tconst data = Object.fromEntries(new FormData(event.currentTarget));\n\n\t\t\t\t// Submit form data and catch errors in the response\n\t\t\t\tsubmitForm(data)\n\t\t\t\t\t.then(() => {})\n\t\t\t\t\t/**\n\t\t\t\t\t * Map errors from your server response into a structure you\'d like to work with.\n\t\t\t\t\t * In this case resulting in this object: `{ email: false, password: true }`\n\t\t\t\t\t */\n\t\t\t\t\t.catch((errors) => setServerErrors(mapServerErrors(errors)));\n\n\t\t\t\t// prevent default form submission\n\t\t\t\tevent.preventDefault();\n\t\t\t}}\n\t\t\tonClearServerErrors={() =>\n\t\t\t\tsetServerErrors({ email: false, password: false })\n\t\t\t}\n\t\t>\n\t\t\t<Form.Field name="email" serverInvalid={serverErrors().email}>\n\t\t\t\t<Form.Label>Email address</Form.Label>\n\t\t\t\t<Form.Control type="email" required />\n\t\t\t\t<Form.Message match="valueMissing">\n\t\t\t\t\tPlease enter your email.\n\t\t\t\t</Form.Message>\n\t\t\t\t<Form.Message match="typeMismatch" forceMatch={serverErrors().email}>\n\t\t\t\t\tPlease provide a valid email.\n\t\t\t\t</Form.Message>\n\t\t\t</Form.Field>\n\n\t\t\t<Form.Field name="password" serverInvalid={serverErrors().password}>\n\t\t\t\t<Form.Label>Password</Form.Label>\n\t\t\t\t<Form.Control type="password" required />\n\t\t\t\t<Form.Message match="valueMissing">\n\t\t\t\t\tPlease enter a password.\n\t\t\t\t</Form.Message>\n\t\t\t\t{serverErrors().password && (\n\t\t\t\t\t<Form.Message>\n\t\t\t\t\t\tPlease provide a valid password. It should contain at least 1 number\n\t\t\t\t\t\tand 1 special character.\n\t\t\t\t\t</Form.Message>\n\t\t\t\t)}\n\t\t\t</Form.Field>\n\n\t\t\t<Form.Submit>Submit</Form.Submit>\n\t\t</Form.Root>\n\t);\n}',
+          code: 'import { createSignal } from "solid-js";\nimport { Form } from "@solidix/solidix";\n\nfunction Page() {\n\tconst [serverErrors, setServerErrors] = createSignal({\n\t\temail: false,\n\t\tpassword: false,\n\t});\n\n\treturn (\n\t\t<Form.Root\n\t\t\t// `onSubmit` only triggered if it passes client-side validation\n\t\t\tonSubmit={(event) => {\n\t\t\t\tconst data = Object.fromEntries(new FormData(event.currentTarget));\n\n\t\t\t\t// Submit form data and catch errors in the response\n\t\t\t\tsubmitForm(data)\n\t\t\t\t\t.then(() => {})\n\t\t\t\t\t/**\n\t\t\t\t\t * Map errors from your server response into a structure you\'d like to work with.\n\t\t\t\t\t * In this case resulting in this object: `{ email: false, password: true }`\n\t\t\t\t\t */\n\t\t\t\t\t.catch((errors) => setServerErrors(mapServerErrors(errors)));\n\n\t\t\t\t// prevent default form submission\n\t\t\t\tevent.preventDefault();\n\t\t\t}}\n\t\t\tonClearServerErrors={() =>\n\t\t\t\tsetServerErrors({ email: false, password: false })\n\t\t\t}\n\t\t>\n\t\t\t<Form.Field name="email" serverInvalid={serverErrors().email}>\n\t\t\t\t<Form.Label>Email address</Form.Label>\n\t\t\t\t<Form.Control type="email" required />\n\t\t\t\t<Form.Message match="valueMissing">\n\t\t\t\t\tPlease enter your email.\n\t\t\t\t</Form.Message>\n\t\t\t\t<Form.Message match="typeMismatch" forceMatch={serverErrors().email}>\n\t\t\t\t\tPlease provide a valid email.\n\t\t\t\t</Form.Message>\n\t\t\t</Form.Field>\n\n\t\t\t<Form.Field name="password" serverInvalid={serverErrors().password}>\n\t\t\t\t<Form.Label>Password</Form.Label>\n\t\t\t\t<Form.Control type="password" required />\n\t\t\t\t<Form.Message match="valueMissing">\n\t\t\t\t\tPlease enter a password.\n\t\t\t\t</Form.Message>\n\t\t\t\t{serverErrors().password && (\n\t\t\t\t\t<Form.Message>\n\t\t\t\t\t\tPlease provide a valid password. It should contain at least 1 number\n\t\t\t\t\t\tand 1 special character.\n\t\t\t\t\t</Form.Message>\n\t\t\t\t)}\n\t\t\t</Form.Field>\n\n\t\t\t<Form.Submit>Submit</Form.Submit>\n\t\t</Form.Root>\n\t);\n}',
         },
         {
           lang: "jsx",
