@@ -189,6 +189,109 @@ describe("Menu", () => {
     await vi.waitFor(() => expect(document.activeElement?.textContent).toBe(ITEM_TWO_TEXT));
   });
 
+  // Solidix-authored: upstream ships no menu typeahead tests (checked the
+  // dropdown-menu, context-menu, menubar, and toolbar suites), so these assert
+  // behavior observed in upstream menu.tsx source (react-menu 2.2.1).
+  test("typeahead cycles matches on repeated characters", async () => {
+    render(() => (
+      <Menu open onOpenChange={() => {}}>
+        <MenuPortal>
+          <MenuContent>
+            <MenuItem>{ITEM_ONE_TEXT}</MenuItem>
+            <MenuItem>{ITEM_TWO_TEXT}</MenuItem>
+          </MenuContent>
+        </MenuPortal>
+      </Menu>
+    ));
+    const menu = (await screen.findByRole("menu")) as HTMLElement;
+
+    // Start on the second item so each step is deterministic. Upstream
+    // `getNextMatch` normalizes a repeated-character search to one character
+    // and excludes the current match for single-character searches, cycling
+    // through the matches.
+    (screen.getByText(ITEM_TWO_TEXT) as HTMLElement).focus();
+    fireEvent.keyDown(menu, { key: "i" });
+    await vi.waitFor(() => expect(document.activeElement?.textContent).toBe(ITEM_ONE_TEXT));
+    fireEvent.keyDown(menu, { key: "i" });
+    await vi.waitFor(() => expect(document.activeElement?.textContent).toBe(ITEM_TWO_TEXT));
+    fireEvent.keyDown(menu, { key: "i" });
+    await vi.waitFor(() => expect(document.activeElement?.textContent).toBe(ITEM_ONE_TEXT));
+  });
+
+  test("typeahead search resets one second after the last keystroke", async () => {
+    render(() => (
+      <Menu open onOpenChange={() => {}}>
+        <MenuPortal>
+          <MenuContent>
+            <MenuItem>Apple</MenuItem>
+            <MenuItem>Banana</MenuItem>
+          </MenuContent>
+        </MenuPortal>
+      </Menu>
+    ));
+    const menu = (await screen.findByRole("menu")) as HTMLElement;
+
+    // Upstream resets `searchRef` 1 second after it was last updated.
+    vi.useFakeTimers();
+    try {
+      fireEvent.keyDown(menu, { key: "a" });
+      vi.advanceTimersByTime(0);
+      expect(document.activeElement?.textContent).toBe("Apple");
+
+      // Within the window the search accumulates: "ab" matches nothing.
+      fireEvent.keyDown(menu, { key: "b" });
+      vi.advanceTimersByTime(0);
+      expect(document.activeElement?.textContent).toBe("Apple");
+
+      // After the reset the same key starts a fresh search.
+      vi.advanceTimersByTime(1000);
+      fireEvent.keyDown(menu, { key: "b" });
+      vi.advanceTimersByTime(0);
+      expect(document.activeElement?.textContent).toBe("Banana");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  test("typeahead skips disabled items", async () => {
+    render(() => (
+      <Menu open onOpenChange={() => {}}>
+        <MenuPortal>
+          <MenuContent>
+            <MenuItem disabled>Apricot</MenuItem>
+            <MenuItem>Apple</MenuItem>
+          </MenuContent>
+        </MenuPortal>
+      </Menu>
+    ));
+    const menu = (await screen.findByRole("menu")) as HTMLElement;
+
+    // Upstream filters disabled items before matching, so "a" lands on the
+    // enabled match even though the disabled item comes first.
+    fireEvent.keyDown(menu, { key: "a" });
+    await vi.waitFor(() => expect(document.activeElement?.textContent).toBe("Apple"));
+  });
+
+  test("typeahead keeps focus when nothing matches", async () => {
+    render(() => (
+      <Menu open onOpenChange={() => {}}>
+        <MenuPortal>
+          <MenuContent>
+            <MenuItem>Apple</MenuItem>
+            <MenuItem>Banana</MenuItem>
+          </MenuContent>
+        </MenuPortal>
+      </Menu>
+    ));
+    const menu = (await screen.findByRole("menu")) as HTMLElement;
+
+    // Upstream only moves focus when `getNextMatch` returns an item.
+    (screen.getByText("Apple") as HTMLElement).focus();
+    fireEvent.keyDown(menu, { key: "z" });
+    await flush();
+    expect(document.activeElement?.textContent).toBe("Apple");
+  });
+
   test("checkbox items toggle with data-state and indicator", async () => {
     const onCheckedChange = vi.fn();
     render(() => (
