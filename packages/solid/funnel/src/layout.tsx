@@ -2,6 +2,7 @@ import { Show, omit, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 import { CTAButton } from "./cta-button";
+import { useFunnelEditable } from "./root";
 import { cx } from "./utils";
 import type { FunnelElementProps } from "./types";
 
@@ -71,9 +72,12 @@ type EyebrowProps = PrimitivePropsWithRef<"p">;
 
 const Eyebrow: Component<EyebrowProps> = (props) => {
   const rest = omit(props, "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.p
       data-funnel-block="eyebrow"
+      data-funnel-part={editable ? "text" : undefined}
+      tabindex={editable ? 0 : undefined}
       class={cx("fx-eyebrow", props.class)}
       {...rest}
       ref={props.ref}
@@ -95,6 +99,7 @@ type SectionHeadingProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
 
 const SectionHeading: Component<SectionHeadingProps> = (props) => {
   const rest = omit(props, "eyebrow", "title", "description", "align", "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="section-heading"
@@ -104,11 +109,29 @@ const SectionHeading: Component<SectionHeadingProps> = (props) => {
       ref={props.ref}
     >
       <Show when={props.eyebrow}>
-        <p class="fx-eyebrow">{props.eyebrow}</p>
+        <p
+          class="fx-eyebrow"
+          data-funnel-part={editable ? "eyebrow" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.eyebrow}
+        </p>
       </Show>
-      <h2 class="fx-section-title">{props.title}</h2>
+      <h2
+        class="fx-section-title"
+        data-funnel-part={editable ? "title" : undefined}
+        tabindex={editable ? 0 : undefined}
+      >
+        {props.title}
+      </h2>
       <Show when={props.description}>
-        <p class="fx-section-lede">{props.description}</p>
+        <p
+          class="fx-section-lede"
+          data-funnel-part={editable ? "description" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.description}
+        </p>
       </Show>
     </Primitive.div>
   );
@@ -128,9 +151,12 @@ type ProseProps = PrimitivePropsWithRef<"div"> & {
  */
 const Prose: Component<ProseProps> = (props) => {
   const rest = omit(props, "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="prose"
+      data-funnel-part={editable ? "text" : undefined}
+      tabindex={editable ? 0 : undefined}
       class={cx("fx-prose", props.class)}
       {...rest}
       ref={props.ref}
@@ -158,6 +184,7 @@ type HeaderProps = FunnelElementProps<"header", HTMLElement> & {
 const Header: Component<HeaderProps> = (props) => {
   const rest = omit(props, "brand", "cta", "sticky", "class", "ref");
   const brand = () => props.brand;
+  const editable = useFunnelEditable();
   return (
     <header
       data-funnel-block="header"
@@ -169,15 +196,25 @@ const Header: Component<HeaderProps> = (props) => {
       <div class="fx-header-inner">
         <Show
           when={typeof brand() !== "string"}
-          fallback={<span class="fx-header-wordmark">{brand() as string}</span>}
+          fallback={
+            <span
+              class="fx-header-wordmark"
+              data-funnel-part={editable ? "brand" : undefined}
+              tabindex={editable ? 0 : undefined}
+            >
+              {brand() as string}
+            </span>
+          }
         >
           <img
             class="fx-header-logo"
             src={(brand() as { src: string }).src}
             alt={(brand() as { name: string }).name}
+            data-funnel-part={editable ? "brand" : undefined}
+            tabindex={editable ? 0 : undefined}
           />
         </Show>
-        <CTAButton href={props.cta.href} size="md">
+        <CTAButton href={props.cta.href} size="md" part="cta">
           {props.cta.label}
         </CTAButton>
       </div>

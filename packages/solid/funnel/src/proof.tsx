@@ -1,4 +1,5 @@
 import { For, Show, createSignal, omit, type Component } from "solid-js";
+import { useFunnelEditable } from "./root";
 import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 import { cx } from "./utils";
 
@@ -34,11 +35,14 @@ function StarRow(props: { count: number; filled: boolean }) {
 
 const StarRating: Component<StarRatingProps> = (props) => {
   const rest = omit(props, "value", "max", "label", "class", "ref");
+  const editable = useFunnelEditable();
   const max = () => Math.max(1, Math.floor(props.max ?? 5));
   const clamped = () => Math.min(Math.max(props.value, 0), max());
   return (
     <Primitive.div
       data-funnel-block="star-rating"
+      data-funnel-part={editable ? "value" : undefined}
+      tabindex={editable ? 0 : undefined}
       role="img"
       aria-label={props.label ?? `${clamped()} out of ${max()} stars`}
       class={cx("fx-star-rating", props.class)}
@@ -75,6 +79,7 @@ type LogoBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
 
 const LogoBar: Component<LogoBarProps> = (props) => {
   const rest = omit(props, "caption", "logos", "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="logo-bar"
@@ -83,18 +88,29 @@ const LogoBar: Component<LogoBarProps> = (props) => {
       ref={props.ref}
     >
       <Show when={props.caption}>
-        <p class="fx-logo-bar-caption">{props.caption}</p>
+        <p
+          class="fx-logo-bar-caption"
+          data-funnel-part={editable ? "caption" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.caption}
+        </p>
       </Show>
       <Primitive.ul class="fx-logo-bar-row" aria-label={props.caption ?? "Featured logos"}>
         <For each={props.logos}>
-          {(logo) => (
+          {(logo, index) => (
             <Primitive.li class="fx-logo-bar-item">
               {logo.href ? (
-                <a class="fx-logo-bar-link" href={logo.href}>
-                  <LogoMark logo={logo} />
+                <a
+                  class="fx-logo-bar-link"
+                  href={logo.href}
+                  data-funnel-part={editable ? "logo" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
+                >
+                  <LogoMark logo={logo} index={index()} />
                 </a>
               ) : (
-                <LogoMark logo={logo} />
+                <LogoMark logo={logo} index={index()} />
               )}
             </Primitive.li>
           )}
@@ -104,11 +120,26 @@ const LogoBar: Component<LogoBarProps> = (props) => {
   );
 };
 
-function LogoMark(props: { logo: LogoBarLogo }) {
+function LogoMark(props: { logo: LogoBarLogo; index: number }) {
+  const editable = useFunnelEditable();
   return props.logo.src ? (
-    <img class="fx-logo-bar-logo" src={props.logo.src} alt={props.logo.name} loading="lazy" />
+    <img
+      class="fx-logo-bar-logo"
+      src={props.logo.src}
+      alt={props.logo.name}
+      loading="lazy"
+      data-funnel-part={editable ? "logo" : undefined}
+      data-funnel-part-index={editable ? String(props.index) : undefined}
+      tabindex={editable ? 0 : undefined}
+    />
   ) : (
-    <span class="fx-logo-bar-wordmark" aria-label={props.logo.name}>
+    <span
+      class="fx-logo-bar-wordmark"
+      aria-label={props.logo.name}
+      data-funnel-part={editable ? "logo" : undefined}
+      data-funnel-part-index={editable ? String(props.index) : undefined}
+      tabindex={editable ? 0 : undefined}
+    >
       {props.logo.name}
     </span>
   );
@@ -129,19 +160,40 @@ type TestimonialsProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   items: Testimonial[];
 };
 
-function TestimonialCard(props: { item: Testimonial }) {
+function TestimonialCard(props: { item: Testimonial; index: number }) {
+  const editable = useFunnelEditable();
   return (
     <figure class="fx-testimonial-card">
       <Show when={props.item.rating !== undefined}>
         <StarRating value={props.item.rating!} />
       </Show>
       <blockquote class="fx-testimonial-quote">
-        <p>{props.item.quote}</p>
+        <p
+          data-funnel-part={editable ? "quote" : undefined}
+          data-funnel-part-index={editable ? String(props.index) : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.item.quote}
+        </p>
       </blockquote>
       <figcaption class="fx-testimonial-author">
-        <span class="fx-testimonial-name">{props.item.name}</span>
+        <span
+          class="fx-testimonial-name"
+          data-funnel-part={editable ? "name" : undefined}
+          data-funnel-part-index={editable ? String(props.index) : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.item.name}
+        </span>
         <Show when={props.item.role}>
-          <span class="fx-testimonial-role">{props.item.role}</span>
+          <span
+            class="fx-testimonial-role"
+            data-funnel-part={editable ? "role" : undefined}
+            data-funnel-part-index={editable ? String(props.index) : undefined}
+            tabindex={editable ? 0 : undefined}
+          >
+            {props.item.role}
+          </span>
         </Show>
       </figcaption>
     </figure>
@@ -157,7 +209,9 @@ const Testimonials: Component<TestimonialsProps> = (props) => {
       {...rest}
       ref={props.ref}
     >
-      <For each={props.items}>{(item) => <TestimonialCard item={item} />}</For>
+      <For each={props.items}>
+        {(item, index) => <TestimonialCard item={item} index={index()} />}
+      </For>
     </Primitive.div>
   );
 };
@@ -188,7 +242,9 @@ const TestimonialCarousel: Component<TestimonialCarouselProps> = (props) => {
     >
       <div class="fx-testimonial-carousel-view" aria-live="polite" aria-atomic="true">
         {/* Single-item For recreates the card per slide so the entry animation replays. */}
-        <For each={[index() % count()]}>{(i) => <TestimonialCard item={props.items[i]!} />}</For>
+        <For each={[index() % count()]}>
+          {(i) => <TestimonialCard item={props.items[i]!} index={i} />}
+        </For>
       </div>
       <div class="fx-testimonial-carousel-controls">
         <Primitive.button
@@ -230,6 +286,7 @@ type StatsBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
 
 const StatsBar: Component<StatsBarProps> = (props) => {
   const rest = omit(props, "stats", "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="stats-bar"
@@ -239,10 +296,24 @@ const StatsBar: Component<StatsBarProps> = (props) => {
     >
       <dl class="fx-stats-bar-list">
         <For each={props.stats}>
-          {(stat) => (
+          {(stat, index) => (
             <div class="fx-stats-bar-item">
-              <dt class="fx-stats-bar-label">{stat.label}</dt>
-              <dd class="fx-stats-bar-value">{stat.value}</dd>
+              <dt
+                class="fx-stats-bar-label"
+                data-funnel-part={editable ? "label" : undefined}
+                data-funnel-part-index={editable ? String(index()) : undefined}
+                tabindex={editable ? 0 : undefined}
+              >
+                {stat.label}
+              </dt>
+              <dd
+                class="fx-stats-bar-value"
+                data-funnel-part={editable ? "value" : undefined}
+                data-funnel-part-index={editable ? String(index()) : undefined}
+                tabindex={editable ? 0 : undefined}
+              >
+                {stat.value}
+              </dd>
             </div>
           )}
         </For>

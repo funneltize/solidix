@@ -1683,3 +1683,17 @@
   max-width: 52.5rem;
   text-align: center;
 }
+
+/* Studio editing. Only matches under an editable Root, which public funnels
+   never render, so these rules are dead for shipped output. */
+[data-funnel-editable] [data-funnel-part] {
+  cursor: text;
+}
+[data-funnel-editable] a[data-funnel-part],
+[data-funnel-editable] button[data-funnel-part] {
+  cursor: pointer;
+}
+[data-funnel-editable] [data-funnel-part]:hover {
+  outline: 2px dashed var(--solidix-funnel-brand);
+  outline-offset: 2px;
+}

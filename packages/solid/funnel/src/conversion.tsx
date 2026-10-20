@@ -14,7 +14,7 @@ import { Form, FormControl, FormField, FormLabel, FormMessage, FormSubmit } from
 import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 import { CTAButton } from "./cta-button";
 import { dispatchFunnelEvent } from "./events";
-import { useFunnelVariant } from "./root";
+import { useFunnelEditable, useFunnelVariant } from "./root";
 import type { FunnelElementProps } from "./types";
 import { cx } from "./utils";
 
@@ -90,6 +90,7 @@ const Hero: Component<HeroProps> = (props) => {
     "ref",
   );
   const variant = useFunnelVariant();
+  const editable = useFunnelEditable();
   let node: HTMLElement | null = null;
   useInView(
     () => node,
@@ -113,19 +114,40 @@ const Hero: Component<HeroProps> = (props) => {
     >
       <div class="fx-hero-copy">
         <Show when={props.eyebrow}>
-          <p class="fx-hero-eyebrow">{props.eyebrow}</p>
+          <p
+            class="fx-hero-eyebrow"
+            data-funnel-part={editable ? "eyebrow" : undefined}
+            tabindex={editable ? 0 : undefined}
+          >
+            {props.eyebrow}
+          </p>
         </Show>
-        <h1 class="fx-hero-title">{props.title}</h1>
+        <h1
+          class="fx-hero-title"
+          data-funnel-part={editable ? "title" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.title}
+        </h1>
         <Show when={props.subtitle}>
-          <p class="fx-hero-subtitle">{props.subtitle}</p>
+          <p
+            class="fx-hero-subtitle"
+            data-funnel-part={editable ? "subtitle" : undefined}
+            tabindex={editable ? 0 : undefined}
+          >
+            {props.subtitle}
+          </p>
         </Show>
         <div class="fx-hero-ctas">
-          <CTAButton href={props.primaryCta.href}>{props.primaryCta.label}</CTAButton>
+          <CTAButton href={props.primaryCta.href} part="primary-cta">
+            {props.primaryCta.label}
+          </CTAButton>
           <Show when={props.secondaryCta}>
             <CTAButton
               href={props.secondaryCta!.href}
               variant="secondary"
               class="fx-hero-secondary"
+              part="secondary-cta"
             >
               {props.secondaryCta!.label}
             </CTAButton>
@@ -142,6 +164,8 @@ const Hero: Component<HeroProps> = (props) => {
               loading="eager"
               decoding="async"
               fetchpriority="high"
+              data-funnel-part={editable ? "media" : undefined}
+              tabindex={editable ? 0 : undefined}
             />
           </AspectRatio>
         </div>
@@ -190,6 +214,7 @@ const OptInForm: Component<OptInFormProps> = (props) => {
     "ref",
   );
   const variant = useFunnelVariant();
+  const editable = useFunnelEditable();
   const [submitted, setSubmitted] = createSignal(false);
 
   const handleSubmit = (event: SubmitEvent & { currentTarget: HTMLFormElement }) => {
@@ -221,18 +246,35 @@ const OptInForm: Component<OptInFormProps> = (props) => {
         when={!submitted()}
         fallback={
           <div class="fx-opt-in-success" role="status">
-            <p class="fx-opt-in-success-title">{props.successTitle ?? "You're in."}</p>
+            <p
+              class="fx-opt-in-success-title"
+              data-funnel-part={editable ? "success-title" : undefined}
+              tabindex={editable ? 0 : undefined}
+            >
+              {props.successTitle ?? "You're in."}
+            </p>
             <Show when={props.successMessage}>
-              <p class="fx-opt-in-success-message">{props.successMessage}</p>
+              <p
+                class="fx-opt-in-success-message"
+                data-funnel-part={editable ? "success-message" : undefined}
+                tabindex={editable ? 0 : undefined}
+              >
+                {props.successMessage}
+              </p>
             </Show>
           </div>
         }
       >
         <Form class="fx-opt-in-fields" onSubmit={handleSubmit}>
           <For each={props.fields}>
-            {(field) => (
+            {(field, index) => (
               <FormField class="fx-opt-in-field" name={field.name}>
-                <FormLabel class="fx-opt-in-label">
+                <FormLabel
+                  class="fx-opt-in-label"
+                  data-funnel-part={editable ? "label" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
+                  tabindex={editable ? 0 : undefined}
+                >
                   {field.label}
                   <Show when={field.required === false}>
                     {" "}
@@ -245,6 +287,8 @@ const OptInForm: Component<OptInFormProps> = (props) => {
                   required={field.required !== false}
                   autocomplete={field.autoComplete}
                   placeholder={field.placeholder}
+                  data-funnel-part={editable ? "input" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
                 />
                 <FormMessage class="fx-opt-in-error" match="valueMissing">
                   {field.label} is required.
@@ -255,11 +299,22 @@ const OptInForm: Component<OptInFormProps> = (props) => {
               </FormField>
             )}
           </For>
-          <FormSubmit class="fx-cta-button fx-opt-in-submit" data-variant="primary" data-size="lg">
+          <FormSubmit
+            class="fx-cta-button fx-opt-in-submit"
+            data-variant="primary"
+            data-size="lg"
+            data-funnel-part={editable ? "submit" : undefined}
+          >
             {props.submitLabel}
           </FormSubmit>
           <Show when={props.privacyNote}>
-            <p class="fx-opt-in-privacy">{props.privacyNote}</p>
+            <p
+              class="fx-opt-in-privacy"
+              data-funnel-part={editable ? "privacy" : undefined}
+              tabindex={editable ? 0 : undefined}
+            >
+              {props.privacyNote}
+            </p>
           </Show>
         </Form>
       </Show>
@@ -299,6 +354,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
 
 const Countdown: Component<CountdownProps> = (props) => {
   const rest = omit(props, "endsAt", "now", "interval", "onExpire", "caption", "class", "ref");
+  const editable = useFunnelEditable();
   const clock = () => props.now ?? Date.now;
   const [parts, setParts] = createSignal<CountdownParts>(splitRemaining(props.endsAt - clock()()));
   const [expired, setExpired] = createSignal(props.endsAt - clock()() <= 0);
@@ -337,7 +393,13 @@ const Countdown: Component<CountdownProps> = (props) => {
       ref={props.ref}
     >
       <Show when={props.caption}>
-        <p class="fx-countdown-caption">{props.caption}</p>
+        <p
+          class="fx-countdown-caption"
+          data-funnel-part={editable ? "caption" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.caption}
+        </p>
       </Show>
       <div
         class="fx-countdown-units"
@@ -393,6 +455,7 @@ type StickyBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
 
 const StickyBar: Component<StickyBarProps> = (props) => {
   const rest = omit(props, "message", "cta", "showAfter", "observe", "class", "ref");
+  const editable = useFunnelEditable();
   const threshold = () => props.showAfter ?? 600;
   const [visible, setVisible] = createSignal(
     typeof window !== "undefined" && window.scrollY > threshold(),
@@ -429,8 +492,19 @@ const StickyBar: Component<StickyBarProps> = (props) => {
       {...rest}
       ref={props.ref}
     >
-      <p class="fx-sticky-bar-message">{props.message}</p>
-      <CTAButton href={props.cta.href} size="md" tabindex={visible() ? undefined : -1}>
+      <p
+        class="fx-sticky-bar-message"
+        data-funnel-part={editable ? "message" : undefined}
+        tabindex={editable ? 0 : undefined}
+      >
+        {props.message}
+      </p>
+      <CTAButton
+        href={props.cta.href}
+        size="md"
+        tabindex={visible() ? undefined : -1}
+        part="cta"
+      >
         {props.cta.label}
       </CTAButton>
     </Primitive.div>
@@ -458,6 +532,7 @@ type ExitIntentProps = {
 
 const ExitIntent: Component<ExitIntentProps> = (props) => {
   const [open, setOpen] = createSignal(false);
+  const editable = useFunnelEditable();
   const storageKey = () => props.storageKey ?? "solidix-funnel-exit-intent";
 
   const wasShown = () => {
@@ -503,9 +578,19 @@ const ExitIntent: Component<ExitIntentProps> = (props) => {
       <DialogPortal>
         <DialogOverlay class="fx-exit-intent-overlay" />
         <DialogContent class="fx-exit-intent-content" data-funnel-block="exit-intent">
-          <DialogTitle class="fx-exit-intent-title">{props.title}</DialogTitle>
+          <DialogTitle
+            class="fx-exit-intent-title"
+            data-funnel-part={editable ? "title" : undefined}
+            tabindex={editable ? 0 : undefined}
+          >
+            {props.title}
+          </DialogTitle>
           <Show when={props.description}>
-            <DialogDescription class="fx-exit-intent-description">
+            <DialogDescription
+              class="fx-exit-intent-description"
+              data-funnel-part={editable ? "description" : undefined}
+              tabindex={editable ? 0 : undefined}
+            >
               {props.description}
             </DialogDescription>
           </Show>
@@ -656,9 +741,15 @@ function isBadgeName(value: unknown): value is FooterBadgeIcon {
   return value === "lock" || value === "shield" || value === "check" || value === "card";
 }
 
-const FooterAnchor: Component<{ link: FooterLink; forceLegal?: boolean }> = (props) => {
+const FooterAnchor: Component<{
+  link: FooterLink;
+  forceLegal?: boolean;
+  part?: string | undefined;
+  partIndex?: number | string | undefined;
+}> = (props) => {
   const kind = () => (props.forceLegal ? "legal" : (props.link.kind ?? "funnel"));
   const handleClick = (event: MouseEvent) => props.link.onClick?.(event);
+  const editable = useFunnelEditable();
   return (
     <a
       class="fx-footer-link"
@@ -666,6 +757,10 @@ const FooterAnchor: Component<{ link: FooterLink; forceLegal?: boolean }> = (pro
       target={kind() === "legal" ? "_blank" : undefined}
       rel={kind() === "legal" ? "noopener noreferrer" : undefined}
       onClick={handleClick}
+      data-funnel-part={editable ? props.part : undefined}
+      data-funnel-part-index={
+        editable && props.partIndex !== undefined ? String(props.partIndex) : undefined
+      }
     >
       {props.link.label}
     </a>
@@ -687,7 +782,11 @@ const Footer: Component<FooterProps> = (props) => {
     "ref",
   );
   const variant = () => props.variant ?? "sitemap";
-  const flatLinks = () => (props.columns ?? []).flatMap((column) => column.links);
+  const editable = useFunnelEditable();
+  const flatLinks = () =>
+    (props.columns ?? []).flatMap((column, columnIndex) =>
+      column.links.map((link, linkIndex) => ({ link, index: `${columnIndex}-${linkIndex}` })),
+    );
   return (
     <Primitive.div
       data-funnel-block="footer"
@@ -699,52 +798,118 @@ const Footer: Component<FooterProps> = (props) => {
       <div class="fx-footer-main">
         <Show when={props.identity}>
           <div class="fx-footer-identity">
-            <p class="fx-footer-identity-name">{props.identity!.name}</p>
+            <p
+              class="fx-footer-identity-name"
+              data-funnel-part={editable ? "identity-name" : undefined}
+              tabindex={editable ? 0 : undefined}
+            >
+              {props.identity!.name}
+            </p>
             <For each={props.identity!.address ?? []}>
-              {(line) => <p class="fx-footer-identity-line">{line}</p>}
+              {(line, index) => (
+                <p
+                  class="fx-footer-identity-line"
+                  data-funnel-part={editable ? "identity-address" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
+                  tabindex={editable ? 0 : undefined}
+                >
+                  {line}
+                </p>
+              )}
             </For>
             <Show when={props.identity!.email}>
-              <a class="fx-footer-link" href={`mailto:${props.identity!.email}`}>
+              <a
+                class="fx-footer-link"
+                href={`mailto:${props.identity!.email}`}
+                data-funnel-part={editable ? "identity-email" : undefined}
+              >
                 {props.identity!.email}
               </a>
             </Show>
             <Show when={props.identity!.phone}>
               <Show
                 when={props.identity!.phoneHref}
-                fallback={<p class="fx-footer-identity-line">{props.identity!.phone}</p>}
+                fallback={
+                  <p
+                    class="fx-footer-identity-line"
+                    data-funnel-part={editable ? "identity-phone" : undefined}
+                    tabindex={editable ? 0 : undefined}
+                  >
+                    {props.identity!.phone}
+                  </p>
+                }
               >
-                <a class="fx-footer-link" href={props.identity!.phoneHref}>
+                <a
+                  class="fx-footer-link"
+                  href={props.identity!.phoneHref}
+                  data-funnel-part={editable ? "identity-phone" : undefined}
+                >
                   {props.identity!.phone}
                 </a>
               </Show>
             </Show>
             <Show when={props.identity!.registration}>
-              <p class="fx-footer-identity-line">{props.identity!.registration}</p>
+              <p
+                class="fx-footer-identity-line"
+                data-funnel-part={editable ? "identity-registration" : undefined}
+                tabindex={editable ? 0 : undefined}
+              >
+                {props.identity!.registration}
+              </p>
             </Show>
             <Show when={props.identity!.hours}>
-              <p class="fx-footer-identity-line">{props.identity!.hours}</p>
+              <p
+                class="fx-footer-identity-line"
+                data-funnel-part={editable ? "identity-hours" : undefined}
+                tabindex={editable ? 0 : undefined}
+              >
+                {props.identity!.hours}
+              </p>
             </Show>
           </div>
         </Show>
         <Show when={props.brand}>
           <div class="fx-footer-brand">
-            <p class="fx-footer-name">{props.brand}</p>
+            <p
+              class="fx-footer-name"
+              data-funnel-part={editable ? "brand" : undefined}
+              tabindex={editable ? 0 : undefined}
+            >
+              {props.brand}
+            </p>
             <Show when={props.tagline}>
-              <p class="fx-footer-tagline">{props.tagline}</p>
+              <p
+                class="fx-footer-tagline"
+                data-funnel-part={editable ? "tagline" : undefined}
+                tabindex={editable ? 0 : undefined}
+              >
+                {props.tagline}
+              </p>
             </Show>
           </div>
         </Show>
         <Show when={variant() !== "utility" && props.columns?.length}>
           <nav class="fx-footer-nav" aria-label="Footer">
             <For each={props.columns!}>
-              {(column) => (
+              {(column, columnIndex) => (
                 <div class="fx-footer-column">
-                  <p class="fx-footer-heading">{column.heading}</p>
+                  <p
+                    class="fx-footer-heading"
+                    data-funnel-part={editable ? "column-heading" : undefined}
+                    data-funnel-part-index={editable ? String(columnIndex()) : undefined}
+                    tabindex={editable ? 0 : undefined}
+                  >
+                    {column.heading}
+                  </p>
                   <ul class="fx-footer-links">
                     <For each={column.links}>
-                      {(link) => (
+                      {(link, linkIndex) => (
                         <li>
-                          <FooterAnchor link={link} />
+                          <FooterAnchor
+                            link={link}
+                            part="column-link"
+                            partIndex={`${columnIndex()}-${linkIndex()}`}
+                          />
                         </li>
                       )}
                     </For>
@@ -757,9 +922,9 @@ const Footer: Component<FooterProps> = (props) => {
         <Show when={variant() === "utility" && flatLinks().length}>
           <ul class="fx-footer-links-row">
             <For each={flatLinks()}>
-              {(link) => (
+              {(entry) => (
                 <li>
-                  <FooterAnchor link={link} />
+                  <FooterAnchor link={entry.link} part="column-link" partIndex={entry.index} />
                 </li>
               )}
             </For>
@@ -769,11 +934,16 @@ const Footer: Component<FooterProps> = (props) => {
       <Show when={props.badges?.length}>
         <ul class="fx-footer-badges">
           <For each={props.badges!}>
-            {(badge) => {
+            {(badge, index) => {
               const label = typeof badge === "string" ? badge : badge.label;
               const icon = typeof badge === "string" ? undefined : badge.icon;
               return (
-                <li class="fx-footer-badge">
+                <li
+                  class="fx-footer-badge"
+                  data-funnel-part={editable ? "badge" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
+                  tabindex={editable ? 0 : undefined}
+                >
                   <Show when={icon}>{isBadgeName(icon) ? footerBadgeIcon(icon) : icon}</Show>
                   {label}
                 </li>
@@ -784,11 +954,21 @@ const Footer: Component<FooterProps> = (props) => {
       </Show>
       <Show when={props.legalLinks?.length}>
         <nav class="fx-footer-legal-nav" aria-label="Legal">
-          <For each={props.legalLinks!}>{(link) => <FooterAnchor link={link} forceLegal />}</For>
+          <For each={props.legalLinks!}>
+            {(link, index) => (
+              <FooterAnchor link={link} forceLegal part="legal-link" partIndex={index()} />
+            )}
+          </For>
         </nav>
       </Show>
       <Show when={props.legal}>
-        <p class="fx-footer-legal">{props.legal}</p>
+        <p
+          class="fx-footer-legal"
+          data-funnel-part={editable ? "legal" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.legal}
+        </p>
       </Show>
     </Primitive.div>
   );
@@ -813,6 +993,7 @@ type VideoFrameProps = FunnelElementProps<"figure", HTMLElement> & {
  */
 const VideoFrame: Component<VideoFrameProps> = (props) => {
   const rest = omit(props, "thumbnail", "ratio", "href", "caption", "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <figure
       data-funnel-block="video-frame"
@@ -828,9 +1009,16 @@ const VideoFrame: Component<VideoFrameProps> = (props) => {
           loading="eager"
           decoding="async"
           fetchpriority="high"
+          data-funnel-part={editable ? "thumbnail" : undefined}
+          tabindex={editable ? 0 : undefined}
         />
         <Show when={props.href}>
-          <a class="fx-video-play" href={props.href} aria-label="Play video">
+          <a
+            class="fx-video-play"
+            href={props.href}
+            aria-label="Play video"
+            data-funnel-part={editable ? "play" : undefined}
+          >
             <svg viewBox="0 0 64 64" aria-hidden="true">
               <circle cx="32" cy="32" r="30" />
               <path d="M27 22l14 10-14 10z" />
@@ -839,7 +1027,13 @@ const VideoFrame: Component<VideoFrameProps> = (props) => {
         </Show>
       </AspectRatio>
       <Show when={props.caption}>
-        <figcaption class="fx-video-caption">{props.caption}</figcaption>
+        <figcaption
+          class="fx-video-caption"
+          data-funnel-part={editable ? "caption" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.caption}
+        </figcaption>
       </Show>
     </figure>
   );

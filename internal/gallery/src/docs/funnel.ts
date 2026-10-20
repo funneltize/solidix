@@ -44,10 +44,19 @@ export const doc: PrimitiveDoc = {
           type: "string",
           description: "A/B variant label merged into funnel event detail.",
         },
+        {
+          name: "editable",
+          type: "boolean",
+          description:
+            "Studio editing mode: blocks render data-funnel-part markers for editor click resolution. Off by default, with byte-identical public output.",
+        },
       ],
       dataAttributes: [
         { attribute: "data-funnel-theme", values: ["dark"] },
         { attribute: "data-cta", values: ["emerald", "cobalt"] },
+        { attribute: "data-funnel-editable", values: [""] },
+        { attribute: "data-funnel-part", values: ["part name, block-scoped"] },
+        { attribute: "data-funnel-part-index", values: ["positional index"] },
       ],
       cssVariables: [],
     },
@@ -114,6 +123,17 @@ export const doc: PrimitiveDoc = {
         { name: "loading", type: "boolean", description: "Shows a spinner and blocks activation." },
         { name: "fullWidth", type: "boolean", description: "Stretches to full width." },
         { name: "pill", type: "boolean", description: "Pill shape for consumer/DTC offers." },
+        {
+          name: "part",
+          type: "string",
+          description:
+            "Editing contract: overrides the data-funnel-part value when editable (defaults to label).",
+        },
+        {
+          name: "partIndex",
+          type: "number | string",
+          description: "Editing contract: data-funnel-part-index rendered alongside part.",
+        },
       ],
       dataAttributes: [
         { attribute: "data-funnel-block", values: ["cta-button"] },

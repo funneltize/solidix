@@ -2,7 +2,7 @@ import { Show, omit, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import { callEventHandler, Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 import { dispatchFunnelEvent } from "./events";
-import { useFunnelVariant } from "./root";
+import { useFunnelEditable, useFunnelVariant } from "./root";
 import { cx } from "./utils";
 
 /* -------------------------------------------------------------------------------------------------
@@ -27,6 +27,19 @@ type CTAButtonCommon = {
   fullWidth?: boolean | undefined;
   /** Pill shape for consumer/DTC offers. Defaults to `false`. */
   pill?: boolean | undefined;
+  /**
+   * Editing contract: overrides the `data-funnel-part` value rendered for
+   * the label when the Root is `editable` (defaults to `"label"`).
+   * Composing blocks pass their prop name (e.g. `"primary-cta"`) so
+   * sibling buttons resolve to distinct fields.
+   */
+  part?: string | undefined;
+  /**
+   * Editing contract: `data-funnel-part-index` rendered alongside `part`
+   * when the Root is `editable`. Composing blocks pass the item position
+   * for repeated buttons (e.g. pricing plan CTAs).
+   */
+  partIndex?: number | string | undefined;
 };
 
 type CTAButtonButtonProps = Omit<PrimitivePropsWithRef<"button">, "disabled"> &
@@ -45,14 +58,19 @@ type CTAButtonAnchorProps = PrimitivePropsWithRef<"a"> &
 
 type CTAButtonProps = CTAButtonButtonProps | CTAButtonAnchorProps;
 
-function ctaAttrs(props: {
-  variant?: CTAButtonVariant | undefined;
-  size?: CTAButtonSize | undefined;
-  loading?: boolean | undefined;
-  fullWidth?: boolean | undefined;
-  pill?: boolean | undefined;
-  class?: unknown;
-}) {
+function ctaAttrs(
+  props: {
+    variant?: CTAButtonVariant | undefined;
+    size?: CTAButtonSize | undefined;
+    loading?: boolean | undefined;
+    fullWidth?: boolean | undefined;
+    pill?: boolean | undefined;
+    part?: string | undefined;
+    partIndex?: number | string | undefined;
+    class?: unknown;
+  },
+  editable: boolean,
+) {
   return {
     "data-funnel-block": "cta-button",
     "data-variant": props.variant ?? "primary",
@@ -60,6 +78,9 @@ function ctaAttrs(props: {
     "data-loading": props.loading ? "" : undefined,
     "data-full-width": props.fullWidth ? "" : undefined,
     "data-pill": props.pill ? "" : undefined,
+    "data-funnel-part": editable ? (props.part ?? "label") : undefined,
+    "data-funnel-part-index":
+      editable && props.partIndex !== undefined ? String(props.partIndex) : undefined,
     class: cx("fx-cta-button", props.class),
   };
 }
@@ -103,14 +124,17 @@ const ButtonCTAButton: Component<CTAButtonButtonProps> = (props) => {
     "disabled",
     "fullWidth",
     "pill",
+    "part",
+    "partIndex",
     "class",
     "onClick",
   );
   const variant = useFunnelVariant();
+  const editable = useFunnelEditable();
   const blocked = () => Boolean(props.disabled || props.loading);
   return (
     <Primitive.button
-      {...ctaAttrs(props)}
+      {...ctaAttrs(props, editable)}
       type="button"
       disabled={props.disabled}
       aria-disabled={props.loading ? "true" : undefined}
@@ -142,14 +166,17 @@ const AnchorCTAButton: Component<CTAButtonAnchorProps> = (props) => {
     "disabled",
     "fullWidth",
     "pill",
+    "part",
+    "partIndex",
     "class",
     "onClick",
   );
   const variant = useFunnelVariant();
+  const editable = useFunnelEditable();
   const blocked = () => Boolean(props.disabled || props.loading);
   return (
     <Primitive.a
-      {...ctaAttrs(props)}
+      {...ctaAttrs(props, editable)}
       href={props.href}
       aria-disabled={blocked() ? "true" : undefined}
       aria-busy={props.loading ? "true" : undefined}
@@ -208,6 +235,7 @@ const CtaCluster: Component<CtaClusterProps> = (props) => {
     "class",
     "ref",
   );
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="cta-cluster"
@@ -225,7 +253,13 @@ const CtaCluster: Component<CtaClusterProps> = (props) => {
         {props.children}
       </CTAButton>
       <Show when={props.microcopy}>
-        <p class="fx-cta-cluster-microcopy">{props.microcopy}</p>
+        <p
+          class="fx-cta-cluster-microcopy"
+          data-funnel-part={editable ? "microcopy" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.microcopy}
+        </p>
       </Show>
     </Primitive.div>
   );

@@ -10,6 +10,7 @@ import {
 import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 import { RadioGroup, RadioGroupIndicator, RadioGroupItem } from "@solidix/radio-group";
 import { CTAButton } from "./cta-button";
+import { useFunnelEditable } from "./root";
 import { cx } from "./utils";
 
 /* -------------------------------------------------------------------------------------------------
@@ -30,6 +31,7 @@ type BenefitsProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
 
 const Benefits: Component<BenefitsProps> = (props) => {
   const rest = omit(props, "items", "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="benefits"
@@ -39,7 +41,7 @@ const Benefits: Component<BenefitsProps> = (props) => {
     >
       <Primitive.ul class="fx-benefits-list">
         <For each={props.items}>
-          {(item) => (
+          {(item, index) => (
             <Primitive.li class="fx-benefits-item" data-media={item.media ? "" : undefined}>
               <span class="fx-benefits-marker" aria-hidden="true">
                 {item.icon ?? (
@@ -56,14 +58,35 @@ const Benefits: Component<BenefitsProps> = (props) => {
                 )}
               </span>
               <span class="fx-benefits-copy">
-                <span class="fx-benefits-title">{item.title}</span>
+                <span
+                  class="fx-benefits-title"
+                  data-funnel-part={editable ? "title" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
+                  tabindex={editable ? 0 : undefined}
+                >
+                  {item.title}
+                </span>
                 <Show when={item.description}>
-                  <span class="fx-benefits-description">{item.description}</span>
+                  <span
+                    class="fx-benefits-description"
+                    data-funnel-part={editable ? "description" : undefined}
+                    data-funnel-part-index={editable ? String(index()) : undefined}
+                    tabindex={editable ? 0 : undefined}
+                  >
+                    {item.description}
+                  </span>
                 </Show>
               </span>
               <Show when={item.media}>
                 <span class="fx-benefits-media">
-                  <img src={item.media!.src} alt={item.media!.alt} loading="lazy" />
+                  <img
+                    src={item.media!.src}
+                    alt={item.media!.alt}
+                    loading="lazy"
+                    data-funnel-part={editable ? "media" : undefined}
+                    data-funnel-part-index={editable ? String(index()) : undefined}
+                    tabindex={editable ? 0 : undefined}
+                  />
                 </span>
               </Show>
             </Primitive.li>
@@ -89,6 +112,7 @@ type HowItWorksProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
 
 const HowItWorks: Component<HowItWorksProps> = (props) => {
   const rest = omit(props, "steps", "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="how-it-works"
@@ -98,12 +122,26 @@ const HowItWorks: Component<HowItWorksProps> = (props) => {
     >
       <Primitive.ol class="fx-how-it-works-list">
         <For each={props.steps}>
-          {(step) => (
+          {(step, index) => (
             <Primitive.li class="fx-how-it-works-step">
               <span class="fx-how-it-works-copy">
-                <span class="fx-how-it-works-title">{step.title}</span>
+                <span
+                  class="fx-how-it-works-title"
+                  data-funnel-part={editable ? "title" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
+                  tabindex={editable ? 0 : undefined}
+                >
+                  {step.title}
+                </span>
                 <Show when={step.description}>
-                  <span class="fx-how-it-works-description">{step.description}</span>
+                  <span
+                    class="fx-how-it-works-description"
+                    data-funnel-part={editable ? "description" : undefined}
+                    data-funnel-part-index={editable ? String(index()) : undefined}
+                    tabindex={editable ? 0 : undefined}
+                  >
+                    {step.description}
+                  </span>
                 </Show>
               </span>
             </Primitive.li>
@@ -154,6 +192,7 @@ const Pricing: Component<PricingProps> = (props) => {
     "class",
     "ref",
   );
+  const editable = useFunnelEditable();
   const periods = () => props.periods ?? (["monthly", "annual"] as BillingPeriod[]);
   const [internal, setInternal] = createSignal<BillingPeriod>(props.defaultBilling ?? "annual");
   const billing = () => props.billing ?? internal();
@@ -192,19 +231,58 @@ const Pricing: Component<PricingProps> = (props) => {
       </Show>
       <div class="fx-pricing-plans">
         <For each={props.plans}>
-          {(plan) => (
+          {(plan, planIndex) => (
             <article class="fx-pricing-plan" data-highlighted={plan.highlighted ? "" : undefined}>
               <Show when={plan.badge}>
-                <p class="fx-pricing-badge">{plan.badge}</p>
+                <p
+                  class="fx-pricing-badge"
+                  data-funnel-part={editable ? "badge" : undefined}
+                  data-funnel-part-index={editable ? String(planIndex()) : undefined}
+                  tabindex={editable ? 0 : undefined}
+                >
+                  {plan.badge}
+                </p>
               </Show>
-              <h3 class="fx-pricing-name">{plan.name}</h3>
-              <p class="fx-pricing-price">{priceFor(plan)}</p>
+              <h3
+                class="fx-pricing-name"
+                data-funnel-part={editable ? "name" : undefined}
+                data-funnel-part-index={editable ? String(planIndex()) : undefined}
+                tabindex={editable ? 0 : undefined}
+              >
+                {plan.name}
+              </h3>
+              <p
+                class="fx-pricing-price"
+                data-funnel-part={editable ? "price" : undefined}
+                data-funnel-part-index={editable ? String(planIndex()) : undefined}
+                tabindex={editable ? 0 : undefined}
+              >
+                {priceFor(plan)}
+              </p>
               <Show when={plan.blurb}>
-                <p class="fx-pricing-blurb">{plan.blurb}</p>
+                <p
+                  class="fx-pricing-blurb"
+                  data-funnel-part={editable ? "blurb" : undefined}
+                  data-funnel-part-index={editable ? String(planIndex()) : undefined}
+                  tabindex={editable ? 0 : undefined}
+                >
+                  {plan.blurb}
+                </p>
               </Show>
               <ul class="fx-pricing-features">
                 <For each={plan.features}>
-                  {(feature) => <li class="fx-pricing-feature">{feature}</li>}
+                  {(feature, featureIndex) => (
+                    <li
+                      class="fx-pricing-feature"
+                      data-funnel-part={editable ? "feature" : undefined}
+                      data-funnel-part-index={
+                        editable ? `${planIndex()}-${featureIndex()}` : undefined
+                      }
+                      tabindex={editable ? 0 : undefined}
+                    >
+                      {feature}
+                    </li>
+                  )}
                 </For>
               </ul>
               <CTAButton
@@ -212,6 +290,8 @@ const Pricing: Component<PricingProps> = (props) => {
                 variant={plan.highlighted ? "primary" : "secondary"}
                 size="md"
                 fullWidth
+                part="plan-cta"
+                partIndex={planIndex()}
               >
                 {plan.cta.label}
               </CTAButton>
@@ -220,7 +300,13 @@ const Pricing: Component<PricingProps> = (props) => {
         </For>
       </div>
       <Show when={billing() === "annual" && props.annualNote}>
-        <p class="fx-pricing-note">{props.annualNote}</p>
+        <p
+          class="fx-pricing-note"
+          data-funnel-part={editable ? "annual-note" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.annualNote}
+        </p>
       </Show>
     </Primitive.div>
   );
@@ -237,6 +323,7 @@ type GuaranteeProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
 
 const Guarantee: Component<GuaranteeProps> = (props) => {
   const rest = omit(props, "title", "description", "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="guarantee"
@@ -264,9 +351,21 @@ const Guarantee: Component<GuaranteeProps> = (props) => {
         </svg>
       </span>
       <div class="fx-guarantee-copy">
-        <h3 class="fx-guarantee-title">{props.title}</h3>
+        <h3
+          class="fx-guarantee-title"
+          data-funnel-part={editable ? "title" : undefined}
+          tabindex={editable ? 0 : undefined}
+        >
+          {props.title}
+        </h3>
         <Show when={props.description}>
-          <p class="fx-guarantee-description">{props.description}</p>
+          <p
+            class="fx-guarantee-description"
+            data-funnel-part={editable ? "description" : undefined}
+            tabindex={editable ? 0 : undefined}
+          >
+            {props.description}
+          </p>
         </Show>
       </div>
     </Primitive.div>
@@ -299,6 +398,7 @@ function hashOpenId(items: FaqItem[]): string | undefined {
 
 const Faq: Component<FaqProps> = (props) => {
   const rest = omit(props, "items", "defaultOpen", "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="faq"
@@ -313,16 +413,27 @@ const Faq: Component<FaqProps> = (props) => {
         defaultValue={props.defaultOpen ?? hashOpenId(props.items)}
       >
         <For each={props.items}>
-          {(item) => (
+          {(item, index) => (
             <AccordionItem class="fx-faq-item" value={item.id} id={`faq-${item.id}`}>
               <AccordionHeader class="fx-faq-header">
-                <AccordionTrigger class="fx-faq-trigger">
+                <AccordionTrigger
+                  class="fx-faq-trigger"
+                  data-funnel-part={editable ? "question" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
+                >
                   <span class="fx-faq-question">{item.question}</span>
                   <span class="fx-faq-icon" aria-hidden="true" />
                 </AccordionTrigger>
               </AccordionHeader>
               <AccordionContent class="fx-faq-content">
-                <p class="fx-faq-answer">{item.answer}</p>
+                <p
+                  class="fx-faq-answer"
+                  data-funnel-part={editable ? "answer" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
+                  tabindex={editable ? 0 : undefined}
+                >
+                  {item.answer}
+                </p>
               </AccordionContent>
             </AccordionItem>
           )}
@@ -359,10 +470,19 @@ function featuredIndex(columns: ComparisonColumn[]): number {
   return flagged === -1 ? 0 : flagged;
 }
 
-const ComparisonCell: Component<{ value: boolean | string; featured: boolean }> = (props) => {
+const ComparisonCell: Component<{ value: boolean | string; featured: boolean; partIndex: string }> = (
+  props,
+) => {
   const value = () => props.value;
+  const editable = useFunnelEditable();
   return (
-    <td class="fx-comparison-value" data-featured={props.featured ? "" : undefined}>
+    <td
+      class="fx-comparison-value"
+      data-featured={props.featured ? "" : undefined}
+      data-funnel-part={editable ? "cell" : undefined}
+      data-funnel-part-index={editable ? props.partIndex : undefined}
+      tabindex={editable ? 0 : undefined}
+    >
       <Show when={typeof value() === "boolean"} fallback={<span>{value() as string}</span>}>
         <Show
           when={value() as boolean}
@@ -391,6 +511,7 @@ const ComparisonCell: Component<{ value: boolean | string; featured: boolean }> 
  */
 const ComparisonTable: Component<ComparisonTableProps> = (props) => {
   const rest = omit(props, "columns", "rows", "caption", "class", "ref");
+  const editable = useFunnelEditable();
   return (
     <Primitive.div
       data-funnel-block="comparison-table"
@@ -400,7 +521,13 @@ const ComparisonTable: Component<ComparisonTableProps> = (props) => {
     >
       <table class="fx-comparison">
         <Show when={props.caption}>
-          <caption class="fx-comparison-caption">{props.caption}</caption>
+          <caption
+            class="fx-comparison-caption"
+            data-funnel-part={editable ? "caption" : undefined}
+            tabindex={editable ? 0 : undefined}
+          >
+            {props.caption}
+          </caption>
         </Show>
         <thead>
           <tr>
@@ -413,6 +540,9 @@ const ComparisonTable: Component<ComparisonTableProps> = (props) => {
                   class="fx-comparison-head"
                   scope="col"
                   data-featured={index() === featuredIndex(props.columns) ? "" : undefined}
+                  data-funnel-part={editable ? "column" : undefined}
+                  data-funnel-part-index={editable ? String(index()) : undefined}
+                  tabindex={editable ? 0 : undefined}
                 >
                   {column.label}
                 </th>
@@ -422,16 +552,23 @@ const ComparisonTable: Component<ComparisonTableProps> = (props) => {
         </thead>
         <tbody>
           <For each={props.rows}>
-            {(row) => (
+            {(row, rowIndex) => (
               <tr>
-                <th class="fx-comparison-feature" scope="row">
+                <th
+                  class="fx-comparison-feature"
+                  scope="row"
+                  data-funnel-part={editable ? "feature" : undefined}
+                  data-funnel-part-index={editable ? String(rowIndex()) : undefined}
+                  tabindex={editable ? 0 : undefined}
+                >
                   {row.feature}
                 </th>
                 <For each={row.values}>
-                  {(value, index) => (
+                  {(value, columnIndex) => (
                     <ComparisonCell
                       value={value}
-                      featured={index() === featuredIndex(props.columns)}
+                      featured={columnIndex() === featuredIndex(props.columns)}
+                      partIndex={`${rowIndex()}-${columnIndex()}`}
                     />
                   )}
                 </For>

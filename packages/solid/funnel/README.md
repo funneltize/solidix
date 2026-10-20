@@ -112,6 +112,19 @@ Consideration: `Benefits` (checklist, or zig-zag rows with `media`),
 `Guarantee`, `Faq`. Proof: `LogoBar`, `Testimonials`,
 `TestimonialCarousel`, `StatsBar`, `StarRating`.
 
+## Editing
+
+`Root` accepts `editable`, a studio-only flag (default off). When on, blocks
+render `data-funnel-part` markers on elements bound to block-prop data, plus
+`data-funnel-part-index` for repeated items (`"1-2"` for nested repeats)
+and `tabindex` on static text so parts stay keyboard reachable. Editors
+resolve clicks via `closest("[data-funnel-part]")`, pair the part with the
+nearest `data-funnel-block`, and map `(block, part, index)` to their content
+model; `CTAButton` also takes `part`/`partIndex` overrides so composing
+blocks can name sibling buttons distinctly. When off, no markers render and
+output is byte-identical to unmarked markup. Part names are stable public
+API; see section 19 of `PHILOSOPHY.md` for the full contract.
+
 ## Motion
 
 State changes animate with pure CSS keyed on the primitives' `data-state`

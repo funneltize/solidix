@@ -440,6 +440,8 @@ jsdom alone.
 7. Add tests mirroring sibling coverage, update README block list and
    gallery docs (`docs/funnel.ts`), extend the reference demo, add a
    changeset.
+8. Assign `data-funnel-part` names per section 19 and pin them in
+   `test/editable.test.tsx` (markers on, zero residue off).
 
 ### Rebrand for a client
 
@@ -494,3 +496,48 @@ jsdom alone.
 | `test/*`                                | Contracts in section 15                                                            |
 | `internal/gallery/src/demos/funnel.tsx` | 8-stage reference implementation                                                   |
 | `internal/gallery/src/docs/funnel.ts`   | Live docs for the gallery site                                                     |
+
+## 19. Studio editing contract
+
+Editors (visual studios, click-to-edit canvases) resolve edit targets from
+stable markers instead of owning block internals. The contract has three
+pieces: a flag, markers, and a map owned by the consumer.
+
+Mechanism. `Root` accepts `editable?: boolean` (default off), inherited
+through context. When on, blocks render `data-funnel-part="<name>"` on
+elements bound to block-prop data, plus `data-funnel-part-index` for
+repeated items and `tabindex="0"` on static text so parts stay keyboard
+reachable. Root renders `data-funnel-editable`, which scopes the cursor and
+hover affordances in `blocks.css`. When off, none of these attributes render
+and public output is byte-identical to unmarked markup; every `editable`
+readiness test in `test/editable.test.tsx` asserts both directions.
+
+Naming. Part names are kebab-case, block-scoped (the same name in two blocks
+is fine; resolution always pairs the nearest `data-funnel-block` with the
+nearest `data-funnel-part`), and stable public API at the same bar as token
+names: renaming a part breaks consumer maps, so pin the per-block inventory
+in tests. Indices are positional; nested repeats join with `-`
+(`column-link` at `"1-2"`). Prefer names that mirror the data model
+(`primary-cta`, `plan-cta`) over generic ones.
+
+Marking rules. Mark the innermost element that fully represents the datum:
+the text element for copy, the control root for single-text controls
+(`CTAButton` marks its own root so the full hit area resolves), the image
+for image props, the control for inputs. Skip computed values (countdown
+units, carousel counts), derived text (form errors, toggle labels),
+decorative icons, and pure layout (`Section`, `Container` take no parts).
+Children-passthrough text blocks (`Eyebrow`, `Prose`) mark their root as
+`text`. Nested blocks resolve through the block path (a rating inside a
+testimonial needs no special casing), except same-block siblings with
+different field sources: composing parents pass `part`/`partIndex` to the
+inner `CTAButton` (`primary-cta`, `plan-cta` plus the plan index) so each
+sibling resolves distinctly.
+
+`part`/`partIndex` render only when editable, even when passed; explicitly
+passed props never leak markers into public output. Editors own the
+`(block, part, index)` to field map and resolve clicks via
+`closest("[data-funnel-part]")`, falling through to section selection for
+unmapped regions. Values stay in the consumer model; markers carry identity
+only, never PII. The editing affordance CSS must fit the section 12 budget
+and stay scoped under `[data-funnel-editable]` so it is dead for shipped
+output.
