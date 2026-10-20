@@ -29,7 +29,6 @@
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
@@ -46,7 +45,8 @@
       },
       "./springs.css": "./src/springs.css",
       "./package.json": "./package.json"
-    }
+    },
+    "access": "public"
   },
   "scripts": {
     "lint": "oxlint --max-warnings 0 src test",

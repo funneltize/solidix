@@ -22,7 +22,6 @@
     "./is-development": "./src/internal/is-development.true.ts"
   },
   "publishConfig": {
-    "access": "public",
     "exports": {
       "./is-development": {
         "development": {
@@ -56,7 +55,8 @@
           }
         }
       }
-    }
+    },
+    "access": "public"
   },
   "scripts": {
     "lint": "oxlint --max-warnings 0 src",
