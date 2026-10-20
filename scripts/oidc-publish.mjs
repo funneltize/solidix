@@ -38,8 +38,14 @@ function run(cmd, args, cwd) {
 }
 
 function shortError(error) {
-  const text = String((error && (error.stderr || error.message)) || error);
-  return text.trim().split("\n").slice(0, 3).join(" | ");
+  const lines = String((error && (error.stderr || error.message)) || error)
+    .trim()
+    .split("\n");
+  // npm prints the actionable lines last; prefer those over the
+  // tarball-contents preamble at the top.
+  const npmErrors = lines.filter((line) => line.includes("npm error"));
+  const picked = npmErrors.length > 0 ? npmErrors : lines.slice(-3);
+  return picked.slice(0, 3).join(" | ");
 }
 
 // Fail closed: publish a version only when the registry proves it is
