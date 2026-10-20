@@ -1,6 +1,6 @@
 {
   "name": "@solidix/use-escape-keydown",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Escape key listener (port of @radix-ui/react-use-escape-keydown).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

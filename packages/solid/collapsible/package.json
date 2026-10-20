@@ -1,6 +1,6 @@
 {
   "name": "@solidix/collapsible",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Collapsible primitive (port of @radix-ui/react-collapsible).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

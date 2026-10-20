@@ -1,6 +1,6 @@
 {
   "name": "@solidix/menu",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Menu primitive (port of @radix-ui/react-menu).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

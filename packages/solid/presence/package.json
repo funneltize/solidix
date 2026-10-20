@@ -1,6 +1,6 @@
 {
   "name": "@solidix/presence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Presence stays mounted through exit animations (port of @radix-ui/react-presence).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

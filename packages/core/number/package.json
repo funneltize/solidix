@@ -1,6 +1,6 @@
 {
   "name": "@solidix/number",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Number utilities (port of @radix-ui/number).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

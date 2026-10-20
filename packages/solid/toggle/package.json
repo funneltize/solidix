@@ -1,6 +1,6 @@
 {
   "name": "@solidix/toggle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Toggle primitive (port of @radix-ui/react-toggle).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
