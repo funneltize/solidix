@@ -32,7 +32,7 @@ describe("Benefits", () => {
     expect(root?.hasAttribute("data-variant")).toBe(false);
   });
 
-  test('cards variant sets data-variant and ignores media', () => {
+  test("cards variant sets data-variant and ignores media", () => {
     const { container } = render(() => (
       <Benefits
         variant="cards"
