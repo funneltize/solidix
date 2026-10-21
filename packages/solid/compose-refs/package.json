@@ -1,6 +1,6 @@
 {
   "name": "@solidix/compose-refs",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Ref composition utilities (port of @radix-ui/react-compose-refs).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

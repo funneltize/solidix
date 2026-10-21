@@ -1,5 +1,11 @@
 # @solidix/use-previous
 
+## 0.1.3
+
+### Patch Changes
+
+- 909b39c: Document every exported type and namespace, and inject @module headers into staged declarations for the JSR docs score. Comments only, no behavior change.
+
 ## 0.1.2
 
 ### Patch Changes

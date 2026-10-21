@@ -1,5 +1,18 @@
 # @solidix/toggle-group
 
+## 0.1.3
+
+### Patch Changes
+
+- 909b39c: Document every exported type and namespace, and inject @module headers into staged declarations for the JSR docs score. Comments only, no behavior change.
+- Updated dependencies [909b39c]
+  - @solidix/context@0.1.3
+  - @solidix/direction@0.1.3
+  - @solidix/primitive@0.1.3
+  - @solidix/roving-focus@0.1.3
+  - @solidix/toggle@0.1.3
+  - @solidix/use-controllable-state@0.1.3
+
 ## 0.1.2
 
 ### Patch Changes

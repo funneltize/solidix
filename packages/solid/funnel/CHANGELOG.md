@@ -1,5 +1,19 @@
 # @solidix/funnel
 
+## 0.2.1
+
+### Patch Changes
+
+- a0033da: Fix exit-intent CTA overflow: buttons and the modal use border-box sizing so portalled content no longer overflows where consumer resets don't reach. Studio editing outlines are now persistent (stronger on hover) so the mode is visible on toggle.
+- 909b39c: Document every exported type and namespace, and inject @module headers into staged declarations for the JSR docs score. Comments only, no behavior change.
+- Updated dependencies [909b39c]
+  - @solidix/accordion@0.1.3
+  - @solidix/aspect-ratio@0.1.3
+  - @solidix/dialog@0.1.3
+  - @solidix/form@0.1.3
+  - @solidix/primitive@0.1.3
+  - @solidix/radio-group@0.1.3
+
 ## 0.2.0
 
 ### Minor Changes

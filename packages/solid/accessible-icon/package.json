@@ -1,6 +1,6 @@
 {
   "name": "@solidix/accessible-icon",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Accessible-icon primitive (port of @radix-ui/react-accessible-icon).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

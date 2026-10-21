@@ -1,5 +1,14 @@
 # @solidix/remove-scroll
 
+## 0.1.3
+
+### Patch Changes
+
+- 909b39c: Document every exported type and namespace, and inject @module headers into staged declarations for the JSR docs score. Comments only, no behavior change.
+- Updated dependencies [909b39c]
+  - @solidix/compose-refs@0.1.3
+  - @solidix/slot@0.1.3
+
 ## 0.1.2
 
 ### Patch Changes

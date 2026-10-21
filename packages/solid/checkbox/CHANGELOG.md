@@ -1,5 +1,18 @@
 # @solidix/checkbox
 
+## 0.1.3
+
+### Patch Changes
+
+- 909b39c: Document every exported type and namespace, and inject @module headers into staged declarations for the JSR docs score. Comments only, no behavior change.
+- Updated dependencies [909b39c]
+  - @solidix/compose-refs@0.1.3
+  - @solidix/context@0.1.3
+  - @solidix/presence@0.1.3
+  - @solidix/primitive@0.1.3
+  - @solidix/use-controllable-state@0.1.3
+  - @solidix/use-size@0.1.3
+
 ## 0.1.2
 
 ### Patch Changes

@@ -1,5 +1,44 @@
 # solidix
 
+## 0.1.3
+
+### Patch Changes
+
+- 909b39c: Document every exported type and namespace, and inject @module headers into staged declarations for the JSR docs score. Comments only, no behavior change.
+- Updated dependencies [a0033da]
+- Updated dependencies [909b39c]
+  - @solidix/funnel@0.2.1
+  - @solidix/accordion@0.1.3
+  - @solidix/alert-dialog@0.1.3
+  - @solidix/aspect-ratio@0.1.3
+  - @solidix/avatar@0.1.3
+  - @solidix/checkbox@0.1.3
+  - @solidix/collapsible@0.1.3
+  - @solidix/context-menu@0.1.3
+  - @solidix/dialog@0.1.3
+  - @solidix/dropdown-menu@0.1.3
+  - @solidix/form@0.1.3
+  - @solidix/hover-card@0.1.3
+  - @solidix/label@0.1.3
+  - @solidix/menubar@0.1.3
+  - @solidix/navigation-menu@0.1.3
+  - @solidix/one-time-password-field@0.1.3
+  - @solidix/password-toggle-field@0.1.3
+  - @solidix/popover@0.1.3
+  - @solidix/progress@0.1.3
+  - @solidix/radio-group@0.1.3
+  - @solidix/scroll-area@0.1.3
+  - @solidix/select@0.1.3
+  - @solidix/separator@0.1.3
+  - @solidix/slider@0.1.3
+  - @solidix/switch@0.1.3
+  - @solidix/tabs@0.1.3
+  - @solidix/toast@0.1.3
+  - @solidix/toggle@0.1.3
+  - @solidix/toggle-group@0.1.3
+  - @solidix/toolbar@0.1.3
+  - @solidix/tooltip@0.1.3
+
 ## 0.1.2
 
 ### Patch Changes

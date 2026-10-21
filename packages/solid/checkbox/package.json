@@ -1,6 +1,6 @@
 {
   "name": "@solidix/checkbox",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Checkbox primitive (port of @radix-ui/react-checkbox).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

@@ -1,6 +1,6 @@
 {
   "name": "@solidix/switch",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Switch primitive (port of @radix-ui/react-switch).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
