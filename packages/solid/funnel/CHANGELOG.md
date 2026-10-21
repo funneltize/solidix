@@ -1,5 +1,11 @@
 # @solidix/funnel
 
+## 0.3.0
+
+### Minor Changes
+
+- Add `variant="cards"` to `Benefits`: a tight icon-led bento grid for pillar content, riding on `data-variant="cards"`. The default checklist and media zig-zag rows are unchanged; the cards variant ignores `media`. The gallery reference demo's Value stage now uses the cards variant, and the `blocks.css` budget moves 40 kB to 42 kB to cover the new styles.
+
 ## 0.2.1
 
 ### Patch Changes
