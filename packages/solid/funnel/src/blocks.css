@@ -657,6 +657,32 @@
   }
 }
 
+/* Benefits cards: tight icon-led bento grid for pillars. */
+.fx-benefits[data-variant="cards"] .fx-benefits-list {
+  gap: var(--solidix-funnel-space-4);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.fx-benefits[data-variant="cards"] .fx-benefits-item {
+  background: var(--solidix-funnel-paper);
+  border: 1px solid var(--solidix-funnel-line);
+  border-radius: var(--solidix-funnel-radius-lg);
+  flex-direction: column;
+  gap: var(--solidix-funnel-space-2);
+  padding: var(--solidix-funnel-space-5);
+}
+
+.fx-benefits[data-variant="cards"] .fx-benefits-marker {
+  border-radius: var(--solidix-funnel-radius-md);
+  height: 2.25rem;
+  width: 2.25rem;
+}
+
+.fx-benefits[data-variant="cards"] .fx-benefits-marker svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
 /* HowItWorks: numbered sequence, timeline rail on desktop. */
 .fx-how-it-works-list {
   counter-reset: fx-step;

@@ -26,18 +26,25 @@ type BenefitItem = {
   media?: { src: string; alt: string } | undefined;
 };
 
+/** Layout variant for the Benefits component. */
+type BenefitsVariant = "list" | "cards";
+
 /** Props for the Benefits component. */
 type BenefitsProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   items: BenefitItem[];
+  /** `"list"` (default) renders a checklist, zig-zag rows when items carry `media`; `"cards"` renders a tight icon-led bento grid and ignores `media`. */
+  variant?: BenefitsVariant | undefined;
 };
 
-/** Benefit list with check icons, alternating zig-zag rows when items carry media. */
+/** Benefit list: checklist by default, icon-led cards with `variant="cards"`, zig-zag rows when items carry media. */
 const Benefits: Component<BenefitsProps> = (props) => {
-  const rest = omit(props, "items", "class", "ref");
+  const rest = omit(props, "items", "variant", "class", "ref");
   const editable = useFunnelEditable();
+  const cards = () => props.variant === "cards";
   return (
     <Primitive.div
       data-funnel-block="benefits"
+      data-variant={cards() ? "cards" : undefined}
       class={cx("fx-benefits", props.class)}
       {...rest}
       ref={props.ref}
@@ -45,7 +52,10 @@ const Benefits: Component<BenefitsProps> = (props) => {
       <Primitive.ul class="fx-benefits-list">
         <For each={props.items}>
           {(item, index) => (
-            <Primitive.li class="fx-benefits-item" data-media={item.media ? "" : undefined}>
+            <Primitive.li
+              class="fx-benefits-item"
+              data-media={!cards() && item.media ? "" : undefined}
+            >
               <span class="fx-benefits-marker" aria-hidden="true">
                 {item.icon ?? (
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -80,7 +90,7 @@ const Benefits: Component<BenefitsProps> = (props) => {
                   </span>
                 </Show>
               </span>
-              <Show when={item.media}>
+              <Show when={!cards() && item.media}>
                 <span class="fx-benefits-media">
                   <img
                     src={item.media!.src}
@@ -607,6 +617,7 @@ export { Benefits, ComparisonTable, Faq, Guarantee, HowItWorks, Pricing };
 export type {
   BenefitItem,
   BenefitsProps,
+  BenefitsVariant,
   BillingPeriod,
   ComparisonColumn,
   ComparisonRow,

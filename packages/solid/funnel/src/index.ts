@@ -61,6 +61,7 @@ export { Benefits, ComparisonTable, Faq, Guarantee, HowItWorks, Pricing } from "
 export type {
   BenefitItem,
   BenefitsProps,
+  BenefitsVariant,
   BillingPeriod,
   ComparisonColumn,
   ComparisonRow,

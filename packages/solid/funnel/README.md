@@ -107,7 +107,8 @@ tiers), `Header` (zero-escape bar), `SectionHeading`, `Eyebrow`, `Prose`
 (mobile-only, reveals past the hero CTA), `ExitIntent`, `Footer` (zero-leak:
 `utility` / `trust` / `sitemap` archetypes, containment-typed links, trust
 badges instead of social icons).
-Consideration: `Benefits` (checklist, or zig-zag rows with `media`),
+Consideration: `Benefits` (checklist, `variant="cards"` bento grid,
+or zig-zag rows with `media`),
 `HowItWorks`, `ComparisonTable` (featured us-column), `Pricing`,
 `Guarantee`, `Faq`. Proof: `LogoBar`, `Testimonials`,
 `TestimonialCarousel`, `StatsBar`, `StarRating`.

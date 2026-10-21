@@ -133,7 +133,7 @@ const FunnelDemo = () => {
           </Funnel.Container>
         </Funnel.Section>
 
-        {/* 5. Value: zig-zag rows pairing visuals with outcome headlines. */}
+        {/* 5. Value: tight icon-led bento cards for the three pillars. */}
         <Funnel.Section>
           <Funnel.Container>
             <Funnel.SectionHeading
@@ -141,33 +141,70 @@ const FunnelDemo = () => {
               title="Everything a page needs to sell"
             />
             <Funnel.Benefits
+              variant="cards"
               items={[
                 {
                   title: "An offer people can repeat",
                   description:
                     "One sentence that survives the retelling test, positioned against the status quo you replace.",
-                  media: {
-                    src: "https://picsum.photos/seed/funnel-offer/1200/800",
-                    alt: "Offer worksheet",
-                  },
+                  icon: (
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M3 3h7l11 11-7 7L3 10V3z"
+                        fill="none"
+                        stroke="currentcolor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <circle cx="8" cy="8" r="1.5" fill="currentcolor" />
+                    </svg>
+                  ),
                 },
                 {
                   title: "Copy without the blank page",
                   description:
                     "Worksheets that turn sales calls and reviews into headlines, bullets, and guarantees.",
-                  media: {
-                    src: "https://picsum.photos/seed/funnel-copy/1200/800",
-                    alt: "Copy worksheets",
-                  },
+                  icon: (
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M4 20l1-4L16.5 4.5a2.12 2.12 0 013 3L8 19l-4 1z"
+                        fill="none"
+                        stroke="currentcolor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14.5 6.5l3 3"
+                        fill="none"
+                        stroke="currentcolor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  ),
                 },
                 {
                   title: "A page you can change",
                   description:
                     "No ticket queue. Edit copy and ship in minutes, not sprints, with proof that compounds.",
-                  media: {
-                    src: "https://picsum.photos/seed/funnel-page/1200/800",
-                    alt: "Published page",
-                  },
+                  icon: (
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M4 5h16v14H4z"
+                        fill="none"
+                        stroke="currentcolor"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M4 10h16M10 10v9"
+                        fill="none"
+                        stroke="currentcolor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  ),
                 },
               ]}
             />

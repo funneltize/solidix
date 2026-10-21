@@ -383,6 +383,27 @@ describe("editing contract", () => {
     expect(screen.getByText("Do it.").getAttribute("data-funnel-part")).toBe("description");
   });
 
+  test("Benefits cards variant marks titles and descriptions, never media", () => {
+    const { container } = render(() => (
+      <Root editable>
+        <Benefits
+          variant="cards"
+          items={[
+            {
+              title: "An offer people can repeat",
+              description: "One sentence that survives retelling.",
+              media: { src: "/m.jpg", alt: "Shot" },
+            },
+          ]}
+        />
+      </Root>
+    ));
+    expect(parts(container, "title", "0").length).toBe(1);
+    expect(parts(container, "description", "0").length).toBe(1);
+    expect(parts(container, "media", "0").length).toBe(0);
+    expect(container.querySelector("img")).toBe(null);
+  });
+
   test("Pricing marks plans, composite feature indices, and plan CTAs", () => {
     render(() => (
       <Root editable>

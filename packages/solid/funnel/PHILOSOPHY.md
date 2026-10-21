@@ -83,7 +83,7 @@ create chapter breaks; `inverse` is reserved for stage 4.
 | 2. Authority   | Trust bar (LogoBar, stars)   | Full-bleed strip              | subtle, compact | standard                    | Neutralize skepticism in 3 seconds                         |
 | 3. Agitation   | Problem                      | Centered single column        | primary         | reading                     | Articulate pain so the prospect feels understood           |
 | 4. Mechanism   | Solution reveal (HowItWorks) | Headline + 3-card flow        | inverse         | standard                    | Proprietary mechanism: why past attempts failed            |
-| 5. Value       | Benefits                     | Alternating 50/50 zig-zag     | primary         | standard                    | Product visuals + outcome headlines + 3-bullet lists       |
+| 5. Value       | Benefits                     | Bento cards or 50/50 zig-zag  | primary         | standard                    | Pillar cards, or product visuals + outcome headlines       |
 | 6. Validation  | Proof wall                   | 3-column grid (1200px)        | subtle          | wide                        | Metric outcomes, pull quotes, verified avatars             |
 | 7. Conversion  | Offer stack / Pricing        | 1-card or 3-tier anchor grid  | primary         | wide, then reading for form | Anchor value vs cost, isolate checkout trigger             |
 | 8. Reassurance | Guarantee + FAQ + final CTA  | Seal box + accordion (680px)  | subtle          | reading                     | Reverse risk, answer objections, final CTA dam             |
@@ -353,9 +353,10 @@ Hard rules (enforced by `motion.test.ts`):
 
 Budgets are decisions, enforced by `css-budget.test.ts`:
 
-- `tokens.css` under 12 kB, `blocks.css` under 40 kB. Growth past budget
-  requires a conscious budget change, not silent creep. (blocks.css sits
-  near its ceiling: check bytes before adding block styles.)
+- `tokens.css` under 12 kB, `blocks.css` under 42 kB (raised from 40 kB
+  for the Benefits bento-cards variant). Growth past budget requires a
+  conscious budget change, not silent creep. (blocks.css sits near its
+  ceiling: check bytes before adding block styles.)
 - Hero media is eager with reserved AspectRatio space (no CLS). Below-fold
   images lazy-load.
 - No analytics SDK is bundled. Blocks dispatch `funnel:cta`,

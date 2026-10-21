@@ -25,6 +25,38 @@ describe("Benefits", () => {
     expect(art.getAttribute("loading")).toBe("lazy");
     expect(art.closest("li")?.hasAttribute("data-media")).toBe(true);
   });
+
+  test("default list renders no data-variant", () => {
+    const { container } = render(() => <Benefits items={[{ title: "Launch in a day" }]} />);
+    const root = container.querySelector('[data-funnel-block="benefits"]');
+    expect(root?.hasAttribute("data-variant")).toBe(false);
+  });
+
+  test('cards variant sets data-variant and ignores media', () => {
+    const { container } = render(() => (
+      <Benefits
+        variant="cards"
+        items={[
+          {
+            title: "An offer people can repeat",
+            description: "One sentence that survives retelling.",
+            icon: (
+              <svg viewBox="0 0 24 24" aria-hidden="true" data-testid="pillar-icon">
+                <circle cx="12" cy="12" r="9" />
+              </svg>
+            ),
+            media: { src: "/ui.png", alt: "Product UI" },
+          },
+        ]}
+      />
+    ));
+    const root = container.querySelector('[data-funnel-block="benefits"]');
+    expect(root?.getAttribute("data-variant")).toBe("cards");
+    expect(screen.getByText("An offer people can repeat")).toBeTruthy();
+    expect(screen.getByTestId("pillar-icon")).toBeTruthy();
+    expect(screen.queryByAltText("Product UI")).toBe(null);
+    expect(container.querySelector("li")?.hasAttribute("data-media")).toBe(false);
+  });
 });
 
 describe("ComparisonTable", () => {
