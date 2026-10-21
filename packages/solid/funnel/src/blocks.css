@@ -202,6 +202,7 @@
 .fx-cta-button {
   align-items: center;
   border: 1px solid transparent;
+  box-sizing: border-box;
   border-radius: var(--solidix-funnel-radius-md);
   cursor: pointer;
   display: inline-flex;
@@ -1481,6 +1482,7 @@
 .fx-exit-intent-content {
   background: var(--solidix-funnel-paper);
   border-radius: var(--solidix-funnel-radius-xl);
+  box-sizing: border-box;
   box-shadow: var(--solidix-funnel-shadow-lg);
   left: 50%;
   max-height: calc(100vh - var(--solidix-funnel-space-8));
@@ -1684,10 +1686,11 @@
   text-align: center;
 }
 
-/* Studio editing. Only matches under an editable Root, which public funnels
-   never render, so these rules are dead for shipped output. */
+/* Studio editing: dead for shipped output, which never renders it. */
 [data-funnel-editable] [data-funnel-part] {
   cursor: text;
+  outline: 1px dashed var(--solidix-funnel-brand);
+  outline-offset: 2px;
 }
 [data-funnel-editable] a[data-funnel-part],
 [data-funnel-editable] button[data-funnel-part] {

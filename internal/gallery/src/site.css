@@ -529,6 +529,53 @@ a.demo-tab.full-page-link {
   border-color: var(--muted);
 }
 
+/* Studio-mode toggle for the funnel full demo. Fixed chrome like the back
+   link so it never sits in the page flow it instruments. */
+.full-demo-editing {
+  position: fixed;
+  top: 122px;
+  left: 14px;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 14px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.full-demo-editing:hover {
+  border-color: var(--muted);
+}
+
+.full-demo-editing input {
+  accent-color: var(--ink);
+  margin: 0;
+}
+
+/* Revealed funnel header: fixed so the reveal never shifts page layout
+   (and never re-crosses its own scroll threshold). Hidden on mobile, where
+   the sticky bottom bar owns persistence - mirrors the block's breakpoint. */
+.full-demo-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--solidix-funnel-z-sticky, 40);
+}
+
+@media (max-width: 767px) {
+  .full-demo-header {
+    display: none;
+  }
+}
+
 .demo-stage {
   /* Light lab bench in the docs identity. Demo stylesheets are authored
      for a light backdrop (dark labels, translucent-dark inputs). */

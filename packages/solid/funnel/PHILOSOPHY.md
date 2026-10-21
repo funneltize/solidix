@@ -508,7 +508,8 @@ through context. When on, blocks render `data-funnel-part="<name>"` on
 elements bound to block-prop data, plus `data-funnel-part-index` for
 repeated items and `tabindex="0"` on static text so parts stay keyboard
 reachable. Root renders `data-funnel-editable`, which scopes the cursor and
-hover affordances in `blocks.css`. When off, none of these attributes render
+part-outline affordances in `blocks.css` (persistent light outlines, stronger
+on hover). When off, none of these attributes render
 and public output is byte-identical to unmarked markup; every `editable`
 readiness test in `test/editable.test.tsx` asserts both directions.
 

@@ -1,32 +1,53 @@
-import { createSignal } from "solid-js";
+import { createSignal, onSettled, Show } from "solid-js";
 import { Funnel } from "solidix";
 
 const OFFER_ENDS_AT = Date.now() + 37 * 3600000 + 14 * 60000;
 
 /* Eight-stage direct-response blueprint: hook, authority, agitation,
- * mechanism, value, validation, conversion, reassurance. */
+ * mechanism, value, validation, conversion, reassurance. The header stays
+ * out of the first viewport so the hero opens clean, then sticks once the
+ * hero has scrolled away. */
 const FunnelDemo = () => {
   const [editable, setEditable] = createSignal(false);
+  const [pastHero, setPastHero] = createSignal(false);
+  onSettled(() => {
+    const update = () => {
+      const hero = document.getElementById("hook");
+      setPastHero(!!hero && hero.getBoundingClientRect().bottom < 0);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  });
   return (
     <>
-      <p>
-        <label>
-          <input
-            type="checkbox"
-            checked={editable()}
-            onChange={(event) => setEditable(event.currentTarget.checked)}
-          />{" "}
-          Studio editing mode
-        </label>
-      </p>
+      <label class="full-demo-editing">
+        <input
+          type="checkbox"
+          checked={editable()}
+          onChange={(event) => setEditable(event.currentTarget.checked)}
+        />{" "}
+        Studio editing mode
+      </label>
       <Funnel.Root variant="reference" editable={editable()}>
-        <Funnel.Header
-          brand="Weekend Funnel"
-          cta={{ label: "Claim your seat", href: "#join" }}
-          sticky
-        />
+        <Show when={pastHero()}>
+          {/* Fixed wrapper: an in-flow reveal would push the hero back down
+              and flicker the threshold. Mobile stays headerless per the
+              block's own rule (see .full-demo-header). */}
+          <div class="full-demo-header">
+            <Funnel.Header
+              brand="Weekend Funnel"
+              cta={{ label: "Claim your seat", href: "#join" }}
+              sticky
+            />
+          </div>
+        </Show>
 
-        {/* 1. Hook: zero-escape header above, split hero with outcome plus timeframe. */}
+        {/* 1. Hook: split hero with outcome plus timeframe. */}
         <Funnel.Section>
           <Funnel.Container>
             <Funnel.Hero
