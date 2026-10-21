@@ -2,6 +2,8 @@
 
 HoverCard primitive. Port of `@radix-ui/react-hover-card`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Hover Card page (`#/hover-card` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `HoverCardPortal` nests `Presence` _inside_ the portal instead of around it.

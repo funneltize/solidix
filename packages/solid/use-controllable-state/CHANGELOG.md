@@ -1,5 +1,14 @@
 # @solidix/use-controllable-state
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @solidix/use-effect-event@0.1.4
+  - @solidix/env-check@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes

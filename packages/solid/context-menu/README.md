@@ -3,6 +3,8 @@
 Context menu primitive. Port of `@radix-ui/react-context-menu`, composed
 on `@solidix/menu` exactly as Radix composes on `@radix-ui/react-menu`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Context Menu page (`#/context-menu` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `ContextMenuPortal` nests `Presence` _inside_ the portal instead of around

@@ -1,5 +1,11 @@
 # @solidix/slot
 
+## 0.1.4
+
+### Patch Changes
+
+- Roll out the README header template to every package: Solid API mapping with guide link, gallery docs-site route where a demo exists, and a `Differences from Radix` section (explicit parity statements for behavior-identical ports, no-counterpart notes for motion/funnel). Docs-only change.
+
 ## 0.1.3
 
 ### Patch Changes

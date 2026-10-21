@@ -5,6 +5,8 @@ four scrollbar types (`hover`/`scroll`/`auto`/`always`), both orientations,
 the implicit content wrapper (#1666), the `disableImplicitContentElement` opt
 out, the corner (#2383), and ref stability (#3963).
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Scroll Area page (`#/scroll-area` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` composes via

@@ -2,6 +2,8 @@
 
 RadioGroup primitive. Port of `@radix-ui/react-radio-group`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Radio Group page (`#/radio-group` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - Context values that change over time (value, checked state, elements,

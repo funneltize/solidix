@@ -1,6 +1,6 @@
 {
   "name": "@solidix/focus-scope",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Focus trapping and looping (port of @radix-ui/react-focus-scope).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

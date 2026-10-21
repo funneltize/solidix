@@ -115,7 +115,7 @@ const Menubar: Component<ScopedProps<MenubarProps>> = (props) => {
   const loop = () => props.loop ?? true;
   const [value, setValue] = useControllableState({
     prop: () => props.value,
-    onChange: props.onValueChange,
+    onChange: (next) => props.onValueChange?.(next),
     defaultProp: props.defaultValue ?? "",
     caller: MENUBAR_NAME,
   });
@@ -632,7 +632,7 @@ const MenubarSub: Component<ScopedProps<MenubarSubProps>> = (props) => {
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: props.defaultOpen ?? false,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: SUB_NAME,
   });
 

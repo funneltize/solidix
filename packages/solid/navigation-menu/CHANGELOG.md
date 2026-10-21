@@ -1,5 +1,30 @@
 # @solidix/navigation-menu
 
+## 0.1.4
+
+### Patch Changes
+
+- Fix stale callbacks: `useCallbackRef`, `useEffectEvent`, and `useControllableState` capture their callback once at setup, so call sites that passed `props.onX` directly froze the first handler identity and dropped later ones. All 33 direct captures now pass a stable closure that reads the prop at call time (e.g. `(next) => props.onChange?.(next)`), matching the existing lazy-inline convention. `SelectValue` also reads children presence from its `children()` memo instead of raw `props.children`, which re-instantiated the subtree on every read. Adds callback-freshness regression tests to toast and switch.
+- Add a shared `getOpenState(open)` helper to `@solidix/primitive` mapping an open flag to the `data-state` attribute value, and adopt it in menu and navigation-menu in place of their identical locals. No behavior change.
+- Roll out the README header template to every package: Solid API mapping with guide link, gallery docs-site route where a demo exists, and a `Differences from Radix` section (explicit parity statements for behavior-identical ports, no-counterpart notes for motion/funnel). Docs-only change.
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/use-callback-ref@0.1.4
+  - @solidix/primitive@0.2.0
+  - @solidix/collection@0.1.4
+  - @solidix/context@0.1.4
+  - @solidix/direction@0.1.4
+  - @solidix/dismissable-layer@0.1.4
+  - @solidix/id@0.1.4
+  - @solidix/presence@0.1.4
+  - @solidix/slot@0.1.4
+  - @solidix/use-layout-effect@0.1.4
+  - @solidix/use-previous@0.1.4
+  - @solidix/visually-hidden@0.1.4
+  - @solidix/use-controllable-state@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes

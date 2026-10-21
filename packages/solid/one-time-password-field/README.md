@@ -5,6 +5,8 @@ One-time-password field primitive. Port of
 with roving focus, validation/sanitization, paste distribution, backspace
 navigation, auto-submit, form reset, and the aggregated hidden input.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: One-Time Password Field page (`#/one-time-password-field` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces

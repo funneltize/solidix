@@ -10,6 +10,7 @@ import {
   callEventHandler,
   composeEventHandlers,
   dispatchDiscreteCustomEvent,
+  getOpenState,
   Primitive,
 } from "@solidix/primitive";
 import { createSlottable } from "@solidix/slot";
@@ -399,12 +400,12 @@ const NavigationMenuProvider: Component<NavigationMenuProviderProps> = (props) =
   const [indicatorTrack, setIndicatorTrack] = createSignal<HTMLDivElement | null>(null);
   const previousValue = usePrevious(props.value);
   const baseId = useId();
-  const onTriggerEnter = useCallbackRef(props.onTriggerEnter);
-  const onTriggerLeave = useCallbackRef(props.onTriggerLeave ?? (() => {}));
-  const onContentEnter = useCallbackRef(props.onContentEnter ?? (() => {}));
-  const onContentLeave = useCallbackRef(props.onContentLeave ?? (() => {}));
-  const onItemSelect = useCallbackRef(props.onItemSelect);
-  const onItemDismiss = useCallbackRef(props.onItemDismiss);
+  const onTriggerEnter = useCallbackRef((itemValue: string) => props.onTriggerEnter(itemValue));
+  const onTriggerLeave = useCallbackRef(() => props.onTriggerLeave?.());
+  const onContentEnter = useCallbackRef(() => props.onContentEnter?.());
+  const onContentLeave = useCallbackRef(() => props.onContentLeave?.());
+  const onItemSelect = useCallbackRef((itemValue: string) => props.onItemSelect(itemValue));
+  const onItemDismiss = useCallbackRef(() => props.onItemDismiss());
 
   const handleViewportContentChange = (contentValue: string, contentData: ContentData) => {
     setViewportContent((prevContent) => {
@@ -1497,10 +1498,6 @@ function useResizeObserver(element: () => HTMLElement | null, onResize: () => vo
       };
     },
   );
-}
-
-function getOpenState(open: boolean) {
-  return open ? "open" : "closed";
 }
 
 function makeTriggerId(baseId: string, value: string) {

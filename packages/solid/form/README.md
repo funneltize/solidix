@@ -4,6 +4,8 @@ Form primitive. Port of `@radix-ui/react-form`, including native-validity
 tracking, sync/async custom matchers, server-invalid handling, message-id
 `aria-describedby` wiring, and first-invalid-control focus.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Form page (`#/form` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces

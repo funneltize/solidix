@@ -70,7 +70,7 @@ function ctaAttrs(
     pill?: boolean | undefined;
     part?: string | undefined;
     partIndex?: number | string | undefined;
-    class?: unknown;
+    class?: unknown | undefined;
   },
   editable: boolean,
 ) {

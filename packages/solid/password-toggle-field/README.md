@@ -5,6 +5,8 @@ Password toggle field primitive. Port of
 visibility, focus/selection restoration on toggle, form reset/submit
 handling, the icon slot, and the aria-label inference.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Password Toggle Field page (`#/password-toggle-field` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces

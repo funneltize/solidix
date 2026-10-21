@@ -2,6 +2,8 @@
 
 Stable callback wrapper. Port of `@radix-ui/react-use-callback-ref`.
 
+Stable wrapper for callbacks that must not re-trigger effects; pass a closure that reads props at call time, never `props.onX` directly.
+
 ## Differences from Radix
 
 - Implemented as a plain closure: Solid has no stale-closure problem for inline callbacks (reactive state is read lazily at call time), so no ref syncing is needed.

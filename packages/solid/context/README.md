@@ -2,6 +2,8 @@
 
 Context factories with scopes. Port of `@radix-ui/react-context`.
 
+Scoped-context factory behind every primitive's scope API (`createXScope`); a created context is its own provider.
+
 ## Differences from Radix
 
 - Built on Solid's `createContext`/`useContext`. Provider values are reactive proxies, so object values stay live through property reads (no memoization step needed).

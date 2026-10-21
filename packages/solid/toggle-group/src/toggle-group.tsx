@@ -103,7 +103,7 @@ const ToggleGroupImplSingle: Component<ScopedProps<ToggleGroupImplSingleProps>> 
   const [value, setValue] = useControllableState({
     prop: () => props.value,
     defaultProp: props.defaultValue ?? "",
-    onChange: props.onValueChange,
+    onChange: (next) => props.onValueChange?.(next),
     caller: TOGGLE_GROUP_NAME,
   });
 
@@ -147,7 +147,7 @@ const ToggleGroupImplMultiple: Component<ScopedProps<ToggleGroupImplMultipleProp
   const [value, setValue] = useControllableState<string[]>({
     prop: () => props.value,
     defaultProp: props.defaultValue ?? [],
-    onChange: props.onValueChange,
+    onChange: (next) => props.onValueChange?.(next),
     caller: TOGGLE_GROUP_NAME,
   });
 

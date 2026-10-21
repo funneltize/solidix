@@ -7,6 +7,7 @@ export {
   getOwnerWindow,
   getOwnerDocument,
   getActiveElement,
+  getOpenState,
   isFrame,
 } from "./dom";
 export { canUseDOM } from "./can-use-dom";

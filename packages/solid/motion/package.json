@@ -1,6 +1,6 @@
 {
   "name": "@solidix/motion",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "CSS-first motion utilities: spring easing compiler, preset tokens, and animation recipes.",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

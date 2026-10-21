@@ -3,6 +3,8 @@
 Ordered item collections. Port of `@radix-ui/react-collection`, including
 `unstable_createCollection`.
 
+Internal item-registration plumbing for roving focus, menus, and select; consumers use those primitives, never this package directly.
+
 ## Differences from Radix
 
 - Item registration runs in effects with cleanup (unregister on dispose);

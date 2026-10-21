@@ -7,6 +7,8 @@ package deliberately departs from the headless philosophy of the primitives)
 but every visual choice flows through tokens, so rebranding never touches
 component code.
 
+Blocks are data-driven (content in, themed markup out) with fixed structure and visuals: no `asChild`, no render props. Restyle through tokens and the documented `.fx-*` classes. Docs site: Funnel page (`#/funnel` route) with the 8-stage reference demo.
+
 Implementing or reviewing funnel work? Read
 [`PHILOSOPHY.md`](./PHILOSOPHY.md) first: it is the agent-ready source of
 truth for the system's principles, patterns, budgets, and anti-patterns.

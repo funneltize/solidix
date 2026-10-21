@@ -1,6 +1,6 @@
 {
   "name": "@solidix/primitive",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Primitive components and DOM utilities (port of @radix-ui/react-primitive and @radix-ui/primitive).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

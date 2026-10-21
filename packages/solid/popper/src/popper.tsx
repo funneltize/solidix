@@ -383,7 +383,7 @@ const PopperContent: Component<ScopedProps<PopperContentProps>> = (props) => {
     },
   );
 
-  const handlePlaced = useCallbackRef(props.onPlaced);
+  const handlePlaced = useCallbackRef(() => props.onPlaced?.());
   createEffect(
     () => isPositioned(),
     (positioned) => {

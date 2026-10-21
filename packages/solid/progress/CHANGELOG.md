@@ -1,5 +1,15 @@
 # @solidix/progress
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/primitive@0.2.0
+  - @solidix/context@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes

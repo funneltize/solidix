@@ -3,6 +3,8 @@
 Primitive components and DOM utilities. Port of `@radix-ui/react-primitive`
 **and** `@radix-ui/primitive` (merged - see below).
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)).
+
 ## Differences from Radix
 
 - **Merged packages**: Radix splits the `Primitive.*` components

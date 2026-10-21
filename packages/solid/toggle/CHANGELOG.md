@@ -1,5 +1,15 @@
 # @solidix/toggle
 
+## 0.1.4
+
+### Patch Changes
+
+- Fix stale callbacks: `useCallbackRef`, `useEffectEvent`, and `useControllableState` capture their callback once at setup, so call sites that passed `props.onX` directly froze the first handler identity and dropped later ones. All 33 direct captures now pass a stable closure that reads the prop at call time (e.g. `(next) => props.onChange?.(next)`), matching the existing lazy-inline convention. `SelectValue` also reads children presence from its `children()` memo instead of raw `props.children`, which re-instantiated the subtree on every read. Adds callback-freshness regression tests to toast and switch.
+- Updated dependencies
+- Updated dependencies
+  - @solidix/primitive@0.2.0
+  - @solidix/use-controllable-state@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes

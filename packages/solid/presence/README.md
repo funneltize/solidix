@@ -3,6 +3,8 @@
 Presence stays mounted through exit animations. Port of
 `@radix-ui/react-presence`.
 
+Stays mounted through exit animations; see the [Animation guide](../../../docs/animation.md) for exit tracking, `forceMount`, and the portal rule.
+
 ## Differences from Radix
 
 - `present` accepts a boolean or a reactive getter; pass a getter for values

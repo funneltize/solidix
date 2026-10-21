@@ -1,5 +1,18 @@
 # @solidix/primitive
 
+## 0.2.0
+
+### Minor Changes
+
+- Add a shared `getOpenState(open)` helper to `@solidix/primitive` mapping an open flag to the `data-state` attribute value, and adopt it in menu and navigation-menu in place of their identical locals. No behavior change.
+
+### Patch Changes
+
+- Roll out the README header template to every package: Solid API mapping with guide link, gallery docs-site route where a demo exists, and a `Differences from Radix` section (explicit parity statements for behavior-identical ports, no-counterpart notes for motion/funnel). Docs-only change.
+- Updated dependencies
+  - @solidix/env-check@0.1.4
+  - @solidix/slot@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes

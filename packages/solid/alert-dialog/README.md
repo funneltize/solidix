@@ -5,6 +5,8 @@ Alert dialog primitive. Port of `@radix-ui/react-alert-dialog`, composed on
 `modal`, `role="alertdialog"`, autofocus of the cancel action on open, and
 unconditional prevention of outside dismissal.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Alert Dialog page (`#/alert-dialog` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces

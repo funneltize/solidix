@@ -3,6 +3,8 @@
 Umbrella package re-exporting all Solidix primitives under one dependency,
 mirroring the `radix-ui` meta-package.
 
+Each member README carries its own API mapping; the gallery demos every member at its `#/<primitive>` route. New to the port? Start with the [Migrating from Radix guide](../../../docs/migrating.md).
+
 ```sh
 pnpm add jsr:@solidix/solidix
 ```

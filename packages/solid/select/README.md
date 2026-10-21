@@ -7,6 +7,8 @@ in the content, the clear (empty-value) item (#2706), form reset, the
 narrowed-handler bivariance (#4197), keys from focusable descendants (#3232),
 ref stability (#3963), and the full bubble-input change matrix (#4102).
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Select page (`#/select` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` composes via

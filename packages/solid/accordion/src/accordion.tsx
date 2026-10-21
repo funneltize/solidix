@@ -136,7 +136,7 @@ const AccordionImplSingle: Component<ScopedProps<AccordionImplSingleProps>> = (p
   const [value, setValue] = useControllableState({
     prop: () => props.value,
     defaultProp: props.defaultValue ?? "",
-    onChange: props.onValueChange,
+    onChange: (next) => props.onValueChange?.(next),
     caller: ACCORDION_NAME,
   });
 
@@ -186,7 +186,7 @@ const AccordionImplMultiple: Component<ScopedProps<AccordionImplMultipleProps>> 
   const [value, setValue] = useControllableState({
     prop: () => props.value,
     defaultProp: props.defaultValue ?? [],
-    onChange: props.onValueChange,
+    onChange: (next) => props.onValueChange?.(next),
     caller: ACCORDION_NAME,
   });
 

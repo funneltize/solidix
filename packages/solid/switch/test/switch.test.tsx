@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createSignal, flush } from "solid-js";
 import { describe, expect, test, vi } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
 import userEvent from "@testing-library/user-event";
@@ -534,5 +534,33 @@ describe("Switch.Thumb", () => {
 
     await user.click(thumb);
     expect(onClick).toHaveBeenCalled();
+  });
+});
+
+// `useControllableState` captures `onChange` once, so consumers wrap
+// `props.onX` in a stable closure that reads the prop at call time instead
+// of freezing the setup-time handler identity.
+describe("callback freshness", () => {
+  test("calls the latest onCheckedChange after the handler identity changes", async () => {
+    const first = vi.fn();
+    const second = vi.fn();
+    // Wrap: `createSignal(fn)` would invoke `fn` as a lazy initializer.
+    const [onCheckedChange, setOnCheckedChange] = createSignal<(checked: boolean) => void>(
+      () => first,
+    );
+    const user = userEvent.setup();
+    render(() => <Switch onCheckedChange={onCheckedChange()} />);
+
+    const switchControl = await screen.findByRole("switch");
+    expect(first).not.toHaveBeenCalled();
+    await user.click(switchControl);
+    await vi.waitFor(() => expect(first).toHaveBeenCalledWith(true));
+
+    setOnCheckedChange(() => second);
+    flush();
+
+    await user.click(switchControl);
+    await vi.waitFor(() => expect(second).toHaveBeenCalledWith(false));
+    expect(first).toHaveBeenCalledTimes(1);
   });
 });

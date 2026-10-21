@@ -9,7 +9,7 @@ import type { JSX } from "@solidjs/web";
 
 type ContextProvider<ContextValueType extends object | null> = Component<
   ContextValueType & {
-    children?: JSX.Element;
+    children?: JSX.Element | undefined;
   }
 >;
 
@@ -93,7 +93,7 @@ interface CreateScope {
 type ScopedContextProvider<ContextValueType extends object | null> = Component<
   ContextValueType & {
     scope: Scope<ContextValueType>;
-    children?: JSX.Element;
+    children?: JSX.Element | undefined;
   }
 >;
 

@@ -5,6 +5,8 @@ focus management (hotkey, focus proxies, programmed tab order), pause/resume
 timers, swipe gestures, screen-reader announcements, and the escape
 regressions (#2906, #2233, #3963, #3703).
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Toast page (`#/toast` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces

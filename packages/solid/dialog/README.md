@@ -4,6 +4,8 @@ Dialog primitive. Port of `@radix-ui/react-dialog`, including the modal
 `hideOthers` behavior, nested/overlapping-modal handling (#4035, #3645), the
 slotted-content regression (#4077), and the iOS overlay tap handling.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Dialog page (`#/dialog` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` replaces

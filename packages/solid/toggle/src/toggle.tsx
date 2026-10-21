@@ -38,7 +38,7 @@ const Toggle: Component<ToggleProps> = (props) => {
 
   const [pressed, setPressed] = useControllableState({
     prop: () => props.pressed,
-    onChange: props.onPressedChange,
+    onChange: (next) => props.onPressedChange?.(next),
     defaultProp: props.defaultPressed ?? false,
     caller: NAME,
   });

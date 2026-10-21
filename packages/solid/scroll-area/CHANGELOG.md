@@ -1,5 +1,25 @@
 # @solidix/scroll-area
 
+## 0.1.4
+
+### Patch Changes
+
+- Fix stale callbacks: `useCallbackRef`, `useEffectEvent`, and `useControllableState` capture their callback once at setup, so call sites that passed `props.onX` directly froze the first handler identity and dropped later ones. All 33 direct captures now pass a stable closure that reads the prop at call time (e.g. `(next) => props.onChange?.(next)`), matching the existing lazy-inline convention. `SelectValue` also reads children presence from its `children()` memo instead of raw `props.children`, which re-instantiated the subtree on every read. Adds callback-freshness regression tests to toast and switch.
+- Roll out the README header template to every package: Solid API mapping with guide link, gallery docs-site route where a demo exists, and a `Differences from Radix` section (explicit parity statements for behavior-identical ports, no-counterpart notes for motion/funnel). Docs-only change.
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/use-callback-ref@0.1.4
+  - @solidix/primitive@0.2.0
+  - @solidix/context@0.1.4
+  - @solidix/direction@0.1.4
+  - @solidix/env-check@0.1.4
+  - @solidix/number@0.1.4
+  - @solidix/presence@0.1.4
+  - @solidix/slot@0.1.4
+  - @solidix/use-layout-effect@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes

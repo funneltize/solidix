@@ -79,7 +79,7 @@ type CollectionDict<ItemElement extends HTMLElement, ItemData> = ReadOnlyOrdered
   ];
 
   const CollectionProvider: Component<{
-    children?: JSX.Element;
+    children?: JSX.Element | undefined;
     scope: any;
     state?: CollectionState | undefined;
   }> = (props) => {
@@ -92,7 +92,7 @@ type CollectionDict<ItemElement extends HTMLElement, ItemData> = ReadOnlyOrdered
     );
   };
 
-  const CollectionInit: Component<{ children?: JSX.Element; scope: any }> = (props) => {
+  const CollectionInit: Component<{ children?: JSX.Element | undefined; scope: any }> = (props) => {
     const state = useInitCollection();
     return (
       <CollectionProviderImpl scope={props.scope} state={state}>
@@ -102,7 +102,7 @@ type CollectionDict<ItemElement extends HTMLElement, ItemData> = ReadOnlyOrdered
   };
 
   const CollectionProviderImpl: Component<{
-    children?: JSX.Element;
+    children?: JSX.Element | undefined;
     scope: any;
     state: CollectionState;
   }> = (props) => {

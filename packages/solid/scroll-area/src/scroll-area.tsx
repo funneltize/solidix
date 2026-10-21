@@ -863,9 +863,11 @@ const ScrollAreaScrollbarImpl: Component<ScopedProps<ScrollAreaScrollbarImplProp
   const rectRef: { current: DOMRect | null } = { current: null };
   const prevWebkitUserSelectRef = { current: "" };
   const maxScrollPos = () => props.sizes().content - props.sizes().viewport;
-  const handleWheelScroll = useCallbackRef(props.onWheelScroll);
-  const handleThumbPositionChange = useCallbackRef(props.onThumbPositionChange);
-  const handleResize = useDebounceCallback(props.onResize, 10);
+  const handleWheelScroll = useCallbackRef((event: WheelEvent, maxScrollPos: number) =>
+    props.onWheelScroll(event, maxScrollPos),
+  );
+  const handleThumbPositionChange = useCallbackRef(() => props.onThumbPositionChange());
+  const handleResize = useDebounceCallback(() => props.onResize(), 10);
 
   function handleDragScroll(event: DivEvent<PointerEvent>) {
     if (rectRef.current) {
@@ -905,9 +907,13 @@ const ScrollAreaScrollbarImpl: Component<ScopedProps<ScrollAreaScrollbarImplProp
   useResizeObserver(scrollbar, handleResize);
   useResizeObserver(context.content, handleResize);
 
-  const onThumbChange = useCallbackRef(props.onThumbChange);
-  const onThumbPointerUp = useCallbackRef(props.onThumbPointerUp);
-  const onThumbPointerDown = useCallbackRef(props.onThumbPointerDown);
+  const onThumbChange = useCallbackRef((thumb: ScrollAreaThumbElement | null) =>
+    props.onThumbChange(thumb),
+  );
+  const onThumbPointerUp = useCallbackRef(() => props.onThumbPointerUp());
+  const onThumbPointerDown = useCallbackRef((pointerPos: { x: number; y: number }) =>
+    props.onThumbPointerDown(pointerPos),
+  );
 
   return (
     <ScrollbarProvider

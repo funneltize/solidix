@@ -94,7 +94,7 @@ const Dialog: Component<ScopedProps<DialogProps>> = (props) => {
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: props.defaultOpen ?? false,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: DIALOG_NAME,
   });
 

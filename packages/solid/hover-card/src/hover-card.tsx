@@ -72,7 +72,7 @@ const HoverCard: Component<ScopedProps<HoverCardProps>> = (props) => {
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: props.defaultOpen ?? false,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: HOVERCARD_NAME,
   });
 

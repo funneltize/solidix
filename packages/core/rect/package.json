@@ -1,6 +1,6 @@
 {
   "name": "@solidix/rect",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Rect observation utilities (port of @radix-ui/rect).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

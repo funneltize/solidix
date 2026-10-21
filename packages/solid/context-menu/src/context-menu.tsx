@@ -109,7 +109,7 @@ const ContextMenu: Component<ScopedProps<ContextMenuProps>> = (props) => {
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: false,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: CONTEXT_MENU_NAME,
   });
 
@@ -487,7 +487,7 @@ const ContextMenuSub: Component<ScopedProps<ContextMenuSubProps>> = (props) => {
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: props.defaultOpen ?? false,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: SUB_NAME,
   });
 

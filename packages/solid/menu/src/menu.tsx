@@ -32,6 +32,7 @@ import {
   callEventHandler,
   composeEventHandlers,
   dispatchDiscreteCustomEvent,
+  getOpenState,
   hideOthers,
   type PrimitivePropsWithRef,
 } from "@solidix/primitive";
@@ -1356,10 +1357,6 @@ const MenuSubContent: Component<ScopedProps<MenuSubContentProps>> = (props) => {
 const ITEM_SELECT = "menu.itemSelect";
 
 type MenuSubContentElement = MenuContentImplElement;
-
-function getOpenState(open: boolean) {
-  return open ? "open" : "closed";
-}
 
 function isIndeterminate(checked?: CheckedState): checked is "indeterminate" {
   return checked === "indeterminate";

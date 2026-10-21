@@ -74,7 +74,7 @@ const SwitchProvider: Component<ScopedProps<SwitchProviderInternalProps>> = (pro
   const [checked, setChecked] = useControllableState({
     prop: () => props.checked,
     defaultProp: props.defaultChecked ?? false,
-    onChange: props.onCheckedChange,
+    onChange: (next) => props.onCheckedChange?.(next),
     caller: SWITCH_NAME,
   });
   const [control, setControl] = createSignal<HTMLButtonElement | null>(null);

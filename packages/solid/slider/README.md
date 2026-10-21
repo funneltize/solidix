@@ -2,6 +2,8 @@
 
 Slider primitive. Port of `@radix-ui/react-slider`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Slider page (`#/slider` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - Thumb membership uses the new (`unstable_`) collection instead of the legacy

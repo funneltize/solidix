@@ -2,6 +2,8 @@
 
 Unique id hook. Port of `@radix-ui/react-id`.
 
+Stable unique IDs for ARIA linkage (`aria-controls`/`id`); SSR determinism is best-effort until Solid 2 stable re-verify.
+
 ## Differences from Radix
 
 - Built on Solid's `createUniqueId` (hydration-safe), so no layout-effect dance is needed.

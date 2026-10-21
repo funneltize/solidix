@@ -77,19 +77,20 @@ const PasswordToggleField: Component<ScopedProps<PasswordToggleFieldProps>> = (p
   const syncInputId = (providedId: string | number | false | undefined) =>
     setInputIdState(providedId == null || providedId === false ? null : String(providedId));
 
-  let onVisibilityChange = props.onVisibilityChange;
+  // Read at call time: `useControllableState` captures `onChange` once, so a
+  // setup-time read would freeze the first handler identity.
+  const getVisibilityChange = () =>
+    props.onVisibilityChange ??
+    ((props as Record<string, unknown>).onVisiblityChange as
+      | ((visible: boolean) => void)
+      | undefined);
   let shouldWarn = false;
   if (
-    !onVisibilityChange &&
+    !props.onVisibilityChange &&
     "onVisiblityChange" in props &&
     typeof (props as Record<string, unknown>).onVisiblityChange === "function"
   ) {
     shouldWarn = true;
-    onVisibilityChange = (props as Record<string, unknown>).onVisiblityChange as (
-      visible: boolean,
-    ) => void;
-  } else {
-    onVisibilityChange = props.onVisibilityChange;
   }
 
   if (IS_DEVELOPMENT) {
@@ -106,7 +107,7 @@ const PasswordToggleField: Component<ScopedProps<PasswordToggleFieldProps>> = (p
     caller: PASSWORD_TOGGLE_FIELD_NAME,
     prop: () => props.visible,
     defaultProp: props.defaultVisible ?? false,
-    onChange: onVisibilityChange,
+    onChange: (next) => getVisibilityChange()?.(next),
   });
 
   const inputRef: RefObject<HTMLInputElement | null> = { current: null };

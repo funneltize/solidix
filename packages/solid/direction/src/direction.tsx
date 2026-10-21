@@ -17,7 +17,7 @@ const DirectionContext = createContext<Direction | undefined>(undefined);
  * -----------------------------------------------------------------------------------------------*/
 
 interface DirectionProviderProps {
-  children?: JSX.Element;
+  children?: JSX.Element | undefined;
   dir: Direction;
 }
 /** Provides the text direction to descendant components. */

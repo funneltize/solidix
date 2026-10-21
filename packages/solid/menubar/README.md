@@ -5,6 +5,8 @@ Menubar primitive. Port of `@radix-ui/react-menubar`, composed on
 horizontal `@solidix/roving-focus` group over a `@solidix/collection` of
 triggers.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Menubar page (`#/menubar` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `MenubarPortal` nests `Presence` _inside_ the portal instead of around it

@@ -93,7 +93,7 @@ const Popover: Component<ScopedProps<PopoverProps>> = (props) => {
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: props.defaultOpen ?? false,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: POPOVER_NAME,
   });
 

@@ -92,3 +92,8 @@ export function getActiveElement(
 export function isFrame(element: Element): element is HTMLIFrameElement {
   return element.tagName === "IFRAME";
 }
+
+/** Maps an open flag to the `data-state` attribute value used across primitives. */
+export function getOpenState(open: boolean): "open" | "closed" {
+  return open ? "open" : "closed";
+}

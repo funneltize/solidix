@@ -56,7 +56,7 @@ const Collapsible: Component<ScopedProps<CollapsibleProps>> = (props) => {
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: props.defaultOpen ?? false,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: COLLAPSIBLE_NAME,
   });
 

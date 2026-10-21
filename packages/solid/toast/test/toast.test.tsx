@@ -39,6 +39,42 @@ describe("ref stability", () => {
   });
 });
 
+// Callbacks passed to `useCallbackRef` must stay fresh: Solid props freeze at
+// setup, so the port wraps `props.onX` in a stable closure that reads the prop
+// at call time instead of capturing the setup-time value.
+describe("callback freshness", () => {
+  afterEach(cleanup);
+
+  test("calls the latest onPause after the handler identity changes", async () => {
+    const firstPause = vi.fn();
+    const secondPause = vi.fn();
+    // Wrap: `createSignal(fn)` would invoke `fn` as a lazy initializer.
+    const [onPause, setOnPause] = createSignal<() => void>(() => firstPause);
+    render(() => (
+      <ToastProvider>
+        <Toast open duration={Infinity} onPause={onPause()} data-testid="toast">
+          <ToastTitle>Title</ToastTitle>
+        </Toast>
+        <ToastViewport data-testid="viewport" />
+      </ToastProvider>
+    ));
+
+    const viewport = (await screen.findByTestId("viewport")) as HTMLElement;
+    await screen.findByTestId("toast");
+    expect(firstPause).not.toHaveBeenCalled();
+
+    viewport.dispatchEvent(new CustomEvent("toast.viewportPause"));
+    await vi.waitFor(() => expect(firstPause).toHaveBeenCalledTimes(1));
+
+    setOnPause(() => secondPause);
+    flush();
+
+    viewport.dispatchEvent(new CustomEvent("toast.viewportPause"));
+    await vi.waitFor(() => expect(secondPause).toHaveBeenCalledTimes(1));
+    expect(firstPause).toHaveBeenCalledTimes(1);
+  });
+});
+
 // Regression test for https://github.com/radix-ui/primitives/issues/2906
 describe("escape key removal", () => {
   afterEach(cleanup);

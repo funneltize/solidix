@@ -3,6 +3,8 @@
 Escape key listener. Port of `@radix-ui/react-use-escape-keydown`
 (including the `@deprecated` status).
 
+Deprecated upstream (kept for parity); most consumers want `DismissableLayer` instead, which owns Escape handling with branch and IME awareness.
+
 ## Differences from Radix
 
 - Improvement over upstream: Escape during an IME composition (`isComposing`

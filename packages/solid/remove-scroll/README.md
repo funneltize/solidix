@@ -8,6 +8,8 @@ and stops wheel/touch scrolls outside the lock (and at scroll boundaries
 inside it) via capture listeners on the lock element plus non-passive document
 listeners. Nested locks stack; only the topmost decides.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)).
+
 ## Differences from react-remove-scroll
 
 - No SSR sidecar medium: the lock is purely client-side (effects don't run on

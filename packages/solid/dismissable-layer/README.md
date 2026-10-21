@@ -3,6 +3,8 @@
 Dismissable layer with outside interaction. Port of
 `@radix-ui/react-dismissable-layer`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)).
+
 ## Differences from Radix
 
 - Layer-stack updates (which Radix pushes through a `force({})` re-render)

@@ -2,6 +2,8 @@
 
 Props-slotting components. Port of `@radix-ui/react-slot`.
 
+This package is the `asChild` mechanism every primitive composes through; see the [Composition guide](../../../docs/composition.md).
+
 ## Differences from Radix
 
 Solid has no `cloneElement`, so `Slot` works imperatively: it resolves its

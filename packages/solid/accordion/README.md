@@ -2,6 +2,8 @@
 
 Accordion primitive. Port of `@radix-ui/react-accordion`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Accordion page (`#/accordion` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `AccordionTrigger` renders `aria-disabled="true"` (string) instead of a boolean

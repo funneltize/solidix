@@ -37,7 +37,9 @@ interface CollectionProps extends SlotProps {
     { collectionRef: { current: null }, itemMap: new Map() },
   );
 
-  const CollectionProvider: Component<{ children?: JSX.Element; scope: any }> = (props) => {
+  const CollectionProvider: Component<{ children?: JSX.Element | undefined; scope: any }> = (
+    props,
+  ) => {
     const ref: RefObject<CollectionElement | null> = { current: null };
     const itemMap: ContextValue["itemMap"] = new Map();
     return (

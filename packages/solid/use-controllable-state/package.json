@@ -1,6 +1,6 @@
 {
   "name": "@solidix/use-controllable-state",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Controlled/uncontrolled state hooks (port of @radix-ui/react-use-controllable-state).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

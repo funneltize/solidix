@@ -78,7 +78,7 @@ const Tabs: Component<ScopedProps<TabsProps>> = (props) => {
   const [value, setValue] = useControllableState({
     prop: () => props.value,
     defaultProp: props.defaultValue ?? "",
-    onChange: props.onValueChange,
+    onChange: (next) => props.onValueChange?.(next),
     caller: TABS_NAME,
   });
   const orientation = () => props.orientation ?? "horizontal";

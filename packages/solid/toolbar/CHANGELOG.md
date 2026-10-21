@@ -1,5 +1,20 @@
 # @solidix/toolbar
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/toggle-group@0.1.4
+  - @solidix/primitive@0.2.0
+  - @solidix/context@0.1.4
+  - @solidix/direction@0.1.4
+  - @solidix/roving-focus@0.1.4
+  - @solidix/separator@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes

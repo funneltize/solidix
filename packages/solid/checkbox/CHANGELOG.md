@@ -1,5 +1,19 @@
 # @solidix/checkbox
 
+## 0.1.4
+
+### Patch Changes
+
+- Roll out the README header template to every package: Solid API mapping with guide link, gallery docs-site route where a demo exists, and a `Differences from Radix` section (explicit parity statements for behavior-identical ports, no-counterpart notes for motion/funnel). Docs-only change.
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/primitive@0.2.0
+  - @solidix/context@0.1.4
+  - @solidix/presence@0.1.4
+  - @solidix/use-size@0.1.4
+  - @solidix/use-controllable-state@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes

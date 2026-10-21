@@ -1,5 +1,21 @@
 # @solidix/funnel
 
+## 0.3.1
+
+### Patch Changes
+
+- Add the missing `| undefined` suffix to optional props (`children`, `forceLegal`, `class`), per the repo's `exactOptionalPropertyTypes` convention. Types-only change; allows explicitly passing `undefined`.
+- Roll out the README header template to every package: Solid API mapping with guide link, gallery docs-site route where a demo exists, and a `Differences from Radix` section (explicit parity statements for behavior-identical ports, no-counterpart notes for motion/funnel). Docs-only change.
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/accordion@0.1.4
+  - @solidix/dialog@0.1.4
+  - @solidix/primitive@0.2.0
+  - @solidix/form@0.1.4
+  - @solidix/radio-group@0.1.4
+  - @solidix/aspect-ratio@0.1.4
+
 ## 0.3.0
 
 ### Minor Changes

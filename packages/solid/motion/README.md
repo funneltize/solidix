@@ -8,6 +8,8 @@ that run on the compositor, enter/exit lifecycles use `@starting-style` plus
 View Transitions API. The compiler and tokens have zero dependencies;
 `viewTransition` and `createSwipe` need Solid (peer) and the DOM.
 
+Pair with the [Animation guide](../../../docs/animation.md) for the Presence exit-tracking contract these recipes rely on. Docs site: Motion page (`#/motion` route) with live recipe demos.
+
 ```bash
 pnpm add jsr:@solidix/solidix
 ```
@@ -16,6 +18,10 @@ pnpm add jsr:@solidix/solidix
 import { createSpring, createSwipe, viewTransition } from "@solidix/solidix/motion";
 import "./springs.css"; // vendored copy, see below
 ```
+
+## Differences from Radix
+
+Not applicable: this package has no Radix counterpart (see [radix-baseline.md](../../../docs/radix-baseline.md)); the spring compiler, tokens, View Transitions helper, swipe gesture, and recipes are Solidix-original.
 
 ## Springs
 

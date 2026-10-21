@@ -4,6 +4,8 @@ Menu primitive. Port of `@radix-ui/react-menu`. This is the shared
 foundation that `@solidix/dropdown-menu`, `@solidix/context-menu`, and
 `@solidix/menubar` compose on, exactly as in Radix.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)).
+
 ## Differences from Radix
 
 - `MenuPortal` nests `Presence` _inside_ the portal instead of around it.

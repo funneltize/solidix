@@ -6,6 +6,8 @@ with proxied content, the measuring indicator, keyboard navigation across
 triggers and content (roving `FocusGroup`), link selection, and the
 focus-outside refinements (#3473) and ref stability (#3963).
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)). Docs site: Navigation Menu page (`#/navigation-menu` route) with a live demo and API reference.
+
 ## Differences from Radix
 
 - `class` replaces `className`; `ref` is a plain prop; `asChild` composes via

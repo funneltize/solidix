@@ -438,11 +438,11 @@ const Toast: Component<ScopedProps<ToastProps>> = (props) => {
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: props.defaultOpen ?? true,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: TOAST_NAME,
   });
-  const onPause = useCallbackRef(props.onPause);
-  const onResume = useCallbackRef(props.onResume);
+  const onPause = useCallbackRef(() => props.onPause?.());
+  const onResume = useCallbackRef(() => props.onResume?.());
   return (
     <Presence present={props.forceMount || open()}>
       <ToastImpl

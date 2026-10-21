@@ -489,8 +489,11 @@ const SelectValue: Component<ScopedProps<SelectValueProps>> = (props) => {
   // `props.children` read would re-instantiate the subtree on every flip.
   const resolvedChildren = children(() => props.children);
 
+  // Read presence from the memo, never from raw `props.children`: the getter
+  // re-instantiates the subtree (setup plus effects on detached nodes) on
+  // every read, and tracks signals read during instantiation.
   createEffect(
-    () => props.children !== undefined,
+    () => resolvedChildren() !== undefined,
     (hasChildren) => {
       context.onValueNodeHasChildrenChange(hasChildren);
     },

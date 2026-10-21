@@ -88,7 +88,7 @@ const DropdownMenu: Component<ScopedProps<DropdownMenuProps>> = (props) => {
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: props.defaultOpen ?? false,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: DROPDOWN_MENU_NAME,
   });
   const modal = () => props.modal ?? true;
@@ -384,7 +384,7 @@ const DropdownMenuSub: Component<ScopedProps<DropdownMenuSubProps>> = (props) =>
   const [open, setOpen] = useControllableState({
     prop: () => props.open,
     defaultProp: props.defaultOpen ?? false,
-    onChange: props.onOpenChange,
+    onChange: (next) => props.onOpenChange?.(next),
     caller: "DropdownMenuSub",
   });
 

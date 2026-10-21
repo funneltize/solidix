@@ -2,6 +2,8 @@
 
 Positioning primitives. Port of `@radix-ui/react-popper`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)).
+
 ## Differences from Radix
 
 - Built on the framework-agnostic `@floating-ui/dom` (`computePosition` +

@@ -1,5 +1,46 @@
 # solidix
 
+## 0.1.5
+
+### Patch Changes
+
+- Roll out the README header template to every package: Solid API mapping with guide link, gallery docs-site route where a demo exists, and a `Differences from Radix` section (explicit parity statements for behavior-identical ports, no-counterpart notes for motion/funnel). Docs-only change.
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/toast@0.1.4
+  - @solidix/navigation-menu@0.1.4
+  - @solidix/scroll-area@0.1.4
+  - @solidix/select@0.1.4
+  - @solidix/accordion@0.1.4
+  - @solidix/dropdown-menu@0.1.4
+  - @solidix/context-menu@0.1.4
+  - @solidix/menubar@0.1.4
+  - @solidix/tabs@0.1.4
+  - @solidix/hover-card@0.1.4
+  - @solidix/toggle-group@0.1.4
+  - @solidix/toggle@0.1.4
+  - @solidix/dialog@0.1.4
+  - @solidix/popover@0.1.4
+  - @solidix/collapsible@0.1.4
+  - @solidix/switch@0.1.4
+  - @solidix/password-toggle-field@0.1.4
+  - @solidix/funnel@0.3.1
+  - @solidix/alert-dialog@0.1.4
+  - @solidix/checkbox@0.1.4
+  - @solidix/form@0.1.4
+  - @solidix/one-time-password-field@0.1.4
+  - @solidix/radio-group@0.1.4
+  - @solidix/slider@0.1.4
+  - @solidix/tooltip@0.1.4
+  - @solidix/avatar@0.1.4
+  - @solidix/toolbar@0.1.4
+  - @solidix/aspect-ratio@0.1.4
+  - @solidix/label@0.1.4
+  - @solidix/progress@0.1.4
+  - @solidix/separator@0.1.4
+
 ## 0.1.4
 
 ### Patch Changes

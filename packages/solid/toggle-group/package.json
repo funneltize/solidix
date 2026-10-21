@@ -1,6 +1,6 @@
 {
   "name": "@solidix/toggle-group",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "ToggleGroup primitive (port of @radix-ui/react-toggle-group).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

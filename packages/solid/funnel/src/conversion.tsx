@@ -759,7 +759,7 @@ function isBadgeName(value: unknown): value is FooterBadgeIcon {
 
 const FooterAnchor: Component<{
   link: FooterLink;
-  forceLegal?: boolean;
+  forceLegal?: boolean | undefined;
   part?: string | undefined;
   partIndex?: number | string | undefined;
 }> = (props) => {

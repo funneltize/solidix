@@ -2,6 +2,8 @@
 
 Focus trapping and looping. Port of `@radix-ui/react-focus-scope`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)).
+
 ## Differences from Radix
 
 - Container, branch, and callback state use signals and lazy prop reads

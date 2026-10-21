@@ -2,6 +2,8 @@
 
 Roving tabindex group. Port of `@radix-ui/react-roving-focus`.
 
+Solid API mapping: `class` for `className`; `ref` is a plain prop; `asChild` composes via `@solidix/slot` (see the [Composition guide](../../../docs/composition.md)).
+
 ## Differences from Radix
 
 - The group context carries `currentTabStopId` as an accessor (internal
