@@ -1,6 +1,6 @@
 {
   "name": "@solidix/context",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Context factories with scopes (port of @radix-ui/react-context).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

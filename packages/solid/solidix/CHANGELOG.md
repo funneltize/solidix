@@ -1,5 +1,47 @@
 # solidix
 
+## 0.1.2
+
+### Patch Changes
+
+- Document every exported value with JSDoc and inject @module headers at staging for the JSR docs score. Comments only, no behavior change.
+- 0d802dd: Bump the Solid 2 toolchain pins from rc.15 to rc.16 (`solid-js` and `@solidjs/web` exact pins plus the peer ranges). No API changes; the full gate suite (format, lint, typecheck, test, build) passes on rc.16, including the Slot, Presence, `For`, and accordion keyed-reorder coverage affected by the upstream insert-effect timing and keyed-reconciler changes.
+- Updated dependencies [0715acf]
+- Updated dependencies
+- Updated dependencies [2abf03d]
+- Updated dependencies [0d802dd]
+  - @solidix/funnel@0.2.0
+  - @solidix/accordion@0.1.2
+  - @solidix/alert-dialog@0.1.2
+  - @solidix/aspect-ratio@0.1.2
+  - @solidix/avatar@0.1.2
+  - @solidix/checkbox@0.1.2
+  - @solidix/collapsible@0.1.2
+  - @solidix/context-menu@0.1.2
+  - @solidix/dialog@0.1.2
+  - @solidix/dropdown-menu@0.1.2
+  - @solidix/form@0.1.2
+  - @solidix/hover-card@0.1.2
+  - @solidix/label@0.1.2
+  - @solidix/menubar@0.1.2
+  - @solidix/navigation-menu@0.1.2
+  - @solidix/one-time-password-field@0.1.2
+  - @solidix/password-toggle-field@0.1.2
+  - @solidix/popover@0.1.2
+  - @solidix/progress@0.1.2
+  - @solidix/radio-group@0.1.2
+  - @solidix/scroll-area@0.1.2
+  - @solidix/select@0.1.2
+  - @solidix/separator@0.1.2
+  - @solidix/slider@0.1.2
+  - @solidix/switch@0.1.2
+  - @solidix/tabs@0.1.2
+  - @solidix/toast@0.1.2
+  - @solidix/toggle@0.1.2
+  - @solidix/toggle-group@0.1.2
+  - @solidix/toolbar@0.1.2
+  - @solidix/tooltip@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes

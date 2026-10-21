@@ -1,5 +1,20 @@
 # @solidix/toolbar
 
+## 0.1.2
+
+### Patch Changes
+
+- Document every exported value with JSDoc and inject @module headers at staging for the JSR docs score. Comments only, no behavior change.
+- 0d802dd: Bump the Solid 2 toolchain pins from rc.15 to rc.16 (`solid-js` and `@solidjs/web` exact pins plus the peer ranges). No API changes; the full gate suite (format, lint, typecheck, test, build) passes on rc.16, including the Slot, Presence, `For`, and accordion keyed-reorder coverage affected by the upstream insert-effect timing and keyed-reconciler changes.
+- Updated dependencies
+- Updated dependencies [0d802dd]
+  - @solidix/context@0.1.2
+  - @solidix/direction@0.1.2
+  - @solidix/primitive@0.1.2
+  - @solidix/roving-focus@0.1.2
+  - @solidix/separator@0.1.2
+  - @solidix/toggle-group@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes

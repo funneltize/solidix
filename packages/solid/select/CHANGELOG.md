@@ -1,5 +1,34 @@
 # @solidix/select
 
+## 0.1.2
+
+### Patch Changes
+
+- Document every exported value with JSDoc and inject @module headers at staging for the JSR docs score. Comments only, no behavior change.
+- 2abf03d: Match the upstream select 2.4.1 export surface: `Provider` and `BubbleInput` are now exported under their `unstable_` aliases (`unstable_SelectProvider`, `unstable_SelectBubbleInput`, `unstable_Provider`, `unstable_BubbleInput`, plus the `unstable_`-suffixed prop types), and internal position types are no longer re-exported from the package root. No behavior changes.
+- 0d802dd: Bump the Solid 2 toolchain pins from rc.15 to rc.16 (`solid-js` and `@solidjs/web` exact pins plus the peer ranges). No API changes; the full gate suite (format, lint, typecheck, test, build) passes on rc.16, including the Slot, Presence, `For`, and accordion keyed-reorder coverage affected by the upstream insert-effect timing and keyed-reconciler changes.
+- Updated dependencies
+- Updated dependencies [0d802dd]
+  - @solidix/number@0.1.2
+  - @solidix/collection@0.1.2
+  - @solidix/compose-refs@0.1.2
+  - @solidix/context@0.1.2
+  - @solidix/direction@0.1.2
+  - @solidix/dismissable-layer@0.1.2
+  - @solidix/focus-guards@0.1.2
+  - @solidix/focus-scope@0.1.2
+  - @solidix/id@0.1.2
+  - @solidix/popper@0.1.2
+  - @solidix/portal@0.1.2
+  - @solidix/presence@0.1.2
+  - @solidix/primitive@0.1.2
+  - @solidix/remove-scroll@0.1.2
+  - @solidix/slot@0.1.2
+  - @solidix/use-callback-ref@0.1.2
+  - @solidix/use-controllable-state@0.1.2
+  - @solidix/use-layout-effect@0.1.2
+  - @solidix/visually-hidden@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes

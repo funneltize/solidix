@@ -1,6 +1,6 @@
 {
   "name": "@solidix/use-is-hydrated",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Hydration-state accessor (port of @radix-ui/react-use-is-hydrated).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

@@ -1,6 +1,6 @@
 {
   "name": "@solidix/scroll-area",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Scroll Area primitive (port of @radix-ui/react-scroll-area).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

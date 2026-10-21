@@ -1,5 +1,11 @@
 # @solidix/number
 
+## 0.1.2
+
+### Patch Changes
+
+- Document every exported value with JSDoc and inject @module headers at staging for the JSR docs score. Comments only, no behavior change.
+
 ## 0.1.1
 
 ### Patch Changes

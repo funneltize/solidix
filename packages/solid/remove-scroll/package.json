@@ -1,6 +1,6 @@
 {
   "name": "@solidix/remove-scroll",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "RemoveScroll primitive (port of react-remove-scroll).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
