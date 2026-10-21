@@ -56,6 +56,7 @@ type PrimitivePropsWithRef<E extends (typeof NODES)[number]> = Omit<
  * Primitive
  * -----------------------------------------------------------------------------------------------*/
 
+/** Map of unstyled element components (`Primitive.div`, `Primitive.button`, ...) with `asChild` slot support. */
 /* @__NO_SIDE_EFFECTS__ */ const Primitive = NODES.reduce((primitive, node) => {
   const Slot = createSlot(`Primitive.${node}`);
   const Node: Component<any> = (props: any) => {

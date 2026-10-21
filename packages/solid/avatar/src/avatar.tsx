@@ -20,6 +20,7 @@ import { useCallbackRef } from "@solidix/use-callback-ref";
 const AVATAR_NAME = "Avatar";
 
 type ScopedProps<P> = P & { __scopeAvatar?: Scope | undefined };
+/** Creates the avatar context and composes its scope subtree. */
 const [createAvatarContext, createAvatarScope] = createContextScope(AVATAR_NAME);
 
 const ImageLoadingStatus = {
@@ -44,6 +45,7 @@ const [AvatarProvider, useAvatarContext] = createAvatarContext<AvatarContextValu
 
 type AvatarProps = PrimitivePropsWithRef<"span">;
 
+/** Root wrapper that provides image loading status to image and fallback. */
 const Avatar: Component<ScopedProps<AvatarProps>> = (props) => {
   const rest = omit(props, "__scopeAvatar", "ref");
   const [imageLoadingStatus, setImageLoadingStatus] = createSignal<ImageLoadingStatus>(
@@ -77,6 +79,7 @@ type AvatarImageProps = Omit<PrimitivePropsWithRef<"img">, "src"> & {
     | undefined;
 };
 
+/** Image that renders only once its source has loaded successfully. */
 const AvatarImage: Component<ScopedProps<AvatarImageProps>> = (props) => {
   const rest = omit(props, "__scopeAvatar", "src", "onLoadingStatusChange", "ref");
   const context = useAvatarContext(IMAGE_NAME, props.__scopeAvatar);
@@ -121,6 +124,7 @@ type AvatarFallbackProps = PrimitivePropsWithRef<"span"> & {
   delayMs?: number | undefined;
 };
 
+/** Fallback shown after a delay when the image has not loaded. */
 const AvatarFallback: Component<ScopedProps<AvatarFallbackProps>> = (props) => {
   const rest = omit(props, "__scopeAvatar", "delayMs", "ref");
   const context = useAvatarContext(FALLBACK_NAME, props.__scopeAvatar);

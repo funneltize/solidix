@@ -40,6 +40,7 @@ const ARROW_KEYS = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 const RADIO_GROUP_NAME = "RadioGroup";
 
 type ScopedProps<P> = P & { __scopeRadioGroup?: Scope | undefined };
+/** Creates a radio group scope for nesting multiple independent radio groups. */
 const [createRadioGroupContext, createRadioGroupScope] = createContextScope(RADIO_GROUP_NAME, [
   createRovingFocusGroupScope,
   createRadioScope,
@@ -73,6 +74,7 @@ type RadioGroupProps = PrimitivePropsWithRef<"div"> & {
   onValueChange?: RadioGroupContextValue["onValueChange"] | undefined;
 };
 
+/** The root container that manages the selected value across its radio items. */
 const RadioGroup: Component<ScopedProps<RadioGroupProps>> = (props) => {
   const rest = omit(
     props,
@@ -168,6 +170,7 @@ type RadioGroupItemProviderInternalProps = RadioGroupItemProviderProps & {
   internal_do_not_use_render?: ((context: RadioContextValue) => JSX.Element) | undefined;
 };
 
+/** Provides the radio item context for composing a custom radio item. */
 const RadioGroupItemProvider: Component<ScopedProps<RadioGroupItemProviderInternalProps>> = (
   props,
 ) => {
@@ -199,6 +202,7 @@ const RadioGroupItemProvider: Component<ScopedProps<RadioGroupItemProviderIntern
 type RadioGroupItemTriggerElement = HTMLButtonElement;
 type RadioGroupItemTriggerProps = RadioTriggerProps;
 
+/** The button that selects the radio item when activated. */
 const RadioGroupItemTrigger: Component<ScopedProps<RadioGroupItemTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeRadioGroup", "onKeyDown", "onFocus", "ref");
   const rovingFocusGroupScope = useRovingFocusGroupScope(props.__scopeRadioGroup);
@@ -275,6 +279,7 @@ type RadioGroupItemProps = Omit<RadioProps, "onCheck" | "name"> & {
   value: string;
 };
 
+/** A single selectable radio button within the group. */
 const RadioGroupItem: Component<ScopedProps<RadioGroupItemProps>> = (props) => {
   const rest = omit(props, "__scopeRadioGroup", "value", "disabled", "ref");
 
@@ -305,6 +310,7 @@ const RadioGroupItem: Component<ScopedProps<RadioGroupItemProps>> = (props) => {
 
 type RadioGroupItemBubbleInputProps = RadioBubbleInputProps;
 
+/** The hidden native input that syncs the radio item value with forms. */
 const RadioGroupItemBubbleInput: Component<ScopedProps<RadioGroupItemBubbleInputProps>> = (
   props,
 ) => {
@@ -319,6 +325,7 @@ const RadioGroupItemBubbleInput: Component<ScopedProps<RadioGroupItemBubbleInput
 
 type RadioGroupIndicatorProps = RadioIndicatorProps;
 
+/** The visual element rendered inside the radio item when it is checked. */
 const RadioGroupIndicator: Component<ScopedProps<RadioGroupIndicatorProps>> = (props) => {
   const rest = omit(props, "__scopeRadioGroup", "ref");
   const radioScope = useRadioScope(props.__scopeRadioGroup);

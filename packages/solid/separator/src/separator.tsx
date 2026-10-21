@@ -27,6 +27,7 @@ type SeparatorProps = PrimitivePropsWithRef<"div"> & {
   decorative?: boolean | undefined;
 };
 
+/** Renders a horizontal or vertical divider that separates content sections. */
 const Separator: Component<SeparatorProps> = (props) => {
   const rest = omit(props, "decorative", "orientation", "ref");
   const orientation = () => {

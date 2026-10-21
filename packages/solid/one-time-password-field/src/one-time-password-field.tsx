@@ -215,6 +215,7 @@ type ScopedProps<P> = P & { __scopeOneTimePasswordField?: Scope | undefined };
 type OneTimePasswordFieldProps = OneTimePasswordFieldOwnProps &
   Omit<PrimitivePropsWithRef<"div">, keyof OneTimePasswordFieldOwnProps>;
 
+/** Root provider holding the code value shared by the OTP field inputs. */
 const OneTimePasswordField: Component<ScopedProps<OneTimePasswordFieldProps>> = (props) => {
   const domProps = omit(
     props,
@@ -550,6 +551,7 @@ type OneTimePasswordFieldHiddenInputProps = Omit<
   | "autofocus"
 >;
 
+/** Hidden form input carrying the full OTP code value for submission. */
 const OneTimePasswordFieldHiddenInput: Component<
   ScopedProps<OneTimePasswordFieldHiddenInputProps>
 > = (props) => {
@@ -609,6 +611,7 @@ type OneTimePasswordFieldInputProps = Omit<
   index?: number | undefined;
 };
 
+/** Single-character OTP input with roving focus, paste, and auto-submit support. */
 const OneTimePasswordFieldInput: Component<ScopedProps<OneTimePasswordFieldInputProps>> = (
   props,
 ) => {

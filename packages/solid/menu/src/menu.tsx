@@ -70,6 +70,9 @@ const [Collection, useCollection, createCollectionScope] = createCollection<
 >(MENU_NAME);
 
 type ScopedProps<P> = P & { __scopeMenu?: Scope | undefined };
+/**
+ * `createMenuScope` creates a scope for composing `Menu` parts with other Solidix primitives.
+ */
 const [createMenuContext, createMenuScope] = createContextScope(MENU_NAME, [
   createCollectionScope,
   createPopperScope,
@@ -104,6 +107,9 @@ type MenuProps = {
   modal?: boolean | undefined;
 };
 
+/**
+ * `Menu` contains all of the parts of a menu.
+ */
 const Menu: Component<ScopedProps<MenuProps>> = (props) => {
   const popperScope = usePopperScope(props.__scopeMenu);
   const [content, setContent] = createSignal<MenuContentElement | null>(null);
@@ -178,6 +184,9 @@ const Menu: Component<ScopedProps<MenuProps>> = (props) => {
 
 type MenuAnchorProps = PopperAnchorProps;
 
+/**
+ * `MenuAnchor` is an optional element to position the `MenuContent` against.
+ */
 const MenuAnchor: Component<ScopedProps<MenuAnchorProps>> = (props) => {
   const rest = omit(props, "__scopeMenu", "ref");
   const popperScope = usePopperScope(props.__scopeMenu);
@@ -208,6 +217,9 @@ type MenuPortalProps = {
   forceMount?: true | undefined;
 };
 
+/**
+ * `MenuPortal` portals the content parts into the `body` when used.
+ */
 const MenuPortal: Component<ScopedProps<MenuPortalProps>> = (props) => {
   const context = useMenuContext(PORTAL_NAME, props.__scopeMenu);
   // NOTE: Radix nests the portal inside `Presence`; Solidix inverts this.
@@ -255,6 +267,9 @@ type MenuContentProps = MenuRootContentTypeProps & {
   forceMount?: true | undefined;
 };
 
+/**
+ * `MenuContent` is the component that pops out when the menu is open.
+ */
 const MenuContent: Component<ScopedProps<MenuContentProps>> = (props) => {
   const rest = omit(props, "forceMount", "ref");
   const portalContext = usePortalContext(CONTENT_NAME, props.__scopeMenu);
@@ -637,6 +652,9 @@ const MenuContentImpl: Component<ScopedProps<MenuContentImplProps>> = (props) =>
 
 type MenuGroupProps = PrimitivePropsWithRef<"div">;
 
+/**
+ * `MenuGroup` is used to group multiple `MenuItem`s.
+ */
 const MenuGroup: Component<ScopedProps<MenuGroupProps>> = (props) => {
   const rest = omit(props, "__scopeMenu", "ref");
   return <Primitive.div role="group" {...rest} ref={props.ref} />;
@@ -648,6 +666,9 @@ const MenuGroup: Component<ScopedProps<MenuGroupProps>> = (props) => {
 
 type MenuLabelProps = PrimitivePropsWithRef<"div">;
 
+/**
+ * `MenuLabel` is used to render a label. It won't be focusable using arrow keys.
+ */
 const MenuLabel: Component<ScopedProps<MenuLabelProps>> = (props) => {
   const rest = omit(props, "__scopeMenu", "ref");
   return <Primitive.div {...rest} ref={props.ref} />;
@@ -664,6 +685,9 @@ type MenuItemProps = MenuItemImplProps & {
   onSelect?: ((event: Event) => void) | undefined;
 };
 
+/**
+ * `MenuItem` is a selectable item in the menu.
+ */
 const MenuItem: Component<ScopedProps<MenuItemProps>> = (props) => {
   const rest = omit(props, "disabled", "onSelect", "ref");
   const disabled = () => props.disabled ?? false;
@@ -831,6 +855,9 @@ type MenuCheckboxItemProps = MenuItemProps & {
   onCheckedChange?: { bivarianceHack(checked: boolean): void }["bivarianceHack"] | undefined;
 };
 
+/**
+ * `MenuCheckboxItem` is an item that can be controlled and rendered like a checkbox.
+ */
 const MenuCheckboxItem: Component<ScopedProps<MenuCheckboxItemProps>> = (props) => {
   const rest = omit(props, "checked", "onCheckedChange", "ref");
   const checked = () => props.checked ?? false;
@@ -874,6 +901,9 @@ type MenuRadioGroupProps = MenuGroupProps & {
   onValueChange?: { bivarianceHack(value: string): void }["bivarianceHack"] | undefined;
 };
 
+/**
+ * `MenuRadioGroup` is used to group multiple `MenuRadioItem`s.
+ */
 const MenuRadioGroup: Component<ScopedProps<MenuRadioGroupProps>> = (props) => {
   const rest = omit(props, "value", "onValueChange", "ref");
   const handleValueChange = useCallbackRef((value: string) => {
@@ -900,6 +930,9 @@ type MenuRadioItemProps = MenuItemProps & {
   value: string;
 };
 
+/**
+ * `MenuRadioItem` is an item that can be controlled and rendered like a radio.
+ */
 const MenuRadioItem: Component<ScopedProps<MenuRadioItemProps>> = (props) => {
   const rest = omit(props, "value", "ref");
   const context = useRadioGroupContext(RADIO_ITEM_NAME, props.__scopeMenu);
@@ -943,6 +976,9 @@ type MenuItemIndicatorProps = PrimitivePropsWithRef<"span"> & {
   forceMount?: true | undefined;
 };
 
+/**
+ * `MenuItemIndicator` renders when the parent `MenuCheckboxItem` or `MenuRadioItem` is checked.
+ */
 const MenuItemIndicator: Component<ScopedProps<MenuItemIndicatorProps>> = (props) => {
   const rest = omit(props, "__scopeMenu", "forceMount", "ref");
   const indicatorContext = useItemIndicatorContext(ITEM_INDICATOR_NAME, props.__scopeMenu);
@@ -962,6 +998,9 @@ const MenuItemIndicator: Component<ScopedProps<MenuItemIndicatorProps>> = (props
 
 type MenuSeparatorProps = PrimitivePropsWithRef<"div">;
 
+/**
+ * `MenuSeparator` is used to visually separate items in a menu.
+ */
 const MenuSeparator: Component<ScopedProps<MenuSeparatorProps>> = (props) => {
   const rest = omit(props, "__scopeMenu", "ref");
   return <Primitive.div role="separator" aria-orientation="horizontal" {...rest} ref={props.ref} />;
@@ -973,6 +1012,9 @@ const MenuSeparator: Component<ScopedProps<MenuSeparatorProps>> = (props) => {
 
 type MenuArrowProps = PopperArrowProps;
 
+/**
+ * `MenuArrow` is an optional arrow element to render alongside the menu, visually linking the trigger with the content.
+ */
 const MenuArrow: Component<ScopedProps<MenuArrowProps>> = (props) => {
   const rest = omit(props, "__scopeMenu", "ref");
   const popperScope = usePopperScope(props.__scopeMenu);
@@ -1000,6 +1042,9 @@ type MenuSubProps = {
   onOpenChange?: { bivarianceHack(open: boolean): void }["bivarianceHack"] | undefined;
 };
 
+/**
+ * `MenuSub` contains all of the parts of a submenu.
+ */
 const MenuSub: Component<ScopedProps<MenuSubProps>> = (props) => {
   const parentMenuContext = useMenuContext(SUB_NAME, props.__scopeMenu);
   const popperScope = usePopperScope(props.__scopeMenu);
@@ -1056,6 +1101,9 @@ const SUB_TRIGGER_NAME = "MenuSubTrigger";
 type MenuSubTriggerElement = MenuItemImplElement;
 type MenuSubTriggerProps = MenuItemImplProps;
 
+/**
+ * `MenuSubTrigger` is an item that opens a submenu. It must be rendered inside `MenuSub`.
+ */
 const MenuSubTrigger: Component<ScopedProps<MenuSubTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeMenu", "ref");
   const context = useMenuContext(SUB_TRIGGER_NAME, props.__scopeMenu);
@@ -1212,6 +1260,9 @@ type MenuSubContentProps = Omit<
   align?: Exclude<NonNullable<PopperContentProps["align"]>, "center"> | undefined;
 };
 
+/**
+ * `MenuSubContent` is the component that pops out when a submenu is open. It must be rendered inside `MenuSub`.
+ */
 const MenuSubContent: Component<ScopedProps<MenuSubContentProps>> = (props) => {
   const rest = omit(props, "forceMount", "align", "ref");
   const portalContext = usePortalContext(CONTENT_NAME, props.__scopeMenu);

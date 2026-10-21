@@ -27,6 +27,7 @@ const [Collection, useCollection, createCollectionScope] = createCollection<
 >(GROUP_NAME);
 
 type ScopedProps<P> = P & { __scopeRovingFocusGroup?: Scope | undefined };
+/** Creates the context and scope factories for the roving focus group. */
 const [createRovingFocusGroupContext, createRovingFocusGroupScope] = createContextScope(
   GROUP_NAME,
   [createCollectionScope],
@@ -76,6 +77,7 @@ const [RovingFocusProvider, useRovingFocusContext] =
 type RovingFocusGroupElement = HTMLDivElement;
 interface RovingFocusGroupProps extends RovingFocusGroupImplProps {}
 
+/** Groups focusable items so exactly one is in the tab order with arrow-key movement. */
 const RovingFocusGroup: Component<ScopedProps<RovingFocusGroupProps>> = (props) => {
   return (
     <Collection.Provider scope={props.__scopeRovingFocusGroup}>
@@ -230,6 +232,7 @@ interface RovingFocusItemProps extends Omit<PrimitivePropsWithRef<"span">, "chil
     | undefined;
 }
 
+/** Registers a focusable item in the roving focus group and manages its tab stop. */
 const RovingFocusGroupItem: Component<ScopedProps<RovingFocusItemProps>> = (props) => {
   const rest = omit(
     props,

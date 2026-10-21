@@ -32,6 +32,7 @@ let originalBodyUserSelect: string;
 const HOVERCARD_NAME = "HoverCard";
 
 type ScopedProps<P> = P & { __scopeHoverCard?: Scope | undefined };
+/** Creates a scope so composed `HoverCard` parts resolve their own contexts. */
 const [createHoverCardContext, createHoverCardScope] = createContextScope(HOVERCARD_NAME, [
   createPopperScope,
 ]);
@@ -59,6 +60,7 @@ type HoverCardProps = {
   closeDelay?: number | undefined;
 };
 
+/** `HoverCard` contains the open state shared by all hover-card parts. */
 const HoverCard: Component<ScopedProps<HoverCardProps>> = (props) => {
   const popperScope = usePopperScope(props.__scopeHoverCard);
   let openTimer = 0;
@@ -117,6 +119,7 @@ const TRIGGER_NAME = "HoverCardTrigger";
 
 type HoverCardTriggerProps = PrimitivePropsWithRef<"a">;
 
+/** `HoverCardTrigger` is the link that shows the card on hover or focus. */
 const HoverCardTrigger: Component<ScopedProps<HoverCardTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeHoverCard", "ref");
   const context = useHoverCardContext(TRIGGER_NAME, props.__scopeHoverCard);
@@ -177,6 +180,7 @@ type HoverCardPortalProps = {
   forceMount?: true | undefined;
 };
 
+/** `HoverCardPortal` portals the hover-card content outside the DOM hierarchy. */
 const HoverCardPortal: Component<ScopedProps<HoverCardPortalProps>> = (props) => {
   const context = useHoverCardContext(PORTAL_NAME, props.__scopeHoverCard);
   // NOTE: Radix nests the portal inside `Presence`; Solidix inverts this.
@@ -207,6 +211,7 @@ type HoverCardContentProps = HoverCardContentImplProps & {
   forceMount?: true | undefined;
 };
 
+/** `HoverCardContent` is the card that appears when the hover card is open. */
 const HoverCardContent: Component<ScopedProps<HoverCardContentProps>> = (props) => {
   const rest = omit(props, "forceMount", "ref");
   const portalContext = usePortalContext(CONTENT_NAME, props.__scopeHoverCard);
@@ -393,6 +398,7 @@ const HoverCardContentImpl: Component<ScopedProps<HoverCardContentImplProps>> = 
 
 type HoverCardArrowProps = PopperArrowProps;
 
+/** `HoverCardArrow` is the arrow pointing at the hover-card trigger. */
 const HoverCardArrow: Component<ScopedProps<HoverCardArrowProps>> = (props) => {
   const rest = omit(props, "__scopeHoverCard", "ref");
   const popperScope = usePopperScope(props.__scopeHoverCard);

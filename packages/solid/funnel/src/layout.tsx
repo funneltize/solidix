@@ -23,6 +23,7 @@ type SectionProps = FunnelElementProps<"section", HTMLElement> & {
   compact?: boolean | undefined;
 };
 
+/** Full-bleed section band with a tone and vertical rhythm for stacking page chapters. */
 const Section: Component<SectionProps> = (props) => {
   const rest = omit(props, "tone", "compact", "class", "ref");
   return (
@@ -51,6 +52,7 @@ type ContainerProps = PrimitivePropsWithRef<"div"> & {
   size?: ContainerSize | undefined;
 };
 
+/** Centered measure wrapper; `size` picks the wide/standard/reading tier. */
 const Container: Component<ContainerProps> = (props) => {
   const rest = omit(props, "size", "class", "ref");
   return (
@@ -70,6 +72,7 @@ const Container: Component<ContainerProps> = (props) => {
 
 type EyebrowProps = PrimitivePropsWithRef<"p">;
 
+/** Small-caps kicker label rendered above a section heading. */
 const Eyebrow: Component<EyebrowProps> = (props) => {
   const rest = omit(props, "class", "ref");
   const editable = useFunnelEditable();
@@ -97,6 +100,7 @@ type SectionHeadingProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   align?: "center" | "left" | undefined;
 };
 
+/** Centered eyebrow/title/description heading block for a section. */
 const SectionHeading: Component<SectionHeadingProps> = (props) => {
   const rest = omit(props, "eyebrow", "title", "description", "align", "class", "ref");
   const editable = useFunnelEditable();
@@ -181,6 +185,7 @@ type HeaderProps = FunnelElementProps<"header", HTMLElement> & {
   sticky?: boolean | undefined;
 };
 
+/** Slim brand bar with wordmark, nav links, and CTA; scrolls away on mobile in favor of the sticky bar. */
 const Header: Component<HeaderProps> = (props) => {
   const rest = omit(props, "brand", "cta", "sticky", "class", "ref");
   const brand = () => props.brand;

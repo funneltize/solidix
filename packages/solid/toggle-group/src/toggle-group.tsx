@@ -25,6 +25,7 @@ const ToggleGroupType = {
 type ToggleGroupType = (typeof ToggleGroupType)[keyof typeof ToggleGroupType];
 
 type ScopedProps<P> = P & { __scopeToggleGroup?: Scope | undefined };
+/** Creates the context and scope factories for the toggle group. */
 const [createToggleGroupContext, createToggleGroupScope] = createContextScope(TOGGLE_GROUP_NAME, [
   createRovingFocusGroupScope,
 ]);
@@ -37,6 +38,7 @@ interface ToggleGroupMultipleProps extends ToggleGroupImplMultipleProps {
   type: typeof ToggleGroupType.Multiple;
 }
 
+/** Renders a single-selection radiogroup or multi-selection toolbar of toggle items. */
 const ToggleGroup: Component<ScopedProps<ToggleGroupSingleProps | ToggleGroupMultipleProps>> = (
   props,
 ) => {
@@ -235,6 +237,7 @@ const ITEM_NAME = "ToggleGroupItem";
 
 interface ToggleGroupItemProps extends Omit<ToggleGroupItemImplProps, "pressed"> {}
 
+/** Renders a toggle item that reflects and updates the group's selected value. */
 const ToggleGroupItem: Component<ScopedProps<ToggleGroupItemProps>> = (props) => {
   const rest = omit(props, "__scopeToggleGroup", "ref");
   const valueContext = useToggleGroupValueContext(ITEM_NAME, props.__scopeToggleGroup);

@@ -7,6 +7,7 @@ import { Primitive, callEventHandler, type PrimitivePropsWithRef } from "@solidi
 
 type LabelProps = PrimitivePropsWithRef<"label">;
 
+/** Renders an accessible label that avoids selecting text on mousedown inside itself. */
 const Label: Component<LabelProps> = (props) => {
   const rest = omit(props, "onMouseDown", "ref");
   return (

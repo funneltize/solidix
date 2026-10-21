@@ -376,6 +376,7 @@ type PreventQueueEntry = {
   shadowParent: EventTarget | null;
 };
 
+/** Locks document scroll while mounted, restoring it on unmount. */
 const RemoveScroll: Component<RemoveScrollProps> = (props) => {
   const rest = omit(
     props,
@@ -641,6 +642,7 @@ const RemoveScroll: Component<RemoveScrollProps> = (props) => {
   );
 };
 
+/** RemoveScroll with the body-lock utility class names attached as `classNames`. */
 const RemoveScrollWithClassNames = Object.assign(RemoveScroll, {
   classNames: { fullWidth: fullWidthClassName, zeroRight: zeroRightClassName },
 });

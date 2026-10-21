@@ -15,6 +15,7 @@ import {
 const RADIO_NAME = "Radio";
 
 type ScopedProps<P> = P & { __scopeRadio?: Scope | undefined };
+/** Creates a radio scope for nesting multiple independent radios. */
 const [createRadioContext, createRadioScope] = createContextScope(RADIO_NAME);
 
 type RadioUserClick = {
@@ -38,6 +39,7 @@ type RadioContextValue = {
   onCheck(): void;
 };
 
+/** Reads the radio context for the closest radio provider. */
 const [RadioProviderImpl, useRadioContext] = createRadioContext<RadioContextValue>(RADIO_NAME);
 
 /* -------------------------------------------------------------------------------------------------
@@ -64,6 +66,7 @@ type RadioProviderInternalProps = RadioProviderProps & {
   internal_do_not_use_render?: ((context: RadioContextValue) => JSX.Element) | undefined;
 };
 
+/** Provides the radio context for composing a custom radio. */
 const RadioProvider: Component<ScopedProps<RadioProviderInternalProps>> = (props) => {
   const [control, setControl] = createSignal<HTMLButtonElement | null>(null);
   const [bubbleInput, setBubbleInput] = createSignal<HTMLInputElement | null>(null);
@@ -116,6 +119,7 @@ type RadioTriggerProps = Omit<PrimitivePropsWithRef<"button">, keyof RadioProvid
   children?: JSX.Element | undefined;
 };
 
+/** The button that checks the radio when activated. */
 const RadioTrigger: Component<ScopedProps<RadioTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeRadio", "onClick", "ref");
   const context = useRadioContext(TRIGGER_NAME, props.__scopeRadio);
@@ -179,6 +183,7 @@ type RadioProps = Omit<
   onCheck?: (() => void) | undefined;
 };
 
+/** A standalone radio button with managed checked state. */
 const Radio: Component<ScopedProps<RadioProps>> = (props) => {
   const rest = omit(
     props,
@@ -229,6 +234,7 @@ interface RadioIndicatorProps extends PrimitivePropsWithRef<"span"> {
   forceMount?: true | undefined;
 }
 
+/** The visual element rendered inside the radio when it is checked. */
 const RadioIndicator: Component<ScopedProps<RadioIndicatorProps>> = (props) => {
   const rest = omit(props, "__scopeRadio", "forceMount", "ref");
   const context = useRadioContext(INDICATOR_NAME, props.__scopeRadio);
@@ -254,6 +260,7 @@ type RadioBubbleInputProps = Omit<PrimitivePropsWithRef<"input">, "checked" | "s
   style?: JSX.CSSProperties | undefined;
 };
 
+/** The hidden native input that syncs the radio value with forms. */
 const RadioBubbleInput: Component<ScopedProps<RadioBubbleInputProps>> = (props) => {
   const rest = omit(props, "__scopeRadio", "onClick", "style", "ref");
   const context = useRadioContext(BUBBLE_INPUT_NAME, props.__scopeRadio);

@@ -10,6 +10,7 @@ interface UseControllableStateParams<T> {
   caller?: string | undefined;
 }
 
+/** Merges controlled and uncontrolled state with change notifications and dev-mode warnings. */
 export function useControllableState<T>({
   prop,
   defaultProp,

@@ -33,6 +33,7 @@ function StarRow(props: { count: number; filled: boolean }) {
   );
 }
 
+/** Star row rendering a numeric rating with an accessible label. */
 const StarRating: Component<StarRatingProps> = (props) => {
   const rest = omit(props, "value", "max", "label", "class", "ref");
   const editable = useFunnelEditable();
@@ -77,6 +78,7 @@ type LogoBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   logos: LogoBarLogo[];
 };
 
+/** Captioned strip of customer/press logos for authority-by-association. */
 const LogoBar: Component<LogoBarProps> = (props) => {
   const rest = omit(props, "caption", "logos", "class", "ref");
   const editable = useFunnelEditable();
@@ -200,6 +202,7 @@ function TestimonialCard(props: { item: Testimonial; index: number }) {
   );
 }
 
+/** Testimonial card grid with avatar, quote, and attribution. */
 const Testimonials: Component<TestimonialsProps> = (props) => {
   const rest = omit(props, "items", "class", "ref");
   return (
@@ -226,6 +229,7 @@ type TestimonialCarouselProps = Omit<PrimitivePropsWithRef<"div">, "children"> &
   label?: string | undefined;
 };
 
+/** Single-testimonial rotator with previous/next controls. */
 const TestimonialCarousel: Component<TestimonialCarouselProps> = (props) => {
   const rest = omit(props, "items", "label", "class", "ref");
   const [index, setIndex] = createSignal(0);
@@ -284,6 +288,7 @@ type StatsBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   stats: StatsBarStat[];
 };
 
+/** Row of headline statistics with labels. */
 const StatsBar: Component<StatsBarProps> = (props) => {
   const rest = omit(props, "stats", "class", "ref");
   const editable = useFunnelEditable();

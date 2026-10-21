@@ -61,6 +61,7 @@ type FocusScopeProps = PrimitivePropsWithRef<"div"> & {
   onUnmountAutoFocus?: { bivarianceHack(event: Event): void }["bivarianceHack"] | undefined;
 };
 
+/** Traps focus within its subtree while mounted and restores focus on cleanup. */
 const FocusScope: Component<FocusScopeProps> = (props) => {
   const rest = omit(
     props,
@@ -292,6 +293,7 @@ interface FocusScopeBranchProviderProps {
   children?: JSX.Element | undefined;
 }
 
+/** Provides a branch registry so nested focus layers register against the nearest trapped ancestor. */
 const FocusScopeBranchProvider: Component<FocusScopeBranchProviderProps> = (props) => {
   return props.registry ? (
     <FocusScopeBranchContext value={props.registry}>{props.children}</FocusScopeBranchContext>
@@ -300,6 +302,7 @@ const FocusScopeBranchProvider: Component<FocusScopeBranchProviderProps> = (prop
   );
 };
 
+/** Creates a registry that tracks branch nodes allowed inside a trapped focus scope. */
 function useFocusScopeBranchRegistry() {
   const [nodes, setNodes] = createSignal<HTMLElement[]>([]);
   const registry: FocusScopeBranchRegistry = {

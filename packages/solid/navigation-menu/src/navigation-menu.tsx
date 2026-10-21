@@ -76,6 +76,7 @@ const [FocusGroupCollection, useFocusGroupCollection, createFocusGroupCollection
   createCollection<FocusGroupItemElement, {}>(NAVIGATION_MENU_NAME);
 
 type ScopedProps<P> = P & { __scopeNavigationMenu?: Scope | undefined };
+/** Creates the context and scope factories shared by the navigation-menu parts. */
 const [createNavigationMenuContext, createNavigationMenuScope] = createContextScope(
   NAVIGATION_MENU_NAME,
   [createCollectionScope, createFocusGroupCollectionScope],
@@ -151,6 +152,7 @@ export interface NavigationMenuProps
   activationMode?: ActivationMode | undefined;
 }
 
+/** Root nav element owning menu value, timing, orientation, and direction state. */
 const NavigationMenu: Component<ScopedProps<NavigationMenuProps>> = (props) => {
   const rest = omit(
     props,
@@ -319,6 +321,7 @@ export interface NavigationMenuSubProps
   disableToggle?: boolean | undefined;
 }
 
+/** Submenu root providing an independent menu value, orientation, and activation context. */
 const NavigationMenuSub: Component<ScopedProps<NavigationMenuSubProps>> = (props) => {
   const rest = omit(
     props,
@@ -457,6 +460,7 @@ const LIST_NAME = "NavigationMenuList";
 type PrimitiveUnorderedListProps = PrimitivePropsWithRef<"ul">;
 export type NavigationMenuListProps = PrimitiveUnorderedListProps;
 
+/** List element holding the menu items, roving-tabindex managed at the root. */
 const NavigationMenuList: Component<ScopedProps<NavigationMenuListProps>> = (props) => {
   const rest = omit(props, "__scopeNavigationMenu", "ref");
   const context = useNavigationMenuContext(LIST_NAME, props.__scopeNavigationMenu);
@@ -504,6 +508,7 @@ export interface NavigationMenuItemProps extends PrimitiveListItemProps {
   value?: string | undefined;
 }
 
+/** Item wrapper providing its value and trigger/content refs to the menu machinery. */
 const NavigationMenuItem: Component<ScopedProps<NavigationMenuItemProps>> = (props) => {
   const rest = omit(props, "__scopeNavigationMenu", "value", "ref");
   const autoValue = useId();
@@ -559,6 +564,7 @@ type NavigationMenuTriggerElement = HTMLButtonElement;
 type PrimitiveButtonProps = PrimitivePropsWithRef<"button">;
 export type NavigationMenuTriggerProps = PrimitiveButtonProps;
 
+/** Button opening, closing, and announcing its item's content panel. */
 const NavigationMenuTrigger: Component<ScopedProps<NavigationMenuTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeNavigationMenu", "disabled", "ref");
   const context = useNavigationMenuContext(TRIGGER_NAME, props.__scopeNavigationMenu);
@@ -677,6 +683,7 @@ export interface NavigationMenuLinkProps extends Omit<PrimitiveLinkProps, "onSel
   onSelect?: { bivarianceHack(event: Event): void }["bivarianceHack"] | undefined;
 }
 
+/** Link dispatching a select event and closing root content on activation. */
 const NavigationMenuLink: Component<ScopedProps<NavigationMenuLinkProps>> = (props) => {
   const rest = omit(props, "__scopeNavigationMenu", "active", "onSelect", "ref");
 
@@ -727,6 +734,7 @@ export interface NavigationMenuIndicatorProps extends NavigationMenuIndicatorImp
   forceMount?: true | undefined;
 }
 
+/** Indicator tracking the active trigger position, positioned by live size reads. */
 const NavigationMenuIndicator: Component<ScopedProps<NavigationMenuIndicatorProps>> = (props) => {
   const rest = omit(props, "__scopeNavigationMenu", "forceMount", "ref");
   const context = useNavigationMenuContext(INDICATOR_NAME, props.__scopeNavigationMenu);
@@ -838,6 +846,7 @@ export interface NavigationMenuContentProps extends Omit<
   style?: JSX.CSSProperties | undefined;
 }
 
+/** Content panel for its item, focus-guarded and portal-addressed when in a viewport. */
 const NavigationMenuContent: Component<ScopedProps<NavigationMenuContentProps>> = (props) => {
   const rest = omit(props, "__scopeNavigationMenu", "forceMount", "ref", "style");
   const context = useNavigationMenuContext(CONTENT_NAME, props.__scopeNavigationMenu);
@@ -1105,6 +1114,7 @@ export interface NavigationMenuViewportProps extends NavigationMenuViewportImplP
   forceMount?: true | undefined;
 }
 
+/** Viewport rendering the active content with snapshotted open/close animations. */
 const NavigationMenuViewport: Component<ScopedProps<NavigationMenuViewportProps>> = (props) => {
   const rest = omit(props, "__scopeNavigationMenu", "forceMount", "ref");
   const context = useNavigationMenuContext(VIEWPORT_NAME, props.__scopeNavigationMenu);

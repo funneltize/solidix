@@ -74,6 +74,7 @@ const [Collection, useCollection, createCollectionScope] = createCollection<
 >(SELECT_NAME);
 
 type ScopedProps<P> = P & { __scopeSelect?: Scope | undefined };
+/** Creates a scope so composed `Select` parts resolve their own contexts. */
 const [createSelectContext, createSelectScope] = createContextScope(SELECT_NAME, [
   createCollectionScope,
   PopperPrimitive.createPopperScope,
@@ -158,6 +159,7 @@ export interface SelectProviderProps extends SelectSharedProps {
   onValueChange?: { bivarianceHack(value: string): void }["bivarianceHack"] | undefined;
 }
 
+/** `SelectProvider` holds the open and value state shared by all select parts. */
 const SelectProvider: Component<ScopedProps<SelectProviderProps>> = (props) => {
   const rest = omit(
     props,
@@ -321,6 +323,7 @@ const SelectProvider: Component<ScopedProps<SelectProviderProps>> = (props) => {
  * Select
  * -----------------------------------------------------------------------------------------------*/
 
+/** `Select` is the root that provides select state and renders the hidden form input. */
 const Select: Component<ScopedProps<SelectProps>> = (props) => {
   const rest = omit(props, "__scopeSelect", "children");
   return (
@@ -349,6 +352,7 @@ const TRIGGER_NAME = "SelectTrigger";
 type SelectTriggerElement = HTMLButtonElement;
 export type SelectTriggerProps = PrimitivePropsWithRef<"button">;
 
+/** `SelectTrigger` is the button that toggles the select open and closed. */
 const SelectTrigger: Component<ScopedProps<SelectTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeSelect", "disabled");
   const popperScope = usePopperScope(props.__scopeSelect);
@@ -470,6 +474,7 @@ export interface SelectValueProps extends Omit<PrimitiveSpanProps, "placeholder"
   placeholder?: JSX.Element | undefined;
 }
 
+/** `SelectValue` displays the selected value, or a placeholder when nothing is selected. */
 const SelectValue: Component<ScopedProps<SelectValueProps>> = (props) => {
   // We ignore `class` and `style` as this part shouldn't be styled.
   const rest = omit(props, "__scopeSelect", "class", "style", "children", "placeholder");
@@ -508,6 +513,7 @@ const SelectValue: Component<ScopedProps<SelectValueProps>> = (props) => {
 
 export type SelectIconProps = PrimitiveSpanProps;
 
+/** `SelectIcon` is the decorative icon rendered inside the trigger. */
 const SelectIcon: Component<ScopedProps<SelectIconProps>> = (props) => {
   // Always hidden: the icon is decorative by design.
   const rest = omit(props, "__scopeSelect", "children", "aria-hidden");
@@ -542,6 +548,7 @@ export interface SelectPortalProps {
   forceMount?: true | undefined;
 }
 
+/** `SelectPortal` portals the select content outside the DOM hierarchy. */
 const SelectPortal: Component<ScopedProps<SelectPortalProps>> = (props) => {
   return (
     <PortalProvider scope={props.__scopeSelect} forceMount={props.forceMount}>
@@ -565,6 +572,7 @@ export interface SelectContentProps extends SelectContentImplProps {
   forceMount?: true | undefined;
 }
 
+/** `SelectContent` is the popup listing the available options. */
 const SelectContent: Component<ScopedProps<SelectContentProps>> = (props) => {
   const rest = omit(props, "__scopeSelect", "forceMount");
   const portalContext = usePortalContext(CONTENT_NAME, props.__scopeSelect);
@@ -1287,6 +1295,7 @@ export interface SelectViewportProps extends PrimitiveDivProps {
   nonce?: string | undefined;
 }
 
+/** `SelectViewport` is the scrollable region containing the select items. */
 const SelectViewport: Component<ScopedProps<SelectViewportProps>> = (props) => {
   const rest = omit(props, "__scopeSelect", "nonce");
   const contentContext = useSelectContentContext(VIEWPORT_NAME, props.__scopeSelect);
@@ -1369,6 +1378,7 @@ const [SelectGroupContextProvider, useSelectGroupContext] =
 
 export type SelectGroupProps = PrimitiveDivProps;
 
+/** `SelectGroup` groups related items with an optional label. */
 const SelectGroup: Component<ScopedProps<SelectGroupProps>> = (props) => {
   const rest = omit(props, "__scopeSelect");
   const groupId = useId();
@@ -1387,6 +1397,7 @@ const LABEL_NAME = "SelectLabel";
 
 export type SelectLabelProps = PrimitiveDivProps;
 
+/** `SelectLabel` is the label for a group of items. */
 const SelectLabel: Component<ScopedProps<SelectLabelProps>> = (props) => {
   const rest = omit(props, "__scopeSelect");
   const groupContext = useSelectGroupContext(LABEL_NAME, props.__scopeSelect);
@@ -1417,6 +1428,7 @@ export interface SelectItemProps extends PrimitiveDivProps {
   textValue?: string | undefined;
 }
 
+/** `SelectItem` is an option the user can select. */
 const SelectItem: Component<ScopedProps<SelectItemProps>> = (props) => {
   const rest = omit(props, "__scopeSelect", "value", "disabled", "textValue");
   const context = useSelectContext(ITEM_NAME, props.__scopeSelect);
@@ -1573,6 +1585,7 @@ const ITEM_TEXT_NAME = "SelectItemText";
 type SelectItemTextElement = HTMLSpanElement;
 export type SelectItemTextProps = PrimitiveSpanProps;
 
+/** `SelectItemText` is the text shown for an item and in the trigger when selected. */
 const SelectItemText: Component<ScopedProps<SelectItemTextProps>> = (props) => {
   // We ignore `class` and `style` as this part shouldn't be styled.
   const rest = omit(props, "__scopeSelect", "class", "style");
@@ -1646,6 +1659,7 @@ const ITEM_INDICATOR_NAME = "SelectItemIndicator";
 
 export type SelectItemIndicatorProps = PrimitiveSpanProps;
 
+/** `SelectItemIndicator` is the checkmark shown next to the selected item. */
 const SelectItemIndicator: Component<ScopedProps<SelectItemIndicatorProps>> = (props) => {
   // Always hidden: the indicator is decorative by design.
   const rest = omit(props, "__scopeSelect", "aria-hidden");
@@ -1665,6 +1679,7 @@ const SCROLL_UP_BUTTON_NAME = "SelectScrollUpButton";
 
 export type SelectScrollUpButtonProps = Omit<SelectScrollButtonImplProps, "onAutoScroll">;
 
+/** `SelectScrollUpButton` is the button that scrolls the viewport upward. */
 const SelectScrollUpButton: Component<ScopedProps<SelectScrollUpButtonProps>> = (props) => {
   const rest = omit(props, "__scopeSelect");
   const contentContext = useSelectContentContext(SCROLL_UP_BUTTON_NAME, props.__scopeSelect);
@@ -1715,6 +1730,7 @@ const SCROLL_DOWN_BUTTON_NAME = "SelectScrollDownButton";
 
 export type SelectScrollDownButtonProps = Omit<SelectScrollButtonImplProps, "onAutoScroll">;
 
+/** `SelectScrollDownButton` is the button that scrolls the viewport downward. */
 const SelectScrollDownButton: Component<ScopedProps<SelectScrollDownButtonProps>> = (props) => {
   const rest = omit(props, "__scopeSelect");
   const contentContext = useSelectContentContext(SCROLL_DOWN_BUTTON_NAME, props.__scopeSelect);
@@ -1829,6 +1845,7 @@ const SelectScrollButtonImpl: Component<ScopedProps<SelectScrollButtonImplProps>
 
 export type SelectSeparatorProps = PrimitiveDivProps;
 
+/** `SelectSeparator` is a visual divider between items or groups. */
 const SelectSeparator: Component<ScopedProps<SelectSeparatorProps>> = (props) => {
   // Always hidden: the separator is decorative by design.
   const rest = omit(props, "__scopeSelect", "aria-hidden");
@@ -1843,6 +1860,7 @@ const ARROW_NAME = "SelectArrow";
 
 export type SelectArrowProps = PopperArrowProps;
 
+/** `SelectArrow` is the arrow pointing at the select trigger. */
 const SelectArrow: Component<ScopedProps<SelectArrowProps>> = (props) => {
   const rest = omit(props, "__scopeSelect");
   const popperScope = usePopperScope(props.__scopeSelect);
@@ -1868,6 +1886,7 @@ export interface SelectBubbleInputProps extends Omit<
   style?: JSX.CSSProperties | undefined;
 }
 
+/** `SelectBubbleInput` is the hidden native select that submits the value in forms. */
 const SelectBubbleInput: Component<ScopedProps<SelectBubbleInputProps>> = (props) => {
   // Always hidden: the bubble input is visually hidden by design.
   const rest = omit(props, "__scopeSelect", "aria-hidden");

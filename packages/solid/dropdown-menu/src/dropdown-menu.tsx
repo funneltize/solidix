@@ -51,6 +51,7 @@ import { useControllableState } from "@solidix/use-controllable-state";
 const DROPDOWN_MENU_NAME = "DropdownMenu";
 
 type ScopedProps<P> = P & { __scopeDropdownMenu?: Scope | undefined };
+/** Creates the dropdown-menu context scope shared by all parts of one menu. */
 const [createDropdownMenuContext, createDropdownMenuScope] = createContextScope(
   DROPDOWN_MENU_NAME,
   [createMenuScope],
@@ -79,6 +80,7 @@ type DropdownMenuProps = {
   modal?: boolean | undefined;
 };
 
+/** Root state container for a dropdown menu; holds open state and forwards scope to its parts. */
 const DropdownMenu: Component<ScopedProps<DropdownMenuProps>> = (props) => {
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
   const triggerRef: RefObject<HTMLButtonElement | null> = { current: null };
@@ -120,6 +122,7 @@ const TRIGGER_NAME = "DropdownMenuTrigger";
 
 type DropdownMenuTriggerProps = PrimitivePropsWithRef<"button">;
 
+/** Button that toggles the dropdown menu open and closed. */
 const DropdownMenuTrigger: Component<ScopedProps<DropdownMenuTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "disabled", "ref");
   const context = useDropdownMenuContext(TRIGGER_NAME, props.__scopeDropdownMenu);
@@ -174,6 +177,7 @@ const DropdownMenuTrigger: Component<ScopedProps<DropdownMenuTriggerProps>> = (p
 
 type DropdownMenuPortalProps = MenuPortalProps;
 
+/** Portals dropdown menu content into `document.body` when open. */
 const DropdownMenuPortal: Component<ScopedProps<DropdownMenuPortalProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -188,6 +192,7 @@ const CONTENT_NAME = "DropdownMenuContent";
 
 type DropdownMenuContentProps = Omit<MenuContentProps, "onEntryFocus">;
 
+/** Floating panel that renders the dropdown menu items. */
 const DropdownMenuContent: Component<ScopedProps<DropdownMenuContentProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const context = useDropdownMenuContext(CONTENT_NAME, props.__scopeDropdownMenu);
@@ -238,6 +243,7 @@ const DropdownMenuContent: Component<ScopedProps<DropdownMenuContentProps>> = (p
 
 type DropdownMenuGroupProps = MenuGroupProps;
 
+/** Groups related menu items with an optional label. */
 const DropdownMenuGroup: Component<ScopedProps<DropdownMenuGroupProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -250,6 +256,7 @@ const DropdownMenuGroup: Component<ScopedProps<DropdownMenuGroupProps>> = (props
 
 type DropdownMenuLabelProps = MenuLabelProps;
 
+/** Non-interactive heading for a group of menu items. */
 const DropdownMenuLabel: Component<ScopedProps<DropdownMenuLabelProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -262,6 +269,7 @@ const DropdownMenuLabel: Component<ScopedProps<DropdownMenuLabelProps>> = (props
 
 type DropdownMenuItemProps = MenuItemProps;
 
+/** Selectable menu item that closes the menu on select by default. */
 const DropdownMenuItem: Component<ScopedProps<DropdownMenuItemProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -274,6 +282,7 @@ const DropdownMenuItem: Component<ScopedProps<DropdownMenuItemProps>> = (props) 
 
 type DropdownMenuCheckboxItemProps = MenuCheckboxItemProps;
 
+/** Menu item with a checkable on/off state. */
 const DropdownMenuCheckboxItem: Component<ScopedProps<DropdownMenuCheckboxItemProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -286,6 +295,7 @@ const DropdownMenuCheckboxItem: Component<ScopedProps<DropdownMenuCheckboxItemPr
 
 type DropdownMenuRadioGroupProps = MenuRadioGroupProps;
 
+/** Groups radio items so only one can be checked at a time. */
 const DropdownMenuRadioGroup: Component<ScopedProps<DropdownMenuRadioGroupProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -298,6 +308,7 @@ const DropdownMenuRadioGroup: Component<ScopedProps<DropdownMenuRadioGroupProps>
 
 type DropdownMenuRadioItemProps = MenuRadioItemProps;
 
+/** Checkable menu item that belongs to a radio group. */
 const DropdownMenuRadioItem: Component<ScopedProps<DropdownMenuRadioItemProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -310,6 +321,7 @@ const DropdownMenuRadioItem: Component<ScopedProps<DropdownMenuRadioItemProps>> 
 
 type DropdownMenuItemIndicatorProps = MenuItemIndicatorProps;
 
+/** Renders its children when its parent checkbox or radio item is checked. */
 const DropdownMenuItemIndicator: Component<ScopedProps<DropdownMenuItemIndicatorProps>> = (
   props,
 ) => {
@@ -324,6 +336,7 @@ const DropdownMenuItemIndicator: Component<ScopedProps<DropdownMenuItemIndicator
 
 type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
+/** Visual divider between menu items or groups. */
 const DropdownMenuSeparator: Component<ScopedProps<DropdownMenuSeparatorProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -336,6 +349,7 @@ const DropdownMenuSeparator: Component<ScopedProps<DropdownMenuSeparatorProps>> 
 
 type DropdownMenuArrowProps = MenuArrowProps;
 
+/** Small arrow pointing from the menu content toward its trigger. */
 const DropdownMenuArrow: Component<ScopedProps<DropdownMenuArrowProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -350,6 +364,7 @@ type DropdownMenuSubProps = MenuSubProps & {
   defaultOpen?: boolean | undefined;
 };
 
+/** Root state container for a nested submenu. */
 const DropdownMenuSub: Component<ScopedProps<DropdownMenuSubProps>> = (props) => {
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
   const [open, setOpen] = useControllableState({
@@ -372,6 +387,7 @@ const DropdownMenuSub: Component<ScopedProps<DropdownMenuSubProps>> = (props) =>
 
 type DropdownMenuSubTriggerProps = MenuSubTriggerProps;
 
+/** Menu item that opens its nested submenu. */
 const DropdownMenuSubTrigger: Component<ScopedProps<DropdownMenuSubTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);
@@ -384,6 +400,7 @@ const DropdownMenuSubTrigger: Component<ScopedProps<DropdownMenuSubTriggerProps>
 
 type DropdownMenuSubContentProps = MenuSubContentProps;
 
+/** Floating panel that renders a nested submenu's items. */
 const DropdownMenuSubContent: Component<ScopedProps<DropdownMenuSubContentProps>> = (props) => {
   const rest = omit(props, "__scopeDropdownMenu", "ref");
   const menuScope = useMenuScope(props.__scopeDropdownMenu);

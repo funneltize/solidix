@@ -50,6 +50,7 @@ const [Collection, { useGetCollection, createCollectionScope }] =
   createCollection<HTMLButtonElement>(ACCORDION_NAME);
 
 type ScopedProps<P> = P & { __scopeAccordion?: Scope | undefined };
+/** Creates a scope so composed `Accordion` parts resolve their own contexts. */
 const [createAccordionContext, createAccordionScope] = createContextScope(ACCORDION_NAME, [
   createCollectionScope,
   createCollapsibleScope,
@@ -63,6 +64,7 @@ type AccordionMultipleProps = AccordionImplMultipleProps & {
   type: typeof AccordionType.Multiple;
 };
 
+/** `Accordion` contains the expanded state shared by all accordion parts. */
 const Accordion: Component<ScopedProps<AccordionSingleProps | AccordionMultipleProps>> = (
   props,
 ) => {

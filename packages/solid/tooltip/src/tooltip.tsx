@@ -35,6 +35,7 @@ const DEFAULT_DELAY_DURATION = 700;
 const TOOLTIP_OPEN = "tooltip.open";
 
 type ScopedProps<P> = P & { __scopeTooltip?: Scope | undefined };
+/** Creates a scope so composed `Tooltip` parts resolve their own contexts. */
 const [createTooltipContext, createTooltipScope] = createContextScope(PROVIDER_NAME, [
   createPopperScope,
 ]);
@@ -72,6 +73,7 @@ type TooltipProviderProps = {
   disableHoverableContent?: boolean | undefined;
 };
 
+/** `TooltipProvider` provides the delay settings shared by the tooltips inside it. */
 const TooltipProvider: Component<ScopedProps<TooltipProviderProps>> = (props) => {
   const isOpenDelayedRef = { current: true };
   const isPointerInTransitRef = { current: false };
@@ -151,6 +153,7 @@ type TooltipProps = {
   disableHoverableContent?: boolean | undefined;
 };
 
+/** `Tooltip` contains the open state shared by the trigger and content. */
 const Tooltip: Component<ScopedProps<TooltipProps>> = (props) => {
   const providerContext = useTooltipProviderContext(TOOLTIP_NAME, props.__scopeTooltip);
   const popperScope = usePopperScope(props.__scopeTooltip);
@@ -255,6 +258,7 @@ const TRIGGER_NAME = "TooltipTrigger";
 type TooltipTriggerElement = HTMLButtonElement;
 type TooltipTriggerProps = PrimitivePropsWithRef<"button">;
 
+/** `TooltipTrigger` is the element that shows the tooltip on hover or focus. */
 const TooltipTrigger: Component<ScopedProps<TooltipTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeTooltip", "aria-describedby", "ref");
   const context = useTooltipContext(TRIGGER_NAME, props.__scopeTooltip);
@@ -353,6 +357,7 @@ type TooltipPortalProps = {
   forceMount?: true | undefined;
 };
 
+/** `TooltipPortal` portals the tooltip content outside the DOM hierarchy. */
 const TooltipPortal: Component<ScopedProps<TooltipPortalProps>> = (props) => {
   const context = useTooltipContext(PORTAL_NAME, props.__scopeTooltip);
   // NOTE: Radix nests the portal inside `Presence`; Solidix inverts this.
@@ -383,6 +388,7 @@ type TooltipContentProps = TooltipContentImplProps & {
   forceMount?: true | undefined;
 };
 
+/** `TooltipContent` is the popup that appears when the tooltip is open. */
 const TooltipContent: Component<ScopedProps<TooltipContentProps>> = (props) => {
   const rest = omit(props, "forceMount", "side", "ref");
   const portalContext = usePortalContext(CONTENT_NAME, props.__scopeTooltip);
@@ -612,6 +618,7 @@ const TooltipContentImpl: Component<ScopedProps<TooltipContentImplProps>> = (pro
 
 type TooltipArrowProps = PopperArrowProps;
 
+/** `TooltipArrow` is the arrow pointing at the tooltip trigger. */
 const TooltipArrow: Component<ScopedProps<TooltipArrowProps>> = (props) => {
   const rest = omit(props, "__scopeTooltip", "ref");
   const popperScope = usePopperScope(props.__scopeTooltip);

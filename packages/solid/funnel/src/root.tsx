@@ -47,6 +47,9 @@ type RootProps = PrimitivePropsWithRef<"div"> & {
   editable?: boolean | undefined;
 };
 
+/**
+ * Funnel page root: scopes `data-funnel-theme`/`data-cta` and provides variant and Studio-editing context to descendant blocks.
+ */
 const Root: Component<RootProps> = (props) => {
   const rest = omit(props, "theme", "cta", "variant", "editable", "class", "ref");
   return (

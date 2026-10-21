@@ -17,6 +17,7 @@ const IconSlot = createSlot<
   { "aria-hidden"?: "true" | "false" | undefined; focusable?: string | undefined }
 >("AccessibleIcon");
 
+/** Marks its single child as decorative while exposing the given label to assistive technology. */
 const AccessibleIcon: Component<AccessibleIconProps> = (props) => {
   const resolved = resolveChildren(() => props.children);
 

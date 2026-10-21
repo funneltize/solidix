@@ -44,6 +44,7 @@ import { useLayoutEffect } from "@solidix/use-layout-effect";
 const POPOVER_NAME = "Popover";
 
 type ScopedProps<P> = P & { __scopePopover?: Scope | undefined };
+/** Creates a scope so composed `Popover` parts resolve their own contexts. */
 const [createPopoverContext, createPopoverScope] = createContextScope(POPOVER_NAME, [
   createPopperScope,
 ]);
@@ -78,6 +79,7 @@ type PopoverProps = {
   modal?: boolean | undefined;
 };
 
+/** `Popover` contains the open state and context shared by all popover parts. */
 const Popover: Component<ScopedProps<PopoverProps>> = (props) => {
   const popperScope = usePopperScope(props.__scopePopover);
   const triggerRef: RefObject<HTMLButtonElement | null> = { current: null };
@@ -128,6 +130,7 @@ const ANCHOR_NAME = "PopoverAnchor";
 
 type PopoverAnchorProps = PopperAnchorProps;
 
+/** `PopoverAnchor` is the optional element the popover positions itself against. */
 const PopoverAnchor: Component<ScopedProps<PopoverAnchorProps>> = (props) => {
   const rest = omit(props, "__scopePopover", "ref");
   const context = usePopoverContext(ANCHOR_NAME, props.__scopePopover);
@@ -149,6 +152,7 @@ const TRIGGER_NAME = "PopoverTrigger";
 
 type PopoverTriggerProps = PrimitivePropsWithRef<"button">;
 
+/** `PopoverTrigger` is the button that toggles the popover open and closed. */
 const PopoverTrigger: Component<ScopedProps<PopoverTriggerProps>> = (props) => {
   const rest = omit(props, "__scopePopover", "onClick", "ref");
   const context = usePopoverContext(TRIGGER_NAME, props.__scopePopover);
@@ -209,6 +213,7 @@ type PopoverPortalProps = {
   forceMount?: true | undefined;
 };
 
+/** `PopoverPortal` portals the popover content outside the DOM hierarchy. */
 const PopoverPortal: Component<ScopedProps<PopoverPortalProps>> = (props) => {
   const context = usePopoverContext(PORTAL_NAME, props.__scopePopover);
   // NOTE: Radix nests the portal inside `Presence`; Solidix inverts this.
@@ -239,6 +244,7 @@ type PopoverContentProps = PopoverContentTypeProps & {
   forceMount?: true | undefined;
 };
 
+/** `PopoverContent` is the component that appears when the popover is open. */
 const PopoverContent: Component<ScopedProps<PopoverContentProps>> = (props) => {
   const rest = omit(props, "forceMount", "ref");
   const portalContext = usePortalContext(CONTENT_NAME, props.__scopePopover);
@@ -514,6 +520,7 @@ const PopoverContentImpl: Component<ScopedProps<PopoverContentImplProps>> = (pro
 
 type PopoverTitleProps = PrimitivePropsWithRef<"h2">;
 
+/** `PopoverTitle` is the accessible title announced for the popover. */
 const PopoverTitle: Component<ScopedProps<PopoverTitleProps>> = (props) => {
   const rest = omit(props, "__scopePopover", "ref");
   const context = usePopoverContext("PopoverTitle", props.__scopePopover);
@@ -532,6 +539,7 @@ const PopoverTitle: Component<ScopedProps<PopoverTitleProps>> = (props) => {
 
 type PopoverDescriptionProps = PrimitivePropsWithRef<"p">;
 
+/** `PopoverDescription` is the accessible description announced for the popover. */
 const PopoverDescription: Component<ScopedProps<PopoverDescriptionProps>> = (props) => {
   const rest = omit(props, "__scopePopover", "ref");
   const context = usePopoverContext("PopoverDescription", props.__scopePopover);
@@ -552,6 +560,7 @@ const CLOSE_NAME = "PopoverClose";
 
 type PopoverCloseProps = PrimitivePropsWithRef<"button">;
 
+/** `PopoverClose` is the button that closes the popover. */
 const PopoverClose: Component<ScopedProps<PopoverCloseProps>> = (props) => {
   const rest = omit(props, "__scopePopover", "onClick", "ref");
   const context = usePopoverContext(CLOSE_NAME, props.__scopePopover);
@@ -574,6 +583,7 @@ const PopoverClose: Component<ScopedProps<PopoverCloseProps>> = (props) => {
 
 type PopoverArrowProps = PopperArrowProps;
 
+/** `PopoverArrow` is the arrow pointing at the popover anchor. */
 const PopoverArrow: Component<ScopedProps<PopoverArrowProps>> = (props) => {
   const rest = omit(props, "__scopePopover", "ref");
   const popperScope = usePopperScope(props.__scopePopover);

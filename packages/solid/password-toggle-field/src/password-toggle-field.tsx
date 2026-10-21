@@ -67,6 +67,7 @@ const INITIAL_FOCUS_STATE: InternalFocusState = {
   selectionEnd: null,
 };
 
+/** Root provider holding the visible state shared by the password field parts. */
 const PasswordToggleField: Component<ScopedProps<PasswordToggleFieldProps>> = (props) => {
   const baseId = useId(props.id);
   const defaultInputId = `${baseId}-input`;
@@ -142,6 +143,7 @@ type PasswordToggleFieldInputProps = PasswordToggleFieldOwnProps &
     autoComplete?: AutoComplete | undefined;
   };
 
+/** Password input whose type switches between password and text with visibility. */
 const PasswordToggleFieldInput: Component<ScopedProps<PasswordToggleFieldInputProps>> = (props) => {
   const rest = omit(
     props,
@@ -237,6 +239,7 @@ type PrimitiveButtonProps = PrimitivePropsWithRef<"button">;
 
 type PasswordToggleFieldToggleProps = Omit<PrimitiveButtonProps, "type">;
 
+/** Button toggling password visibility while preserving input focus and selection. */
 const PasswordToggleFieldToggle: Component<ScopedProps<PasswordToggleFieldToggleProps>> = (
   props,
 ) => {
@@ -417,6 +420,7 @@ type PasswordToggleFieldSlotProps =
   | PasswordToggleFieldSlotDeclarativeProps
   | PasswordToggleFieldSlotRenderProps;
 
+/** Renders visibility-dependent content, declaratively or via a render prop. */
 const PasswordToggleFieldSlot: Component<ScopedProps<PasswordToggleFieldSlotProps>> = (props) => {
   const context = usePasswordToggleFieldContext(
     PASSWORD_TOGGLE_FIELD_SLOT_NAME,
@@ -450,6 +454,7 @@ type PasswordToggleFieldIconProps = Omit<PrimitiveSvgProps, "children"> & {
   hidden: JSX.Element;
 };
 
+/** SVG swapping between the visible and hidden icons with visibility. */
 const PasswordToggleFieldIcon: Component<ScopedProps<PasswordToggleFieldIconProps>> = (props) => {
   // `children` is not part of the props type (like Radix, which strips it
   // with a `@ts-expect-error` destructure); only the `visible`/`hidden`

@@ -20,6 +20,7 @@ import { useControllableState } from "@solidix/use-controllable-state";
 const COLLAPSIBLE_NAME = "Collapsible";
 
 type ScopedProps<P> = P & { __scopeCollapsible?: Scope | undefined };
+/** Creates the collapsible context and composes its scope subtree. */
 const [createCollapsibleContext, createCollapsibleScope] = createContextScope(COLLAPSIBLE_NAME);
 
 type CollapsibleContextValue = {
@@ -39,6 +40,7 @@ type CollapsibleProps = PrimitivePropsWithRef<"div"> & {
   onOpenChange?: { bivarianceHack(open: boolean): void }["bivarianceHack"] | undefined;
 };
 
+/** Root wrapper that owns the open state and wires trigger to content. */
 const Collapsible: Component<ScopedProps<CollapsibleProps>> = (props) => {
   const rest = omit(
     props,
@@ -86,6 +88,7 @@ const TRIGGER_NAME = "CollapsibleTrigger";
 
 type CollapsibleTriggerProps = PrimitivePropsWithRef<"button">;
 
+/** Button that toggles the collapsible open state. */
 const CollapsibleTrigger: Component<ScopedProps<CollapsibleTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeCollapsible", "onClick", "ref");
   const context = useCollapsibleContext(TRIGGER_NAME, props.__scopeCollapsible);
@@ -124,6 +127,7 @@ type CollapsibleContentProps = Omit<CollapsibleContentImplProps, "present"> & {
   forceMount?: true | undefined;
 };
 
+/** Region that mounts its content only while the collapsible is open. */
 const CollapsibleContent: Component<ScopedProps<CollapsibleContentProps>> = (props) => {
   const rest = omit(props, "__scopeCollapsible", "forceMount", "ref");
   const context = useCollapsibleContext(CONTENT_NAME, props.__scopeCollapsible);

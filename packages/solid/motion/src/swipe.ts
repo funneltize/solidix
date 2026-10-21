@@ -95,6 +95,7 @@ function assertOption(valid: boolean, message: string): void {
   if (!valid) throw new RangeError(`[motion] ${message}`);
 }
 
+/** Creates a configurable swipe-gesture recognizer that reports swipe state for a target. */
 export function createSwipe(options: SwipeOptions = {}): SwipeApi {
   if (options === null || typeof options !== "object") {
     throw new TypeError(`[motion] options must be an object (got ${String(options)}).`);

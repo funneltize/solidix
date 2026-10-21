@@ -69,6 +69,7 @@ type ToastProviderContextValue = {
 };
 
 type ScopedProps<P> = P & { __scopeToast?: Scope | undefined };
+/** Creates the toast context and the scope subtree that isolates nested toasts. */
 const [createToastContext, createToastScope] = createContextScope("Toast", [createCollectionScope]);
 const [ToastProviderProvider, useToastProviderContext] =
   createToastContext<ToastProviderContextValue>(PROVIDER_NAME);
@@ -105,6 +106,7 @@ type ToastProviderProps = {
   announcerContainer?: Element | DocumentFragment | undefined;
 };
 
+/** Provides toast state, duration, and viewport registration to viewports and toasts. */
 const ToastProvider: Component<ScopedProps<ToastProviderProps>> = (props) => {
   const label = () => props.label ?? "Notification";
   const duration = () => props.duration ?? 5000;
@@ -174,6 +176,7 @@ type ToastViewportProps = PrimitivePropsWithRef<"ol"> & {
   label?: string | undefined;
 };
 
+/** Region that renders the toast list, manages focus order, and handles the focus hotkey. */
 const ToastViewport: Component<ScopedProps<ToastViewportProps>> = (props) => {
   const rest = omit(props, "__scopeToast", "hotkey", "label", "ref");
   const context = useToastProviderContext(VIEWPORT_NAME, props.__scopeToast);
@@ -418,6 +421,7 @@ type ToastProps = Omit<ToastImplProps, keyof ToastImplPrivateProps> & {
   forceMount?: true | undefined;
 };
 
+/** Controlled notification with swipe gestures, auto-close timing, and pause on interaction. */
 const Toast: Component<ScopedProps<ToastProps>> = (props) => {
   const rest = omit(
     props,
@@ -820,6 +824,7 @@ const ToastAnnounce: Component<ScopedProps<ToastAnnounceProps>> = (props) => {
 
 type ToastTitleProps = PrimitivePropsWithRef<"div">;
 
+/** Title heading announced to screen readers when the toast opens. */
 const ToastTitle: Component<ScopedProps<ToastTitleProps>> = (props) => {
   const rest = omit(props, "__scopeToast", "ref");
   return <Primitive.div {...rest} ref={props.ref} />;
@@ -831,6 +836,7 @@ const ToastTitle: Component<ScopedProps<ToastTitleProps>> = (props) => {
 
 type ToastDescriptionProps = PrimitivePropsWithRef<"div">;
 
+/** Description text announced alongside the toast title. */
 const ToastDescription: Component<ScopedProps<ToastDescriptionProps>> = (props) => {
   const rest = omit(props, "__scopeToast", "ref");
   return <Primitive.div {...rest} ref={props.ref} />;
@@ -852,6 +858,7 @@ type ToastActionProps = ToastCloseProps & {
   altText: string;
 };
 
+/** Action button that announces its alt text instead of its label to screen readers. */
 const ToastAction: Component<ScopedProps<ToastActionProps>> = (props) => {
   if (!props.altText.trim()) {
     console.error(
@@ -875,6 +882,7 @@ const CLOSE_NAME = "ToastClose";
 
 type ToastCloseProps = PrimitivePropsWithRef<"button">;
 
+/** Close button that dismisses the toast. */
 const ToastClose: Component<ScopedProps<ToastCloseProps>> = (props) => {
   const rest = omit(props, "__scopeToast", "ref");
   const interactiveContext = useToastInteractiveContext(CLOSE_NAME, props.__scopeToast);

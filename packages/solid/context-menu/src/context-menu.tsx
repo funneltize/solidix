@@ -50,6 +50,9 @@ import { useControllableState } from "@solidix/use-controllable-state";
 const CONTEXT_MENU_NAME = "ContextMenu";
 
 type ScopedProps<P> = P & { __scopeContextMenu?: Scope | undefined };
+/**
+ * `createContextMenuScope` creates a scope for composing `ContextMenu` parts with other Solidix primitives.
+ */
 const [createContextMenuContext, createContextMenuScope] = createContextScope(CONTEXT_MENU_NAME, [
   createMenuScope,
 ]);
@@ -75,6 +78,9 @@ type ContextMenuProps = {
   modal?: boolean | undefined;
 };
 
+/**
+ * `ContextMenu` contains all of the parts of a context menu.
+ */
 const ContextMenu: Component<ScopedProps<ContextMenuProps>> = (props) => {
   const modal = () => props.modal ?? true;
   const hasInteractedRef = { current: false };
@@ -139,6 +145,9 @@ type ContextMenuTriggerProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   disabled?: boolean | undefined;
 };
 
+/**
+ * `ContextMenuTrigger` is the area that opens the context menu on right-click. Wrap it around the target the menu opens from.
+ */
 const ContextMenuTrigger: Component<ScopedProps<ContextMenuTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "disabled", "ref");
   const context = useContextMenuContext(TRIGGER_NAME, props.__scopeContextMenu);
@@ -250,6 +259,9 @@ const ContextMenuTrigger: Component<ScopedProps<ContextMenuTriggerProps>> = (pro
 
 type ContextMenuPortalProps = MenuPortalProps;
 
+/**
+ * `ContextMenuPortal` portals the content parts into the `body` when used.
+ */
 const ContextMenuPortal: Component<ScopedProps<ContextMenuPortalProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -264,6 +276,9 @@ const CONTENT_NAME = "ContextMenuContent";
 
 type ContextMenuContentProps = Omit<MenuContentProps, "onEntryFocus">;
 
+/**
+ * `ContextMenuContent` is the component that pops out when the context menu is open.
+ */
 const ContextMenuContent: Component<ScopedProps<ContextMenuContentProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const context = useContextMenuContext(CONTENT_NAME, props.__scopeContextMenu);
@@ -311,6 +326,9 @@ const ContextMenuContent: Component<ScopedProps<ContextMenuContentProps>> = (pro
 
 type ContextMenuGroupProps = MenuGroupProps;
 
+/**
+ * `ContextMenuGroup` is used to group multiple `ContextMenuItem`s.
+ */
 const ContextMenuGroup: Component<ScopedProps<ContextMenuGroupProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -323,6 +341,9 @@ const ContextMenuGroup: Component<ScopedProps<ContextMenuGroupProps>> = (props) 
 
 type ContextMenuLabelProps = MenuLabelProps;
 
+/**
+ * `ContextMenuLabel` is used to render a label. It won't be focusable using arrow keys.
+ */
 const ContextMenuLabel: Component<ScopedProps<ContextMenuLabelProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -335,6 +356,9 @@ const ContextMenuLabel: Component<ScopedProps<ContextMenuLabelProps>> = (props) 
 
 type ContextMenuItemProps = MenuItemProps;
 
+/**
+ * `ContextMenuItem` is a selectable item in the menu.
+ */
 const ContextMenuItem: Component<ScopedProps<ContextMenuItemProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -347,6 +371,9 @@ const ContextMenuItem: Component<ScopedProps<ContextMenuItemProps>> = (props) =>
 
 type ContextMenuCheckboxItemProps = MenuCheckboxItemProps;
 
+/**
+ * `ContextMenuCheckboxItem` is an item that can be controlled and rendered like a checkbox.
+ */
 const ContextMenuCheckboxItem: Component<ScopedProps<ContextMenuCheckboxItemProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -359,6 +386,9 @@ const ContextMenuCheckboxItem: Component<ScopedProps<ContextMenuCheckboxItemProp
 
 type ContextMenuRadioGroupProps = MenuRadioGroupProps;
 
+/**
+ * `ContextMenuRadioGroup` is used to group multiple `ContextMenuRadioItem`s.
+ */
 const ContextMenuRadioGroup: Component<ScopedProps<ContextMenuRadioGroupProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -371,6 +401,9 @@ const ContextMenuRadioGroup: Component<ScopedProps<ContextMenuRadioGroupProps>> 
 
 type ContextMenuRadioItemProps = MenuRadioItemProps;
 
+/**
+ * `ContextMenuRadioItem` is an item that can be controlled and rendered like a radio.
+ */
 const ContextMenuRadioItem: Component<ScopedProps<ContextMenuRadioItemProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -383,6 +416,9 @@ const ContextMenuRadioItem: Component<ScopedProps<ContextMenuRadioItemProps>> = 
 
 type ContextMenuItemIndicatorProps = MenuItemIndicatorProps;
 
+/**
+ * `ContextMenuItemIndicator` renders when the parent `ContextMenuCheckboxItem` or `ContextMenuRadioItem` is checked.
+ */
 const ContextMenuItemIndicator: Component<ScopedProps<ContextMenuItemIndicatorProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -395,6 +431,9 @@ const ContextMenuItemIndicator: Component<ScopedProps<ContextMenuItemIndicatorPr
 
 type ContextMenuSeparatorProps = MenuSeparatorProps;
 
+/**
+ * `ContextMenuSeparator` is used to visually separate items in a menu.
+ */
 const ContextMenuSeparator: Component<ScopedProps<ContextMenuSeparatorProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -407,6 +446,9 @@ const ContextMenuSeparator: Component<ScopedProps<ContextMenuSeparatorProps>> = 
 
 type ContextMenuArrowProps = MenuArrowProps;
 
+/**
+ * `ContextMenuArrow` is an optional arrow element to render alongside the menu, visually linking the trigger with the content.
+ */
 const ContextMenuArrow: Component<ScopedProps<ContextMenuArrowProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -423,6 +465,9 @@ type ContextMenuSubProps = MenuSubProps & {
   defaultOpen?: boolean | undefined;
 };
 
+/**
+ * `ContextMenuSub` contains all of the parts of a submenu.
+ */
 const ContextMenuSub: Component<ScopedProps<ContextMenuSubProps>> = (props) => {
   const menuScope = useMenuScope(props.__scopeContextMenu);
   const [open, setOpen] = useControllableState({
@@ -445,6 +490,9 @@ const ContextMenuSub: Component<ScopedProps<ContextMenuSubProps>> = (props) => {
 
 type ContextMenuSubTriggerProps = MenuSubTriggerProps;
 
+/**
+ * `ContextMenuSubTrigger` is an item that opens a submenu. It must be rendered inside `ContextMenuSub`.
+ */
 const ContextMenuSubTrigger: Component<ScopedProps<ContextMenuSubTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);
@@ -457,6 +505,9 @@ const ContextMenuSubTrigger: Component<ScopedProps<ContextMenuSubTriggerProps>> 
 
 type ContextMenuSubContentProps = MenuSubContentProps;
 
+/**
+ * `ContextMenuSubContent` is the component that pops out when a submenu is open. It must be rendered inside `ContextMenuSub`.
+ */
 const ContextMenuSubContent: Component<ScopedProps<ContextMenuSubContentProps>> = (props) => {
   const rest = omit(props, "__scopeContextMenu", "ref");
   const menuScope = useMenuScope(props.__scopeContextMenu);

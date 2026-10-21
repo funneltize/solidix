@@ -46,6 +46,7 @@ import { useControllableState } from "@solidix/use-controllable-state";
 const DIALOG_NAME = "Dialog";
 
 type ScopedProps<P> = P & { __scopeDialog?: Scope | undefined };
+/** Creates a dialog scope for nesting multiple independent dialogs. */
 const [createDialogContext, createDialogScope] = createContextScope(DIALOG_NAME);
 
 type DialogContentElement = HTMLDivElement;
@@ -83,6 +84,7 @@ type DialogProps = {
   modal?: boolean | undefined;
 };
 
+/** The root container that manages the dialog open state. */
 const Dialog: Component<ScopedProps<DialogProps>> = (props) => {
   const rest = omit(props, "__scopeDialog", "open", "defaultOpen", "onOpenChange", "modal");
   const triggerRef: RefObject<HTMLButtonElement | null> = { current: null };
@@ -151,6 +153,7 @@ const TRIGGER_NAME = "DialogTrigger";
 
 type DialogTriggerProps = PrimitivePropsWithRef<"button">;
 
+/** The button that opens the dialog when activated. */
 const DialogTrigger: Component<ScopedProps<DialogTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeDialog", "onClick", "ref");
   const context = useDialogContext(TRIGGER_NAME, props.__scopeDialog);
@@ -196,6 +199,7 @@ type DialogPortalProps = {
   forceMount?: true | undefined;
 };
 
+/** Renders the dialog overlay and content into a portal outside the DOM hierarchy. */
 const DialogPortal: Component<ScopedProps<DialogPortalProps>> = (props) => {
   const context = useDialogContext(PORTAL_NAME, props.__scopeDialog);
   const resolved = children(() => props.children);
@@ -231,6 +235,7 @@ type DialogOverlayProps = Omit<PrimitivePropsWithRef<"div">, "style"> & {
   forceMount?: true | undefined;
 };
 
+/** The dimmed layer displayed behind the dialog content. */
 const DialogOverlay: Component<ScopedProps<DialogOverlayProps>> = (props) => {
   const portalContext = usePortalContext(OVERLAY_NAME, props.__scopeDialog);
   const rest = omit(props, "__scopeDialog", "forceMount", "ref");
@@ -247,6 +252,7 @@ type DialogOverlayImplProps = Omit<PrimitivePropsWithRef<"div">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
 
+/** The dimmed layer displayed behind the dialog content, with presence animation. */
 const DialogOverlayImpl: Component<ScopedProps<DialogOverlayImplProps>> = (props) => {
   const rest = omit(props, "__scopeDialog", "ref");
   const context = useDialogContext(OVERLAY_NAME, props.__scopeDialog);
@@ -295,6 +301,7 @@ type DialogContentProps = Omit<
   forceMount?: true | undefined;
 };
 
+/** The panel that contains the dialog content, with focus trapping and dismissal. */
 const DialogContent: Component<ScopedProps<DialogContentProps>> = (props) => {
   const portalContext = usePortalContext(CONTENT_NAME, props.__scopeDialog);
   const rest = omit(props, "__scopeDialog", "forceMount", "ref");
@@ -520,6 +527,7 @@ const DialogContentImpl: Component<ScopedProps<DialogContentImplProps>> = (props
 
 type DialogTitleProps = PrimitivePropsWithRef<"h2">;
 
+/** The accessible heading that labels the dialog. */
 const DialogTitle: Component<ScopedProps<DialogTitleProps>> = (props) => {
   const rest = omit(props, "__scopeDialog", "id", "ref");
   const context = useDialogContext("DialogTitle", props.__scopeDialog);
@@ -545,6 +553,7 @@ const DialogTitle: Component<ScopedProps<DialogTitleProps>> = (props) => {
 
 type DialogDescriptionProps = PrimitivePropsWithRef<"p">;
 
+/** The accessible text that describes the dialog content. */
 const DialogDescription: Component<ScopedProps<DialogDescriptionProps>> = (props) => {
   const rest = omit(props, "__scopeDialog", "id", "ref");
   const context = useDialogContext("DialogDescription", props.__scopeDialog);
@@ -587,6 +596,7 @@ const CLOSE_NAME = "DialogClose";
 
 type DialogCloseProps = PrimitivePropsWithRef<"button">;
 
+/** The button that closes the dialog when activated. */
 const DialogClose: Component<ScopedProps<DialogCloseProps>> = (props) => {
   const rest = omit(props, "__scopeDialog", "onClick", "ref");
   const context = useDialogContext(CLOSE_NAME, props.__scopeDialog);

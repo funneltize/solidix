@@ -91,6 +91,7 @@ type AnnounceProps = Omit<PrimitivePropsWithRef<"div">, "aria-atomic"> & {
   type?: RegionType | undefined;
 };
 
+/** Renders an ARIA live region that announces its children to screen readers. */
 const Announce: Component<AnnounceProps> = (props) => {
   const rest = omit(
     props,

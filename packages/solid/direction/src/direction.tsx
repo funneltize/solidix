@@ -1,6 +1,7 @@
 import { createContext, useContext, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
 
+/** Text direction constants for left-to-right and right-to-left layouts. */
 const Direction = {
   LTR: "ltr",
   RTL: "rtl",
@@ -18,12 +19,14 @@ interface DirectionProviderProps {
   children?: JSX.Element;
   dir: Direction;
 }
+/** Provides the text direction to descendant components. */
 const DirectionProvider: Component<DirectionProviderProps> = (props) => {
   return <DirectionContext value={props.dir}>{props.children}</DirectionContext>;
 };
 
 /* -----------------------------------------------------------------------------------------------*/
 
+/** Reads the text direction, preferring the local override when provided. */
 function useDirection(localDir?: Direction) {
   let globalDir: Direction | undefined;
   try {

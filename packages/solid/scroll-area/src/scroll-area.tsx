@@ -65,6 +65,7 @@ type DivEvent<E extends Event> = E & { currentTarget: HTMLDivElement; target: El
 const SCROLL_AREA_NAME = "ScrollArea";
 
 type ScopedProps<P> = P & { __scopeScrollArea?: Scope | undefined };
+/** Creates the context and scope factories shared by the scroll-area parts. */
 const [createScrollAreaContext, createScrollAreaScope] = createContextScope(SCROLL_AREA_NAME);
 
 type ScrollAreaContextValue = {
@@ -98,6 +99,7 @@ export interface ScrollAreaProps extends PrimitiveDivProps {
   scrollHideDelay?: number | undefined;
 }
 
+/** Root element providing scroll-area context to the viewport, scrollbars, and corner. */
 const ScrollArea: Component<ScopedProps<ScrollAreaProps>> = (props) => {
   const rest = omit(props, "__scopeScrollArea", "type", "dir", "scrollHideDelay", "ref", "style");
   const type = () => props.type ?? ScrollAreaType.Hover;
@@ -173,6 +175,7 @@ export interface ScrollAreaViewportProps extends PrimitiveDivProps {
   disableImplicitContentElement?: boolean | undefined;
 }
 
+/** Scrollable viewport tracking content size to drive scrollbar geometry. */
 const ScrollAreaViewport: Component<ScopedProps<ScrollAreaViewportProps>> = (props) => {
   const rest = omit(
     props,
@@ -285,6 +288,7 @@ const CONTENT_NAME = "ScrollAreaContent";
 
 export type ScrollAreaContentProps = PrimitiveDivProps;
 
+/** Content wrapper matching its children so scrollbar geometry can be measured. */
 const ScrollAreaContent: Component<ScopedProps<ScrollAreaContentProps>> = (props) => {
   const rest = omit(props, "__scopeScrollArea", "children", "ref", "style");
   const context = useScrollAreaContext(CONTENT_NAME, props.__scopeScrollArea);
@@ -318,6 +322,7 @@ export interface ScrollAreaScrollbarProps extends ScrollAreaScrollbarVisibleProp
   forceMount?: true | undefined;
 }
 
+/** Scrollbar shell rendering the hover, scroll, or auto variant for its orientation. */
 const ScrollAreaScrollbar: Component<ScopedProps<ScrollAreaScrollbarProps>> = (props) => {
   const rest = omit(props, "__scopeScrollArea", "forceMount", "ref", "orientation");
   const context = useScrollAreaContext(SCROLLBAR_NAME, props.__scopeScrollArea);
@@ -964,6 +969,7 @@ export interface ScrollAreaThumbProps extends ScrollAreaThumbImplProps {
   forceMount?: true | undefined;
 }
 
+/** Draggable scrollbar thumb shown while the scrollbar has a thumb to render. */
 const ScrollAreaThumb: Component<ScopedProps<ScrollAreaThumbProps>> = (props) => {
   const rest = omit(props, "__scopeScrollArea", "forceMount", "ref");
   const scrollbarContext = useScrollbarContext(THUMB_NAME, props.__scopeScrollArea);
@@ -1080,6 +1086,7 @@ const CORNER_NAME = "ScrollAreaCorner";
 
 export type ScrollAreaCornerProps = ScrollAreaCornerImplProps;
 
+/** Corner element rendered where the horizontal and vertical scrollbars meet. */
 const ScrollAreaCorner: Component<ScopedProps<ScrollAreaCornerProps>> = (props) => {
   const context = useScrollAreaContext(CORNER_NAME, props.__scopeScrollArea);
   const hasBothScrollbarsVisible = () => Boolean(context.scrollbarX() && context.scrollbarY());

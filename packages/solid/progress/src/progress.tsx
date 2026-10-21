@@ -10,6 +10,7 @@ const PROGRESS_NAME = "Progress";
 const DEFAULT_MAX = 100;
 
 type ScopedProps<P> = P & { __scopeProgress?: Scope | undefined };
+/** Creates the context and scope factories for progress. */
 const [createProgressContext, createProgressScope] = createContextScope(PROGRESS_NAME);
 
 type ProgressContextValue = {
@@ -26,6 +27,7 @@ type ProgressProps = PrimitivePropsWithRef<"div"> & {
   getValueLabel?: ((value: number, max: number) => string) | undefined;
 };
 
+/** Renders an ARIA progressbar tracking the child indicator's completion. */
 const Progress: Component<ScopedProps<ProgressProps>> = (props) => {
   const rest = omit(props, "__scopeProgress", "value", "max", "getValueLabel", "ref");
 
@@ -88,6 +90,7 @@ const INDICATOR_NAME = "ProgressIndicator";
 
 type ProgressIndicatorProps = PrimitivePropsWithRef<"div">;
 
+/** Renders the visual bar that represents the progress value. */
 const ProgressIndicator: Component<ScopedProps<ProgressIndicatorProps>> = (props) => {
   const rest = omit(props, "__scopeProgress", "ref");
   const context = useProgressContext(INDICATOR_NAME, props.__scopeProgress);

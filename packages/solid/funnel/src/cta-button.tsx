@@ -197,6 +197,7 @@ const AnchorCTAButton: Component<CTAButtonAnchorProps> = (props) => {
   );
 };
 
+/** High-contrast conversion button: an anchor when `href` is set, a button otherwise. */
 const CTAButton: Component<CTAButtonProps> = (props) => {
   return props.href !== undefined ? <AnchorCTAButton {...props} /> : <ButtonCTAButton {...props} />;
 };

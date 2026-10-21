@@ -7,6 +7,7 @@ import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 
 type ArrowProps = PrimitivePropsWithRef<"svg">;
 
+/** Renders the triangular pointer used by floating elements like popovers and tooltips. */
 const Arrow: Component<ArrowProps> = (props) => {
   const rest = omit(props, "width", "height", "children", "ref");
   return (

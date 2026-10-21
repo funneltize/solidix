@@ -22,7 +22,9 @@ import { useCallbackRef } from "@solidix/use-callback-ref";
 import { useSize } from "@solidix/use-size";
 import type { Measurable } from "@solidix/rect";
 
+/** The allowed placement sides (`"top" | "right" | "bottom" | "left"`). */
 const SIDE_OPTIONS = ["top", "right", "bottom", "left"] as const;
+/** The allowed placement alignments (`"start" | "center" | "end"`). */
 const ALIGN_OPTIONS = ["start", "center", "end"] as const;
 
 type Side = (typeof SIDE_OPTIONS)[number];
@@ -48,6 +50,7 @@ type UpdatePositionStrategy = (typeof UpdatePositionStrategy)[keyof typeof Updat
 const POPPER_NAME = "Popper";
 
 type ScopedProps<P> = P & { __scopePopper?: Scope | undefined };
+/** Creates a popper scope for composing popper parts across nested trees. */
 const [createPopperContext, createPopperScope] = createContextScope(POPPER_NAME);
 
 type PopperContextValue = {
@@ -61,6 +64,7 @@ const [PopperProvider, usePopperContext] = createPopperContext<PopperContextValu
 interface PopperProps {
   children?: JSX.Element | undefined;
 }
+/** Root state provider that anchors floating content to a reference element. */
 const Popper: Component<ScopedProps<PopperProps>> = (props) => {
   const [anchor, setAnchor] = createSignal<Measurable | null>(null);
   const [placementState, setPlacementState] = createSignal<Placement | undefined>(undefined);
@@ -89,6 +93,7 @@ interface PopperAnchorProps extends Omit<PrimitivePropsWithRef<"div">, "ref"> {
   virtualRef?: RefObject<Measurable | null> | (() => Measurable | null) | undefined;
 }
 
+/** The reference element the floating content is positioned against. */
 const PopperAnchor: Component<ScopedProps<PopperAnchorProps>> = (props) => {
   const anchorProps = omit(props, "__scopePopper", "virtualRef", "children", "ref");
   const context = usePopperContext(ANCHOR_NAME, props.__scopePopper);
@@ -167,6 +172,7 @@ interface PopperContentProps extends Omit<PrimitivePropsWithRef<"div">, "ref" | 
   onPlaced?: (() => void) | undefined;
 }
 
+/** The floating element positioned relative to the anchor. */
 const PopperContent: Component<ScopedProps<PopperContentProps>> = (props) => {
   const contentProps = omit(
     props,
@@ -468,6 +474,7 @@ const OPPOSITE_SIDE: Record<Side, Side> = {
 
 interface PopperArrowProps extends ArrowProps {}
 
+/** An arrow pointing from the floating content toward the anchor. */
 const PopperArrow: Component<ScopedProps<PopperArrowProps>> = (props) => {
   const arrowProps = omit(props, "__scopePopper", "ref", "style");
   const contentContext = useContentContext(ARROW_NAME, props.__scopePopper);

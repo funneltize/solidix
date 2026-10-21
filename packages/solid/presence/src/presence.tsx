@@ -7,6 +7,7 @@ interface PresenceProps {
   present: boolean | (() => boolean);
 }
 
+/** Conditionally mounts its children, keeping them alive through exit animations. */
 const Presence: Component<PresenceProps> = (props) => {
   const presence = usePresence(() =>
     typeof props.present === "function" ? props.present() : props.present,

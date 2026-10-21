@@ -22,6 +22,7 @@ interface UseContext<ContextValueType extends object | null> {
   (consumerName: string, options: { optional: true }): ContextValueType | undefined;
 }
 
+/** Creates a provider and consumer hook pair for sharing state between components. */
 function createContext<ContextValueType extends object | null>(
   rootComponentName: string,
 ): readonly [ContextProvider<ContextValueType>, UseContext<ContextValueType>];
@@ -114,6 +115,7 @@ interface CreateScopedContext {
   ): readonly [ScopedContextProvider<ContextValueType>, UseAssertedScopedContext<ContextValueType>];
 }
 
+/** Creates a scoped context factory so nested component trees can shadow outer contexts. */
 /* @__NO_SIDE_EFFECTS__ */ function createContextScope(
   scopeName: string,
   createContextScopeDeps: CreateScope[] = [],

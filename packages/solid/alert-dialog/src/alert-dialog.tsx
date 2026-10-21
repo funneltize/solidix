@@ -29,6 +29,7 @@ import { composeEventHandlers } from "@solidix/primitive";
 const ROOT_NAME = "AlertDialog";
 
 type ScopedProps<P> = P & { __scopeAlertDialog?: Scope | undefined };
+/** Creates an alert dialog scope for nesting multiple independent alert dialogs. */
 const [createAlertDialogContext, createAlertDialogScope] = createContextScope(ROOT_NAME, [
   createDialogScope,
 ]);
@@ -36,6 +37,7 @@ const useDialogScope = createDialogScope();
 
 type AlertDialogProps = Omit<DialogProps, "modal">;
 
+/** The root container that manages the alert dialog open state. */
 const AlertDialog: Component<ScopedProps<AlertDialogProps>> = (props) => {
   const dialogScope = useDialogScope(props.__scopeAlertDialog);
   return <Dialog {...dialogScope} {...omit(props, "__scopeAlertDialog")} modal />;
@@ -47,6 +49,7 @@ const AlertDialog: Component<ScopedProps<AlertDialogProps>> = (props) => {
 
 type AlertDialogTriggerProps = DialogTriggerProps;
 
+/** The button that opens the alert dialog when activated. */
 const AlertDialogTrigger: Component<ScopedProps<AlertDialogTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeAlertDialog", "ref");
   const dialogScope = useDialogScope(props.__scopeAlertDialog);
@@ -59,6 +62,7 @@ const AlertDialogTrigger: Component<ScopedProps<AlertDialogTriggerProps>> = (pro
 
 type AlertDialogPortalProps = DialogPortalProps;
 
+/** Renders the alert dialog overlay and content into a portal outside the DOM hierarchy. */
 const AlertDialogPortal: Component<ScopedProps<AlertDialogPortalProps>> = (props) => {
   const dialogScope = useDialogScope(props.__scopeAlertDialog);
   return <DialogPortal {...dialogScope} {...omit(props, "__scopeAlertDialog")} />;
@@ -70,6 +74,7 @@ const AlertDialogPortal: Component<ScopedProps<AlertDialogPortalProps>> = (props
 
 type AlertDialogOverlayProps = DialogOverlayProps;
 
+/** The dimmed layer displayed behind the alert dialog content. */
 const AlertDialogOverlay: Component<ScopedProps<AlertDialogOverlayProps>> = (props) => {
   const rest = omit(props, "__scopeAlertDialog", "ref");
   const dialogScope = useDialogScope(props.__scopeAlertDialog);
@@ -95,6 +100,7 @@ type AlertDialogContentProps = Omit<
   "onPointerDownOutside" | "onInteractOutside"
 >;
 
+/** The modal panel that contains the alert dialog content, requiring an explicit action. */
 const AlertDialogContent: Component<ScopedProps<AlertDialogContentProps>> = (props) => {
   // `children` must flow through unread: reading it here would instantiate the
   // subtree in this setup's owner scope, outside the content provider below.
@@ -128,6 +134,7 @@ const AlertDialogContent: Component<ScopedProps<AlertDialogContentProps>> = (pro
 
 type AlertDialogTitleProps = DialogTitleProps;
 
+/** The accessible heading that labels the alert dialog. */
 const AlertDialogTitle: Component<ScopedProps<AlertDialogTitleProps>> = (props) => {
   const rest = omit(props, "__scopeAlertDialog", "ref");
   const dialogScope = useDialogScope(props.__scopeAlertDialog);
@@ -140,6 +147,7 @@ const AlertDialogTitle: Component<ScopedProps<AlertDialogTitleProps>> = (props) 
 
 type AlertDialogDescriptionProps = DialogDescriptionProps;
 
+/** The accessible text that describes the alert dialog content. */
 const AlertDialogDescription: Component<ScopedProps<AlertDialogDescriptionProps>> = (props) => {
   const rest = omit(props, "__scopeAlertDialog", "ref");
   const dialogScope = useDialogScope(props.__scopeAlertDialog);
@@ -152,6 +160,7 @@ const AlertDialogDescription: Component<ScopedProps<AlertDialogDescriptionProps>
 
 type AlertDialogActionProps = DialogCloseProps;
 
+/** The button that confirms the action and closes the alert dialog. */
 const AlertDialogAction: Component<ScopedProps<AlertDialogActionProps>> = (props) => {
   const rest = omit(props, "__scopeAlertDialog", "ref");
   const dialogScope = useDialogScope(props.__scopeAlertDialog);
@@ -167,6 +176,7 @@ const CANCEL_NAME = "AlertDialogCancel";
 type AlertDialogCancelElement = HTMLButtonElement;
 type AlertDialogCancelProps = DialogCloseProps;
 
+/** The button that dismisses the alert dialog without taking the action. */
 const AlertDialogCancel: Component<ScopedProps<AlertDialogCancelProps>> = (props) => {
   const rest = omit(props, "__scopeAlertDialog", "ref");
   const { cancelRef } = useAlertDialogContentContext(CANCEL_NAME, props.__scopeAlertDialog);

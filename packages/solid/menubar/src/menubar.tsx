@@ -64,6 +64,9 @@ const [Collection, useCollection, createCollectionScope] = createCollection<
 >(MENUBAR_NAME);
 
 type ScopedProps<P> = P & { __scopeMenubar?: Scope | undefined };
+/**
+ * `createMenubarScope` creates a scope for composing `Menubar` parts with other Solidix primitives.
+ */
 const [createMenubarContext, createMenubarScope] = createContextScope(MENUBAR_NAME, [
   createCollectionScope,
   createRovingFocusGroupScope,
@@ -92,6 +95,9 @@ type MenubarProps = Omit<PrimitivePropsWithRef<"div">, "dir"> & {
   dir?: "ltr" | "rtl" | undefined;
 };
 
+/**
+ * `Menubar` contains all of the parts of a menubar.
+ */
 const Menubar: Component<ScopedProps<MenubarProps>> = (props) => {
   const rest = omit(
     props,
@@ -181,6 +187,9 @@ type MenubarMenuProps = {
   children?: import("@solidjs/web").JSX.Element | undefined;
 };
 
+/**
+ * `MenubarMenu` contains all of the parts of a top-level menu. It must be rendered inside `Menubar`.
+ */
 const MenubarMenu: Component<ScopedProps<MenubarMenuProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "value");
   const autoValue = useId();
@@ -242,6 +251,9 @@ type MenubarTriggerProps = Omit<PrimitivePropsWithRef<"button">, "disabled"> & {
   disabled?: boolean | undefined;
 };
 
+/**
+ * `MenubarTrigger` is the button that toggles the content of its menu. It must be rendered inside `MenubarMenu`.
+ */
 const MenubarTrigger: Component<ScopedProps<MenubarTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "disabled", "ref");
   const rovingFocusGroupScope = useRovingFocusGroupScope(props.__scopeMenubar);
@@ -338,6 +350,9 @@ const MenubarTrigger: Component<ScopedProps<MenubarTriggerProps>> = (props) => {
 
 type MenubarPortalProps = MenuPortalProps;
 
+/**
+ * `MenubarPortal` portals the content parts into the `body` when used.
+ */
 const MenubarPortal: Component<ScopedProps<MenubarPortalProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -352,6 +367,9 @@ const CONTENT_NAME = "MenubarContent";
 
 type MenubarContentProps = Omit<MenuContentProps, "onEntryFocus">;
 
+/**
+ * `MenubarContent` is the component that pops out when the menu is open.
+ */
 const MenubarContent: Component<ScopedProps<MenubarContentProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "align", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -452,6 +470,9 @@ const MenubarContent: Component<ScopedProps<MenubarContentProps>> = (props) => {
 
 type MenubarGroupProps = MenuGroupProps;
 
+/**
+ * `MenubarGroup` is used to group multiple `MenubarItem`s.
+ */
 const MenubarGroup: Component<ScopedProps<MenubarGroupProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -464,6 +485,9 @@ const MenubarGroup: Component<ScopedProps<MenubarGroupProps>> = (props) => {
 
 type MenubarLabelProps = MenuLabelProps;
 
+/**
+ * `MenubarLabel` is used to render a label. It won't be focusable using arrow keys.
+ */
 const MenubarLabel: Component<ScopedProps<MenubarLabelProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -476,6 +500,9 @@ const MenubarLabel: Component<ScopedProps<MenubarLabelProps>> = (props) => {
 
 type MenubarItemProps = MenuItemProps;
 
+/**
+ * `MenubarItem` is a selectable item in the menu.
+ */
 const MenubarItem: Component<ScopedProps<MenubarItemProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -488,6 +515,9 @@ const MenubarItem: Component<ScopedProps<MenubarItemProps>> = (props) => {
 
 type MenubarCheckboxItemProps = MenuCheckboxItemProps;
 
+/**
+ * `MenubarCheckboxItem` is an item that can be controlled and rendered like a checkbox.
+ */
 const MenubarCheckboxItem: Component<ScopedProps<MenubarCheckboxItemProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -500,6 +530,9 @@ const MenubarCheckboxItem: Component<ScopedProps<MenubarCheckboxItemProps>> = (p
 
 type MenubarRadioGroupProps = MenuRadioGroupProps;
 
+/**
+ * `MenubarRadioGroup` is used to group multiple `MenubarRadioItem`s.
+ */
 const MenubarRadioGroup: Component<ScopedProps<MenubarRadioGroupProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -512,6 +545,9 @@ const MenubarRadioGroup: Component<ScopedProps<MenubarRadioGroupProps>> = (props
 
 type MenubarRadioItemProps = MenuRadioItemProps;
 
+/**
+ * `MenubarRadioItem` is an item that can be controlled and rendered like a radio.
+ */
 const MenubarRadioItem: Component<ScopedProps<MenubarRadioItemProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -524,6 +560,9 @@ const MenubarRadioItem: Component<ScopedProps<MenubarRadioItemProps>> = (props) 
 
 type MenubarItemIndicatorProps = MenuItemIndicatorProps;
 
+/**
+ * `MenubarItemIndicator` renders when the parent `MenubarCheckboxItem` or `MenubarRadioItem` is checked.
+ */
 const MenubarItemIndicator: Component<ScopedProps<MenubarItemIndicatorProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -536,6 +575,9 @@ const MenubarItemIndicator: Component<ScopedProps<MenubarItemIndicatorProps>> = 
 
 type MenubarSeparatorProps = MenuSeparatorProps;
 
+/**
+ * `MenubarSeparator` is used to visually separate items in a menu.
+ */
 const MenubarSeparator: Component<ScopedProps<MenubarSeparatorProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -548,6 +590,9 @@ const MenubarSeparator: Component<ScopedProps<MenubarSeparatorProps>> = (props) 
 
 type MenubarArrowProps = MenuArrowProps;
 
+/**
+ * `MenubarArrow` is an optional arrow element to render alongside the menu, visually linking the trigger with the content.
+ */
 const MenubarArrow: Component<ScopedProps<MenubarArrowProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -564,6 +609,9 @@ type MenubarSubProps = MenuSubProps & {
   defaultOpen?: boolean | undefined;
 };
 
+/**
+ * `MenubarSub` contains all of the parts of a submenu.
+ */
 const MenubarSub: Component<ScopedProps<MenubarSubProps>> = (props) => {
   const menuScope = useMenuScope(props.__scopeMenubar);
   const [open, setOpen] = useControllableState({
@@ -586,6 +634,9 @@ const MenubarSub: Component<ScopedProps<MenubarSubProps>> = (props) => {
 
 type MenubarSubTriggerProps = MenuSubTriggerProps;
 
+/**
+ * `MenubarSubTrigger` is an item that opens a submenu. It must be rendered inside `MenubarSub`.
+ */
 const MenubarSubTrigger: Component<ScopedProps<MenubarSubTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);
@@ -600,6 +651,9 @@ const MenubarSubTrigger: Component<ScopedProps<MenubarSubTriggerProps>> = (props
 
 type MenubarSubContentProps = MenuSubContentProps;
 
+/**
+ * `MenubarSubContent` is the component that pops out when a submenu is open. It must be rendered inside `MenubarSub`.
+ */
 const MenubarSubContent: Component<ScopedProps<MenubarSubContentProps>> = (props) => {
   const rest = omit(props, "__scopeMenubar", "ref");
   const menuScope = useMenuScope(props.__scopeMenubar);

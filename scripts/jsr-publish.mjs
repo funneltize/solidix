@@ -224,20 +224,32 @@ function main() {
     mkdirSync(join(stage, dirname(envJs)), { recursive: true });
     writeFileSync(
       join(stage, envJs),
-      "export const IS_DEVELOPMENT =\n" +
+      "/** Whether the current build is a development build. */\n" +
+        "export const IS_DEVELOPMENT =\n" +
         '  typeof process !== "undefined" &&\n' +
         "  process.env !== undefined &&\n" +
         '  process.env.NODE_ENV === "development";\n',
     );
     writeFileSync(
       join(stage, "lib", "env-check", "is-development.d.ts"),
-      "export declare const IS_DEVELOPMENT: boolean;\n",
+      "/** Whether the current build is a development build. */\n" +
+        "export declare const IS_DEVELOPMENT: boolean;\n",
     );
     stagedJs.add(toPosix(envJs));
 
     // 3. Point each staged module at its declarations. JSR does not pair
     // sibling .d.ts files on its own; without this every entrypoint warns
     // `unsupported-javascript-entrypoint` and docs/npm types suffer.
+    //
+    // The `@module` block below it feeds JSR's module-doc score factor:
+    // deno_doc reads the staged .js, and rollup drops entry comments, so a
+    // `@module` block in `src/index.ts` never survives to be scored -
+    // staging-time injection is the only placement that works (verified by
+    // building `@solidix/dialog` with a src `@module` block: dropped from
+    // the .mjs, kept only in the .d.ts). The umbrella is skipped: README.md
+    // covers the "." entrypoint, and a `@module` block there would replace
+    // the README on the package Overview tab.
+    const descriptions = new Map(packages.map((p) => [p.shortName, p.manifest.description]));
     for (const rel of stagedJs) {
       const sibling = rel.replace(/\.js$/, ".d.ts");
       if (!existsSync(join(stage, sibling))) {
@@ -245,7 +257,16 @@ function main() {
       }
       const base = sibling.slice(sibling.lastIndexOf("/") + 1);
       const abs = join(stage, rel);
-      writeFileSync(abs, `/* @ts-self-types="./${base}" */\n${readFileSync(abs, "utf8")}`);
+      let header = `/* @ts-self-types="./${base}" */\n`;
+      const shortName = toPosix(rel).slice("lib/".length).split("/")[0];
+      if (shortName !== "solidix") {
+        const summary =
+          toPosix(rel) === toPosix(envJs)
+            ? "Whether the current build is a development build."
+            : (descriptions.get(shortName) ?? shortName);
+        header += `/**\n * ${summary}\n *\n * @module\n */\n`;
+      }
+      writeFileSync(abs, `${header}${readFileSync(abs, "utf8")}`);
     }
 
     // 4. Rewrite bare @solidix/* specifiers to staged-relative paths.

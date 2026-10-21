@@ -122,9 +122,9 @@ describe("editing contract", () => {
     expect(screen.getByRole("link", { name: "Go" }).getAttribute("data-funnel-part")).toBe(
       "plan-cta",
     );
-    expect(
-      screen.getByRole("link", { name: "Go" }).getAttribute("data-funnel-part-index"),
-    ).toBe("2");
+    expect(screen.getByRole("link", { name: "Go" }).getAttribute("data-funnel-part-index")).toBe(
+      "2",
+    );
   });
 
   test("CtaCluster marks microcopy and keeps the inner button label", () => {
@@ -180,9 +180,7 @@ describe("editing contract", () => {
     ));
     expect(screen.getByText("Step 1").getAttribute("data-funnel-part")).toBe("eyebrow");
     expect(screen.getByText("Big idea").getAttribute("data-funnel-part")).toBe("title");
-    expect(screen.getByText("Why it matters").getAttribute("data-funnel-part")).toBe(
-      "description",
-    );
+    expect(screen.getByText("Why it matters").getAttribute("data-funnel-part")).toBe("description");
     expect(screen.getByText("Big idea").getAttribute("tabindex")).toBe("0");
   });
 
@@ -252,9 +250,9 @@ describe("editing contract", () => {
     const input = document.querySelector('[data-funnel-part="input"]') as HTMLElement;
     expect(input.getAttribute("data-funnel-part-index")).toBe("0");
     expect(input.hasAttribute("tabindex")).toBe(false);
-    expect(screen.getByRole("button", { name: "Get access" }).getAttribute("data-funnel-part")).toBe(
-      "submit",
-    );
+    expect(
+      screen.getByRole("button", { name: "Get access" }).getAttribute("data-funnel-part"),
+    ).toBe("submit");
     expect(screen.getByText("No spam.").getAttribute("data-funnel-part")).toBe("privacy");
 
     fireEvent.input(screen.getByLabelText(/Email/), { target: { value: "ada@example.com" } });

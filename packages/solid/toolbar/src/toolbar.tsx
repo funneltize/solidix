@@ -29,6 +29,7 @@ import {
 const TOOLBAR_NAME = "Toolbar";
 
 type ScopedProps<P> = P & { __scopeToolbar?: Scope | undefined };
+/** Creates the toolbar context and composes its scope subtree. */
 const [createToolbarContext, createToolbarScope] = createContextScope(TOOLBAR_NAME, [
   createRovingFocusGroupScope,
   createToggleGroupScope,
@@ -49,6 +50,7 @@ type ToolbarProps = Omit<PrimitivePropsWithRef<"div">, "dir"> & {
   dir?: "ltr" | "rtl" | undefined;
 };
 
+/** Root toolbar with roving tabindex navigation across its controls. */
 const Toolbar: Component<ScopedProps<ToolbarProps>> = (props) => {
   const rest = omit(props, "__scopeToolbar", "orientation", "dir", "loop", "ref");
   const rovingFocusGroupScope = useRovingFocusGroupScope(props.__scopeToolbar);
@@ -84,6 +86,7 @@ const SEPARATOR_NAME = "ToolbarSeparator";
 
 type ToolbarSeparatorProps = SeparatorProps;
 
+/** Divider between toolbar controls, oriented across the toolbar direction. */
 const ToolbarSeparator: Component<ScopedProps<ToolbarSeparatorProps>> = (props) => {
   const rest = omit(props, "__scopeToolbar", "ref");
   const context = useToolbarContext(SEPARATOR_NAME, props.__scopeToolbar);
@@ -102,6 +105,7 @@ const ToolbarSeparator: Component<ScopedProps<ToolbarSeparatorProps>> = (props) 
 
 type ToolbarButtonProps = PrimitivePropsWithRef<"button">;
 
+/** Button that participates in the toolbar roving focus group. */
 const ToolbarButton: Component<ScopedProps<ToolbarButtonProps>> = (props) => {
   const rest = omit(props, "__scopeToolbar", "ref");
   const rovingFocusGroupScope = useRovingFocusGroupScope(props.__scopeToolbar);
@@ -118,6 +122,7 @@ const ToolbarButton: Component<ScopedProps<ToolbarButtonProps>> = (props) => {
 
 type ToolbarLinkProps = PrimitivePropsWithRef<"a">;
 
+/** Link that participates in the toolbar roving focus group. */
 const ToolbarLink: Component<ScopedProps<ToolbarLinkProps>> = (props) => {
   const rest = omit(props, "__scopeToolbar", "onKeyDown", "ref");
   const rovingFocusGroupScope = useRovingFocusGroupScope(props.__scopeToolbar);
@@ -156,6 +161,7 @@ const TOGGLE_GROUP_NAME = "ToolbarToggleGroup";
 type ToolbarToggleGroupSingleProps = ToggleGroupSingleProps;
 type ToolbarToggleGroupMultipleProps = ToggleGroupMultipleProps;
 
+/** Toggle group bound to the toolbar orientation and direction. */
 const ToolbarToggleGroup: Component<
   ScopedProps<ToolbarToggleGroupSingleProps | ToolbarToggleGroupMultipleProps>
 > = (props) => {
@@ -180,6 +186,7 @@ const ToolbarToggleGroup: Component<
 
 type ToolbarToggleItemProps = ToggleGroupItemProps;
 
+/** Toggle item inside a toolbar toggle group. */
 const ToolbarToggleItem: Component<ScopedProps<ToolbarToggleItemProps>> = (props) => {
   const rest = omit(props, "__scopeToolbar", "ref");
   const toggleGroupScope = useToggleGroupScope(props.__scopeToolbar);

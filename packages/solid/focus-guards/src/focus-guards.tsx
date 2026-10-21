@@ -15,6 +15,7 @@ interface FocusGuardsProps {
   children?: JSX.Element | undefined;
 }
 
+/** Installs the global edge-of-DOM focus guards and renders its children unchanged. */
 const FocusGuards: Component<FocusGuardsProps> = (props) => {
   useFocusGuards();
   return props.children;

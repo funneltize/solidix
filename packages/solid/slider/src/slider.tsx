@@ -63,6 +63,7 @@ const [Collection, { useCollection, useGetCollection, createCollectionScope }] =
   createCollection<HTMLSpanElement>(SLIDER_NAME);
 
 type ScopedProps<P> = P & { __scopeSlider?: Scope | undefined };
+/** Creates the slider context and the scope subtree that isolates nested sliders. */
 const [createSliderContext, createSliderScope] = createContextScope(SLIDER_NAME, [
   createCollectionScope,
 ]);
@@ -108,6 +109,7 @@ type SliderProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   form?: string | undefined;
 };
 
+/** Root component that owns slider state and renders the horizontal or vertical track. */
 const Slider: Component<ScopedProps<SliderProps>> = (props) => {
   const rest = omit(
     props,
@@ -641,6 +643,7 @@ type SliderTrackProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
 
+/** Track element that contains the range and thumbs and handles pointer interaction. */
 const SliderTrack: Component<ScopedProps<SliderTrackProps>> = (props) => {
   const rest = omit(props, "__scopeSlider", "ref");
   const context = useSliderContext(TRACK_NAME, props.__scopeSlider);
@@ -664,6 +667,7 @@ type SliderRangeProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
 
+/** Range element that visually spans from the min edge to the current value. */
 const SliderRange: Component<ScopedProps<SliderRangeProps>> = (props) => {
   const rest = omit(props, "__scopeSlider", "style", "ref");
   const context = useSliderContext(RANGE_NAME, props.__scopeSlider);
@@ -793,6 +797,7 @@ const SliderThumbProviderInternal: Component<ScopedProps<SliderThumbProviderInte
   );
 };
 
+/** Provider that tracks one thumb's index, value, and size for its descendants. */
 const SliderThumbProvider: Component<ScopedProps<SliderThumbProviderProps>> =
   SliderThumbProviderInternal;
 
@@ -806,6 +811,7 @@ type SliderThumbTriggerProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
 
+/** Focusable thumb handle with the slider role, ARIA value, and absolute positioning. */
 const SliderThumbTrigger: Component<ScopedProps<SliderThumbTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeSlider", "onFocus", "style", "ref");
   const context = useSliderContext(THUMB_TRIGGER_NAME, props.__scopeSlider);
@@ -870,6 +876,7 @@ type SliderThumbProps = SliderThumbTriggerProps & {
   name?: string | undefined;
 };
 
+/** Thumb composed of a provider, a trigger handle, and a hidden form input. */
 const SliderThumb: Component<ScopedProps<SliderThumbProps>> = (props) => {
   const rest = omit(props, "__scopeSlider", "name", "ref");
   return (
@@ -900,6 +907,7 @@ type SliderBubbleInputProps = Omit<PrimitivePropsWithRef<"input">, "value" | "st
   style?: JSX.CSSProperties | undefined;
 };
 
+/** Hidden input that bubbles the thumb value into native form submission. */
 const SliderBubbleInput: Component<ScopedProps<SliderBubbleInputProps>> = (props) => {
   const rest = omit(props, "__scopeSlider", "onInput", "ref");
   const thumbContext = useSliderThumbContext(BUBBLE_INPUT_NAME, props.__scopeSlider);

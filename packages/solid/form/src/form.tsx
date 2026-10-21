@@ -13,6 +13,7 @@ import {
 import { useLayoutEffect } from "@solidix/use-layout-effect";
 
 type ScopedProps<P> = P & { __scopeForm?: Scope | undefined };
+/** Creates the form context and composes its scope subtree. */
 const [createFormContext, createFormScope] = createContextScope("Form");
 
 /* -------------------------------------------------------------------------------------------------
@@ -55,6 +56,7 @@ type FormProps = PrimitivePropsWithRef<"form"> & {
   onClearServerErrors?: (() => void) | undefined;
 };
 
+/** Root form that tracks native validity and server errors for its fields. */
 const Form: Component<ScopedProps<FormProps>> = (props) => {
   const rest = omit(props, "__scopeForm", "onClearServerErrors", "ref");
   const formRef: RefObject<HTMLFormElement | null> = { current: null };
@@ -210,6 +212,7 @@ type FormFieldProps = PrimitivePropsWithRef<"div"> & {
   serverInvalid?: boolean | undefined;
 };
 
+/** Names a field so its label, control, and messages share one identity. */
 const FormField: Component<ScopedProps<FormFieldProps>> = (props) => {
   const rest = omit(props, "__scopeForm", "name", "serverInvalid", "ref");
   const validationContext = useValidationContext(FIELD_NAME, props.__scopeForm);
@@ -245,6 +248,7 @@ type FormLabelProps = LabelProps & {
   htmlFor?: string | undefined;
 };
 
+/** Label associated with the field control, annotated with validity state. */
 const FormLabel: Component<ScopedProps<FormLabelProps>> = (props) => {
   const rest = omit(props, "__scopeForm", "name", "htmlFor", "ref");
   const validationContext = useValidationContext(LABEL_NAME, props.__scopeForm);
@@ -287,6 +291,7 @@ const CONTROL_NAME = "FormControl";
 
 type FormControlProps = PrimitivePropsWithRef<"input">;
 
+/** Input control that reports built-in and custom validity to the form. */
 const FormControl: Component<ScopedProps<FormControlProps>> = (props) => {
   const rest = omit(props, "__scopeForm", "name", "id", "aria-describedby", "ref");
 
@@ -497,6 +502,7 @@ type FormMessageProps = Omit<FormMessageImplProps, "name"> & {
   name?: string | undefined;
 };
 
+/** Message shown when the field matches the given validity matcher. */
 const FormMessage: Component<ScopedProps<FormMessageProps>> = (props) => {
   const fieldContext = useFormFieldContext(MESSAGE_NAME, props.__scopeForm, { optional: true });
   const name = () => props.name ?? fieldContext?.name;
@@ -640,6 +646,7 @@ type FormValidityStateProps = {
   name?: string | undefined;
 };
 
+/** Render-prop that exposes the field validity state object to children. */
 const FormValidityState: Component<ScopedProps<FormValidityStateProps>> = (props) => {
   const validationContext = useValidationContext(VALIDITY_STATE_NAME, props.__scopeForm);
   const fieldContext = useFormFieldContext(VALIDITY_STATE_NAME, props.__scopeForm, {
@@ -661,6 +668,7 @@ const FormValidityState: Component<ScopedProps<FormValidityStateProps>> = (props
 
 type FormSubmitProps = PrimitivePropsWithRef<"button">;
 
+/** Submit button for the form. */
 const FormSubmit: Component<ScopedProps<FormSubmitProps>> = (props) => {
   const rest = omit(props, "__scopeForm", "ref");
   return <Primitive.button type="submit" {...rest} ref={props.ref} />;

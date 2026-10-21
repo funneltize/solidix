@@ -223,6 +223,7 @@ function inertOthers(
   return applyAttributeToOthers(originalTargets, parentNode, markerName, "inert");
 }
 
+/** Whether the browser supports the native `inert` attribute. */
 function supportsInert(): boolean {
   return typeof HTMLElement !== "undefined" && HTMLElement.prototype.hasOwnProperty("inert");
 }

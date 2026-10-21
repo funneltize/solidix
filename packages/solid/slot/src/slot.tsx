@@ -17,6 +17,7 @@ type SlotProps<Elem extends Element = HTMLElement, Props = JSX.HTMLAttributes<El
  */
 const slottableTargets = new WeakSet<Element>();
 
+/** Creates a Slot component that merges its props onto its single child element. */
 /* @__NO_SIDE_EFFECTS__ */ export function createSlot<
   Elem extends Element = HTMLElement,
   Props = JSX.HTMLAttributes<Elem>,
@@ -85,6 +86,7 @@ const slottableTargets = new WeakSet<Element>();
   return Slot;
 }
 
+/** Merges its props onto its single child element instead of rendering a wrapper. */
 const Slot = createSlot("Slot");
 
 /* -------------------------------------------------------------------------------------------------
@@ -99,6 +101,7 @@ type SlottableRenderFnProps = {
 
 type SlottableProps = SlottableRenderFnProps | SlottableChildrenProps;
 
+/** Creates a Slottable component that marks which child receives slotted props. */
 /* @__NO_SIDE_EFFECTS__ */ export function createSlottable(
   ownerName: string,
 ): Component<SlottableProps> {
@@ -140,6 +143,7 @@ type SlottableProps = SlottableRenderFnProps | SlottableChildrenProps;
   return Slottable;
 }
 
+/** Marks which child of a Slot receives the slotted props. */
 const Slottable = createSlottable("Slottable");
 
 /* -------------------------------------------------------------------------------------------------

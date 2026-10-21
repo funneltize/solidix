@@ -29,6 +29,7 @@ type BenefitsProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   items: BenefitItem[];
 };
 
+/** Benefit list with check icons, alternating zig-zag rows when items carry media. */
 const Benefits: Component<BenefitsProps> = (props) => {
   const rest = omit(props, "items", "class", "ref");
   const editable = useFunnelEditable();
@@ -110,6 +111,7 @@ type HowItWorksProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   steps: HowItWorksStep[];
 };
 
+/** Numbered step sequence explaining how the offer works. */
 const HowItWorks: Component<HowItWorksProps> = (props) => {
   const rest = omit(props, "steps", "class", "ref");
   const editable = useFunnelEditable();
@@ -180,6 +182,7 @@ type PricingProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   annualNote?: string | undefined;
 };
 
+/** Offer stack with a monthly/annual billing toggle and a featured plan. */
 const Pricing: Component<PricingProps> = (props) => {
   const rest = omit(
     props,
@@ -321,6 +324,7 @@ type GuaranteeProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   description?: string | undefined;
 };
 
+/** Risk-reversal seal block: guarantee title and description. */
 const Guarantee: Component<GuaranteeProps> = (props) => {
   const rest = omit(props, "title", "description", "class", "ref");
   const editable = useFunnelEditable();
@@ -396,6 +400,7 @@ function hashOpenId(items: FaqItem[]): string | undefined {
   return id && items.some((item) => item.id === id) ? id : undefined;
 }
 
+/** Accessible FAQ accordion with deep-linking via `#faq-<id>` hashes. */
 const Faq: Component<FaqProps> = (props) => {
   const rest = omit(props, "items", "defaultOpen", "class", "ref");
   const editable = useFunnelEditable();
@@ -470,9 +475,11 @@ function featuredIndex(columns: ComparisonColumn[]): number {
   return flagged === -1 ? 0 : flagged;
 }
 
-const ComparisonCell: Component<{ value: boolean | string; featured: boolean; partIndex: string }> = (
-  props,
-) => {
+const ComparisonCell: Component<{
+  value: boolean | string;
+  featured: boolean;
+  partIndex: string;
+}> = (props) => {
   const value = () => props.value;
   const editable = useFunnelEditable();
   return (

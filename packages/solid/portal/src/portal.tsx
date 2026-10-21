@@ -14,6 +14,7 @@ type PortalProps = PrimitivePropsWithRef<"div"> & {
   container?: Element | DocumentFragment | null | undefined;
 };
 
+/** Renders its children into the given container (or document body) via a portal. */
 const Portal: Component<PortalProps> = (props) => {
   const rest = omit(props, "container", "children", "ref");
   const [mounted, setMounted] = createSignal(false);

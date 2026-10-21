@@ -1,5 +1,6 @@
 import { canUseDOM } from "./can-use-dom";
 
+/** Chains a consumer handler with an internal one, skipping the internal one when the event was prevented. */
 export function composeEventHandlers<E extends { defaultPrevented: boolean }>(
   originalEventHandler?: ((event: E) => void) | [handler: (data: any, event: E) => void, data: any],
   ourEventHandler?: (event: E) => void,
@@ -39,6 +40,7 @@ export function ariaBoolean(value: boolean | undefined): "true" | "false" | unde
   return value === undefined ? undefined : value ? "true" : "false";
 }
 
+/** Returns the window owning a node, falling back to the global window. */
 export function getOwnerWindow(element: Node | null | undefined) {
   if (!canUseDOM) {
     throw new Error("Cannot access window outside of the DOM");
@@ -46,6 +48,7 @@ export function getOwnerWindow(element: Node | null | undefined) {
   return element?.ownerDocument?.defaultView ?? window;
 }
 
+/** Returns the document owning a node, falling back to the global document. */
 export function getOwnerDocument(element: Node | null | undefined) {
   if (!canUseDOM) {
     throw new Error("Cannot access document outside of the DOM");
@@ -85,6 +88,7 @@ export function getActiveElement(
   return activeElement as HTMLElement | null;
 }
 
+/** Narrows an element to an iframe by tag name. */
 export function isFrame(element: Element): element is HTMLIFrameElement {
   return element.tagName === "IFRAME";
 }

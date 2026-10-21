@@ -76,6 +76,7 @@ function useInView(ref: () => HTMLElement | null, onView: () => void): void {
   onCleanup(() => observer.disconnect());
 }
 
+/** Above-the-fold hero block: headline, supporting copy, and CTA cluster. */
 const Hero: Component<HeroProps> = (props) => {
   const rest = omit(
     props,
@@ -201,6 +202,7 @@ type OptInFormProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   id?: string | undefined;
 };
 
+/** Email/opt-in capture form with validation that calls `onSubmit` with the submitted values. */
 const OptInForm: Component<OptInFormProps> = (props) => {
   const rest = omit(
     props,
@@ -352,6 +354,7 @@ function splitRemaining(ms: number): CountdownParts {
 
 const pad = (value: number) => String(value).padStart(2, "0");
 
+/** Live countdown timer rendering days/hours/minutes/seconds until a deadline. */
 const Countdown: Component<CountdownProps> = (props) => {
   const rest = omit(props, "endsAt", "now", "interval", "onExpire", "caption", "class", "ref");
   const editable = useFunnelEditable();
@@ -453,6 +456,7 @@ type StickyBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   observe?: string | undefined;
 };
 
+/** Mobile sticky bottom bar that reveals a compact CTA once the hero trigger scrolls out of view. */
 const StickyBar: Component<StickyBarProps> = (props) => {
   const rest = omit(props, "message", "cta", "showAfter", "observe", "class", "ref");
   const editable = useFunnelEditable();
@@ -499,12 +503,7 @@ const StickyBar: Component<StickyBarProps> = (props) => {
       >
         {props.message}
       </p>
-      <CTAButton
-        href={props.cta.href}
-        size="md"
-        tabindex={visible() ? undefined : -1}
-        part="cta"
-      >
+      <CTAButton href={props.cta.href} size="md" tabindex={visible() ? undefined : -1} part="cta">
         {props.cta.label}
       </CTAButton>
     </Primitive.div>
@@ -530,6 +529,7 @@ type ExitIntentProps = {
   frequencyCapDays?: number | undefined;
 };
 
+/** Exit-intent popup with frequency capping via localStorage. */
 const ExitIntent: Component<ExitIntentProps> = (props) => {
   const [open, setOpen] = createSignal(false);
   const editable = useFunnelEditable();
@@ -767,6 +767,7 @@ const FooterAnchor: Component<{
   );
 };
 
+/** Slim footer strip with link columns and trust badges. */
 const Footer: Component<FooterProps> = (props) => {
   const rest = omit(
     props,

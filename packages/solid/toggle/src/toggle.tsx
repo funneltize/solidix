@@ -31,6 +31,7 @@ type ToggleProps = PrimitivePropsWithRef<"button"> & {
   onPressedChange?: { bivarianceHack(pressed: boolean): void }["bivarianceHack"] | undefined;
 };
 
+/** Renders a two-state button that toggles between pressed and unpressed. */
 const Toggle: Component<ToggleProps> = (props) => {
   const rest = omit(props, "pressed", "defaultPressed", "onPressedChange", "ref");
 

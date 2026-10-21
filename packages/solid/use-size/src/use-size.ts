@@ -2,6 +2,7 @@ import { createEffect, createSignal } from "solid-js";
 
 type Size = { width: number; height: number };
 
+/** Tracks an element's content size with a ResizeObserver. */
 function useSize(element: HTMLElement | null | (() => HTMLElement | null)): () => Size | undefined {
   const get = typeof element === "function" ? (element as () => HTMLElement | null) : () => element;
   const [size, setSize] = createSignal<Size | undefined>(undefined);

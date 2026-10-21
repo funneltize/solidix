@@ -15,6 +15,7 @@ import { useSize } from "@solidix/use-size";
 const SWITCH_NAME = "Switch";
 
 type ScopedProps<P> = P & { __scopeSwitch?: Scope | undefined };
+/** Creates a switch scope for composing switch parts across nested trees. */
 const [createSwitchContext, createSwitchScope] = createContextScope(SWITCH_NAME);
 
 interface SwitchUserClick {
@@ -67,6 +68,7 @@ type SwitchProviderInternalProps = SwitchProviderProps & {
   internal_do_not_use_render?: ((context: SwitchContextValue) => JSX.Element) | undefined;
 };
 
+/** Provides switch state to trigger, thumb, and bubble input parts. */
 const SwitchProvider: Component<ScopedProps<SwitchProviderInternalProps>> = (props) => {
   const [checked, setChecked] = useControllableState({
     prop: () => props.checked,
@@ -126,6 +128,7 @@ type SwitchTriggerProps = Omit<PrimitivePropsWithRef<"button">, keyof SwitchProv
   children?: JSX.Element | undefined;
 };
 
+/** The pressable button that toggles the switch. */
 const SwitchTrigger: Component<ScopedProps<SwitchTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeSwitch", "onClick", "ref");
   const context = useSwitchContext(TRIGGER_NAME, props.__scopeSwitch);
@@ -202,6 +205,7 @@ type SwitchProps = Omit<
   onCheckedChange?: { bivarianceHack(checked: boolean): void }["bivarianceHack"] | undefined;
 };
 
+/** A toggle control that switches between checked and unchecked states. */
 const Switch: Component<ScopedProps<SwitchProps>> = (props) => {
   const rest = omit(
     props,
@@ -248,6 +252,7 @@ const THUMB_NAME = "SwitchThumb";
 
 type SwitchThumbProps = PrimitivePropsWithRef<"span">;
 
+/** The visual knob rendered inside the switch. */
 const SwitchThumb: Component<ScopedProps<SwitchThumbProps>> = (props) => {
   const rest = omit(props, "__scopeSwitch", "ref");
   const context = useSwitchContext(THUMB_NAME, props.__scopeSwitch);
@@ -271,6 +276,7 @@ type SwitchBubbleInputProps = Omit<PrimitivePropsWithRef<"input">, "checked" | "
   style?: JSX.CSSProperties | undefined;
 };
 
+/** Hidden native input that syncs switch state with forms. */
 const SwitchBubbleInput: Component<ScopedProps<SwitchBubbleInputProps>> = (props) => {
   const rest = omit(props, "__scopeSwitch", "onClick", "style", "ref");
   const context = useSwitchContext(BUBBLE_INPUT_NAME, props.__scopeSwitch);

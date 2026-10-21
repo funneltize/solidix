@@ -11,6 +11,7 @@ type AspectRatioProps = Omit<PrimitivePropsWithRef<"div">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
 
+/** Renders a container that preserves the given width-to-height ratio for its content. */
 const AspectRatio: Component<AspectRatioProps> = (props) => {
   const rest = omit(props, "ratio", "style", "ref");
   return (

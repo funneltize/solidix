@@ -14,6 +14,7 @@ interface CollectionProps extends SlotProps {
 // This is because we encountered issues with generic types that cannot be statically analysed
 // due to creating them dynamically via createCollection.
 
+/** Creates provider, slot, and item components that track ordered items within a collection. */
 /* @__NO_SIDE_EFFECTS__ */ function createCollection<
   ItemElement extends HTMLElement,
   ItemData = {},

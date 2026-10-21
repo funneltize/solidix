@@ -26,6 +26,7 @@ import { useControllableState } from "@solidix/use-controllable-state";
 const TABS_NAME = "Tabs";
 
 type ScopedProps<P> = P & { __scopeTabs?: Scope | undefined };
+/** Creates a tabs scope for composing tabs parts across nested trees. */
 const [createTabsContext, createTabsScope] = createContextScope(TABS_NAME, [
   createRovingFocusGroupScope,
 ]);
@@ -58,6 +59,7 @@ type TabsProps = PrimitivePropsWithRef<"div"> & {
   onValueChange?: { bivarianceHack(value: string): void }["bivarianceHack"] | undefined;
 };
 
+/** Root state provider for a tabbed interface. */
 const Tabs: Component<ScopedProps<TabsProps>> = (props) => {
   const rest = omit(
     props,
@@ -106,6 +108,7 @@ type TabsListProps = PrimitivePropsWithRef<"div"> & {
   loop?: RovingFocusGroupRootProps["loop"] | undefined;
 };
 
+/** Contains the tab triggers with roving-focus keyboard navigation. */
 const TabsList: Component<ScopedProps<TabsListProps>> = (props) => {
   const rest = omit(props, "__scopeTabs", "loop", "ref");
   const context = useTabsContext(LIST_NAME, props.__scopeTabs);
@@ -140,6 +143,7 @@ type TabsTriggerProps = PrimitivePropsWithRef<"button"> & {
   disabled?: boolean | undefined;
 };
 
+/** A tab button that activates its associated panel. */
 const TabsTrigger: Component<ScopedProps<TabsTriggerProps>> = (props) => {
   const rest = omit(
     props,
@@ -239,6 +243,7 @@ type TabsContentProps = Omit<PrimitivePropsWithRef<"div">, "value" | "style"> & 
   style?: JSX.CSSProperties | undefined;
 };
 
+/** The panel shown when its tab is active. */
 const TabsContent: Component<ScopedProps<TabsContentProps>> = (props) => {
   const rest = omit(props, "__scopeTabs", "children", "value", "forceMount", "style", "ref");
   const context = useTabsContext(CONTENT_NAME, props.__scopeTabs);

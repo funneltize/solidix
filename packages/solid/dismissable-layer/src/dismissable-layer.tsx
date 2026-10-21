@@ -144,6 +144,7 @@ type DismissableLayerProps = PrimitivePropsWithRef<"div"> & {
   onPointerDownCapture?: ((event: PointerEvent) => void) | undefined;
 };
 
+/** Marks a layer dismissible via pointer-down-outside, focus-outside, and Escape interactions. */
 const DismissableLayer: Component<DismissableLayerProps> = (props) => {
   const rest = omit(
     props,
@@ -429,6 +430,7 @@ const DismissableLayer: Component<DismissableLayerProps> = (props) => {
 
 type DismissableLayerBranchProps = PrimitivePropsWithRef<"div">;
 
+/** Marks a subtree as belonging to an ancestor dismissable layer so inside interactions are ignored. */
 const DismissableLayerBranch: Component<DismissableLayerBranchProps> = (props) => {
   const rest = omit(props, "children", "ref");
   const context = useSolidContext(DismissableLayerContext);

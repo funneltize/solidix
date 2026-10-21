@@ -6,6 +6,7 @@ import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
  * VisuallyHidden
  * -----------------------------------------------------------------------------------------------*/
 
+/** Frozen style object that hides content visually while keeping it available to assistive technology. */
 const VISUALLY_HIDDEN_STYLES = Object.freeze({
   // See: https://github.com/twbs/bootstrap/blob/main/scss/mixins/_visually-hidden.scss
   // Note: lengths are explicit `px` strings - Solid does not append `px` to
@@ -26,6 +27,7 @@ type VisuallyHiddenProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
 
+/** Renders a span that is invisible on screen but still announced by screen readers. */
 const VisuallyHidden: Component<VisuallyHiddenProps> = (props) => {
   const rest = omit(props, "style", "children", "ref");
   return (

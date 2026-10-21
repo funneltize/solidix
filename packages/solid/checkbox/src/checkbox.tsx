@@ -16,6 +16,7 @@ import { useSize } from "@solidix/use-size";
 const CHECKBOX_NAME = "Checkbox";
 
 type ScopedProps<P> = P & { __scopeCheckbox?: Scope | undefined };
+/** Creates a checkbox scope for composing checkbox parts across nested trees. */
 const [createCheckboxContext, createCheckboxScope] = createContextScope(CHECKBOX_NAME);
 
 type CheckedState = boolean | "indeterminate";
@@ -76,6 +77,7 @@ type CheckboxProviderInternalProps<State extends CheckedState = CheckedState> =
       | undefined;
   };
 
+/** Provides checkbox state to trigger, indicator, and bubble input parts. */
 function CheckboxProvider<State extends CheckedState = CheckedState>(
   props: ScopedProps<CheckboxProviderInternalProps<State>>,
 ): JSX.Element {
@@ -143,6 +145,7 @@ type CheckboxTriggerProps = Omit<PrimitivePropsWithRef<"button">, keyof Checkbox
   children?: JSX.Element | undefined;
 };
 
+/** The pressable button that toggles the checkbox. */
 const CheckboxTrigger: Component<ScopedProps<CheckboxTriggerProps>> = (props) => {
   const rest = omit(props, "__scopeCheckbox", "onKeyDown", "onClick", "ref");
   const context = useCheckboxContext(TRIGGER_NAME, props.__scopeCheckbox);
@@ -228,6 +231,7 @@ type CheckboxProps = Omit<
   onCheckedChange?: { bivarianceHack(checked: CheckedState): void }["bivarianceHack"] | undefined;
 };
 
+/** A check control that toggles between checked and unchecked states. */
 const Checkbox: Component<ScopedProps<CheckboxProps>> = (props) => {
   const rest = omit(
     props,
@@ -281,6 +285,7 @@ type CheckboxIndicatorProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
 
+/** The check mark rendered when the checkbox is checked. */
 const CheckboxIndicator: Component<ScopedProps<CheckboxIndicatorProps>> = (props) => {
   const rest = omit(props, "__scopeCheckbox", "forceMount", "style", "ref");
   const context = useCheckboxContext(INDICATOR_NAME, props.__scopeCheckbox);
@@ -311,6 +316,7 @@ type CheckboxBubbleInputProps = Omit<PrimitivePropsWithRef<"input">, "checked" |
   style?: JSX.CSSProperties | undefined;
 };
 
+/** Hidden native input that syncs checkbox state with forms. */
 const CheckboxBubbleInput: Component<ScopedProps<CheckboxBubbleInputProps>> = (props) => {
   const rest = omit(props, "__scopeCheckbox", "onClick", "style", "ref");
   const context = useCheckboxContext(BUBBLE_INPUT_NAME, props.__scopeCheckbox);

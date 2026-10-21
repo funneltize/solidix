@@ -14,6 +14,9 @@ export type FunnelEventDetail = Record<string, unknown> & {
   variant?: string | undefined;
 };
 
+/**
+ * Dispatches a bubbling funnel analytics event (`funnel:cta`, `funnel:submit`, `funnel:view`) from a block element.
+ */
 export function dispatchFunnelEvent(
   target: EventTarget,
   type: FunnelEventType,
