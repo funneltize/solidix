@@ -2,6 +2,7 @@ import { createSignal } from "solid-js";
 
 type Machine<S extends string> = { [k: string]: { [k: string]: S } };
 
+/** Tiny state machine returning the state accessor and a send function. */
 export function useStateMachine<S extends string>(
   initialState: S,
   machine: Machine<S>,

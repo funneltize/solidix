@@ -9,6 +9,7 @@
  */
 export type FunnelEventType = "funnel:cta" | "funnel:submit" | "funnel:view";
 
+/** Extra payload attached to dispatched funnel events. */
 export type FunnelEventDetail = Record<string, unknown> & {
   block?: string | undefined;
   variant?: string | undefined;

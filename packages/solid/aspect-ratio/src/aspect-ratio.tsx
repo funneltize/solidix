@@ -6,6 +6,7 @@ import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
  * AspectRatio
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the aspect-ratio container. */
 type AspectRatioProps = Omit<PrimitivePropsWithRef<"div">, "style"> & {
   ratio?: number | undefined;
   style?: JSX.CSSProperties | undefined;

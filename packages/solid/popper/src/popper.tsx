@@ -61,6 +61,7 @@ type PopperContextValue = {
 };
 const [PopperProvider, usePopperContext] = createPopperContext<PopperContextValue>(POPPER_NAME);
 
+/** Props for the root state provider that anchors floating content. */
 interface PopperProps {
   children?: JSX.Element | undefined;
 }
@@ -88,6 +89,7 @@ const Popper: Component<ScopedProps<PopperProps>> = (props) => {
 const ANCHOR_NAME = "PopperAnchor";
 
 type PopperAnchorElement = HTMLDivElement;
+/** Props for the reference element the floating content is positioned against. */
 interface PopperAnchorProps extends Omit<PrimitivePropsWithRef<"div">, "ref"> {
   ref?: PrimitivePropsWithRef<"div">["ref"] | undefined;
   virtualRef?: RefObject<Measurable | null> | (() => Measurable | null) | undefined;
@@ -155,6 +157,7 @@ const Slottable = createSlottable(CONTENT_NAME);
 
 type Boundary = Element | null;
 type PopperContentElement = HTMLDivElement;
+/** Props for the floating element positioned relative to the anchor. */
 interface PopperContentProps extends Omit<PrimitivePropsWithRef<"div">, "ref" | "style"> {
   ref?: PrimitivePropsWithRef<"div">["ref"] | undefined;
   style?: JSX.CSSProperties | undefined;
@@ -472,6 +475,7 @@ const OPPOSITE_SIDE: Record<Side, Side> = {
   left: "right",
 };
 
+/** Props for the arrow pointing from the floating content toward the anchor. */
 interface PopperArrowProps extends ArrowProps {}
 
 /** An arrow pointing from the floating content toward the anchor. */

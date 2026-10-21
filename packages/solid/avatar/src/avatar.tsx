@@ -43,6 +43,7 @@ const STATIC_IMAGE_COUNT_STATE: [() => number, Setter<number>] = [() => 0, () =>
 
 const [AvatarProvider, useAvatarContext] = createAvatarContext<AvatarContextValue>(AVATAR_NAME);
 
+/** Props for the avatar root wrapper. */
 type AvatarProps = PrimitivePropsWithRef<"span">;
 
 /** Root wrapper that provides image loading status to image and fallback. */
@@ -72,6 +73,7 @@ const Avatar: Component<ScopedProps<AvatarProps>> = (props) => {
 
 const IMAGE_NAME = "AvatarImage";
 
+/** Props for the avatar image, rendered once its source loads. */
 type AvatarImageProps = Omit<PrimitivePropsWithRef<"img">, "src"> & {
   src?: string | undefined;
   onLoadingStatusChange?:
@@ -120,6 +122,7 @@ const AvatarImage: Component<ScopedProps<AvatarImageProps>> = (props) => {
 
 const FALLBACK_NAME = "AvatarFallback";
 
+/** Props for the fallback shown while the image has not loaded. */
 type AvatarFallbackProps = PrimitivePropsWithRef<"span"> & {
   delayMs?: number | undefined;
 };

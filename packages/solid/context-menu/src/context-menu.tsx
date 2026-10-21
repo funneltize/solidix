@@ -70,6 +70,7 @@ type ContextMenuContextValue = {
 const [ContextMenuProvider, useContextMenuContext] =
   createContextMenuContext<ContextMenuContextValue>(CONTEXT_MENU_NAME);
 
+/** Props accepted by the `ContextMenu` component. */
 type ContextMenuProps = {
   children?: import("@solidjs/web").JSX.Element | undefined;
   open?: boolean | undefined;
@@ -140,6 +141,7 @@ const TRIGGER_NAME = "ContextMenuTrigger";
 // one (which handles it first) may start a long press timer.
 const claimedLongPressEvents = /* @__PURE__ */ new WeakSet<Event>();
 
+/** Props accepted by the `ContextMenuTrigger` component. */
 type ContextMenuTriggerProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
   disabled?: boolean | undefined;
@@ -257,6 +259,7 @@ const ContextMenuTrigger: Component<ScopedProps<ContextMenuTriggerProps>> = (pro
  * ContextMenuPortal
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuPortal` component. */
 type ContextMenuPortalProps = MenuPortalProps;
 
 /**
@@ -274,6 +277,7 @@ const ContextMenuPortal: Component<ScopedProps<ContextMenuPortalProps>> = (props
 
 const CONTENT_NAME = "ContextMenuContent";
 
+/** Props accepted by the `ContextMenuContent` component. */
 type ContextMenuContentProps = Omit<MenuContentProps, "onEntryFocus">;
 
 /**
@@ -324,6 +328,7 @@ const ContextMenuContent: Component<ScopedProps<ContextMenuContentProps>> = (pro
  * ContextMenuGroup
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuGroup` component. */
 type ContextMenuGroupProps = MenuGroupProps;
 
 /**
@@ -339,6 +344,7 @@ const ContextMenuGroup: Component<ScopedProps<ContextMenuGroupProps>> = (props) 
  * ContextMenuLabel
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuLabel` component. */
 type ContextMenuLabelProps = MenuLabelProps;
 
 /**
@@ -354,6 +360,7 @@ const ContextMenuLabel: Component<ScopedProps<ContextMenuLabelProps>> = (props) 
  * ContextMenuItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuItem` component. */
 type ContextMenuItemProps = MenuItemProps;
 
 /**
@@ -369,6 +376,7 @@ const ContextMenuItem: Component<ScopedProps<ContextMenuItemProps>> = (props) =>
  * ContextMenuCheckboxItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuCheckboxItem` component. */
 type ContextMenuCheckboxItemProps = MenuCheckboxItemProps;
 
 /**
@@ -384,6 +392,7 @@ const ContextMenuCheckboxItem: Component<ScopedProps<ContextMenuCheckboxItemProp
  * ContextMenuRadioGroup
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuRadioGroup` component. */
 type ContextMenuRadioGroupProps = MenuRadioGroupProps;
 
 /**
@@ -399,6 +408,7 @@ const ContextMenuRadioGroup: Component<ScopedProps<ContextMenuRadioGroupProps>> 
  * ContextMenuRadioItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuRadioItem` component. */
 type ContextMenuRadioItemProps = MenuRadioItemProps;
 
 /**
@@ -414,6 +424,7 @@ const ContextMenuRadioItem: Component<ScopedProps<ContextMenuRadioItemProps>> = 
  * ContextMenuItemIndicator
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuItemIndicator` component. */
 type ContextMenuItemIndicatorProps = MenuItemIndicatorProps;
 
 /**
@@ -429,6 +440,7 @@ const ContextMenuItemIndicator: Component<ScopedProps<ContextMenuItemIndicatorPr
  * ContextMenuSeparator
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuSeparator` component. */
 type ContextMenuSeparatorProps = MenuSeparatorProps;
 
 /**
@@ -444,6 +456,7 @@ const ContextMenuSeparator: Component<ScopedProps<ContextMenuSeparatorProps>> = 
  * ContextMenuArrow
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuArrow` component. */
 type ContextMenuArrowProps = MenuArrowProps;
 
 /**
@@ -461,6 +474,7 @@ const ContextMenuArrow: Component<ScopedProps<ContextMenuArrowProps>> = (props) 
 
 const SUB_NAME = "ContextMenuSub";
 
+/** Props accepted by the `ContextMenuSub` component. */
 type ContextMenuSubProps = MenuSubProps & {
   defaultOpen?: boolean | undefined;
 };
@@ -488,6 +502,7 @@ const ContextMenuSub: Component<ScopedProps<ContextMenuSubProps>> = (props) => {
  * ContextMenuSubTrigger
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuSubTrigger` component. */
 type ContextMenuSubTriggerProps = MenuSubTriggerProps;
 
 /**
@@ -503,6 +518,7 @@ const ContextMenuSubTrigger: Component<ScopedProps<ContextMenuSubTriggerProps>> 
  * ContextMenuSubContent
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `ContextMenuSubContent` component. */
 type ContextMenuSubContentProps = MenuSubContentProps;
 
 /**

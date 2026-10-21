@@ -74,6 +74,7 @@ const [createToastContext, createToastScope] = createContextScope("Toast", [crea
 const [ToastProviderProvider, useToastProviderContext] =
   createToastContext<ToastProviderContextValue>(PROVIDER_NAME);
 
+/** Props configuring toast duration and swipe direction for the provider. */
 type ToastProviderProps = {
   children?: JSX.Element | undefined;
   /**
@@ -162,6 +163,7 @@ const VIEWPORT_PAUSE = "toast.viewportPause";
 const VIEWPORT_RESUME = "toast.viewportResume";
 
 type ToastViewportElement = HTMLOListElement;
+/** Props for the fixed region that renders the toast list. */
 type ToastViewportProps = PrimitivePropsWithRef<"ol"> & {
   /**
    * The keys to use as the keyboard shortcut that will move focus to the toast viewport.
@@ -410,6 +412,7 @@ const TOAST_SWIPE_CANCEL = "toast.swipeCancel";
 const TOAST_SWIPE_END = "toast.swipeEnd";
 
 type ToastElement = ToastImplElement;
+/** Props configuring one toast: open state, timing, and swipe behavior. */
 type ToastProps = Omit<ToastImplProps, keyof ToastImplPrivateProps> & {
   open?: boolean | undefined;
   defaultOpen?: boolean | undefined;
@@ -822,6 +825,7 @@ const ToastAnnounce: Component<ScopedProps<ToastAnnounceProps>> = (props) => {
  * ToastTitle
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the toast title element. */
 type ToastTitleProps = PrimitivePropsWithRef<"div">;
 
 /** Title heading announced to screen readers when the toast opens. */
@@ -834,6 +838,7 @@ const ToastTitle: Component<ScopedProps<ToastTitleProps>> = (props) => {
  * ToastDescription
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the toast description element. */
 type ToastDescriptionProps = PrimitivePropsWithRef<"div">;
 
 /** Description text announced alongside the toast title. */
@@ -848,6 +853,7 @@ const ToastDescription: Component<ScopedProps<ToastDescriptionProps>> = (props) 
 
 const ACTION_NAME = "ToastAction";
 
+/** Props for the toast action button. */
 type ToastActionProps = ToastCloseProps & {
   /**
    * A short description for an alternate way to carry out the action. For screen reader users
@@ -880,6 +886,7 @@ const ToastAction: Component<ScopedProps<ToastActionProps>> = (props) => {
 
 const CLOSE_NAME = "ToastClose";
 
+/** Props for the toast close button. */
 type ToastCloseProps = PrimitivePropsWithRef<"button">;
 
 /** Close button that dismisses the toast. */

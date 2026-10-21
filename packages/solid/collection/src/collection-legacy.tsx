@@ -5,6 +5,7 @@ import { useComposedRefs, type Ref, type RefObject } from "@solidix/compose-refs
 import { createSlot, type SlotProps } from "@solidix/slot";
 
 type CollectionElement = HTMLElement;
+/** Props for the collection provider slot, including its scope. */
 interface CollectionProps extends SlotProps {
   scope: any;
 }

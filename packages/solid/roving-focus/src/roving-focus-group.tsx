@@ -75,6 +75,7 @@ const [RovingFocusProvider, useRovingFocusContext] =
   createRovingFocusGroupContext<RovingContextValue>(GROUP_NAME);
 
 type RovingFocusGroupElement = HTMLDivElement;
+/** Props accepted by the roving focus group. */
 interface RovingFocusGroupProps extends RovingFocusGroupImplProps {}
 
 /** Groups focusable items so exactly one is in the tab order with arrow-key movement. */
@@ -222,6 +223,7 @@ const RovingFocusGroupImpl: Component<ScopedProps<RovingFocusGroupImplProps>> = 
 
 const ITEM_NAME = "RovingFocusGroupItem";
 
+/** Props accepted by a roving focus item. */
 interface RovingFocusItemProps extends Omit<PrimitivePropsWithRef<"span">, "children"> {
   tabStopId?: string | undefined;
   focusable?: boolean | undefined;

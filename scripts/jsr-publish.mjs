@@ -241,15 +241,17 @@ function main() {
     // sibling .d.ts files on its own; without this every entrypoint warns
     // `unsupported-javascript-entrypoint` and docs/npm types suffer.
     //
-    // The `@module` block below it feeds JSR's module-doc score factor:
-    // deno_doc reads the staged .js, and rollup drops entry comments, so a
-    // `@module` block in `src/index.ts` never survives to be scored -
-    // staging-time injection is the only placement that works (verified by
-    // building `@solidix/dialog` with a src `@module` block: dropped from
-    // the .mjs, kept only in the .d.ts). The umbrella is skipped: README.md
-    // covers the "." entrypoint, and a `@module` block there would replace
-    // the README on the package Overview tab.
+    // The `@module` blocks feed JSR's module-doc score factor. Verified
+    // mechanics (deno doc against a staged tree): deno_doc follows
+    // `@ts-self-types` from the entrypoint .js into the .d.ts, so the
+    // declarations file is what actually scores for both module docs and
+    // symbol docs; the .js block is belt-and-braces. Rollup drops entry
+    // comments, so a `@module` block in `src/index.ts` never survives to
+    // be scored - staging-time injection is the only placement that works.
+    // The umbrella is skipped: README.md covers the "." entrypoint, and a
+    // `@module` block there would replace the README on the Overview tab.
     const descriptions = new Map(packages.map((p) => [p.shortName, p.manifest.description]));
+    const moduleDoc = (summary) => `/**\n * ${summary}\n *\n * @module\n */\n`;
     for (const rel of stagedJs) {
       const sibling = rel.replace(/\.js$/, ".d.ts");
       if (!existsSync(join(stage, sibling))) {
@@ -264,7 +266,9 @@ function main() {
           toPosix(rel) === toPosix(envJs)
             ? "Whether the current build is a development build."
             : (descriptions.get(shortName) ?? shortName);
-        header += `/**\n * ${summary}\n *\n * @module\n */\n`;
+        header += moduleDoc(summary);
+        const dtsAbs = join(stage, sibling);
+        writeFileSync(dtsAbs, `${moduleDoc(summary)}${readFileSync(dtsAbs, "utf8")}`);
       }
       writeFileSync(abs, `${header}${readFileSync(abs, "utf8")}`);
     }

@@ -99,6 +99,7 @@ type MenuRootContextValue = {
 
 const [MenuRootProvider, useMenuRootContext] = createMenuContext<MenuRootContextValue>(MENU_NAME);
 
+/** Props accepted by the `Menu` component. */
 type MenuProps = {
   children?: JSX.Element | undefined;
   open?: boolean | undefined;
@@ -182,6 +183,7 @@ const Menu: Component<ScopedProps<MenuProps>> = (props) => {
  * MenuAnchor
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenuAnchor` component. */
 type MenuAnchorProps = PopperAnchorProps;
 
 /**
@@ -204,6 +206,7 @@ const [PortalProvider, usePortalContext] = createMenuContext<PortalContextValue>
   forceMount: undefined,
 });
 
+/** Props accepted by the `MenuPortal` component. */
 type MenuPortalProps = {
   children?: JSX.Element | undefined;
   /**
@@ -255,6 +258,8 @@ const [MenuContentProvider, useMenuContentContext] =
 
 type MenuContentElement = MenuRootContentTypeElement;
 /**
+ * Props accepted by the `MenuContent` component.
+ *
  * We purposefully don't union MenuRootContent and MenuSubContent props here because
  * they have conflicting prop types. We agreed that we would allow MenuSubContent to
  * accept props that it would just ignore.
@@ -650,6 +655,7 @@ const MenuContentImpl: Component<ScopedProps<MenuContentImplProps>> = (props) =>
  * MenuGroup
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenuGroup` component. */
 type MenuGroupProps = PrimitivePropsWithRef<"div">;
 
 /**
@@ -664,6 +670,7 @@ const MenuGroup: Component<ScopedProps<MenuGroupProps>> = (props) => {
  * MenuLabel
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenuLabel` component. */
 type MenuLabelProps = PrimitivePropsWithRef<"div">;
 
 /**
@@ -681,6 +688,7 @@ const MenuLabel: Component<ScopedProps<MenuLabelProps>> = (props) => {
 const ITEM_NAME = "MenuItem";
 
 type MenuItemElement = HTMLDivElement;
+/** Props accepted by the `MenuItem` component. */
 type MenuItemProps = MenuItemImplProps & {
   onSelect?: ((event: Event) => void) | undefined;
 };
@@ -849,6 +857,7 @@ const MenuItemImpl: Component<ScopedProps<MenuItemImplProps>> = (props) => {
 
 type CheckedState = boolean | "indeterminate";
 
+/** Props accepted by the `MenuCheckboxItem` component. */
 type MenuCheckboxItemProps = MenuItemProps & {
   checked?: CheckedState | undefined;
   // `onCheckedChange` can never be called with `"indeterminate"` from the inside
@@ -896,6 +905,7 @@ const [RadioGroupProvider, useRadioGroupContext] = createMenuContext<RadioGroupC
   { value: () => undefined, onValueChange: () => {} },
 );
 
+/** Props accepted by the `MenuRadioGroup` component. */
 type MenuRadioGroupProps = MenuGroupProps & {
   value?: string | undefined;
   onValueChange?: { bivarianceHack(value: string): void }["bivarianceHack"] | undefined;
@@ -926,6 +936,7 @@ const MenuRadioGroup: Component<ScopedProps<MenuRadioGroupProps>> = (props) => {
 
 const RADIO_ITEM_NAME = "MenuRadioItem";
 
+/** Props accepted by the `MenuRadioItem` component. */
 type MenuRadioItemProps = MenuItemProps & {
   value: string;
 };
@@ -968,6 +979,7 @@ const [ItemIndicatorProvider, useItemIndicatorContext] = createMenuContext<Check
   { checked: () => false },
 );
 
+/** Props accepted by the `MenuItemIndicator` component. */
 type MenuItemIndicatorProps = PrimitivePropsWithRef<"span"> & {
   /**
    * Used to force mounting when more control is needed. Useful when
@@ -996,6 +1008,7 @@ const MenuItemIndicator: Component<ScopedProps<MenuItemIndicatorProps>> = (props
  * MenuSeparator
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenuSeparator` component. */
 type MenuSeparatorProps = PrimitivePropsWithRef<"div">;
 
 /**
@@ -1010,6 +1023,7 @@ const MenuSeparator: Component<ScopedProps<MenuSeparatorProps>> = (props) => {
  * MenuArrow
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenuArrow` component. */
 type MenuArrowProps = PopperArrowProps;
 
 /**
@@ -1036,6 +1050,7 @@ type MenuSubContextValue = {
 
 const [MenuSubProvider, useMenuSubContext] = createMenuContext<MenuSubContextValue>(SUB_NAME);
 
+/** Props accepted by the `MenuSub` component. */
 type MenuSubProps = {
   children?: JSX.Element | undefined;
   open?: boolean | undefined;
@@ -1099,6 +1114,7 @@ const MenuSub: Component<ScopedProps<MenuSubProps>> = (props) => {
 const SUB_TRIGGER_NAME = "MenuSubTrigger";
 
 type MenuSubTriggerElement = MenuItemImplElement;
+/** Props accepted by the `MenuSubTrigger` component. */
 type MenuSubTriggerProps = MenuItemImplProps;
 
 /**
@@ -1243,6 +1259,7 @@ const MenuSubTrigger: Component<ScopedProps<MenuSubTriggerProps>> = (props) => {
 
 const SUB_CONTENT_NAME = "MenuSubContent";
 
+/** Props accepted by the `MenuSubContent` component. */
 type MenuSubContentProps = Omit<
   MenuContentImplProps,
   keyof MenuContentImplPrivateProps | "onCloseAutoFocus" | "onEntryFocus" | "side" | "align"

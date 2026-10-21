@@ -7,6 +7,7 @@ import type { EntryOf } from "./ordered-dictionary";
 import { OrderedDict, type ReadOnlyOrderedDict } from "./ordered-dictionary";
 
 type CollectionElement = HTMLElement;
+/** Props for the slot that collects registered items into the collection context. */
 interface CollectionSlotProps extends SlotProps {
   scope: any;
 }
@@ -27,6 +28,7 @@ type BaseCollectionDict<
   ItemData extends BaseItemData,
 > = OrderedDict<ItemElement, ItemDataWithElement<ItemData, ItemElement>>;
 
+/** Read-only ordered map of collected item elements to their data. */
 type CollectionDict<ItemElement extends HTMLElement, ItemData> = ReadOnlyOrderedDict<
   ItemElement,
   ItemDataWithElement<ItemData & BaseItemData, ItemElement>

@@ -7,6 +7,7 @@ import { useLayoutEffect } from "@solidix/use-layout-effect";
  * Portal
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the portal container. */
 type PortalProps = PrimitivePropsWithRef<"div"> & {
   /**
    * An optional container where the portaled content should be appended.

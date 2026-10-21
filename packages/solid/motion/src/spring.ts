@@ -2,6 +2,7 @@
 // the motion into a CSS `linear()` timing function, so spring physics runs on
 // the compositor with zero runtime cost. Pure math - no dependencies.
 
+/** Physics and sampling parameters for compiling a spring into a CSS easing. */
 export type SpringOptions = {
   /** Spring stiffness. Higher values move faster. Defaults to `170`. */
   stiffness?: number | undefined;
@@ -13,6 +14,7 @@ export type SpringOptions = {
   stops?: number | undefined;
 };
 
+/** Named spring presets available in `springPresets` and `springs.css`. */
 export type SpringPresetName = "gentle" | "default" | "snappy" | "bouncy";
 
 /** Ready-made spring parameters (mass is `1` throughout). Pair with the

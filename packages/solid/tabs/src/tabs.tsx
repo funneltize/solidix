@@ -43,6 +43,7 @@ type TabsContextValue = {
 
 const [TabsProvider, useTabsContext] = createTabsContext<TabsContextValue>(TABS_NAME);
 
+/** Props for the root container that manages the active tab value. */
 type TabsProps = PrimitivePropsWithRef<"div"> & {
   /** @defaultValue "horizontal" */
   orientation?: RovingFocusGroupRootProps["orientation"] | undefined;
@@ -104,6 +105,7 @@ const Tabs: Component<ScopedProps<TabsProps>> = (props) => {
 
 const LIST_NAME = "TabsList";
 
+/** Props for the tab trigger list with roving-focus navigation. */
 type TabsListProps = PrimitivePropsWithRef<"div"> & {
   loop?: RovingFocusGroupRootProps["loop"] | undefined;
 };
@@ -138,6 +140,7 @@ const TabsList: Component<ScopedProps<TabsListProps>> = (props) => {
 
 const TRIGGER_NAME = "TabsTrigger";
 
+/** Props for a tab button that activates its associated panel. */
 type TabsTriggerProps = PrimitivePropsWithRef<"button"> & {
   value: string;
   disabled?: boolean | undefined;
@@ -237,6 +240,7 @@ const TabsTrigger: Component<ScopedProps<TabsTriggerProps>> = (props) => {
 
 const CONTENT_NAME = "TabsContent";
 
+/** Props for the panel shown when its tab is active. */
 type TabsContentProps = Omit<PrimitivePropsWithRef<"div">, "value" | "style"> & {
   value: string;
   forceMount?: true | undefined;

@@ -61,6 +61,7 @@ const [RadioGroupProvider, useRadioGroupContext] =
   createRadioGroupContext<RadioGroupContextValue>(RADIO_GROUP_NAME);
 
 type RadioGroupElement = HTMLDivElement;
+/** Props for the root container that manages the selected value. */
 type RadioGroupProps = PrimitivePropsWithRef<"div"> & {
   name?: string | undefined;
   form?: string | undefined;
@@ -160,6 +161,7 @@ const RadioGroup: Component<ScopedProps<RadioGroupProps>> = (props) => {
 const ITEM_PROVIDER_NAME = "RadioGroupItemProvider";
 const ITEM_TRIGGER_NAME = "RadioGroupItemTrigger";
 
+/** Props for the context provider composing a custom radio item. */
 interface RadioGroupItemProviderProps {
   value: string;
   disabled?: boolean | undefined;
@@ -200,6 +202,7 @@ const RadioGroupItemProvider: Component<ScopedProps<RadioGroupItemProviderIntern
  * -----------------------------------------------------------------------------------------------*/
 
 type RadioGroupItemTriggerElement = HTMLButtonElement;
+/** Props for the button that selects the radio item when activated. */
 type RadioGroupItemTriggerProps = RadioTriggerProps;
 
 /** The button that selects the radio item when activated. */
@@ -275,6 +278,7 @@ const RadioGroupItemTrigger: Component<ScopedProps<RadioGroupItemTriggerProps>> 
  * RadioGroupItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for a single selectable option in the radio group. */
 type RadioGroupItemProps = Omit<RadioProps, "onCheck" | "name"> & {
   value: string;
 };
@@ -308,6 +312,7 @@ const RadioGroupItem: Component<ScopedProps<RadioGroupItemProps>> = (props) => {
  * RadioGroupItemBubbleInput
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the hidden input syncing the radio value with native forms. */
 type RadioGroupItemBubbleInputProps = RadioBubbleInputProps;
 
 /** The hidden native input that syncs the radio item value with forms. */
@@ -323,6 +328,7 @@ const RadioGroupItemBubbleInput: Component<ScopedProps<RadioGroupItemBubbleInput
  * RadioGroupIndicator
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the indicator rendered when the radio item is selected. */
 type RadioGroupIndicatorProps = RadioIndicatorProps;
 
 /** The visual element rendered inside the radio item when it is checked. */

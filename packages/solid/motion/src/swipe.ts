@@ -4,9 +4,12 @@
 // animates the settle, so no rAF loop is needed.
 import { createSignal, getOwner, onCleanup, type Accessor } from "solid-js";
 
+/** Gesture phase of a swipe surface, mirrored to its `data-state` attribute. */
 export type SwipeState = "idle" | "dragging" | "settling" | "dismissed";
+/** Final result reported when a swipe settle animation completes. */
 export type SwipeOutcome = "dismissed" | "snapped-back";
 
+/** Live displacement and velocity reading along the swipe axis. */
 export type SwipeDragInfo = {
   /** Signed displacement along the axis, in px. */
   displacement: number;
@@ -14,6 +17,7 @@ export type SwipeDragInfo = {
   velocity: number;
 };
 
+/** Release-time drag reading plus the dismiss versus snap-back decision. */
 export type SwipeRelease = SwipeDragInfo & {
   /** Whether the gesture completes (dismisses) rather than snapping back. */
   dismissed: boolean;
@@ -21,6 +25,7 @@ export type SwipeRelease = SwipeDragInfo & {
   cancelled: boolean;
 };
 
+/** Axis, thresholds, animation, and callbacks configuring a swipe recognizer. */
 export type SwipeOptions = {
   /** Drag axis. Defaults to `"x"`. */
   axis?: "x" | "y" | undefined;
@@ -51,6 +56,7 @@ export type SwipeOptions = {
   onSettled?: ((outcome: SwipeOutcome) => void) | undefined;
 };
 
+/** Attach ref, reactive state, and dispose handle returned by `createSwipe`. */
 export type SwipeApi = {
   /**
    * Attach to the swipe surface. Handles remounts (detach + reattach);

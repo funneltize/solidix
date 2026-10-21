@@ -51,6 +51,7 @@ type HoverCardContextValue = {
 const [HoverCardProvider, useHoverCardContext] =
   createHoverCardContext<HoverCardContextValue>(HOVERCARD_NAME);
 
+/** Props for the `HoverCard` root component, including open delays. */
 type HoverCardProps = {
   children?: JSX.Element | undefined;
   open?: boolean | undefined;
@@ -117,6 +118,7 @@ const HoverCard: Component<ScopedProps<HoverCardProps>> = (props) => {
 
 const TRIGGER_NAME = "HoverCardTrigger";
 
+/** Props for the `HoverCardTrigger` link that opens the card on hover. */
 type HoverCardTriggerProps = PrimitivePropsWithRef<"a">;
 
 /** `HoverCardTrigger` is the link that shows the card on hover or focus. */
@@ -167,6 +169,7 @@ const [PortalProvider, usePortalContext] = createHoverCardContext<PortalContextV
   forceMount: undefined,
 });
 
+/** Props for the `HoverCardPortal` element that renders content elsewhere in the DOM. */
 type HoverCardPortalProps = {
   children?: JSX.Element | undefined;
   /**
@@ -203,6 +206,7 @@ const HoverCardPortal: Component<ScopedProps<HoverCardPortalProps>> = (props) =>
 
 const CONTENT_NAME = "HoverCardContent";
 
+/** Public props for HoverCard.Content, forcing mount for tests or exit states. */
 type HoverCardContentProps = HoverCardContentImplProps & {
   /**
    * Used to force mounting when more control is needed. Useful when
@@ -396,6 +400,7 @@ const HoverCardContentImpl: Component<ScopedProps<HoverCardContentImplProps>> = 
  * HoverCardArrow
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the `HoverCardArrow` element that points at the trigger. */
 type HoverCardArrowProps = PopperArrowProps;
 
 /** `HoverCardArrow` is the arrow pointing at the hover-card trigger. */

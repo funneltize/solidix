@@ -57,9 +57,11 @@ const [createAccordionContext, createAccordionScope] = createContextScope(ACCORD
 ]);
 const useCollapsibleScope = createCollapsibleScope();
 
+/** Props for a single-value `Accordion` that allows one open item. */
 type AccordionSingleProps = AccordionImplSingleProps & {
   type: typeof AccordionType.Single;
 };
+/** Props for a multiple-value `Accordion` that allows several open items. */
 type AccordionMultipleProps = AccordionImplMultipleProps & {
   type: typeof AccordionType.Multiple;
 };
@@ -364,6 +366,7 @@ type AccordionItemContextValue = {
 const [AccordionItemProvider, useAccordionItemContext] =
   createAccordionContext<AccordionItemContextValue>(ITEM_NAME);
 
+/** Props for an Accordion.Item, keyed by its value within the accordion. */
 type AccordionItemProps = Omit<CollapsibleProps, "open" | "defaultOpen" | "onOpenChange"> & {
   /**
    * Whether or not an accordion item is disabled from user interaction.
@@ -422,6 +425,7 @@ const AccordionItem: Component<ScopedProps<AccordionItemProps>> = (props) => {
 
 const HEADER_NAME = "AccordionHeader";
 
+/** Props for the `AccordionHeader` heading that wraps the trigger. */
 type AccordionHeaderProps = PrimitivePropsWithRef<"h3">;
 
 /**
@@ -449,6 +453,7 @@ const AccordionHeader: Component<ScopedProps<AccordionHeaderProps>> = (props) =>
 
 const TRIGGER_NAME = "AccordionTrigger";
 
+/** Props for the button that toggles an accordion item open or closed. */
 type AccordionTriggerProps = CollapsibleTriggerProps;
 
 /**
@@ -481,6 +486,7 @@ const AccordionTrigger: Component<ScopedProps<AccordionTriggerProps>> = (props) 
 
 const CONTENT_NAME = "AccordionContent";
 
+/** Props for the collapsible content region of an accordion item. */
 type AccordionContentProps = CollapsibleContentProps;
 
 /**

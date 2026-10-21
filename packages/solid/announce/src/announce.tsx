@@ -32,6 +32,7 @@ const listenerMap = new Map<Element, number>();
  * Announce
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the announce live region. */
 type AnnounceProps = Omit<PrimitivePropsWithRef<"div">, "aria-atomic"> & {
   /**
    * Mirrors the `aria-atomic` DOM attribute for live regions. It is an optional attribute that

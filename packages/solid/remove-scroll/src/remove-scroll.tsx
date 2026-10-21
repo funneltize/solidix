@@ -15,8 +15,10 @@ import { composeRefs, type Ref, type RefObject } from "@solidix/compose-refs";
  * reactive state lazily.
  */
 
+/** A scroll-lock shard: an element, a ref-like holder, or an empty value. */
 export type RemoveScrollShard = { current: HTMLElement | null } | HTMLElement | null | undefined;
 
+/** Props accepted by the scroll-lock wrapper. */
 export type RemoveScrollProps = {
   asChild?: boolean | undefined;
   children?: JSX.Element | undefined;

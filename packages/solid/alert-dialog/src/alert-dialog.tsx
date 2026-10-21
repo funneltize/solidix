@@ -35,6 +35,7 @@ const [createAlertDialogContext, createAlertDialogScope] = createContextScope(RO
 ]);
 const useDialogScope = createDialogScope();
 
+/** Props for the root container managing the alert dialog open state. */
 type AlertDialogProps = Omit<DialogProps, "modal">;
 
 /** The root container that manages the alert dialog open state. */
@@ -47,6 +48,7 @@ const AlertDialog: Component<ScopedProps<AlertDialogProps>> = (props) => {
  * AlertDialogTrigger
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the button that opens the alert dialog when activated. */
 type AlertDialogTriggerProps = DialogTriggerProps;
 
 /** The button that opens the alert dialog when activated. */
@@ -60,6 +62,7 @@ const AlertDialogTrigger: Component<ScopedProps<AlertDialogTriggerProps>> = (pro
  * AlertDialogPortal
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the portal rendering the alert dialog outside the DOM hierarchy. */
 type AlertDialogPortalProps = DialogPortalProps;
 
 /** Renders the alert dialog overlay and content into a portal outside the DOM hierarchy. */
@@ -72,6 +75,7 @@ const AlertDialogPortal: Component<ScopedProps<AlertDialogPortalProps>> = (props
  * AlertDialogOverlay
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the dimmed layer displayed behind the alert dialog content. */
 type AlertDialogOverlayProps = DialogOverlayProps;
 
 /** The dimmed layer displayed behind the alert dialog content. */
@@ -95,6 +99,7 @@ const [AlertDialogContentProvider, useAlertDialogContentContext] =
   createAlertDialogContext<AlertDialogContentContextValue>(CONTENT_NAME);
 
 type AlertDialogContentElement = HTMLDivElement;
+/** Props for the modal panel containing the alert dialog content. */
 type AlertDialogContentProps = Omit<
   DialogContentProps,
   "onPointerDownOutside" | "onInteractOutside"
@@ -132,6 +137,7 @@ const AlertDialogContent: Component<ScopedProps<AlertDialogContentProps>> = (pro
  * AlertDialogTitle
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the accessible heading of the alert dialog. */
 type AlertDialogTitleProps = DialogTitleProps;
 
 /** The accessible heading that labels the alert dialog. */
@@ -145,6 +151,7 @@ const AlertDialogTitle: Component<ScopedProps<AlertDialogTitleProps>> = (props) 
  * AlertDialogDescription
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the accessible description of the alert dialog. */
 type AlertDialogDescriptionProps = DialogDescriptionProps;
 
 /** The accessible text that describes the alert dialog content. */
@@ -158,6 +165,7 @@ const AlertDialogDescription: Component<ScopedProps<AlertDialogDescriptionProps>
  * AlertDialogAction
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the button confirming the alert dialog action. */
 type AlertDialogActionProps = DialogCloseProps;
 
 /** The button that confirms the action and closes the alert dialog. */
@@ -174,6 +182,7 @@ const AlertDialogAction: Component<ScopedProps<AlertDialogActionProps>> = (props
 const CANCEL_NAME = "AlertDialogCancel";
 
 type AlertDialogCancelElement = HTMLButtonElement;
+/** Props for the button dismissing the alert dialog without acting. */
 type AlertDialogCancelProps = DialogCloseProps;
 
 /** The button that dismisses the alert dialog without taking the action. */

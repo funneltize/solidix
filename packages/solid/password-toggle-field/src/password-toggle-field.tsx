@@ -53,6 +53,7 @@ const [PasswordToggleFieldProvider, usePasswordToggleFieldContext] =
 
 type ScopedProps<P> = P & { __scopePasswordToggleField?: Scope | undefined };
 
+/** Props accepted by the password toggle field root. */
 type PasswordToggleFieldProps = {
   id?: string | undefined;
   visible?: boolean | undefined;
@@ -138,6 +139,7 @@ type PasswordToggleFieldOwnProps = {
   autoComplete?: AutoComplete | undefined;
 };
 
+/** Props accepted by the password toggle field input. */
 type PasswordToggleFieldInputProps = PasswordToggleFieldOwnProps &
   Omit<PrimitiveInputProps, keyof PasswordToggleFieldOwnProps | "type"> & {
     autoComplete?: AutoComplete | undefined;
@@ -237,6 +239,7 @@ const PASSWORD_TOGGLE_FIELD_TOGGLE_NAME = PASSWORD_TOGGLE_FIELD_NAME + "Toggle";
 
 type PrimitiveButtonProps = PrimitivePropsWithRef<"button">;
 
+/** Props accepted by the password toggle field visibility toggle. */
 type PasswordToggleFieldToggleProps = Omit<PrimitiveButtonProps, "type">;
 
 /** Button toggling password visibility while preserving input focus and selection. */
@@ -416,6 +419,7 @@ type PasswordToggleFieldSlotRenderProps = {
   render: (args: { visible: boolean }) => JSX.Element;
 };
 
+/** Props accepted by the password toggle field slot. */
 type PasswordToggleFieldSlotProps =
   | PasswordToggleFieldSlotDeclarativeProps
   | PasswordToggleFieldSlotRenderProps;
@@ -449,6 +453,7 @@ const PASSWORD_TOGGLE_FIELD_ICON_NAME = PASSWORD_TOGGLE_FIELD_NAME + "Icon";
 
 type PrimitiveSvgProps = PrimitivePropsWithRef<"svg">;
 
+/** Props accepted by the password toggle field icon. */
 type PasswordToggleFieldIconProps = Omit<PrimitiveSvgProps, "children"> & {
   visible: JSX.Element;
   hidden: JSX.Element;

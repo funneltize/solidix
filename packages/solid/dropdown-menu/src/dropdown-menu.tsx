@@ -71,6 +71,7 @@ type DropdownMenuContextValue = {
 const [DropdownMenuProvider, useDropdownMenuContext] =
   createDropdownMenuContext<DropdownMenuContextValue>(DROPDOWN_MENU_NAME);
 
+/** Props for the DropdownMenu root component. */
 type DropdownMenuProps = {
   children?: import("@solidjs/web").JSX.Element | undefined;
   dir?: "ltr" | "rtl" | undefined;
@@ -120,6 +121,7 @@ const DropdownMenu: Component<ScopedProps<DropdownMenuProps>> = (props) => {
 
 const TRIGGER_NAME = "DropdownMenuTrigger";
 
+/** Props for the DropdownMenuTrigger component. */
 type DropdownMenuTriggerProps = PrimitivePropsWithRef<"button">;
 
 /** Button that toggles the dropdown menu open and closed. */
@@ -175,6 +177,7 @@ const DropdownMenuTrigger: Component<ScopedProps<DropdownMenuTriggerProps>> = (p
  * DropdownMenuPortal
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuPortal component. */
 type DropdownMenuPortalProps = MenuPortalProps;
 
 /** Portals dropdown menu content into `document.body` when open. */
@@ -190,6 +193,7 @@ const DropdownMenuPortal: Component<ScopedProps<DropdownMenuPortalProps>> = (pro
 
 const CONTENT_NAME = "DropdownMenuContent";
 
+/** Props for the DropdownMenuContent component. */
 type DropdownMenuContentProps = Omit<MenuContentProps, "onEntryFocus">;
 
 /** Floating panel that renders the dropdown menu items. */
@@ -241,6 +245,7 @@ const DropdownMenuContent: Component<ScopedProps<DropdownMenuContentProps>> = (p
  * DropdownMenuGroup
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuGroup component. */
 type DropdownMenuGroupProps = MenuGroupProps;
 
 /** Groups related menu items with an optional label. */
@@ -254,6 +259,7 @@ const DropdownMenuGroup: Component<ScopedProps<DropdownMenuGroupProps>> = (props
  * DropdownMenuLabel
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuLabel component. */
 type DropdownMenuLabelProps = MenuLabelProps;
 
 /** Non-interactive heading for a group of menu items. */
@@ -267,6 +273,7 @@ const DropdownMenuLabel: Component<ScopedProps<DropdownMenuLabelProps>> = (props
  * DropdownMenuItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuItem component. */
 type DropdownMenuItemProps = MenuItemProps;
 
 /** Selectable menu item that closes the menu on select by default. */
@@ -280,6 +287,7 @@ const DropdownMenuItem: Component<ScopedProps<DropdownMenuItemProps>> = (props) 
  * DropdownMenuCheckboxItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuCheckboxItem component. */
 type DropdownMenuCheckboxItemProps = MenuCheckboxItemProps;
 
 /** Menu item with a checkable on/off state. */
@@ -293,6 +301,7 @@ const DropdownMenuCheckboxItem: Component<ScopedProps<DropdownMenuCheckboxItemPr
  * DropdownMenuRadioGroup
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuRadioGroup component. */
 type DropdownMenuRadioGroupProps = MenuRadioGroupProps;
 
 /** Groups radio items so only one can be checked at a time. */
@@ -306,6 +315,7 @@ const DropdownMenuRadioGroup: Component<ScopedProps<DropdownMenuRadioGroupProps>
  * DropdownMenuRadioItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuRadioItem component. */
 type DropdownMenuRadioItemProps = MenuRadioItemProps;
 
 /** Checkable menu item that belongs to a radio group. */
@@ -319,6 +329,7 @@ const DropdownMenuRadioItem: Component<ScopedProps<DropdownMenuRadioItemProps>> 
  * DropdownMenuItemIndicator
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuItemIndicator component. */
 type DropdownMenuItemIndicatorProps = MenuItemIndicatorProps;
 
 /** Renders its children when its parent checkbox or radio item is checked. */
@@ -334,6 +345,7 @@ const DropdownMenuItemIndicator: Component<ScopedProps<DropdownMenuItemIndicator
  * DropdownMenuSeparator
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuSeparator component. */
 type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
 /** Visual divider between menu items or groups. */
@@ -347,6 +359,7 @@ const DropdownMenuSeparator: Component<ScopedProps<DropdownMenuSeparatorProps>> 
  * DropdownMenuArrow
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuArrow component. */
 type DropdownMenuArrowProps = MenuArrowProps;
 
 /** Small arrow pointing from the menu content toward its trigger. */
@@ -360,6 +373,7 @@ const DropdownMenuArrow: Component<ScopedProps<DropdownMenuArrowProps>> = (props
  * DropdownMenuSub
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuSub component. */
 type DropdownMenuSubProps = MenuSubProps & {
   defaultOpen?: boolean | undefined;
 };
@@ -385,6 +399,7 @@ const DropdownMenuSub: Component<ScopedProps<DropdownMenuSubProps>> = (props) =>
  * DropdownMenuSubTrigger
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuSubTrigger component. */
 type DropdownMenuSubTriggerProps = MenuSubTriggerProps;
 
 /** Menu item that opens its nested submenu. */
@@ -398,6 +413,7 @@ const DropdownMenuSubTrigger: Component<ScopedProps<DropdownMenuSubTriggerProps>
  * DropdownMenuSubContent
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the DropdownMenuSubContent component. */
 type DropdownMenuSubContentProps = MenuSubContentProps;
 
 /** Floating panel that renders a nested submenu's items. */

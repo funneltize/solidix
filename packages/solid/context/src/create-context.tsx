@@ -13,10 +13,12 @@ type ContextProvider<ContextValueType extends object | null> = Component<
   }
 >;
 
+/** Consumer hook signature that throws when the context value is missing. */
 interface UseAssertedContext<ContextValueType extends object | null> {
   (consumerName: string): ContextValueType;
 }
 
+/** Consumer hook signature that reads the current context value. */
 interface UseContext<ContextValueType extends object | null> {
   (consumerName: string): ContextValueType;
   (consumerName: string, options: { optional: true }): ContextValueType | undefined;
@@ -26,6 +28,7 @@ interface UseContext<ContextValueType extends object | null> {
 function createContext<ContextValueType extends object | null>(
   rootComponentName: string,
 ): readonly [ContextProvider<ContextValueType>, UseContext<ContextValueType>];
+/** Creates a provider and consumer hook pair with a default context value. */
 function createContext<ContextValueType extends object | null>(
   rootComponentName: string,
   defaultContext: ContextValueType,
@@ -78,8 +81,10 @@ function createContext<ContextValueType extends object | null>(
  * createContextScope
  * -----------------------------------------------------------------------------------------------*/
 
+/** Map of scope names to the contexts registered under them. */
 type Scope<C = any> = { [scopeName: string]: Context<C>[] } | undefined;
 type ScopeHook = (scope: Scope) => { [__scopeProp: string]: Scope };
+/** Factory signature returned by `createContextScope` for building scoped contexts. */
 interface CreateScope {
   scopeName: string;
   (): ScopeHook;
@@ -92,6 +97,7 @@ type ScopedContextProvider<ContextValueType extends object | null> = Component<
   }
 >;
 
+/** Consumer hook signature that reads a context value from an optional scope. */
 interface UseScopedContext<ContextValueType extends object | null> {
   (consumerName: string, scope: Scope<ContextValueType | undefined>): ContextValueType;
   (
@@ -101,6 +107,7 @@ interface UseScopedContext<ContextValueType extends object | null> {
   ): ContextValueType | undefined;
 }
 
+/** Scoped consumer hook signature that throws when the context value is missing. */
 interface UseAssertedScopedContext<ContextValueType extends object | null> {
   (consumerName: string, scope: Scope<ContextValueType | undefined>): ContextValueType;
 }

@@ -1,6 +1,7 @@
 // Adapted from https://github.com/reach/observe-rect/tree
 // MIT license, React Training
 
+/** Anything exposing a bounding rect that `observeElementRect` can track. */
 type Measurable = { getBoundingClientRect(): DOMRect };
 
 /**

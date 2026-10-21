@@ -19,6 +19,7 @@ type ScopedProps<P> = P & { __scopeCheckbox?: Scope | undefined };
 /** Creates a checkbox scope for composing checkbox parts across nested trees. */
 const [createCheckboxContext, createCheckboxScope] = createContextScope(CHECKBOX_NAME);
 
+/** The checked state of a checkbox: on, off, or indeterminate. */
 type CheckedState = boolean | "indeterminate";
 
 interface CheckboxUserClick {
@@ -51,6 +52,7 @@ const [CheckboxProviderImpl, useCheckboxContext] =
  * CheckboxProvider
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the provider that supplies checked and form state to checkbox parts. */
 interface CheckboxProviderProps<State extends CheckedState = CheckedState> {
   checked?: State | boolean | undefined;
   defaultChecked?: State | boolean | undefined;
@@ -141,6 +143,7 @@ function CheckboxProvider<State extends CheckedState = CheckedState>(
 
 const TRIGGER_NAME = "CheckboxTrigger";
 
+/** Props for the button that toggles the checkbox when activated. */
 type CheckboxTriggerProps = Omit<PrimitivePropsWithRef<"button">, keyof CheckboxProviderProps> & {
   children?: JSX.Element | undefined;
 };
@@ -217,6 +220,7 @@ const CheckboxTrigger: Component<ScopedProps<CheckboxTriggerProps>> = (props) =>
  * Checkbox
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the check control toggling between checked and unchecked. */
 type CheckboxProps = Omit<
   PrimitivePropsWithRef<"button">,
   "checked" | "defaultChecked" | "required" | "disabled" | "name" | "form" | "value"
@@ -276,6 +280,7 @@ const Checkbox: Component<ScopedProps<CheckboxProps>> = (props) => {
 
 const INDICATOR_NAME = "CheckboxIndicator";
 
+/** Props for the indicator rendered when the checkbox is checked. */
 type CheckboxIndicatorProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   /**
    * Used to force mounting when more control is needed. Useful when
@@ -312,6 +317,7 @@ const CheckboxIndicator: Component<ScopedProps<CheckboxIndicatorProps>> = (props
 
 const BUBBLE_INPUT_NAME = "CheckboxBubbleInput";
 
+/** Props for the hidden input syncing the checkbox value with native forms. */
 type CheckboxBubbleInputProps = Omit<PrimitivePropsWithRef<"input">, "checked" | "style"> & {
   style?: JSX.CSSProperties | undefined;
 };

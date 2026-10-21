@@ -9,7 +9,9 @@ import { cx } from "./utils";
  * CTAButton
  * -----------------------------------------------------------------------------------------------*/
 
+/** CTA button emphasis. */
 type CTAButtonVariant = "primary" | "secondary" | "ghost";
+/** CTA button size. */
 type CTAButtonSize = "md" | "lg";
 
 type CTAButtonCommon = {
@@ -56,6 +58,7 @@ type CTAButtonAnchorProps = PrimitivePropsWithRef<"a"> &
     href: string;
   };
 
+/** Props for the CTAButton component. */
 type CTAButtonProps = CTAButtonButtonProps | CTAButtonAnchorProps;
 
 function ctaAttrs(
@@ -206,6 +209,7 @@ const CTAButton: Component<CTAButtonProps> = (props) => {
  * CtaCluster
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the CtaCluster component. */
 type CtaClusterProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   children?: JSX.Element | undefined;
   href: string;

@@ -5,6 +5,7 @@ import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
  * Arrow
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the arrow marker. */
 type ArrowProps = PrimitivePropsWithRef<"svg">;
 
 /** Renders the triangular pointer used by floating elements like popovers and tooltips. */

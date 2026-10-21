@@ -7,6 +7,7 @@
 
 import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
 
+/** Restores the accessibility tree changes made by hideOthers or suppressOthers. */
 type Undo = () => void;
 
 type DomParentNode = Element | ShadowRoot;

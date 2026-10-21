@@ -47,6 +47,7 @@ const [SwitchProviderImpl, useSwitchContext] = createSwitchContext<SwitchContext
  * SwitchProvider
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the provider that supplies checked and form state to switch parts. */
 interface SwitchProviderProps {
   checked?: boolean | undefined;
   defaultChecked?: boolean | undefined;
@@ -124,6 +125,7 @@ const SwitchProvider: Component<ScopedProps<SwitchProviderInternalProps>> = (pro
 
 const TRIGGER_NAME = "SwitchTrigger";
 
+/** Props for the button that toggles the switch when activated. */
 type SwitchTriggerProps = Omit<PrimitivePropsWithRef<"button">, keyof SwitchProviderProps> & {
   children?: JSX.Element | undefined;
 };
@@ -191,6 +193,7 @@ const SwitchTrigger: Component<ScopedProps<SwitchTriggerProps>> = (props) => {
  * Switch
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the toggle control switching between checked and unchecked. */
 type SwitchProps = Omit<
   PrimitivePropsWithRef<"button">,
   "checked" | "defaultChecked" | "required" | "disabled" | "name" | "form" | "value"
@@ -250,6 +253,7 @@ const Switch: Component<ScopedProps<SwitchProps>> = (props) => {
 
 const THUMB_NAME = "SwitchThumb";
 
+/** Props for the visual thumb inside the switch control. */
 type SwitchThumbProps = PrimitivePropsWithRef<"span">;
 
 /** The visual knob rendered inside the switch. */
@@ -272,6 +276,7 @@ const SwitchThumb: Component<ScopedProps<SwitchThumbProps>> = (props) => {
 
 const BUBBLE_INPUT_NAME = "SwitchBubbleInput";
 
+/** Props for the hidden input syncing the switch value with native forms. */
 type SwitchBubbleInputProps = Omit<PrimitivePropsWithRef<"input">, "checked" | "style"> & {
   style?: JSX.CSSProperties | undefined;
 };

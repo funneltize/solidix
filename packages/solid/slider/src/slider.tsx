@@ -83,6 +83,7 @@ type SliderContextValue = {
 
 const [SliderProvider, useSliderContext] = createSliderContext<SliderContextValue>(SLIDER_NAME);
 
+/** Props configuring the slider root: value state, range, stepping, and orientation. */
 type SliderProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
   name?: string | undefined;
@@ -639,6 +640,7 @@ const SliderImpl: Component<ScopedProps<SliderImplProps>> = (props) => {
 
 const TRACK_NAME = "SliderTrack";
 
+/** Props for the slider track element. */
 type SliderTrackProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
@@ -663,6 +665,7 @@ const SliderTrack: Component<ScopedProps<SliderTrackProps>> = (props) => {
 
 const RANGE_NAME = "SliderRange";
 
+/** Props for the slider range element. */
 type SliderRangeProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
@@ -721,6 +724,7 @@ const [SliderThumbContextProvider, useSliderThumbContext] =
 
 const THUMB_PROVIDER_NAME = "SliderThumbProvider";
 
+/** Props providing one thumb's index and value to its descendants. */
 type SliderThumbProviderProps = {
   name?: string | undefined;
   children?: JSX.Element | undefined;
@@ -807,6 +811,7 @@ const SliderThumbProvider: Component<ScopedProps<SliderThumbProviderProps>> =
 
 const THUMB_TRIGGER_NAME = "SliderThumbTrigger";
 
+/** Props for the focusable thumb handle. */
 type SliderThumbTriggerProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
@@ -872,6 +877,7 @@ const SliderThumbTrigger: Component<ScopedProps<SliderThumbTriggerProps>> = (pro
 
 /* -----------------------------------------------------------------------------------------------*/
 
+/** Props for the composite thumb (provider, trigger, and hidden input). */
 type SliderThumbProps = SliderThumbTriggerProps & {
   name?: string | undefined;
 };
@@ -903,6 +909,7 @@ const SliderThumb: Component<ScopedProps<SliderThumbProps>> = (props) => {
 
 const BUBBLE_INPUT_NAME = "SliderBubbleInput";
 
+/** Props for the hidden input that submits the thumb value with forms. */
 type SliderBubbleInputProps = Omit<PrimitivePropsWithRef<"input">, "value" | "style"> & {
   style?: JSX.CSSProperties | undefined;
 };

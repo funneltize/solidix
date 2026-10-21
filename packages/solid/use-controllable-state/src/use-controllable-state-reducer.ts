@@ -22,6 +22,7 @@ interface SyncStateAction<T> {
   state: T;
 }
 
+/** Dispatch function sending an action to a reducer. */
 export type Dispatch<A> = (action: A) => void;
 
 /** Reducer-based controllable state supporting controlled and uncontrolled modes. */
@@ -31,6 +32,7 @@ export function useControllableStateReducer<T, S extends {}, A extends AnyAction
   initialState: S,
 ): [() => S & { state: T }, Dispatch<A>];
 
+/** Reducer-based controllable state with lazy initial-state initialization. */
 export function useControllableStateReducer<T, S extends {}, I, A extends AnyAction>(
   reducer: (prevState: S & { state: T }, action: A) => S & { state: T },
   userArgs: UseControllableStateParams<T>,

@@ -93,6 +93,7 @@ const [ScrollAreaProvider, useScrollAreaContext] =
   createScrollAreaContext<ScrollAreaContextValue>(SCROLL_AREA_NAME);
 
 type ScrollAreaElement = HTMLDivElement;
+/** Props accepted by the scroll-area root. */
 export interface ScrollAreaProps extends PrimitiveDivProps {
   type?: ScrollAreaContextValue["type"] | undefined;
   dir?: ScrollAreaContextValue["dir"] | undefined;
@@ -162,6 +163,7 @@ const VIEWPORT_NAME = "ScrollAreaViewport";
 const Slottable = createSlottable(VIEWPORT_NAME);
 
 type ScrollAreaViewportElement = HTMLDivElement;
+/** Props accepted by the scroll-area viewport. */
 export interface ScrollAreaViewportProps extends PrimitiveDivProps {
   nonce?: string | undefined;
   /**
@@ -286,6 +288,7 @@ const ScrollAreaViewportStyle: Component<{ nonce?: string | undefined }> = (prop
 
 const CONTENT_NAME = "ScrollAreaContent";
 
+/** Props accepted by the scroll-area content wrapper. */
 export type ScrollAreaContentProps = PrimitiveDivProps;
 
 /** Content wrapper matching its children so scrollbar geometry can be measured. */
@@ -318,6 +321,7 @@ const ScrollAreaContent: Component<ScopedProps<ScrollAreaContentProps>> = (props
 const SCROLLBAR_NAME = "ScrollAreaScrollbar";
 
 type ScrollAreaScrollbarElement = ScrollAreaScrollbarVisibleElement;
+/** Props accepted by the scrollbar shell. */
 export interface ScrollAreaScrollbarProps extends ScrollAreaScrollbarVisibleProps {
   forceMount?: true | undefined;
 }
@@ -394,6 +398,7 @@ const ScrollAreaScrollbar: Component<ScopedProps<ScrollAreaScrollbarProps>> = (p
 
 /* -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the hover-visibility scrollbar variant. */
 export interface ScrollAreaScrollbarHoverProps extends ScrollAreaScrollbarAutoProps {
   forceMount?: true | undefined;
 }
@@ -438,6 +443,7 @@ const ScrollAreaScrollbarHover: Component<ScopedProps<ScrollAreaScrollbarHoverPr
   );
 };
 
+/** Props accepted by the scroll-visibility scrollbar variant. */
 export interface ScrollAreaScrollbarScrollProps extends ScrollAreaScrollbarVisibleProps {
   forceMount?: true | undefined;
 }
@@ -519,6 +525,7 @@ const ScrollAreaScrollbarScroll: Component<ScopedProps<ScrollAreaScrollbarScroll
   );
 };
 
+/** Props accepted by the auto-visibility scrollbar variant. */
 export interface ScrollAreaScrollbarAutoProps extends ScrollAreaScrollbarVisibleProps {
   forceMount?: true | undefined;
 }
@@ -556,6 +563,7 @@ const ScrollAreaScrollbarAuto: Component<ScopedProps<ScrollAreaScrollbarAutoProp
 /* -----------------------------------------------------------------------------------------------*/
 
 type ScrollAreaScrollbarVisibleElement = ScrollAreaScrollbarAxisElement;
+/** Props accepted by the always-visible scrollbar branch. */
 export interface ScrollAreaScrollbarVisibleProps extends Omit<
   ScrollAreaScrollbarAxisProps,
   keyof ScrollAreaScrollbarAxisPrivateProps
@@ -680,6 +688,7 @@ type ScrollAreaScrollbarAxisPrivateProps = {
 };
 
 type ScrollAreaScrollbarAxisElement = ScrollAreaScrollbarImplElement;
+/** Props accepted by the orientation-specific scrollbar branches. */
 export interface ScrollAreaScrollbarAxisProps
   extends
     Omit<ScrollAreaScrollbarImplProps, keyof ScrollAreaScrollbarImplPrivateProps>,
@@ -826,6 +835,7 @@ type ScrollAreaScrollbarImplPrivateProps = {
   onResize(): void;
 };
 type ScrollAreaScrollbarImplElement = HTMLDivElement;
+/** Props accepted by the scrollbar implementation. */
 export interface ScrollAreaScrollbarImplProps
   extends
     Omit<PrimitiveDivProps, keyof ScrollAreaScrollbarImplPrivateProps>,
@@ -961,6 +971,7 @@ const ScrollAreaScrollbarImpl: Component<ScopedProps<ScrollAreaScrollbarImplProp
 const THUMB_NAME = "ScrollAreaThumb";
 
 type ScrollAreaThumbElement = ScrollAreaThumbImplElement;
+/** Props accepted by the scrollbar thumb. */
 export interface ScrollAreaThumbProps extends ScrollAreaThumbImplProps {
   /**
    * Used to force mounting when more control is needed. Useful when
@@ -981,6 +992,7 @@ const ScrollAreaThumb: Component<ScopedProps<ScrollAreaThumbProps>> = (props) =>
 };
 
 type ScrollAreaThumbImplElement = HTMLDivElement;
+/** Props accepted by the thumb implementation. */
 export interface ScrollAreaThumbImplProps extends PrimitiveDivProps {
   // Solid JSX provides no `onPointerDownCapture` (see `@solidix/dismissable-layer`):
   // accepted explicitly and attached imperatively below.
@@ -1084,6 +1096,7 @@ const ScrollAreaThumbImpl: Component<ScopedProps<ScrollAreaThumbImplProps>> = (p
 
 const CORNER_NAME = "ScrollAreaCorner";
 
+/** Props accepted by the scrollbar corner. */
 export type ScrollAreaCornerProps = ScrollAreaCornerImplProps;
 
 /** Corner element rendered where the horizontal and vertical scrollbars meet. */
@@ -1100,6 +1113,7 @@ const ScrollAreaCorner: Component<ScopedProps<ScrollAreaCornerProps>> = (props) 
 
 /* -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the corner implementation. */
 export type ScrollAreaCornerImplProps = PrimitiveDivProps;
 
 const ScrollAreaCornerImpl: Component<ScopedProps<ScrollAreaCornerImplProps>> = (props) => {

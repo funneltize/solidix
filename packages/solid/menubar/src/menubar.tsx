@@ -87,6 +87,7 @@ type MenubarContextValue = {
 const [MenubarContextProvider, useMenubarContext] =
   createMenubarContext<MenubarContextValue>(MENUBAR_NAME);
 
+/** Props accepted by the `Menubar` component. */
 type MenubarProps = Omit<PrimitivePropsWithRef<"div">, "dir"> & {
   value?: string | undefined;
   defaultValue?: string | undefined;
@@ -182,6 +183,7 @@ type MenubarMenuContextValue = {
 const [MenubarMenuProvider, useMenubarMenuContext] =
   createMenubarContext<MenubarMenuContextValue>(MENU_NAME);
 
+/** Props accepted by the `MenubarMenu` component. */
 type MenubarMenuProps = {
   value?: string | undefined;
   children?: import("@solidjs/web").JSX.Element | undefined;
@@ -247,6 +249,7 @@ const MenubarMenu: Component<ScopedProps<MenubarMenuProps>> = (props) => {
 const TRIGGER_NAME = "MenubarTrigger";
 
 type MenubarTriggerElement = HTMLButtonElement;
+/** Props accepted by the `MenubarTrigger` component. */
 type MenubarTriggerProps = Omit<PrimitivePropsWithRef<"button">, "disabled"> & {
   disabled?: boolean | undefined;
 };
@@ -348,6 +351,7 @@ const MenubarTrigger: Component<ScopedProps<MenubarTriggerProps>> = (props) => {
  * MenubarPortal
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarPortal` component. */
 type MenubarPortalProps = MenuPortalProps;
 
 /**
@@ -365,6 +369,7 @@ const MenubarPortal: Component<ScopedProps<MenubarPortalProps>> = (props) => {
 
 const CONTENT_NAME = "MenubarContent";
 
+/** Props accepted by the `MenubarContent` component. */
 type MenubarContentProps = Omit<MenuContentProps, "onEntryFocus">;
 
 /**
@@ -468,6 +473,7 @@ const MenubarContent: Component<ScopedProps<MenubarContentProps>> = (props) => {
  * MenubarGroup
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarGroup` component. */
 type MenubarGroupProps = MenuGroupProps;
 
 /**
@@ -483,6 +489,7 @@ const MenubarGroup: Component<ScopedProps<MenubarGroupProps>> = (props) => {
  * MenubarLabel
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarLabel` component. */
 type MenubarLabelProps = MenuLabelProps;
 
 /**
@@ -498,6 +505,7 @@ const MenubarLabel: Component<ScopedProps<MenubarLabelProps>> = (props) => {
  * MenubarItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarItem` component. */
 type MenubarItemProps = MenuItemProps;
 
 /**
@@ -513,6 +521,7 @@ const MenubarItem: Component<ScopedProps<MenubarItemProps>> = (props) => {
  * MenubarCheckboxItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarCheckboxItem` component. */
 type MenubarCheckboxItemProps = MenuCheckboxItemProps;
 
 /**
@@ -528,6 +537,7 @@ const MenubarCheckboxItem: Component<ScopedProps<MenubarCheckboxItemProps>> = (p
  * MenubarRadioGroup
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarRadioGroup` component. */
 type MenubarRadioGroupProps = MenuRadioGroupProps;
 
 /**
@@ -543,6 +553,7 @@ const MenubarRadioGroup: Component<ScopedProps<MenubarRadioGroupProps>> = (props
  * MenubarRadioItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarRadioItem` component. */
 type MenubarRadioItemProps = MenuRadioItemProps;
 
 /**
@@ -558,6 +569,7 @@ const MenubarRadioItem: Component<ScopedProps<MenubarRadioItemProps>> = (props) 
  * MenubarItemIndicator
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarItemIndicator` component. */
 type MenubarItemIndicatorProps = MenuItemIndicatorProps;
 
 /**
@@ -573,6 +585,7 @@ const MenubarItemIndicator: Component<ScopedProps<MenubarItemIndicatorProps>> = 
  * MenubarSeparator
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarSeparator` component. */
 type MenubarSeparatorProps = MenuSeparatorProps;
 
 /**
@@ -588,6 +601,7 @@ const MenubarSeparator: Component<ScopedProps<MenubarSeparatorProps>> = (props) 
  * MenubarArrow
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarArrow` component. */
 type MenubarArrowProps = MenuArrowProps;
 
 /**
@@ -605,6 +619,7 @@ const MenubarArrow: Component<ScopedProps<MenubarArrowProps>> = (props) => {
 
 const SUB_NAME = "MenubarSub";
 
+/** Props accepted by the `MenubarSub` component. */
 type MenubarSubProps = MenuSubProps & {
   defaultOpen?: boolean | undefined;
 };
@@ -632,6 +647,7 @@ const MenubarSub: Component<ScopedProps<MenubarSubProps>> = (props) => {
  * MenubarSubTrigger
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarSubTrigger` component. */
 type MenubarSubTriggerProps = MenuSubTriggerProps;
 
 /**
@@ -649,6 +665,7 @@ const MenubarSubTrigger: Component<ScopedProps<MenubarSubTriggerProps>> = (props
  * MenubarSubContent
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the `MenubarSubContent` component. */
 type MenubarSubContentProps = MenuSubContentProps;
 
 /**

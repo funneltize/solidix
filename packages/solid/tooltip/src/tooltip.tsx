@@ -54,6 +54,7 @@ type TooltipProviderContextValue = {
 const [TooltipProviderContextProvider, useTooltipProviderContext] =
   createTooltipContext<TooltipProviderContextValue>(PROVIDER_NAME);
 
+/** Props for the `TooltipProvider` that configures delays and hover behavior. */
 type TooltipProviderProps = {
   children: JSX.Element;
   /**
@@ -135,6 +136,7 @@ type TooltipContextValue = {
 const [TooltipContextProvider, useTooltipContext] =
   createTooltipContext<TooltipContextValue>(TOOLTIP_NAME);
 
+/** Props for the Tooltip root, controlling open state, delay, and disable behavior. */
 type TooltipProps = {
   children?: JSX.Element | undefined;
   open?: boolean | undefined;
@@ -256,6 +258,7 @@ const Tooltip: Component<ScopedProps<TooltipProps>> = (props) => {
 const TRIGGER_NAME = "TooltipTrigger";
 
 type TooltipTriggerElement = HTMLButtonElement;
+/** Props for the `TooltipTrigger` element that opens the tooltip on hover or focus. */
 type TooltipTriggerProps = PrimitivePropsWithRef<"button">;
 
 /** `TooltipTrigger` is the element that shows the tooltip on hover or focus. */
@@ -344,6 +347,7 @@ const [PortalProvider, usePortalContext] = createTooltipContext<PortalContextVal
   forceMount: undefined,
 });
 
+/** Props for the `TooltipPortal` element that renders content elsewhere in the DOM. */
 type TooltipPortalProps = {
   children?: JSX.Element | undefined;
   /**
@@ -380,6 +384,7 @@ const TooltipPortal: Component<ScopedProps<TooltipPortalProps>> = (props) => {
 
 const CONTENT_NAME = "TooltipContent";
 
+/** Public props for Tooltip.Content, forcing mount in tests or during exit animations. */
 type TooltipContentProps = TooltipContentImplProps & {
   /**
    * Used to force mounting when more control is needed. Useful when
@@ -616,6 +621,7 @@ const TooltipContentImpl: Component<ScopedProps<TooltipContentImplProps>> = (pro
  * TooltipArrow
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the `TooltipArrow` element that points at the trigger. */
 type TooltipArrowProps = PopperArrowProps;
 
 /** `TooltipArrow` is the arrow pointing at the tooltip trigger. */

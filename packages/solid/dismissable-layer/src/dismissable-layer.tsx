@@ -87,6 +87,7 @@ function isTargetInNestedLayer(self: LayerNesting, target: EventTarget | null): 
   return false;
 }
 
+/** Props accepted by the dismissable layer. */
 type DismissableLayerProps = PrimitivePropsWithRef<"div"> & {
   /**
    * When `true`, hover/focus/click interactions will be disabled on elements outside

@@ -7,6 +7,7 @@ const Direction = {
   RTL: "rtl",
 } as const;
 
+/** Text direction value: left-to-right or right-to-left. */
 type Direction = (typeof Direction)[keyof typeof Direction];
 
 const DirectionContext = createContext<Direction | undefined>(undefined);

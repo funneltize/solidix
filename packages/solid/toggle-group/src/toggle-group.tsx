@@ -31,9 +31,11 @@ const [createToggleGroupContext, createToggleGroupScope] = createContextScope(TO
 ]);
 const useRovingFocusGroupScope = createRovingFocusGroupScope();
 
+/** Props accepted by the single-select toggle group. */
 interface ToggleGroupSingleProps extends ToggleGroupImplSingleProps {
   type: typeof ToggleGroupType.Single;
 }
+/** Props accepted by the multi-select toggle group. */
 interface ToggleGroupMultipleProps extends ToggleGroupImplMultipleProps {
   type: typeof ToggleGroupType.Multiple;
 }
@@ -235,6 +237,7 @@ const ToggleGroupImpl: Component<ScopedProps<ToggleGroupImplProps>> = (props) =>
 
 const ITEM_NAME = "ToggleGroupItem";
 
+/** Props accepted by a toggle group item. */
 interface ToggleGroupItemProps extends Omit<ToggleGroupItemImplProps, "pressed"> {}
 
 /** Renders a toggle item that reflects and updates the group's selected value. */

@@ -130,6 +130,7 @@ type SelectNativeOptionsContextValue = {
 const [SelectNativeOptionsProvider, useSelectNativeOptionsContext] =
   createSelectContext<SelectNativeOptionsContextValue>(SELECT_NAME);
 
+/** Props shared by Select and SelectProvider: value, open state, and behavior flags. */
 export interface SelectSharedProps {
   children?: JSX.Element | undefined;
   open?: boolean | undefined;
@@ -143,6 +144,7 @@ export interface SelectSharedProps {
   form?: string | undefined;
 }
 
+/** Props for the Select root, adding scope and children to the shared select state. */
 export type SelectProps = SelectSharedProps & {
   value?: string | undefined;
   defaultValue?: string | undefined;
@@ -153,6 +155,7 @@ export type SelectProps = SelectSharedProps & {
  * SelectProvider
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the standalone select context provider used to compose custom selects. */
 export interface SelectProviderProps extends SelectSharedProps {
   value?: string | undefined;
   defaultValue?: string | undefined;
@@ -350,6 +353,7 @@ const Select: Component<ScopedProps<SelectProps>> = (props) => {
 const TRIGGER_NAME = "SelectTrigger";
 
 type SelectTriggerElement = HTMLButtonElement;
+/** Props for the button that opens the select and shows the current value. */
 export type SelectTriggerProps = PrimitivePropsWithRef<"button">;
 
 /** `SelectTrigger` is the button that toggles the select open and closed. */
@@ -470,6 +474,7 @@ const VALUE_NAME = "SelectValue";
 
 type SelectValueElement = HTMLSpanElement;
 type PrimitiveSpanProps = PrimitivePropsWithRef<"span">;
+/** Props for the element rendering the selected item text or a placeholder. */
 export interface SelectValueProps extends Omit<PrimitiveSpanProps, "placeholder"> {
   placeholder?: JSX.Element | undefined;
 }
@@ -511,6 +516,7 @@ const SelectValue: Component<ScopedProps<SelectValueProps>> = (props) => {
  * SelectIcon
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the decorative icon rendered inside the select trigger. */
 export type SelectIconProps = PrimitiveSpanProps;
 
 /** `SelectIcon` is the decorative icon rendered inside the trigger. */
@@ -535,6 +541,7 @@ const [PortalProvider, usePortalContext] = createSelectContext<PortalContextValu
   forceMount: undefined,
 });
 
+/** Props for the portal that renders select content outside the trigger tree. */
 export interface SelectPortalProps {
   children?: JSX.Element | undefined;
   /**
@@ -564,6 +571,7 @@ const SelectPortal: Component<ScopedProps<SelectPortalProps>> = (props) => {
 const CONTENT_NAME = "SelectContent";
 
 type SelectContentElement = SelectContentImplElement;
+/** Public props for Select.Content, positioning and sizing the open dropdown. */
 export interface SelectContentProps extends SelectContentImplProps {
   /**
    * Used to force mounting when more control is needed. Useful when
@@ -1291,6 +1299,7 @@ const [SelectViewportProvider, useSelectViewportContext] =
 const VIEWPORT_NAME = "SelectViewport";
 
 type SelectViewportElement = HTMLDivElement;
+/** Props for the scrollable viewport containing the select items. */
 export interface SelectViewportProps extends PrimitiveDivProps {
   nonce?: string | undefined;
 }
@@ -1376,6 +1385,7 @@ type SelectGroupContextValue = { id: string };
 const [SelectGroupContextProvider, useSelectGroupContext] =
   createSelectContext<SelectGroupContextValue>(GROUP_NAME);
 
+/** Props for grouping related select items under a shared label. */
 export type SelectGroupProps = PrimitiveDivProps;
 
 /** `SelectGroup` groups related items with an optional label. */
@@ -1395,6 +1405,7 @@ const SelectGroup: Component<ScopedProps<SelectGroupProps>> = (props) => {
 
 const LABEL_NAME = "SelectLabel";
 
+/** Props for the non-interactive label heading a select group. */
 export type SelectLabelProps = PrimitiveDivProps;
 
 /** `SelectLabel` is the label for a group of items. */
@@ -1422,6 +1433,7 @@ const [SelectItemContextProvider, useSelectItemContext] =
   createSelectContext<SelectItemContextValue>(ITEM_NAME);
 
 type SelectItemElement = HTMLDivElement;
+/** Props for a selectable option, keyed by its value with optional disabled state. */
 export interface SelectItemProps extends PrimitiveDivProps {
   value: string;
   disabled?: boolean | undefined;
@@ -1583,6 +1595,7 @@ const SelectItem: Component<ScopedProps<SelectItemProps>> = (props) => {
 const ITEM_TEXT_NAME = "SelectItemText";
 
 type SelectItemTextElement = HTMLSpanElement;
+/** Props for the text label of a select item, used for display and typeahead. */
 export type SelectItemTextProps = PrimitiveSpanProps;
 
 /** `SelectItemText` is the text shown for an item and in the trigger when selected. */
@@ -1657,6 +1670,7 @@ const SelectItemText: Component<ScopedProps<SelectItemTextProps>> = (props) => {
 
 const ITEM_INDICATOR_NAME = "SelectItemIndicator";
 
+/** Props for the check indicator rendered when a select item is selected. */
 export type SelectItemIndicatorProps = PrimitiveSpanProps;
 
 /** `SelectItemIndicator` is the checkmark shown next to the selected item. */
@@ -1677,6 +1691,7 @@ const SelectItemIndicator: Component<ScopedProps<SelectItemIndicatorProps>> = (p
 
 const SCROLL_UP_BUTTON_NAME = "SelectScrollUpButton";
 
+/** Props for the button that auto-scrolls the viewport upward when visible. */
 export type SelectScrollUpButtonProps = Omit<SelectScrollButtonImplProps, "onAutoScroll">;
 
 /** `SelectScrollUpButton` is the button that scrolls the viewport upward. */
@@ -1728,6 +1743,7 @@ const SelectScrollUpButton: Component<ScopedProps<SelectScrollUpButtonProps>> = 
 
 const SCROLL_DOWN_BUTTON_NAME = "SelectScrollDownButton";
 
+/** Props for the button that auto-scrolls the viewport downward when visible. */
 export type SelectScrollDownButtonProps = Omit<SelectScrollButtonImplProps, "onAutoScroll">;
 
 /** `SelectScrollDownButton` is the button that scrolls the viewport downward. */
@@ -1843,6 +1859,7 @@ const SelectScrollButtonImpl: Component<ScopedProps<SelectScrollButtonImplProps>
  * SelectSeparator
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the visual divider rendered between select items or groups. */
 export type SelectSeparatorProps = PrimitiveDivProps;
 
 /** `SelectSeparator` is a visual divider between items or groups. */
@@ -1858,6 +1875,7 @@ const SelectSeparator: Component<ScopedProps<SelectSeparatorProps>> = (props) =>
 
 const ARROW_NAME = "SelectArrow";
 
+/** Props for the arrow pointing from the select content toward the trigger. */
 export type SelectArrowProps = PopperArrowProps;
 
 /** `SelectArrow` is the arrow pointing at the select trigger. */
@@ -1879,6 +1897,7 @@ const SelectArrow: Component<ScopedProps<SelectArrowProps>> = (props) => {
 const BUBBLE_INPUT_NAME = "SelectBubbleInput";
 
 type SelectBubbleInputElement = HTMLSelectElement;
+/** Props for the hidden native select enabling form submission and validation. */
 export interface SelectBubbleInputProps extends Omit<
   PrimitivePropsWithRef<"select">,
   "value" | "style"

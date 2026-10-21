@@ -14,6 +14,7 @@ import { useControllableState } from "@solidix/use-controllable-state";
 
 const NAME = "Toggle";
 
+/** Props accepted by the two-state toggle button. */
 type ToggleProps = PrimitivePropsWithRef<"button"> & {
   /**
    * The controlled state of the toggle.

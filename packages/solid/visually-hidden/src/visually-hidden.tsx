@@ -23,6 +23,7 @@ const VISUALLY_HIDDEN_STYLES = Object.freeze({
   "word-wrap": "normal",
 }) satisfies JSX.CSSProperties;
 
+/** Props accepted by the visually-hidden span. */
 type VisuallyHiddenProps = Omit<PrimitivePropsWithRef<"span">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };

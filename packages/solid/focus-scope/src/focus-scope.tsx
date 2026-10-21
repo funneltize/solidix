@@ -23,6 +23,7 @@ type FocusableTarget = HTMLElement | { focus(): void };
  * FocusScope
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the focus scope trap. */
 type FocusScopeProps = PrimitivePropsWithRef<"div"> & {
   /**
    * When `true`, tabbing from last item will focus first tabbable
@@ -283,6 +284,7 @@ interface FocusScopeBranchRegistry {
 
 const FocusScopeBranchContext = createSolidContext<FocusScopeBranchRegistry | null>(null);
 
+/** Props accepted by the focus scope branch provider. */
 interface FocusScopeBranchProviderProps {
   /**
    * The registry nested layers should register themselves with. When nullish the provider is

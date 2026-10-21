@@ -118,6 +118,7 @@ const [ViewportContentProvider, useViewportContentContext] = createNavigationMen
 
 type NavigationMenuElement = HTMLElement;
 type PrimitiveNavProps = PrimitivePropsWithRef<"nav">;
+/** Props for the navigation-menu root, owning value, timing, orientation, and direction. */
 export interface NavigationMenuProps
   extends
     Omit<NavigationMenuProviderProps, keyof NavigationMenuProviderPrivateProps>,
@@ -293,6 +294,7 @@ const SUB_NAME = "NavigationMenuSub";
 type PrimitiveDivProps = Omit<PrimitivePropsWithRef<"div">, "style"> & {
   style?: JSX.CSSProperties | undefined;
 };
+/** Props for the submenu root, providing an independent menu value and orientation context. */
 export interface NavigationMenuSubProps
   extends
     Omit<NavigationMenuProviderProps, keyof NavigationMenuProviderPrivateProps>,
@@ -458,6 +460,7 @@ const NavigationMenuProvider: Component<NavigationMenuProviderProps> = (props) =
 const LIST_NAME = "NavigationMenuList";
 
 type PrimitiveUnorderedListProps = PrimitivePropsWithRef<"ul">;
+/** Props for the list element holding the menu items. */
 export type NavigationMenuListProps = PrimitiveUnorderedListProps;
 
 /** List element holding the menu items, roving-tabindex managed at the root. */
@@ -504,6 +507,7 @@ const [NavigationMenuItemContextProvider, useNavigationMenuItemContext] =
   createNavigationMenuContext<NavigationMenuItemContextValue>(ITEM_NAME);
 
 type PrimitiveListItemProps = PrimitivePropsWithRef<"li">;
+/** Props for the item wrapper exposing its value and trigger/content refs. */
 export interface NavigationMenuItemProps extends PrimitiveListItemProps {
   value?: string | undefined;
 }
@@ -562,6 +566,7 @@ const TRIGGER_NAME = "NavigationMenuTrigger";
 
 type NavigationMenuTriggerElement = HTMLButtonElement;
 type PrimitiveButtonProps = PrimitivePropsWithRef<"button">;
+/** Props for the trigger button opening, closing, and announcing its content panel. */
 export type NavigationMenuTriggerProps = PrimitiveButtonProps;
 
 /** Button opening, closing, and announcing its item's content panel. */
@@ -678,6 +683,7 @@ const NavigationMenuTrigger: Component<ScopedProps<NavigationMenuTriggerProps>> 
 const LINK_SELECT = "navigationMenu.linkSelect";
 
 type PrimitiveLinkProps = PrimitivePropsWithRef<"a">;
+/** Props for the link dispatching select and closing root content on activation. */
 export interface NavigationMenuLinkProps extends Omit<PrimitiveLinkProps, "onSelect"> {
   active?: boolean | undefined;
   onSelect?: { bivarianceHack(event: Event): void }["bivarianceHack"] | undefined;
@@ -730,6 +736,7 @@ const NavigationMenuLink: Component<ScopedProps<NavigationMenuLinkProps>> = (pro
 
 const INDICATOR_NAME = "NavigationMenuIndicator";
 
+/** Props for the indicator tracking the active trigger position. */
 export interface NavigationMenuIndicatorProps extends NavigationMenuIndicatorImplProps {
   forceMount?: true | undefined;
 }
@@ -759,6 +766,7 @@ const NavigationMenuIndicator: Component<ScopedProps<NavigationMenuIndicatorProp
 
 /* -----------------------------------------------------------------------------------------------*/
 
+/** Props for the indicator implementation rendering the positioned element. */
 export type NavigationMenuIndicatorImplProps = PrimitiveDivProps;
 
 const NavigationMenuIndicatorImpl: Component<ScopedProps<NavigationMenuIndicatorImplProps>> = (
@@ -833,6 +841,7 @@ const NavigationMenuIndicatorImpl: Component<ScopedProps<NavigationMenuIndicator
 const CONTENT_NAME = "NavigationMenuContent";
 
 type NavigationMenuContentElement = HTMLDivElement;
+/** Props for the content panel of an item. */
 export interface NavigationMenuContentProps extends Omit<
   NavigationMenuContentImplProps,
   keyof NavigationMenuContentImplPrivateProps | "style"
@@ -905,6 +914,7 @@ const NavigationMenuContent: Component<ScopedProps<NavigationMenuContentProps>> 
 /* -----------------------------------------------------------------------------------------------*/
 
 type ViewportContentMounterElement = NavigationMenuContentImplElement;
+/** Props for the internal mounter rendering item content inside the viewport. */
 export interface ViewportContentMounterProps extends NavigationMenuContentImplProps {
   forceMount?: boolean | undefined;
 }
@@ -946,6 +956,7 @@ interface NavigationMenuContentImplPrivateProps {
   onContentFocusOutside(): void;
   onRootContentClose(): void;
 }
+/** Props for the content implementation, focus-guarded and portal-addressed in viewports. */
 export interface NavigationMenuContentImplProps
   extends
     Omit<DismissableLayerProps, "onDismiss" | "disableOutsidePointerEvents">,
@@ -1106,6 +1117,7 @@ const ViewportSlottable = createSlottable(VIEWPORT_NAME);
 
 type NavigationMenuViewportElement = NavigationMenuViewportImplElement;
 
+/** Props for the viewport rendering active content with open/close animations. */
 export interface NavigationMenuViewportProps extends NavigationMenuViewportImplProps {
   /**
    * Used to force mounting when more control is needed. Useful when
@@ -1133,6 +1145,7 @@ const NavigationMenuViewport: Component<ScopedProps<NavigationMenuViewportProps>
 /* -----------------------------------------------------------------------------------------------*/
 
 type NavigationMenuViewportImplElement = HTMLElement;
+/** Props for the viewport implementation rendering the animated content host. */
 export type NavigationMenuViewportImplProps = PrimitiveDivProps;
 
 const NavigationMenuViewportImpl: Component<ScopedProps<NavigationMenuViewportImplProps>> = (
@@ -1336,6 +1349,7 @@ const NavigationMenuViewportItem: Component<ScopedProps<NavigationMenuViewportIt
 /* -----------------------------------------------------------------------------------------------*/
 
 const FOCUS_GROUP_NAME = "FocusGroup";
+/** Props for the focus group managing roving tabindex among its items. */
 export interface FocusGroupProps extends PrimitiveDivProps {}
 
 const FocusGroup: Component<ScopedProps<FocusGroupProps>> = (props) => {
@@ -1356,6 +1370,7 @@ const ARROW_KEYS = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
 const FOCUS_GROUP_ITEM_NAME = "FocusGroupItem";
 
 type FocusGroupItemElement = HTMLButtonElement;
+/** Props for a focus-group item participating in roving-tabindex navigation. */
 export interface FocusGroupItemProps extends PrimitivePropsWithRef<"button"> {}
 
 const FocusGroupItem: Component<ScopedProps<FocusGroupItemProps>> = (props) => {

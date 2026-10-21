@@ -44,6 +44,7 @@ interface ElementMap {
 }
 
 type Primitives = { [E in (typeof NODES)[number]]: Component<PrimitivePropsWithRef<E>> };
+/** Props for a primitive element of the given tag, with support for an element ref. */
 type PrimitivePropsWithRef<E extends (typeof NODES)[number]> = Omit<
   JSX.IntrinsicElements[E],
   "ref"

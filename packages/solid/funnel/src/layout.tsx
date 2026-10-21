@@ -10,8 +10,10 @@ import type { FunnelElementProps } from "./types";
  * Section
  * -----------------------------------------------------------------------------------------------*/
 
+/** Section surface treatment. */
 type SectionTone = "primary" | "subtle" | "inverse";
 
+/** Props for the Section component. */
 type SectionProps = FunnelElementProps<"section", HTMLElement> & {
   /**
    * Background treatment. Alternate `primary`/`subtle` down the page for
@@ -42,8 +44,10 @@ const Section: Component<SectionProps> = (props) => {
  * Container
  * -----------------------------------------------------------------------------------------------*/
 
+/** Container max width. */
 type ContainerSize = "wide" | "standard" | "reading";
 
+/** Props for the Container component. */
 type ContainerProps = PrimitivePropsWithRef<"div"> & {
   /**
    * Measure tier: `wide` (proof grids, pricing, tables), `standard` (hero,
@@ -70,6 +74,7 @@ const Container: Component<ContainerProps> = (props) => {
  * Eyebrow
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the Eyebrow component. */
 type EyebrowProps = PrimitivePropsWithRef<"p">;
 
 /** Small-caps kicker label rendered above a section heading. */
@@ -92,6 +97,7 @@ const Eyebrow: Component<EyebrowProps> = (props) => {
  * SectionHeading
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the SectionHeading component. */
 type SectionHeadingProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   eyebrow?: string | undefined;
   title: string;
@@ -145,6 +151,7 @@ const SectionHeading: Component<SectionHeadingProps> = (props) => {
  * Prose
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the Prose component. */
 type ProseProps = PrimitivePropsWithRef<"div"> & {
   children?: JSX.Element | undefined;
 };
@@ -174,6 +181,7 @@ const Prose: Component<ProseProps> = (props) => {
 
 type HeaderBrand = string | { src: string; name: string };
 
+/** Props for the Header component. */
 type HeaderProps = FunnelElementProps<"header", HTMLElement> & {
   /** Wordmark text or logo image. Rendered as text, never a link: zero escape. */
   brand: HeaderBrand;

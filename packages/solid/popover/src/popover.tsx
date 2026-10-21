@@ -71,6 +71,7 @@ type PopoverContextValue = {
 const [PopoverProvider, usePopoverContext] =
   createPopoverContext<PopoverContextValue>(POPOVER_NAME);
 
+/** Props for the `Popover` root component, including the controlled open state. */
 type PopoverProps = {
   children?: JSX.Element | undefined;
   open?: boolean | undefined;
@@ -128,6 +129,7 @@ const Popover: Component<ScopedProps<PopoverProps>> = (props) => {
 
 const ANCHOR_NAME = "PopoverAnchor";
 
+/** Props for the `PopoverAnchor` element used to position the content. */
 type PopoverAnchorProps = PopperAnchorProps;
 
 /** `PopoverAnchor` is the optional element the popover positions itself against. */
@@ -150,6 +152,7 @@ const PopoverAnchor: Component<ScopedProps<PopoverAnchorProps>> = (props) => {
 
 const TRIGGER_NAME = "PopoverTrigger";
 
+/** Props for the `PopoverTrigger` button that toggles the popover. */
 type PopoverTriggerProps = PrimitivePropsWithRef<"button">;
 
 /** `PopoverTrigger` is the button that toggles the popover open and closed. */
@@ -200,6 +203,7 @@ const [PortalProvider, usePortalContext] = createPopoverContext<PortalContextVal
   forceMount: undefined,
 });
 
+/** Props for the `PopoverPortal` element that renders content elsewhere in the DOM. */
 type PopoverPortalProps = {
   children?: JSX.Element | undefined;
   /**
@@ -236,6 +240,7 @@ const PopoverPortal: Component<ScopedProps<PopoverPortalProps>> = (props) => {
 
 const CONTENT_NAME = "PopoverContent";
 
+/** Props for the `PopoverContent` element, including modal and non-modal options. */
 type PopoverContentProps = PopoverContentTypeProps & {
   /**
    * Used to force mounting when more control is needed. Useful when
@@ -518,6 +523,7 @@ const PopoverContentImpl: Component<ScopedProps<PopoverContentImplProps>> = (pro
  * PopoverTitle
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the `PopoverTitle` heading that labels the popover. */
 type PopoverTitleProps = PrimitivePropsWithRef<"h2">;
 
 /** `PopoverTitle` is the accessible title announced for the popover. */
@@ -537,6 +543,7 @@ const PopoverTitle: Component<ScopedProps<PopoverTitleProps>> = (props) => {
  * PopoverDescription
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the `PopoverDescription` paragraph that describes the popover. */
 type PopoverDescriptionProps = PrimitivePropsWithRef<"p">;
 
 /** `PopoverDescription` is the accessible description announced for the popover. */
@@ -558,6 +565,7 @@ const PopoverDescription: Component<ScopedProps<PopoverDescriptionProps>> = (pro
 
 const CLOSE_NAME = "PopoverClose";
 
+/** Props for the `PopoverClose` button that closes the popover. */
 type PopoverCloseProps = PrimitivePropsWithRef<"button">;
 
 /** `PopoverClose` is the button that closes the popover. */
@@ -581,6 +589,7 @@ const PopoverClose: Component<ScopedProps<PopoverCloseProps>> = (props) => {
  * PopoverArrow
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the `PopoverArrow` element that points at the anchor. */
 type PopoverArrowProps = PopperArrowProps;
 
 /** `PopoverArrow` is the arrow pointing at the popover anchor. */

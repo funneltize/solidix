@@ -1,11 +1,14 @@
 import { onCleanup } from "solid-js";
 
+/** Mutable ref object holding the referenced value on `current`. */
 export interface RefObject<T> {
   current: T;
 }
 
+/** Callback ref, ref object, or null accepted anywhere a ref can be set. */
 export type Ref<T> = ((element: T | null) => void) | RefObject<T | null> | null;
 
+/** Optional ref accepted by the ref composition helpers. */
 type PossibleRef<T> = Ref<T> | undefined;
 
 /**

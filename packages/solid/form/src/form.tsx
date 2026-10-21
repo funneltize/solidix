@@ -52,6 +52,7 @@ type AriaDescriptionContextValue = {
 const [AriaDescriptionProvider, useAriaDescriptionContext] =
   createFormContext<AriaDescriptionContextValue>(FORM_NAME);
 
+/** Props for the root Form element. */
 type FormProps = PrimitivePropsWithRef<"form"> & {
   onClearServerErrors?: (() => void) | undefined;
 };
@@ -207,6 +208,7 @@ type FormFieldContextValue = {
 const [FormFieldProvider, useFormFieldContext] =
   createFormContext<FormFieldContextValue>(FIELD_NAME);
 
+/** Props for the FormField wrapper that names a field. */
 type FormFieldProps = PrimitivePropsWithRef<"div"> & {
   name: string;
   serverInvalid?: boolean | undefined;
@@ -242,6 +244,7 @@ const FormField: Component<ScopedProps<FormFieldProps>> = (props) => {
 
 const LABEL_NAME = "FormLabel";
 
+/** Props for the FormLabel associated with a field control. */
 type FormLabelProps = LabelProps & {
   name?: string | undefined;
   /** React-style alias; rendered as the `for` attribute. */
@@ -289,6 +292,7 @@ const FormLabel: Component<ScopedProps<FormLabelProps>> = (props) => {
 
 const CONTROL_NAME = "FormControl";
 
+/** Props for the FormControl input element. */
 type FormControlProps = PrimitivePropsWithRef<"input">;
 
 /** Input control that reports built-in and custom validity to the form. */
@@ -496,6 +500,7 @@ const DEFAULT_BUILT_IN_MESSAGES: Record<ValidityMatcher, string | undefined> = {
 
 const MESSAGE_NAME = "FormMessage";
 
+/** Props for a FormMessage shown on a matching validity state. */
 type FormMessageProps = Omit<FormMessageImplProps, "name"> & {
   match?: ValidityMatcher | CustomMatcher | undefined;
   forceMatch?: boolean | undefined;
@@ -641,6 +646,7 @@ const FormMessageImpl: Component<ScopedProps<FormMessageImplProps>> = (props) =>
 
 const VALIDITY_STATE_NAME = "FormValidityState";
 
+/** Props for the FormValidityState render-prop component. */
 type FormValidityStateProps = {
   children(validity: ValidityState | undefined): JSX.Element;
   name?: string | undefined;
@@ -666,6 +672,7 @@ const FormValidityState: Component<ScopedProps<FormValidityStateProps>> = (props
  * FormSubmit
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the FormSubmit button element. */
 type FormSubmitProps = PrimitivePropsWithRef<"button">;
 
 /** Submit button for the form. */

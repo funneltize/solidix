@@ -21,6 +21,7 @@ type ProgressContextValue = {
 const [ProgressProvider, useProgressContext] =
   createProgressContext<ProgressContextValue>(PROGRESS_NAME);
 
+/** Props accepted by the progress root. */
 type ProgressProps = PrimitivePropsWithRef<"div"> & {
   value?: number | null | undefined;
   max?: number | undefined;
@@ -88,6 +89,7 @@ const Progress: Component<ScopedProps<ProgressProps>> = (props) => {
 
 const INDICATOR_NAME = "ProgressIndicator";
 
+/** Props accepted by the progress indicator. */
 type ProgressIndicatorProps = PrimitivePropsWithRef<"div">;
 
 /** Renders the visual bar that represents the progress value. */

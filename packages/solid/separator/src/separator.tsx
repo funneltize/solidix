@@ -15,6 +15,7 @@ const ORIENTATIONS = Object.values(Orientation);
 
 type Orientation = (typeof Orientation)[keyof typeof Orientation];
 
+/** Props accepted by the separator. */
 type SeparatorProps = PrimitivePropsWithRef<"div"> & {
   /**
    * Either `vertical` or `horizontal`. Defaults to `horizontal`.

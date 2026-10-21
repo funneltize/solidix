@@ -17,6 +17,7 @@ import { cx } from "./utils";
  * Benefits
  * -----------------------------------------------------------------------------------------------*/
 
+/** One benefit row rendered by the Benefits component. */
 type BenefitItem = {
   title: string;
   description?: string | undefined;
@@ -25,6 +26,7 @@ type BenefitItem = {
   media?: { src: string; alt: string } | undefined;
 };
 
+/** Props for the Benefits component. */
 type BenefitsProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   items: BenefitItem[];
 };
@@ -102,11 +104,13 @@ const Benefits: Component<BenefitsProps> = (props) => {
  * HowItWorks
  * -----------------------------------------------------------------------------------------------*/
 
+/** One numbered step rendered by HowItWorks. */
 type HowItWorksStep = {
   title: string;
   description?: string | undefined;
 };
 
+/** Props for the HowItWorks component. */
 type HowItWorksProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   steps: HowItWorksStep[];
 };
@@ -158,8 +162,10 @@ const HowItWorks: Component<HowItWorksProps> = (props) => {
  * Pricing
  * -----------------------------------------------------------------------------------------------*/
 
+/** Billing period toggle option. */
 type BillingPeriod = "monthly" | "annual";
 
+/** One pricing tier rendered by the Pricing component. */
 type PricingPlan = {
   name: string;
   /** Price line per billing period, e.g. "$19/mo". */
@@ -172,6 +178,7 @@ type PricingPlan = {
   badge?: string | undefined;
 };
 
+/** Props for the Pricing component. */
 type PricingProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   plans: PricingPlan[];
   /** Billing periods offered. Defaults to both. */
@@ -319,6 +326,7 @@ const Pricing: Component<PricingProps> = (props) => {
  * Guarantee
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the Guarantee component. */
 type GuaranteeProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   title: string;
   description?: string | undefined;
@@ -380,6 +388,7 @@ const Guarantee: Component<GuaranteeProps> = (props) => {
  * FAQ
  * -----------------------------------------------------------------------------------------------*/
 
+/** One question/answer entry rendered by the Faq component. */
 type FaqItem = {
   /** Stable slug used for deep links (`#faq-<id>`). */
   id: string;
@@ -387,6 +396,7 @@ type FaqItem = {
   answer: string;
 };
 
+/** Props for the Faq component. */
 type FaqProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   items: FaqItem[];
   /** Item id open initially. Defaults to the `#faq-<id>` hash when present. */
@@ -452,18 +462,21 @@ const Faq: Component<FaqProps> = (props) => {
  * ComparisonTable
  * -----------------------------------------------------------------------------------------------*/
 
+/** One compared option column in the comparison table. */
 type ComparisonColumn = {
   label: string;
   /** Featured (ours) column: elevated surface, bold, accent borders. Defaults to first column. */
   featured?: boolean | undefined;
 };
 
+/** One feature row with per-column cell values. */
 type ComparisonRow = {
   feature: string;
   /** One entry per column: boolean renders a check/cross, string renders text. */
   values: Array<boolean | string>;
 };
 
+/** Props for the ComparisonTable component. */
 type ComparisonTableProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   columns: ComparisonColumn[];
   rows: ComparisonRow[];

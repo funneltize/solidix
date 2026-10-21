@@ -4,6 +4,7 @@
  * are placeholder brand defaults (warm neutrals, high-contrast CTA) meant to
  * be overridden per brand; the token *names* are the stable API. */
 
+/** Token name to CSS value map backing one theme. */
 export type TokenSet = Record<string, string>;
 
 /** Light (default) token values, emitted under `:root`. */
@@ -272,6 +273,7 @@ export function contrastRatio(foreground: string, background: string): number {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
+/** One foreground/background pair checked for contrast. */
 export type ContrastPair = {
   name: string;
   foreground: string;

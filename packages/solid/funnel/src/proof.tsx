@@ -7,6 +7,7 @@ import { cx } from "./utils";
  * StarRating
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the StarRating component. */
 type StarRatingProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   /** Filled stars, clamped to `0..max`. Supports fractions (e.g. `4.5`). */
   value: number;
@@ -66,12 +67,14 @@ const StarRating: Component<StarRatingProps> = (props) => {
  * LogoBar
  * -----------------------------------------------------------------------------------------------*/
 
+/** One logo entry rendered by the LogoBar component. */
 export type LogoBarLogo = {
   name: string;
   src?: string | undefined;
   href?: string | undefined;
 };
 
+/** Props for the LogoBar component. */
 type LogoBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   /** Heading caption above the row (e.g. "As featured in"). */
   caption?: string | undefined;
@@ -151,6 +154,7 @@ function LogoMark(props: { logo: LogoBarLogo; index: number }) {
  * Testimonials
  * -----------------------------------------------------------------------------------------------*/
 
+/** One customer quote with attribution. */
 export type Testimonial = {
   quote: string;
   name: string;
@@ -158,6 +162,7 @@ export type Testimonial = {
   rating?: number | undefined;
 };
 
+/** Props for the Testimonials component. */
 type TestimonialsProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   items: Testimonial[];
 };
@@ -223,6 +228,7 @@ const Testimonials: Component<TestimonialsProps> = (props) => {
  * TestimonialCarousel
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the TestimonialCarousel component. */
 type TestimonialCarouselProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   items: Testimonial[];
   /** Accessible carousel label. Defaults to `"Customer testimonials"`. */
@@ -279,11 +285,13 @@ const TestimonialCarousel: Component<TestimonialCarouselProps> = (props) => {
  * StatsBar
  * -----------------------------------------------------------------------------------------------*/
 
+/** One value/label pair rendered by the StatsBar component. */
 export type StatsBarStat = {
   value: string;
   label: string;
 };
 
+/** Props for the StatsBar component. */
 type StatsBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   stats: StatsBarStat[];
 };

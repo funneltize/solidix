@@ -76,6 +76,7 @@ type DialogContextValue = {
 
 const [DialogProvider, useDialogContext] = createDialogContext<DialogContextValue>(DIALOG_NAME);
 
+/** Props for the root container managing the dialog open state. */
 type DialogProps = {
   children?: JSX.Element | undefined;
   open?: boolean | undefined;
@@ -151,6 +152,7 @@ const Dialog: Component<ScopedProps<DialogProps>> = (props) => {
 
 const TRIGGER_NAME = "DialogTrigger";
 
+/** Props for the button that opens the dialog when activated. */
 type DialogTriggerProps = PrimitivePropsWithRef<"button">;
 
 /** The button that opens the dialog when activated. */
@@ -186,6 +188,7 @@ const [PortalProvider, usePortalContext] = createDialogContext<PortalContextValu
   forceMount: undefined,
 });
 
+/** Props for the portal rendering the dialog outside the DOM hierarchy. */
 type DialogPortalProps = {
   children?: JSX.Element | undefined;
   /**
@@ -226,6 +229,7 @@ const DialogPortal: Component<ScopedProps<DialogPortalProps>> = (props) => {
 
 const OVERLAY_NAME = "DialogOverlay";
 
+/** Props for the dimmed layer displayed behind the dialog content. */
 type DialogOverlayProps = Omit<PrimitivePropsWithRef<"div">, "style"> & {
   style?: JSX.CSSProperties | undefined;
   /**
@@ -290,6 +294,7 @@ const DialogOverlayImpl: Component<ScopedProps<DialogOverlayImplProps>> = (props
 
 const CONTENT_NAME = "DialogContent";
 
+/** Props for the panel containing the dialog content. */
 type DialogContentProps = Omit<
   DialogContentTypeProps,
   "trapFocus" | "disableOutsidePointerEvents"
@@ -525,6 +530,7 @@ const DialogContentImpl: Component<ScopedProps<DialogContentImplProps>> = (props
  * DialogTitle
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the accessible heading of the dialog. */
 type DialogTitleProps = PrimitivePropsWithRef<"h2">;
 
 /** The accessible heading that labels the dialog. */
@@ -551,6 +557,7 @@ const DialogTitle: Component<ScopedProps<DialogTitleProps>> = (props) => {
  * DialogDescription
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the accessible description of the dialog. */
 type DialogDescriptionProps = PrimitivePropsWithRef<"p">;
 
 /** The accessible text that describes the dialog content. */
@@ -594,6 +601,7 @@ const DialogDescription: Component<ScopedProps<DialogDescriptionProps>> = (props
 
 const CLOSE_NAME = "DialogClose";
 
+/** Props for the button closing the dialog. */
 type DialogCloseProps = PrimitivePropsWithRef<"button">;
 
 /** The button that closes the dialog when activated. */
@@ -613,7 +621,10 @@ const DialogClose: Component<ScopedProps<DialogCloseProps>> = (props) => {
   );
 };
 
-/** @deprecated Noop component to avoid breaking changes. */
+/** Noop stand-in kept to avoid breaking changes.
+ *
+ * @deprecated
+ */
 const WarningProvider: Component<{
   children?: JSX.Element | undefined;
   contentName: string;

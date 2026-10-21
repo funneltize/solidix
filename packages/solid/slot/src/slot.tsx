@@ -6,6 +6,7 @@ import { afterConnected, composeRefs, type Ref } from "@solidix/compose-refs";
  * Slot
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the slot, merged onto its child element. */
 type SlotProps<Elem extends Element = HTMLElement, Props = JSX.HTMLAttributes<Elem>> = Props & {
   children?: JSX.Element | undefined;
   ref?: Ref<Elem> | undefined;

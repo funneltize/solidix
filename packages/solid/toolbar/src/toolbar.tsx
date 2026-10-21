@@ -44,6 +44,7 @@ type ToolbarContextValue = {
 const [ToolbarProvider, useToolbarContext] =
   createToolbarContext<ToolbarContextValue>(TOOLBAR_NAME);
 
+/** Props for the root Toolbar element. */
 type ToolbarProps = Omit<PrimitivePropsWithRef<"div">, "dir"> & {
   orientation?: "horizontal" | "vertical" | undefined;
   loop?: boolean | undefined;
@@ -84,6 +85,7 @@ const Toolbar: Component<ScopedProps<ToolbarProps>> = (props) => {
 
 const SEPARATOR_NAME = "ToolbarSeparator";
 
+/** Props for the ToolbarSeparator divider element. */
 type ToolbarSeparatorProps = SeparatorProps;
 
 /** Divider between toolbar controls, oriented across the toolbar direction. */
@@ -103,6 +105,7 @@ const ToolbarSeparator: Component<ScopedProps<ToolbarSeparatorProps>> = (props) 
  * ToolbarButton
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for a ToolbarButton control. */
 type ToolbarButtonProps = PrimitivePropsWithRef<"button">;
 
 /** Button that participates in the toolbar roving focus group. */
@@ -120,6 +123,7 @@ const ToolbarButton: Component<ScopedProps<ToolbarButtonProps>> = (props) => {
  * ToolbarLink
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for a ToolbarLink control. */
 type ToolbarLinkProps = PrimitivePropsWithRef<"a">;
 
 /** Link that participates in the toolbar roving focus group. */
@@ -158,7 +162,9 @@ const ToolbarLink: Component<ScopedProps<ToolbarLinkProps>> = (props) => {
 
 const TOGGLE_GROUP_NAME = "ToolbarToggleGroup";
 
+/** Props for a single-selection ToolbarToggleGroup. */
 type ToolbarToggleGroupSingleProps = ToggleGroupSingleProps;
+/** Props for a multiple-selection ToolbarToggleGroup. */
 type ToolbarToggleGroupMultipleProps = ToggleGroupMultipleProps;
 
 /** Toggle group bound to the toolbar orientation and direction. */
@@ -184,6 +190,7 @@ const ToolbarToggleGroup: Component<
  * ToolbarToggleItem
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for a ToolbarToggleItem toggle control. */
 type ToolbarToggleItemProps = ToggleGroupItemProps;
 
 /** Toggle item inside a toolbar toggle group. */

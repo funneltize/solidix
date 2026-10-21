@@ -33,6 +33,7 @@ type CollapsibleContextValue = {
 const [CollapsibleProvider, useCollapsibleContext] =
   createCollapsibleContext<CollapsibleContextValue>(COLLAPSIBLE_NAME);
 
+/** Props configuring the collapsible root open state. */
 type CollapsibleProps = PrimitivePropsWithRef<"div"> & {
   defaultOpen?: boolean | undefined;
   open?: boolean | undefined;
@@ -86,6 +87,7 @@ const Collapsible: Component<ScopedProps<CollapsibleProps>> = (props) => {
 
 const TRIGGER_NAME = "CollapsibleTrigger";
 
+/** Props for the button that toggles the collapsible. */
 type CollapsibleTriggerProps = PrimitivePropsWithRef<"button">;
 
 /** Button that toggles the collapsible open state. */
@@ -119,6 +121,7 @@ const CollapsibleTrigger: Component<ScopedProps<CollapsibleTriggerProps>> = (pro
 
 const CONTENT_NAME = "CollapsibleContent";
 
+/** Props for the collapsible content region. */
 type CollapsibleContentProps = Omit<CollapsibleContentImplProps, "present"> & {
   /**
    * Used to force mounting when more control is needed. Useful when

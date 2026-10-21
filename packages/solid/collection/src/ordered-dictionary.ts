@@ -2,6 +2,7 @@
 // calls `set` which needs to read the instanciation state, so it can't be a
 // private member.
 const __instanciated = new WeakMap<OrderedDict<any, any>, boolean>();
+/** Ordered dictionary backing the collection item registry. */
 export class OrderedDict<K, V> extends Map<K, V> {
   #keys: K[];
 
@@ -444,12 +445,17 @@ export class OrderedDict<K, V> extends Map<K, V> {
   }
 }
 
+/** Infers the key type from an OrderedDict instance type. */
 export type KeyOf<D extends OrderedDict<any, any>> =
   D extends OrderedDict<infer K, any> ? K : never;
+/** Infers the value type from an OrderedDict instance type. */
 export type ValueOf<D extends OrderedDict<any, any>> =
   D extends OrderedDict<any, infer V> ? V : never;
+/** Key-value tuple entry type of an OrderedDict instance type. */
 export type EntryOf<D extends OrderedDict<any, any>> = [KeyOf<D>, ValueOf<D>];
+/** Extracts the key from an OrderedDict entry tuple. */
 export type KeyFrom<E extends EntryOf<any>> = E[0];
+/** Extracts the value from an OrderedDict entry tuple. */
 export type ValueFrom<E extends EntryOf<any>> = E[1];
 
 function at<T>(array: ArrayLike<T>, index: number): T | undefined {
@@ -472,6 +478,7 @@ function toSafeInteger(number: number) {
   return number !== number || number === 0 ? 0 : Math.trunc(number);
 }
 
+/** OrderedDict with mutating methods omitted for read-only consumers. */
 export type ReadOnlyOrderedDict<K, V> = Omit<
   OrderedDict<K, V>,
   "set" | "insert" | "setBefore" | "setAfter" | "clear" | "delete" | "deleteAt" | "sort"

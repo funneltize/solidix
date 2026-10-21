@@ -20,6 +20,7 @@ import { useControllableState } from "@solidix/use-controllable-state";
 import { useIsHydrated } from "@solidix/use-is-hydrated";
 import { useLayoutEffect } from "@solidix/use-layout-effect";
 
+/** Character-set constants for one-time password input validation. */
 const InputValidationType = {
   Alpha: "alpha",
   Numeric: "numeric",
@@ -37,6 +38,7 @@ const AutoComplete = {
   OneTimeCode: "one-time-code",
 } as const;
 
+/** Character set accepted by the one-time password inputs. */
 type InputValidationType = (typeof InputValidationType)[keyof typeof InputValidationType];
 type InputType = (typeof InputType)[keyof typeof InputType];
 type AutoComplete = (typeof AutoComplete)[keyof typeof AutoComplete];
@@ -212,6 +214,7 @@ type OneTimePasswordFieldOwnProps = {
 
 type ScopedProps<P> = P & { __scopeOneTimePasswordField?: Scope | undefined };
 
+/** Props accepted by the one-time password field root. */
 type OneTimePasswordFieldProps = OneTimePasswordFieldOwnProps &
   Omit<PrimitivePropsWithRef<"div">, keyof OneTimePasswordFieldOwnProps>;
 
@@ -539,6 +542,7 @@ const OneTimePasswordField: Component<ScopedProps<OneTimePasswordFieldProps>> = 
  * OneTimePasswordFieldHiddenInput
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by the one-time password field hidden input. */
 type OneTimePasswordFieldHiddenInputProps = Omit<
   PrimitivePropsWithRef<"input">,
   | "value"
@@ -586,6 +590,7 @@ const OneTimePasswordFieldHiddenInput: Component<
  * OneTimePasswordFieldInput
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props accepted by a one-time password field input slot. */
 type OneTimePasswordFieldInputProps = Omit<
   PrimitivePropsWithRef<"input">,
   | "value"

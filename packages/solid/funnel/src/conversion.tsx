@@ -22,6 +22,7 @@ import { cx } from "./utils";
  * Hero
  * -----------------------------------------------------------------------------------------------*/
 
+/** Hero media image with layout reservation. */
 type HeroMedia = {
   src: string;
   alt: string;
@@ -29,11 +30,13 @@ type HeroMedia = {
   ratio?: number | undefined;
 };
 
+/** Hero call-to-action link. */
 type HeroCta = {
   label: string;
   href: string;
 };
 
+/** Props for the Hero component. */
 type HeroProps = Omit<PrimitivePropsWithRef<"div">, "children" | "title"> & {
   eyebrow?: string | undefined;
   title: string;
@@ -179,6 +182,7 @@ const Hero: Component<HeroProps> = (props) => {
  * OptInForm
  * -----------------------------------------------------------------------------------------------*/
 
+/** One input field rendered by the opt-in form. */
 type OptInField = {
   name: string;
   label: string;
@@ -188,6 +192,7 @@ type OptInField = {
   placeholder?: string | undefined;
 };
 
+/** Props for the OptInForm component. */
 type OptInFormProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   fields: OptInField[];
   submitLabel: string;
@@ -328,6 +333,7 @@ const OptInForm: Component<OptInFormProps> = (props) => {
  * Countdown
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the Countdown component. */
 type CountdownProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   /** Deadline as epoch milliseconds. */
   endsAt: number;
@@ -340,6 +346,7 @@ type CountdownProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   caption?: string | undefined;
 };
 
+/** Days/hours/minutes/seconds breakdown consumed by the countdown renderer. */
 type CountdownParts = { days: number; hours: number; minutes: number; seconds: number };
 
 function splitRemaining(ms: number): CountdownParts {
@@ -443,6 +450,7 @@ const Countdown: Component<CountdownProps> = (props) => {
  * StickyBar
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the StickyBar component. */
 type StickyBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   message: string;
   cta: HeroCta;
@@ -514,6 +522,7 @@ const StickyBar: Component<StickyBarProps> = (props) => {
  * ExitIntent
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the ExitIntent component. */
 type ExitIntentProps = {
   title: string;
   description?: string | undefined;
@@ -608,8 +617,10 @@ const ExitIntent: Component<ExitIntentProps> = (props) => {
  * Footer
  * -----------------------------------------------------------------------------------------------*/
 
+/** Footer link behavior bucket. */
 type FooterLinkKind = "funnel" | "legal" | "support";
 
+/** One link in a footer column. */
 type FooterLink = {
   label: string;
   href: string;
@@ -623,11 +634,13 @@ type FooterLink = {
   onClick?: ((event: MouseEvent) => void) | undefined;
 };
 
+/** One headed link column in the footer. */
 type FooterColumn = {
   heading: string;
   links: FooterLink[];
 };
 
+/** Business identity block rendered in the footer. */
 type FooterIdentity = {
   name: string;
   address?: string[] | undefined;
@@ -641,6 +654,7 @@ type FooterIdentity = {
 /** Built-in trust glyphs. Payment-brand marks stay consumer-provided. */
 type FooterBadgeIcon = "lock" | "shield" | "check" | "card";
 
+/** Trust badge label with optional icon. */
 type FooterBadge =
   | string
   | {
@@ -648,8 +662,10 @@ type FooterBadge =
       icon?: FooterBadgeIcon | JSX.Element | undefined;
     };
 
+/** Footer layout variant. */
 type FooterVariant = "utility" | "trust" | "sitemap";
 
+/** Props for the Footer component. */
 type FooterProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   /** Brand line. Optional when `identity` carries the name. */
   brand?: string | undefined;
@@ -979,6 +995,7 @@ const Footer: Component<FooterProps> = (props) => {
  * VideoFrame
  * -----------------------------------------------------------------------------------------------*/
 
+/** Props for the VideoFrame component. */
 type VideoFrameProps = FunnelElementProps<"figure", HTMLElement> & {
   thumbnail: { src: string; alt: string };
   /** Width/height ratio reserving layout space. Defaults to `16 / 9`. */

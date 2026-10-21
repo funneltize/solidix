@@ -2,6 +2,7 @@ import { children, createEffect, createSignal, untrack, type Component } from "s
 import type { JSX } from "@solidjs/web";
 import { useStateMachine } from "./use-state-machine";
 
+/** Props accepted by the presence wrapper. */
 interface PresenceProps {
   children: JSX.Element | ((props: { present: () => boolean }) => JSX.Element);
   present: boolean | (() => boolean);

@@ -3,6 +3,7 @@ import type { JSX } from "@solidjs/web";
 import { createSlot } from "@solidix/slot";
 import { Root as VisuallyHidden } from "@solidix/visually-hidden";
 
+/** Props accepted by the accessible-icon wrapper. */
 interface AccessibleIconProps {
   children?: JSX.Element | undefined;
   /**

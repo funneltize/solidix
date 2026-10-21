@@ -25,6 +25,7 @@ export function useFunnelEditable(): boolean {
   return useContext(FunnelContext)?.editable ?? false;
 }
 
+/** Props for the Root component. */
 type RootProps = PrimitivePropsWithRef<"div"> & {
   /**
    * Theme scope. `dark` sets `data-funnel-theme="dark"` (see `tokens.css`);
