@@ -1,6 +1,6 @@
 {
   "name": "solidix",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Umbrella package re-exporting all Solidix primitives (port of radix-ui).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

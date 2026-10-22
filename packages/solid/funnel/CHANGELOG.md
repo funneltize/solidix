@@ -1,5 +1,11 @@
 # @solidix/funnel
 
+## 0.3.2
+
+### Patch Changes
+
+- 646f0bd: Benefits `variant="cards"` bento grid auto-adjusts below the three-column threshold: a trailing lone card spans the full row instead of leaving a half-width orphan (3 items render 2 plus full-width on narrow viewports).
+
 ## 0.3.1
 
 ### Patch Changes
