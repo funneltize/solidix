@@ -663,6 +663,16 @@
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }
 
+/* Bento orphan rule: below the three-column threshold a trailing lone card
+   spans the row, so 3 items render 2 plus full-width instead of 2 plus a
+   half-width orphan. Harmless in one column, where every card already spans.
+   Threshold: 3 x 15rem tracks + 2 x 1rem gaps + 2 x 2rem max pads = 816px. */
+@media (max-width: 815px) {
+  .fx-benefits[data-variant="cards"] .fx-benefits-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
 .fx-benefits[data-variant="cards"] .fx-benefits-item {
   background: var(--solidix-funnel-paper);
   border: 1px solid var(--solidix-funnel-line);

@@ -18,6 +18,10 @@ function blocksCss(): string {
   return readFileSync(workspaceFile("packages", "solid", "funnel", "src", "blocks.css"), "utf8");
 }
 
+function tokensCss(): string {
+  return readFileSync(workspaceFile("packages", "solid", "funnel", "src", "tokens.css"), "utf8");
+}
+
 function ruleBody(css: string, selector: string): string {
   const start = css.indexOf(selector);
   if (start === -1) throw new Error(`selector not found: ${selector}`);
@@ -85,6 +89,29 @@ describe("responsive chrome", () => {
     // Mobile hero shows the single primary action below sm.
     expect(css).toContain("@media (max-width: 639px)");
     expect(ruleBody(css, ".fx-hero-secondary")).toContain("display: none;");
+  });
+});
+
+describe("benefits bento grid", () => {
+  test("a trailing lone card spans the row below the three-column threshold", () => {
+    const css = blocksCss();
+    // Grid inputs the 815px threshold is derived from: 15rem tracks, 1rem
+    // gaps, pads capped at 2rem. Drift in any of them re-opens the orphan.
+    const list = ruleBody(css, '.fx-benefits[data-variant="cards"] .fx-benefits-list');
+    expect(list).toContain("grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));");
+    expect(list).toContain("gap: var(--solidix-funnel-space-4);");
+    const tokens = tokensCss();
+    expect(tokens).toContain("--solidix-funnel-space-4: 1rem;");
+    expect(tokens).toContain("--solidix-funnel-container-pad: clamp(1rem, 4vw, 2rem);");
+    // 3 x 15rem tracks + 2 x 1rem gaps + 2 x 2rem max pads = 816px, so at
+    // most two columns fit at 815px and below; the span is a no-op in one.
+    expect(css).toContain("@media (max-width: 815px)");
+    expect(
+      ruleBody(
+        css,
+        '.fx-benefits[data-variant="cards"] .fx-benefits-item:last-child:nth-child(odd)',
+      ),
+    ).toContain("grid-column: 1 / -1;");
   });
 });
 
