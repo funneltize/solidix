@@ -81,11 +81,11 @@ import { Presence } from "@solidix/solidix/presence";
 </Presence>;
 ```
 
-Render-prop children stay mounted once opened and decide themselves what
+Render-prop children stay mounted once detected and decide themselves what
 closed looks like (the `forceMount` equivalent), so they suit custom
-transitions. An initially-closed render prop mounts on first open rather than
-immediately; closed content renders nothing anyway, so the difference is
-invisible.
+transitions. Detection is eager from the children descriptor without
+instantiating the subtree, so initially-closed render props mount
+immediately.
 
 ## The motion package
 

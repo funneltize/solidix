@@ -9,7 +9,7 @@ own it). The prop names tell you which mode you are in.
 | Uncontrolled | `defaultValue`               | `<Select.Root defaultValue="apple">`             |
 | Controlled   | `value` plus `onValueChange` | `<Select.Root value={v()} onValueChange={setV}>` |
 
-The state key varies (`open`, `value`, `checked`, `pressed`, `active`), but
+The state key varies (`open`, `value`, `checked`, `pressed`), but
 the shape is always the same: `defaultX` seeds internal state, while `x` plus
 `onXChange` hands ownership to you. Never mix `defaultX` and `x` on one
 component.

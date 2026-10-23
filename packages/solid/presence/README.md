@@ -21,8 +21,7 @@ Stays mounted through exit animations; see the [Animation guide](../../../docs/a
   would remount it. Only functions with declared parameters count as render
   props (component children arrive as zero-arg thunks).
 - Render-prop children stay mounted while closed once detected (Radix
-  `forceMount` parity), but detection happens on first resolution: an
-  initially-closed render prop mounts on first open rather than immediately.
-  Closed content renders nothing anyway, so the difference is invisible -
-  and resolving any earlier would instantiate orphan subtrees whose ref
-  callbacks fire on detached elements.
+  `forceMount` parity). Detection is eager from the children descriptor
+  without instantiating the subtree, so initially-closed render props
+  mount immediately; closed content renders nothing anyway, so the
+  difference is invisible.
