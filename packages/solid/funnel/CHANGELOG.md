@@ -1,5 +1,23 @@
 # @solidix/funnel
 
+## 0.4.0
+
+### Minor Changes
+
+- 013b5f0: Add an optional `glow` prop to `CTAButton` and `CtaCluster`: a rotating conic halo behind the primary action, timed by the new `duration-glow` motion token. The halo derives from the CTA tokens, so `data-cta` hue switches and dark theme apply automatically.
+
+### Patch Changes
+
+- 013b5f0: Balance short wrapped rows (`flex-wrap: balance` on the logo bar, footer links, trust badges, and legal nav) so items split evenly instead of orphaning; progressive enhancement over `wrap`.
+- 7a6c3d5: Raise the Solid 2 peer floor to rc.18, matching the pinned toolchain (rc.18 / vite-plugin next.51 / testing-library rc.2). No API or behavior change.
+- Updated dependencies [7a6c3d5]
+  - @solidix/accordion@0.1.5
+  - @solidix/aspect-ratio@0.1.5
+  - @solidix/dialog@0.1.5
+  - @solidix/form@0.1.5
+  - @solidix/primitive@0.2.1
+  - @solidix/radio-group@0.1.5
+
 ## 0.3.2
 
 ### Patch Changes

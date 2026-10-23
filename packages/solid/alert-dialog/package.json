@@ -1,6 +1,6 @@
 {
   "name": "@solidix/alert-dialog",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Alert Dialog primitive (port of @radix-ui/react-alert-dialog).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

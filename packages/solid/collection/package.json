@@ -1,6 +1,6 @@
 {
   "name": "@solidix/collection",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Ordered item collections (port of @radix-ui/react-collection).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

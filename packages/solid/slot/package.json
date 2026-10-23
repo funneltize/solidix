@@ -1,6 +1,6 @@
 {
   "name": "@solidix/slot",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Props-slotting components (port of @radix-ui/react-slot).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

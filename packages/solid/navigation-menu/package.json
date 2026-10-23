@@ -1,6 +1,6 @@
 {
   "name": "@solidix/navigation-menu",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Navigation Menu primitive (port of @radix-ui/react-navigation-menu).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

@@ -1,6 +1,6 @@
 {
   "name": "@solidix/use-previous",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Previous-value accessor (port of @radix-ui/react-use-previous).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

@@ -1,5 +1,19 @@
 # @solidix/slider
 
+## 0.1.5
+
+### Patch Changes
+
+- 7a6c3d5: Raise the Solid 2 peer floor to rc.18, matching the pinned toolchain (rc.18 / vite-plugin next.51 / testing-library rc.2). No API or behavior change.
+- Updated dependencies [7a6c3d5]
+  - @solidix/collection@0.1.5
+  - @solidix/compose-refs@0.1.4
+  - @solidix/context@0.1.5
+  - @solidix/direction@0.1.5
+  - @solidix/primitive@0.2.1
+  - @solidix/use-controllable-state@0.1.5
+  - @solidix/use-size@0.1.5
+
 ## 0.1.4
 
 ### Patch Changes

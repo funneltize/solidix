@@ -1,6 +1,6 @@
 {
   "name": "@solidix/popper",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Positioning primitives (port of @radix-ui/react-popper).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

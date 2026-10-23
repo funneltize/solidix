@@ -1,6 +1,6 @@
 {
   "name": "@solidix/use-layout-effect",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Client-only settled effect (port of @radix-ui/react-use-layout-effect).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

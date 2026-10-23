@@ -1,5 +1,45 @@
 # solidix
 
+## 0.1.7
+
+### Patch Changes
+
+- 7a6c3d5: Raise the Solid 2 peer floor to rc.18, matching the pinned toolchain (rc.18 / vite-plugin next.51 / testing-library rc.2). No API or behavior change.
+- Updated dependencies [013b5f0]
+- Updated dependencies [013b5f0]
+- Updated dependencies [7a6c3d5]
+  - @solidix/funnel@0.4.0
+  - @solidix/accordion@0.1.5
+  - @solidix/alert-dialog@0.1.5
+  - @solidix/aspect-ratio@0.1.5
+  - @solidix/avatar@0.1.5
+  - @solidix/checkbox@0.1.5
+  - @solidix/collapsible@0.1.5
+  - @solidix/context-menu@0.1.5
+  - @solidix/dialog@0.1.5
+  - @solidix/dropdown-menu@0.1.5
+  - @solidix/form@0.1.5
+  - @solidix/hover-card@0.1.5
+  - @solidix/label@0.1.5
+  - @solidix/menubar@0.1.5
+  - @solidix/navigation-menu@0.1.5
+  - @solidix/one-time-password-field@0.1.5
+  - @solidix/password-toggle-field@0.1.5
+  - @solidix/popover@0.1.5
+  - @solidix/progress@0.1.5
+  - @solidix/radio-group@0.1.5
+  - @solidix/scroll-area@0.1.5
+  - @solidix/select@0.1.5
+  - @solidix/separator@0.1.5
+  - @solidix/slider@0.1.5
+  - @solidix/switch@0.1.5
+  - @solidix/tabs@0.1.5
+  - @solidix/toast@0.1.5
+  - @solidix/toggle@0.1.5
+  - @solidix/toggle-group@0.1.5
+  - @solidix/toolbar@0.1.5
+  - @solidix/tooltip@0.1.5
+
 ## 0.1.6
 
 ### Patch Changes

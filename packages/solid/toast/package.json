@@ -1,6 +1,6 @@
 {
   "name": "@solidix/toast",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Toast primitive (port of @radix-ui/react-toast).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
