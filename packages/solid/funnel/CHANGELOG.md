@@ -1,5 +1,15 @@
 # @solidix/funnel
 
+## 0.5.0
+
+### Minor Changes
+
+- Responsive images and cheaper below-fold blocks: media shapes (hero, video thumbnail, benefits, logos) accept `srcSet`/`sizes`, with `width`/`height` on benefits and logos; benefits media renders in an AspectRatio frame with an overridable `ratio`; lazy images decode async and the header logo loads eager. `VideoFrame` defaults to lazy with low priority and upgrades just before entering the viewport (`eager` opts back in). `Countdown` ticks adaptively (minute granularity beyond a day out), pauses offscreen, and stops after expiry, with `interval` as the manual override. `StickyBar` and `Header` accept a controlled `visible` signal for shared reveals, and the sticky fallback scroll listener is rAF-throttled.
+
+### Patch Changes
+
+- Strengthen the optional primary CTA glow: wider halo spread, richer base ring, and an opaque comet peak so the halo and its rotation read at a glance.
+
 ## 0.4.1
 
 ### Patch Changes
