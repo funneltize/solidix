@@ -33,9 +33,9 @@
   "devDependencies": {
     "@repo/builder": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "solid-js": "2.0.0-rc.16"
+    "solid-js": "2.0.0-rc.18"
   },
   "peerDependencies": {
-    "solid-js": ">=2.0.0-rc.16 <2.1.0"
+    "solid-js": ">=2.0.0-rc.18 <2.1.0"
   }
 }

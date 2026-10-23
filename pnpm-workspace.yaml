@@ -3,6 +3,7 @@ packages:
   - "packages/*"
   - "packages/*/*"
 minimumReleaseAgeExclude:
-  - "@solidjs/signals@2.0.0-rc.16"
-  - "@solidjs/web@2.0.0-rc.16"
-  - solid-js@2.0.0-rc.16
+  - "@solidjs/signals@2.0.0-rc.18"
+  - "@solidjs/web@2.0.0-rc.18"
+  - solid-js@2.0.0-rc.18
+  - seroval-plugins@1.7.0
