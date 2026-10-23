@@ -96,6 +96,7 @@
   --solidix-funnel-duration-fast: 160ms;
   --solidix-funnel-duration-base: 240ms;
   --solidix-funnel-duration-slow: 420ms;
+  --solidix-funnel-duration-glow: 3000ms;
   --solidix-funnel-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 [data-funnel-theme="dark"] {

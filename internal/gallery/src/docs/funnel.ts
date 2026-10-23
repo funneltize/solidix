@@ -124,6 +124,11 @@ export const doc: PrimitiveDoc = {
         { name: "fullWidth", type: "boolean", description: "Stretches to full width." },
         { name: "pill", type: "boolean", description: "Pill shape for consumer/DTC offers." },
         {
+          name: "glow",
+          type: "boolean",
+          description: "Rotating halo behind the primary action.",
+        },
+        {
           name: "part",
           type: "string",
           description:
@@ -140,6 +145,7 @@ export const doc: PrimitiveDoc = {
         { attribute: "data-variant", values: ["primary", "secondary", "ghost"] },
         { attribute: "data-size", values: ["md", "lg"] },
         { attribute: "data-pill", values: [""] },
+        { attribute: "data-glow", values: [""] },
       ],
       cssVariables: [],
     },
@@ -451,5 +457,5 @@ export const doc: PrimitiveDoc = {
     { keys: ["Escape"], description: "Close the exit-intent popup." },
   ],
   notes:
-    "Funnel blocks are opinionated by design and do not offer asChild; restyle through tokens and the documented .fx-* classes. Reference budgets: tokens.css under 12 kB, blocks.css under 40 kB. Countdown and urgency patterns ship honest defaults; fake scarcity is out of scope.",
+    "Funnel blocks are opinionated by design and do not offer asChild; restyle through tokens and the documented .fx-* classes. Reference budgets: tokens.css under 12 kB, blocks.css under 43 kB. Countdown and urgency patterns ship honest defaults; fake scarcity is out of scope.",
 };

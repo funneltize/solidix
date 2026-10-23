@@ -41,23 +41,23 @@ per brand. `tokens.css` is generated from
 [`src/tokens.ts`](./src/tokens.ts) - edit that file and run `pnpm gen:tokens`;
 a test fails if the checked-in CSS drifts.
 
-| Family      | Tokens                                                                                                                                 |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Color       | `paper`, `ink`, `ink-body`, `muted`, `faint` (decorative-only), `line`, `line-soft`, `subtle`, `inverse`, `elevated`                   |
-| Brand       | `brand`, `brand-strong`, `brand-tint`, `brand-line`                                                                                    |
-| CTA         | `cta`, `cta-strong`, `cta-ink` (kept distinct from brand; `data-cta="emerald"` / `"cobalt"` re-points the hue)                         |
-| Feedback    | `success`, `success-tint`, `warning-strong`, `warning-tint`, `danger`, `danger-tint`                                                   |
-| Ratings     | `star`, `star-empty`                                                                                                                   |
-| Highlight   | `highlight` (skimmer marker)                                                                                                           |
-| Fields      | `field-bg`, `field-ink`, `field-line`, `field-placeholder` (always light, never re-scoped by tones)                                    |
-| Type        | `sans`, `serif-accent`, `mono`, `text-display` through `text-caption` (fluid `clamp()` scale), leading, tracking, weights              |
-| Spacing     | `space-0` through `space-24` (4px base, plus `space-1-5` for the 6px label step)                                                       |
-| Layout      | `section-pad`, `container-wide`, `container-standard`, `container-reading`, `container-pad`                                            |
-| Radius      | `radius-sm`, `radius-md`, `radius-lg`, `radius-xl`, `radius-full`                                                                      |
-| Shadow      | `shadow-sm`, `shadow-md`, `shadow-lg` (neutral only)                                                                                   |
-| Breakpoints | `breakpoint-sm`, `breakpoint-md`, `breakpoint-lg`, `breakpoint-xl` (640/768/1024/1280px reference values; media queries take literals) |
-| Layering    | `z-sticky`, `z-overlay`, `z-toast`                                                                                                     |
-| Motion      | `duration-instant`, `duration-fast`, `duration-base`, `duration-slow`, `ease-out` (all block motion runs through these)                |
+| Family      | Tokens                                                                                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Color       | `paper`, `ink`, `ink-body`, `muted`, `faint` (decorative-only), `line`, `line-soft`, `subtle`, `inverse`, `elevated`                                         |
+| Brand       | `brand`, `brand-strong`, `brand-tint`, `brand-line`                                                                                                          |
+| CTA         | `cta`, `cta-strong`, `cta-ink` (kept distinct from brand; `data-cta="emerald"` / `"cobalt"` re-points the hue)                                               |
+| Feedback    | `success`, `success-tint`, `warning-strong`, `warning-tint`, `danger`, `danger-tint`                                                                         |
+| Ratings     | `star`, `star-empty`                                                                                                                                         |
+| Highlight   | `highlight` (skimmer marker)                                                                                                                                 |
+| Fields      | `field-bg`, `field-ink`, `field-line`, `field-placeholder` (always light, never re-scoped by tones)                                                          |
+| Type        | `sans`, `serif-accent`, `mono`, `text-display` through `text-caption` (fluid `clamp()` scale), leading, tracking, weights                                    |
+| Spacing     | `space-0` through `space-24` (4px base, plus `space-1-5` for the 6px label step)                                                                             |
+| Layout      | `section-pad`, `container-wide`, `container-standard`, `container-reading`, `container-pad`                                                                  |
+| Radius      | `radius-sm`, `radius-md`, `radius-lg`, `radius-xl`, `radius-full`                                                                                            |
+| Shadow      | `shadow-sm`, `shadow-md`, `shadow-lg` (neutral only)                                                                                                         |
+| Breakpoints | `breakpoint-sm`, `breakpoint-md`, `breakpoint-lg`, `breakpoint-xl` (640/768/1024/1280px reference values; media queries take literals)                       |
+| Layering    | `z-sticky`, `z-overlay`, `z-toast`                                                                                                                           |
+| Motion      | `duration-instant`, `duration-fast`, `duration-base`, `duration-slow`, `duration-glow` (CTA halo rotation), `ease-out` (all block motion runs through these) |
 
 Dark variant: set `data-funnel-theme="dark"` on a wrapping element. The base
 also ships `:focus-visible` rings, `::selection` styling, and a
@@ -104,7 +104,7 @@ Layout: `Root` (theme, CTA hue, A/B variant), `Section` (`primary` / `subtle`
 / `inverse` chapter tones, `compact` strips), `Container` (`wide` / `standard` / `reading`
 tiers), `Header` (zero-escape bar), `SectionHeading`, `Eyebrow`, `Prose`
 (skimmer bolds plus `mark` highlighter). Conversion: `Hero`, `CtaCluster`
-(button plus friction-killer microcopy), `CTAButton` (tactile primary),
+(button plus friction-killer microcopy), `CTAButton` (tactile primary, optional rotating `glow`),
 `OptInForm`, `VideoFrame` (VSL thumbnail), `Countdown`, `StickyBar`
 (mobile-only, reveals past the hero CTA), `ExitIntent`, `Footer` (zero-leak:
 `utility` / `trust` / `sitemap` archetypes, containment-typed links, trust
@@ -140,6 +140,8 @@ attributes - no JavaScript animation runtime, no scroll listeners:
 - Exit-intent overlay fades in while the dialog rises slightly.
 - Testimonial carousel slides remount per index so the entry fade replays;
   CTA buttons, the sticky bar, and the FAQ plus icon transition.
+- Primary CTAs take an optional `glow`: a rotating conic halo behind the
+  button on `data-glow`, timed by the `duration-glow` token.
 - Exit animations are entry-only for the dialog (it unmounts on close, same
   as Radix without `Presence`).
 

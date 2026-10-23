@@ -30,6 +30,12 @@ type CTAButtonCommon = {
   /** Pill shape for consumer/DTC offers. Defaults to `false`. */
   pill?: boolean | undefined;
   /**
+   * Rotating conic halo behind the action, timed by `duration-glow`.
+   * Scoped to `primary` in CSS; other variants ignore it. Defaults to
+   * `false`.
+   */
+  glow?: boolean | undefined;
+  /**
    * Editing contract: overrides the `data-funnel-part` value rendered for
    * the label when the Root is `editable` (defaults to `"label"`).
    * Composing blocks pass their prop name (e.g. `"primary-cta"`) so
@@ -68,6 +74,7 @@ function ctaAttrs(
     loading?: boolean | undefined;
     fullWidth?: boolean | undefined;
     pill?: boolean | undefined;
+    glow?: boolean | undefined;
     part?: string | undefined;
     partIndex?: number | string | undefined;
     class?: unknown | undefined;
@@ -81,6 +88,7 @@ function ctaAttrs(
     "data-loading": props.loading ? "" : undefined,
     "data-full-width": props.fullWidth ? "" : undefined,
     "data-pill": props.pill ? "" : undefined,
+    "data-glow": props.glow ? "" : undefined,
     "data-funnel-part": editable ? (props.part ?? "label") : undefined,
     "data-funnel-part-index":
       editable && props.partIndex !== undefined ? String(props.partIndex) : undefined,
@@ -127,6 +135,7 @@ const ButtonCTAButton: Component<CTAButtonButtonProps> = (props) => {
     "disabled",
     "fullWidth",
     "pill",
+    "glow",
     "part",
     "partIndex",
     "class",
@@ -169,6 +178,7 @@ const AnchorCTAButton: Component<CTAButtonAnchorProps> = (props) => {
     "disabled",
     "fullWidth",
     "pill",
+    "glow",
     "part",
     "partIndex",
     "class",
@@ -221,6 +231,8 @@ type CtaClusterProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   size?: CTAButtonSize | undefined;
   pill?: boolean | undefined;
   fullWidth?: boolean | undefined;
+  /** Rotating halo on the action button. Defaults to `false`. */
+  glow?: boolean | undefined;
   onClick?: CTAButtonAnchorProps["onClick"] | undefined;
 };
 
@@ -236,6 +248,7 @@ const CtaCluster: Component<CtaClusterProps> = (props) => {
     "size",
     "pill",
     "fullWidth",
+    "glow",
     "onClick",
     "class",
     "ref",
@@ -253,6 +266,7 @@ const CtaCluster: Component<CtaClusterProps> = (props) => {
         size={props.size}
         pill={props.pill}
         fullWidth={props.fullWidth}
+        glow={props.glow}
         onClick={props.onClick}
       >
         {props.children}

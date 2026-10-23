@@ -192,6 +192,10 @@ Component rules (`CTAButton`, `CtaCluster`):
   Disabled/loading anchors get `aria-disabled` and ignore activation;
   loading buttons show a spinner and block clicks.
 - `fullWidth` stretches (always full width on small screens via CSS).
+- `glow` adds an opt-in rotating conic halo behind `primary` only (other
+  variants ignore it). The halo derives from the CTA tokens, so hue
+  switches and dark theme just work; the reduced-motion guard collapses
+  it with all other motion.
 - Every CTA click dispatches `funnel:cta` with block, variant, label, href
   before invoking consumer `onClick`.
 
@@ -321,6 +325,8 @@ What animates:
 - Exit-intent overlay fades while content rises (entry only).
 - Testimonial carousel slides remount per index so the entry fade replays.
 - CTA buttons, the sticky bar, and the FAQ plus icon run small transitions.
+- Primary CTAs with `glow` rotate a conic halo behind the button (one
+  `@property`-registered angle, `duration-glow` timing).
 
 Hard rules (enforced by `motion.test.ts`):
 
@@ -328,6 +334,10 @@ Hard rules (enforced by `motion.test.ts`):
   `cubic-bezier(` inside any `animation`/`transition` declaration fails.
 - Every animation name is an `fx-`-prefixed keyframe defined in
   `blocks.css`.
+- Animate `transform` and `opacity` only (the glow's registered angle is
+  paint-only). The FAQ accordion height animation is the documented
+  exception (Radix measured-height parity); `scaleY` would distort text
+  and the grid-rows trick triggers layout anyway.
 - The `prefers-reduced-motion` guard in `tokens.css` collapses all
   durations. Blocks must stay fully readable with motion disabled.
 - No scroll-triggered reveals: they cost an observer plus a11y risk for
@@ -353,10 +363,10 @@ Hard rules (enforced by `motion.test.ts`):
 
 Budgets are decisions, enforced by `css-budget.test.ts`:
 
-- `tokens.css` under 12 kB, `blocks.css` under 42 kB (raised from 40 kB
-  for the Benefits bento-cards variant). Growth past budget requires a
-  conscious budget change, not silent creep. (blocks.css sits near its
-  ceiling: check bytes before adding block styles.)
+- `tokens.css` under 12 kB, `blocks.css` under 43 kB (raised from 42 kB
+  for balanced flex wrapping on the short item rows). Growth past budget
+  requires a conscious budget change, not silent creep. (blocks.css sits
+  near its ceiling: check bytes before adding block styles.)
 - Hero media is eager with reserved AspectRatio space (no CLS). Below-fold
   images lazy-load.
 - No analytics SDK is bundled. Blocks dispatch `funnel:cta`,

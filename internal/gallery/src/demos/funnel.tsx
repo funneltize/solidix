@@ -361,6 +361,7 @@ const FunnelDemo = () => {
             <Funnel.CtaCluster
               href="#join"
               microcopy="Free worksheet on signup. No credit card required."
+              glow
             >
               Claim your seat
             </Funnel.CtaCluster>

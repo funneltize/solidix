@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { describe, expect, test, vi } from "vitest";
 import { fireEvent, render, screen } from "@solidjs/testing-library";
-import { CTAButton, CtaCluster, Root } from "../src/index";
+import { CTAButton, CtaCluster, lightTokens, Root } from "../src/index";
 
 // Anchor on the workspace root so this works no matter which directory
 // vitest is invoked from.
@@ -137,6 +137,15 @@ describe("CTAButton", () => {
     ));
     expect(screen.getByRole("link", { name: "Buy now" }).hasAttribute("data-pill")).toBe(true);
   });
+
+  test("glow is opt-in via the glow attribute", () => {
+    const { unmount } = render(() => <CTAButton glow>Buy now</CTAButton>);
+    expect(screen.getByRole("button", { name: "Buy now" }).getAttribute("data-glow")).toBe("");
+    unmount();
+
+    render(() => <CTAButton>Buy now</CTAButton>);
+    expect(screen.getByRole("button", { name: "Buy now" }).hasAttribute("data-glow")).toBe(false);
+  });
 });
 
 describe("CtaCluster", () => {
@@ -157,6 +166,15 @@ describe("CtaCluster", () => {
     render(() => <CtaCluster href="#join">Get my plan</CtaCluster>);
     expect(screen.getByRole("link", { name: "Get my plan" })).toBeTruthy();
     expect(document.querySelector(".fx-cta-cluster-microcopy")).toBe(null);
+  });
+
+  test("forwards glow to the action button", () => {
+    render(() => (
+      <CtaCluster href="#join" glow>
+        Get my plan
+      </CtaCluster>
+    ));
+    expect(screen.getByRole("link", { name: "Get my plan" }).getAttribute("data-glow")).toBe("");
   });
 });
 
@@ -184,5 +202,32 @@ describe("primary tactile treatment", () => {
     expect(active).toContain("inset 0 2px 4px");
     expect(active).toContain("transform: translateY(1px);");
     expect(text).toContain('[data-funnel-theme="dark"] .fx-cta-button[data-variant="primary"]');
+  });
+});
+
+describe("primary glow treatment", () => {
+  const css = () =>
+    readFileSync(workspaceFile("packages", "solid", "funnel", "src", "blocks.css"), "utf8");
+
+  test("glow is a rotating conic halo scoped to the primary variant", () => {
+    const text = css();
+    // The conic angle is a registered custom property, or it cannot animate.
+    expect(text).toContain("@property --fx-cta-glow-angle");
+    const host = text.match(
+      /\.fx-cta-button\[data-variant="primary"\]\[data-glow\] \{[^}]*\}/s,
+    )![0];
+    expect(host).toContain("isolation: isolate;");
+    const glow = text.match(
+      /\.fx-cta-button\[data-variant="primary"\]\[data-glow\]::before \{[^}]*\}/s,
+    )![0];
+    expect(glow).toContain("animation: fx-cta-glow var(--solidix-funnel-duration-glow)");
+    // Uneven ring: a uniform halo would make the rotation invisible.
+    expect(glow).toContain("conic-gradient");
+    expect(glow).toContain("color-mix(in srgb, var(--solidix-funnel-cta)");
+    expect(text).toContain("@keyframes fx-cta-glow");
+  });
+
+  test("glow timing comes from a motion token", () => {
+    expect(lightTokens["--solidix-funnel-duration-glow"]).toMatch(/^\d+ms$/);
   });
 });

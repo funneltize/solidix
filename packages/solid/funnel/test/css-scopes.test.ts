@@ -115,6 +115,24 @@ describe("benefits bento grid", () => {
   });
 });
 
+describe("wrap balance", () => {
+  test("short item rows balance instead of orphaning the last item", () => {
+    const css = blocksCss();
+    // `balance` is progressive enhancement: browsers that do not know the
+    // value drop the declaration and keep `wrap`.
+    for (const selector of [
+      ".fx-logo-bar-row",
+      ".fx-footer-links-row",
+      ".fx-footer-badges",
+      ".fx-footer-legal-nav",
+    ]) {
+      const body = ruleBody(css, selector);
+      expect(body).toContain("flex-wrap: wrap;");
+      expect(body).toContain("flex-wrap: balance;");
+    }
+  });
+});
+
 describe("form fields", () => {
   test("inputs use dedicated field tokens that tones never re-scope", () => {
     const css = blocksCss();
