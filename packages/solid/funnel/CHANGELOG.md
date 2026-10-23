@@ -1,5 +1,11 @@
 # @solidix/funnel
 
+## 0.4.1
+
+### Patch Changes
+
+- b7f9ac5: Scope the `:focus-visible` ring to funnel markup (`[data-funnel-root]` descendants and `[data-funnel-block]` roots). The bare global rule restyled the consumer's own page, painting brand outlines on their inputs.
+
 ## 0.4.0
 
 ### Minor Changes
