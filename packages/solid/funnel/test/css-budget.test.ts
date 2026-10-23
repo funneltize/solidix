@@ -19,7 +19,8 @@ function byteSize(path: string): number {
 }
 
 // Landing pages live and die on weight: pin the theme layer well under the
-// documented budgets (tokens 12 kB, blocks 42 kB) so growth is a decision.
+// documented budgets (tokens 12 kB, blocks 43 kB, raised from 42 kB for
+// balanced flex wrapping on the short item rows) so growth is a decision.
 describe("css budgets", () => {
   test("tokens.css stays lean", () => {
     expect(
@@ -30,6 +31,6 @@ describe("css budgets", () => {
   test("blocks.css stays lean", () => {
     expect(
       byteSize(workspaceFile("packages", "solid", "funnel", "src", "blocks.css")),
-    ).toBeLessThan(42 * 1024);
+    ).toBeLessThan(43 * 1024);
   });
 });
