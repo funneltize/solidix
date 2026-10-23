@@ -158,7 +158,10 @@
   color: var(--solidix-funnel-ink);
 }
 
-:focus-visible {
+/* Scoped: a bare :focus-visible would restyle the consumer's own page. */
+[data-funnel-root] :focus-visible,
+[data-funnel-block]:focus-visible,
+[data-funnel-block] :focus-visible {
   outline: 2px solid var(--solidix-funnel-brand);
   outline-offset: 2px;
   border-radius: var(--solidix-funnel-radius-sm);

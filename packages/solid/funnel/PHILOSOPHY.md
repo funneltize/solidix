@@ -354,9 +354,11 @@ Hard rules (enforced by `motion.test.ts`):
 - Decorative SVGs are always `aria-hidden="true"` (bare `aria-hidden`
   renders as `""`, which is visible to AT: always write the explicit
   `"true"`).
-- Focus is always visible: global `:focus-visible` ring plus 3px field
-  rings. Carousel has no autoplay; all controls are Tab-reachable in
-  order.
+- Focus is always visible: a `:focus-visible` ring scoped to
+  `[data-funnel-root]` descendants and `[data-funnel-block]` roots (so
+  consumer pages outside funnel markup keep their own focus style), plus
+  3px field rings. Carousel has no autoplay; all controls are Tab-reachable
+  in order.
 - Errors and status are multi-cue (color plus text or icon).
 
 ## 12. Performance

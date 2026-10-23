@@ -60,7 +60,8 @@ a test fails if the checked-in CSS drifts.
 | Motion      | `duration-instant`, `duration-fast`, `duration-base`, `duration-slow`, `duration-glow` (CTA halo rotation), `ease-out` (all block motion runs through these) |
 
 Dark variant: set `data-funnel-theme="dark"` on a wrapping element. The base
-also ships `:focus-visible` rings, `::selection` styling, and a
+also ships `:focus-visible` rings scoped to funnel markup (never the
+consumer's own page), `::selection` styling, and a
 `prefers-reduced-motion` guard that collapses animation and transition
 durations.
 

@@ -41,6 +41,20 @@ describe("tokens.css", () => {
       expect(name in lightTokens).toBe(true);
     }
   });
+
+  test("focus ring is scoped to funnel markup, never a bare global", () => {
+    const css = readFileSync(
+      workspaceFile("packages", "solid", "funnel", "src", "tokens.css"),
+      "utf8",
+    );
+    // In-Root descendants, plus block roots for Root-less and portalled use.
+    expect(css).toContain("[data-funnel-root] :focus-visible");
+    expect(css).toContain("[data-funnel-block]:focus-visible");
+    expect(css).toContain("[data-funnel-block] :focus-visible");
+    // No rule may start with a bare pseudo-class: it would restyle the
+    // consumer's own page (e.g. red outlines on their inputs).
+    expect(css).not.toMatch(/^\s*:focus-visible\s*[{,]/m);
+  });
 });
 
 describe("contrast pairs", () => {

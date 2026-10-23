@@ -446,7 +446,7 @@ export const doc: PrimitiveDoc = {
     },
   ],
   accessibility:
-    "Blocks inherit primitive behavior: the FAQ accordion and pricing toggle keep full keyboard support, form fields use native validation with visible labels and multi-cue errors, the countdown uses a timer role, and carousels announce through a polite live region without autoplay. Token CSS ships focus-visible rings and collapses motion under prefers-reduced-motion.",
+    "Blocks inherit primitive behavior: the FAQ accordion and pricing toggle keep full keyboard support, form fields use native validation with visible labels and multi-cue errors, the countdown uses a timer role, and carousels announce through a polite live region without autoplay. Token CSS ships scoped focus-visible rings and collapses motion under prefers-reduced-motion.",
   keyboard: [
     {
       keys: ["ArrowUp", "ArrowDown"],
