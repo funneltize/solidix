@@ -227,6 +227,10 @@ Component rules (`CTAButton`, `CtaCluster`):
 - Reveals via `IntersectionObserver` on the hero CTA (`observe` selector)
   once it scrolls out of view; falls back to `showAfter` scroll depth
   (default 600px) when the target is missing or observers are unavailable.
+- `visible` takes a controlled signal instead, so one external observer can
+  drive the bar and the desktop header together (`observe`/`showAfter`
+  ignored). The `showAfter` fallback coalesces scroll bursts into one read
+  per frame (rAF-throttled, passive).
 - When hidden it is `aria-hidden` and its CTA is `tabindex="-1"`.
 - Desktop keeps the sticky header instead. On mobile the header scrolls
   away (`position: static` under 768px) and the bar takes over. Two sticky
@@ -235,9 +239,13 @@ Component rules (`CTAButton`, `CtaCluster`):
 
 ### Countdown: honest urgency only
 
-- Takes a real deadline (`endsAt` epoch ms), ticks every second, pads units,
-  fires `onExpire` exactly once. `now` and `interval` are injectable for
-  tests.
+- Takes a real deadline (`endsAt` epoch ms), pads units, fires `onExpire`
+  exactly once, then stops its timer. `now` and `interval` are injectable
+  for tests.
+- Ticks adaptively: every minute while more than a day remains, every
+  second inside the final day; an explicit `interval` overrides the rate.
+  An `IntersectionObserver` pauses the timer offscreen and refreshes on
+  return.
 - Uses a `timer` role with tabular digits. Fake scarcity (resetting timers,
   evergreen countdowns) is out of scope and must not be added.
 - Layout: centered column (caption over centered units row with a leading
@@ -254,8 +262,10 @@ Component rules (`CTAButton`, `CtaCluster`):
 
 ### Supporting patterns
 
-- `VideoFrame`: VSL thumbnail with `fetchpriority="high"`, `loading="eager"`,
-  and AspectRatio-reserved space. Never lazy-load hero media.
+- `VideoFrame`: VSL thumbnail with AspectRatio-reserved space. Lazy with
+  low priority by default, upgrading to eager/high just before it enters
+  (200px root margin); `eager` opts back into eager/high for above-fold
+  placement. Never lazy-load hero media.
 - `ComparisonTable`: featured us-column with elevated surface, accent
   top/bottom borders, success checkmarks, heavier weight; competitor columns
   muted with gray/red crosses. The scroller is `position: relative` with
@@ -271,7 +281,10 @@ Component rules (`CTAButton`, `CtaCluster`):
   to the location hash. Answers animate on the accordion's measured
   `--radix-accordion-content-height`.
 - `Header`: zero-escape bar. Brand renders as text, never a link; one CTA.
-  `sticky` pins on desktop only (see StickyBar rule above).
+  `sticky` pins on desktop only (see StickyBar rule above). `visible`
+  drives scroll reveals from one shared signal (`false` hides from sight,
+  AT, and tab order); the logo image loads eager with async decoding and
+  no fetch priority, so the hero keeps the sole high-priority slot.
 - `Hero`: the secondary CTA carries `.fx-hero-secondary` and hides below
   640px, so mobile shows the single primary action; it returns at sm and up.
 
@@ -342,7 +355,8 @@ Hard rules (enforced by `motion.test.ts`):
   durations. Blocks must stay fully readable with motion disabled.
 - No scroll-triggered reveals: they cost an observer plus a11y risk for
   little conversion value. IntersectionObservers exist only for StickyBar
-  reveal and hero `funnel:view`, never for animation.
+  reveal, hero `funnel:view`, countdown offscreen pause, and VideoFrame
+  priority upgrade, never for animation.
 
 ## 11. Accessibility
 
@@ -370,12 +384,14 @@ Budgets are decisions, enforced by `css-budget.test.ts`:
   requires a conscious budget change, not silent creep. (blocks.css sits
   near its ceiling: check bytes before adding block styles.)
 - Hero media is eager with reserved AspectRatio space (no CLS). Below-fold
-  images lazy-load.
+  images lazy-load with async decoding. Hero and thumbnail shapes take
+  `srcSet`/`sizes`; benefits and logo shapes add `width`/`height`, and
+  benefits rows frame in AspectRatio (overridable `ratio`, default 16/9).
 - No analytics SDK is bundled. Blocks dispatch `funnel:cta`,
   `funnel:submit`, `funnel:view` as bubbling composed CustomEvents; any
   snippet observes them.
 - Observers over scroll listeners. The only scroll listener is StickyBar's
-  fallback path, passive.
+  fallback path, passive and rAF-throttled to one read per frame.
 
 ## 13. Events and A/B variants
 

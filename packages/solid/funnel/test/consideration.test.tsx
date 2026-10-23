@@ -26,6 +26,46 @@ describe("Benefits", () => {
     expect(art.closest("li")?.hasAttribute("data-media")).toBe(true);
   });
 
+  test("media rows reserve space and decode async", () => {
+    render(() => (
+      <Benefits
+        items={[
+          {
+            title: "See it live",
+            media: {
+              src: "/ui-1200.webp",
+              alt: "Product UI",
+              srcSet: "/ui-480.webp 480w, /ui-1200.webp 1200w",
+              sizes: "(max-width: 1024px) 100vw, 50vw",
+              width: 1200,
+              height: 675,
+            },
+          },
+        ]}
+      />
+    ));
+    const art = screen.getByAltText("Product UI");
+    expect(art.getAttribute("decoding")).toBe("async");
+    expect(art.getAttribute("srcset")).toBe("/ui-480.webp 480w, /ui-1200.webp 1200w");
+    expect(art.getAttribute("sizes")).toBe("(max-width: 1024px) 100vw, 50vw");
+    expect(art.getAttribute("width")).toBe("1200");
+    expect(art.getAttribute("height")).toBe("675");
+    // AspectRatio frame reserves layout space (default 16/9), same as hero.
+    const frame = art.closest("[data-radix-aspect-ratio-wrapper]");
+    expect(frame).not.toBe(null);
+    expect((frame as HTMLElement).style.paddingBottom).toBe(`${100 / (16 / 9)}%`);
+  });
+
+  test("media ratio overrides the default frame", () => {
+    render(() => (
+      <Benefits
+        items={[{ title: "Square shot", media: { src: "/ui.png", alt: "Product UI", ratio: 1 } }]}
+      />
+    ));
+    const frame = screen.getByAltText("Product UI").closest("[data-radix-aspect-ratio-wrapper]");
+    expect((frame as HTMLElement).style.paddingBottom).toBe("100%");
+  });
+
   test("default list renders no data-variant", () => {
     const { container } = render(() => <Benefits items={[{ title: "Launch in a day" }]} />);
     const root = container.querySelector('[data-funnel-block="benefits"]');

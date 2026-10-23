@@ -1,3 +1,4 @@
+import { createSignal, flush } from "solid-js";
 import { describe, expect, test } from "vitest";
 import { render, screen } from "@solidjs/testing-library";
 import { Container, Eyebrow, Header, Prose, Section, SectionHeading } from "../src/index";
@@ -83,5 +84,50 @@ describe("layout atoms", () => {
     expect(header.tagName).toBe("HEADER");
     expect(header.hasAttribute("data-sticky")).toBe(true);
     expect(screen.getByAltText("Acme").getAttribute("src")).toBe("/logo.svg");
+  });
+
+  test("Header logo loads eager with async decoding", () => {
+    render(() => (
+      <Header brand={{ src: "/logo.svg", name: "Acme" }} cta={{ label: "Start", href: "#join" }} />
+    ));
+    const logo = screen.getByAltText("Acme");
+    expect(logo.getAttribute("loading")).toBe("eager");
+    expect(logo.getAttribute("decoding")).toBe("async");
+  });
+
+  test("Header hides from AT and tab order when visible is false", () => {
+    render(() => (
+      <Header
+        data-testid="header"
+        brand="Acme"
+        cta={{ label: "Start", href: "#join" }}
+        visible={false}
+      />
+    ));
+    const header = screen.getByTestId("header");
+    expect(header.hasAttribute("data-hidden")).toBe(true);
+    expect(header.getAttribute("aria-hidden")).toBe("true");
+    // Role queries skip aria-hidden subtrees, so reach the CTA through the DOM.
+    expect(header.querySelector("a")?.getAttribute("tabindex")).toBe("-1");
+  });
+
+  test("Header follows a shared reveal signal", () => {
+    const [visible, setVisible] = createSignal(false);
+    render(() => (
+      <Header
+        data-testid="header"
+        brand="Acme"
+        cta={{ label: "Start", href: "#join" }}
+        visible={visible()}
+      />
+    ));
+    const header = screen.getByTestId("header");
+    expect(header.hasAttribute("data-hidden")).toBe(true);
+
+    setVisible(true);
+    flush();
+    expect(header.hasAttribute("data-hidden")).toBe(false);
+    expect(header.hasAttribute("aria-hidden")).toBe(false);
+    expect(screen.getByRole("link", { name: "Start" }).hasAttribute("tabindex")).toBe(false);
   });
 });

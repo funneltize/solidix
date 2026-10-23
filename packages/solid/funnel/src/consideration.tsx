@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@solidix/accordion";
+import { AspectRatio } from "@solidix/aspect-ratio";
 import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 import { RadioGroup, RadioGroupIndicator, RadioGroupItem } from "@solidix/radio-group";
 import { CTAButton } from "./cta-button";
@@ -23,7 +24,21 @@ type BenefitItem = {
   description?: string | undefined;
   icon?: JSX.Element | undefined;
   /** Product visual: turns the item into a 50/50 zig-zag row. */
-  media?: { src: string; alt: string } | undefined;
+  media?:
+    | {
+        src: string;
+        alt: string;
+        /** Width/height ratio of the AspectRatio frame. Defaults to `16 / 9`. */
+        ratio?: number | undefined;
+        /** Responsive sources, set as the `srcset` attribute when present. */
+        srcSet?: string | undefined;
+        /** Slot widths for `srcSet`, set as the `sizes` attribute when present. */
+        sizes?: string | undefined;
+        /** Intrinsic dimensions, set as width/height attributes when present. */
+        width?: number | undefined;
+        height?: number | undefined;
+      }
+    | undefined;
 };
 
 /** Layout variant for the Benefits component. */
@@ -91,16 +106,23 @@ const Benefits: Component<BenefitsProps> = (props) => {
                 </Show>
               </span>
               <Show when={!cards() && item.media}>
-                <span class="fx-benefits-media">
-                  <img
-                    src={item.media!.src}
-                    alt={item.media!.alt}
-                    loading="lazy"
-                    data-funnel-part={editable ? "media" : undefined}
-                    data-funnel-part-index={editable ? String(index()) : undefined}
-                    tabindex={editable ? 0 : undefined}
-                  />
-                </span>
+                <div class="fx-benefits-media">
+                  <AspectRatio ratio={item.media!.ratio ?? 16 / 9} class="fx-benefits-frame">
+                    <img
+                      src={item.media!.src}
+                      alt={item.media!.alt}
+                      srcset={item.media!.srcSet}
+                      sizes={item.media!.sizes}
+                      width={item.media!.width}
+                      height={item.media!.height}
+                      loading="lazy"
+                      decoding="async"
+                      data-funnel-part={editable ? "media" : undefined}
+                      data-funnel-part-index={editable ? String(index()) : undefined}
+                      tabindex={editable ? 0 : undefined}
+                    />
+                  </AspectRatio>
+                </div>
               </Show>
             </Primitive.li>
           )}

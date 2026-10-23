@@ -224,6 +224,9 @@ describe("primary glow treatment", () => {
     // Uneven ring: a uniform halo would make the rotation invisible.
     expect(glow).toContain("conic-gradient");
     expect(glow).toContain("color-mix(in srgb, var(--solidix-funnel-cta)");
+    // Noticeable at a glance: spread past the edge plus an opaque comet peak.
+    expect(glow).toContain("inset: -6px;");
+    expect(glow).toContain("var(--solidix-funnel-cta) 20%");
     expect(text).toContain("@keyframes fx-cta-glow");
   });
 

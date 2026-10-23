@@ -149,6 +149,12 @@
   background: var(--solidix-funnel-paper);
   background: color-mix(in srgb, var(--solidix-funnel-paper) 92%, transparent);
   border-bottom: 1px solid var(--solidix-funnel-line);
+  transition: transform var(--solidix-funnel-duration-base) var(--solidix-funnel-ease-out);
+}
+
+.fx-header[data-hidden] {
+  transform: translateY(-110%);
+  visibility: hidden;
 }
 
 .fx-header[data-sticky] {
@@ -374,14 +380,14 @@
   animation: fx-cta-glow var(--solidix-funnel-duration-glow) linear infinite;
   background: conic-gradient(
     from var(--fx-cta-glow-angle),
-    color-mix(in srgb, var(--solidix-funnel-cta) 25%, transparent),
-    color-mix(in srgb, var(--solidix-funnel-cta) 75%, transparent) 25%,
-    color-mix(in srgb, var(--solidix-funnel-cta) 25%, transparent) 50%
+    color-mix(in srgb, var(--solidix-funnel-cta) 45%, transparent),
+    var(--solidix-funnel-cta) 20%,
+    color-mix(in srgb, var(--solidix-funnel-cta) 45%, transparent) 40%
   );
   border-radius: inherit;
   content: "";
-  filter: blur(10px);
-  inset: -3px;
+  filter: blur(12px);
+  inset: -6px;
   position: absolute;
   z-index: -1;
 }
@@ -675,9 +681,15 @@
   font-size: var(--solidix-funnel-text-h3);
 }
 
-.fx-benefits-media img {
+.fx-benefits-frame {
   border-radius: var(--solidix-funnel-radius-xl);
+  overflow: hidden;
+}
+
+.fx-benefits-media img {
   display: block;
+  height: 100%;
+  object-fit: cover;
   width: 100%;
 }
 

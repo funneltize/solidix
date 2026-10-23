@@ -43,6 +43,30 @@ describe("LogoBar", () => {
     expect(img.closest("a")?.getAttribute("href")).toBe("https://acme.example");
     expect(screen.getByText("Globex").getAttribute("aria-label")).toBe("Globex");
   });
+
+  test("logo images decode async and carry dimensions plus responsive sources", () => {
+    render(() => (
+      <LogoBar
+        logos={[
+          {
+            name: "Acme",
+            src: "/acme-2x.png",
+            srcSet: "/acme-1x.png 1x, /acme-2x.png 2x",
+            sizes: "120px",
+            width: 120,
+            height: 28,
+          },
+        ]}
+      />
+    ));
+    const img = screen.getByAltText("Acme");
+    expect(img.getAttribute("loading")).toBe("lazy");
+    expect(img.getAttribute("decoding")).toBe("async");
+    expect(img.getAttribute("srcset")).toBe("/acme-1x.png 1x, /acme-2x.png 2x");
+    expect(img.getAttribute("sizes")).toBe("120px");
+    expect(img.getAttribute("width")).toBe("120");
+    expect(img.getAttribute("height")).toBe("28");
+  });
 });
 
 describe("Testimonials", () => {

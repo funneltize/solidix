@@ -1,3 +1,4 @@
+import { createSignal, flush } from "solid-js";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { fireEvent, render, screen } from "@solidjs/testing-library";
 import {
@@ -38,6 +39,37 @@ describe("Hero", () => {
       screen.getByRole("link", { name: "Watch demo" }).classList.contains("fx-hero-secondary"),
     ).toBe(true);
     expect(screen.getByAltText("Dashboard screenshot")).toBeTruthy();
+  });
+
+  test("passes responsive attributes through to the hero image", () => {
+    render(() => (
+      <Hero
+        title="Ship your funnel this weekend"
+        primaryCta={{ label: "Start free", href: "/start" }}
+        media={{
+          src: "/hero-1200.webp",
+          alt: "Dashboard screenshot",
+          srcSet: "/hero-480.webp 480w, /hero-1200.webp 1200w",
+          sizes: "(max-width: 640px) 100vw, 1200px",
+        }}
+      />
+    ));
+    const img = screen.getByAltText("Dashboard screenshot");
+    expect(img.getAttribute("srcset")).toBe("/hero-480.webp 480w, /hero-1200.webp 1200w");
+    expect(img.getAttribute("sizes")).toBe("(max-width: 640px) 100vw, 1200px");
+  });
+
+  test("omits responsive attributes when the media shape carries none", () => {
+    render(() => (
+      <Hero
+        title="Ship your funnel this weekend"
+        primaryCta={{ label: "Start free", href: "/start" }}
+        media={{ src: "/hero.png", alt: "Dashboard screenshot" }}
+      />
+    ));
+    const img = screen.getByAltText("Dashboard screenshot");
+    expect(img.hasAttribute("srcset")).toBe(false);
+    expect(img.hasAttribute("sizes")).toBe(false);
   });
 
   test("dispatches funnel:view when observed", async () => {
@@ -133,6 +165,74 @@ describe("Countdown", () => {
     unmount();
   });
 
+  test("ticks by the minute while the deadline is days out", () => {
+    vi.useFakeTimers();
+    const now = Date.now();
+    let current = now;
+    render(() => <Countdown endsAt={now + 90061000} now={() => current} />);
+    const timer = screen.getByRole("timer");
+    // 1 day, 1 hour, 1 minute, 1 second: no zero unit yet.
+    expect(timer.textContent).not.toContain("00");
+
+    // An hour passes but a lone second ticking by must not refresh the parts.
+    current = now + 3600000;
+    vi.advanceTimersByTime(1000);
+    flush();
+    expect(timer.textContent).not.toContain("00");
+
+    // The minute tick picks up the new hour.
+    vi.advanceTimersByTime(59000);
+    flush();
+    expect(timer.textContent).toContain("00");
+  });
+
+  test("an explicit interval overrides the adaptive tick", () => {
+    vi.useFakeTimers();
+    const now = Date.now();
+    let current = now;
+    render(() => <Countdown endsAt={now + 90061000} now={() => current} interval={1000} />);
+    const timer = screen.getByRole("timer");
+    current = now + 3600000;
+    vi.advanceTimersByTime(1000);
+    flush();
+    expect(timer.textContent).toContain("00");
+  });
+
+  test("pauses while offscreen and refreshes on return", () => {
+    vi.useFakeTimers();
+    let callback: IntersectionObserverCallback | null = null;
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        constructor(cb: IntersectionObserverCallback) {
+          callback = cb;
+        }
+        observe() {}
+        disconnect() {}
+        unobserve() {}
+      },
+    );
+    try {
+      const now = Date.now();
+      let current = now;
+      render(() => <Countdown endsAt={now + 3600000} now={() => current} />);
+      const timer = screen.getByRole("timer");
+      expect(timer.getAttribute("aria-label")).toContain("1 hours");
+
+      callback!([{ isIntersecting: false }] as never, null as never);
+      current = now + 60000;
+      vi.advanceTimersByTime(5000);
+      flush();
+      expect(timer.getAttribute("aria-label")).toContain("1 hours");
+
+      callback!([{ isIntersecting: true }] as never, null as never);
+      flush();
+      expect(timer.getAttribute("aria-label")).toContain("59 minutes");
+    } finally {
+      vi.unstubAllGlobals();
+    }
+  });
+
   test("leads with a decorative clock chip before the units", () => {
     const now = Date.now();
     render(() => <Countdown endsAt={now + 90061000} now={() => now} />);
@@ -146,7 +246,7 @@ describe("Countdown", () => {
 });
 
 describe("VideoFrame", () => {
-  test("renders an eager thumbnail with a linked play button", () => {
+  test("defaults to a lazy low-priority thumbnail with a linked play button", () => {
     render(() => (
       <VideoFrame
         thumbnail={{ src: "/vsl.png", alt: "Sales presentation" }}
@@ -155,11 +255,59 @@ describe("VideoFrame", () => {
       />
     ));
     const thumbnail = screen.getByAltText("Sales presentation");
-    expect(thumbnail.getAttribute("loading")).toBe("eager");
-    expect(thumbnail.getAttribute("fetchpriority")).toBe("high");
+    expect(thumbnail.getAttribute("loading")).toBe("lazy");
+    expect(thumbnail.getAttribute("fetchpriority")).toBe("low");
     const play = screen.getByRole("link", { name: "Play video" });
     expect(play.getAttribute("href")).toBe("https://video.example/watch");
     expect(screen.getByText("Watch: the 12-minute breakdown.").tagName).toBe("FIGCAPTION");
+  });
+
+  test("passes responsive sources through to the thumbnail", () => {
+    render(() => (
+      <VideoFrame
+        thumbnail={{
+          src: "/vsl-1200.webp",
+          alt: "Sales presentation",
+          srcSet: "/vsl-480.webp 480w, /vsl-1200.webp 1200w",
+          sizes: "(max-width: 640px) 100vw, 680px",
+        }}
+      />
+    ));
+    const thumbnail = screen.getByAltText("Sales presentation");
+    expect(thumbnail.getAttribute("srcset")).toBe("/vsl-480.webp 480w, /vsl-1200.webp 1200w");
+    expect(thumbnail.getAttribute("sizes")).toBe("(max-width: 640px) 100vw, 680px");
+  });
+
+  test("stays eager with the eager opt-in for above-fold use", () => {
+    render(() => <VideoFrame thumbnail={{ src: "/vsl.png", alt: "Sales presentation" }} eager />);
+    const thumbnail = screen.getByAltText("Sales presentation");
+    expect(thumbnail.getAttribute("loading")).toBe("eager");
+    expect(thumbnail.getAttribute("fetchpriority")).toBe("high");
+  });
+
+  test("upgrades priority when the thumbnail nears the viewport", async () => {
+    let callback: IntersectionObserverCallback | null = null;
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        constructor(cb: IntersectionObserverCallback) {
+          callback = cb;
+        }
+        observe() {}
+        disconnect() {}
+        unobserve() {}
+      },
+    );
+    try {
+      render(() => <VideoFrame thumbnail={{ src: "/vsl.png", alt: "Sales presentation" }} />);
+      const thumbnail = screen.getByAltText("Sales presentation");
+      expect(thumbnail.getAttribute("loading")).toBe("lazy");
+      callback!([{ isIntersecting: true }] as never, null as never);
+      await vi.waitFor(() => expect(thumbnail.getAttribute("loading")).toBe("eager"));
+      expect(thumbnail.getAttribute("fetchpriority")).toBe("high");
+    } finally {
+      vi.unstubAllGlobals();
+    }
   });
 
   test("omits the play button without a link target", () => {
@@ -183,9 +331,42 @@ describe("StickyBar", () => {
 
     Object.defineProperty(window, "scrollY", { value: 800, configurable: true });
     fireEvent.scroll(window);
+    // The fallback coalesces scroll bursts into one frame, never sync.
+    expect(bar.hasAttribute("data-visible")).toBe(false);
     await vi.waitFor(() => expect(bar.hasAttribute("data-visible")).toBe(true));
     expect(bar.hasAttribute("aria-hidden")).toBe(false);
     expect(screen.getByRole("link", { name: "Claim seat" }).getAttribute("href")).toBe("/checkout");
+  });
+
+  test("follows a controlled visible signal and ignores scroll", async () => {
+    const [visible, setVisible] = createSignal(false);
+    render(() => (
+      <StickyBar
+        message="Cohort 12 closes Friday."
+        cta={{ label: "Claim seat", href: "/checkout" }}
+        visible={visible()}
+      />
+    ));
+    const bar = screen.getByText("Cohort 12 closes Friday.").closest("[data-funnel-block]")!;
+    expect(bar.hasAttribute("data-visible")).toBe(false);
+    expect(bar.getAttribute("aria-hidden")).toBe("true");
+
+    // Deep scroll must not override the external signal.
+    Object.defineProperty(window, "scrollY", { value: 2000, configurable: true });
+    fireEvent.scroll(window);
+    await Promise.resolve();
+    flush();
+    expect(bar.hasAttribute("data-visible")).toBe(false);
+
+    setVisible(true);
+    flush();
+    expect(bar.hasAttribute("data-visible")).toBe(true);
+    expect(bar.hasAttribute("aria-hidden")).toBe(false);
+
+    setVisible(false);
+    flush();
+    expect(bar.hasAttribute("data-visible")).toBe(false);
+    expect(bar.getAttribute("aria-hidden")).toBe("true");
   });
 
   test("reveals once the observed trigger scrolls out of view", async () => {

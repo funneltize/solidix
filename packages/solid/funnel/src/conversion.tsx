@@ -28,6 +28,10 @@ type HeroMedia = {
   alt: string;
   /** Width/height ratio reserving layout space. Defaults to `16 / 9`. */
   ratio?: number | undefined;
+  /** Responsive sources, set as the `srcset` attribute when present. */
+  srcSet?: string | undefined;
+  /** Slot widths for `srcSet`, set as the `sizes` attribute when present. */
+  sizes?: string | undefined;
 };
 
 /** Hero call-to-action link. */
@@ -165,6 +169,8 @@ const Hero: Component<HeroProps> = (props) => {
               class="fx-hero-image"
               src={props.media!.src}
               alt={props.media!.alt}
+              srcset={props.media!.srcSet}
+              sizes={props.media!.sizes}
               loading="eager"
               decoding="async"
               fetchpriority="high"
@@ -339,7 +345,11 @@ type CountdownProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   endsAt: number;
   /** Time source (injectable for tests/SSR). Defaults to `Date.now`. */
   now?: (() => number) | undefined;
-  /** Tick interval in ms. Defaults to `1000`. */
+  /**
+   * Fixed tick interval in ms. Defaults to adaptive: 60s while more than a
+   * day remains, 1s inside the final day. The offscreen pause applies either
+   * way; the timer stops once the deadline passes.
+   */
   interval?: number | undefined;
   /** Fired once when the deadline passes. */
   onExpire?: (() => void) | undefined;
@@ -369,8 +379,26 @@ const Countdown: Component<CountdownProps> = (props) => {
   const [parts, setParts] = createSignal<CountdownParts>(splitRemaining(props.endsAt - clock()()));
   const [expired, setExpired] = createSignal(props.endsAt - clock()() <= 0);
   const fired = { current: props.endsAt - clock()() <= 0 };
+  let node: HTMLDivElement | null = null;
+  let timer: number | undefined;
 
+  const clearTimer = () => {
+    if (timer !== undefined) {
+      window.clearTimeout(timer);
+      timer = undefined;
+    }
+  };
+  const tickInterval = () => {
+    if (props.interval !== undefined) return props.interval;
+    return props.endsAt - clock()() > 86400000 ? 60000 : 1000;
+  };
+  const schedule = () => {
+    if (typeof window === "undefined" || fired.current) return;
+    clearTimer();
+    timer = window.setTimeout(tick, tickInterval());
+  };
   const tick = () => {
+    timer = undefined;
     const remaining = props.endsAt - clock()();
     setParts(splitRemaining(remaining));
     if (remaining <= 0) {
@@ -379,12 +407,34 @@ const Countdown: Component<CountdownProps> = (props) => {
         fired.current = true;
         props.onExpire?.();
       }
+      return;
     }
+    schedule();
   };
 
   if (typeof window !== "undefined") {
-    const timer = window.setInterval(tick, props.interval ?? 1000);
-    onCleanup(() => window.clearInterval(timer));
+    // Scheduled during setup so the first tick is pending before mount
+    // settles. Chained timeouts (not an interval) re-read the adaptive
+    // rate after every tick.
+    schedule();
+    onSettled(() => {
+      if (typeof IntersectionObserver === "undefined" || !node) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            // Refresh immediately on return; a pending timer means the block
+            // never left, so leave it alone.
+            if (timer === undefined && !fired.current) tick();
+          } else {
+            clearTimer();
+          }
+        },
+        { threshold: 0 },
+      );
+      observer.observe(node);
+      return () => observer.disconnect();
+    });
+    onCleanup(() => clearTimer());
   }
 
   const units: Array<{ key: keyof CountdownParts; label: string }> = [
@@ -393,6 +443,12 @@ const Countdown: Component<CountdownProps> = (props) => {
     { key: "minutes", label: "Minutes" },
     { key: "seconds", label: "Seconds" },
   ];
+  const composedRef = (element: HTMLDivElement | null) => {
+    node = element;
+    const ref = props.ref;
+    if (typeof ref === "function") ref(element);
+    else if (ref) ref.current = element;
+  };
 
   return (
     <Primitive.div
@@ -400,7 +456,7 @@ const Countdown: Component<CountdownProps> = (props) => {
       data-expired={expired() ? "" : undefined}
       class={cx("fx-countdown", props.class)}
       {...rest}
-      ref={props.ref}
+      ref={composedRef}
     >
       <Show when={props.caption}>
         <p
@@ -462,44 +518,62 @@ type StickyBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
    * target is missing or IntersectionObserver is unavailable.
    */
   observe?: string | undefined;
+  /**
+   * Controlled visibility: one external signal can drive the bar and the
+   * desktop header together. When set, `observe` and `showAfter` are ignored.
+   */
+  visible?: boolean | undefined;
 };
 
 /** Mobile sticky bottom bar that reveals a compact CTA once the hero trigger scrolls out of view. */
 const StickyBar: Component<StickyBarProps> = (props) => {
-  const rest = omit(props, "message", "cta", "showAfter", "observe", "class", "ref");
+  const rest = omit(props, "message", "cta", "showAfter", "observe", "visible", "class", "ref");
   const editable = useFunnelEditable();
   const threshold = () => props.showAfter ?? 600;
-  const [visible, setVisible] = createSignal(
+  const [internal, setInternal] = createSignal(
     typeof window !== "undefined" && window.scrollY > threshold(),
   );
+  const shown = () => (props.visible !== undefined ? props.visible : internal());
 
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && props.visible === undefined) {
     // Resolved at mount: same-tree triggers (the hero CTA) are not in the
     // document yet during setup.
     onSettled(() => {
+      if (props.visible !== undefined) return;
       const target = props.observe ? window.document.querySelector(props.observe) : null;
       if (target && typeof IntersectionObserver !== "undefined") {
         const observer = new IntersectionObserver(
           (entries) => {
             const entry = entries[0];
-            if (entry) setVisible(!entry.isIntersecting && entry.boundingClientRect.top < 0);
+            if (entry) setInternal(!entry.isIntersecting && entry.boundingClientRect.top < 0);
           },
           { threshold: 0 },
         );
         observer.observe(target);
         return () => observer.disconnect();
       }
-      const onScroll = () => setVisible(window.scrollY > threshold());
+      // Scroll bursts coalesce into one read per frame.
+      let frame = 0;
+      const onScroll = () => {
+        if (frame !== 0) return;
+        frame = window.requestAnimationFrame(() => {
+          frame = 0;
+          setInternal(window.scrollY > threshold());
+        });
+      };
       window.addEventListener("scroll", onScroll, { passive: true });
-      return () => window.removeEventListener("scroll", onScroll);
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        if (frame !== 0) window.cancelAnimationFrame(frame);
+      };
     });
   }
 
   return (
     <Primitive.div
       data-funnel-block="sticky-bar"
-      data-visible={visible() ? "" : undefined}
-      aria-hidden={visible() ? undefined : "true"}
+      data-visible={shown() ? "" : undefined}
+      aria-hidden={shown() ? undefined : "true"}
       class={cx("fx-sticky-bar", props.class)}
       {...rest}
       ref={props.ref}
@@ -511,7 +585,7 @@ const StickyBar: Component<StickyBarProps> = (props) => {
       >
         {props.message}
       </p>
-      <CTAButton href={props.cta.href} size="md" tabindex={visible() ? undefined : -1} part="cta">
+      <CTAButton href={props.cta.href} size="md" tabindex={shown() ? undefined : -1} part="cta">
         {props.cta.label}
       </CTAButton>
     </Primitive.div>
@@ -997,36 +1071,79 @@ const Footer: Component<FooterProps> = (props) => {
 
 /** Props for the VideoFrame component. */
 type VideoFrameProps = FunnelElementProps<"figure", HTMLElement> & {
-  thumbnail: { src: string; alt: string };
+  thumbnail: {
+    src: string;
+    alt: string;
+    /** Responsive sources, set as the `srcset` attribute when present. */
+    srcSet?: string | undefined;
+    /** Slot widths for `srcSet`, set as the `sizes` attribute when present. */
+    sizes?: string | undefined;
+  };
   /** Width/height ratio reserving layout space. Defaults to `16 / 9`. */
   ratio?: number | undefined;
   /** Link target (video URL): renders a play affordance overlay. */
   href?: string | undefined;
   caption?: string | undefined;
+  /**
+   * Loads the thumbnail eager with high priority from the start, for
+   * above-fold placement. Defaults to `false`: lazy with low priority until
+   * the frame nears the viewport, so below-fold thumbnails never compete
+   * with the hero for bandwidth.
+   */
+  eager?: boolean | undefined;
 };
 
 /**
- * VSL framing: eager 16:9 thumbnail with an optional linked play button.
+ * VSL framing: lazy 16:9 thumbnail with an optional linked play button.
  * Pair with a `reading` container.
  */
 const VideoFrame: Component<VideoFrameProps> = (props) => {
-  const rest = omit(props, "thumbnail", "ratio", "href", "caption", "class", "ref");
+  const rest = omit(props, "thumbnail", "ratio", "href", "caption", "eager", "class", "ref");
   const editable = useFunnelEditable();
+  const [near, setNear] = createSignal(false);
+  const hot = () => props.eager === true || near();
+  let node: HTMLElement | null = null;
+
+  if (typeof window !== "undefined" && props.eager !== true) {
+    onSettled(() => {
+      if (typeof IntersectionObserver === "undefined" || !node) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            setNear(true);
+            observer.disconnect();
+          }
+        },
+        // Upgrade just before the frame enters, so the fetch wins the race
+        // with the scroll instead of starting from a standstill mid-viewport.
+        { rootMargin: "200px" },
+      );
+      observer.observe(node);
+      return () => observer.disconnect();
+    });
+  }
+
+  const composedRef = (element: HTMLElement | null) => {
+    node = element;
+    props.ref?.(element);
+  };
   return (
     <figure
       data-funnel-block="video-frame"
       class={cx("fx-video-frame", props.class)}
       {...rest}
-      ref={props.ref}
+      ref={composedRef}
     >
       <AspectRatio ratio={props.ratio ?? 16 / 9} class="fx-video-box">
         <img
           class="fx-video-thumbnail"
           src={props.thumbnail.src}
           alt={props.thumbnail.alt}
-          loading="eager"
+          srcset={props.thumbnail.srcSet}
+          sizes={props.thumbnail.sizes}
+          loading={hot() ? "eager" : "lazy"}
           decoding="async"
-          fetchpriority="high"
+          fetchpriority={hot() ? "high" : "low"}
           data-funnel-part={editable ? "thumbnail" : undefined}
           tabindex={editable ? 0 : undefined}
         />

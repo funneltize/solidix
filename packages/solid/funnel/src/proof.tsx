@@ -72,6 +72,13 @@ export type LogoBarLogo = {
   name: string;
   src?: string | undefined;
   href?: string | undefined;
+  /** Responsive sources, set as the `srcset` attribute when present. */
+  srcSet?: string | undefined;
+  /** Slot widths for `srcSet`, set as the `sizes` attribute when present. */
+  sizes?: string | undefined;
+  /** Intrinsic dimensions, set as width/height attributes when present. */
+  width?: number | undefined;
+  height?: number | undefined;
 };
 
 /** Props for the LogoBar component. */
@@ -132,7 +139,12 @@ function LogoMark(props: { logo: LogoBarLogo; index: number }) {
       class="fx-logo-bar-logo"
       src={props.logo.src}
       alt={props.logo.name}
+      srcset={props.logo.srcSet}
+      sizes={props.logo.sizes}
+      width={props.logo.width}
+      height={props.logo.height}
       loading="lazy"
+      decoding="async"
       data-funnel-part={editable ? "logo" : undefined}
       data-funnel-part-index={editable ? String(props.index) : undefined}
       tabindex={editable ? 0 : undefined}

@@ -169,7 +169,7 @@ export const doc: PrimitiveDoc = {
         },
         {
           name: "media",
-          type: "{ src: string; alt: string; ratio?: number }",
+          type: "{ src: string; alt: string; ratio?: number; srcSet?: string; sizes?: string }",
           description: "Media with layout space reserved via AspectRatio.",
         },
         { name: "align", type: '"split" | "centered"', default: "split", description: "Layout." },
@@ -310,6 +310,11 @@ export const doc: PrimitiveDoc = {
           type: "number",
           default: "600",
           description: "Scroll depth in px before the bar appears.",
+        },
+        {
+          name: "visible",
+          type: "boolean",
+          description: "Controlled visibility; ignores observe and showAfter when set.",
         },
       ],
       dataAttributes: [{ attribute: "data-funnel-block", values: ["sticky-bar"] }],

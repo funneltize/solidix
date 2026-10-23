@@ -191,17 +191,26 @@ type HeaderProps = FunnelElementProps<"header", HTMLElement> & {
    * header scrolls away and the sticky bar takes over. Defaults to `false`.
    */
   sticky?: boolean | undefined;
+  /**
+   * Controlled visibility for scroll reveals: one external signal can drive
+   * the header and the sticky bar together. `false` hides the bar from sight,
+   * assistive tech, and tab order; omitted or `true` shows it.
+   */
+  visible?: boolean | undefined;
 };
 
 /** Slim brand bar with wordmark, nav links, and CTA; scrolls away on mobile in favor of the sticky bar. */
 const Header: Component<HeaderProps> = (props) => {
-  const rest = omit(props, "brand", "cta", "sticky", "class", "ref");
+  const rest = omit(props, "brand", "cta", "sticky", "visible", "class", "ref");
   const brand = () => props.brand;
   const editable = useFunnelEditable();
+  const hidden = () => props.visible === false;
   return (
     <header
       data-funnel-block="header"
       data-sticky={props.sticky ? "" : undefined}
+      data-hidden={hidden() ? "" : undefined}
+      aria-hidden={hidden() ? "true" : undefined}
       class={cx("fx-header", props.class)}
       {...rest}
       ref={props.ref}
@@ -223,11 +232,13 @@ const Header: Component<HeaderProps> = (props) => {
             class="fx-header-logo"
             src={(brand() as { src: string }).src}
             alt={(brand() as { name: string }).name}
+            loading="eager"
+            decoding="async"
             data-funnel-part={editable ? "brand" : undefined}
             tabindex={editable ? 0 : undefined}
           />
         </Show>
-        <CTAButton href={props.cta.href} size="md" part="cta">
+        <CTAButton href={props.cta.href} size="md" tabindex={hidden() ? -1 : undefined} part="cta">
           {props.cta.label}
         </CTAButton>
       </div>
