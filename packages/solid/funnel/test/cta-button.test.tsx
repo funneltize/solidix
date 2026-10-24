@@ -220,13 +220,14 @@ describe("primary glow treatment", () => {
     // Crisp 2px ring on the border edge: tactile face clipped to padding-box
     // over a conic ring in the transparent border, same rotation timing.
     expect(host).toContain("animation: fx-cta-glow var(--solidix-funnel-duration-glow)");
-    expect(host).toContain(") padding-box,");
+    expect(host).toContain("padding-box,");
+    expect(host).toContain("border-box;");
     expect(host).toContain("conic-gradient");
     expect(host).toContain("white 18%");
     expect(host).toContain("border: 2px solid transparent;");
     // No ::after beam: a behind-face pseudo paints above the host background
     // and a bright one would wash the face.
-    expect(text).not.toContain('[data-glow]::after');
+    expect(text).not.toContain("[data-glow]::after");
     const halo = text.match(
       /\.fx-cta-button\[data-variant="primary"\]\[data-glow\]::before \{[^}]*\}/s,
     )![0];
