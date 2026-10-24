@@ -1,5 +1,12 @@
 # solidix
 
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies
+  - @solidix/funnel@0.5.1
+
 ## 0.1.9
 
 ### Patch Changes

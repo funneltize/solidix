@@ -192,10 +192,10 @@ Component rules (`CTAButton`, `CtaCluster`):
   Disabled/loading anchors get `aria-disabled` and ignore activation;
   loading buttons show a spinner and block clicks.
 - `fullWidth` stretches (always full width on small screens via CSS).
-- `glow` adds an opt-in rotating conic halo behind `primary` only (other
-  variants ignore it). The halo derives from the CTA tokens, so hue
-  switches and dark theme just work; the reduced-motion guard collapses
-  it with all other motion.
+- `glow` adds an opt-in rotating border beam plus halo on `primary` only
+  (other variants ignore it). Both layers derive from the CTA tokens, so
+  hue switches and dark theme just work; the reduced-motion guard
+  collapses them with all other motion.
 - Every CTA click dispatches `funnel:cta` with block, variant, label, href
   before invoking consumer `onClick`.
 
@@ -338,8 +338,8 @@ What animates:
 - Exit-intent overlay fades while content rises (entry only).
 - Testimonial carousel slides remount per index so the entry fade replays.
 - CTA buttons, the sticky bar, and the FAQ plus icon run small transitions.
-- Primary CTAs with `glow` rotate a conic halo behind the button (one
-  `@property`-registered angle, `duration-glow` timing).
+- Primary CTAs with `glow` rotate a conic border beam plus halo around
+  the button (one `@property`-registered angle, `duration-glow` timing).
 
 Hard rules (enforced by `motion.test.ts`):
 

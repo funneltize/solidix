@@ -57,7 +57,7 @@ a test fails if the checked-in CSS drifts.
 | Shadow      | `shadow-sm`, `shadow-md`, `shadow-lg` (neutral only)                                                                                                         |
 | Breakpoints | `breakpoint-sm`, `breakpoint-md`, `breakpoint-lg`, `breakpoint-xl` (640/768/1024/1280px reference values; media queries take literals)                       |
 | Layering    | `z-sticky`, `z-overlay`, `z-toast`                                                                                                                           |
-| Motion      | `duration-instant`, `duration-fast`, `duration-base`, `duration-slow`, `duration-glow` (CTA halo rotation), `ease-out` (all block motion runs through these) |
+| Motion      | `duration-instant`, `duration-fast`, `duration-base`, `duration-slow`, `duration-glow` (CTA glow rotation), `ease-out` (all block motion runs through these) |
 
 Dark variant: set `data-funnel-theme="dark"` on a wrapping element. The base
 also ships `:focus-visible` rings scoped to funnel markup (never the
@@ -141,8 +141,8 @@ attributes - no JavaScript animation runtime, no scroll listeners:
 - Exit-intent overlay fades in while the dialog rises slightly.
 - Testimonial carousel slides remount per index so the entry fade replays;
   CTA buttons, the sticky bar, and the FAQ plus icon transition.
-- Primary CTAs take an optional `glow`: a rotating conic halo behind the
-  button on `data-glow`, timed by the `duration-glow` token.
+- Primary CTAs take an optional `glow`: a rotating conic border beam plus
+  halo around the button on `data-glow`, timed by the `duration-glow` token.
 - Exit animations are entry-only for the dialog (it unmounts on close, same
   as Radix without `Presence`).
 

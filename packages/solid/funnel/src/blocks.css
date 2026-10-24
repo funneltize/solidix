@@ -364,7 +364,8 @@
   }
 }
 
-/* Primary glow: opt-in rotating halo. */
+/* Primary glow: rotating border beam plus halo. Beam is a background layer,
+ * not a pseudo (behind-face pseudos wash the face). */
 @property --fx-cta-glow-angle {
   syntax: "<angle>";
   inherits: false;
@@ -372,6 +373,22 @@
 }
 
 .fx-cta-button[data-variant="primary"][data-glow] {
+  animation: fx-cta-glow var(--solidix-funnel-duration-glow) linear infinite;
+  background:
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--solidix-funnel-cta) 86%, white),
+      var(--solidix-funnel-cta) 48%,
+      color-mix(in srgb, var(--solidix-funnel-cta) 90%, black)
+    ) padding-box,
+    conic-gradient(
+      from var(--fx-cta-glow-angle),
+      color-mix(in srgb, var(--solidix-funnel-cta) 30%, transparent),
+      var(--solidix-funnel-cta) 12%,
+      white 18%,
+      color-mix(in srgb, var(--solidix-funnel-cta) 30%, transparent) 36%
+    ) border-box;
+  border: 2px solid transparent;
   isolation: isolate;
   position: relative;
 }
@@ -380,9 +397,9 @@
   animation: fx-cta-glow var(--solidix-funnel-duration-glow) linear infinite;
   background: conic-gradient(
     from var(--fx-cta-glow-angle),
-    color-mix(in srgb, var(--solidix-funnel-cta) 45%, transparent),
+    color-mix(in srgb, var(--solidix-funnel-cta) 55%, transparent),
     var(--solidix-funnel-cta) 20%,
-    color-mix(in srgb, var(--solidix-funnel-cta) 45%, transparent) 40%
+    color-mix(in srgb, var(--solidix-funnel-cta) 55%, transparent) 40%
   );
   border-radius: inherit;
   content: "";

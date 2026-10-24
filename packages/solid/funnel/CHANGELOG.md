@@ -1,5 +1,11 @@
 # @solidix/funnel
 
+## 0.5.1
+
+### Patch Changes
+
+- Brighten the CTA `glow`: a crisp 2px rotating border beam with a white-hot comet peak now rings the button edge on the `duration-glow` timing, over a slightly brightened ambient halo.
+
 ## 0.5.0
 
 ### Minor Changes

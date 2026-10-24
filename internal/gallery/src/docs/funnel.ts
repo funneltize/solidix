@@ -126,7 +126,7 @@ export const doc: PrimitiveDoc = {
         {
           name: "glow",
           type: "boolean",
-          description: "Rotating halo behind the primary action.",
+          description: "Rotating border beam plus halo on the primary action.",
         },
         {
           name: "part",

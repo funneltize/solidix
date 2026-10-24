@@ -30,9 +30,9 @@ type CTAButtonCommon = {
   /** Pill shape for consumer/DTC offers. Defaults to `false`. */
   pill?: boolean | undefined;
   /**
-   * Rotating conic halo behind the action, timed by `duration-glow`.
-   * Scoped to `primary` in CSS; other variants ignore it. Defaults to
-   * `false`.
+   * Rotating conic border beam plus halo around the action, timed by
+   * `duration-glow`. Scoped to `primary` in CSS; other variants ignore
+   * it. Defaults to `false`.
    */
   glow?: boolean | undefined;
   /**
@@ -231,7 +231,7 @@ type CtaClusterProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   size?: CTAButtonSize | undefined;
   pill?: boolean | undefined;
   fullWidth?: boolean | undefined;
-  /** Rotating halo on the action button. Defaults to `false`. */
+  /** Rotating border beam plus halo on the action button. Defaults to `false`. */
   glow?: boolean | undefined;
   onClick?: CTAButtonAnchorProps["onClick"] | undefined;
 };

@@ -209,7 +209,7 @@ describe("primary glow treatment", () => {
   const css = () =>
     readFileSync(workspaceFile("packages", "solid", "funnel", "src", "blocks.css"), "utf8");
 
-  test("glow is a rotating conic halo scoped to the primary variant", () => {
+  test("glow is a rotating border beam plus halo scoped to the primary variant", () => {
     const text = css();
     // The conic angle is a registered custom property, or it cannot animate.
     expect(text).toContain("@property --fx-cta-glow-angle");
@@ -217,16 +217,26 @@ describe("primary glow treatment", () => {
       /\.fx-cta-button\[data-variant="primary"\]\[data-glow\] \{[^}]*\}/s,
     )![0];
     expect(host).toContain("isolation: isolate;");
-    const glow = text.match(
+    // Crisp 2px ring on the border edge: tactile face clipped to padding-box
+    // over a conic ring in the transparent border, same rotation timing.
+    expect(host).toContain("animation: fx-cta-glow var(--solidix-funnel-duration-glow)");
+    expect(host).toContain(") padding-box,");
+    expect(host).toContain("conic-gradient");
+    expect(host).toContain("white 18%");
+    expect(host).toContain("border: 2px solid transparent;");
+    // No ::after beam: a behind-face pseudo paints above the host background
+    // and a bright one would wash the face.
+    expect(text).not.toContain('[data-glow]::after');
+    const halo = text.match(
       /\.fx-cta-button\[data-variant="primary"\]\[data-glow\]::before \{[^}]*\}/s,
     )![0];
-    expect(glow).toContain("animation: fx-cta-glow var(--solidix-funnel-duration-glow)");
+    expect(halo).toContain("animation: fx-cta-glow var(--solidix-funnel-duration-glow)");
     // Uneven ring: a uniform halo would make the rotation invisible.
-    expect(glow).toContain("conic-gradient");
-    expect(glow).toContain("color-mix(in srgb, var(--solidix-funnel-cta)");
+    expect(halo).toContain("conic-gradient");
+    expect(halo).toContain("color-mix(in srgb, var(--solidix-funnel-cta)");
     // Noticeable at a glance: spread past the edge plus an opaque comet peak.
-    expect(glow).toContain("inset: -6px;");
-    expect(glow).toContain("var(--solidix-funnel-cta) 20%");
+    expect(halo).toContain("inset: -6px;");
+    expect(halo).toContain("var(--solidix-funnel-cta) 20%");
     expect(text).toContain("@keyframes fx-cta-glow");
   });
 
