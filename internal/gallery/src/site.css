@@ -899,6 +899,9 @@ a.demo-tab.full-page-link {
   margin: 0;
   padding: 0;
   border-left: 1px solid var(--line);
+  /* CSS-only scrollspy: the link whose section is in view matches
+     :target-current (Chromium 140+). Elsewhere this is a plain TOC. */
+  scroll-target-group: auto;
 }
 
 .toc-rail a {
@@ -917,6 +920,12 @@ a.demo-tab.full-page-link {
 .toc-rail a:hover {
   color: var(--brand-strong);
   border-left-color: var(--brand);
+}
+
+.toc-rail a:target-current {
+  color: var(--brand-strong);
+  border-left-color: var(--brand);
+  font-weight: 650;
 }
 
 /* Prev / next */
