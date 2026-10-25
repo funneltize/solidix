@@ -2,7 +2,7 @@
 
 Every Solidix primitive names its upstream in its README (`Port of ...`).
 This file records the upstream version each port was last compared against,
-so parity claims stay versioned. Checked 2026-10-20.
+so parity claims stay versioned. Checked 2026-10-25.
 
 Versions come from the `next`-fresh `node_modules/.pnpm` store (populated by
 a current install, so it resolves what `latest` resolves) plus direct
