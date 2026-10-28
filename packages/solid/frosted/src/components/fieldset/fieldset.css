@@ -1,41 +1,46 @@
 /** Ported from frosted-ui (MIT) at commit 56787900bfe0. Path: packages/frosted-ui/src/components/fieldset/fieldset.css */
 
+/* ============================================================================
+ * Root - reset native fieldset styles, flex column with gap
+ * ============================================================================ */
+
 .fui-FieldsetRoot {
+  all: unset;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  min-width: 0;
+  gap: 16px; /* gap between fields */
+
+  /* Reset native fieldset styles */
   border: none;
   margin: 0;
   padding: 0;
+  min-width: 0; /* Prevent fieldset from expanding beyond container */
+
+  &:where([data-disabled]) {
+    color: var(--gray-a8);
+  }
 }
+
+/* Smaller gap when fieldset contains checkbox or radio groups (denser layout) */
+.fui-FieldsetRoot:has(.fui-CheckboxRoot),
+.fui-FieldsetRoot:has(.fui-RadioGroupRoot) {
+  gap: 12px;
+}
+
+/* ============================================================================
+ * Legend - inherits Text styling from component
+ * ============================================================================ */
 
 .fui-FieldsetLegend {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  line-height: var(--line-height-2);
-  letter-spacing: var(--letter-spacing-2);
+  /* Remove default browser padding */
   padding: 0;
-  margin-bottom: var(--space-1);
-  border: none;
-  min-width: 0;
-}
+  margin-bottom: 16px;
+  cursor: default;
 
-.fui-FieldsetLegend[data-variant="heading"] {
-  font-size: var(--font-size-3);
-  font-weight: var(--font-weight-medium);
-  color: var(--gray-12);
-}
-
-.fui-FieldsetLegend[data-variant="eyebrow"] {
-  font-size: var(--font-size-1);
-  font-weight: var(--font-weight-medium);
-  color: var(--gray-11);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.fui-FieldsetLegend[data-disabled] {
-  color: var(--gray-9);
+  &:where([data-disabled]) {
+    color: var(--gray-a8);
+  }
+  &:where([data-variant='label']) {
+    margin-bottom: 8px;
+  }
 }

@@ -3,18 +3,51 @@
  * Source: packages/frosted-ui/src/components/button/button.css
  * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
  */
+@import '../base-button/base-button.css';
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
 .fui-Button {
-  gap: var(--space-2);
+  font-weight: var(--font-weight-medium);
 
   &:where(.fui-r-size-1) {
-    gap: var(--space-1);
-    border-radius: max(var(--radius-2), var(--radius-full));
+    gap: 4px;
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+    letter-spacing: var(--letter-spacing-1);
+
+    padding-left: 8px;
+    padding-right: 8px;
   }
   &:where(.fui-r-size-2) {
-    border-radius: max(var(--radius-3), var(--radius-full));
+    gap: 8px;
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+    letter-spacing: var(--letter-spacing-2);
+
+    padding-left: 12px;
+    padding-right: 12px;
   }
-  &:where(.fui-r-size-3),
+  &:where(.fui-r-size-3) {
+    gap: 10px;
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+    letter-spacing: var(--letter-spacing-3);
+
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   &:where(.fui-r-size-4) {
-    border-radius: max(var(--radius-4), var(--radius-full));
+    gap: 12px;
+    font-size: var(--font-size-4);
+    line-height: var(--line-height-4);
+    letter-spacing: var(--letter-spacing-4);
+
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }

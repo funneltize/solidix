@@ -25,6 +25,9 @@ describe("Field", () => {
     // Upstream wires `for` on the label to the control id; control is required
     // or aria-invalid'd only past the touched gate, so grab the raw input.
     expect(label.getAttribute("for")).toBe(input.id);
+    // Upstream `FieldControl` carries `fui-FieldControl` (unstyled upstream
+    // too: canonical usage composes `TextField` inside `Field.Root`).
+    expect(input.classList.contains("fui-FieldControl")).toBe(true);
     expect(input.getAttribute("aria-describedby")).toContain(description.id);
     // The error message is absent until the field is touched: Base UI
     // conditionally renders `Field.Error`, so the port gates it on the same

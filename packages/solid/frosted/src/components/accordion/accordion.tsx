@@ -1,4 +1,4 @@
-import { children, omit, Show, type Component } from "solid-js";
+import { children, createContext, omit, Show, useContext, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import {
   Accordion as AccordionPrimitive,
@@ -10,7 +10,44 @@ import {
   type AccordionItemProps as AccordionItemPrimitiveProps,
   type AccordionTriggerProps as AccordionTriggerPrimitiveProps,
 } from "@solidix/accordion";
+import { useControllableState } from "@solidix/use-controllable-state";
 import { cx } from "../../helpers/cx";
+
+/** Context value shared from the accordion root down to its items. */
+interface AccordionContextValue {
+  /** Expanded item values, for the open-state bridge. */
+  value: () => string[];
+}
+
+/** Context carrying the expanded values down to triggers and panels. */
+const AccordionContext = createContext<AccordionContextValue | undefined>(undefined);
+
+/**
+ * Reads the accordion context, returning `undefined` outside a root.
+ *
+ * @returns The accordion context value, or `undefined` when there is no root.
+ */
+function useAccordionContext(): AccordionContextValue | undefined {
+  return useContext(AccordionContext);
+}
+
+/** Context value shared from an accordion item down to its parts. */
+interface AccordionItemContextValue {
+  /** This item's value. */
+  value: string;
+}
+
+/** Context carrying the item value down to its trigger and panel. */
+const AccordionItemContext = createContext<AccordionItemContextValue | undefined>(undefined);
+
+/**
+ * Reads the accordion item context, returning `undefined` outside an item.
+ *
+ * @returns The accordion item context value, or `undefined` when there is no item.
+ */
+function useAccordionItemContext(): AccordionItemContextValue | undefined {
+  return useContext(AccordionItemContext);
+}
 
 /** Props for `Accordion.Root`. */
 interface AccordionRootProps {
@@ -40,7 +77,10 @@ interface AccordionRootProps {
 /**
  * Accordion state root. Bridges the upstream array value semantics onto
  * the headless single/multiple accordion; single mode stays collapsible
- * (Base UI items always toggle).
+ * (Base UI items always toggle). Tracks the expanded values in a
+ * controllable signal so triggers and panels can bridge the open state
+ * (the headless `forceMount` path leaves hiding to the consumer, matching
+ * Base UI `keepMounted` only once the panel passes `hidden` itself).
  *
  * Upstream: `accordion.tsx` (`AccordionRoot`) at whopio/frosted-ui commit
  * `56787900bfe0`.
@@ -59,11 +99,24 @@ const AccordionRoot: Component<AccordionRootProps> = (props) => {
   // Support radix-ui's `type` prop for backwards compatibility.
   const isMultiple = () => props.multiple ?? props.type === "multiple";
 
+  // Mirror (not owner) of the expanded values: the headless primitive keeps
+  // owning state so back-to-back toggles never race a controlled round-trip,
+  // and the mirror only feeds the open-state bridge plus `onValueChange`.
+  const [arrayValue, setArrayValue] = useControllableState<string[]>({
+    prop: () => props.value,
+    defaultProp: props.defaultValue ?? [],
+    onChange: props.onValueChange,
+    caller: "Accordion",
+  });
+  const handleSingleChange = (next: string) => {
+    setArrayValue(next === "" ? [] : [next]);
+  };
+  // Plain closures, not inline conditionals: an inline `props.value ? ...`
+  // binding memoizes on first read, and the headless primitive first reads
+  // `value` inside an effect (PRIMITIVE_IN_EFFECT_CALLBACK). A call
+  // expression stays a lazy getter with no binding memo.
   const singleValue = () => (props.value ? (props.value[0] ?? "") : undefined);
   const singleDefaultValue = () => props.defaultValue?.[0];
-  const handleSingleChange = (next: string) => {
-    props.onValueChange?.(next === "" ? [] : [next]);
-  };
 
   const classes = () => cx("fui-AccordionRoot", props.class);
 
@@ -80,7 +133,9 @@ const AccordionRoot: Component<AccordionRootProps> = (props) => {
           onValueChange={handleSingleChange}
           class={classes()}
         >
-          {props.children}
+          <AccordionContext value={{ value: arrayValue }}>
+            {props.children}
+          </AccordionContext>
         </AccordionPrimitive>
       }
     >
@@ -89,10 +144,10 @@ const AccordionRoot: Component<AccordionRootProps> = (props) => {
         {...rest}
         value={props.value}
         defaultValue={props.defaultValue}
-        onValueChange={props.onValueChange}
+        onValueChange={setArrayValue}
         class={classes()}
       >
-        {props.children}
+        <AccordionContext value={{ value: arrayValue }}>{props.children}</AccordionContext>
       </AccordionPrimitive>
     </Show>
   );
@@ -114,7 +169,9 @@ const AccordionItem: Component<AccordionItemProps> = (props) => {
   const rest = omit(props, "children", "class");
   return (
     <AccordionItemPrimitive {...rest} class={cx("fui-AccordionItem", props.class)}>
-      {props.children}
+      <AccordionItemContext value={{ value: props.value }}>
+        {props.children}
+      </AccordionItemContext>
     </AccordionItemPrimitive>
   );
 };
@@ -126,17 +183,23 @@ interface AccordionTriggerProps extends Omit<AccordionTriggerPrimitiveProps, "ch
 }
 
 /**
- * Accordion header with a chevron trigger button.
+ * Accordion header with a chevron trigger button. Sets `data-panel-open`
+ * explicitly because the frosted CSS keys the chevron rotation on that
+ * attribute rather than `data-state`.
  *
  * Upstream: `accordion.tsx` (`AccordionTrigger`) at whopio/frosted-ui
  * commit `56787900bfe0`.
  */
 const AccordionTrigger: Component<AccordionTriggerProps> = (props) => {
   const rest = omit(props, "children", "class");
+  const rootContext = useAccordionContext();
+  const itemContext = useAccordionItemContext();
+  const open = () => rootContext?.value().includes(itemContext?.value ?? "") ?? false;
   return (
     <AccordionHeaderPrimitive class="fui-AccordionHeader">
       <AccordionTriggerPrimitive
         {...rest}
+        data-panel-open={open() ? "" : undefined}
         class={cx("fui-AccordionTrigger", "fui-reset", props.class)}
       >
         <svg
@@ -173,7 +236,10 @@ interface AccordionContentProps extends Omit<
 
 /**
  * Collapsible accordion panel with an inner content wrapper (the caller
- * class lands on the inner wrapper, matching upstream).
+ * class lands on the inner wrapper, matching upstream). Passes `hidden`
+ * while closed: the headless `forceMount` path leaves hiding to the
+ * consumer, and upstream Base UI `keepMounted` panels render hidden until
+ * their item opens.
  *
  * Upstream: `accordion.tsx` (`AccordionContent`) at whopio/frosted-ui
  * commit `56787900bfe0`.
@@ -181,11 +247,15 @@ interface AccordionContentProps extends Omit<
 const AccordionContent: Component<AccordionContentProps> = (props) => {
   const rest = omit(props, "children", "class", "keepMounted");
   const resolved = children(() => props.children);
+  const rootContext = useAccordionContext();
+  const itemContext = useAccordionItemContext();
+  const open = () => rootContext?.value().includes(itemContext?.value ?? "") ?? false;
   return (
     <AccordionContentPrimitive
       {...rest}
       class="fui-AccordionContent"
       forceMount={(props.keepMounted ?? true) ? true : undefined}
+      hidden={!open() ? true : undefined}
     >
       <div class={cx("fui-AccordionContentInner", props.class)}>{resolved()}</div>
     </AccordionContentPrimitive>

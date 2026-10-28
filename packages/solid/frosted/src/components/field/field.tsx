@@ -388,7 +388,7 @@ const FieldControl: Component<FieldControlProps> = (props) => {
       data-touched={context.touched() ? "" : undefined}
       data-dirty={context.dirty() ? "" : undefined}
       value={context.fieldValue()}
-      class={cx("fui-reset", props.class)}
+      class={cx("fui-reset", "fui-FieldControl", props.class)}
       onInput={handleInput}
       onChange={handleChange}
       onBlur={handleBlur}

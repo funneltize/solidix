@@ -5,78 +5,191 @@
  */
 
 .fui-SliderRoot {
-  --slider-thumb-size: var(--space-4);
-  --slider-track-size: 5px;
+  --slider-thumb-size: calc(var(--slider-track-size) + var(--space-1));
 
-  display: block;
-  width: auto;
-  height: var(--slider-thumb-size);
   position: relative;
-  user-select: none;
-  touch-action: none;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 
-  &[data-disabled] {
-    cursor: default;
+  /* ensures no selection */
+  user-select: none;
+  /* disable browser handling of all panning and zooming gestures on touch devices */
+  touch-action: none;
+
+  &:where([data-orientation='horizontal']) {
+    height: var(--slider-thumb-size);
+  }
+  &:where([data-orientation='vertical']) {
+    height: 100%;
+    flex-direction: column;
+    width: var(--slider-thumb-size);
+  }
+
+  & :where(.fui-SliderTrack) {
+    background-color: var(--gray-a4);
+    /* Blend with white to increase contrast in dark mode */
+    background-image: linear-gradient(var(--white-a1), var(--white-a1));
+
+    &:where([data-disabled]) {
+      background-color: var(--gray-a4);
+      background-image: none;
+    }
+  }
+
+  & :where(.fui-SliderRange) {
+    background-color: var(--accent-9);
+  }
+
+  & :where(.fui-SliderThumb) {
+    --slider-thumb-box-shadow:
+      0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2), 0 0 0 1px var(--accent-a2), 0 1px 2px var(--gray-a4),
+      0 1px 3px -0.5px var(--gray-a3);
+
+    &:where([data-disabled])::after {
+      background-color: var(--gray-1);
+      box-shadow: 0 0 0 1px var(--gray-5);
+    }
   }
 }
 
 .fui-SliderControl {
-  height: 100%;
-  position: relative;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+
+  &:where([data-orientation='vertical']) {
+    flex-direction: column;
+    height: 100%;
+  }
 }
 
 .fui-SliderTrack {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: var(--slider-track-size);
-  transform: translateY(-50%);
-  border-radius: max(var(--radius-1), var(--radius-full));
-  background-color: var(--gray-a4);
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  flex-grow: 1;
+
+  border-radius: max(
+    calc(var(--radius-factor) * var(--slider-track-size) / 3),
+    calc(var(--radius-factor) * var(--radius-thumb))
+  );
+
+  &:where([data-orientation='horizontal']) {
+    height: var(--slider-track-size);
+  }
+  &:where([data-orientation='vertical']) {
+    width: var(--slider-track-size);
+  }
 }
 
 .fui-SliderRange {
   position: absolute;
   border-radius: inherit;
-  background-color: var(--accent-9);
-  inset: 0;
 
-  &.fui-high-contrast {
-    background-color: var(--accent-12);
+  &:where([data-orientation='horizontal']) {
+    height: 100%;
+  }
+
+  &:where([data-orientation='vertical']) {
+    width: 100%;
   }
 }
 
 .fui-SliderThumb {
-  height: var(--slider-thumb-size);
-  width: var(--slider-thumb-size);
-  border-radius: max(var(--radius-2), var(--radius-full));
-  background-color: white;
-  box-shadow: var(--shadow-2);
-  border: 1px solid var(--gray-7);
-  position: absolute;
-  cursor: grab;
-  outline: 0;
-  translate: 0 -50%;
-  top: 50%;
+  display: block;
+  /* Match the track so edge alignment stops on the pill's end-cap center */
+  width: var(--slider-track-size);
+  height: var(--slider-track-size);
 
-  &:active {
-    cursor: grabbing;
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: calc(var(--slider-thumb-size) * 3);
+    height: calc(var(--slider-thumb-size) * 3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  &:focus-visible {
+  /* Larger visible thumb so that it slightly overshoots the track */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: calc(-0.25 * var(--slider-track-size) - var(--space-1) / 2);
+    background-color: white;
+    border-radius: max(var(--radius-1), var(--radius-thumb));
+    box-shadow: var(--slider-thumb-box-shadow);
+    cursor: var(--cursor-slider-thumb);
+  }
+
+  &:where(:focus-visible)::after,
+  &:has(:focus-visible)::after {
     box-shadow:
-      var(--shadow-2),
-      0 0 0 3px var(--accent-a5);
-    border-color: var(--accent-7);
+      var(--slider-thumb-box-shadow),
+      0 0 0 3px var(--accent-3),
+      0 0 0 5px var(--color-focus-root);
   }
 
-  .fui-SliderRoot[data-disabled] & {
-    background-color: var(--gray-3);
-    border-color: var(--gray-6);
-    box-shadow: none;
-    cursor: default;
+  &:where(:active) {
+    cursor: var(--cursor-slider-thumb-active);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-SliderRoot {
+  &:where(.fui-r-size-1) {
+    --slider-track-size: calc(var(--space-2) * 0.75);
+  }
+  &:where(.fui-r-size-2) {
+    --slider-track-size: var(--space-2);
+  }
+  &:where(.fui-r-size-3) {
+    --slider-track-size: calc(var(--space-2) * 1.25);
+  }
+}
+
+/* all high-contrast */
+
+:where(.frosted-ui) {
+  --slider-range-high-contrast-background-image: linear-gradient(var(--black-a8), var(--black-a8));
+}
+.dark,
+.dark-theme,
+.dark :where(.frosted-ui:not(.light, .light-theme)),
+.dark-theme :where(.frosted-ui:not(.light, .light-theme)) {
+  --slider-range-high-contrast-background-image: none;
+}
+.fui-SliderRoot:where(.fui-high-contrast) {
+  & :where(.fui-SliderRange) {
+    /* blend black and accent */
+    background: var(--accent-12);
+  }
+}
+
+:where(.frosted-ui) {
+  --slider-disabled-blend-mode: multiply;
+}
+.dark,
+.dark-theme,
+.dark :where(.frosted-ui:not(.light, .light-theme)),
+.dark-theme :where(.frosted-ui:not(.light, .light-theme)) {
+  --slider-disabled-blend-mode: screen;
+}
+
+/* all disabled Sliders */
+
+[data-disabled] {
+  .fui-SliderRoot:where(&) {
+    cursor: var(--cursor-disabled);
+    mix-blend-mode: var(--slider-disabled-blend-mode);
+  }
+  .fui-SliderRange:where(&) {
+    background-color: var(--gray-a5);
   }
 }

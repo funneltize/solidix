@@ -45,6 +45,27 @@ describe("Tabs", () => {
     expect((await screen.findByText("Panel")).classList.contains("fui-TabsContent")).toBe(true);
   });
 
+  it("bridges data-selected onto the active trigger", async () => {
+    render(() => (
+      <Tabs.Root defaultValue="one">
+        <Tabs.List>
+          <Tabs.Trigger value="one">One</Tabs.Trigger>
+          <Tabs.Trigger value="two">Two</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="one">First panel</Tabs.Content>
+        <Tabs.Content value="two">Second panel</Tabs.Content>
+      </Tabs.Root>
+    ));
+    // The frosted CSS keys the active indicator on `data-selected` (Base UI
+    // parity); the headless primitive only emits `data-state`.
+    const first = await screen.findByRole("tab", { name: "One" });
+    expect(first.hasAttribute("data-selected")).toBe(true);
+    fireEvent.mouseDown(await screen.findByRole("tab", { name: "Two" }), { button: 0 });
+    await screen.findByText("Second panel");
+    expect(first.hasAttribute("data-selected")).toBe(false);
+    expect(screen.getByRole("tab", { name: "Two" }).hasAttribute("data-selected")).toBe(true);
+  });
+
   it("moves between tabs with arrow keys", async () => {
     render(() => (
       <Tabs.Root defaultValue="one">

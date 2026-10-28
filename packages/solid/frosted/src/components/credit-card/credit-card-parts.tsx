@@ -1072,7 +1072,7 @@ const CreditCardTextField: Component<CreditCardTextFieldProps> = (props) => {
       spellcheck="false"
       {...rest}
       ref={composedRefs}
-      class={cx("fui-CreditCardTextField", "fui-TextFieldInput", props.class)}
+      class={cx("fui-CreditCardTextField", props.class)}
     />
   );
 };
@@ -1144,14 +1144,16 @@ const CreditCardNumberField: Component<CreditCardNumberFieldProps> = (props) => 
     <input
       spellcheck="false"
       inputmode="numeric"
-      autocomplete="cc-number"
+      pattern="[0-9 ]*"
       maxlength={23}
+      placeholder="0000 0000 0000 0000"
+      autocomplete="cc-number"
       {...rest}
       ref={composedRefs}
       defaultValue={formattedDefault() ?? ""}
       {...(formattedValue() === undefined ? {} : { value: formattedValue() })}
       onInput={handleInput}
-      class={cx("fui-CreditCardNumberField", "fui-TextFieldInput", props.class)}
+      class={cx("fui-CreditCardTextField", "fui-CreditCardNumberField", props.class)}
     />
   );
 };
@@ -1208,7 +1210,7 @@ const CreditCardExpiryField: Component<CreditCardExpiryFieldProps> = (props) => 
       defaultValue={formattedDefault() ?? ""}
       {...(formattedValue() === undefined ? {} : { value: formattedValue() })}
       onInput={handleInput}
-      class={cx("fui-CreditCardExpiryField", "fui-TextFieldInput", props.class)}
+      class={cx("fui-CreditCardTextField", "fui-CreditCardExpiryField", props.class)}
     />
   );
 };
@@ -1246,7 +1248,7 @@ const CreditCardCVVField: Component<CreditCardCVVFieldProps> = (props) => {
       maxlength={cvcSize()}
       {...rest}
       ref={composedRefs}
-      class={cx("fui-CreditCardCVVField", "fui-TextFieldInput", props.class)}
+      class={cx("fui-CreditCardTextField", "fui-CreditCardCVVField", props.class)}
     />
   );
 };

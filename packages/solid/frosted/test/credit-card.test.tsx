@@ -243,8 +243,29 @@ describe("CreditCard", () => {
       </CreditCard.Root>
     ));
     const input = document.querySelector(".fui-CreditCardTextField") as HTMLInputElement;
-    expect(input.classList.contains("fui-TextFieldInput")).toBe(true);
+    // Upstream emits only the card class here (credit-card-parts.tsx
+    // `CreditCardTextField`); the shared `fui-TextFieldInput` class was a
+    // porting error (its rules only apply under a TextField root).
+    expect(input.classList.contains("fui-TextFieldInput")).toBe(false);
     expect(input.getAttribute("spellcheck")).toBe("false");
+  });
+
+  it("specialized fields layer onto the card text field class", () => {
+    render(() => (
+      <CreditCard.Root>
+        <CreditCard.NumberField aria-label="Card number" />
+        <CreditCard.ExpiryField aria-label="Expiry" />
+        <CreditCard.CVVField aria-label="CVV" />
+      </CreditCard.Root>
+    ));
+    // Upstream renders the specialized fields through `CreditCardTextField`,
+    // so each input carries both the base and the specialized class.
+    const number = document.querySelector(".fui-CreditCardNumberField") as HTMLInputElement;
+    expect(number.classList.contains("fui-CreditCardTextField")).toBe(true);
+    const expiry = document.querySelector(".fui-CreditCardExpiryField") as HTMLInputElement;
+    expect(expiry.classList.contains("fui-CreditCardTextField")).toBe(true);
+    const cvv = document.querySelector(".fui-CreditCardCVVField") as HTMLInputElement;
+    expect(cvv.classList.contains("fui-CreditCardTextField")).toBe(true);
   });
 
   it("exposes face and brand through useCreditCard", async () => {

@@ -1,4 +1,54 @@
+import type { JSX } from "@solidjs/web";
 import { Frosted } from "solidix";
+
+const ChevronLeftIcon = (): JSX.Element => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path
+      d="M10 3L5 8l5 5"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+const ChevronRightIcon = (): JSX.Element => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path
+      d="M6 3l5 5-5 5"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+const MarkerDots = (props: { count: number }): JSX.Element => (
+  <>
+    {Array.from({ length: props.count }, (_, index) => (
+      <Frosted.ScrollGallery.ScrollMarker
+        index={index}
+        render={(markerProps, state) => (
+          <button
+            {...markerProps}
+            style={{
+              width: "8px",
+              height: "8px",
+              "border-radius": "50%",
+              border: "1.5px solid var(--gray-8)",
+              background: state.active ? "var(--gray-12)" : "transparent",
+              padding: 0,
+              cursor: "pointer",
+              transition: "background 150ms",
+            }}
+          />
+        )}
+      />
+    ))}
+  </>
+);
 
 const FrostedDemo = () => (
   <Frosted.Theme>
@@ -8,7 +58,7 @@ const FrostedDemo = () => (
         Presentational primitives ported from frosted-ui, styled by{" "}
         <Frosted.Code size="2">fui-*</Frosted.Code> classes under the Theme root.
       </Frosted.Text>
-      <Frosted.Separator size="2" />
+      <Frosted.Separator size="4" />
       <Frosted.Heading size="4">Inline type</Frosted.Heading>
       <Frosted.Text size="3">
         This is <Frosted.Em>emphasized</Frosted.Em> text, a{" "}
@@ -21,7 +71,7 @@ const FrostedDemo = () => (
       <Frosted.Blockquote size="3">
         Frosted-ui is a small, themeable React component library. Solidix ports it to Solid.
       </Frosted.Blockquote>
-      <Frosted.Separator size="2" orientation="horizontal" decorative />
+      <Frosted.Separator size="4" orientation="horizontal" decorative />
       <Frosted.Heading size="4">Layout and feedback</Frosted.Heading>
       <Frosted.Inset side="x" clip="padding-box">
         <Frosted.Text size="2" color="gray">
@@ -36,7 +86,7 @@ const FrostedDemo = () => (
         </div>
         <Frosted.Spinner size="3" />
       </div>
-      <Frosted.Separator size="2" />
+      <Frosted.Separator size="4" />
       <Frosted.Heading size="6">Wave 2: form controls</Frosted.Heading>
       <Frosted.Form
         onSubmit={(event) => {
@@ -45,14 +95,18 @@ const FrostedDemo = () => (
       >
         <Frosted.Fieldset.Root>
           <Frosted.Fieldset.Legend>Profile</Frosted.Fieldset.Legend>
-          <Frosted.Field.Root>
+          <Frosted.Field.Root name="name">
             <Frosted.Field.Label>Name</Frosted.Field.Label>
-            <Frosted.Field.Control placeholder="Ada Lovelace" />
+            <Frosted.TextField.Root>
+              <Frosted.TextField.Input placeholder="Ada Lovelace" />
+            </Frosted.TextField.Root>
             <Frosted.Field.Description>Shown on your public profile.</Frosted.Field.Description>
           </Frosted.Field.Root>
-          <Frosted.Field.Root>
+          <Frosted.Field.Root name="bio">
             <Frosted.Field.Label>Bio</Frosted.Field.Label>
-            <Frosted.Field.Control placeholder="A sentence or two" />
+            <Frosted.TextField.Root>
+              <Frosted.TextField.Input placeholder="A sentence or two" />
+            </Frosted.TextField.Root>
           </Frosted.Field.Root>
         </Frosted.Fieldset.Root>
         <div class="FrostedDemoRow">
@@ -73,8 +127,38 @@ const FrostedDemo = () => (
           </Frosted.RadioGroup.Root>
         </div>
         <Frosted.RadioButtonGroup.Root defaultValue="card">
-          <Frosted.RadioButtonGroup.Item value="card">Card</Frosted.RadioButtonGroup.Item>
-          <Frosted.RadioButtonGroup.Item value="cash">Cash</Frosted.RadioButtonGroup.Item>
+          <div style={{ display: "flex", gap: "var(--space-2)", "flex-direction": "row" }}>
+            <Frosted.RadioButtonGroup.Item value="card">
+              <div
+                style={{
+                  display: "flex",
+                  padding: "8px 40px 8px 24px",
+                  "border-radius": "8px",
+                  border: "1px solid var(--gray-a7)",
+                  gap: "var(--space-2)",
+                  "align-items": "center",
+                }}
+              >
+                <Frosted.RadioButtonGroup.Icon style={{ "margin-left": "-12px" }} />
+                <Frosted.Text>Card</Frosted.Text>
+              </div>
+            </Frosted.RadioButtonGroup.Item>
+            <Frosted.RadioButtonGroup.Item value="cash">
+              <div
+                style={{
+                  display: "flex",
+                  padding: "8px 40px 8px 24px",
+                  "border-radius": "8px",
+                  border: "1px solid var(--gray-a7)",
+                  gap: "var(--space-2)",
+                  "align-items": "center",
+                }}
+              >
+                <Frosted.RadioButtonGroup.Icon style={{ "margin-left": "-12px" }} />
+                <Frosted.Text>Cash</Frosted.Text>
+              </div>
+            </Frosted.RadioButtonGroup.Item>
+          </div>
         </Frosted.RadioButtonGroup.Root>
         <Frosted.Slider aria-label="Volume" defaultValue={[30]} />
         <Frosted.Select.Root>
@@ -105,7 +189,7 @@ const FrostedDemo = () => (
           </Frosted.IconButton>
         </div>
       </Frosted.Form>
-      <Frosted.Separator size="2" />
+      <Frosted.Separator size="4" />
       <Frosted.Heading size="6">Wave 3: overlays</Frosted.Heading>
       <div class="FrostedDemoRow">
         <Frosted.Dialog.Root>
@@ -221,7 +305,7 @@ const FrostedDemo = () => (
           </Frosted.Lightbox.Root>
         </div>
       </Frosted.TooltipProvider>
-      <Frosted.Separator size="2" />
+      <Frosted.Separator size="4" />
       <Frosted.Heading size="6">Wave 4: navigation and data</Frosted.Heading>
       <Frosted.Heading size="4">Card, badge, and callout</Frosted.Heading>
       <Frosted.Card size="2">
@@ -329,22 +413,58 @@ const FrostedDemo = () => (
       </Frosted.ScrollArea>
       <Frosted.Heading size="4">Scroll gallery</Frosted.Heading>
       <Frosted.ScrollGallery.Root>
-        <Frosted.ScrollGallery.Previous>Previous</Frosted.ScrollGallery.Previous>
-        <Frosted.ScrollGallery.Viewport style={{ display: "flex", "overflow-x": "auto" }}>
-          <Frosted.ScrollGallery.Item style={{ "min-width": "100%" }}>
+        <Frosted.ScrollGallery.Viewport
+          style={{
+            display: "flex",
+            gap: "var(--space-3)",
+            "overflow-x": "auto",
+            "overscroll-behavior-x": "contain",
+            "scroll-snap-type": "x mandatory",
+            "scrollbar-width": "none",
+          }}
+        >
+          <Frosted.ScrollGallery.Item
+            style={{ "scroll-snap-align": "start", "flex-shrink": 0, "min-width": "100%" }}
+          >
             <div class="FrostedDemoSlide">Slide one</div>
           </Frosted.ScrollGallery.Item>
-          <Frosted.ScrollGallery.Item style={{ "min-width": "100%" }}>
+          <Frosted.ScrollGallery.Item
+            style={{ "scroll-snap-align": "start", "flex-shrink": 0, "min-width": "100%" }}
+          >
             <div class="FrostedDemoSlide">Slide two</div>
           </Frosted.ScrollGallery.Item>
         </Frosted.ScrollGallery.Viewport>
-        <Frosted.ScrollGallery.Next>Next</Frosted.ScrollGallery.Next>
-        <Frosted.ScrollGallery.ScrollMarkerGroup>
-          <Frosted.ScrollGallery.ScrollMarker index={0} aria-label="Go to slide one" />
-          <Frosted.ScrollGallery.ScrollMarker index={1} aria-label="Go to slide two" />
-        </Frosted.ScrollGallery.ScrollMarkerGroup>
+        <div
+          style={{
+            display: "flex",
+            "justify-content": "space-between",
+            "align-items": "center",
+            "margin-top": "var(--space-3)",
+          }}
+        >
+          <div style={{ display: "flex", gap: "var(--space-2)" }}>
+            <Frosted.ScrollGallery.Previous
+              aria-label="Previous"
+              render={<Frosted.IconButton variant="soft" size="2" color="gray" />}
+            >
+              <ChevronLeftIcon />
+            </Frosted.ScrollGallery.Previous>
+            <Frosted.ScrollGallery.Next
+              aria-label="Next"
+              render={<Frosted.IconButton variant="soft" size="2" color="gray" />}
+            >
+              <ChevronRightIcon />
+            </Frosted.ScrollGallery.Next>
+          </div>
+          <Frosted.ScrollGallery.ScrollMarkerGroup
+            aria-label="Choose item"
+            style={{ display: "flex", gap: "var(--space-1)" }}
+          >
+            <MarkerDots count={2} />
+          </Frosted.ScrollGallery.ScrollMarkerGroup>
+        </div>
       </Frosted.ScrollGallery.Root>
-      <Frosted.Separator size="2" />
+      <Frosted.Separator size="4" />
       <Frosted.Heading size="6">Wave 5: complex and remainder</Frosted.Heading>
       <Frosted.Heading size="4">Strong, shine, and empty state</Frosted.Heading>
       <Frosted.Text size="2">
@@ -381,12 +501,69 @@ const FrostedDemo = () => (
       />
       <Frosted.Heading size="4">Widget stack</Frosted.Heading>
       <Frosted.WidgetStack.Root>
-        <Frosted.WidgetStack.Prev>Previous</Frosted.WidgetStack.Prev>
-        <Frosted.WidgetStack.Stack>
-          <Frosted.WidgetStack.Item>Widget one</Frosted.WidgetStack.Item>
-          <Frosted.WidgetStack.Item>Widget two</Frosted.WidgetStack.Item>
+        <Frosted.WidgetStack.Stack style={{ width: "100%", height: "200px" }}>
+          <Frosted.WidgetStack.Item>
+            <div
+              style={{
+                display: "flex",
+                "flex-direction": "column",
+                width: "100%",
+                height: "100%",
+                "align-items": "center",
+                "justify-content": "center",
+                padding: "var(--space-4)",
+                background: "linear-gradient(var(--blue-9), var(--blue-6))",
+                color: "var(--blue-9-contrast)",
+              }}
+            >
+              <Frosted.Text size="5" weight="bold">
+                Widget one
+              </Frosted.Text>
+            </div>
+          </Frosted.WidgetStack.Item>
+          <Frosted.WidgetStack.Item>
+            <div
+              style={{
+                display: "flex",
+                "flex-direction": "column",
+                width: "100%",
+                height: "100%",
+                "align-items": "center",
+                "justify-content": "center",
+                padding: "var(--space-4)",
+                background: "linear-gradient(var(--plum-9), var(--plum-6))",
+                color: "var(--plum-9-contrast)",
+              }}
+            >
+              <Frosted.Text size="5" weight="bold">
+                Widget two
+              </Frosted.Text>
+            </div>
+          </Frosted.WidgetStack.Item>
         </Frosted.WidgetStack.Stack>
-        <Frosted.WidgetStack.Next>Next</Frosted.WidgetStack.Next>
+        <div
+          style={{
+            display: "flex",
+            "justify-content": "space-between",
+            "align-items": "center",
+            "margin-top": "var(--space-3)",
+          }}
+        >
+          <div style={{ display: "flex", gap: "var(--space-2)" }}>
+            <Frosted.WidgetStack.Prev
+              aria-label="Previous"
+              render={<Frosted.IconButton variant="soft" size="2" color="gray" />}
+            >
+              <ChevronLeftIcon />
+            </Frosted.WidgetStack.Prev>
+            <Frosted.WidgetStack.Next
+              aria-label="Next"
+              render={<Frosted.IconButton variant="soft" size="2" color="gray" />}
+            >
+              <ChevronRightIcon />
+            </Frosted.WidgetStack.Next>
+          </div>
+        </div>
       </Frosted.WidgetStack.Root>
       <Frosted.Heading size="4">Accordion</Frosted.Heading>
       <Frosted.Accordion.Root>
@@ -416,7 +593,9 @@ const FrostedDemo = () => (
             </Frosted.CreditCard.BackContent>
           </Frosted.CreditCard.Back>
         </Frosted.CreditCard.Content>
-        <Frosted.CreditCard.Trigger>Flip</Frosted.CreditCard.Trigger>
+        <Frosted.CreditCard.Trigger render={<Frosted.Button variant="surface" size="2" />}>
+          Flip
+        </Frosted.CreditCard.Trigger>
         <Frosted.CreditCard.Fieldset>
           <Frosted.CreditCard.Field>
             <Frosted.CreditCard.FieldLabel>Card number</Frosted.CreditCard.FieldLabel>

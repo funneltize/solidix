@@ -98,4 +98,25 @@ describe("Accordion", () => {
     expect(screen.getByText("First panel")).not.toBeNull();
     expect(screen.getByText("First panel").closest(".fui-AccordionContentInner")).not.toBeNull();
   });
+
+  it("hides collapsed panels and flags the open trigger", async () => {
+    render(() => <Basic />);
+    const first = await screen.findByRole("button", { name: "First" });
+    const content = screen.getByText("First panel").closest(".fui-AccordionContent");
+    // Base UI `keepMounted` parity: mounted but `hidden` while closed, and
+    // the chevron rotation keys on `data-panel-open`, not `data-state`.
+    expect(content?.hasAttribute("hidden")).toBe(true);
+    expect(first.hasAttribute("data-panel-open")).toBe(false);
+    fireEvent.click(first);
+    await vi.waitFor(() => {
+      expect(content?.hasAttribute("hidden")).toBe(false);
+    });
+    await vi.waitFor(() => {
+      expect(first.hasAttribute("data-panel-open")).toBe(true);
+    });
+    fireEvent.click(first);
+    await vi.waitFor(() => {
+      expect(content?.hasAttribute("hidden")).toBe(true);
+    });
+  });
 });

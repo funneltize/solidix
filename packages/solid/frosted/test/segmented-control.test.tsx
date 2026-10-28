@@ -20,6 +20,27 @@ describe("SegmentedControl", () => {
     expect(await screen.findByText("Second panel")).not.toBeNull();
   });
 
+  it("bridges data-selected onto the active segment", async () => {
+    render(() => (
+      <SegmentedControl.Root defaultValue="one">
+        <SegmentedControl.List>
+          <SegmentedControl.Trigger value="one">One</SegmentedControl.Trigger>
+          <SegmentedControl.Trigger value="two">Two</SegmentedControl.Trigger>
+        </SegmentedControl.List>
+        <SegmentedControl.Content value="one">First panel</SegmentedControl.Content>
+        <SegmentedControl.Content value="two">Second panel</SegmentedControl.Content>
+      </SegmentedControl.Root>
+    ));
+    // The frosted CSS keys the selected pill on `data-selected` (Base UI
+    // parity); the headless primitive only emits `data-state`.
+    const first = await screen.findByRole("tab", { name: "One" });
+    expect(first.hasAttribute("data-selected")).toBe(true);
+    fireEvent.mouseDown(await screen.findByRole("tab", { name: "Two" }), { button: 0 });
+    await screen.findByText("Second panel");
+    expect(first.hasAttribute("data-selected")).toBe(false);
+    expect(screen.getByRole("tab", { name: "Two" }).hasAttribute("data-selected")).toBe(true);
+  });
+
   it("applies segmented classes", async () => {
     render(() => (
       <SegmentedControl.Root defaultValue="one">

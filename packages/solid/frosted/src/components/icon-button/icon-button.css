@@ -3,15 +3,15 @@
  * Source: packages/frosted-ui/src/components/icon-button/icon-button.css
  * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
  */
+@import '../base-button/base-button.css';
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
 .fui-IconButton {
-  &:where(.fui-r-size-1) {
-    border-radius: max(var(--radius-2), var(--radius-full));
-  }
-  &:where(.fui-r-size-2) {
-    border-radius: max(var(--radius-3), var(--radius-full));
-  }
-  &:where(.fui-r-size-3),
-  &:where(.fui-r-size-4) {
-    border-radius: max(var(--radius-4), var(--radius-full));
-  }
+  height: var(--base-button-height);
+  width: var(--base-button-height);
 }
