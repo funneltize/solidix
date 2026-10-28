@@ -1,0 +1,56 @@
+{
+  "name": "@solidix/charts",
+  "version": "0.1.0",
+  "description": "Headless chart primitives for Solid 2 (bar, line, pie, scatter, radar, candlestick, heatmap, funnel, sankey, brush, zoom) with d3-powered scales.",
+  "homepage": "https://github.com/funneltize/solidix",
+  "bugs": {
+    "url": "https://github.com/funneltize/solidix/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funneltize/solidix.git",
+    "directory": "packages/solid/charts"
+  },
+  "source": "./src/index.ts",
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "scripts": {
+    "lint": "oxlint --max-warnings 0 src test",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@solidix/compose-refs": "workspace:*",
+    "@solidix/context": "workspace:*",
+    "@solidix/id": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*",
+    "d3-array": "3.2.4",
+    "d3-format": "3.1.2",
+    "d3-scale": "4.0.2",
+    "d3-shape": "3.2.0",
+    "d3-time": "3.1.0",
+    "d3-time-format": "4.1.0"
+  },
+  "devDependencies": {
+    "@repo/builder": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@solidjs/testing-library": "1.0.0-rc.2",
+    "@solidjs/web": "2.0.0-rc.18",
+    "@testing-library/user-event": "14.6.8",
+    "@types/d3-array": "3.2.2",
+    "@types/d3-format": "3.0.4",
+    "@types/d3-scale": "4.0.9",
+    "@types/d3-shape": "3.2.0",
+    "@types/d3-time": "3.0.4",
+    "@types/d3-time-format": "4.0.3",
+    "solid-js": "2.0.0-rc.18"
+  },
+  "peerDependencies": {
+    "@solidjs/web": ">=2.0.0-rc.18 <2.1.0",
+    "solid-js": ">=2.0.0-rc.18 <2.1.0"
+  }
+}

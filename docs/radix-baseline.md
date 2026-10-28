@@ -21,6 +21,7 @@ primitive, presence, menu, slot) and all matched.
 | arrow                   | @radix-ui/react-arrow                                    | 1.1.17                          |
 | aspect-ratio            | @radix-ui/react-aspect-ratio                             | 1.2.0                           |
 | avatar                  | @radix-ui/react-avatar                                   | 1.3.1                           |
+| charts                  | @mui/x-charts                                            | 9.16.0                          |
 | checkbox                | @radix-ui/react-checkbox                                 | 1.4.1                           |
 | collapsible             | @radix-ui/react-collapsible                              | 1.2.1                           |
 | collection              | @radix-ui/react-collection                               | 1.2.0                           |

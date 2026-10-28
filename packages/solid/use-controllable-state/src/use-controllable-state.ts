@@ -1,4 +1,4 @@
-import { createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, untrack } from "solid-js";
 import { IS_DEVELOPMENT } from "@solidix/env-check/is-development";
 
 type ChangeHandler<T> = (state: T) => void;
@@ -44,7 +44,10 @@ export function useControllableState<T>({
   createEffect(
     () => uncontrolled(),
     (value, prev) => {
-      if (!isControlled() && uncontrolledInitialized && !Object.is(prev, value)) {
+      // Effect callbacks never track: read controlled-ness untracked (the
+      // reducer variant already does this) so reactive controlled props do
+      // not trip the strict-mode diagnostic.
+      if (!untrack(isControlled) && uncontrolledInitialized && !Object.is(prev, value)) {
         onChange(value);
       }
       uncontrolledInitialized = true;

@@ -1,0 +1,258 @@
+@import "@solidix/motion/springs.css";
+
+.ChartsDemo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 700px;
+}
+
+.ChartsCard {
+  --sx-color-1: #0f766d;
+  --sx-color-2: #b45309;
+  --sx-color-3: #1d4ed8;
+  --sx-color-4: #475569;
+
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px 20px 12px;
+}
+
+.ChartsCardHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.ChartsCardHeader h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.ChartsHint {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.ChartsToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #334155;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ChartsToggle input {
+  accent-color: #0f766d;
+}
+
+.ChartsStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-end;
+  padding: 8px 0;
+}
+
+.ChartsKpi {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ChartsKpi figcaption {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.ChartsKpi strong {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.ChartsDuo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 8px 0;
+}
+
+.ChartsDuoItem {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ChartsDuoItem figcaption {
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+}
+
+.ChartsZoomControls {
+  display: flex;
+  gap: 6px;
+  padding: 8px 0 12px;
+}
+
+.ChartsZoomControls button {
+  min-width: 32px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f766d;
+  background-color: #f0fdfa;
+  border: 1px solid #99f6e4;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ChartsZoomControls button:hover:not(:disabled) {
+  background-color: #ccfbf1;
+}
+
+.ChartsZoomControls button:disabled {
+  color: #94a3b8;
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+  cursor: default;
+}
+
+/* Staggered spring entrances. Charts ship unstyled: this is the consumer
+ * recipe from the Charts guide ("Motion") applied to the demo. Keyframes
+ * run once per mount, so interactive states (highlight dimming, legend
+ * toggles) are unaffected; the reduced-motion guard at the end collapses
+ * all of it. */
+
+@keyframes charts-enter-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes charts-enter-grow {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+@keyframes charts-enter-pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* Every focusable mark fades in on mount. */
+.ChartsCard svg [tabindex="0"] {
+  animation: charts-enter-fade 320ms ease backwards;
+  animation-timing-function: var(--solidix-spring-default, ease);
+}
+
+/* Bars grow from the baseline, dots pop from their centers. SVG geometry
+ * needs fill-box origins: without them scaleY collapses toward the SVG
+ * origin instead of the mark. */
+.ChartsCard svg rect[role="img"],
+.ChartsCard svg circle[role="img"] {
+  transform-box: fill-box;
+}
+
+.ChartsCard svg rect[role="img"] {
+  transform-origin: bottom;
+  animation-name: charts-enter-grow;
+  animation-timing-function: var(--solidix-spring-snappy, ease);
+}
+
+.ChartsCard svg circle[role="img"] {
+  transform-origin: center;
+  animation-name: charts-enter-pop;
+  animation-duration: 220ms;
+  animation-timing-function: var(--solidix-spring-snappy, ease);
+}
+
+/* Decorative paths fade: line and area series, gauge arcs, polar outlines,
+ * grid rings, sankey ribbons, sparkline end dots. */
+.ChartsCard svg path[fill="none"],
+.ChartsCard svg path[fill-opacity],
+.ChartsCard svg polygon[aria-hidden="true"],
+.ChartsCard svg g[aria-hidden="true"] path,
+.ChartsCard svg circle:not([role="img"]) {
+  animation: charts-enter-fade 320ms ease backwards;
+  animation-timing-function: var(--solidix-spring-default, ease);
+}
+
+/* The legend fades with its chart. The tooltip is excluded on purpose: it
+ * remounts on every highlight move, so an entrance would replay constantly. */
+.ChartsCard ul {
+  animation: charts-enter-fade 320ms ease backwards;
+  animation-timing-function: var(--solidix-spring-default, ease);
+}
+
+/* Stagger cascade: marks enter in document order, 40ms apart. Extend the
+ * ladder to your mark count; the catch-all holds everything past it. */
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(2) {
+  animation-delay: 40ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(3) {
+  animation-delay: 80ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(4) {
+  animation-delay: 120ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(5) {
+  animation-delay: 160ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(6) {
+  animation-delay: 200ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(7) {
+  animation-delay: 240ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(8) {
+  animation-delay: 280ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(9) {
+  animation-delay: 320ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(10) {
+  animation-delay: 360ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(11) {
+  animation-delay: 400ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(12) {
+  animation-delay: 440ms;
+}
+
+.ChartsCard svg :is(rect[role="img"], circle[role="img"], g[data-candle-direction], polygon[tabindex="0"], rect[data-node-id]):nth-of-type(n + 13) {
+  animation-delay: 480ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ChartsCard svg *,
+  .ChartsCard ul {
+    animation: none !important;
+  }
+}

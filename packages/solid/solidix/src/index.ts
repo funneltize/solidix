@@ -6,6 +6,8 @@ export * as AlertDialog from "@solidix/alert-dialog";
 export * as AspectRatio from "@solidix/aspect-ratio";
 /** Avatar primitive (port of @radix-ui/react-avatar). */
 export * as Avatar from "@solidix/avatar";
+/** Charts package (chart primitives: bar, line, area, pie, scatter, sparkline, gauge, radar, radial, candlestick, heatmap, funnel, sankey, brush, zoom). */
+export * as Charts from "@solidix/charts";
 /** Checkbox primitive (port of @radix-ui/react-checkbox). */
 export * as Checkbox from "@solidix/checkbox";
 /** Collapsible primitive (port of @radix-ui/react-collapsible). */

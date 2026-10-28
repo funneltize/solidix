@@ -355,6 +355,55 @@ no `height: auto` hack:
 }
 ```
 
+### Staggered entrances (charts)
+
+Chart marks expose `tabindex="0"` and `role="img"`, so keyframe entrances
+need no library support: fades for every mark, `scaleY` growth for bars,
+`scale` pops for dots, cascaded with `nth-of-type` delays. Keyframes run
+once per mount, so highlight dimming stays instant:
+
+```css
+@keyframes charts-enter-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes charts-enter-grow {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+.my-chart svg [tabindex="0"] {
+  animation: charts-enter-fade 320ms ease backwards;
+  animation-timing-function: var(--solidix-spring-default, ease);
+}
+
+.my-chart svg rect[role="img"] {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation-name: charts-enter-grow;
+  animation-timing-function: var(--solidix-spring-snappy, ease);
+}
+
+.my-chart svg rect[role="img"]:nth-of-type(2) {
+  animation-delay: 40ms;
+}
+
+.my-chart svg rect[role="img"]:nth-of-type(3) {
+  animation-delay: 80ms;
+}
+
+/* …extend the ladder to your mark count… */
+```
+
+`transform-box: fill-box` is load-bearing for SVG origins. Leave the
+tooltip out: it remounts on every highlight move, so an entrance would
+replay constantly. The gallery charts demo applies the full recipe. See
+the [Charts guide](../../../docs/charts.md#motion).
+
 ### Reduced motion
 
 Motion must always have an off-ramp. Pair every recipe with:

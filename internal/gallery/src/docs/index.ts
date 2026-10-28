@@ -4,12 +4,14 @@ import { doc as alertDialog } from "./alert-dialog";
 import { doc as announce } from "./announce";
 import { doc as aspectRatio } from "./aspect-ratio";
 import { doc as avatar } from "./avatar";
+import { doc as charts } from "./charts";
 import { doc as checkbox } from "./checkbox";
 import { doc as collapsible } from "./collapsible";
 import { doc as contextMenu } from "./context-menu";
 import { doc as dialog } from "./dialog";
 import { doc as dropdownMenu } from "./dropdown-menu";
 import { doc as form } from "./form";
+import { doc as frosted } from "./frosted";
 import { doc as funnel } from "./funnel";
 import { doc as hoverCard } from "./hover-card";
 import { doc as label } from "./label";
@@ -39,12 +41,14 @@ export const docs: Record<string, PrimitiveDoc> = {
   announce: announce,
   "aspect-ratio": aspectRatio,
   avatar: avatar,
+  charts: charts,
   checkbox: checkbox,
   collapsible: collapsible,
   "context-menu": contextMenu,
   dialog: dialog,
   "dropdown-menu": dropdownMenu,
   form: form,
+  frosted: frosted,
   funnel: funnel,
   "hover-card": hoverCard,
   label: label,

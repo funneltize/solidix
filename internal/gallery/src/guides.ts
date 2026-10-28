@@ -1,4 +1,5 @@
 import animation from "../../../docs/animation.md?raw";
+import charts from "../../../docs/charts.md?raw";
 import composition from "../../../docs/composition.md?raw";
 import forms from "../../../docs/forms.md?raw";
 import migrating from "../../../docs/migrating.md?raw";
@@ -25,6 +26,12 @@ export const guides: GuideEntry[] = [
     title: "Composition",
     description: "Render parts as your own elements with asChild, and how prop merging works.",
     markdown: composition,
+  },
+  {
+    slug: "charts",
+    title: "Charts",
+    description: "All-in-one charts versus composed plots, curves, tooltips, zoom, and styling.",
+    markdown: charts,
   },
   {
     slug: "state",
