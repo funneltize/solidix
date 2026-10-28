@@ -1,5 +1,12 @@
 # solidix
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [64d134f]
+  - @solidix/frosted@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes
