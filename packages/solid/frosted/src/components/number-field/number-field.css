@@ -1,0 +1,337 @@
+/* Upstream: https://github.com/whopio/frosted-ui/blob/56787900bfe0/packages/frosted-ui/src/components/number-field/number-field.css */
+
+.fui-NumberFieldRoot {
+  /* NumberField-specific: center buttons vertically */
+  align-items: center;
+  isolation: isolate;
+}
+
+/* Input styling - extends TextField styles */
+.fui-NumberFieldInput {
+  /* Remove spinner buttons in WebKit/Blink */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Remove spinner buttons in Firefox */
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  /* Ensure input shows above background when focused */
+  &:focus {
+    z-index: 4;
+  }
+}
+
+/* Button base - IconButton handles the variant styling, we handle size and layout */
+.fui-NumberFieldButton {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1; /* Above root background so button backgrounds are visible */
+
+  /* Hovered/focused button should appear above other buttons for border visibility */
+  &:hover {
+    z-index: 2;
+  }
+
+  &:focus-visible {
+    z-index: 3;
+  }
+
+  /* Size variants - override IconButton defaults for number field */
+  &:where(.fui-r-size-1) {
+    width: var(--space-5);
+    height: var(--space-5);
+    border-radius: max(6px, var(--radius-full));
+  }
+
+  &:where(.fui-r-size-2) {
+    width: var(--space-6);
+    height: var(--space-6);
+    border-radius: max(8px, var(--radius-full));
+  }
+
+  &:where(.fui-r-size-3) {
+    width: var(--space-7);
+    height: var(--space-7);
+    border-radius: max(10px, var(--radius-full));
+  }
+
+  &:where(.fui-r-size-4) {
+    width: var(--space-8);
+    height: var(--space-8);
+    border-radius: max(14px, var(--radius-full));
+  }
+}
+
+/* Soft variant button styling */
+:where(.fui-NumberFieldRoot.fui-variant-soft) .fui-NumberFieldButton {
+  background: transparent;
+  box-shadow: -1px 0 0 0 var(--accent-a5);
+
+  @media (hover: hover) {
+    &:where(:hover:not(:disabled):not([data-readonly])) {
+      background: var(--accent-a3);
+    }
+    &:where(:active:not(:disabled):not([data-readonly])) {
+      background: var(--accent-a4);
+    }
+  }
+
+  &:where(:disabled) {
+    box-shadow: -1px 0 0 0 var(--gray-a5);
+  }
+}
+
+/* Soft variant read-only: use gray dividers */
+:where(.fui-NumberFieldRoot.fui-variant-soft:has(.fui-NumberFieldInput:read-only))
+  .fui-NumberFieldButton {
+  box-shadow: -1px 0 0 0 var(--gray-a5);
+}
+
+/* Soft variant split layout: decrement needs right border, increment needs left border */
+:where(.fui-NumberFieldRoot.fui-variant-soft.fui-button-layout-split) .fui-NumberFieldDecrement {
+  box-shadow: 1px 0 0 0 var(--accent-a5);
+
+  &:where(:disabled) {
+    box-shadow: 1px 0 0 0 var(--gray-a5);
+  }
+}
+
+:where(
+    .fui-NumberFieldRoot.fui-variant-soft.fui-button-layout-split:has(
+        .fui-NumberFieldInput:read-only
+      )
+  )
+  .fui-NumberFieldDecrement {
+  box-shadow: 1px 0 0 0 var(--gray-a5);
+}
+
+/***************************************************************************************************
+ * SLOT - Icon/button container inside the input area
+ ***************************************************************************************************/
+
+.fui-NumberFieldSlot {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  color: var(--gray-a11);
+
+  &:where([data-accent-color]) {
+    color: var(--accent-a11);
+  }
+
+  &:where(:empty) {
+    display: none;
+  }
+
+  /* Size variants */
+  &:where(.fui-r-size-1) {
+    gap: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &:where(.fui-r-size-2) {
+    gap: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &:where(.fui-r-size-3) {
+    gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &:where(.fui-r-size-4) {
+    gap: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/***************************************************************************************************
+ * SPLIT LAYOUT - Buttons on either side of input: [-] [input] [+]
+ ***************************************************************************************************/
+
+.fui-NumberFieldRoot.fui-button-layout-split {
+  & > .fui-NumberFieldInput {
+    text-align: center;
+    text-indent: 0;
+    border-radius: 0;
+  }
+
+  & > .fui-NumberFieldDecrement {
+    order: -1;
+  }
+
+  & > .fui-NumberFieldIncrement {
+    order: 1;
+  }
+
+  /* Decrement border radius (left side) */
+  & > .fui-NumberFieldDecrement {
+    position: relative;
+    /* Make sure the focus outline stays on top of the button group */
+    z-index: -1;
+    &:where(.fui-r-size-1) {
+      border-radius: max(6px, var(--radius-full)) 0 0 max(6px, var(--radius-full));
+    }
+    &:where(.fui-r-size-2) {
+      border-radius: max(8px, var(--radius-full)) 0 0 max(8px, var(--radius-full));
+    }
+    &:where(.fui-r-size-3) {
+      border-radius: max(10px, var(--radius-full)) 0 0 max(10px, var(--radius-full));
+    }
+    &:where(.fui-r-size-4) {
+      border-radius: max(14px, var(--radius-full)) 0 0 max(14px, var(--radius-full));
+    }
+  }
+
+  /* Increment border radius (right side) */
+  & > .fui-NumberFieldIncrement {
+    position: relative;
+    /* Make sure the focus outline stays on top of the button group */
+    z-index: -1;
+    &:where(.fui-r-size-1) {
+      border-radius: 0 max(6px, var(--radius-full)) max(6px, var(--radius-full)) 0;
+    }
+    &:where(.fui-r-size-2) {
+      border-radius: 0 max(8px, var(--radius-full)) max(8px, var(--radius-full)) 0;
+    }
+    &:where(.fui-r-size-3) {
+      border-radius: 0 max(10px, var(--radius-full)) max(10px, var(--radius-full)) 0;
+    }
+    &:where(.fui-r-size-4) {
+      border-radius: 0 max(14px, var(--radius-full)) max(14px, var(--radius-full)) 0;
+    }
+  }
+}
+
+/***************************************************************************************************
+ * TRAILING LAYOUT - Buttons in a row on right side: [input] [-] [+]
+ ***************************************************************************************************/
+
+.fui-NumberFieldButtonGroup {
+  position: relative;
+  /* Make sure the focus outline stays on top of the button group */
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  margin-left: -1px; /* Collapse border with input */
+}
+
+.fui-NumberFieldRoot.fui-button-layout-trailing {
+  & > .fui-NumberFieldInput {
+    text-align: left;
+
+    &:where(.fui-r-size-1) {
+      text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
+      border-radius: max(6px, var(--radius-full)) 0 0 max(6px, var(--radius-full));
+    }
+    &:where(.fui-r-size-2) {
+      text-indent: calc(var(--space-2) - var(--text-field-border-width));
+      border-radius: max(8px, var(--radius-full)) 0 0 max(8px, var(--radius-full));
+    }
+    &:where(.fui-r-size-3) {
+      text-indent: calc(var(--space-3) - var(--text-field-border-width));
+      border-radius: max(10px, var(--radius-full)) 0 0 max(10px, var(--radius-full));
+    }
+    &:where(.fui-r-size-4) {
+      text-indent: calc(var(--space-3) - var(--text-field-border-width));
+      border-radius: max(14px, var(--radius-full)) 0 0 max(14px, var(--radius-full));
+    }
+  }
+
+  /* Button group styling */
+  & .fui-NumberFieldButtonGroup {
+    & .fui-NumberFieldButton {
+      border-radius: 0;
+    }
+
+    /* Increment (right button) - collapse border with left button */
+    & .fui-NumberFieldIncrement {
+      margin-left: -1px;
+
+      &:where(.fui-r-size-1) {
+        border-top-right-radius: max(6px, var(--radius-full));
+        border-bottom-right-radius: max(6px, var(--radius-full));
+      }
+      &:where(.fui-r-size-2) {
+        border-top-right-radius: max(8px, var(--radius-full));
+        border-bottom-right-radius: max(8px, var(--radius-full));
+      }
+      &:where(.fui-r-size-3) {
+        border-top-right-radius: max(10px, var(--radius-full));
+        border-bottom-right-radius: max(10px, var(--radius-full));
+      }
+      &:where(.fui-r-size-4) {
+        border-top-right-radius: max(14px, var(--radius-full));
+        border-bottom-right-radius: max(14px, var(--radius-full));
+      }
+    }
+  }
+
+  /* Soft variant doesn't need negative margins */
+  &:where(.fui-variant-soft) .fui-NumberFieldButtonGroup {
+    margin-left: 0;
+
+    & .fui-NumberFieldIncrement {
+      margin-left: 0;
+    }
+  }
+}
+
+/***************************************************************************************************
+ * NO BUTTONS - Restore full styling when buttonLayout="none"
+ ***************************************************************************************************/
+
+.fui-NumberFieldRoot:not(:has(.fui-NumberFieldButton)) {
+  & > .fui-NumberFieldInput {
+    text-align: left;
+
+    &:where(.fui-r-size-1) {
+      text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
+      border-radius: max(6px, var(--radius-full));
+    }
+    &:where(.fui-r-size-2) {
+      text-indent: calc(var(--space-2) - var(--text-field-border-width));
+      border-radius: max(8px, var(--radius-full));
+    }
+    &:where(.fui-r-size-3) {
+      text-indent: calc(var(--space-3) - var(--text-field-border-width));
+      border-radius: max(10px, var(--radius-full));
+    }
+    &:where(.fui-r-size-4) {
+      text-indent: calc(var(--space-3) - var(--text-field-border-width));
+      border-radius: max(14px, var(--radius-full));
+    }
+  }
+}
+
+/***************************************************************************************************
+ * SLOT + INPUT INTERACTION
+ * Must come after layout rules to override their text-indent
+ ***************************************************************************************************/
+
+/* When Input follows a Slot (leading slot), remove text-indent since Slot provides padding */
+.fui-NumberFieldRoot > .fui-NumberFieldSlot + .fui-NumberFieldInput {
+  text-indent: 0;
+}
+
+/***************************************************************************************************
+ * DISABLED & READ-ONLY STATES
+ ***************************************************************************************************/
+
+.fui-NumberFieldRoot[data-disabled] {
+  & .fui-NumberFieldInput {
+    cursor: text;
+    color: var(--gray-a11);
+    -webkit-text-fill-color: var(--gray-a11);
+  }
+}

@@ -1,0 +1,93 @@
+/*
+ * Entry: foundation styles (reset, tokens, utilities) plus every ported
+ * component stylesheet. Adapted from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/styles/index.css
+ * See LICENSE and NOTICE. Processed into styles.css / styles.lite.css
+ * by scripts/build-css.mjs (comments are stripped from the output).
+ */
+@import "./animations.css";
+@import "./breakpoints.css";
+@import "./reset.css";
+@import "./scrollbars.css";
+
+@import "./tokens/color.css";
+@import "./tokens/semantic-color.css";
+@import "./tokens/cursor.css";
+@import "./tokens/radius.css";
+@import "./tokens/shadow.css";
+@import "./tokens/space.css";
+@import "./tokens/typography.css";
+
+@import "../components/base-button/base-button.css";
+@import "../components/badge/badge.css";
+@import "../components/blockquote/blockquote.css";
+@import "../components/breadcrumbs/breadcrumbs.css";
+@import "../components/callout/callout.css";
+@import "../components/card/card.css";
+@import "../components/circular-progress/circular-progress.css";
+@import "../components/data-list/data-list.css";
+@import "../components/button/button.css";
+@import "../components/checkbox/checkbox.css";
+@import "../components/alert-dialog/alert-dialog.css";
+@import "../components/avatar/avatar.css";
+@import "../components/avatar-group/avatar-group.css";
+@import "../components/avatar-stack/avatar-stack.css";
+@import "../components/dialog/dialog.css";
+@import "../components/drawer/drawer.css";
+@import "../components/base-menu/base-menu.css";
+@import "../components/dropdown-menu/dropdown-menu.css";
+@import "../components/context-menu/context-menu.css";
+@import "../components/hover-card/hover-card.css";
+@import "../components/lightbox/lightbox.css";
+@import "../components/popover/popover.css";
+@import "../components/progress/progress.css";
+@import "../components/tooltip/tooltip.css";
+@import "../components/field/field.css";
+@import "../components/fieldset/fieldset.css";
+@import "../components/form/form.css";
+@import "../components/icon-button/icon-button.css";
+@import "../components/otp-field/otp-field.css";
+@import "../components/base-segmented-control-list/base-segmented-control-list.css";
+@import "../components/base-tabs-list/base-tabs-list.css";
+@import "../components/segmented-control/segmented-control.css";
+@import "../components/segmented-control-nav/segmented-control-nav.css";
+@import "../components/scroll-area/scroll-area.css";
+@import "../components/scroll-gallery/scroll-gallery.css";
+@import "../components/strong/strong.css";
+@import "../components/shine/shine.css";
+@import "../components/empty-state/empty-state.css";
+@import "../components/filter-chip/filter-chip.css";
+@import "../components/country-flag/country-flag.css";
+@import "../components/stacked-horizontal-bar-chart/stacked-horizontal-bar-chart.css";
+@import "../components/widget-stack/widget-stack.css";
+@import "../components/accordion/accordion.css";
+@import "../components/credit-card/credit-card.css";
+@import "../components/bot-avatar/bot-avatar.css";
+@import "../components/segmented-control-radio-group/segmented-control-radio-group.css";
+@import "../components/table/table.css";
+@import "../components/tabs/tabs.css";
+@import "../components/tabs-nav/tabs-nav.css";
+@import "../components/text-area/text-area.css";
+@import "../components/text-field/text-field.css";
+@import "../components/code/code.css";
+@import "../components/em/em.css";
+@import "../components/heading/heading.css";
+@import "../components/inset/inset.css";
+@import "../components/kbd/kbd.css";
+@import "../components/link/link.css";
+@import "../components/number-field/number-field.css";
+@import "../components/quote/quote.css";
+@import "../components/radio-button-group/radio-button-group.css";
+@import "../components/radio-group/radio-group.css";
+@import "../components/select/select.css";
+@import "../components/separator/separator.css";
+@import "../components/skeleton/skeleton.css";
+@import "../components/slider/slider.css";
+@import "../components/spinner/spinner.css";
+@import "../components/switch/switch.css";
+@import "../components/text/text.css";
+
+@import "./utilities/font-weight.css";
+@import "./utilities/leading-trim.css";
+@import "./utilities/text-align.css";
+@import "./utilities/vertical-align.css";

@@ -32,6 +32,9 @@ import DropdownMenuCss from "./dropdown-menu.css?url";
 import FormDemo from "./form";
 import FormDemoCode from "./form?raw";
 import FormCss from "./form.css?url";
+import FrostedDemo from "./frosted";
+import FrostedDemoCode from "./frosted?raw";
+import FrostedCss from "./frosted.css?url";
 import FunnelDemo from "./funnel";
 import FunnelDemoCode from "./funnel?raw";
 import FunnelCss from "./funnel.css?url";
@@ -173,6 +176,13 @@ export const demos: DemoEntry[] = [
     code: DropdownMenuDemoCode,
   },
   { slug: "form", title: "Form", component: FormDemo, css: FormCss, code: FormDemoCode },
+  {
+    slug: "frosted",
+    title: "Frosted",
+    component: FrostedDemo,
+    css: FrostedCss,
+    code: FrostedDemoCode,
+  },
   {
     slug: "funnel",
     title: "Funnel",

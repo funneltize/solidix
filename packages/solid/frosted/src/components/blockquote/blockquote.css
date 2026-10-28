@@ -1,0 +1,9 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/blockquote/blockquote.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-Blockquote {
+  border-left: clamp(2px, 0.125em, 6px) solid var(--accent-a6);
+  padding-left: min(var(--space-5), max(var(--space-3), 0.5em));
+}

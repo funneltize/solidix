@@ -18,6 +18,8 @@ export * as Dialog from "@solidix/dialog";
 export * as DropdownMenu from "@solidix/dropdown-menu";
 /** Form primitive (port of @radix-ui/react-form). */
 export * as Form from "@solidix/form";
+/** Styled component library (port of frosted-ui): theme provider plus themed components. */
+export * as Frosted from "@solidix/frosted";
 /** Design language for direct-response landing pages: design tokens plus themed funnel blocks built on Solidix primitives. */
 export * as Funnel from "@solidix/funnel";
 /** Hover-card primitive (port of @radix-ui/react-hover-card). */

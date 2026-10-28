@@ -1,0 +1,197 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/code/code.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-Code {
+  --code-variant-font-size-adjust: calc(var(--code-font-size-adjust) * 0.95);
+  box-sizing: border-box;
+  font-family: var(--code-font-family);
+  font-size: calc(var(--code-variant-font-size-adjust) * 1em);
+  font-style: var(--code-font-style);
+  font-weight: var(--code-font-weight);
+  line-height: 1.25;
+  letter-spacing: calc(
+    var(--code-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
+  );
+  border-radius: calc((0.5px + 0.2em) * var(--radius-factor));
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-Code {
+  &:where(.fui-r-size-1) {
+    font-size: calc(var(--font-size-1) * var(--code-variant-font-size-adjust));
+    line-height: var(--line-height-1);
+    --letter-spacing: var(--letter-spacing-1);
+  }
+  &:where(.fui-r-size-2) {
+    font-size: calc(var(--font-size-2) * var(--code-variant-font-size-adjust));
+    line-height: var(--line-height-2);
+    --letter-spacing: var(--letter-spacing-2);
+  }
+  &:where(.fui-r-size-3) {
+    font-size: calc(var(--font-size-3) * var(--code-variant-font-size-adjust));
+    line-height: var(--line-height-3);
+    --letter-spacing: var(--letter-spacing-3);
+  }
+  &:where(.fui-r-size-4) {
+    font-size: calc(var(--font-size-4) * var(--code-variant-font-size-adjust));
+    line-height: var(--line-height-4);
+    --letter-spacing: var(--letter-spacing-4);
+  }
+  &:where(.fui-r-size-5) {
+    font-size: calc(var(--font-size-5) * var(--code-variant-font-size-adjust));
+    line-height: var(--line-height-5);
+    --letter-spacing: var(--letter-spacing-5);
+  }
+  &:where(.fui-r-size-6) {
+    font-size: calc(var(--font-size-6) * var(--code-variant-font-size-adjust));
+    line-height: var(--line-height-6);
+    --letter-spacing: var(--letter-spacing-6);
+  }
+  &:where(.fui-r-size-7) {
+    font-size: calc(var(--font-size-7) * var(--code-variant-font-size-adjust));
+    line-height: var(--line-height-7);
+    --letter-spacing: var(--letter-spacing-7);
+  }
+  &:where(.fui-r-size-8) {
+    font-size: calc(var(--font-size-8) * var(--code-variant-font-size-adjust));
+    line-height: var(--line-height-8);
+    --letter-spacing: var(--letter-spacing-8);
+  }
+  &:where(.fui-r-size-9) {
+    font-size: calc(var(--font-size-9) * var(--code-variant-font-size-adjust));
+    line-height: var(--line-height-9);
+    --letter-spacing: var(--letter-spacing-9);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* ghost */
+
+.fui-Code:where(.fui-variant-ghost) {
+  --code-variant-font-size-adjust: var(--code-font-size-adjust);
+  color: var(--accent-a11);
+
+  &:where(.fui-high-contrast) {
+    color: var(--accent-12);
+  }
+
+  :where(.fui-Link) & {
+    text-decoration-line: underline;
+    text-decoration-color: inherit;
+    text-decoration-thickness: inherit;
+  }
+
+  :where(.fui-Link:has(&:only-child)) {
+    &:where(:focus-visible) .fui-Code {
+      text-decoration: none;
+      outline: 2px solid var(--color-focus-root);
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* solid */
+
+.fui-Code:where(.fui-variant-solid) {
+  padding: var(--code-padding-top) 0.25em var(--code-padding-bottom);
+  background-color: var(--accent-a9);
+  color: var(--accent-9-contrast);
+
+  &:where(.fui-high-contrast) {
+    background-color: var(--accent-12);
+    color: var(--accent-1);
+  }
+
+  &::selection {
+    background-color: var(--accent-7);
+    color: var(--accent-12);
+  }
+
+  :where(.fui-Link:has(&:only-child)) {
+    & .fui-Code {
+      @media (hover: hover) {
+        &:where(:hover) {
+          background-color: var(--accent-10);
+        }
+        &:where(.fui-high-contrast:hover) {
+          background-color: var(--accent-12);
+          /* Re-use base button hover filter */
+          filter: var(--base-button-solid-high-contrast-hover-filter);
+        }
+      }
+    }
+    &:where(:focus-visible) .fui-Code {
+      outline: 2px solid var(--color-focus-root);
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* soft */
+
+.fui-Code:where(.fui-variant-soft) {
+  padding: var(--code-padding-top) 0.25em var(--code-padding-bottom);
+  background-color: var(--accent-a3);
+  color: var(--accent-a11);
+
+  &:where(.fui-high-contrast) {
+    background-color: var(--accent-a4);
+    color: var(--accent-12);
+  }
+
+  :where(.fui-Link:has(&:only-child)) {
+    & .fui-Code {
+      @media (hover: hover) {
+        &:where(:hover) {
+          background-color: var(--accent-a4);
+        }
+      }
+    }
+    &:where(:focus-visible) .fui-Code {
+      /* Use gray outline when component color is gray */
+      outline: 2px solid var(--accent-8);
+      outline-offset: -1px;
+    }
+  }
+}
+
+/* outline */
+
+.fui-Code:where(.fui-variant-outline) {
+  padding: var(--code-padding-top) 0.25em var(--code-padding-bottom);
+  box-shadow: inset 0 0 0 max(1px, 0.033em) var(--accent-a8);
+  color: var(--accent-a11);
+
+  &:where(.fui-high-contrast) {
+    box-shadow:
+      inset 0 0 0 max(1px, 0.033em) var(--accent-a7),
+      inset 0 0 0 max(1px, 0.033em) var(--gray-a11);
+    color: var(--accent-12);
+  }
+
+  :where(.fui-Link:has(&:only-child)) {
+    & .fui-Code {
+      @media (hover: hover) {
+        &:where(:hover) {
+          background-color: var(--accent-a2);
+        }
+      }
+    }
+    &:where(:focus-visible) .fui-Code {
+      outline: 2px solid var(--color-focus-root);
+      outline-offset: -1px;
+    }
+  }
+}

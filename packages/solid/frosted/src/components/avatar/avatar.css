@@ -1,0 +1,119 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/avatar/avatar.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-AvatarRoot {
+  container-type: inline-size;
+  display: inline-grid;
+  place-items: center;
+  vertical-align: middle;
+  user-select: none;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  flex-shrink: 0;
+
+  outline: 0.5px solid var(--accent-a5);
+  outline-offset: -0.5px;
+
+  background-color: var(--accent-a3);
+  border-radius: max(25%, var(--radius-full));
+
+  & :where(.fui-AvatarFallback) {
+    color: var(--accent-a11);
+  }
+  &:where(.fui-high-contrast) :where(.fui-AvatarFallback) {
+    color: var(--accent-12);
+  }
+  &:where(.fui-shape-circle) {
+    --radius-full: var(--radius-thumb);
+  }
+  &:where(:has(.fui-AvatarImage)) {
+    outline: none;
+    background: none;
+  }
+}
+
+.fui-AvatarImage {
+  grid-area: 1 / 1;
+  aspect-ratio: 1;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: inherit;
+  /* Fix safari issue where animated avatars were blurred */
+  transform: translateZ(0px);
+
+  outline: 0.5px solid var(--gray-a5);
+  outline-offset: -0.5px;
+}
+
+.fui-AvatarFallback {
+  grid-area: 1 / 1;
+  aspect-ratio: 1;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  border-radius: inherit;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-AvatarFallback {
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  &:where(.fui-one-letter) {
+    font-size: 45cqw;
+  }
+  &:where(.fui-two-letters) {
+    /* prettier-ignore */
+    font-size: 40cqw;
+  }
+}
+
+.fui-AvatarRoot {
+  &:where(.fui-r-size-0) {
+    --avatar-size: var(--space-4);
+  }
+  &:where(.fui-r-size-1) {
+    --avatar-size: var(--space-5);
+  }
+  &:where(.fui-r-size-2) {
+    --avatar-size: var(--space-6);
+  }
+  &:where(.fui-r-size-3) {
+    --avatar-size: var(--space-7);
+  }
+  &:where(.fui-r-size-4) {
+    --avatar-size: var(--space-8);
+  }
+  &:where(.fui-r-size-5) {
+    --avatar-size: var(--space-9);
+  }
+  &:where(.fui-r-size-6) {
+    --avatar-size: 80px;
+  }
+  &:where(.fui-r-size-7) {
+    --avatar-size: 96px;
+  }
+  &:where(.fui-r-size-8) {
+    --avatar-size: 128px;
+  }
+  &:where(.fui-r-size-9) {
+    --avatar-size: 160px;
+  }
+}

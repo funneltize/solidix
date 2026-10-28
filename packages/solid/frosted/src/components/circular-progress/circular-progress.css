@@ -1,0 +1,65 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/circular-progress/circular-progress.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-CircularProgressRoot {
+  position: relative;
+  display: block;
+  width: var(--circular-progress-size);
+  height: var(--circular-progress-size);
+}
+
+.fui-CircularProgressSvg {
+  display: block;
+}
+
+.fui-CircularProgressTrack {
+  stroke: var(--accent-a3);
+}
+
+.fui-CircularProgressIndicator {
+  stroke: var(--accent-9);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-CircularProgressRoot {
+  &:where(.fui-r-size-1) {
+    --circular-progress-size: 16px;
+  }
+  &:where(.fui-r-size-2) {
+    --circular-progress-size: 20px;
+  }
+  &:where(.fui-r-size-3) {
+    --circular-progress-size: 24px;
+  }
+  &:where(.fui-r-size-4) {
+    --circular-progress-size: 32px;
+  }
+  &:where(.fui-r-size-5) {
+    --circular-progress-size: 40px;
+  }
+  &:where(.fui-r-size-6) {
+    --circular-progress-size: 48px;
+  }
+  &:where(.fui-r-size-7) {
+    --circular-progress-size: 56px;
+  }
+  &:where(.fui-r-size-8) {
+    --circular-progress-size: 64px;
+  }
+  &:where(.fui-r-size-9) {
+    --circular-progress-size: 72px;
+  }
+}
+
+/* high-contrast */
+
+.fui-CircularProgressRoot:where(.fui-high-contrast) .fui-CircularProgressIndicator {
+  stroke: var(--accent-12);
+}

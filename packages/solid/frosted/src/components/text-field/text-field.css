@@ -1,0 +1,304 @@
+/* Upstream: https://github.com/whopio/frosted-ui/blob/56787900bfe0/packages/frosted-ui/src/components/text-field/text-field.css */
+
+.fui-TextFieldRoot {
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 0;
+  cursor: text;
+
+  /* Focus state */
+  &:where(:has(.fui-TextFieldInput:focus)) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: -1px;
+  }
+
+  border-radius: var(--text-field-border-radius);
+}
+
+.fui-TextFieldInput {
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  width: 100%;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+
+  /* Clip text to the inner shadow */
+  border: var(--text-field-border-width) solid transparent;
+}
+
+.fui-TextFieldSlot {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  color: var(--gray-a11);
+
+  &:where([data-accent-color]) {
+    color: var(--accent-a11);
+  }
+  &:where(:empty) {
+    display: none;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* Font size on Root so Slots inherit it */
+.fui-TextFieldRoot:where(.fui-r-size-1) {
+  font-size: var(--font-size-1);
+  letter-spacing: var(--letter-spacing-1);
+  --text-field-border-radius: max(6px, var(--radius-full));
+  --text-field-input-height: var(--space-5);
+}
+.fui-TextFieldRoot:where(.fui-r-size-2) {
+  font-size: var(--font-size-2);
+  letter-spacing: var(--letter-spacing-2);
+  --text-field-border-radius: max(8px, var(--radius-full));
+  --text-field-input-height: var(--space-6);
+}
+.fui-TextFieldRoot:where(.fui-r-size-3) {
+  font-size: var(--font-size-3);
+  letter-spacing: var(--letter-spacing-3);
+  --text-field-border-radius: max(10px, var(--radius-full));
+  --text-field-input-height: var(--space-7);
+}
+.fui-TextFieldRoot:where(.fui-r-size-4) {
+  font-size: var(--font-size-4);
+  letter-spacing: var(--letter-spacing-4);
+  --text-field-border-radius: max(14px, var(--radius-full));
+  --text-field-input-height: var(--space-8);
+}
+
+.fui-TextFieldSlot {
+  &:where(.fui-r-size-1) {
+    gap: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  &:where(.fui-r-size-2) {
+    gap: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  &:where(.fui-r-size-3) {
+    gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  &:where(.fui-r-size-4) {
+    gap: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+.fui-TextFieldInput {
+  height: var(--text-field-input-height);
+
+  &:where(.fui-r-size-1) {
+    /* Tweak text alignment */
+    padding-top: 0.5px;
+    padding-bottom: 1px;
+
+    &:where(:first-child) {
+      /* Clip text to the visible border radius */
+      border-radius: max(6px, var(--radius-full));
+      /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
+      text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
+    }
+  }
+  &:where(.fui-r-size-2) {
+    /* Tweak text alignment */
+    padding-top: 0px;
+    padding-bottom: 1px;
+
+    &:where(:first-child) {
+      /* Clip text to the visible border radius */
+      border-radius: max(8px, var(--radius-full));
+      /* Equivalent to padding-left, but doesn't cut off long values when ;cursor is at the end */
+      text-indent: calc(var(--space-2) - var(--text-field-border-width));
+    }
+  }
+  &:where(.fui-r-size-3) {
+    /* Tweak text alignment */
+    padding-top: 0.5px;
+    padding-bottom: 1px;
+
+    &:where(:first-child) {
+      /* Clip text to the visible border radius */
+      border-radius: max(10px, var(--radius-full));
+      /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
+      text-indent: calc(var(--space-3) - var(--text-field-border-width));
+    }
+  }
+  &:where(.fui-r-size-4) {
+    /* Tweak text alignment */
+    padding-top: 0.5px;
+    padding-bottom: 1px;
+
+    &:where(:first-child) {
+      /* Clip text to the visible border radius */
+      border-radius: max(14px, var(--radius-full));
+      /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end */
+      text-indent: calc(var(--space-3) - var(--text-field-border-width));
+    }
+  }
+}
+
+/* As an enhancement, remove border-radius on the right if there's a slot */
+.fui-TextFieldInput:where(:has(~ .fui-TextFieldSlot)) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* surface */
+
+.fui-TextFieldRoot:where(.fui-variant-surface) {
+  --text-field-border-width: 1px;
+  background-color: var(--color-surface);
+  box-shadow:
+    inset 0 0 0 1px var(--gray-a5),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+
+  @media (hover: hover) {
+    &:where(:hover:has(.fui-TextFieldInput:not(:disabled))) {
+      box-shadow:
+        inset 0 0 0 1px var(--gray-a7),
+        0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &:where(
+    :has(.fui-TextFieldInput:autofill),
+    :has(.fui-TextFieldInput[data-com-onepassword-filled])
+  ) {
+    background-color: var(--accent-a3);
+    box-shadow:
+      inset 0 0 0 1px var(--gray-a7),
+      inset 0 0 0 1px var(--accent-a4);
+  }
+
+  &:where(:has(.fui-TextFieldInput:disabled), :has(.fui-TextFieldInput:read-only)) {
+    /* Blend with grey */
+    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+  }
+}
+
+.fui-TextFieldInput:where(.fui-variant-surface) {
+  color: var(--gray-12);
+
+  &::placeholder {
+    color: var(--gray-a10);
+    /* Firefox */
+    opacity: 1;
+  }
+
+  &:where(:autofill, [data-com-onepassword-filled]) {
+    /* Reliably removes native autofill colors */
+    background-clip: text;
+    -webkit-text-fill-color: var(--gray-12);
+  }
+}
+
+/* soft */
+
+.fui-TextFieldRoot:where(.fui-variant-soft) {
+  --text-field-border-width: 0px;
+  background-color: var(--accent-a3);
+
+  &:where(
+    :has(.fui-TextFieldInput:autofill),
+    :has(.fui-TextFieldInput[data-com-onepassword-filled])
+  ) {
+    background-color: var(--accent-a4);
+    box-shadow: inset 0 0 0 1px var(--accent-a7);
+  }
+
+  &:where(:has(.fui-TextFieldInput:focus)) {
+    /* Use gray outline when component color is gray */
+    outline-color: var(--accent-8);
+  }
+
+  &:where(:has(.fui-TextFieldInput:disabled), :has(.fui-TextFieldInput:read-only)) {
+    background-color: var(--gray-a4);
+  }
+}
+
+.fui-TextFieldInput:where(.fui-variant-soft) {
+  color: var(--accent-12);
+
+  &::placeholder {
+    color: var(--accent-12);
+    opacity: 0.6;
+  }
+
+  &:where(:autofill, [data-com-onepassword-filled]) {
+    /* Reliably removes native autofill colors */
+    background-clip: text;
+    -webkit-text-fill-color: var(--accent-12);
+  }
+
+  &::selection {
+    /* Use gray selection when component color is gray */
+    background-color: var(--accent-a5);
+  }
+}
+
+/* all disabled and read-only text fields */
+
+.fui-TextFieldInput {
+  &:where(:disabled, :read-only) {
+    cursor: text;
+    color: var(--gray-a11);
+    /* Safari */
+    -webkit-text-fill-color: var(--gray-a11);
+
+    &::placeholder {
+      opacity: 0.5;
+    }
+    &:where(:placeholder-shown) {
+      cursor: default;
+    }
+    &::selection {
+      background-color: var(--gray-a5);
+    }
+  }
+}
+
+.fui-TextFieldRoot:where(
+  :has(.fui-TextFieldInput:disabled:focus),
+  :has(.fui-TextFieldInput:read-only:focus)
+) {
+  outline: 2px solid var(--gray-8);
+}
+
+/* Cursor in gaps around slots, as an enhancement */
+.fui-TextFieldRoot:where(:has(.fui-TextFieldInput:disabled), :has(.fui-TextFieldInput:read-only)) {
+  cursor: text;
+}
+.fui-TextFieldRoot:where(
+  :has(.fui-TextFieldInput:disabled:placeholder-shown),
+  :has(.fui-TextFieldInput:read-only:placeholder-shown)
+) {
+  cursor: default;
+}

@@ -1,0 +1,107 @@
+/* Ported from https://github.com/whopio/frosted-ui/blob/56787900bfe0/packages/frosted-ui/src/components/radio-group.css */
+
+.fui-RadioGroupRoot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.fui-RadioGroupItem {
+  display: flex;
+  gap: var(--space-3);
+  line-height: var(--line-height-2);
+  align-items: center;
+  width: fit-content;
+}
+
+.fui-RadioGroupButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  vertical-align: top;
+  cursor: var(--cursor-radio-group-button);
+  border-radius: var(--radius-full);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: 2px;
+  }
+}
+
+.fui-RadioGroupItem[data-disabled] .fui-RadioGroupButton {
+  cursor: var(--cursor-disabled);
+}
+
+.fui-RadioGroupButton:not(:where([data-unchecked]))::before {
+  content: "";
+  display: block;
+  border-radius: var(--radius-full);
+}
+
+.fui-RadioGroupRoot.fui-r-size-1 .fui-RadioGroupButton {
+  width: var(--space-4);
+  height: var(--space-4);
+}
+.fui-RadioGroupRoot.fui-r-size-1 .fui-RadioGroupButton:not(:where([data-unchecked]))::before {
+  width: 6px;
+  height: 6px;
+}
+.fui-RadioGroupRoot.fui-r-size-2 .fui-RadioGroupButton,
+.fui-RadioGroupRoot.fui-r-size-3 .fui-RadioGroupButton {
+  width: var(--space-5);
+  height: var(--space-5);
+}
+.fui-RadioGroupRoot.fui-r-size-2 .fui-RadioGroupButton:not(:where([data-unchecked]))::before,
+.fui-RadioGroupRoot.fui-r-size-3 .fui-RadioGroupButton:not(:where([data-unchecked]))::before {
+  width: 10px;
+  height: 10px;
+}
+
+.fui-RadioGroupButton:where([data-unchecked]) {
+  background-color: var(--color-surface);
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+}
+
+.fui-RadioGroupButton:where(:hover) {
+  box-shadow: inset 0 0 0 1px var(--gray-a8);
+}
+
+.fui-RadioGroupButton:where(:focus-visible) {
+  box-shadow: inset 0 0 0 1px var(--gray-a8);
+}
+
+.fui-RadioGroupButton:where([data-checked]) {
+  background-color: var(--accent-9);
+  color: var(--accent-9-contrast);
+  box-shadow: inset 0 0 0 1px var(--accent-a6);
+}
+
+.fui-RadioGroupButton:where([data-disabled]) {
+  background-color: var(--gray-a3);
+  box-shadow: inset 0 0 0 1px var(--gray-a6);
+}
+
+.fui-RadioGroupButton:where([data-checked][data-disabled])::before {
+  opacity: 0.5;
+}
+
+.fui-RadioGroupButton:where(.fui-high-contrast) {
+  background-color: var(--accent-12);
+  color: var(--accent-1);
+}
+
+.fui-RadioGroupIndicator {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.fui-RadioGroupIndicator:where([data-disabled], [data-state="unchecked"]) {
+  cursor: var(--cursor-disabled);
+  color: var(--gray-a8);
+}
+
+.fui-RadioGroupIndicator:where([data-state="checked"]) {
+  color: var(--accent-a11);
+}

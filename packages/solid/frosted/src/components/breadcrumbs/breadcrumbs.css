@@ -1,0 +1,33 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/breadcrumbs/breadcrumbs.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-BreadcrumbsRoot {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+.fui-BreadcrumbsItem {
+  margin-left: -8px;
+  margin-right: -8px;
+  font-weight: var(--font-weight-medium);
+}
+.fui-BreadcrumbsItem:not(:hover) {
+  color: var(--accent-a10);
+}
+
+.fui-BreadcrumbsItem:last-child,
+.fui-BreadcrumbsRoot .fui-BreadcrumbsLastItem {
+  color: var(--accent-a12);
+  font-weight: var(--font-weight-medium);
+}
+
+.fui-BreadcrumbsRoot {
+  user-select: none;
+}
+
+.fui-BreadcrumbsSeparator {
+  color: var(--accent-a8);
+}

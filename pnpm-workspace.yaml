@@ -7,3 +7,4 @@ minimumReleaseAgeExclude:
   - "@solidjs/web@2.0.0-rc.18"
   - solid-js@2.0.0-rc.18
   - seroval-plugins@1.7.0
+  - '@frosted-ui/colors@0.0.1-canary.162'

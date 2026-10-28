@@ -1,0 +1,44 @@
+.fui-AccordionItem:focus-within {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 2px var(--color-focus-root) inset;
+  border-radius: var(--radius-4);
+}
+.fui-AccordionTrigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: var(--space-2);
+  background: var(--gray-a3);
+  border-radius: var(--radius-4);
+  padding: var(--space-2) var(--space-4);
+  box-shadow: 0px 0px 0px 1px var(--gray-a5) inset;
+
+  font-size: var(--font-size-1);
+  color: var(--gray-a11);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.fui-AccordionTriggerIcon {
+  transition: 300ms transform ease-out;
+  transform-origin: center;
+  transform: rotate(180deg);
+}
+.fui-AccordionTrigger[data-panel-open] .fui-AccordionTriggerIcon {
+  transform: rotate(0deg);
+}
+.fui-AccordionContent {
+  overflow: hidden;
+  height: var(--accordion-panel-height);
+  transition: height 300ms ease-out;
+
+  &[data-starting-style],
+  &[data-ending-style] {
+    height: 0;
+  }
+}
+
+.fui-AccordionContentInner {
+  padding: var(--space-4) var(--space-5);
+}

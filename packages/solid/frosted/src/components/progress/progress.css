@@ -1,0 +1,62 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/progress/progress.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-ProgressRoot {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--progress-height);
+  border-radius: var(--radius-thumb);
+  overflow: hidden;
+
+  background-color: var(--gray-a4);
+}
+.fui-ProgressTrack {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+}
+.fui-ProgressIndicator {
+  height: 100%;
+  width: 0%;
+  background-color: var(--accent-9);
+  border-radius: inherit;
+}
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-ProgressRoot {
+  &:where(.fui-r-size-1) {
+    --progress-height: 2px;
+  }
+  &:where(.fui-r-size-2) {
+    --progress-height: 4px;
+  }
+  &:where(.fui-r-size-3) {
+    --progress-height: 6px;
+  }
+  &:where(.fui-r-size-4) {
+    --progress-height: 8px;
+  }
+  &:where(.fui-r-size-5) {
+    --progress-height: 12px;
+  }
+  &:where(.fui-r-size-6) {
+    --progress-height: 16px;
+  }
+}
+
+/* high-contrast */
+
+.fui-ProgressRoot:where(.fui-high-contrast) {
+  & :where(.fui-ProgressIndicator) {
+    /* blend black and accent */
+    background-color: var(--accent-12);
+  }
+}

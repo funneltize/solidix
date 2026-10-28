@@ -1,0 +1,88 @@
+/* Upstream: https://github.com/whopio/frosted-ui/blob/56787900bfe0/packages/frosted-ui/src/components/popover/popover.css
+ *
+ * Port notes (Base UI -> Radix):
+ * - Upstream splits positioning (Positioner) and visuals (Popup). The port
+ *   renders one Radix content carrying both `fui-PopoverPositioner` and
+ *   `fui-PopoverContent` classes; both selectors below target that element.
+ * - Base UI `--anchor-width` maps to Radix `--radix-popper-anchor-width`.
+ * - Base UI `--transform-origin` maps to Radix `--radix-popper-transform-origin`.
+ * - Base UI `data-starting-style` / `data-ending-style` map to Radix
+ *   `data-state='closed'`: with keepMounted the closed frame doubles as the
+ *   hidden resting state that the open transition animates from.
+ */
+
+.fui-PopoverPositioner {
+  /* Positioning shell merged into the Radix content (see port notes). */
+}
+
+.fui-PopoverContent {
+  box-shadow: var(--shadow-5);
+  min-width: var(--radix-popper-anchor-width);
+  outline: 0;
+  overflow: auto;
+  text-align: start;
+
+  --inset-padding: var(--popover-content-padding);
+  padding: var(--popover-content-padding);
+
+  transform-origin: var(--radix-popper-transform-origin);
+
+  &:where(.fui-variant-translucent) {
+    background-color: var(--color-panel-translucent);
+    -webkit-backdrop-filter: var(--backdrop-filter-panel);
+    backdrop-filter: var(--backdrop-filter-panel);
+  }
+  &:where(.fui-variant-solid) {
+    background-color: var(--color-panel-solid);
+  }
+  &:where(.fui-variant-translucent, .fui-variant-solid) {
+    outline: 0.5px solid var(--color-popover-outline);
+  }
+
+  /* Animations */
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      transform 150ms ease-out,
+      opacity 150ms ease-out;
+
+    &[data-state="closed"] {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+}
+/* prettier-ignore */
+:where(.frosted-ui) {
+  --color-popover-outline: transparent;
+}
+.dark,
+.dark-theme,
+.dark :where(.frosted-ui:not(.light, .light-theme)),
+.dark-theme :where(.frosted-ui:not(.light, .light-theme)) {
+  --color-popover-outline: black;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-PopoverContent {
+  &:where(.fui-r-size-1) {
+    --popover-content-padding: var(--space-3);
+    border-radius: 8px;
+  }
+  &:where(.fui-r-size-2) {
+    --popover-content-padding: var(--space-4);
+    border-radius: 12px;
+  }
+  &:where(.fui-r-size-3) {
+    --popover-content-padding: var(--space-5);
+    border-radius: 16px;
+  }
+  &:where(.fui-r-size-4) {
+    --popover-content-padding: var(--space-6);
+    border-radius: 20px;
+  }
+}

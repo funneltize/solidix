@@ -1,0 +1,6 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/segmented-control-radio-group/segmented-control-radio-group.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+@import '../base-segmented-control-list/base-segmented-control-list.css';

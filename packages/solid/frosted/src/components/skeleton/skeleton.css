@@ -1,0 +1,180 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/skeleton/skeleton.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+/* Avatar */
+.fui-SkeletonAvatar {
+  display: inline-block;
+  vertical-align: middle;
+  user-select: none;
+  width: var(--skeleton-avatar-size);
+  height: var(--skeleton-avatar-size);
+  flex-shrink: 0;
+
+  background: var(--skeleton-background-color);
+
+  --skeleton-background-color: var(--accent-a3);
+  &:where(.fui-high-contrast) {
+    --skeleton-background-color: var(--accent-a4);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-SkeletonAvatar {
+  &:where(.fui-shape-circle) {
+    border-radius: 50%;
+  }
+  &:where(.fui-shape-square) {
+    border-radius: 25%;
+  }
+
+  &:where(.fui-r-size-0) {
+    --skeleton-avatar-size: var(--space-4);
+  }
+  &:where(.fui-r-size-1) {
+    --skeleton-avatar-size: var(--space-5);
+  }
+  &:where(.fui-r-size-2) {
+    --skeleton-avatar-size: var(--space-6);
+  }
+  &:where(.fui-r-size-3) {
+    --skeleton-avatar-size: var(--space-7);
+  }
+  &:where(.fui-r-size-4) {
+    --skeleton-avatar-size: var(--space-8);
+  }
+  &:where(.fui-r-size-5) {
+    --skeleton-avatar-size: var(--space-9);
+  }
+  &:where(.fui-r-size-6) {
+    --skeleton-avatar-size: 80px;
+  }
+  &:where(.fui-r-size-7) {
+    --skeleton-avatar-size: 96px;
+  }
+  &:where(.fui-r-size-8) {
+    --skeleton-avatar-size: 128px;
+  }
+  &:where(.fui-r-size-9) {
+    --skeleton-avatar-size: 160px;
+  }
+}
+/* Text */
+
+.fui-SkeletonText {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: var(--skeleton-text-line-height);
+
+  --skeleton-background-color: var(--accent-a3);
+  &:where(.fui-high-contrast) {
+    --skeleton-background-color: var(--accent-a4);
+  }
+}
+
+.fui-SkeletonText::after {
+  content: "";
+  width: 100%;
+  height: var(--skeleton-text-size);
+
+  background: var(--skeleton-background-color);
+  border-radius: var(--skeleton-text-border-radius);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-SkeletonText {
+  &:where(.fui-r-size-0) {
+    --skeleton-text-size: var(--font-size-0);
+    --skeleton-text-line-height: var(--line-height-0);
+    --skeleton-text-border-radius: var(--radius-1);
+  }
+  &:where(.fui-r-size-1) {
+    --skeleton-text-size: var(--font-size-1);
+    --skeleton-text-line-height: var(--line-height-1);
+    --skeleton-text-border-radius: var(--radius-1);
+  }
+  &:where(.fui-r-size-2) {
+    --skeleton-text-size: var(--font-size-2);
+    --skeleton-text-line-height: var(--line-height-2);
+    --skeleton-text-border-radius: var(--radius-1);
+  }
+  &:where(.fui-r-size-3) {
+    --skeleton-text-size: var(--font-size-3);
+    --skeleton-text-line-height: var(--line-height-3);
+    --skeleton-text-border-radius: var(--radius-2);
+  }
+  &:where(.fui-r-size-4) {
+    --skeleton-text-size: var(--font-size-4);
+    --skeleton-text-line-height: var(--line-height-4);
+    --skeleton-text-border-radius: var(--radius-2);
+  }
+  &:where(.fui-r-size-5) {
+    --skeleton-text-size: var(--font-size-5);
+    --skeleton-text-line-height: var(--line-height-5);
+    --skeleton-text-border-radius: var(--radius-3);
+  }
+  &:where(.fui-r-size-6) {
+    --skeleton-text-size: var(--font-size-6);
+    --skeleton-text-line-height: var(--line-height-6);
+    --skeleton-text-border-radius: var(--radius-3);
+  }
+  &:where(.fui-r-size-7) {
+    --skeleton-text-size: var(--font-size-7);
+    --skeleton-text-line-height: var(--line-height-7);
+    --skeleton-text-border-radius: var(--radius-4);
+  }
+  &:where(.fui-r-size-8) {
+    --skeleton-text-size: var(--font-size-8);
+    --skeleton-text-line-height: var(--line-height-8);
+    --skeleton-text-border-radius: var(--radius-4);
+  }
+  &:where(.fui-r-size-9) {
+    --skeleton-text-size: var(--font-size-9);
+    --skeleton-text-line-height: var(--line-height-9);
+    --skeleton-text-border-radius: var(--radius-5);
+  }
+}
+
+/* Rect */
+.fui-SkeletonRect {
+  display: inline-block;
+  vertical-align: middle;
+  user-select: none;
+  flex-shrink: 0;
+
+  background: var(--skeleton-background-color);
+
+  --skeleton-background-color: var(--accent-a3);
+  &:where(.fui-high-contrast) {
+    --skeleton-background-color: var(--accent-a4);
+  }
+}
+
+/* Shimmer effect */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fui-skeleton-pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .fui-SkeletonAvatar,
+  .fui-SkeletonText::after,
+  .fui-SkeletonRect {
+    animation: fui-skeleton-pulse 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    animation-delay: var(--fui-skeleton-animation-delay, 0);
+  }
+}

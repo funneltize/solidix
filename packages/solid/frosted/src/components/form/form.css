@@ -1,0 +1,12 @@
+/** Ported from frosted-ui (MIT) at commit 56787900bfe0. Path: packages/frosted-ui/src/components/form/form.css */
+
+/* ============================================================================
+ * Form
+ * ============================================================================ */
+
+.fui-FormRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}

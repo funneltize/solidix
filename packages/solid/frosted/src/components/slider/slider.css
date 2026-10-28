@@ -1,0 +1,82 @@
+/**
+ * Slider styles - ported from frosted-ui.
+ *
+ * Source: https://raw.githubusercontent.com/whopio/frosted-ui/56787900bfe0/packages/frosted-ui/src/components/slider/slider.css
+ */
+
+.fui-SliderRoot {
+  --slider-thumb-size: var(--space-4);
+  --slider-track-size: 5px;
+
+  display: block;
+  width: auto;
+  height: var(--slider-thumb-size);
+  position: relative;
+  user-select: none;
+  touch-action: none;
+  cursor: pointer;
+
+  &[data-disabled] {
+    cursor: default;
+  }
+}
+
+.fui-SliderControl {
+  height: 100%;
+  position: relative;
+}
+
+.fui-SliderTrack {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: var(--slider-track-size);
+  transform: translateY(-50%);
+  border-radius: max(var(--radius-1), var(--radius-full));
+  background-color: var(--gray-a4);
+  overflow: hidden;
+}
+
+.fui-SliderRange {
+  position: absolute;
+  border-radius: inherit;
+  background-color: var(--accent-9);
+  inset: 0;
+
+  &.fui-high-contrast {
+    background-color: var(--accent-12);
+  }
+}
+
+.fui-SliderThumb {
+  height: var(--slider-thumb-size);
+  width: var(--slider-thumb-size);
+  border-radius: max(var(--radius-2), var(--radius-full));
+  background-color: white;
+  box-shadow: var(--shadow-2);
+  border: 1px solid var(--gray-7);
+  position: absolute;
+  cursor: grab;
+  outline: 0;
+  translate: 0 -50%;
+  top: 50%;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:focus-visible {
+    box-shadow:
+      var(--shadow-2),
+      0 0 0 3px var(--accent-a5);
+    border-color: var(--accent-7);
+  }
+
+  .fui-SliderRoot[data-disabled] & {
+    background-color: var(--gray-3);
+    border-color: var(--gray-6);
+    box-shadow: none;
+    cursor: default;
+  }
+}

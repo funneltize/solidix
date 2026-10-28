@@ -1,0 +1,79 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/link/link.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-Link {
+  cursor: var(--cursor-link);
+  color: var(--accent-a11);
+  border-radius: calc(0.07em * var(--radius-factor));
+
+  &:where(:focus-visible) {
+    outline-color: var(--color-focus-root);
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: 2px;
+  }
+
+  &:where(.fui-high-contrast),
+  :where(.fui-CalloutRoot:not(.fui-high-contrast)) &,
+  :where(.fui-Text, .fui-Heading):where([data-accent-color]:not(.fui-high-contrast)) & {
+    color: var(--accent-12);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * UNDERLINE                                                                                       *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-Link {
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  text-decoration-thickness: min(2px, max(1px, 0.05em));
+  text-underline-offset: calc(0.025em + 2px);
+  text-decoration-color: var(--accent-a11);
+
+  &:where(.fui-underline-auto) {
+    @media (hover: hover) {
+      &:where(:hover) {
+        text-decoration-line: underline;
+      }
+    }
+
+    &:where(.fui-high-contrast),
+    :where(.fui-CalloutRoot) &,
+    :where(.fui-Text, .fui-Heading):where([data-accent-color]:not(.fui-high-contrast)) & {
+      text-decoration-line: underline;
+      text-decoration-color: var(--accent-a12);
+    }
+  }
+
+  &:where(.fui-underline-hover) {
+    @media (hover: hover) {
+      &:where(:hover) {
+        text-decoration-line: underline;
+      }
+    }
+  }
+
+  &:where(.fui-underline-always) {
+    text-decoration-line: underline;
+  }
+}
+
+/* all focused states underline */
+
+.fui-Link:where(:focus-visible) {
+  text-decoration-line: none;
+}
+
+/* Enhancement – hide underline for when Link's only child is a Code where underline is hard to see */
+/* prettier-ignore */
+.fui-Link:where(:has(.fui-Code:not(.fui-variant-ghost):only-child)) {
+  text-decoration-line: none;
+}
+.fui-Link:where(:has(.fui-Code:only-child)) {
+  outline: none;
+}

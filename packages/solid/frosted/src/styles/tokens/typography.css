@@ -1,0 +1,135 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/styles/tokens/typography.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+@import "../fonts.css";
+
+.frosted-ui {
+  --font-size-0: 10px;
+  --font-size-1: 12px;
+  --font-size-2: 14px;
+  --font-size-3: 16px;
+  --font-size-4: 18px;
+  --font-size-5: 20px;
+  --font-size-6: 24px;
+  --font-size-7: 28px;
+  --font-size-8: 32px;
+  --font-size-9: 40px;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-0: 12px;
+  --line-height-1: 16px;
+  --line-height-2: 20px;
+  --line-height-3: 24px;
+  --line-height-4: 26px;
+  --line-height-5: 28px;
+  --line-height-6: 30px;
+  --line-height-7: 34px;
+  --line-height-8: 38px;
+  --line-height-9: 48px;
+
+  --letter-spacing-0: 0.01em;
+  --letter-spacing-1: 0.01em;
+  --letter-spacing-2: 0.01em;
+  --letter-spacing-3: 0.01em;
+  --letter-spacing-4: 0.01em;
+  --letter-spacing-5: 0.01em;
+  --letter-spacing-6: 0.01em;
+  --letter-spacing-7: 0.005em;
+  --letter-spacing-8: 0em;
+  --letter-spacing-9: 0em;
+
+  /* default values */
+
+  --default-font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI (Custom)", Roboto, "Helvetica Neue",
+    "Open Sans (Custom)", system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --default-font-size: var(--font-size-3); /* Same size used for `<Text size="3">` */
+  --default-font-style: normal;
+  --default-font-weight: var(--font-weight-regular);
+  --default-line-height: 1.5; /* Equivalent to the line-height used for `<Text size="3">` 16px * 1.5 = 24px */
+  --default-letter-spacing: 0em;
+  --default-leading-trim-start: 0.42em;
+  --default-leading-trim-end: 0.36em;
+
+  /* Heading */
+
+  --heading-font-family: var(--default-font-family);
+  --heading-font-size-adjust: 1;
+  --heading-font-style: normal;
+  --heading-leading-trim-start: var(--default-leading-trim-start);
+  --heading-leading-trim-end: var(--default-leading-trim-end);
+  --heading-letter-spacing: 0em;
+
+  --heading-line-height-1: 16px;
+  --heading-line-height-2: 18px;
+  --heading-line-height-3: 22px;
+  --heading-line-height-4: 24px;
+  --heading-line-height-5: 26px;
+  --heading-line-height-6: 30px;
+  --heading-line-height-7: 36px;
+  --heading-line-height-8: 40px;
+  --heading-line-height-9: 60px;
+
+  /* Code */
+
+  --code-font-family:
+    "Menlo", "Consolas (Custom)", "Bitstream Vera Sans Mono", monospace, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --code-font-size-adjust: 0.95;
+  --code-font-style: normal;
+  --code-font-weight: inherit;
+  --code-letter-spacing: -0.007em;
+  --code-padding-top: 0.1em;
+  --code-padding-bottom: 0.1em;
+
+  /* Strong */
+
+  --strong-font-family: var(--default-font-family);
+  --strong-font-size-adjust: 1;
+  --strong-font-style: inherit;
+  --strong-font-weight: var(--font-weight-bold);
+  --strong-letter-spacing: 0em;
+
+  /* Em */
+
+  --em-font-family: "Times New Roman", "Times", serif;
+  --em-font-size-adjust: 1.18;
+  --em-font-style: italic;
+  --em-font-weight: inherit;
+  --em-letter-spacing: -0.025em;
+
+  /* Quote */
+
+  --quote-font-family: "Times New Roman", "Times", serif;
+  --quote-font-size-adjust: 1.18;
+  --quote-font-style: italic;
+  --quote-font-weight: inherit;
+  --quote-letter-spacing: -0.025em;
+
+  /* Tabs */
+
+  --tabs-trigger-active-letter-spacing: -0.01em;
+  --tabs-trigger-active-word-spacing: 0em;
+  --tabs-trigger-inactive-letter-spacing: 0em;
+  --tabs-trigger-inactive-word-spacing: 0em;
+}
+
+.frosted-ui {
+  overflow-wrap: break-word;
+  font-family: var(--default-font-family);
+  font-size: var(--default-font-size);
+  font-weight: var(--default-font-weight);
+  font-style: var(--default-font-style);
+  line-height: var(--default-line-height);
+  letter-spacing: var(--default-letter-spacing);
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

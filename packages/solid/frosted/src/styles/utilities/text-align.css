@@ -1,0 +1,16 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/styles/utilities/text-align.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-r-ta-left {
+  text-align: left;
+}
+
+.fui-r-ta-center {
+  text-align: center;
+}
+
+.fui-r-ta-right {
+  text-align: right;
+}

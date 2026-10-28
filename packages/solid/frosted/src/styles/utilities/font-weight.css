@@ -1,0 +1,24 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/styles/utilities/font-weight.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-r-weight-light {
+  font-weight: var(--font-weight-light);
+}
+
+.fui-r-weight-regular {
+  font-weight: var(--font-weight-regular);
+}
+
+.fui-r-weight-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.fui-r-weight-semi-bold {
+  font-weight: var(--font-weight-semi-bold);
+}
+
+.fui-r-weight-bold {
+  font-weight: var(--font-weight-bold);
+}

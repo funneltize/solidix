@@ -1,0 +1,20 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/styles/utilities/vertical-align.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-r-va-baseline {
+  vertical-align: baseline;
+}
+
+.fui-r-va-top {
+  vertical-align: top;
+}
+
+.fui-r-va-middle {
+  vertical-align: middle;
+}
+
+.fui-r-va-bottom {
+  vertical-align: bottom;
+}

@@ -1,0 +1,41 @@
+/** Ported from frosted-ui (MIT) at commit 56787900bfe0. Path: packages/frosted-ui/src/components/fieldset/fieldset.css */
+
+.fui-FieldsetRoot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fui-FieldsetLegend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  line-height: var(--line-height-2);
+  letter-spacing: var(--letter-spacing-2);
+  padding: 0;
+  margin-bottom: var(--space-1);
+  border: none;
+  min-width: 0;
+}
+
+.fui-FieldsetLegend[data-variant="heading"] {
+  font-size: var(--font-size-3);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-12);
+}
+
+.fui-FieldsetLegend[data-variant="eyebrow"] {
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-11);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fui-FieldsetLegend[data-disabled] {
+  color: var(--gray-9);
+}

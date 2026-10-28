@@ -1,0 +1,11 @@
+/* Upstream: https://github.com/whopio/frosted-ui/blob/56787900bfe0/packages/frosted-ui/src/components/alert-dialog/alert-dialog.css */
+/* Upstream ships these hooks empty; visuals come from the shared fui-Dialog* rules. */
+
+.fui-AlertDialogBackdrop {
+}
+
+.fui-AlertDialogOverlay {
+}
+
+.fui-AlertDialogContent {
+}

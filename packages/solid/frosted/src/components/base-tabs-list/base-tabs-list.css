@@ -1,0 +1,119 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/base-tabs-list/base-tabs-list.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-BaseTabsList {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.fui-BaseTabsTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+  user-select: none;
+}
+
+.fui-BaseTabsTriggerInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-medium);
+
+  padding: var(--tabs-trigger-inner-padding-y) var(--tabs-trigger-inner-padding-x);
+  border-radius: var(--tabs-trigger-inner-border-radius);
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-BaseTabsTrigger {
+  padding-left: var(--tabs-trigger-padding-x);
+  padding-right: var(--tabs-trigger-padding-x);
+}
+
+.fui-BaseTabsList {
+  &:where(.fui-r-size-1) {
+    height: 36px;
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+    letter-spacing: var(--letter-spacing-1);
+    --tabs-trigger-padding-x: var(--space-1);
+
+    --tabs-trigger-inner-padding-x: 6px;
+    --tabs-trigger-inner-padding-y: 4px;
+    --tabs-trigger-inner-border-radius: 4px;
+  }
+  &:where(.fui-r-size-2) {
+    height: var(--space-7);
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+    letter-spacing: var(--letter-spacing-2);
+    --tabs-trigger-padding-x: var(--space-1);
+
+    --tabs-trigger-inner-padding-x: 10px;
+    --tabs-trigger-inner-padding-y: 4px;
+    --tabs-trigger-inner-border-radius: 6px;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-BaseTabsList {
+  box-shadow: inset 0 -1px 0 0 var(--color-stroke);
+  --active-tab-indicator-color: var(--accent-10);
+  &:where(.fui-high-contrast) {
+    --active-tab-indicator-color: var(--accent-12);
+  }
+}
+
+.fui-BaseTabsTrigger {
+  color: var(--gray-a10);
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      color: var(--gray-12);
+    }
+    &:where(:hover) :where(.fui-BaseTabsTriggerInner) {
+      background-color: var(--gray-a3);
+    }
+  }
+  &:where([data-selected], [data-active]) {
+    color: var(--gray-12);
+  }
+  &:where(:focus-visible) :where(.fui-BaseTabsTriggerInner) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: -2px;
+  }
+  &:where([data-selected], [data-active])::before {
+    box-sizing: border-box;
+    content: '';
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--active-tab-indicator-color);
+  }
+}
+
+.fui-BaseTabsContent:where(:focus-visible) {
+  outline: 2px solid var(--color-focus-root);
+}

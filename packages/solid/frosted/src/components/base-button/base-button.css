@@ -1,0 +1,332 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/base-button/base-button.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+.fui-BaseButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  user-select: none;
+  vertical-align: top;
+  color: var(--base-button-color);
+
+  &:where([aria-busy]) {
+    position: relative;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-BaseButton {
+  height: var(--base-button-height);
+}
+
+.fui-BaseButton {
+  &:where(.fui-r-size-1) {
+    --base-button-classic-active-padding-top: 1px;
+    --base-button-height: var(--space-5);
+    border-radius: 6px;
+    --base-button-spinner-size: 12px;
+  }
+  &:where(.fui-r-size-2) {
+    --base-button-classic-active-padding-top: 2px;
+    --base-button-height: var(--space-6);
+    border-radius: 8px;
+    --base-button-spinner-size: 16px;
+  }
+  &:where(.fui-r-size-3) {
+    --base-button-classic-active-padding-top: 2px;
+    --base-button-height: var(--space-7);
+    border-radius: 10px;
+    --base-button-spinner-size: 18px;
+  }
+  &:where(.fui-r-size-4) {
+    --base-button-classic-active-padding-top: 2px;
+    --base-button-height: var(--space-8);
+    border-radius: 14px;
+    --base-button-spinner-size: 22px;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* classic */
+
+/* prettier-ignore */
+:where(.frosted-ui) {
+  --base-button-classic-active-filter: brightness(0.92) saturate(1.1);
+  --base-button-classic-high-contrast-hover-filter: contrast(0.88) saturate(1.1) brightness(1.1);
+  --base-button-classic-high-contrast-active-filter: contrast(0.82) saturate(1.2) brightness(1.16);
+}
+/* prettier-ignore */
+.dark,
+.dark-theme,
+.dark :where(.frosted-ui:not(.light, .light-theme)),
+.dark-theme :where(.frosted-ui:not(.light, .light-theme)) {
+  --base-button-classic-active-filter: brightness(1.08);
+  --base-button-classic-high-contrast-hover-filter: contrast(0.88) saturate(1.3) brightness(1.14);
+  --base-button-classic-high-contrast-active-filter: brightness(0.95) saturate(1.2);
+}
+
+.fui-BaseButton:where(.fui-variant-classic) {
+  background: var(--accent-9);
+  --base-button-color: var(--accent-9-contrast);
+  position: relative;
+  z-index: 0;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.32);
+
+  box-shadow:
+    0 0 0 1px var(--accent-9) inset,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.15),
+    0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset,
+    0px 1px 1px 1px rgba(255, 255, 255, 0.25) inset;
+  &:where(.fui-high-contrast) {
+    background-color: var(--accent-12);
+    --base-button-color: var(--gray-1);
+  }
+  &:where(:focus-visible) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: 2px;
+  }
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-10);
+      &:where(.fui-high-contrast) {
+        background-color: var(--accent-12);
+        filter: var(--base-button-classic-high-contrast-hover-filter);
+      }
+    }
+  }
+
+  &:where([data-pressed]),
+  &:where([data-state="open"]) {
+    &::after {
+      background-color: var(--accent-10);
+    }
+    &:where(.fui-high-contrast) {
+      filter: var(--base-button-classic-high-contrast-hover-filter);
+    }
+  }
+  &:where(:active:not([data-state="open"], [data-disabled])) {
+    background: var(--accent-9) linear-gradient(to bottom, transparent, var(--white-a4));
+    padding-top: var(--base-button-classic-active-padding-top);
+
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.2) inset;
+
+    &:where(.fui-high-contrast) {
+      background-color: var(--accent-12);
+      filter: var(--base-button-classic-high-contrast-active-filter);
+    }
+  }
+  &:where([data-disabled]) {
+    cursor: var(--cursor-disabled);
+    --base-button-color: var(--gray-a8);
+    background-color: var(--gray-3);
+
+    box-shadow:
+      0 0 0 1px var(--gray-a4) inset,
+      0px 1px 2px 0px rgba(0, 0, 0, 0.15),
+      0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset,
+      0px 1px 1px 1px rgba(255, 255, 255, 0.25) inset;
+    background-image: none;
+    filter: none;
+    text-shadow: none;
+  }
+}
+
+/* solid */
+:where(.frosted-ui) {
+  --base-button-solid-active-filter: brightness(0.92) saturate(1.1);
+  --base-button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.1) brightness(1.1);
+  --base-button-solid-high-contrast-active-filter: contrast(0.82) saturate(1.2) brightness(1.16);
+}
+.dark,
+.dark-theme,
+.dark :where(.frosted-ui:not(.light, .light-theme)),
+.dark-theme :where(.frosted-ui:not(.light, .light-theme)) {
+  --base-button-solid-active-filter: brightness(1.08);
+  --base-button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.3) brightness(1.18);
+  --base-button-solid-high-contrast-active-filter: brightness(0.95) saturate(1.2);
+}
+
+.fui-BaseButton:where(.fui-variant-solid) {
+  position: relative;
+  background-color: var(--accent-9);
+  color: var(--accent-9-contrast);
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-10);
+    }
+  }
+
+  &:where([data-pressed]),
+  &:where([data-state="open"]) {
+    background-color: var(--accent-10);
+  }
+  &:where(:active:not([data-state="open"])) {
+    background-color: var(--accent-10);
+    filter: var(--base-button-solid-active-filter);
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: 2px;
+  }
+  &:where(.fui-high-contrast) {
+    background-color: var(--accent-12);
+    color: var(--gray-1);
+
+    @media (hover: hover) {
+      &:where(:hover) {
+        background-color: var(--accent-12);
+        filter: var(--base-button-solid-high-contrast-hover-filter);
+      }
+    }
+
+    &:where([data-pressed]),
+    &:where([data-state="open"]) {
+      background-color: var(--accent-12);
+      filter: var(--base-button-solid-high-contrast-hover-filter);
+    }
+    &:where(:active:not([data-state="open"])) {
+      background-color: var(--accent-12);
+      filter: var(--base-button-solid-high-contrast-active-filter);
+    }
+  }
+  &:where([data-disabled]) {
+    cursor: var(--cursor-disabled);
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+    outline: none;
+    filter: none;
+  }
+}
+
+/* soft / ghost */
+
+.fui-BaseButton:where(.fui-variant-soft, .fui-variant-ghost) {
+  --base-button-color: var(--accent-a11);
+
+  &:where(.fui-high-contrast) {
+    --base-button-color: var(--accent-12);
+  }
+  &:where([data-disabled]) {
+    cursor: var(--cursor-disabled);
+    --base-button-color: var(--gray-a8);
+    background-color: var(--gray-a3);
+  }
+}
+
+.fui-BaseButton:where(.fui-variant-soft) {
+  background-color: var(--accent-a3);
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--accent-8);
+    outline-offset: -1px;
+  }
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-a4);
+    }
+  }
+
+  &:where([data-pressed]),
+  &:where([data-state="open"]) {
+    background-color: var(--accent-a4);
+  }
+  &:where(:active:not([data-state="open"])) {
+    background-color: var(--accent-a5);
+  }
+
+  &:where([data-accent-color="gray"]) {
+    --base-button-color: var(--accent-12);
+  }
+
+  &:where([data-disabled]),
+  &:where([data-readonly]) {
+    cursor: var(--cursor-disabled);
+    --base-button-color: var(--gray-a8);
+    background-color: var(--gray-a3);
+  }
+}
+
+.fui-BaseButton:where(.fui-variant-ghost) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-a3);
+    }
+  }
+  &:where(:focus-visible) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: -1px;
+  }
+
+  &:where([data-pressed]),
+  &:where([data-state="open"]) {
+    background-color: var(--accent-a3);
+  }
+  &:where(:active:not([data-state="open"])) {
+    background-color: var(--accent-a4);
+  }
+  &:where([data-disabled]) {
+    cursor: var(--cursor-disabled);
+    --base-button-color: var(--gray-a8);
+    background-color: transparent;
+  }
+}
+
+/* surface */
+
+.fui-BaseButton:where(.fui-variant-surface) {
+  background-color: var(--color-panel-solid);
+  box-shadow:
+    inset 0 0 0 1px var(--gray-a5),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+
+  --base-button-color: var(--accent-11);
+  &:where([data-accent-color="gray"]) {
+    --base-button-color: var(--accent-12);
+  }
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      box-shadow:
+        inset 0 0 0 1px var(--gray-a7),
+        0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &:where([data-pressed]),
+  &:where([data-state="open"]),
+  &:where(:active) {
+    background-color: var(--gray-3);
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: -1px;
+  }
+  &:where(.fui-high-contrast) {
+    --base-button-color: var(--accent-12);
+  }
+  &:where([data-disabled]),
+  &:where([data-readonly]) {
+    cursor: var(--cursor-disabled);
+    --base-button-color: var(--gray-a8);
+    box-shadow: inset 0 0 0 1px var(--gray-a6);
+    background-color: var(--gray-2);
+  }
+}

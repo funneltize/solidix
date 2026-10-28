@@ -1,0 +1,566 @@
+/* Upstream: https://github.com/whopio/frosted-ui/blob/56787900bfe0/packages/frosted-ui/src/components/select/select.css
+ *
+ * Port notes (Base UI -> Radix):
+ * - Base UI `data-popup-open` maps to Radix `data-state='open'` on the trigger.
+ * - Base UI `data-starting-style` / `data-ending-style` map to Radix
+ *   `data-state='closed'` on the content.
+ * - Base UI anchor vars map to Radix aliases set by `@solidix/select`:
+ *   `--anchor-width` -> `--radix-select-trigger-width`,
+ *   `--available-height` -> `--radix-select-content-available-height`,
+ *   `--transform-origin` -> `--radix-select-content-transform-origin`.
+ * - Base UI `.fui-SelectPositioner` maps to the Radix popper wrapper
+ *   `[data-radix-popper-content-wrapper]`; popper mode is detected through the
+ *   `fui-PopperContent` class the content carries when `alignItemWithTrigger`
+ *   is false. Radix sets `data-side`/`data-align` on the content element.
+ * - The Check icon slot keeps the upstream `fui-SelectItemIndicatorIcon` hook.
+ * - `--color-base-menu-outline` belongs to the shared base-menu styles; it is
+ *   defined here until the menu wave lands its own copy.
+ */
+
+.fui-SelectTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  user-select: none;
+  vertical-align: top;
+  line-height: var(--height);
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: -1px;
+  }
+}
+
+.fui-SelectTriggerValue {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.fui-SelectIcon {
+  flex-shrink: 0;
+  &:where(:not(.fui-SelectTrigger[data-disabled] &)) {
+    color: var(--accent-a12);
+  }
+}
+
+/* Radix popper wrapper standing in for Base UI `.fui-SelectPositioner`. */
+[data-radix-popper-content-wrapper]:where(:has(> .fui-SelectContent)) {
+  outline: none;
+  pointer-events: none;
+
+  /* Only apply max-height when NOT in alignItemWithTrigger mode (popper mode) */
+  &:where(:has(> .fui-SelectContent[data-side]:not([data-side="none"]))) {
+    min-width: var(--radix-select-trigger-width);
+    max-height: var(--radix-select-content-available-height);
+  }
+
+  /*
+   * In alignItemWithTrigger mode Radix sets no data-side and manages height
+   * dynamically; the content min-width rule below keeps the trigger width.
+   */
+}
+
+.fui-SelectContent {
+  --scrollarea-scrollbar-vertical-margin-top: var(--select-content-padding);
+  --scrollarea-scrollbar-vertical-margin-bottom: var(--select-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-left: var(--select-content-padding);
+  --scrollarea-scrollbar-horizontal-margin-right: var(--select-content-padding);
+
+  /* Trigger width + space for checkmark indicator */
+  min-width: calc(var(--radix-select-trigger-width) + var(--select-item-indicator-width));
+  overflow: hidden;
+  background-color: var(--color-panel-solid);
+  pointer-events: auto;
+  transform-origin: var(--radix-select-content-transform-origin);
+
+  /* Animation */
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  &[data-state="closed"] {
+    opacity: 0;
+  }
+
+  & :where(.fui-SelectItem[data-highlighted]:not([data-disabled])) {
+    background-color: var(--gray-a4);
+  }
+}
+
+/* ScrollArea integration for Select */
+.fui-SelectContent > .fui-ScrollAreaRoot {
+  height: 100%;
+}
+
+.fui-SelectContent .fui-ScrollAreaViewport {
+  /*
+   * In alignItemWithTrigger mode Radix applies inline styles to the viewport:
+   * position: relative; max-height: 100%; overflow-x: hidden; overflow-y: auto;
+   * In normal mode, limit height to available space.
+   */
+  :where(.fui-PopperContent) & {
+    max-height: var(--radix-select-content-available-height);
+  }
+}
+
+.fui-SelectViewport {
+  box-sizing: border-box;
+  padding: var(--select-content-padding);
+
+  :where(.fui-PopperContent) & {
+    max-height: var(--radix-select-content-available-height);
+  }
+
+  :where(.fui-SelectContent:has(.fui-ScrollAreaScrollbar[data-orientation="vertical"])) & {
+    padding-right: var(--space-3);
+  }
+}
+
+.fui-SelectItem {
+  display: flex;
+  align-items: center;
+  height: var(--select-item-height);
+  padding-left: var(--select-item-indicator-width);
+  padding-right: var(--select-item-indicator-width);
+  position: relative;
+  box-sizing: border-box;
+  outline: none;
+  cursor: var(--cursor-menu-item);
+  scroll-margin: var(--select-content-padding) 0;
+
+  /* Fix sticky text highlighting after selection in Firefox */
+  user-select: none;
+}
+
+.fui-SelectItemIndicator {
+  position: absolute;
+  left: 0;
+  width: var(--select-item-indicator-width);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fui-SelectSeparator {
+  height: 1px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: calc(-1 * var(--select-content-padding) + 1px);
+  margin-right: calc(-1 * var(--select-content-padding) + 1px);
+}
+
+.fui-SelectLabel {
+  display: flex;
+  align-items: center;
+  height: var(--select-item-height);
+  padding-left: var(--select-item-indicator-width);
+  padding-right: var(--select-item-indicator-width);
+  color: var(--gray-a10);
+  user-select: none;
+  cursor: default;
+  font-weight: var(--font-weight-semi-bold);
+
+  :where(.fui-SelectItem) + & {
+    margin-top: var(--space-2);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * TRIGGER SIZES                                                                                   *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-SelectTrigger {
+  color: var(--gray-12);
+  height: var(--select-trigger-height);
+}
+
+.fui-SelectTrigger {
+  &:where(.fui-r-size-1) {
+    --select-trigger-height: var(--space-5);
+    gap: var(--space-1);
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+    letter-spacing: var(--letter-spacing-1);
+    border-radius: 6px;
+
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+
+    & :where(.fui-SelectIcon) {
+      width: 8px;
+      height: 8px;
+    }
+  }
+  &:where(.fui-r-size-2) {
+    --select-trigger-height: var(--space-6);
+    gap: calc(var(--space-1) * 1.5);
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+    letter-spacing: var(--letter-spacing-2);
+    border-radius: 8px;
+
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+
+    & :where(.fui-SelectIcon) {
+      width: 10px;
+      height: 10px;
+      margin-bottom: -1px;
+    }
+  }
+  &:where(.fui-r-size-3) {
+    --select-trigger-height: var(--space-7);
+    gap: var(--space-2);
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+    letter-spacing: var(--letter-spacing-3);
+    border-radius: 10px;
+
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+
+    & :where(.fui-SelectIcon) {
+      width: 12px;
+      height: 12px;
+      margin-bottom: -2px;
+    }
+  }
+  &:where(.fui-r-size-4) {
+    --select-trigger-height: var(--space-8);
+    gap: var(--space-3);
+    font-size: var(--font-size-4);
+    line-height: var(--line-height-4);
+    letter-spacing: var(--letter-spacing-4);
+    border-radius: 14px;
+
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+
+    & :where(.fui-SelectIcon) {
+      width: 14px;
+      height: 14px;
+      margin-bottom: -2px;
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * CONTENT SIZES                                                                                   *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-SelectContent {
+  --select-content-padding: var(--space-1);
+
+  &:where(.fui-r-size-1) {
+    --select-item-height: var(--space-5);
+    --select-item-indicator-width: calc(var(--space-5) / 1.2);
+    --select-separator-margin-right: var(--space-2);
+    border-radius: 8px;
+
+    & :where(.fui-SelectLabel) {
+      font-size: var(--font-size-0);
+      letter-spacing: var(--letter-spacing-0);
+      line-height: var(--line-height-0);
+    }
+    & :where(.fui-SelectItem) {
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+      letter-spacing: var(--letter-spacing-1);
+      border-radius: 4px;
+    }
+    & :where(.fui-SelectItemIndicatorIcon) {
+      width: 8px;
+      height: 8px;
+    }
+  }
+  &:where(.fui-r-size-2) {
+    --select-item-height: var(--space-6);
+    --select-item-indicator-width: calc(var(--space-6) / 1.2);
+    --select-separator-margin-right: var(--space-2);
+    border-radius: 10px;
+
+    & :where(.fui-SelectLabel) {
+      font-size: var(--font-size-1);
+      letter-spacing: var(--letter-spacing-1);
+      line-height: var(--line-height-1);
+    }
+    & :where(.fui-SelectItem) {
+      font-size: var(--font-size-2);
+      line-height: var(--line-height-2);
+      letter-spacing: var(--letter-spacing-2);
+      border-radius: 6px;
+    }
+    & :where(.fui-SelectItemIndicatorIcon) {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  &:where(.fui-r-size-3) {
+    --select-item-height: var(--space-7);
+    --select-item-indicator-width: calc(var(--space-7) / 1.2);
+    --select-separator-margin-right: var(--space-2);
+    border-radius: 12px;
+
+    & :where(.fui-SelectLabel) {
+      font-size: var(--font-size-2);
+      letter-spacing: var(--letter-spacing-2);
+      line-height: var(--line-height-2);
+    }
+    & :where(.fui-SelectItem) {
+      font-size: var(--font-size-3);
+      line-height: var(--line-height-3);
+      letter-spacing: var(--letter-spacing-3);
+      border-radius: 8px;
+    }
+    & :where(.fui-SelectItemIndicatorIcon) {
+      width: 12px;
+      height: 12px;
+    }
+  }
+  &:where(.fui-r-size-4) {
+    --select-item-height: var(--space-8);
+    --select-item-indicator-width: calc(var(--space-8) / 1.2);
+    --select-separator-margin-right: var(--space-3);
+    border-radius: 14px;
+
+    & :where(.fui-SelectLabel) {
+      font-size: var(--font-size-3);
+      letter-spacing: var(--letter-spacing-3);
+      line-height: var(--line-height-3);
+    }
+    & :where(.fui-SelectItem) {
+      font-size: var(--font-size-4);
+      line-height: var(--line-height-4);
+      letter-spacing: var(--letter-spacing-4);
+      border-radius: 10px;
+    }
+    & :where(.fui-SelectItemIndicatorIcon) {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * TRIGGER VARIANTS                                                                                *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* surface */
+
+.fui-SelectTrigger:where(.fui-variant-surface) {
+  color: var(--accent-a11);
+  &:where([data-accent-color="gray"]) {
+    color: var(--gray-12);
+  }
+
+  background-color: var(--color-surface);
+  box-shadow:
+    inset 0 0 0 1px var(--gray-a5),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+
+  @media (hover: hover) {
+    &:where(:not(:disabled):hover) {
+      box-shadow:
+        inset 0 0 0 1px var(--gray-a7),
+        0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    }
+  }
+  &:where([data-state="open"]) {
+    box-shadow: inset 0 0 0 1px var(--gray-a7);
+  }
+  &:where([data-placeholder]) {
+    color: var(--accent-a10);
+  }
+  &:where(:disabled) {
+    cursor: var(--cursor-disabled);
+    color: var(--gray-a8);
+
+    background-image: linear-gradient(var(--gray-a3), var(--gray-a3));
+  }
+}
+
+/* classic */
+
+/* prettier-ignore */
+:where(.frosted-ui) {
+  --select-trigger-classic-box-shadow:
+		inset 0 0 0 1px var(--gray-a5),
+		inset 0 2px 1px var(--white-a11),
+		inset 0 -2px 1px var(--gray-a4)
+	;
+}
+
+/* prettier-ignore */
+.dark,
+.dark-theme,
+.dark :where(.frosted-ui:not(.light, .light-theme)),
+.dark-theme :where(.frosted-ui:not(.light, .light-theme)) {
+  --select-trigger-classic-box-shadow:
+    inset 0 0 0 1px var(--white-a4),
+    inset 0 1px 1px var(--white-a4),
+    inset 0 -1px 1px var(--black-a9)
+	;
+}
+
+.fui-SelectTrigger:where(.fui-variant-classic) {
+  color: var(--gray-12);
+  background-image: linear-gradient(var(--gray-2), var(--gray-1));
+  box-shadow: var(--select-trigger-classic-box-shadow);
+  position: relative;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    border-radius: inherit;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1) 130%),
+      linear-gradient(var(--color-surface), transparent);
+  }
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      box-shadow:
+        inset 0 0 0 1px var(--gray-a3),
+        var(--select-trigger-classic-box-shadow);
+
+      &::before {
+        background-image:
+          linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
+          linear-gradient(var(--gray-2), var(--gray-1));
+      }
+    }
+  }
+  &:where([data-state="open"]) {
+    box-shadow:
+      inset 0 0 0 1px var(--gray-a3),
+      var(--select-trigger-classic-box-shadow);
+
+    &::before {
+      background-image:
+        linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
+        linear-gradient(var(--gray-2), var(--gray-1));
+    }
+  }
+  &:where(:disabled) {
+    cursor: var(--cursor-disabled);
+    color: var(--gray-a8);
+    /*
+     * Upstream references `--base-button-classic-disabled-box-shadow`, which
+     * is never declared upstream; inline the classic disabled shadow from the
+     * base-button port instead.
+     */
+    box-shadow:
+      0 0 0 1px var(--gray-a4) inset,
+      0px 1px 2px 0px rgba(0, 0, 0, 0.15),
+      0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset,
+      0px 1px 1px 1px rgba(255, 255, 255, 0.25) inset;
+    &::before {
+      background-image:
+        linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1) 130%),
+        linear-gradient(var(--color-surface), transparent);
+    }
+  }
+  &:where([data-placeholder]) {
+    & :where(.fui-SelectTriggerValue) {
+      color: var(--gray-a10);
+    }
+  }
+}
+
+/* soft / ghost */
+
+.fui-SelectTrigger:where(.fui-variant-soft),
+.fui-SelectTrigger:where(.fui-variant-ghost) {
+  color: var(--accent-a12);
+
+  &:where([data-placeholder]) {
+    color: var(--accent-a10);
+  }
+}
+
+.fui-SelectTrigger:where(.fui-variant-soft) {
+  background-color: var(--accent-a3);
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-a4);
+    }
+  }
+  &:where([data-state="open"]) {
+    background-color: var(--accent-a4);
+  }
+  &:where(:focus-visible) {
+    /* Use gray outline when component color is gray */
+    outline-color: var(--accent-8);
+  }
+  &:where(:disabled) {
+    cursor: var(--cursor-disabled);
+    color: var(--gray-a8);
+    background-color: var(--gray-a3);
+  }
+}
+
+.fui-SelectTrigger:where(.fui-variant-ghost) {
+  @media (hover: hover) {
+    &:where(:hover) {
+      background-color: var(--accent-a3);
+    }
+  }
+  &:where([data-state="open"]) {
+    background-color: var(--accent-a3);
+  }
+  &:where(:disabled) {
+    cursor: var(--cursor-disabled);
+    color: var(--gray-a8);
+    background-color: transparent;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * MENU VARIANTS                                                                                   *
+ *                                                                                                 *
+ ***************************************************************************************************/
+/* prettier-ignore */
+:where(.frosted-ui) {
+  --color-select-outline: transparent;
+  --color-base-menu-outline: transparent;
+}
+/* prettier-ignore */
+.dark,
+.dark-theme,
+.dark :where(.frosted-ui:not(.light, .light-theme)),
+.dark-theme :where(.frosted-ui:not(.light, .light-theme)) {
+  --color-select-outline: black;
+  --color-base-menu-outline: black;
+}
+
+.fui-SelectContent {
+  box-shadow: var(--shadow-5);
+  outline: 0.5px solid var(--color-base-menu-outline) !important;
+}
+
+.fui-SelectItem:where([data-disabled]) {
+  color: var(--gray-a8);
+  cursor: var(--cursor-disabled);
+}
+
+.fui-SelectSeparator {
+  background-color: var(--gray-a6);
+}

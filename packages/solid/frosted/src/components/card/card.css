@@ -1,0 +1,176 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/card/card.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+/* stylelint-disable selector-max-type */
+/* Disable selector-max-type rule to target `button` and `a` tags. */
+/* Make sure these tags are wrapped in `:where()` for 0 specificity. */
+
+.fui-Card {
+  position: relative;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  overflow: hidden;
+  /* Don't inherit text alignment */
+  text-align: initial;
+
+  &:where(button, a) {
+    display: block;
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--color-focus-root);
+    outline-offset: 0px;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SIZES                                                                                           *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-Card {
+  &:where(.fui-r-size-1) {
+    --card-padding: 12px;
+    --card-border-radius: 12px;
+  }
+  &:where(.fui-r-size-2) {
+    --card-padding: 16px;
+    --card-border-radius: 16px;
+  }
+  &:where(.fui-r-size-3) {
+    --card-padding: 24px;
+    --card-border-radius: 16px;
+  }
+  &:where(.fui-r-size-4) {
+    --card-padding: 32px;
+    --card-border-radius: 20px;
+  }
+  &:where(.fui-r-size-5) {
+    --card-padding: 40px;
+    --card-border-radius: 24px;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * VARIANTS                                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.fui-Card:where(.fui-variant-surface, .fui-variant-outline)::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* surface */
+
+.fui-Card:where(.fui-variant-surface) {
+  background: var(--color-panel-solid);
+
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+
+  &::after {
+    box-shadow: inset 0 0 0 1px var(--gray-a5);
+  }
+
+  &:where(button, [href], [type='button']) {
+    @media (hover: hover) {
+      &:where(:hover)::after {
+        box-shadow: inset 0 0 0 1px var(--gray-a7);
+      }
+    }
+    &:where(:active:not([data-state='open'])) {
+      &:where(:focus-visible) {
+        background-color: var(--gray-a3);
+      }
+    }
+    &:where([data-pressed]),
+    &:where([data-state='open']),
+    &:where(:active) {
+      box-shadow: none;
+      background-color: var(--gray-3);
+
+      &::after {
+        box-shadow: inset 0 0 0 1px var(--gray-a6);
+      }
+    }
+  }
+}
+
+.fui-Card:where(.fui-variant-outline) {
+  &::after {
+    box-shadow: inset 0 0 0 1px var(--color-stroke);
+  }
+
+  &:where(button, [href], [type='button']) {
+    @media (hover: hover) {
+      &:where(:hover)::after {
+        box-shadow: inset 0 0 0 1px var(--gray-a7);
+      }
+    }
+    &:where(:active:not([data-state='open'])) {
+      &:where(:focus-visible) {
+        background-color: var(--gray-a3);
+      }
+    }
+    &:where([data-pressed]),
+    &:where([data-state='open']),
+    &:where(:active) {
+      background-color: var(--gray-3);
+
+      &::after {
+        box-shadow: inset 0 0 0 1px var(--gray-a6);
+      }
+    }
+  }
+}
+
+/* ghost */
+
+.fui-Card:where(.fui-variant-ghost) {
+  &:where(button, [href], [type='button']) {
+    @media (hover: hover) {
+      &:where(:hover) {
+        background-color: var(--gray-a3);
+      }
+    }
+
+    &:where([data-pressed]),
+    &:where([data-state='open']),
+    &:where(:active) {
+      background-color: var(--gray-a3);
+    }
+    &:where(:active:not([data-state='open'])) {
+      background-color: var(--gray-a4);
+    }
+  }
+}
+
+/* soft */
+
+.fui-Card:where(.fui-variant-soft) {
+  background-color: var(--gray-a3);
+
+  &:where(button, [href], [type='button']) {
+    @media (hover: hover) {
+      &:where(:hover) {
+        background-color: var(--gray-a4);
+      }
+    }
+
+    &:where([data-pressed]),
+    &:where([data-state='open']),
+    &:where(:active) {
+      background-color: var(--gray-a4);
+    }
+    &:where(:active:not([data-state='open'])) {
+      background-color: var(--gray-a5);
+    }
+  }
+}

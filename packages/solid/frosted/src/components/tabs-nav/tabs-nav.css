@@ -1,0 +1,18 @@
+/**
+ * Ported from frosted-ui (MIT) at commit 56787900bfe0.
+ * Source: packages/frosted-ui/src/components/tabs-nav/tabs-nav.css
+ * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
+ */
+@import '../base-tabs-list/base-tabs-list.css';
+
+/* List (ul) uses display:contents so the nav is the single layout container; both Root and List are required by Base UI. */
+.fui-TabsNavListContents {
+  display: contents;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fui-TabsNavItem {
+  display: flex;
+}
