@@ -2,34 +2,61 @@
  * Zero-JS theming: copy this file (and `blocks.css` for the block
  * components) from the solidix repo into your project, side by side,
  * and import it with a relative path. Re-copy after upgrading.
- * Dark variant: set `data-funnel-theme="dark"` on a wrapping element. */
+ * Dark variant: set `data-funnel-theme="dark"` on a wrapping element; it flips
+ * color-scheme to dark so each light-dark() pair resolves its dark value. */
 :root {
   --solidix-funnel-paper: #ffffff;
+  --solidix-funnel-paper: light-dark(#ffffff, #0f172a);
   --solidix-funnel-ink: #0f172a;
+  --solidix-funnel-ink: light-dark(#0f172a, #f8fafc);
   --solidix-funnel-ink-body: #334155;
+  --solidix-funnel-ink-body: light-dark(#334155, #cbd5e1);
   --solidix-funnel-muted: #64748b;
+  --solidix-funnel-muted: light-dark(#64748b, #94a3b8);
   --solidix-funnel-faint: #94a3b8;
+  --solidix-funnel-faint: light-dark(#94a3b8, #64748b);
   --solidix-funnel-line: #e2e8f0;
+  --solidix-funnel-line: light-dark(#e2e8f0, #334155);
   --solidix-funnel-line-soft: #f1f5f9;
+  --solidix-funnel-line-soft: light-dark(#f1f5f9, #1e293b);
   --solidix-funnel-subtle: #f8fafc;
+  --solidix-funnel-subtle: light-dark(#f8fafc, #1e293b);
   --solidix-funnel-inverse: #0f172a;
+  --solidix-funnel-inverse: light-dark(#0f172a, #f8fafc);
   --solidix-funnel-elevated: #ffffff;
+  --solidix-funnel-elevated: light-dark(#ffffff, #1e293b);
   --solidix-funnel-brand: #c2410c;
+  --solidix-funnel-brand: light-dark(#c2410c, #fb923c);
   --solidix-funnel-brand-strong: #9a3412;
+  --solidix-funnel-brand-strong: light-dark(#9a3412, #fdba74);
   --solidix-funnel-brand-tint: #fff7ed;
+  --solidix-funnel-brand-tint: light-dark(#fff7ed, #431407);
   --solidix-funnel-brand-line: #fed7aa;
+  --solidix-funnel-brand-line: light-dark(#fed7aa, #7c2d12);
   --solidix-funnel-cta: #ea580c;
+  --solidix-funnel-cta: light-dark(#ea580c, #fb923c);
   --solidix-funnel-cta-strong: #c2410c;
+  --solidix-funnel-cta-strong: light-dark(#c2410c, #ea580c);
   --solidix-funnel-cta-ink: #ffffff;
+  --solidix-funnel-cta-ink: light-dark(#ffffff, #0f172a);
   --solidix-funnel-success: #15803d;
+  --solidix-funnel-success: light-dark(#15803d, #4ade80);
   --solidix-funnel-success-tint: #f0fdf4;
+  --solidix-funnel-success-tint: light-dark(#f0fdf4, #052e16);
   --solidix-funnel-warning-strong: #92400e;
+  --solidix-funnel-warning-strong: light-dark(#92400e, #fbbf24);
   --solidix-funnel-warning-tint: #fffbeb;
+  --solidix-funnel-warning-tint: light-dark(#fffbeb, #451a03);
   --solidix-funnel-danger: #b91c1c;
+  --solidix-funnel-danger: light-dark(#b91c1c, #f87171);
   --solidix-funnel-danger-tint: #fef2f2;
+  --solidix-funnel-danger-tint: light-dark(#fef2f2, #450a0a);
   --solidix-funnel-star: #d97706;
+  --solidix-funnel-star: light-dark(#d97706, #fbbf24);
   --solidix-funnel-star-empty: #e2e8f0;
+  --solidix-funnel-star-empty: light-dark(#e2e8f0, #334155);
   --solidix-funnel-highlight: #fef08a;
+  --solidix-funnel-highlight: light-dark(#fef08a, #713f12);
   --solidix-funnel-field-bg: #ffffff;
   --solidix-funnel-field-ink: #0f172a;
   --solidix-funnel-field-line: #cbd5e1;
@@ -83,8 +110,14 @@
   --solidix-funnel-radius-xl: 24px;
   --solidix-funnel-radius-full: 999px;
   --solidix-funnel-shadow-sm: 0 1px 2px rgb(15 23 42 / 0.08);
+  --solidix-funnel-shadow-sm:
+    light-dark(0 1px 2px rgb(15 23 42 / 0.08), 0 1px 2px rgb(0 0 0 / 0.4));
   --solidix-funnel-shadow-md: 0 12px 32px -16px rgb(15 23 42 / 0.35);
+  --solidix-funnel-shadow-md:
+    light-dark(0 12px 32px -16px rgb(15 23 42 / 0.35), 0 12px 32px -16px rgb(0 0 0 / 0.6));
   --solidix-funnel-shadow-lg: 0 24px 64px -24px rgb(15 23 42 / 0.4);
+  --solidix-funnel-shadow-lg:
+    light-dark(0 24px 64px -24px rgb(15 23 42 / 0.4), 0 24px 64px -24px rgb(0 0 0 / 0.65));
   --solidix-funnel-breakpoint-sm: 640px;
   --solidix-funnel-breakpoint-md: 768px;
   --solidix-funnel-breakpoint-lg: 1024px;
@@ -99,37 +132,9 @@
   --solidix-funnel-duration-glow: 3000ms;
   --solidix-funnel-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
-[data-funnel-theme="dark"] {
-  --solidix-funnel-paper: #0f172a;
-  --solidix-funnel-ink: #f8fafc;
-  --solidix-funnel-ink-body: #cbd5e1;
-  --solidix-funnel-muted: #94a3b8;
-  --solidix-funnel-faint: #64748b;
-  --solidix-funnel-line: #334155;
-  --solidix-funnel-line-soft: #1e293b;
-  --solidix-funnel-subtle: #1e293b;
-  --solidix-funnel-inverse: #f8fafc;
-  --solidix-funnel-elevated: #1e293b;
-  --solidix-funnel-brand: #fb923c;
-  --solidix-funnel-brand-strong: #fdba74;
-  --solidix-funnel-brand-tint: #431407;
-  --solidix-funnel-brand-line: #7c2d12;
-  --solidix-funnel-cta: #fb923c;
-  --solidix-funnel-cta-strong: #ea580c;
-  --solidix-funnel-cta-ink: #0f172a;
-  --solidix-funnel-success: #4ade80;
-  --solidix-funnel-success-tint: #052e16;
-  --solidix-funnel-warning-strong: #fbbf24;
-  --solidix-funnel-warning-tint: #451a03;
-  --solidix-funnel-danger: #f87171;
-  --solidix-funnel-danger-tint: #450a0a;
-  --solidix-funnel-star: #fbbf24;
-  --solidix-funnel-star-empty: #334155;
-  --solidix-funnel-highlight: #713f12;
-  --solidix-funnel-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
-  --solidix-funnel-shadow-md: 0 12px 32px -16px rgb(0 0 0 / 0.6);
-  --solidix-funnel-shadow-lg: 0 24px 64px -24px rgb(0 0 0 / 0.65);
-}
+/* The theme switch: :root pins light (the OS setting never flips the
+ * page), and the attribute forces dark for its subtree, which is what
+ * the light-dark() pairs resolve against. */
 :root {
   color-scheme: light;
 }

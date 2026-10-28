@@ -201,7 +201,15 @@ describe("primary tactile treatment", () => {
     const active = text.match(/\.fx-cta-button\[data-variant="primary"\]:active \{[^}]*\}/s)![0];
     expect(active).toContain("inset 0 2px 4px");
     expect(active).toContain("transform: translateY(1px);");
-    expect(text).toContain('[data-funnel-theme="dark"] .fx-cta-button[data-variant="primary"]');
+    // The emboss resolves through light-dark(): flat light value first for
+    // older browsers, then the pair that drops it in the dark theme.
+    const primary = text.match(/\.fx-cta-button\[data-variant="primary"\] \{[^}]*\}/s)![0];
+    expect(primary).toContain("text-shadow: 0 1px 1px rgb(0 0 0 / 0.2);");
+    expect(primary).toContain("text-shadow: light-dark(0 1px 1px rgb(0 0 0 / 0.2), none);");
+    expect(primary.indexOf("text-shadow: 0 1px 1px")).toBeLessThan(
+      primary.indexOf("text-shadow: light-dark("),
+    );
+    expect(text).not.toContain("[data-funnel-theme");
   });
 });
 

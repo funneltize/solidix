@@ -122,7 +122,7 @@ export const lightTokens: TokenSet = {
   "--solidix-funnel-ease-out": "cubic-bezier(0.16, 1, 0.3, 1)",
 };
 
-/** Dark overrides, emitted under `[data-funnel-theme="dark"]`. */
+/** Dark values, merged into the `:root` block as `light-dark()` pairs. */
 export const darkTokens: TokenSet = {
   "--solidix-funnel-paper": "#0f172a",
   "--solidix-funnel-ink": "#f8fafc",
@@ -157,6 +157,9 @@ export const darkTokens: TokenSet = {
 
 /** Base rules shipped at the end of `tokens.css`. */
 export const funnelBaseCss = [
+  "/* The theme switch: :root pins light (the OS setting never flips the",
+  " * page), and the attribute forces dark for its subtree, which is what",
+  " * the light-dark() pairs resolve against. */",
   ":root {",
   "  color-scheme: light;",
   "}",
@@ -214,7 +217,8 @@ const HEADER = [
   " * Zero-JS theming: copy this file (and `blocks.css` for the block",
   " * components) from the solidix repo into your project, side by side,",
   " * and import it with a relative path. Re-copy after upgrading.",
-  ' * Dark variant: set `data-funnel-theme="dark"` on a wrapping element. */',
+  ' * Dark variant: set `data-funnel-theme="dark"` on a wrapping element; it flips',
+  " * color-scheme to dark so each light-dark() pair resolves its dark value. */",
   "",
 ].join("\n");
 
@@ -223,10 +227,18 @@ function renderDeclaration(name: string, value: string): string {
   return single.length <= 100 ? single : `  ${name}:\n    ${value};`;
 }
 
-function renderBlock(selector: string, tokens: TokenSet): string {
-  const lines = [`${selector} {`];
-  for (const [name, value] of Object.entries(tokens)) {
-    lines.push(renderDeclaration(name, value));
+function renderRootBlock(light: TokenSet, dark: TokenSet): string {
+  const lines = [":root {"];
+  for (const [name, value] of Object.entries(light)) {
+    const darkValue = dark[name];
+    if (darkValue === undefined) {
+      lines.push(renderDeclaration(name, value));
+    } else {
+      // Flat light value first: browsers without light-dark() keep it and
+      // drop the pair below, degrading to the light theme.
+      lines.push(renderDeclaration(name, value));
+      lines.push(renderDeclaration(name, `light-dark(${value}, ${darkValue})`));
+    }
   }
   lines.push("}", "");
   return lines.join("\n");
@@ -234,12 +246,7 @@ function renderBlock(selector: string, tokens: TokenSet): string {
 
 /** Renders the full `tokens.css` output from the token source of truth. */
 export function renderTokensCss(): string {
-  return (
-    HEADER +
-    renderBlock(":root", lightTokens) +
-    renderBlock('[data-funnel-theme="dark"]', darkTokens) +
-    funnelBaseCss
-  );
+  return HEADER + renderRootBlock(lightTokens, darkTokens) + funnelBaseCss;
 }
 
 /* ----------------------------------------------------------------------------------------------- */

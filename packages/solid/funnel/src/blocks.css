@@ -279,6 +279,8 @@
     0 16px 32px -16px color-mix(in srgb, var(--solidix-funnel-cta) 55%, transparent);
   color: var(--solidix-funnel-cta-ink);
   text-shadow: 0 1px 1px rgb(0 0 0 / 0.2);
+  /* Dark theme pairs dark text with a light CTA, so the emboss resolves off there. */
+  text-shadow: light-dark(0 1px 1px rgb(0 0 0 / 0.2), none);
 }
 
 .fx-cta-button[data-variant="primary"]:hover {
@@ -297,11 +299,6 @@
     0 4px 8px -4px color-mix(in srgb, var(--solidix-funnel-cta) 40%, transparent);
   /* Beats the :hover lift above (equal specificity, later source). */
   transform: translateY(1px);
-}
-
-/* Dark theme pairs dark text with a light CTA, so the emboss would muddy it. */
-[data-funnel-theme="dark"] .fx-cta-button[data-variant="primary"] {
-  text-shadow: none;
 }
 
 .fx-cta-button[data-variant="secondary"] {

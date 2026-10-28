@@ -42,6 +42,33 @@ describe("tokens.css", () => {
     }
   });
 
+  test("every dark token merges into a light-dark() pair with a flat fallback", () => {
+    const css = readFileSync(
+      workspaceFile("packages", "solid", "funnel", "src", "tokens.css"),
+      "utf8",
+    );
+    // Collapse wrapping: long pairs split across lines in the stylesheet.
+    const flat = css.replace(/\s+/g, " ");
+    for (const [name, dark] of Object.entries(darkTokens)) {
+      const light = lightTokens[name]!;
+      expect(flat).toContain(`${name}: ${light};`);
+      expect(flat).toContain(`${name}: light-dark(${light}, ${dark});`);
+    }
+    // Fallback first: browsers without light-dark() keep the light theme.
+    expect(flat.indexOf("--solidix-funnel-paper: #ffffff;")).toBeLessThan(
+      flat.indexOf("--solidix-funnel-paper: light-dark("),
+    );
+  });
+
+  test("data-funnel-theme only flips color-scheme, never overrides tokens", () => {
+    const css = readFileSync(
+      workspaceFile("packages", "solid", "funnel", "src", "tokens.css"),
+      "utf8",
+    );
+    expect(css).toMatch(/\[data-funnel-theme="dark"\]\s*\{\s*color-scheme:\s*dark;\s*\}/);
+    expect(css).not.toMatch(/\[data-funnel-theme="dark"\]\s*\{[^}]*--solidix-/s);
+  });
+
   test("focus ring is scoped to funnel markup, never a bare global", () => {
     const css = readFileSync(
       workspaceFile("packages", "solid", "funnel", "src", "tokens.css"),

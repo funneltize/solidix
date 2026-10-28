@@ -112,9 +112,12 @@ Rules for working with tokens:
   checked-in `tokens.css` differs from rendered output.
 - All tokens live under `--solidix-funnel-*`. No unprefixed custom
   properties, no component-scoped token inventions.
-- Dark mode is a token override under `[data-funnel-theme="dark"]`, set via
-  `Root theme="dark"` (light sets no attribute). Fields stay light in both
-  themes (see section 7).
+- Dark mode resolves through `light-dark()` token pairs on `:root`.
+  `[data-funnel-theme="dark"]` (set via `Root theme="dark"`, light sets no
+  attribute) only flips `color-scheme` to `dark` for the subtree, which is
+  what the pairs resolve against. Every paired token ships its flat light
+  value first so browsers without `light-dark()` degrade to the light
+  theme. Fields stay light in both themes (see section 7).
 - CTA hues are re-points under `[data-cta="emerald"|"cobalt"]` in the base
   CSS. Tactile depth derives from the CTA tokens via `color-mix`, so hue
   switches change no other rule.
@@ -438,7 +441,7 @@ test in the same change:
 
 | Test file                | Contract                                                                                                               |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `tokens.test.ts`         | Generated CSS matches `tokens.ts`; contrast pairs meet minima; README ratio table matches computed values              |
+| `tokens.test.ts`         | Generated CSS matches `tokens.ts`; light-dark() theme mechanism; contrast pairs meet minima; README ratio table matches computed values |
 | `css-budget.test.ts`     | Byte budgets for both stylesheets                                                                                      |
 | `css-scopes.test.ts`     | Tone-scope literals, field-token isolation, container tiers, one-chrome-per-viewport, comparison containment           |
 | `motion.test.ts`         | Token-only timing, `fx-` keyframes resolve, `data-state` hooks exist, reduced-motion guard                             |
@@ -474,8 +477,10 @@ jsdom alone.
 
 ### Rebrand for a client
 
-1. Override tokens in one stylesheet (`:root` plus optional
-   `[data-funnel-theme="dark"]`), never component code.
+1. Override tokens in one stylesheet, never component code: a plain
+   `:root` value recolors both themes, a `light-dark()` pair recolors per
+   theme, and a plain value under `[data-funnel-theme="dark"]` still wins
+   for dark only.
 2. Pick the CTA hue (`data-cta`) by vertical; keep brand and CTA distinct.
 3. Re-check contrast pairs if any text/background token changed; update the
    pinned table.
@@ -512,7 +517,7 @@ jsdom alone.
 | `PHILOSOPHY.md` (this file)             | Intent and rules agents implement from                                             |
 | `README.md`                             | Consumer reference: install, tokens, contrast table, blocks, motion                |
 | `src/tokens.ts`                         | Token source of truth + contrast pairs + CSS renderer                              |
-| `src/tokens.css` (generated)            | Zero-JS theme layer, dark variant, CTA hues, focus/selection, reduced-motion guard |
+| `src/tokens.css` (generated)            | Zero-JS theme layer, light-dark() theme pairs, CTA hues, focus/selection, reduced-motion guard |
 | `src/blocks.css`                        | All block visuals; `.fx-*` public API                                              |
 | `src/root.tsx`                          | Theme/CTA/variant scope                                                            |
 | `src/layout.tsx`                        | Section, Container, Header, SectionHeading, Eyebrow, Prose                         |

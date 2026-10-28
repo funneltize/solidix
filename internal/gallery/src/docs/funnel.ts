@@ -9,7 +9,7 @@ export const doc: PrimitiveDoc = {
   description:
     "The funnel system is an opinionated design language for landing pages and funnels: a zero-JavaScript token stylesheet plus themed blocks (hero, proof, pricing, opt-in, urgency) composed from Solidix primitives. Import one stylesheet and every block below is styled; rebrand by overriding tokens, never component code.",
   features: [
-    'Zero-JS token layer with a dark variant (`data-funnel-theme="dark"`).',
+    'Zero-JS token layer with a dark variant (`data-funnel-theme="dark"` flips the `light-dark()` token pairs).',
     "Themed blocks for the full funnel arc: hero, proof, consideration, conversion.",
     "Behavior comes from Solidix primitives, so keyboard interaction and ARIA stay consistent.",
     "Analytics-friendly: blocks dispatch `funnel:cta`, `funnel:submit`, and `funnel:view` events with no SDK bundled.",
@@ -30,7 +30,8 @@ export const doc: PrimitiveDoc = {
         {
           name: "theme",
           type: '"light" | "dark"',
-          description: "Dark sets data-funnel-theme for the dark token set.",
+          description:
+            "Dark sets data-funnel-theme, forcing the dark side of each light-dark() token pair.",
         },
         {
           name: "cta",
