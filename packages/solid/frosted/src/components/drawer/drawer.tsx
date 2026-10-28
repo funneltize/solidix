@@ -10,11 +10,7 @@
 // Dropped with no base equivalent: `handle`/`payload`/`createHandle` dialog-handle plumbing,
 // and the unused local/content refs in `Body`.
 
-import {
-  omit,
-  type Component,
-  type ComponentProps,
-} from "solid-js";
+import { omit, type Component, type ComponentProps } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import {
   Dialog as DialogPrimitive,
@@ -81,15 +77,7 @@ interface DrawerContentProps extends Omit<DialogContentPrimitiveProps, "asChild"
 
 /** The drawer panel, portalled with backdrop, viewport shell, and theme. */
 const DrawerContent: Component<DrawerContentProps> = (props) => {
-  const rest = omit(
-    props,
-    "class",
-    "style",
-    "children",
-    "container",
-    "keepMounted",
-    "forceMount",
-  );
+  const rest = omit(props, "class", "style", "children", "container", "keepMounted", "forceMount");
   return (
     <DialogPortalPrimitive
       container={props.container}

@@ -544,10 +544,7 @@ const ScrollGalleryViewport: Component<ScrollGalleryViewportProps> = (props) => 
         return composedRefs;
       },
     });
-    return renderProp(
-      merged as unknown as ScrollGalleryViewportRenderProps,
-      state(),
-    );
+    return renderProp(merged as unknown as ScrollGalleryViewportRenderProps, state());
   }
 
   if (renderProp) {

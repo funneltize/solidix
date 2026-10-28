@@ -24,10 +24,7 @@ import {
 } from "@solidix/hover-card";
 import { cx } from "../../helpers/cx";
 import { Theme } from "../../theme";
-import {
-  hoverCardContentPropDefs,
-  type HoverCardContentOwnProps,
-} from "./hover-card.props";
+import { hoverCardContentPropDefs, type HoverCardContentOwnProps } from "./hover-card.props";
 
 /* --- Root --- */
 
@@ -58,8 +55,7 @@ const HoverCardRoot: Component<HoverCardRootProps> = (props) => {
  * Props accepted by the `Trigger` component.
  * `children` is the single element the trigger behavior is slotted onto.
  */
-interface HoverCardTriggerProps
-  extends Omit<HoverCardTriggerPrimitiveProps, "asChild"> {
+interface HoverCardTriggerProps extends Omit<HoverCardTriggerPrimitiveProps, "asChild"> {
   /** The single element that receives the trigger behavior. */
   children: JSX.Element;
 }
@@ -81,11 +77,9 @@ const HoverCardTrigger: Component<HoverCardTriggerProps> = (props) => {
 
 /** Props accepted by the `Content` component. */
 interface HoverCardContentProps
-  extends HoverCardContentOwnProps,
-    Omit<
-      HoverCardContentPrimitiveProps,
-      "asChild" | "align" | "side" | "sticky"
-    > {
+  extends
+    HoverCardContentOwnProps,
+    Omit<HoverCardContentPrimitiveProps, "asChild" | "align" | "side" | "sticky"> {
   /** Container element to portal the content into. Passed to the portal. */
   container?: HoverCardPortalPrimitiveProps["container"] | undefined;
   /** Keeps the portal mounted when closed. Passed to the portal as `forceMount`. */
@@ -123,8 +117,7 @@ const HoverCardContent: Component<HoverCardContentProps> = (props) => {
     "arrowPadding",
   );
   const size = () => props.size ?? hoverCardContentPropDefs.size.default;
-  const variant = () =>
-    props.variant ?? hoverCardContentPropDefs.variant.default;
+  const variant = () => props.variant ?? hoverCardContentPropDefs.variant.default;
   return (
     <HoverCardPortalPrimitive
       container={props.container}
@@ -146,7 +139,7 @@ const HoverCardContent: Component<HoverCardContentProps> = (props) => {
           collisionPadding={props.collisionPadding ?? 10}
           sticky={props.sticky ? "partial" : "always"}
           arrowPadding={props.arrowPadding}
-          forceMount={props.forceMount ?? props.keepMounted ? true : undefined}
+          forceMount={(props.forceMount ?? props.keepMounted) ? true : undefined}
           {...rest}
         >
           {props.children}
@@ -169,8 +162,4 @@ const HoverCard = {
 };
 
 export { HoverCard, HoverCardContent, HoverCardRoot, HoverCardTrigger };
-export type {
-  HoverCardContentProps,
-  HoverCardRootProps,
-  HoverCardTriggerProps,
-};
+export type { HoverCardContentProps, HoverCardRootProps, HoverCardTriggerProps };

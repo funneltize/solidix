@@ -12,7 +12,6 @@
   flex-shrink: 0;
   position: relative;
 
-
   &:where(.fui-high-contrast) :where(.fui-AvatarFallback) {
     color: var(--accent-12);
   }
@@ -75,16 +74,16 @@
 }
 
 .fui-AvatarStackAvatar:where(:has(+ .fui-shape-circle)) {
-  mask-image: 
-  radial-gradient(
-    /* Size of the circle cutout - avatar size plus double outline width for full thickness */
-    calc(var(--avatar-size) + var(--mask-outline-width) * 2) at 
-    /* Position at the center of the next avatar: left edge + half avatar size */
-    calc(var(--avatar-stack-offset) - (var(--avatar-size) / 2)) 50%, 
-    /* Create a sharp transition from transparent to white with outline width */
-    /* - 0.5px transition for smooth edges */
-    transparent calc((var(--avatar-size) + var(--mask-outline-width) * 2) / 2 - 0.5px), 
-    white calc((var(--avatar-size) + var(--mask-outline-width) * 2) / 2));
+  mask-image: radial-gradient(
+    /* Size of the circle cutout - avatar size plus double outline width for full thickness */ calc(
+        var(--avatar-size) + var(--mask-outline-width) * 2
+      )
+      at /* Position at the center of the next avatar: left edge + half avatar size */
+      calc(var(--avatar-stack-offset) - (var(--avatar-size) / 2)) 50%,
+    /* Create a sharp transition from transparent to white with outline width */ /* - 0.5px transition for smooth edges */ transparent
+      calc((var(--avatar-size) + var(--mask-outline-width) * 2) / 2 - 0.5px),
+    white calc((var(--avatar-size) + var(--mask-outline-width) * 2) / 2)
+  );
 }
 .fui-AvatarStackAvatar:where(:has(+ .fui-shape-square)) {
   /* Base layer keeps current avatar visible; SVG layer is subtracted to create the cutout */
@@ -97,7 +96,8 @@
     calc(var(--avatar-stack-offset) - var(--avatar-size) - var(--mask-outline-width)) 50%;
   mask-size:
     100% 100%,
-    calc(var(--avatar-size) + var(--mask-outline-width) * 2) calc(var(--avatar-size) + var(--mask-outline-width) * 2);
+    calc(var(--avatar-size) + var(--mask-outline-width) * 2)
+      calc(var(--avatar-size) + var(--mask-outline-width) * 2);
   /* Subtract the SVG layer from the base to create a hole */
   mask-composite: exclude;
   /* Safari/WebKit */

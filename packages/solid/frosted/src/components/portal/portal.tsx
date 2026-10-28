@@ -16,9 +16,7 @@ const PortalSlottable = createSlottable("Portal");
  * element to render as (merged via `Slot`), or a function receiving the
  * merged props.
  */
-type PortalRenderProp =
-  | JSX.Element
-  | ((props: PropsWithoutColor<"div">) => JSX.Element);
+type PortalRenderProp = JSX.Element | ((props: PropsWithoutColor<"div">) => JSX.Element);
 
 /** Props for the `Portal` component. */
 interface PortalProps extends Omit<PropsWithoutColor<"div">, "ref"> {

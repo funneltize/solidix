@@ -46,7 +46,16 @@ interface AccordionRootProps {
  * `56787900bfe0`.
  */
 const AccordionRoot: Component<AccordionRootProps> = (props) => {
-  const rest = omit(props, "children", "class", "type", "multiple", "value", "defaultValue", "onValueChange");
+  const rest = omit(
+    props,
+    "children",
+    "class",
+    "type",
+    "multiple",
+    "value",
+    "defaultValue",
+    "onValueChange",
+  );
   // Support radix-ui's `type` prop for backwards compatibility.
   const isMultiple = () => props.multiple ?? props.type === "multiple";
 
@@ -152,7 +161,10 @@ const AccordionTrigger: Component<AccordionTriggerProps> = (props) => {
 };
 
 /** Props for `Accordion.Content`. */
-interface AccordionContentProps extends Omit<AccordionContentPrimitiveProps, "children" | "forceMount"> {
+interface AccordionContentProps extends Omit<
+  AccordionContentPrimitiveProps,
+  "children" | "forceMount"
+> {
   /** Panel content. */
   children?: JSX.Element | undefined;
   /** Keep the panel mounted while collapsed. @default true */
@@ -189,4 +201,9 @@ const Accordion = {
 };
 
 export { Accordion, AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger };
-export type { AccordionContentProps, AccordionItemProps, AccordionRootProps, AccordionTriggerProps };
+export type {
+  AccordionContentProps,
+  AccordionItemProps,
+  AccordionRootProps,
+  AccordionTriggerProps,
+};

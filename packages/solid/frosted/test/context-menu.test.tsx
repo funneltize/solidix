@@ -9,9 +9,7 @@ const tick = () => new Promise<void>((resolve) => setTimeout(resolve, 0));
 function Fixture(props: { children?: JSX.Element }): JSX.Element {
   return (
     <ContextMenu.Root>
-      <ContextMenu.Trigger data-testid="trigger">
-        Right click here
-      </ContextMenu.Trigger>
+      <ContextMenu.Trigger data-testid="trigger">Right click here</ContextMenu.Trigger>
       <ContextMenu.Content data-testid="content">
         <ContextMenu.Item data-testid="item-apple">Apple</ContextMenu.Item>
         <ContextMenu.Item data-testid="item-banana">Banana</ContextMenu.Item>
@@ -73,9 +71,7 @@ describe("ContextMenu (frosted)", () => {
     const onSelect = vi.fn();
     render(() => (
       <ContextMenu.Root>
-        <ContextMenu.Trigger data-testid="trigger">
-          Right click here
-        </ContextMenu.Trigger>
+        <ContextMenu.Trigger data-testid="trigger">Right click here</ContextMenu.Trigger>
         <ContextMenu.Content data-testid="content">
           <ContextMenu.Item data-testid="item-apple" onSelect={onSelect}>
             Apple

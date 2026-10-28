@@ -57,9 +57,9 @@ interface CreditCardContentProps extends Omit<PropsWithoutColor<"div">, "ref"> {
  * created under the color provider: resolving in the outer setup would
  * instantiate faces above the provider and they would miss the color.
  */
-const CreditCardContentInner: Component<
-  CreditCardContentProps & { parentFace: () => CardFace }
-> = (props) => {
+const CreditCardContentInner: Component<CreditCardContentProps & { parentFace: () => CardFace }> = (
+  props,
+) => {
   const rest = omit(props, "children", "class", "ref", "render", "color", "parentFace");
   const composedRefs = composeRefs(props.ref);
   const resolved = children(() => props.children);
@@ -92,12 +92,7 @@ const CreditCardContentInner: Component<
     // Base UI `useRender` semantics: the element keeps its own children when
     // it has any, otherwise the component's children render inside it.
     return (
-      <ContentSlot
-        {...rest}
-        class={classes()}
-        data-face={props.parentFace()}
-        ref={composedRefs}
-      >
+      <ContentSlot {...rest} class={classes()} data-face={props.parentFace()} ref={composedRefs}>
         <ContentSlottable child={renderProp}>
           {(childNodes) => (childNodes.length > 0 ? childNodes : resolved())}
         </ContentSlottable>

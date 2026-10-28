@@ -14,9 +14,7 @@ describe("AvatarGroup", () => {
     const root = first.closest(".fui-AvatarGroupRoot");
     expect(root).not.toBeNull();
     expect(root?.classList.contains("fui-r-size-3")).toBe(true);
-    expect(first.closest(".fui-AvatarGroupAvatar")?.classList.contains("fui-r-size-3")).toBe(
-      true,
-    );
+    expect(first.closest(".fui-AvatarGroupAvatar")?.classList.contains("fui-r-size-3")).toBe(true);
     expect(root?.querySelector(".fui-AvatarGroupRootInner")).not.toBeNull();
     expect(await screen.findByText("GH")).not.toBeNull();
   });

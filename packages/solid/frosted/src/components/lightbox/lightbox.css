@@ -84,7 +84,7 @@
   box-sizing: border-box;
 }
 
-.fui-LightboxItem[aria-hidden='true'] {
+.fui-LightboxItem[aria-hidden="true"] {
   visibility: hidden;
 }
 

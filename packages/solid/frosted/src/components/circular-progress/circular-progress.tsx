@@ -5,15 +5,11 @@ import {
   type ProgressProps as HeadlessProgressProps,
 } from "@solidix/progress";
 import { cx } from "../../helpers/cx";
-import {
-  circularProgressPropDefs,
-  type CircularProgressOwnProps,
-} from "./circular-progress.props";
+import { circularProgressPropDefs, type CircularProgressOwnProps } from "./circular-progress.props";
 
 /** Props for `CircularProgress`: headless root props plus styled prop defs. */
 interface CircularProgressProps
-  extends Omit<HeadlessProgressProps, "children">,
-    CircularProgressOwnProps {}
+  extends Omit<HeadlessProgressProps, "children">, CircularProgressOwnProps {}
 
 /** Size configuration matching the CSS variables. */
 const sizeConfig: Record<string, { diameter: number; strokeWidth: number }> = {

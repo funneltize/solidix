@@ -119,13 +119,13 @@
       opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
 
     /* When open: show blur effect */
-    &[data-state='open'] {
+    &[data-state="open"] {
       backdrop-filter: blur(4px) brightness(0.7);
       opacity: 1;
     }
 
     /* Starting/ending transitions */
-    &[data-state='closed'] {
+    &[data-state="closed"] {
       backdrop-filter: blur(0px) brightness(1);
       opacity: 0;
     }
@@ -139,7 +139,7 @@
       translate 400ms cubic-bezier(0.32, 0.72, 0, 1),
       filter 300ms cubic-bezier(0.32, 0.72, 0, 1);
 
-    &[data-state='closed'] {
+    &[data-state="closed"] {
       opacity: 0;
       transform: scale(calc(0.97 - 0.05 * var(--nested-dialogs)));
       translate: 0 calc(8px - var(--nested-dialogs) * 0.5rem);

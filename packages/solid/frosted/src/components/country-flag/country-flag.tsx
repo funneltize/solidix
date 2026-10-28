@@ -37,7 +37,11 @@ const CountryFlag: Component<CountryFlagProps> = (props) => {
     <img
       src={`https://cdn.jsdelivr.net/npm/flag-icons@${VERSION}/flags/4x3/${props.countryCode.toLowerCase()}.svg`}
       alt={props.alt ?? ""}
-      class={cx("fui-CountryFlag", props.class, `fui-r-size-${props.size ?? countryFlagPropDefs.size.default}`)}
+      class={cx(
+        "fui-CountryFlag",
+        props.class,
+        `fui-r-size-${props.size ?? countryFlagPropDefs.size.default}`,
+      )}
       {...rest}
       ref={composedRefs}
     />

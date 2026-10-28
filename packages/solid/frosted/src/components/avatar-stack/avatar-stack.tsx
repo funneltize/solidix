@@ -8,9 +8,7 @@ import { avatarStackPropDefs, type AvatarStackRootOwnProps } from "./avatar-stac
 /** Size cascaded from `AvatarStack.Root` to its avatars. */
 type AvatarStackContextValue = AvatarStackRootOwnProps["size"];
 
-const AvatarStackContext = createContext<AvatarStackContextValue>(
-  avatarStackPropDefs.size.default,
-);
+const AvatarStackContext = createContext<AvatarStackContextValue>(avatarStackPropDefs.size.default);
 
 /** Props for `AvatarStack.Root`. */
 interface AvatarStackRootProps extends PropsWithoutColor<"div">, AvatarStackRootOwnProps {}
@@ -59,7 +57,11 @@ type AvatarStackAvatarProps = Omit<AvatarProps, "size">;
 const AvatarStackAvatar: Component<AvatarStackAvatarProps> = (props) => {
   const size = useContext(AvatarStackContext);
   return (
-    <Avatar size={size} {...omit(props, "class")} class={cx("fui-AvatarStackAvatar", props.class)} />
+    <Avatar
+      size={size}
+      {...omit(props, "class")}
+      class={cx("fui-AvatarStackAvatar", props.class)}
+    />
   );
 };
 

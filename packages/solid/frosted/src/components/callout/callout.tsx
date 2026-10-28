@@ -148,9 +148,10 @@ const CalloutActions: Component<CalloutActionsProps> = (props) => (
 type CalloutActionVariant = "primary" | "secondary";
 
 /** Slot typed for `CalloutAction`'s button props. */
-const CalloutActionSlot = createSlot<HTMLButtonElement, JSX.ButtonHTMLAttributes<HTMLButtonElement>>(
-  "Callout.Action",
-);
+const CalloutActionSlot = createSlot<
+  HTMLButtonElement,
+  JSX.ButtonHTMLAttributes<HTMLButtonElement>
+>("Callout.Action");
 /** Slottable selecting the element-form `render` target for child injection. */
 const CalloutActionSlottable = createSlottable("Callout.Action");
 
@@ -171,8 +172,10 @@ type CalloutActionRenderProp =
   | ((props: CalloutActionRenderProps, state: CalloutActionRenderState) => JSX.Element);
 
 /** Props for `Callout.Action`. */
-interface CalloutActionProps
-  extends Omit<JSX.ButtonHTMLAttributes<HTMLButtonElement>, "color" | "disabled" | "ref"> {
+interface CalloutActionProps extends Omit<
+  JSX.ButtonHTMLAttributes<HTMLButtonElement>,
+  "color" | "disabled" | "ref"
+> {
   /** Button style. Defaults to `"primary"`. */
   variant?: CalloutActionVariant | undefined;
   /** Whether the action shows a loading spinner; implies `disabled`. */
@@ -195,16 +198,7 @@ interface CalloutActionProps
  * `56787900bfe0`.
  */
 const CalloutAction: Component<CalloutActionProps> = (props) => {
-  const rest = omit(
-    props,
-    "children",
-    "class",
-    "ref",
-    "render",
-    "variant",
-    "loading",
-    "disabled",
-  );
+  const rest = omit(props, "children", "class", "ref", "render", "variant", "loading", "disabled");
   const composedRefs = composeRefs(props.ref);
   const resolved = children(() => props.children);
   const resolvedAgain = children(() => props.children);

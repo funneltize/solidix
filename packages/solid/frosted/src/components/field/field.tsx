@@ -180,7 +180,14 @@ interface FieldRootProps extends Omit<JSX.HTMLAttributes<HTMLDivElement>, "child
  */
 type FieldRootStateProps = Pick<
   FieldRootProps,
-  "noControlId" | "value" | "defaultValue" | "onValueChange" | "disabled" | "invalid" | "error" | "name"
+  | "noControlId"
+  | "value"
+  | "defaultValue"
+  | "onValueChange"
+  | "disabled"
+  | "invalid"
+  | "error"
+  | "name"
 >;
 
 /**

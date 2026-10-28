@@ -98,8 +98,7 @@ const DialogTrigger: Component<DialogTriggerProps> = (props) => {
 
 /** Props accepted by the `Content` component. */
 interface DialogContentProps
-  extends DialogContentOwnProps,
-    Omit<DialogContentPrimitiveProps, "asChild"> {
+  extends DialogContentOwnProps, Omit<DialogContentPrimitiveProps, "asChild"> {
   /** Container element to portal the content into. Passed to the portal. */
   container?: DialogPortalPrimitiveProps["container"] | undefined;
   /** Keeps the portal mounted when closed. Passed to the portal as `forceMount`. */
@@ -124,10 +123,7 @@ const DialogContent: Component<DialogContentProps> = (props) => {
       container={props.container}
       forceMount={props.keepMounted ? true : undefined}
     >
-      <DialogOverlayPrimitive
-        class="fui-DialogBackdrop"
-        forceMount={props.forceMount}
-      />
+      <DialogOverlayPrimitive class="fui-DialogBackdrop" forceMount={props.forceMount} />
       <DialogOverlayPrimitive
         class="fui-DialogOverlay"
         forceMount={props.forceMount}
@@ -170,16 +166,10 @@ type DialogTitleProps = ComponentProps<typeof Heading>;
 const DialogTitle: Component<DialogTitleProps> = (props) => {
   const context = useDialogContentContext();
   const rest = omit(props, "size", "class");
-  const size = () =>
-    props.size ?? (context ? DIALOG_TITLE_SIZE_MAP[context.size] : undefined);
+  const size = () => props.size ?? (context ? DIALOG_TITLE_SIZE_MAP[context.size] : undefined);
   return (
     <DialogTitlePrimitive asChild>
-      <Heading
-        size={size()}
-        trim="start"
-        class={cx("fui-DialogTitle", props.class)}
-        {...rest}
-      />
+      <Heading size={size()} trim="start" class={cx("fui-DialogTitle", props.class)} {...rest} />
     </DialogTitlePrimitive>
   );
 };

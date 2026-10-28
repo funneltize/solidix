@@ -22,10 +22,7 @@ interface SegmentedControlRootProps extends Omit<HeadlessRootProps, "asChild" | 
  * whopio/frosted-ui commit `56787900bfe0`.
  */
 const SegmentedControlRoot: Component<SegmentedControlRootProps> = (props) => (
-  <HeadlessRoot
-    {...omit(props, "class")}
-    class={cx("fui-BaseSegmentedControlRoot", props.class)}
-  />
+  <HeadlessRoot {...omit(props, "class")} class={cx("fui-BaseSegmentedControlRoot", props.class)} />
 );
 
 /** Props for `SegmentedControl.List`. */
@@ -38,10 +35,7 @@ interface SegmentedControlListProps extends Omit<HeadlessListProps, "asChild"> {
  * whopio/frosted-ui commit `56787900bfe0`.
  */
 const SegmentedControlList: Component<SegmentedControlListProps> = (props) => (
-  <HeadlessList
-    {...omit(props, "class")}
-    class={cx("fui-BaseSegmentedControlList", props.class)}
-  />
+  <HeadlessList {...omit(props, "class")} class={cx("fui-BaseSegmentedControlList", props.class)} />
 );
 
 /** Props for `SegmentedControl.Trigger`. */

@@ -250,9 +250,7 @@ describe("CreditCard", () => {
   it("exposes face and brand through useCreditCard", async () => {
     const Probe = () => {
       const { face, cardType, cardNiceType } = useCreditCard();
-      return (
-        <div data-testid="probe">{`${face()}/${cardType()}/${cardNiceType()}`}</div>
-      );
+      return <div data-testid="probe">{`${face()}/${cardType()}/${cardNiceType()}`}</div>;
     };
     render(() => (
       <CreditCard.Root>

@@ -24,9 +24,7 @@ describe("Table", () => {
     const table = await screen.findByRole("table");
     expect(table.classList.contains("fui-TableTable")).toBe(true);
     expect(table.closest(".fui-TableRoot")?.classList.contains("fui-r-size-2")).toBe(true);
-    expect(table.closest(".fui-TableRoot")?.classList.contains("fui-variant-surface")).toBe(
-      true,
-    );
+    expect(table.closest(".fui-TableRoot")?.classList.contains("fui-variant-surface")).toBe(true);
     expect(screen.getByRole("columnheader", { name: "Name" }).tagName).toBe("TH");
     expect(screen.getByRole("rowheader", { name: "Ada" }).getAttribute("scope")).toBe("row");
     expect(screen.getByRole("cell", { name: "Engineer" }).tagName).toBe("TD");

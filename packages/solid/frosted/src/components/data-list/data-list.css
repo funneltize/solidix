@@ -178,7 +178,7 @@
      * Zero-width joiner to establish a baseline.
      * Allows Flex children with text to align automatically.
      */
-    content: '‍';
+    content: "‍";
   }
 }
 

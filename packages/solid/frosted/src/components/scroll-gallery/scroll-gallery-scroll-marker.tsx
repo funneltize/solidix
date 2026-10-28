@@ -42,7 +42,10 @@ type ScrollGalleryScrollMarkerRenderProps = PropsWithoutColor<"button"> & {
  */
 type ScrollGalleryScrollMarkerRenderProp =
   | JSX.Element
-  | ((props: ScrollGalleryScrollMarkerRenderProps, state: ScrollGalleryScrollMarkerState) => JSX.Element);
+  | ((
+      props: ScrollGalleryScrollMarkerRenderProps,
+      state: ScrollGalleryScrollMarkerState,
+    ) => JSX.Element);
 
 /** Props for `ScrollGallery.ScrollMarker`. */
 interface ScrollGalleryScrollMarkerProps extends Omit<PropsWithoutColor<"button">, "ref"> {

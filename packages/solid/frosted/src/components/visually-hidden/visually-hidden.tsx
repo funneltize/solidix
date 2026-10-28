@@ -35,9 +35,7 @@ const VisuallyHiddenSlottable = createSlottable("VisuallyHidden");
  * an element to render as (merged via `Slot`), or a function receiving
  * the merged props.
  */
-type VisuallyHiddenRenderProp =
-  | JSX.Element
-  | ((props: PropsWithoutColor<"span">) => JSX.Element);
+type VisuallyHiddenRenderProp = JSX.Element | ((props: PropsWithoutColor<"span">) => JSX.Element);
 
 /** Props for the `VisuallyHidden` component. */
 interface VisuallyHiddenProps extends Omit<PropsWithoutColor<"span">, "ref" | "style"> {

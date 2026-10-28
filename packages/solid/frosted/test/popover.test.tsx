@@ -41,16 +41,12 @@ describe("Popover", () => {
     const dialog = await screen.findByRole("dialog");
     expect(dialog.getAttribute("data-state")).toBe("open");
     expect(dialog.classList.contains("fui-PopoverContent")).toBe(true);
-    expect(
-      dialog.classList.contains(
-        `fui-r-size-${popoverContentPropDefs.size.default}`,
-      ),
-    ).toBe(true);
-    expect(
-      dialog.classList.contains(
-        `fui-variant-${popoverContentPropDefs.variant.default}`,
-      ),
-    ).toBe(true);
+    expect(dialog.classList.contains(`fui-r-size-${popoverContentPropDefs.size.default}`)).toBe(
+      true,
+    );
+    expect(dialog.classList.contains(`fui-variant-${popoverContentPropDefs.variant.default}`)).toBe(
+      true,
+    );
     expect(dialog.classList.contains("fui-PopoverPositioner")).toBe(true);
     expect(dialog.getAttribute("data-side")).not.toBeNull();
   });
@@ -123,8 +119,6 @@ describe("Popover", () => {
         </Popover.Content>
       </Popover.Root>
     ));
-    expect((await screen.findByRole("dialog")).getAttribute("data-state")).toBe(
-      "open",
-    );
+    expect((await screen.findByRole("dialog")).getAttribute("data-state")).toBe("open");
   });
 });

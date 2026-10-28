@@ -106,7 +106,9 @@ const ScrollGalleryScrollMarkerGroup: Component<ScrollGalleryScrollMarkerGroupPr
     let nextIndex: number | null = null;
 
     if (event.key === (isHorizontal ? "ArrowRight" : "ArrowDown")) {
-      nextIndex = loop() ? (currentIndex + 1) % markers.length : Math.min(currentIndex + 1, markers.length - 1);
+      nextIndex = loop()
+        ? (currentIndex + 1) % markers.length
+        : Math.min(currentIndex + 1, markers.length - 1);
     } else if (event.key === (isHorizontal ? "ArrowLeft" : "ArrowUp")) {
       nextIndex = loop()
         ? (currentIndex - 1 + markers.length) % markers.length

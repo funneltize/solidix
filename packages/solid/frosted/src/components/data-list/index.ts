@@ -6,7 +6,11 @@ export type {
   DataListRootProps,
   DataListValueProps,
 } from "./data-list";
-export { dataListItemPropDefs, dataListLabelPropDefs, dataListRootPropDefs } from "./data-list.props";
+export {
+  dataListItemPropDefs,
+  dataListLabelPropDefs,
+  dataListRootPropDefs,
+} from "./data-list.props";
 export type {
   DataListItemOwnProps,
   DataListLabelOwnProps,

@@ -82,10 +82,10 @@
   }
 
   &:where([data-pressed]),
-  &:where([data-state='open']) {
+  &:where([data-state="open"]) {
     background-color: var(--accent-a4);
   }
-  &:where(:active:not([data-state='open'])) {
+  &:where(:active:not([data-state="open"])) {
     background-color: var(--accent-a5);
   }
 
@@ -109,10 +109,10 @@
   }
 
   &:where([data-pressed]),
-  &:where([data-state='open']) {
+  &:where([data-state="open"]) {
     background-color: var(--accent-a3);
   }
-  &:where(:active:not([data-state='open'])) {
+  &:where(:active:not([data-state="open"])) {
     background-color: var(--accent-a4);
   }
 

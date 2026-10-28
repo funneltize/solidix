@@ -32,9 +32,7 @@ describe("Card", () => {
   });
 
   it("renders as the element-form render target", async () => {
-    render(() => (
-      <Card render={<button type="button" data-testid="slotted" />}>Clickable</Card>
-    ));
+    render(() => <Card render={<button type="button" data-testid="slotted" />}>Clickable</Card>);
     const el = await screen.findByTestId("slotted");
     expect(el.tagName).toBe("BUTTON");
     expect(el.classList.contains("fui-Card")).toBe(true);

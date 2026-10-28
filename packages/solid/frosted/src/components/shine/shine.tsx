@@ -88,7 +88,15 @@ const Shine: Component<ShineProps> = (props) => {
             <fePointLight x="60" y="69" z="300" />
           </feSpecularLighting>
           <feComposite result="reflections" in="light-source" in2="SourceAlpha" operator="in" />
-          <feComposite in="SourceGraphic" in2="reflections" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+          <feComposite
+            in="SourceGraphic"
+            in2="reflections"
+            operator="arithmetic"
+            k1="0"
+            k2="1"
+            k3="1"
+            k4="0"
+          />
         </filter>
       </svg>
       <div

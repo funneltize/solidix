@@ -312,14 +312,14 @@ const LightboxRoot: Component<LightboxRootProps> = (props) => {
  * Trigger
  * -----------------------------------------------------------------------------------------------*/
 
-const TriggerSlot = createSlot<
-  HTMLButtonElement,
-  JSX.ButtonHTMLAttributes<HTMLButtonElement>
->("Lightbox.Trigger");
+const TriggerSlot = createSlot<HTMLButtonElement, JSX.ButtonHTMLAttributes<HTMLButtonElement>>(
+  "Lightbox.Trigger",
+);
 
 /** Props for `Lightbox.Trigger`. */
 interface LightboxTriggerProps
-  extends LightboxTriggerOwnProps,
+  extends
+    LightboxTriggerOwnProps,
     RefProp<HTMLButtonElement>,
     Omit<JSX.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "ref"> {
   /** The single element that opens the lightbox at `index` when activated. */
@@ -413,7 +413,8 @@ const LightboxTrigger: Component<LightboxTriggerProps> = (props) => {
 
 /** Props for `Lightbox.Content`. */
 interface LightboxContentProps
-  extends LightboxContentOwnProps,
+  extends
+    LightboxContentOwnProps,
     RefProp<HTMLDivElement>,
     Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {
   /** Where to portal the dialog. Defaults to `document.body`. */
@@ -426,12 +427,12 @@ interface LightboxContentProps
 
 /** Selector for focusable elements, matching upstream `TABBABLE_SELECTOR`. */
 const TABBABLE_SELECTOR = [
-  'a[href]',
-  'area[href]',
+  "a[href]",
+  "area[href]",
   'input:not([disabled]):not([type="hidden"])',
-  'select:not([disabled])',
-  'textarea:not([disabled])',
-  'button:not([disabled])',
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  "button:not([disabled])",
   '[tabindex]:not([tabindex="-1"])',
 ].join(",");
 
@@ -720,14 +721,14 @@ const LightboxContent: Component<LightboxContentProps> = (props) => {
  * Close
  * -----------------------------------------------------------------------------------------------*/
 
-const CloseSlot = createSlot<
-  HTMLButtonElement,
-  JSX.ButtonHTMLAttributes<HTMLButtonElement>
->("Lightbox.Close");
+const CloseSlot = createSlot<HTMLButtonElement, JSX.ButtonHTMLAttributes<HTMLButtonElement>>(
+  "Lightbox.Close",
+);
 
 /** Props for `Lightbox.Close`. */
 interface LightboxCloseProps
-  extends RefProp<HTMLButtonElement>,
+  extends
+    RefProp<HTMLButtonElement>,
     Omit<JSX.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "ref"> {
   /** The single element that closes the lightbox when activated. */
   children: JSX.Element;
@@ -792,7 +793,8 @@ function useOptionalItemGroupContext(): LightboxItemGroupContextValue | undefine
 
 /** Props for `Lightbox.ItemGroup`. */
 interface LightboxItemGroupProps
-  extends LightboxItemGroupOwnProps,
+  extends
+    LightboxItemGroupOwnProps,
     RefProp<HTMLDivElement>,
     Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {
   /** Item elements. */
@@ -862,7 +864,8 @@ interface LightboxItemRenderState {
 
 /** Props for `Lightbox.Item`. */
 interface LightboxItemProps
-  extends Omit<LightboxItemOwnProps, "caption">,
+  extends
+    Omit<LightboxItemOwnProps, "caption">,
     RefProp<HTMLDivElement>,
     Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {
   /** Caption content registered for `Caption` to display. */
@@ -952,18 +955,17 @@ const LightboxItem: Component<LightboxItemProps> = (props) => {
  * Previous / Next
  * -----------------------------------------------------------------------------------------------*/
 
-const PreviousSlot = createSlot<
-  HTMLButtonElement,
-  JSX.ButtonHTMLAttributes<HTMLButtonElement>
->("Lightbox.Previous");
-const NextSlot = createSlot<
-  HTMLButtonElement,
-  JSX.ButtonHTMLAttributes<HTMLButtonElement>
->("Lightbox.Next");
+const PreviousSlot = createSlot<HTMLButtonElement, JSX.ButtonHTMLAttributes<HTMLButtonElement>>(
+  "Lightbox.Previous",
+);
+const NextSlot = createSlot<HTMLButtonElement, JSX.ButtonHTMLAttributes<HTMLButtonElement>>(
+  "Lightbox.Next",
+);
 
 /** Props for `Lightbox.Previous` and `Lightbox.Next`. */
 interface LightboxNavButtonProps
-  extends RefProp<HTMLButtonElement>,
+  extends
+    RefProp<HTMLButtonElement>,
     Omit<JSX.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "ref" | "disabled"> {
   /** The single element that navigates when activated. */
   children: JSX.Element;
@@ -1073,8 +1075,7 @@ interface LightboxCounterRenderState {
 
 /** Props for `Lightbox.Counter`. */
 interface LightboxCounterProps
-  extends RefProp<HTMLDivElement>,
-    Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {
+  extends RefProp<HTMLDivElement>, Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {
   /** Render function for custom counter format. Defaults to "1 / 12". */
   children?: ((state: LightboxCounterRenderState) => JSX.Element) | undefined;
 }
@@ -1132,8 +1133,7 @@ const LightboxCounter: Component<LightboxCounterProps> = (props) => {
 
 /** Props for `Lightbox.Caption`. */
 interface LightboxCaptionProps
-  extends RefProp<HTMLDivElement>,
-    Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {}
+  extends RefProp<HTMLDivElement>, Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {}
 
 /**
  * Renders the caption for the active item from the registry populated by
@@ -1172,8 +1172,7 @@ const LightboxCaption: Component<LightboxCaptionProps> = (props) => {
 
 /** Props for `Lightbox.ThumbnailGroup`. */
 interface LightboxThumbnailGroupProps
-  extends RefProp<HTMLDivElement>,
-    Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {
+  extends RefProp<HTMLDivElement>, Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {
   /** Thumbnail buttons. */
   children?: JSX.Element | undefined;
 }
@@ -1266,14 +1265,14 @@ const LightboxThumbnailGroup: Component<LightboxThumbnailGroupProps> = (props) =
   );
 };
 
-const ThumbnailSlot = createSlot<
-  HTMLButtonElement,
-  JSX.ButtonHTMLAttributes<HTMLButtonElement>
->("Lightbox.Thumbnail");
+const ThumbnailSlot = createSlot<HTMLButtonElement, JSX.ButtonHTMLAttributes<HTMLButtonElement>>(
+  "Lightbox.Thumbnail",
+);
 
 /** Props for `Lightbox.Thumbnail`. */
 interface LightboxThumbnailProps
-  extends Omit<LightboxThumbnailOwnProps, "index">,
+  extends
+    Omit<LightboxThumbnailOwnProps, "index">,
     RefProp<HTMLButtonElement>,
     Omit<JSX.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "ref"> {
   /**
@@ -1372,7 +1371,8 @@ function useOptionalZoomContext(): LightboxZoomContextValue | undefined {
 
 /** Props for `Lightbox.Zoom`. */
 interface LightboxZoomProps
-  extends LightboxZoomOwnProps,
+  extends
+    LightboxZoomOwnProps,
     RefProp<HTMLDivElement>,
     Omit<JSX.HTMLAttributes<HTMLDivElement>, "children" | "ref"> {
   /** Zoomable content. */
@@ -1496,18 +1496,17 @@ const LightboxZoom: Component<LightboxZoomProps> = (props) => {
   );
 };
 
-const ZoomInSlot = createSlot<
-  HTMLButtonElement,
-  JSX.ButtonHTMLAttributes<HTMLButtonElement>
->("Lightbox.ZoomIn");
-const ZoomOutSlot = createSlot<
-  HTMLButtonElement,
-  JSX.ButtonHTMLAttributes<HTMLButtonElement>
->("Lightbox.ZoomOut");
+const ZoomInSlot = createSlot<HTMLButtonElement, JSX.ButtonHTMLAttributes<HTMLButtonElement>>(
+  "Lightbox.ZoomIn",
+);
+const ZoomOutSlot = createSlot<HTMLButtonElement, JSX.ButtonHTMLAttributes<HTMLButtonElement>>(
+  "Lightbox.ZoomOut",
+);
 
 /** Props for `Lightbox.ZoomIn` and `Lightbox.ZoomOut`. */
 interface LightboxZoomButtonProps
-  extends RefProp<HTMLButtonElement>,
+  extends
+    RefProp<HTMLButtonElement>,
     Omit<JSX.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "ref"> {
   /** The single element that zooms when activated. */
   children: JSX.Element;

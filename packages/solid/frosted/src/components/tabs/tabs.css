@@ -3,7 +3,7 @@
  * Source: packages/frosted-ui/src/components/tabs/tabs.css
  * Copyright (c) 2021 Radix UI, (c) 2025 Whop. See LICENSE and NOTICE.
  */
-@import '../base-tabs-list/base-tabs-list.css';
+@import "../base-tabs-list/base-tabs-list.css";
 
 .fui-TabsContent {
   position: relative;

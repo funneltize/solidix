@@ -44,7 +44,7 @@
   }
   &:before {
     box-sizing: border-box;
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;

@@ -20,7 +20,10 @@ interface SegmentedControlRadioGroupRootProps extends Omit<HeadlessRootProps, "a
  * `56787900bfe0`.
  */
 const SegmentedControlRadioGroupRoot: Component<SegmentedControlRadioGroupRootProps> = (props) => (
-  <HeadlessRoot {...omit(props, "class", "children")} class={cx("fui-SegmentedControlRadioGroupRoot", props.class)}>
+  <HeadlessRoot
+    {...omit(props, "class", "children")}
+    class={cx("fui-SegmentedControlRadioGroupRoot", props.class)}
+  >
     <div class="fui-BaseSegmentedControlList">{props.children}</div>
   </HeadlessRoot>
 );

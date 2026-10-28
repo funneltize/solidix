@@ -39,11 +39,7 @@ type AvatarGroupAvatarProps = Omit<AvatarProps, "size" | "shape">;
  * commit `56787900bfe0`.
  */
 const AvatarGroupAvatar: Component<AvatarGroupAvatarProps> = (props) => (
-  <Avatar
-    size="3"
-    {...omit(props, "class")}
-    class={cx("fui-AvatarGroupAvatar", props.class)}
-  />
+  <Avatar size="3" {...omit(props, "class")} class={cx("fui-AvatarGroupAvatar", props.class)} />
 );
 
 /**

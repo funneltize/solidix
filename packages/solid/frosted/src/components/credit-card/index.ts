@@ -1,11 +1,7 @@
 /** `CreditCard` component barrel: namespace, parts, hooks, and props. */
 export { CreditCard } from "./credit-card";
 export { useCreditCard, useCreditCardContext } from "./credit-card-context";
-export type {
-  CardFace,
-  CreditCardContextValue,
-  UseCreditCardResult,
-} from "./credit-card-context";
+export type { CardFace, CreditCardContextValue, UseCreditCardResult } from "./credit-card-context";
 export { CreditCardRoot } from "./credit-card-root";
 export type { CreditCardRootProps, CreditCardRootRef } from "./credit-card-root";
 export { CreditCardContent } from "./credit-card-content";

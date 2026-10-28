@@ -41,7 +41,10 @@ const Progress: Component<ProgressProps> = (props) => {
       {...rest}
     >
       <div class="fui-ProgressTrack">
-        <HeadlessIndicator class="fui-ProgressIndicator" style={{ width: `${progress() * 100}%` }} />
+        <HeadlessIndicator
+          class="fui-ProgressIndicator"
+          style={{ width: `${progress() * 100}%` }}
+        />
       </div>
     </HeadlessProgress>
   );

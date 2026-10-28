@@ -175,11 +175,11 @@ const CreditCardLogo: Component<CreditCardLogoProps> = (props) => {
   );
 };
 
-
 /** Slot typed for `CreditCardMagStripe` div props. */
-const MagStripeSlot = createSlot<HTMLDivElement, Omit<PropsWithoutColor<"div">, "children" | "ref">>(
-  "CreditCardMagStripe",
-);
+const MagStripeSlot = createSlot<
+  HTMLDivElement,
+  Omit<PropsWithoutColor<"div">, "children" | "ref">
+>("CreditCardMagStripe");
 /** Slottable selecting the element-form `render` target for child injection. */
 const MagStripeSlottable = createSlottable("CreditCardMagStripe");
 
@@ -259,11 +259,11 @@ const CreditCardMagStripe: Component<CreditCardMagStripeProps> = (props) => {
   );
 };
 
-
 /** Slot typed for `CreditCardFrontHeader` div props. */
-const FrontHeaderSlot = createSlot<HTMLDivElement, Omit<PropsWithoutColor<"div">, "children" | "ref">>(
-  "CreditCardFrontHeader",
-);
+const FrontHeaderSlot = createSlot<
+  HTMLDivElement,
+  Omit<PropsWithoutColor<"div">, "children" | "ref">
+>("CreditCardFrontHeader");
 /** Slottable selecting the element-form `render` target for child injection. */
 const FrontHeaderSlottable = createSlottable("CreditCardFrontHeader");
 
@@ -343,11 +343,11 @@ const CreditCardFrontHeader: Component<CreditCardFrontHeaderProps> = (props) => 
   );
 };
 
-
 /** Slot typed for `CreditCardFrontFooter` div props. */
-const FrontFooterSlot = createSlot<HTMLDivElement, Omit<PropsWithoutColor<"div">, "children" | "ref">>(
-  "CreditCardFrontFooter",
-);
+const FrontFooterSlot = createSlot<
+  HTMLDivElement,
+  Omit<PropsWithoutColor<"div">, "children" | "ref">
+>("CreditCardFrontFooter");
 /** Slottable selecting the element-form `render` target for child injection. */
 const FrontFooterSlottable = createSlottable("CreditCardFrontFooter");
 
@@ -427,11 +427,11 @@ const CreditCardFrontFooter: Component<CreditCardFrontFooterProps> = (props) => 
   );
 };
 
-
 /** Slot typed for `CreditCardBackContent` div props. */
-const BackContentSlot = createSlot<HTMLDivElement, Omit<PropsWithoutColor<"div">, "children" | "ref">>(
-  "CreditCardBackContent",
-);
+const BackContentSlot = createSlot<
+  HTMLDivElement,
+  Omit<PropsWithoutColor<"div">, "children" | "ref">
+>("CreditCardBackContent");
 /** Slottable selecting the element-form `render` target for child injection. */
 const BackContentSlottable = createSlottable("CreditCardBackContent");
 
@@ -511,11 +511,11 @@ const CreditCardBackContent: Component<CreditCardBackContentProps> = (props) => 
   );
 };
 
-
 /** Slot typed for `CreditCardFieldGroup` div props. */
-const FieldGroupSlot = createSlot<HTMLDivElement, Omit<PropsWithoutColor<"div">, "children" | "ref">>(
-  "CreditCardFieldGroup",
-);
+const FieldGroupSlot = createSlot<
+  HTMLDivElement,
+  Omit<PropsWithoutColor<"div">, "children" | "ref">
+>("CreditCardFieldGroup");
 /** Slottable selecting the element-form `render` target for child injection. */
 const FieldGroupSlottable = createSlottable("CreditCardFieldGroup");
 
@@ -594,7 +594,6 @@ const CreditCardFieldGroup: Component<CreditCardFieldGroupProps> = (props) => {
     </div>
   );
 };
-
 
 /** Slot typed for `CreditCardBrand` span props. */
 const BrandSlot = createSlot<HTMLSpanElement, Omit<PropsWithoutColor<"span">, "children" | "ref">>(
@@ -679,7 +678,6 @@ const CreditCardBrand: Component<CreditCardBrandProps> = (props) => {
   );
 };
 
-
 /** Slot typed for `CreditCardTitle` span props. */
 const TitleSlot = createSlot<HTMLSpanElement, Omit<PropsWithoutColor<"span">, "children" | "ref">>(
   "CreditCardTitle",
@@ -763,11 +761,11 @@ const CreditCardTitle: Component<CreditCardTitleProps> = (props) => {
   );
 };
 
-
 /** Slot typed for `CreditCardLastFour` span props. */
-const LastFourSlot = createSlot<HTMLSpanElement, Omit<PropsWithoutColor<"span">, "children" | "ref">>(
-  "CreditCardLastFour",
-);
+const LastFourSlot = createSlot<
+  HTMLSpanElement,
+  Omit<PropsWithoutColor<"span">, "children" | "ref">
+>("CreditCardLastFour");
 /** Slottable selecting the element-form `render` target for child injection. */
 const LastFourSlottable = createSlottable("CreditCardLastFour");
 
@@ -952,7 +950,7 @@ const CreditCardFieldLabel: Component<CreditCardFieldLabelProps> = (props) => {
       size={props.size ?? "2"}
       weight={props.weight ?? "regular"}
       color={props.color ?? "gray"}
-      render={props.render ?? (<label />)}
+      render={props.render ?? <label />}
       class={cx("fui-CreditCardFieldLabel", props.class)}
     />
   );
@@ -1033,7 +1031,7 @@ const CreditCardFieldError: Component<CreditCardFieldErrorProps> = (props) => {
       id={field.errorId}
       size="1"
       color="danger"
-      render={renderProp ?? (<p />)}
+      render={renderProp ?? <p />}
       class={cx("fui-CreditCardFieldError", props.class)}
     >
       {resolved()}
@@ -1113,8 +1111,7 @@ const CreditCardNumberField: Component<CreditCardNumberFieldProps> = (props) => 
 
   // Initialize the detected brand from a prefilled value on mount.
   onSettled(() => {
-    const prefilled =
-      props.defaultValue !== undefined ? String(props.defaultValue) : props.value;
+    const prefilled = props.defaultValue !== undefined ? String(props.defaultValue) : props.value;
     if (prefilled === undefined) return;
     const digits = String(prefilled).replace(/\D/g, "");
     const [info] = creditCardType(digits);
@@ -1128,7 +1125,10 @@ const CreditCardNumberField: Component<CreditCardNumberFieldProps> = (props) => 
     const digits = input.value.replace(/\D/g, "");
     const info = getCardInfo(digits);
     const formatted = formatWithGaps(digits, info.gaps);
-    const cursor = cursorAfterFormat(formatted, digitsBeforeCursor(input.value, input.selectionStart ?? 0));
+    const cursor = cursorAfterFormat(
+      formatted,
+      digitsBeforeCursor(input.value, input.selectionStart ?? 0),
+    );
 
     setCardType(info === UNKNOWN_CARD_INFO ? null : (info.type as CreditCardTypeCardBrandId));
     input.value = formatted;

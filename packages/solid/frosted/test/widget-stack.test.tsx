@@ -48,7 +48,9 @@ function Stack(props: { autoPlay?: number | undefined; orientation?: "horizontal
 function intersect(target: Element, isIntersecting: boolean, ratio = 1) {
   for (const { cb } of ioInstances) {
     cb(
-      [{ target, isIntersecting, intersectionRatio: ratio }] as unknown as IntersectionObserverEntry[],
+      [
+        { target, isIntersecting, intersectionRatio: ratio },
+      ] as unknown as IntersectionObserverEntry[],
       {} as IntersectionObserver,
     );
   }
@@ -67,8 +69,9 @@ function setItemVisible(item: Element, ratio: number) {
   );
   expect(instance).not.toBeUndefined();
   instance?.cb(
-    [{ target: item, isIntersecting: ratio > 0, intersectionRatio: ratio }] as unknown as
-      IntersectionObserverEntry[],
+    [
+      { target: item, isIntersecting: ratio > 0, intersectionRatio: ratio },
+    ] as unknown as IntersectionObserverEntry[],
     {} as IntersectionObserver,
   );
 }

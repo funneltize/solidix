@@ -113,14 +113,12 @@ function getScrollBehavior(preferred: ScrollBehavior = "smooth"): ScrollBehavior
  *
  * CSS syntax: `scroll-snap-align: [block] [inline]`. One value sets both axes.
  */
-function getSnapAlignment(
-  item: HTMLElement,
-  orientation: ScrollGalleryOrientation,
-): SnapAlignment {
+function getSnapAlignment(item: HTMLElement, orientation: ScrollGalleryOrientation): SnapAlignment {
   try {
     const raw = getComputedStyle(item).scrollSnapAlign;
     const parts = raw.split(" ");
-    const align = orientation === "horizontal" ? (parts.length > 1 ? parts[1] : parts[0]) : parts[0];
+    const align =
+      orientation === "horizontal" ? (parts.length > 1 ? parts[1] : parts[0]) : parts[0];
     if (align === "center") return "center";
     if (align === "end") return "end";
   } catch {
@@ -213,9 +211,4 @@ export {
   ScrollGalleryContext,
   useScrollGalleryContext,
 };
-export type {
-  ChangeSource,
-  ScrollGalleryContextValue,
-  ScrollGalleryOrientation,
-  SnapAlignment,
-};
+export type { ChangeSource, ScrollGalleryContextValue, ScrollGalleryOrientation, SnapAlignment };

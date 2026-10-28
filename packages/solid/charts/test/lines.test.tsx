@@ -105,7 +105,10 @@ describe("LineChart", () => {
     const fills = Array.from(container.querySelectorAll("path[fill-opacity]"));
     expect(fills.length).toBeGreaterThan(0);
     for (const fill of fills) {
-      const coords = fill.getAttribute("d")!.match(/-?\d+(\.\d+)?/g)!.map(Number);
+      const coords = fill
+        .getAttribute("d")!
+        .match(/-?\d+(\.\d+)?/g)!
+        .map(Number);
       const ys = coords.filter((_, index) => index % 2 === 1);
       expect(ys.length).toBeGreaterThan(0);
       for (const y of ys) {

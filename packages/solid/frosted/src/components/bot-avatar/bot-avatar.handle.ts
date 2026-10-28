@@ -44,7 +44,10 @@ function createBotAvatarHandle(): BotAvatarHandle {
 }
 
 /** @internal Attaches a mounted avatar to a handle; returns the detach. */
-function registerBotAvatarHandle(handle: BotAvatarHandle, callbacks: BotAvatarHandleCallbacks): () => void {
+function registerBotAvatarHandle(
+  handle: BotAvatarHandle,
+  callbacks: BotAvatarHandleCallbacks,
+): () => void {
   const subscribers = handleRegistries.get(handle);
   // Not created by createBotAvatarHandle - nothing to attach to.
   if (!subscribers) return () => undefined;

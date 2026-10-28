@@ -710,9 +710,7 @@ export const doc: PrimitiveDoc = {
       name: "Callout",
       description:
         "Alert banner compound (Root, Icon, Title, Description, Actions, Action) pairing an icon with supporting text.",
-      props: [
-        { name: "Root.color", type: "string", description: "Accent color token." },
-      ],
+      props: [{ name: "Root.color", type: "string", description: "Accent color token." }],
       dataAttributes: [],
       cssVariables: [],
     },
@@ -907,9 +905,7 @@ export const doc: PrimitiveDoc = {
     {
       name: "SegmentedControlNav",
       description: "Segmented navigation row (Root, Link) over the headless navigation menu.",
-      props: [
-        { name: "Link.href", type: "string", description: "Link destination." },
-      ],
+      props: [{ name: "Link.href", type: "string", description: "Link destination." }],
       dataAttributes: [],
       cssVariables: [],
     },
@@ -999,8 +995,7 @@ export const doc: PrimitiveDoc = {
     },
     {
       name: "Shine",
-      description:
-        "Pointer-tracked specular shine over its children via an SVG light filter.",
+      description: "Pointer-tracked specular shine over its children via an SVG light filter.",
       props: [
         {
           name: "puffyness",
@@ -1035,8 +1030,7 @@ export const doc: PrimitiveDoc = {
     },
     {
       name: "Portal",
-      description:
-        "Renders a wrapper element into a container (`document.body` by default).",
+      description: "Renders a wrapper element into a container (`document.body` by default).",
       props: [
         {
           name: "container",
@@ -1049,8 +1043,7 @@ export const doc: PrimitiveDoc = {
     },
     {
       name: "VisuallyHidden",
-      description:
-        "Hides content visually while keeping it available to assistive technology.",
+      description: "Hides content visually while keeping it available to assistive technology.",
       props: [
         {
           name: "style",
@@ -1094,8 +1087,7 @@ export const doc: PrimitiveDoc = {
     },
     {
       name: "StackedHorizontalBarChart",
-      description:
-        "Horizontal bar split into labeled, tooltip-annotated segments sized by value.",
+      description: "Horizontal bar split into labeled, tooltip-annotated segments sized by value.",
       props: [
         {
           name: "data",

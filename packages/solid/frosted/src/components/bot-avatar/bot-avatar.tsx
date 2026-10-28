@@ -118,21 +118,14 @@ const BotAvatar: Component<BotAvatarProps> = (props) => {
   // a gaze, reaching full deflection at ~3 avatar widths. Disabled under
   // reduced motion (continuous tracking is motion, unlike a static gaze).
   let rootElement: HTMLDivElement | null = null;
-  const composedRefs = composeRefs(
-    (node: HTMLDivElement | null) => {
-      rootElement = node;
-    },
-    props.ref,
-  );
+  const composedRefs = composeRefs((node: HTMLDivElement | null) => {
+    rootElement = node;
+  }, props.ref);
   const [pointerGaze, setPointerGaze] = createSignal<BotAvatarGaze | null>(null);
   createEffect(
     () => ({ tracking: followPointer(), face: hasFace() }),
     ({ tracking, face }) => {
-      if (
-        !tracking ||
-        !face ||
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ) {
+      if (!tracking || !face || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         setPointerGaze(null);
         return;
       }
@@ -171,9 +164,7 @@ const BotAvatar: Component<BotAvatarProps> = (props) => {
         blink: () => setBlinkId((id) => id + 1),
         lookAt: (target) =>
           setHandleGaze(
-            target === null
-              ? null
-              : { x: clampGazeAxis(target.x), y: clampGazeAxis(target.y) },
+            target === null ? null : { x: clampGazeAxis(target.x), y: clampGazeAxis(target.y) },
           ),
       });
       return () => {
@@ -189,7 +180,8 @@ const BotAvatar: Component<BotAvatarProps> = (props) => {
   // hunting the cursor.
   const activeGaze = (): BotAvatarGaze | null => {
     const declared = props.gaze;
-    if (declared !== undefined) return { x: clampGazeAxis(declared.x), y: clampGazeAxis(declared.y) };
+    if (declared !== undefined)
+      return { x: clampGazeAxis(declared.x), y: clampGazeAxis(declared.y) };
     return handleGaze() ?? pointerGaze();
   };
 

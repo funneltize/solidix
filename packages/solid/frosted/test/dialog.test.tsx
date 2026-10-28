@@ -42,9 +42,7 @@ describe("Dialog", () => {
     fireEvent.click(await screen.findByRole("button", { name: "Open" }));
     const dialog = await screen.findByRole("dialog");
     expect(dialog.getAttribute("data-state")).toBe("open");
-    expect(
-      await screen.findByRole("heading", { name: "Settings" }),
-    ).not.toBeNull();
+    expect(await screen.findByRole("heading", { name: "Settings" })).not.toBeNull();
     expect(screen.getByText("Adjust your preferences.")).not.toBeNull();
   });
 
@@ -53,19 +51,15 @@ describe("Dialog", () => {
     fireEvent.click(await screen.findByRole("button", { name: "Open" }));
     const dialog = await screen.findByRole("dialog");
     expect(dialog.classList.contains("fui-DialogContent")).toBe(true);
-    expect(
-      dialog.classList.contains(
-        `fui-r-size-${dialogContentPropDefs.size.default}`,
-      ),
-    ).toBe(true);
+    expect(dialog.classList.contains(`fui-r-size-${dialogContentPropDefs.size.default}`)).toBe(
+      true,
+    );
     // Default content size "3" cascades to title size "5" and description "2".
     const title = await screen.findByRole("heading", { name: "Settings" });
     expect(title.classList.contains("fui-r-size-5")).toBe(true);
-    expect(
-      screen.getByText("Adjust your preferences.").classList.contains(
-        "fui-r-size-2",
-      ),
-    ).toBe(true);
+    expect(screen.getByText("Adjust your preferences.").classList.contains("fui-r-size-2")).toBe(
+      true,
+    );
   });
 
   it("honors an explicit size and lets title/description override the cascade", async () => {
@@ -76,9 +70,7 @@ describe("Dialog", () => {
         </Dialog.Trigger>
         <Dialog.Content size="1">
           <Dialog.Title size="6">Settings</Dialog.Title>
-          <Dialog.Description size="3">
-            Adjust your preferences.
-          </Dialog.Description>
+          <Dialog.Description size="3">Adjust your preferences.</Dialog.Description>
         </Dialog.Content>
       </Dialog.Root>
     ));
@@ -86,14 +78,11 @@ describe("Dialog", () => {
     const dialog = await screen.findByRole("dialog");
     expect(dialog.classList.contains("fui-r-size-1")).toBe(true);
     expect(
-      (await screen.findByRole("heading", { name: "Settings" }))
-        .classList.contains("fui-r-size-6"),
+      (await screen.findByRole("heading", { name: "Settings" })).classList.contains("fui-r-size-6"),
     ).toBe(true);
-    expect(
-      screen.getByText("Adjust your preferences.").classList.contains(
-        "fui-r-size-3",
-      ),
-    ).toBe(true);
+    expect(screen.getByText("Adjust your preferences.").classList.contains("fui-r-size-3")).toBe(
+      true,
+    );
   });
 
   it("closes on Escape and returns focus to the trigger", async () => {
@@ -145,7 +134,6 @@ describe("Dialog", () => {
         </Dialog.Content>
       </Dialog.Root>
     ));
-    expect((await screen.findByRole("dialog")).getAttribute("data-state"))
-      .toBe("open");
+    expect((await screen.findByRole("dialog")).getAttribute("data-state")).toBe("open");
   });
 });

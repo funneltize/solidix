@@ -57,7 +57,9 @@ describe("DataList", () => {
     render(() => (
       <DataList.Root>
         <DataList.Item align="center">
-          <DataList.Label color="blue" highContrast>Key</DataList.Label>
+          <DataList.Label color="blue" highContrast>
+            Key
+          </DataList.Label>
           <DataList.Value>Val</DataList.Value>
         </DataList.Item>
       </DataList.Root>

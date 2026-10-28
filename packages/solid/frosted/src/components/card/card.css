@@ -61,7 +61,7 @@
  ***************************************************************************************************/
 
 .fui-Card:where(.fui-variant-surface, .fui-variant-outline)::after {
-  content: '';
+  content: "";
   position: absolute;
   border-radius: inherit;
   inset: 0;
@@ -79,19 +79,19 @@
     box-shadow: inset 0 0 0 1px var(--gray-a5);
   }
 
-  &:where(button, [href], [type='button']) {
+  &:where(button, [href], [type="button"]) {
     @media (hover: hover) {
       &:where(:hover)::after {
         box-shadow: inset 0 0 0 1px var(--gray-a7);
       }
     }
-    &:where(:active:not([data-state='open'])) {
+    &:where(:active:not([data-state="open"])) {
       &:where(:focus-visible) {
         background-color: var(--gray-a3);
       }
     }
     &:where([data-pressed]),
-    &:where([data-state='open']),
+    &:where([data-state="open"]),
     &:where(:active) {
       box-shadow: none;
       background-color: var(--gray-3);
@@ -108,19 +108,19 @@
     box-shadow: inset 0 0 0 1px var(--color-stroke);
   }
 
-  &:where(button, [href], [type='button']) {
+  &:where(button, [href], [type="button"]) {
     @media (hover: hover) {
       &:where(:hover)::after {
         box-shadow: inset 0 0 0 1px var(--gray-a7);
       }
     }
-    &:where(:active:not([data-state='open'])) {
+    &:where(:active:not([data-state="open"])) {
       &:where(:focus-visible) {
         background-color: var(--gray-a3);
       }
     }
     &:where([data-pressed]),
-    &:where([data-state='open']),
+    &:where([data-state="open"]),
     &:where(:active) {
       background-color: var(--gray-3);
 
@@ -134,7 +134,7 @@
 /* ghost */
 
 .fui-Card:where(.fui-variant-ghost) {
-  &:where(button, [href], [type='button']) {
+  &:where(button, [href], [type="button"]) {
     @media (hover: hover) {
       &:where(:hover) {
         background-color: var(--gray-a3);
@@ -142,11 +142,11 @@
     }
 
     &:where([data-pressed]),
-    &:where([data-state='open']),
+    &:where([data-state="open"]),
     &:where(:active) {
       background-color: var(--gray-a3);
     }
-    &:where(:active:not([data-state='open'])) {
+    &:where(:active:not([data-state="open"])) {
       background-color: var(--gray-a4);
     }
   }
@@ -157,7 +157,7 @@
 .fui-Card:where(.fui-variant-soft) {
   background-color: var(--gray-a3);
 
-  &:where(button, [href], [type='button']) {
+  &:where(button, [href], [type="button"]) {
     @media (hover: hover) {
       &:where(:hover) {
         background-color: var(--gray-a4);
@@ -165,11 +165,11 @@
     }
 
     &:where([data-pressed]),
-    &:where([data-state='open']),
+    &:where([data-state="open"]),
     &:where(:active) {
       background-color: var(--gray-a4);
     }
-    &:where(:active:not([data-state='open'])) {
+    &:where(:active:not([data-state="open"])) {
       background-color: var(--gray-a5);
     }
   }

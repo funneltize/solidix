@@ -133,9 +133,10 @@ describe("ScrollArea", () => {
     // viewport is the AT surface), so assert classes, not roles.
     const scrollbars = document.querySelectorAll(".fui-ScrollAreaScrollbar");
     expect(scrollbars).toHaveLength(2);
-    expect(
-      [...scrollbars].map((s) => s.getAttribute("data-orientation")).sort(),
-    ).toEqual(["horizontal", "vertical"]);
+    expect([...scrollbars].map((s) => s.getAttribute("data-orientation")).sort()).toEqual([
+      "horizontal",
+      "vertical",
+    ]);
     for (const scrollbar of scrollbars) {
       expect(scrollbar.classList.contains("fui-r-size-2")).toBe(true);
       expect(scrollbar.getAttribute("data-type")).toBe("always");

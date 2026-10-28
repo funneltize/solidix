@@ -62,7 +62,12 @@ const oval = (cx: number, cy: number, rx: number, ry: number): BotAvatarFaceShap
   blob([cx - rx, cy], [cx, cy + ry], [cx + rx, cy], [cx, cy - ry]);
 
 /** Rotates a shape around a point (degrees, positive clockwise on screen). */
-const rotate = (shape: BotAvatarFaceShape, cx: number, cy: number, deg: number): BotAvatarFaceShape => {
+const rotate = (
+  shape: BotAvatarFaceShape,
+  cx: number,
+  cy: number,
+  deg: number,
+): BotAvatarFaceShape => {
   const a = (deg * Math.PI) / 180;
   const cos = Math.cos(a);
   const sin = Math.sin(a);
@@ -123,7 +128,10 @@ const botAvatarExpressions = {
 type BotAvatarExpression = keyof typeof botAvatarExpressions;
 
 /** Every expression in the catalogue, in definition order. */
-const botAvatarExpressionsList = Object.keys(botAvatarExpressions) as [BotAvatarExpression, ...BotAvatarExpression[]];
+const botAvatarExpressionsList = Object.keys(botAvatarExpressions) as [
+  BotAvatarExpression,
+  ...BotAvatarExpression[],
+];
 
 /**
  * Mouths per expression - the primary carrier of emotion, sized to read at
@@ -164,7 +172,12 @@ const FACE_SCALE = 1.16;
 /** Applies the precomputed per-shape face fit (a lookup, not a solver) to a
  * shape's points, so the whole face scales and shifts as one unit and
  * spacing, proportions, and tilts are preserved. */
-const fitShape = (shape: BotAvatarFaceShape, s: number, dx: number, dy: number): BotAvatarFaceShape => ({
+const fitShape = (
+  shape: BotAvatarFaceShape,
+  s: number,
+  dx: number,
+  dy: number,
+): BotAvatarFaceShape => ({
   points: shape.points.map(([x, y]): BotAvatarFacePoint => [
     FACE_CENTER_X + (x - FACE_CENTER_X) * s * FACE_SCALE + dx,
     FACE_CENTER_Y + (y - FACE_CENTER_Y) * s * FACE_SCALE + dy,
@@ -183,7 +196,10 @@ const getBotAvatarEyes = (
 
 /** The mouth for an expression, run through the same per-shape face fit as
  * the eyes so the whole face scales and shifts as one unit. */
-const getBotAvatarMouth = (expression: BotAvatarExpression, shape: BotAvatarAtlasShape): BotAvatarFaceShape => {
+const getBotAvatarMouth = (
+  expression: BotAvatarExpression,
+  shape: BotAvatarAtlasShape,
+): BotAvatarFaceShape => {
   const { s, dx, dy } = botAvatarFaceFit[shape];
   return fitShape(botAvatarMouths[expression], s, dx, dy);
 };

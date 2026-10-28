@@ -12,8 +12,7 @@ import { tabsNavPropDefs, type TabsNavRootOwnProps } from "./tabs-nav.props";
 
 /** Props for `TabsNav.Root`: headless nav props plus the shared list defs. */
 interface TabsNavRootProps
-  extends Omit<HeadlessRootProps, "asChild" | "orientation">,
-    TabsNavRootOwnProps {}
+  extends Omit<HeadlessRootProps, "asChild" | "orientation">, TabsNavRootOwnProps {}
 
 /**
  * Tab-styled navigation landmark: a `nav` with a roving link list and no

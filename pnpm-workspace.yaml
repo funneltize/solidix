@@ -9,4 +9,4 @@ minimumReleaseAgeExclude:
   - seroval-plugins@1.7.0
   - autoprefixer@10.6.2
   - postcss@8.5.32
-  - '@frosted-ui/colors@0.0.1-canary.162'
+  - "@frosted-ui/colors@0.0.1-canary.162"

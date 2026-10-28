@@ -96,8 +96,7 @@ type BreadcrumbsRootRenderProp =
 
 /** Props for `Breadcrumbs.Root`. */
 interface BreadcrumbsRootProps
-  extends Omit<PropsWithoutColor<"nav">, "ref">,
-    BreadcrumbsRootOwnProps {
+  extends Omit<PropsWithoutColor<"nav">, "ref">, BreadcrumbsRootOwnProps {
   /** Ref forwarded to the rendered element, in either branch. */
   ref?: Ref<HTMLElement> | undefined;
   /** Element or render function overriding the default `nav` output. */

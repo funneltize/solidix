@@ -42,10 +42,7 @@ import { cx } from "../../helpers/cx";
 import { Theme } from "../../theme";
 import { Heading } from "../heading/heading";
 import { Text } from "../text/text";
-import {
-  alertDialogContentPropDefs,
-  type AlertDialogContentOwnProps,
-} from "./alert-dialog.props";
+import { alertDialogContentPropDefs, type AlertDialogContentOwnProps } from "./alert-dialog.props";
 
 /* -------------------------------------------------------------------------------------------------
  * AlertDialogContentContext - resolves the content size for Title/Description cascades.
@@ -88,10 +85,7 @@ const AlertDialogRoot: Component<AlertDialogRootProps> = (props) => (
  * -----------------------------------------------------------------------------------------------*/
 
 /** Props accepted by the `Trigger` component. `children` is the single slotted element. */
-interface AlertDialogTriggerProps extends Omit<
-  AlertDialogTriggerPrimitiveProps,
-  "asChild"
-> {
+interface AlertDialogTriggerProps extends Omit<AlertDialogTriggerPrimitiveProps, "asChild"> {
   /** The single element that receives the trigger behavior. */
   children: JSX.Element;
 }
@@ -112,8 +106,7 @@ const AlertDialogTrigger: Component<AlertDialogTriggerProps> = (props) => {
 
 /** Props accepted by the `Content` component. */
 interface AlertDialogContentProps
-  extends AlertDialogContentOwnProps,
-    Omit<AlertDialogContentPrimitiveProps, "asChild"> {
+  extends AlertDialogContentOwnProps, Omit<AlertDialogContentPrimitiveProps, "asChild"> {
   /** Container element to portal the content into. Passed to the portal. */
   container?: AlertDialogPortalPrimitiveProps["container"] | undefined;
   /** Keeps the portal mounted when closed. Passed to the portal as `forceMount`. */
@@ -199,12 +192,7 @@ const AlertDialogTitle: Component<AlertDialogTitleProps> = (props) => {
     props.size ?? (context ? ALERT_DIALOG_TITLE_SIZE_MAP[context.size] : undefined);
   return (
     <AlertDialogTitlePrimitive asChild>
-      <Heading
-        size={size()}
-        trim="start"
-        class={cx("fui-DialogTitle", props.class)}
-        {...rest}
-      />
+      <Heading size={size()} trim="start" class={cx("fui-DialogTitle", props.class)} {...rest} />
     </AlertDialogTitlePrimitive>
   );
 };
@@ -229,8 +217,7 @@ const AlertDialogDescription: Component<AlertDialogDescriptionProps> = (props) =
   const context = useAlertDialogContentContext();
   const rest = omit(props, "size", "class");
   const size = () =>
-    props.size ??
-    (context ? ALERT_DIALOG_DESCRIPTION_SIZE_MAP[context.size] : undefined);
+    props.size ?? (context ? ALERT_DIALOG_DESCRIPTION_SIZE_MAP[context.size] : undefined);
   return (
     <AlertDialogDescriptionPrimitive asChild>
       <Text
@@ -248,10 +235,7 @@ const AlertDialogDescription: Component<AlertDialogDescriptionProps> = (props) =
  * -----------------------------------------------------------------------------------------------*/
 
 /** Props accepted by the `Close` component. `children` is the single slotted element. */
-interface AlertDialogCloseProps extends Omit<
-  AlertDialogActionPrimitiveProps,
-  "asChild"
-> {
+interface AlertDialogCloseProps extends Omit<AlertDialogActionPrimitiveProps, "asChild"> {
   /** The single element that receives the close behavior. */
   children: JSX.Element;
 }
@@ -270,10 +254,7 @@ const AlertDialogClose: Component<AlertDialogCloseProps> = (props) => {
 };
 
 /** Props accepted by the `Action` component. `children` is the single slotted element. */
-interface AlertDialogActionProps extends Omit<
-  AlertDialogActionPrimitiveProps,
-  "asChild"
-> {
+interface AlertDialogActionProps extends Omit<AlertDialogActionPrimitiveProps, "asChild"> {
   /** The single element that receives the confirm behavior. */
   children: JSX.Element;
 }
@@ -289,10 +270,7 @@ const AlertDialogAction: Component<AlertDialogActionProps> = (props) => {
 };
 
 /** Props accepted by the `Cancel` component. `children` is the single slotted element. */
-interface AlertDialogCancelProps extends Omit<
-  AlertDialogCancelPrimitiveProps,
-  "asChild"
-> {
+interface AlertDialogCancelProps extends Omit<AlertDialogCancelPrimitiveProps, "asChild"> {
   /** The single element that receives the cancel behavior. */
   children: JSX.Element;
 }

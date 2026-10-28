@@ -18,7 +18,8 @@ import { scrollAreaPropDefs, type ScrollAreaOwnProps } from "./scroll-area.props
  * plus the styled prop defs. `style` is narrowed to object form.
  */
 interface ScrollAreaProps
-  extends Omit<HeadlessRootProps, "asChild" | "class" | "style" | "ref" | "children">,
+  extends
+    Omit<HeadlessRootProps, "asChild" | "class" | "style" | "ref" | "children">,
     ScrollAreaOwnProps {
   /** Scrollable content. */
   children?: JSX.Element | undefined;

@@ -36,7 +36,7 @@
   outline: 1px solid var(--color-stroke);
   outline-offset: -1px;
 
-  &:where([data-accent-color]:not([data-accent-color=''])) {
+  &:where([data-accent-color]:not([data-accent-color=""])) {
     --credit-card-text: var(--accent-9-contrast);
     --credit-card-muted: color-mix(in srgb, var(--credit-card-text) 70%, transparent);
     --credit-card-input-bg: color-mix(in srgb, var(--credit-card-text) 12%, transparent);
@@ -246,7 +246,7 @@
 /* ── Flip states ────────────────────────────────────────────────────────── */
 
 .fui-CreditCardContent {
-  &:where([data-face='back']) {
+  &:where([data-face="back"]) {
     & :where(.fui-CreditCardFront) {
       transform: rotateY(-180deg);
     }
@@ -282,7 +282,7 @@
   }
 
   .fui-CreditCardContent {
-    &:where([data-face='back']) {
+    &:where([data-face="back"]) {
       & :where(.fui-CreditCardFront) {
         transform: none;
         opacity: 0;

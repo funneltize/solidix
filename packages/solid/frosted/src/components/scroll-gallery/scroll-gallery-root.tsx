@@ -249,9 +249,7 @@ const ScrollGalleryRoot: Component<ScrollGalleryRootProps> = (props) => {
     scrollToItem,
   };
 
-  return (
-    <ScrollGalleryContext value={contextValue}>{props.children}</ScrollGalleryContext>
-  );
+  return <ScrollGalleryContext value={contextValue}>{props.children}</ScrollGalleryContext>;
 };
 
 export { ScrollGalleryRoot };

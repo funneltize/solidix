@@ -49,7 +49,13 @@
   /* Box-shadow applied to table rows doesn't work in Safari */
   box-shadow: inset 0 -1px var(--data-table-border-color);
   /* Remove box-shadow from the last row if TableBottomBar is not used */
-  &:where(.fui-TableRoot:not(:has(.fui-TableBottomBar)) .fui-TableTable > :is(:last-child) .fui-TableRow:last-child &) {
+  &:where(
+    .fui-TableRoot:not(:has(.fui-TableBottomBar))
+      .fui-TableTable
+      > :is(:last-child)
+      .fui-TableRow:last-child
+      &
+  ) {
     box-shadow: none;
   }
   /* If the first cell in a row only contains a <Checkbox />, remove right padding */

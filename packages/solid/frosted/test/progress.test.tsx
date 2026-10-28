@@ -17,23 +17,25 @@ describe("Progress", () => {
   it("clamps the indicator width to 0-100%", async () => {
     const { unmount } = render(() => <Progress value={250} />);
     expect(
-      ((await screen.findByRole("progressbar")).querySelector(
-        ".fui-ProgressIndicator",
-      ) as HTMLElement).style.width,
+      (
+        (await screen.findByRole("progressbar")).querySelector(
+          ".fui-ProgressIndicator",
+        ) as HTMLElement
+      ).style.width,
     ).toBe("100%");
     unmount();
     render(() => <Progress value={-20} />);
     expect(
-      ((await screen.findByRole("progressbar")).querySelector(
-        ".fui-ProgressIndicator",
-      ) as HTMLElement).style.width,
+      (
+        (await screen.findByRole("progressbar")).querySelector(
+          ".fui-ProgressIndicator",
+        ) as HTMLElement
+      ).style.width,
     ).toBe("0%");
   });
 
   it("applies size, high-contrast, and accent color classes", async () => {
-    render(() => (
-      <Progress value={10} size="2" color="green" highContrast />
-    ));
+    render(() => <Progress value={10} size="2" color="green" highContrast />);
     const bar = await screen.findByRole("progressbar");
     expect(bar.classList.contains("fui-r-size-2")).toBe(true);
     expect(bar.classList.contains("fui-high-contrast")).toBe(true);

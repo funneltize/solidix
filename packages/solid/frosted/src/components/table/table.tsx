@@ -127,7 +127,10 @@ interface TableRowHeaderProps extends Omit<PropsWithoutColor<"th">, "style" | "a
 }
 
 /** Props for `Table.ColumnHeaderCell`. */
-interface TableColumnHeaderCellProps extends Omit<PropsWithoutColor<"th">, "style" | "align" | "justify" | "width"> {
+interface TableColumnHeaderCellProps extends Omit<
+  PropsWithoutColor<"th">,
+  "style" | "align" | "justify" | "width"
+> {
   /** Text alignment of the header cell. No class when unset. */
   align?: TableCellAlign | undefined;
   /** Content justification of the header cell. No class when unset. */
@@ -139,7 +142,10 @@ interface TableColumnHeaderCellProps extends Omit<PropsWithoutColor<"th">, "styl
 }
 
 /** Props for `Table.Cell`. */
-interface TableCellProps extends Omit<PropsWithoutColor<"td">, "style" | "align" | "justify" | "width"> {
+interface TableCellProps extends Omit<
+  PropsWithoutColor<"td">,
+  "style" | "align" | "justify" | "width"
+> {
   /** Text alignment of the cell. No class when unset. */
   align?: TableCellAlign | undefined;
   /** Content justification of the cell. No class when unset. */

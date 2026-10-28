@@ -27,9 +27,7 @@ function openAlertDialog() {
       </AlertDialog.Trigger>
       <AlertDialog.Content>
         <AlertDialog.Title>Revoke access</AlertDialog.Title>
-        <AlertDialog.Description>
-          This action cannot be undone.
-        </AlertDialog.Description>
+        <AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>
         <AlertDialog.Cancel>
           <button type="button">Cancel</button>
         </AlertDialog.Cancel>
@@ -48,9 +46,7 @@ describe("AlertDialog", () => {
     fireEvent.click(await screen.findByRole("button", { name: "Open" }));
     const dialog = await screen.findByRole("alertdialog");
     expect(dialog.getAttribute("data-state")).toBe("open");
-    expect(
-      await screen.findByRole("heading", { name: "Revoke access" }),
-    ).not.toBeNull();
+    expect(await screen.findByRole("heading", { name: "Revoke access" })).not.toBeNull();
     expect(screen.getByText("This action cannot be undone.")).not.toBeNull();
   });
 
@@ -59,18 +55,14 @@ describe("AlertDialog", () => {
     fireEvent.click(await screen.findByRole("button", { name: "Open" }));
     const dialog = await screen.findByRole("alertdialog");
     expect(dialog.classList.contains("fui-AlertDialogContent")).toBe(true);
-    expect(
-      dialog.classList.contains(
-        `fui-r-size-${alertDialogContentPropDefs.size.default}`,
-      ),
-    ).toBe(true);
+    expect(dialog.classList.contains(`fui-r-size-${alertDialogContentPropDefs.size.default}`)).toBe(
+      true,
+    );
     // Default content size "3" cascades to title size "5" and description "2".
     const title = await screen.findByRole("heading", { name: "Revoke access" });
     expect(title.classList.contains("fui-r-size-5")).toBe(true);
     expect(
-      screen.getByText("This action cannot be undone.").classList.contains(
-        "fui-r-size-2",
-      ),
+      screen.getByText("This action cannot be undone.").classList.contains("fui-r-size-2"),
     ).toBe(true);
   });
 

@@ -42,8 +42,7 @@ describe("Shine", () => {
     const wrapper = root.querySelector("div:not(.fui-Shine)") as HTMLElement;
     Object.defineProperty(wrapper, "getBoundingClientRect", {
       configurable: true,
-      value: () =>
-        ({ top: 10, left: 20, width: 100, height: 100 }) as unknown as DOMRect,
+      value: () => ({ top: 10, left: 20, width: 100, height: 100 }) as unknown as DOMRect,
     });
     const light = root.querySelector("fePointLight") as SVGElement;
 

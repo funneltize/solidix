@@ -104,7 +104,7 @@
   }
   &:where([data-selected], [data-active])::before {
     box-sizing: border-box;
-    content: '';
+    content: "";
     height: 2px;
     position: absolute;
     bottom: 0;

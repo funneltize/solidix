@@ -339,7 +339,8 @@ export default function ChartsDemo() {
         <div class="ChartsCardHeader">
           <h3 id="charts-funnel-title">Funnel</h3>
           <p class="ChartsHint">
-            Trial pipeline from visit to paid. Each stage shows its conversion from the previous stage.
+            Trial pipeline from visit to paid. Each stage shows its conversion from the previous
+            stage.
           </p>
         </div>
         <Charts.ChartsFunnelChart

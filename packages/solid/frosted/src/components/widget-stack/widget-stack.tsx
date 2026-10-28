@@ -178,9 +178,7 @@ const StackSlottable = createSlottable("WidgetStackStack");
  * `useRender`: an element to render as (merged via `Slot`), or a function
  * receiving the merged props.
  */
-type WidgetStackStackRenderProp =
-  | JSX.Element
-  | ((props: PropsWithoutColor<"div">) => JSX.Element);
+type WidgetStackStackRenderProp = JSX.Element | ((props: PropsWithoutColor<"div">) => JSX.Element);
 
 /** Props for `WidgetStack.Stack`. */
 interface WidgetStackStackProps extends Omit<PropsWithoutColor<"div">, "ref"> {
@@ -490,12 +488,9 @@ const WidgetStackItem: Component<WidgetStackItemProps> = (props) => {
   const rest = omit(props, "children", "class", "ref");
 
   let widgetElement: HTMLDivElement | null = null;
-  const composedRefs = composeRefs(
-    (node: HTMLDivElement | null) => {
-      widgetElement = node;
-    },
-    props.ref,
-  );
+  const composedRefs = composeRefs((node: HTMLDivElement | null) => {
+    widgetElement = node;
+  }, props.ref);
   const [isFullyVisible, setIsFullyVisible] = createSignal(false);
 
   // Observed once on mount: the watched node is the item itself, which is
@@ -557,8 +552,10 @@ type WidgetStackNextRenderProp =
   | ((props: PropsWithoutColor<"button">) => JSX.Element);
 
 /** Props for `WidgetStack.Next`. */
-interface WidgetStackNextProps
-  extends Omit<PropsWithoutColor<"button">, "disabled" | "onClick" | "ref"> {
+interface WidgetStackNextProps extends Omit<
+  PropsWithoutColor<"button">,
+  "disabled" | "onClick" | "ref"
+> {
   /** Ref forwarded to the rendered element, in either branch. */
   ref?: Ref<HTMLButtonElement> | undefined;
   /** Element or render function overriding the default `button` output. */
@@ -661,8 +658,10 @@ type WidgetStackPrevRenderProp =
   | ((props: PropsWithoutColor<"button">) => JSX.Element);
 
 /** Props for `WidgetStack.Prev`. */
-interface WidgetStackPrevProps
-  extends Omit<PropsWithoutColor<"button">, "disabled" | "onClick" | "ref"> {
+interface WidgetStackPrevProps extends Omit<
+  PropsWithoutColor<"button">,
+  "disabled" | "onClick" | "ref"
+> {
   /** Ref forwarded to the rendered element, in either branch. */
   ref?: Ref<HTMLButtonElement> | undefined;
   /** Element or render function overriding the default `button` output. */

@@ -637,7 +637,11 @@ export { avatarPropDefs } from "./components/avatar/avatar.props";
 export type { AvatarOwnProps } from "./components/avatar/avatar.props";
 export type { AvatarProps } from "./components/avatar/avatar";
 
-export { AvatarGroup, AvatarGroupAvatar, AvatarGroupRoot } from "./components/avatar-group/avatar-group";
+export {
+  AvatarGroup,
+  AvatarGroupAvatar,
+  AvatarGroupRoot,
+} from "./components/avatar-group/avatar-group";
 export { avatarGroupPropDefs } from "./components/avatar-group/avatar-group.props";
 export type { AvatarGroupRootOwnProps } from "./components/avatar-group/avatar-group.props";
 export type {
@@ -645,7 +649,11 @@ export type {
   AvatarGroupRootProps,
 } from "./components/avatar-group/avatar-group";
 
-export { AvatarStack, AvatarStackAvatar, AvatarStackRoot } from "./components/avatar-stack/avatar-stack";
+export {
+  AvatarStack,
+  AvatarStackAvatar,
+  AvatarStackRoot,
+} from "./components/avatar-stack/avatar-stack";
 export { avatarStackPropDefs } from "./components/avatar-stack/avatar-stack.props";
 export type { AvatarStackRootOwnProps } from "./components/avatar-stack/avatar-stack.props";
 export type {
@@ -786,7 +794,10 @@ export type {
 export { Portal } from "./components/portal/portal";
 export type { PortalProps, PortalRenderProp } from "./components/portal/portal";
 
-export { VISUALLY_HIDDEN_STYLES, VisuallyHidden } from "./components/visually-hidden/visually-hidden";
+export {
+  VISUALLY_HIDDEN_STYLES,
+  VisuallyHidden,
+} from "./components/visually-hidden/visually-hidden";
 export type {
   VisuallyHiddenProps,
   VisuallyHiddenRenderProp,
@@ -936,7 +947,10 @@ export type {
   BotAvatarAtlasShape,
   BotAvatarShape,
 } from "./components/bot-avatar/bot-avatar.shapes";
-export { botAvatarStatusExpressions, botAvatarStatuses } from "./components/bot-avatar/bot-avatar.status";
+export {
+  botAvatarStatusExpressions,
+  botAvatarStatuses,
+} from "./components/bot-avatar/bot-avatar.status";
 export type { BotAvatarStatus } from "./components/bot-avatar/bot-avatar.status";
 export {
   botAvatarExpressions,
@@ -958,10 +972,7 @@ export type { FilterChipOwnProps, FilterChipProps } from "./components/filter-ch
 export { CountryFlag } from "./components/country-flag/country-flag";
 export { countryFlagPropDefs } from "./components/country-flag/country-flag.props";
 export { ISO3166Alpha2Codes } from "./components/country-flag/country-codes";
-export type {
-  CountryFlagOwnProps,
-  CountryFlagProps,
-} from "./components/country-flag/country-flag";
+export type { CountryFlagOwnProps, CountryFlagProps } from "./components/country-flag/country-flag";
 
 export { StackedHorizontalBarChart } from "./components/stacked-horizontal-bar-chart/stacked-horizontal-bar-chart";
 export type {

@@ -1,10 +1,5 @@
 /** Hover card parts, prop definitions, and size types. */
-export {
-  HoverCard,
-  HoverCardContent,
-  HoverCardRoot,
-  HoverCardTrigger,
-} from "./hover-card";
+export { HoverCard, HoverCardContent, HoverCardRoot, HoverCardTrigger } from "./hover-card";
 export { hoverCardContentPropDefs } from "./hover-card.props";
 export type {
   HoverCardContentProps,

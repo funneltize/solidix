@@ -32,11 +32,11 @@ describe("SegmentedControl", () => {
     const tab = await screen.findByRole("tab", { name: "One" });
     expect(tab.classList.contains("fui-BaseSegmentedControlTrigger")).toBe(true);
     expect(tab.querySelector(".fui-BaseSegmentedControlTriggerInner")).not.toBeNull();
-    expect(tab.closest("[role='tablist']")?.classList.contains("fui-BaseSegmentedControlList")).toBe(
-      true,
-    );
-    expect((await screen.findByText("Panel")).classList.contains("fui-SegmentedControlContent")).toBe(
-      true,
-    );
+    expect(
+      tab.closest("[role='tablist']")?.classList.contains("fui-BaseSegmentedControlList"),
+    ).toBe(true);
+    expect(
+      (await screen.findByText("Panel")).classList.contains("fui-SegmentedControlContent"),
+    ).toBe(true);
   });
 });

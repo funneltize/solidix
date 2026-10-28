@@ -439,18 +439,18 @@ How blocks are built (follow these exactly for new blocks):
 Each test file pins one contract. Touching a contract means updating its
 test in the same change:
 
-| Test file                | Contract                                                                                                               |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Test file                | Contract                                                                                                                                |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `tokens.test.ts`         | Generated CSS matches `tokens.ts`; light-dark() theme mechanism; contrast pairs meet minima; README ratio table matches computed values |
-| `css-budget.test.ts`     | Byte budgets for both stylesheets                                                                                      |
-| `css-scopes.test.ts`     | Tone-scope literals, field-token isolation, container tiers, one-chrome-per-viewport, comparison containment           |
-| `motion.test.ts`         | Token-only timing, `fx-` keyframes resolve, `data-state` hooks exist, reduced-motion guard                             |
-| `cta-button.test.tsx`    | Tactile variants, sizes, loading/disabled, anchor/button union, event emission                                         |
-| `layout.test.tsx`        | Containers, tones, header zero-escape, prose/highlight                                                                 |
-| `proof.test.tsx`         | Ratings, logos, testimonials, carousel remount + live region                                                           |
-| `consideration.test.tsx` | Benefits, comparison, pricing toggle, guarantee, FAQ deep links                                                        |
-| `conversion.test.tsx`    | Hero, forms (no PII in events), countdown honesty, sticky reveal, exit intent caps, footer containment/variants/badges |
-| `events.test.ts`         | Event contract shape (bubbles, composed, detail)                                                                       |
+| `css-budget.test.ts`     | Byte budgets for both stylesheets                                                                                                       |
+| `css-scopes.test.ts`     | Tone-scope literals, field-token isolation, container tiers, one-chrome-per-viewport, comparison containment                            |
+| `motion.test.ts`         | Token-only timing, `fx-` keyframes resolve, `data-state` hooks exist, reduced-motion guard                                              |
+| `cta-button.test.tsx`    | Tactile variants, sizes, loading/disabled, anchor/button union, event emission                                                          |
+| `layout.test.tsx`        | Containers, tones, header zero-escape, prose/highlight                                                                                  |
+| `proof.test.tsx`         | Ratings, logos, testimonials, carousel remount + live region                                                                            |
+| `consideration.test.tsx` | Benefits, comparison, pricing toggle, guarantee, FAQ deep links                                                                         |
+| `conversion.test.tsx`    | Hero, forms (no PII in events), countdown honesty, sticky reveal, exit intent caps, footer containment/variants/badges                  |
+| `events.test.ts`         | Event contract shape (bubbles, composed, detail)                                                                                        |
 
 Verification for any funnel change: `pnpm --filter @solidix/funnel
 typecheck`, `npx vitest run packages/solid/funnel`, package `lint`, and
@@ -512,24 +512,24 @@ jsdom alone.
 
 ## 18. File map
 
-| Path                                    | Role                                                                               |
-| --------------------------------------- | ---------------------------------------------------------------------------------- |
-| `PHILOSOPHY.md` (this file)             | Intent and rules agents implement from                                             |
-| `README.md`                             | Consumer reference: install, tokens, contrast table, blocks, motion                |
-| `src/tokens.ts`                         | Token source of truth + contrast pairs + CSS renderer                              |
+| Path                                    | Role                                                                                           |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `PHILOSOPHY.md` (this file)             | Intent and rules agents implement from                                                         |
+| `README.md`                             | Consumer reference: install, tokens, contrast table, blocks, motion                            |
+| `src/tokens.ts`                         | Token source of truth + contrast pairs + CSS renderer                                          |
 | `src/tokens.css` (generated)            | Zero-JS theme layer, light-dark() theme pairs, CTA hues, focus/selection, reduced-motion guard |
-| `src/blocks.css`                        | All block visuals; `.fx-*` public API                                              |
-| `src/root.tsx`                          | Theme/CTA/variant scope                                                            |
-| `src/layout.tsx`                        | Section, Container, Header, SectionHeading, Eyebrow, Prose                         |
-| `src/cta-button.tsx`                    | CTAButton, CtaCluster                                                              |
-| `src/conversion.tsx`                    | Hero, OptInForm, VideoFrame, Countdown, StickyBar, ExitIntent, Footer              |
-| `src/consideration.tsx`                 | Benefits, HowItWorks, ComparisonTable, Pricing, Guarantee, Faq                     |
-| `src/proof.tsx`                         | LogoBar, Testimonials, TestimonialCarousel, StatsBar, StarRating                   |
-| `src/events.ts`                         | `funnel:*` event contract                                                          |
-| `src/index.ts`                          | Public exports (components + types together)                                       |
-| `test/*`                                | Contracts in section 15                                                            |
-| `internal/gallery/src/demos/funnel.tsx` | 8-stage reference implementation                                                   |
-| `internal/gallery/src/docs/funnel.ts`   | Live docs for the gallery site                                                     |
+| `src/blocks.css`                        | All block visuals; `.fx-*` public API                                                          |
+| `src/root.tsx`                          | Theme/CTA/variant scope                                                                        |
+| `src/layout.tsx`                        | Section, Container, Header, SectionHeading, Eyebrow, Prose                                     |
+| `src/cta-button.tsx`                    | CTAButton, CtaCluster                                                                          |
+| `src/conversion.tsx`                    | Hero, OptInForm, VideoFrame, Countdown, StickyBar, ExitIntent, Footer                          |
+| `src/consideration.tsx`                 | Benefits, HowItWorks, ComparisonTable, Pricing, Guarantee, Faq                                 |
+| `src/proof.tsx`                         | LogoBar, Testimonials, TestimonialCarousel, StatsBar, StarRating                               |
+| `src/events.ts`                         | `funnel:*` event contract                                                                      |
+| `src/index.ts`                          | Public exports (components + types together)                                                   |
+| `test/*`                                | Contracts in section 15                                                                        |
+| `internal/gallery/src/demos/funnel.tsx` | 8-stage reference implementation                                                               |
+| `internal/gallery/src/docs/funnel.ts`   | Live docs for the gallery site                                                                 |
 
 ## 19. Studio editing contract
 

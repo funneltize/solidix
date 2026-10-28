@@ -39,11 +39,11 @@
   /* Disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
 
-  &:where([data-orientation='vertical']) {
+  &:where([data-orientation="vertical"]) {
     flex-direction: column;
     width: var(--scrollarea-scrollbar-size);
   }
-  &:where([data-orientation='horizontal']) {
+  &:where([data-orientation="horizontal"]) {
     flex-direction: row;
     height: var(--scrollarea-scrollbar-size);
   }
@@ -56,7 +56,7 @@
   height: var(--scroll-area-thumb-height);
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -100,13 +100,13 @@
   border-radius: var(--scrollarea-scrollbar-border-radius);
   transition: opacity 150ms ease-out;
 
-  &:where([data-orientation='horizontal']) {
+  &:where([data-orientation="horizontal"]) {
     margin-top: var(--scrollarea-scrollbar-horizontal-margin-top);
     margin-bottom: var(--scrollarea-scrollbar-horizontal-margin-bottom);
     margin-left: var(--scrollarea-scrollbar-horizontal-margin-left);
     margin-right: var(--scrollarea-scrollbar-horizontal-margin-right);
   }
-  &:where([data-orientation='vertical']) {
+  &:where([data-orientation="vertical"]) {
     margin-top: var(--scrollarea-scrollbar-vertical-margin-top);
     margin-bottom: var(--scrollarea-scrollbar-vertical-margin-bottom);
     margin-left: var(--scrollarea-scrollbar-vertical-margin-left);
@@ -137,7 +137,7 @@
    * "auto" - visible when content is overflowing
    * Base UI adds data-has-overflow-x/y when content overflows
    */
-  &:where([data-type='auto']) {
+  &:where([data-type="auto"]) {
     opacity: 0;
 
     &:where([data-has-overflow-x]),
@@ -149,14 +149,14 @@
   /*
    * "always" - always visible regardless of overflow
    */
-  &:where([data-type='always']) {
+  &:where([data-type="always"]) {
     opacity: 1;
   }
 
   /*
    * "scroll" - visible only when actively scrolling
    */
-  &:where([data-type='scroll']) {
+  &:where([data-type="scroll"]) {
     opacity: 0;
 
     &:where([data-scrolling]) {
@@ -167,7 +167,7 @@
   /*
    * "hover" (default) - visible when scrolling or hovering over the scroll area
    */
-  &:where([data-type='hover']) {
+  &:where([data-type="hover"]) {
     opacity: 0;
 
     &:where([data-hovering]),

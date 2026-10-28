@@ -44,8 +44,7 @@ interface ContextMenuContentContextValue {
   readonly variant: "solid" | "translucent" | undefined;
 }
 
-const ContextMenuContentContext =
-  createContext<ContextMenuContentContextValue | null>(null);
+const ContextMenuContentContext = createContext<ContextMenuContentContextValue | null>(null);
 
 /**
  * Reads the inherited submenu theming context, or `null` outside a menu.
@@ -60,14 +59,7 @@ function useMenuContentContext(): ContextMenuContentContextValue | null {
  */
 function ThickCheckIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>): JSX.Element {
   return (
-    <svg
-      width="9"
-      height="9"
-      viewBox="0 0 9 9"
-      fill="currentColor"
-      aria-hidden="true"
-      {...props}
-    >
+    <svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor" aria-hidden="true" {...props}>
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -83,14 +75,7 @@ function ThickCheckIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>): JSX.Element
  */
 function ThickChevronRightIcon(props: JSX.SvgSVGAttributes<SVGSVGElement>): JSX.Element {
   return (
-    <svg
-      width="9"
-      height="9"
-      viewBox="0 0 9 9"
-      fill="currentColor"
-      aria-hidden="true"
-      {...props}
-    >
+    <svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor" aria-hidden="true" {...props}>
       <path d="M2 1.5L2.77254 0.727451C2.95039 0.549603 3.23899 0.549604 3.41683 0.727451L6.96934 4.27996C7.14719 4.45781 7.14719 4.74641 6.96934 4.92426L3.41683 8.47677C3.23899 8.65461 2.95039 8.65461 2.77254 8.47677L2 7.70422L5.68025 4.02394C5.76926 3.93493 5.76926 3.79043 5.68025 3.70142L2 1.5Z" />
     </svg>
   );
@@ -275,9 +260,7 @@ function ContextMenuItem(props: ContextMenuItemProps): JSX.Element {
     >
       {props.children}
       {props.shortcut ? (
-        <span class={cx("fui-BaseMenuShortcut", "fui-ContextMenuShortcut")}>
-          {props.shortcut}
-        </span>
+        <span class={cx("fui-BaseMenuShortcut", "fui-ContextMenuShortcut")}>{props.shortcut}</span>
       ) : null}
     </Headless.Item>
   );
@@ -324,9 +307,7 @@ function ContextMenuCheckboxItem(props: ContextMenuCheckboxItemProps): JSX.Eleme
       </span>
       {props.children}
       {props.shortcut ? (
-        <span class={cx("fui-BaseMenuShortcut", "fui-ContextMenuShortcut")}>
-          {props.shortcut}
-        </span>
+        <span class={cx("fui-BaseMenuShortcut", "fui-ContextMenuShortcut")}>{props.shortcut}</span>
       ) : null}
     </Headless.CheckboxItem>
   );
@@ -385,9 +366,7 @@ function ContextMenuRadioItem(props: ContextMenuRadioItemProps): JSX.Element {
       </span>
       {props.children}
       {props.shortcut ? (
-        <span class={cx("fui-BaseMenuShortcut", "fui-ContextMenuShortcut")}>
-          {props.shortcut}
-        </span>
+        <span class={cx("fui-BaseMenuShortcut", "fui-ContextMenuShortcut")}>{props.shortcut}</span>
       ) : null}
     </Headless.RadioItem>
   );

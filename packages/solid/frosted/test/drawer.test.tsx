@@ -47,13 +47,9 @@ describe("Drawer", () => {
     const dialog = await screen.findByRole("dialog");
     expect(dialog.getAttribute("data-state")).toBe("open");
     expect(dialog.classList.contains("fui-DrawerContent")).toBe(true);
-    expect(
-      document.querySelector(".fui-DialogBackdrop.fui-DrawerBackdrop"),
-    ).not.toBeNull();
+    expect(document.querySelector(".fui-DialogBackdrop.fui-DrawerBackdrop")).not.toBeNull();
     expect(document.querySelector(".fui-DrawerOverlay")).not.toBeNull();
-    expect(
-      await screen.findByRole("heading", { name: "Settings" }),
-    ).not.toBeNull();
+    expect(await screen.findByRole("heading", { name: "Settings" })).not.toBeNull();
     expect(screen.getByText("Drawer body text.")).not.toBeNull();
     expect(screen.getByText("Footer actions.")).not.toBeNull();
   });

@@ -80,9 +80,7 @@ describe("BotAvatar", () => {
     render(() => <BotAvatar identity="grok-1" shape="heart" color="red" />);
     const el = root();
     expect(el.getAttribute("data-accent-color")).toBe("red");
-    expect(el.querySelector("clipPath path")?.getAttribute("d")).toBe(
-      botAvatarShapePaths.heart,
-    );
+    expect(el.querySelector("clipPath path")?.getAttribute("d")).toBe(botAvatarShapePaths.heart);
   });
 
   it("applies size, high contrast, and the notification dot", () => {
@@ -114,8 +112,7 @@ describe("BotAvatar", () => {
     const el = root();
     Object.defineProperty(el, "getBoundingClientRect", {
       configurable: true,
-      value: () =>
-        ({ left: 0, top: 0, width: 40, height: 40 }) as unknown as DOMRect,
+      value: () => ({ left: 0, top: 0, width: 40, height: 40 }) as unknown as DOMRect,
     });
 
     // 160px right of center at the minimum 160px range: full right gaze.

@@ -9,12 +9,7 @@
 // the `--radix-popper-*` variables solidix sets, and the `data-starting-style` /
 // `data-ending-style` mapping onto `data-state`.
 
-import {
-  createMemo,
-  omit,
-  Show,
-  type Component,
-} from "solid-js";
+import { createMemo, omit, Show, type Component } from "solid-js";
 import type { JSX } from "@solidjs/web";
 import type { RefObject } from "@solidix/compose-refs";
 import {
@@ -48,9 +43,7 @@ import { popoverContentPropDefs, type PopoverContentOwnProps } from "./popover.p
 interface PopoverRootProps extends PopoverPrimitiveProps {}
 
 /** The root container that manages the popover open state. Not modal by default. */
-const PopoverRoot: Component<PopoverRootProps> = (props) => (
-  <PopoverPrimitive {...props} />
-);
+const PopoverRoot: Component<PopoverRootProps> = (props) => <PopoverPrimitive {...props} />;
 
 /* -------------------------------------------------------------------------------------------------
  * PopoverTrigger
@@ -82,22 +75,13 @@ const PopoverTrigger: Component<PopoverTriggerProps> = (props) => {
  * which additionally admits virtual elements; those have no solidix equivalent
  * and narrow to the getter form here.
  */
-type PopoverAnchor =
-  | Element
-  | RefObject<Element | null>
-  | (() => Element | null);
+type PopoverAnchor = Element | RefObject<Element | null> | (() => Element | null);
 
 /** Props accepted by the `Content` component. */
 interface PopoverContentProps
-  extends PopoverContentOwnProps,
-    Omit<
-      PopoverContentPrimitiveProps,
-      | "asChild"
-      | "align"
-      | "side"
-      | "sticky"
-      | "anchor"
-    > {
+  extends
+    PopoverContentOwnProps,
+    Omit<PopoverContentPrimitiveProps, "asChild" | "align" | "side" | "sticky" | "anchor"> {
   /** Container element to portal the content into. Passed to the portal. */
   container?: PopoverPortalPrimitiveProps["container"] | undefined;
   /** Keeps the portal mounted when closed. Passed to the portal as `forceMount`. */
@@ -174,7 +158,7 @@ const PopoverContent: Component<PopoverContentProps> = (props) => {
           collisionPadding={props.collisionPadding ?? 10}
           sticky={props.sticky ? "partial" : "always"}
           arrowPadding={props.arrowPadding}
-          forceMount={props.forceMount ?? props.keepMounted ? true : undefined}
+          forceMount={(props.forceMount ?? props.keepMounted) ? true : undefined}
           {...rest}
         >
           {props.children}
@@ -217,13 +201,7 @@ const Popover = {
   Trigger: PopoverTrigger,
 };
 
-export {
-  Popover,
-  PopoverClose,
-  PopoverContent,
-  PopoverRoot,
-  PopoverTrigger,
-};
+export { Popover, PopoverClose, PopoverContent, PopoverRoot, PopoverTrigger };
 export type {
   PopoverAnchor,
   PopoverAnchorPrimitiveProps,

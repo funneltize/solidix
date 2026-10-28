@@ -63,9 +63,7 @@ describe("Lightbox", () => {
     expect(dialog.classList.contains("fui-LightboxContent")).toBe(true);
     const backdrop = dialog.parentElement?.querySelector(".fui-LightboxBackdrop");
     expect(backdrop?.getAttribute("aria-hidden")).toBe("true");
-    expect(
-      (await screen.findByText("1 / 2")).classList.contains("fui-LightboxCounter"),
-    ).toBe(true);
+    expect((await screen.findByText("1 / 2")).classList.contains("fui-LightboxCounter")).toBe(true);
   });
 
   it("advances the active item with Previous and Next", async () => {

@@ -26,8 +26,8 @@
 
   transition: 0.2s clip-path ease-out;
   clip-path: inset(
-    var(--widget-stack-gutter) var(--widget-stack-gutter) var(--widget-stack-gutter) var(--widget-stack-gutter) round
-      var(--widget-stack-radius)
+    var(--widget-stack-gutter) var(--widget-stack-gutter) var(--widget-stack-gutter)
+      var(--widget-stack-gutter) round var(--widget-stack-radius)
   );
 
   &:where(:not(:has(.fui-WidgetStackItem:first-child:last-child)):hover) {
@@ -36,12 +36,12 @@
 
   /* Orientation */
   display: flex;
-  &:where([data-orientation='vertical']) {
+  &:where([data-orientation="vertical"]) {
     flex-direction: column;
     scroll-snap-type: y mandatory;
     overflow-y: auto;
   }
-  &:where([data-orientation='horizontal']) {
+  &:where([data-orientation="horizontal"]) {
     flex-direction: row;
     scroll-snap-type: x mandatory;
     overflow-x: auto;

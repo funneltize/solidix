@@ -1,10 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen } from "@solidjs/testing-library";
 import { createSignal } from "solid-js";
-import {
-  ScrollGallery,
-  type ScrollGalleryRootRef,
-} from "../src/index";
+import { ScrollGallery, type ScrollGalleryRootRef } from "../src/index";
 
 /** Spies installed on `Element.prototype` (jsdom implements neither). */
 let scrollBySpy: ReturnType<typeof vi.fn>;
@@ -188,8 +185,12 @@ describe("ScrollGallery", () => {
     fireEvent.scroll(viewport);
 
     await vi.waitFor(() => {
-      expect((screen.getByRole("button", { name: "Prev" }) as HTMLButtonElement).disabled).toBe(true);
-      expect((screen.getByRole("button", { name: "Next" }) as HTMLButtonElement).disabled).toBe(false);
+      expect((screen.getByRole("button", { name: "Prev" }) as HTMLButtonElement).disabled).toBe(
+        true,
+      );
+      expect((screen.getByRole("button", { name: "Next" }) as HTMLButtonElement).disabled).toBe(
+        false,
+      );
     });
     expect(viewport.hasAttribute("data-can-scroll-next")).toBe(true);
     expect(viewport.hasAttribute("data-can-scroll-prev")).toBe(false);
@@ -204,8 +205,12 @@ describe("ScrollGallery", () => {
     fireEvent.scroll(viewport);
 
     await vi.waitFor(() => {
-      expect((screen.getByRole("button", { name: "Next" }) as HTMLButtonElement).disabled).toBe(true);
-      expect((screen.getByRole("button", { name: "Prev" }) as HTMLButtonElement).disabled).toBe(false);
+      expect((screen.getByRole("button", { name: "Next" }) as HTMLButtonElement).disabled).toBe(
+        true,
+      );
+      expect((screen.getByRole("button", { name: "Prev" }) as HTMLButtonElement).disabled).toBe(
+        false,
+      );
     });
   });
 
@@ -217,7 +222,9 @@ describe("ScrollGallery", () => {
     mockOverflow(viewport, 0);
     fireEvent.scroll(viewport);
     await vi.waitFor(() => {
-      expect((screen.getByRole("button", { name: "Next" }) as HTMLButtonElement).disabled).toBe(false);
+      expect((screen.getByRole("button", { name: "Next" }) as HTMLButtonElement).disabled).toBe(
+        false,
+      );
     });
 
     fireEvent.click(screen.getByRole("button", { name: "Next" }));
@@ -358,7 +365,9 @@ describe("ScrollGallery", () => {
     await screen.findByText("Two");
 
     // Loop keeps the button enabled at the boundary.
-    expect((screen.getByRole("button", { name: "Prev" }) as HTMLButtonElement).disabled).toBe(false);
+    expect((screen.getByRole("button", { name: "Prev" }) as HTMLButtonElement).disabled).toBe(
+      false,
+    );
 
     const viewport = viewportEl();
     mockOverflow(viewport);

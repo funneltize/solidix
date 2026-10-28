@@ -66,8 +66,7 @@ interface ScrollGalleryItemProps extends Omit<PropsWithoutColor<"div">, "ref"> {
  */
 const ScrollGalleryItem: Component<ScrollGalleryItemProps> = (props) => {
   const rest = omit(props, "children", "class", "ref", "render");
-  const { activeIndex, registerItem, getItemElements, itemsVersion } =
-    useScrollGalleryContext();
+  const { activeIndex, registerItem, getItemElements, itemsVersion } = useScrollGalleryContext();
 
   // Registration is insertion-agnostic bookkeeping, so it runs
   // synchronously in the ref callback (not an effect): Root's mount

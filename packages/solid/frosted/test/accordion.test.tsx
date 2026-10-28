@@ -2,7 +2,10 @@ import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen } from "@solidjs/testing-library";
 import { Accordion } from "../src/index";
 
-function Basic(props: { multiple?: boolean | undefined; type?: "single" | "multiple" | undefined }) {
+function Basic(props: {
+  multiple?: boolean | undefined;
+  type?: "single" | "multiple" | undefined;
+}) {
   return (
     <Accordion.Root multiple={props.multiple} type={props.type}>
       <Accordion.Item value="one">
@@ -59,7 +62,9 @@ describe("Accordion", () => {
     fireEvent.click(screen.getByRole("button", { name: "Second" }));
     await screen.findByText("First panel");
     await screen.findByText("Second panel");
-    expect(screen.getByRole("button", { name: "First" }).getAttribute("aria-expanded")).toBe("true");
+    expect(screen.getByRole("button", { name: "First" }).getAttribute("aria-expanded")).toBe(
+      "true",
+    );
     expect(screen.getByRole("button", { name: "Second" }).getAttribute("aria-expanded")).toBe(
       "true",
     );
