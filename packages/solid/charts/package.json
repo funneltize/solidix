@@ -1,6 +1,6 @@
 {
   "name": "@solidix/charts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Headless chart primitives for Solid 2 (bar, line, pie, scatter, radar, candlestick, heatmap, funnel, sankey, brush, zoom) with d3-powered scales.",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

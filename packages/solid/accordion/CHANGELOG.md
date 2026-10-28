@@ -1,5 +1,13 @@
 # @solidix/accordion
 
+## 0.1.6
+
+### Patch Changes
+
+- Updated dependencies [85f54c9]
+  - @solidix/use-controllable-state@0.1.6
+  - @solidix/collapsible@0.1.6
+
 ## 0.1.5
 
 ### Patch Changes

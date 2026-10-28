@@ -1,6 +1,6 @@
 {
   "name": "@solidix/slider",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Slider primitive (port of @radix-ui/react-slider).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

@@ -1,5 +1,11 @@
 # @solidix/use-controllable-state
 
+## 0.1.6
+
+### Patch Changes
+
+- 85f54c9: Read controlled-ness untracked in the change-notification effect, matching the reducer variant, so reactive controlled props no longer trip the Solid strict-mode diagnostic.
+
 ## 0.1.5
 
 ### Patch Changes

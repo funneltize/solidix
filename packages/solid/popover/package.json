@@ -1,6 +1,6 @@
 {
   "name": "@solidix/popover",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Popover primitive (port of @radix-ui/react-popover).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

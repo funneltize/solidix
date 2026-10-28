@@ -1,6 +1,6 @@
 {
   "name": "@solidix/hover-card",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Hover-card primitive (port of @radix-ui/react-hover-card).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

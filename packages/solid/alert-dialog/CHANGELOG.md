@@ -1,5 +1,11 @@
 # @solidix/alert-dialog
 
+## 0.1.6
+
+### Patch Changes
+
+- @solidix/dialog@0.1.6
+
 ## 0.1.5
 
 ### Patch Changes

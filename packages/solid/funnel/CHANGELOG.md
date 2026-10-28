@@ -1,5 +1,17 @@
 # @solidix/funnel
 
+## 0.6.0
+
+### Minor Changes
+
+- de2be45: Resolve the funnel dark theme through `light-dark()` token pairs on `:root` instead of a `[data-funnel-theme="dark"]` override block. The attribute (set via `Root theme="dark"`) now only flips `color-scheme` for the subtree; every paired token ships its flat light value first so older browsers degrade to the light theme. Rendering is unchanged in supporting browsers, and plain rebrand overrides under `[data-funnel-theme="dark"]` keep working.
+
+### Patch Changes
+
+- @solidix/accordion@0.1.6
+  - @solidix/dialog@0.1.6
+  - @solidix/radio-group@0.1.6
+
 ## 0.5.1
 
 ### Patch Changes

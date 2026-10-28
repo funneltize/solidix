@@ -1,6 +1,6 @@
 {
   "name": "@solidix/tooltip",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Tooltip primitive (port of @radix-ui/react-tooltip).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

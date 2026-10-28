@@ -1,6 +1,6 @@
 {
   "name": "@solidix/context-menu",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Context-menu primitive (port of @radix-ui/react-context-menu).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
