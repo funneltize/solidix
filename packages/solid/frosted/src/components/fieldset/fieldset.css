@@ -40,7 +40,7 @@
   &:where([data-disabled]) {
     color: var(--gray-a8);
   }
-  &:where([data-variant='label']) {
+  &:where([data-variant="label"]) {
     margin-bottom: 8px;
   }
 }

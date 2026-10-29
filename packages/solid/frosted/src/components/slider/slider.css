@@ -17,10 +17,10 @@
   /* disable browser handling of all panning and zooming gestures on touch devices */
   touch-action: none;
 
-  &:where([data-orientation='horizontal']) {
+  &:where([data-orientation="horizontal"]) {
     height: var(--slider-thumb-size);
   }
-  &:where([data-orientation='vertical']) {
+  &:where([data-orientation="vertical"]) {
     height: 100%;
     flex-direction: column;
     width: var(--slider-thumb-size);
@@ -43,8 +43,8 @@
 
   & :where(.fui-SliderThumb) {
     --slider-thumb-box-shadow:
-      0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2), 0 0 0 1px var(--accent-a2), 0 1px 2px var(--gray-a4),
-      0 1px 3px -0.5px var(--gray-a3);
+      0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2), 0 0 0 1px var(--accent-a2),
+      0 1px 2px var(--gray-a4), 0 1px 3px -0.5px var(--gray-a3);
 
     &:where([data-disabled])::after {
       background-color: var(--gray-1);
@@ -58,7 +58,7 @@
   align-items: center;
   flex-grow: 1;
 
-  &:where([data-orientation='vertical']) {
+  &:where([data-orientation="vertical"]) {
     flex-direction: column;
     height: 100%;
   }
@@ -74,10 +74,10 @@
     calc(var(--radius-factor) * var(--radius-thumb))
   );
 
-  &:where([data-orientation='horizontal']) {
+  &:where([data-orientation="horizontal"]) {
     height: var(--slider-track-size);
   }
-  &:where([data-orientation='vertical']) {
+  &:where([data-orientation="vertical"]) {
     width: var(--slider-track-size);
   }
 }
@@ -86,11 +86,11 @@
   position: absolute;
   border-radius: inherit;
 
-  &:where([data-orientation='horizontal']) {
+  &:where([data-orientation="horizontal"]) {
     height: 100%;
   }
 
-  &:where([data-orientation='vertical']) {
+  &:where([data-orientation="vertical"]) {
     width: 100%;
   }
 }
@@ -102,7 +102,7 @@
   height: var(--slider-track-size);
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     z-index: -1;
     width: calc(var(--slider-thumb-size) * 3);
@@ -114,7 +114,7 @@
 
   /* Larger visible thumb so that it slightly overshoots the track */
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: calc(-0.25 * var(--slider-track-size) - var(--space-1) / 2);
     background-color: white;

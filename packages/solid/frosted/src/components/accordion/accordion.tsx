@@ -133,9 +133,7 @@ const AccordionRoot: Component<AccordionRootProps> = (props) => {
           onValueChange={handleSingleChange}
           class={classes()}
         >
-          <AccordionContext value={{ value: arrayValue }}>
-            {props.children}
-          </AccordionContext>
+          <AccordionContext value={{ value: arrayValue }}>{props.children}</AccordionContext>
         </AccordionPrimitive>
       }
     >
@@ -169,9 +167,7 @@ const AccordionItem: Component<AccordionItemProps> = (props) => {
   const rest = omit(props, "children", "class");
   return (
     <AccordionItemPrimitive {...rest} class={cx("fui-AccordionItem", props.class)}>
-      <AccordionItemContext value={{ value: props.value }}>
-        {props.children}
-      </AccordionItemContext>
+      <AccordionItemContext value={{ value: props.value }}>{props.children}</AccordionItemContext>
     </AccordionItemPrimitive>
   );
 };
