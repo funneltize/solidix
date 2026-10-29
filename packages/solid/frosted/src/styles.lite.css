@@ -8565,6 +8565,7 @@
   border-radius: inherit;
   z-index: 0;
   inset: 0;
+  pointer-events: none;
 }
 
 .fui-TextAreaRoot:where(.fui-r-size-1) {
