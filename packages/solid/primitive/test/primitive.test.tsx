@@ -5,6 +5,7 @@ import {
   callEventHandler,
   canUseDOM,
   composeEventHandlers,
+  cx,
   dispatchDiscreteCustomEvent,
   getActiveElement,
   getOwnerDocument,
@@ -148,5 +149,26 @@ describe("hideOthers", () => {
     expect(document.getElementById("a")!.hasAttribute("aria-hidden")).toBe(false);
 
     document.body.innerHTML = "";
+  });
+});
+
+describe("cx", () => {
+  test("joins string parts with spaces", () => {
+    expect(cx("fx-section", "extra")).toBe("fx-section extra");
+    expect(cx()).toBe("");
+  });
+
+  test("drops falsy entries at every level", () => {
+    expect(cx("a", undefined, null, false, "", "b")).toBe("a b");
+    expect(cx(["a", undefined, "b"])).toBe("a b");
+    // Numeric zero carries no class name, matching `classnames` behavior for
+    // top-level args (this pins the unified frosted/funnel semantics).
+    expect(cx("a", 0, "b")).toBe("a b");
+  });
+
+  test("expands arrays and conditional objects", () => {
+    expect(cx(["a", ["b", "c"]])).toBe("a b c");
+    expect(cx("a", { b: true, c: false })).toBe("a b");
+    expect(cx({ a: true }, [true, "b"])).toBe("a b");
   });
 });

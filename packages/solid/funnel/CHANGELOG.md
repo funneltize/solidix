@@ -1,5 +1,21 @@
 # @solidix/funnel
 
+## 0.6.1
+
+### Patch Changes
+
+- Fix `ExitIntent storageKey={null}` not disabling frequency capping: only `undefined` now falls back to the default key, matching the documented behavior.
+- Move the `cx` class-name helper (plus `CxInput` type) into `@solidix/primitive` as the single shared implementation; frosted and funnel now re-export it. Frosted's public `cx` API is unchanged; funnel's internal copy adopts the shared classnames-compatible semantics (all falsy entries dropped) and its `ctaAttrs` helper types `class` as `JSX.ClassValue` instead of `unknown`.
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/form@0.1.6
+  - @solidix/primitive@0.3.0
+  - @solidix/accordion@0.1.7
+  - @solidix/dialog@0.1.7
+  - @solidix/aspect-ratio@0.1.6
+  - @solidix/radio-group@0.1.7
+
 ## 0.6.0
 
 ### Minor Changes

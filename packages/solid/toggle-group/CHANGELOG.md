@@ -1,5 +1,15 @@
 # @solidix/toggle-group
 
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies
+  - @solidix/primitive@0.3.0
+  - @solidix/roving-focus@0.1.7
+  - @solidix/toggle@0.1.7
+  - @solidix/use-controllable-state@0.1.7
+
 ## 0.1.6
 
 ### Patch Changes

@@ -171,6 +171,12 @@ interface PopperContentProps extends Omit<PrimitivePropsWithRef<"div">, "ref" | 
   collisionPadding?: number | Record<Partial<Side>, number> | undefined;
   sticky?: Sticky | undefined;
   hideWhenDetached?: boolean | undefined;
+  /**
+   * How position updates are scheduled. `"optimized"` (default) recomputes on
+   * scroll and resize events; `"always"` recomputes every animation frame, which
+   * costs one Floating UI pass per frame while mounted. Prefer the default
+   * unless the anchor moves without scrolling (for example layout animation).
+   */
   updatePositionStrategy?: UpdatePositionStrategy | undefined;
   onPlaced?: (() => void) | undefined;
 }

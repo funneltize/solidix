@@ -616,7 +616,10 @@ type ExitIntentProps = {
 const ExitIntent: Component<ExitIntentProps> = (props) => {
   const [open, setOpen] = createSignal(false);
   const editable = useFunnelEditable();
-  const storageKey = () => props.storageKey ?? "solidix-funnel-exit-intent";
+  // `null` disables capping (per the prop docs); only `undefined` falls back
+  // to the default key. A `??` here would treat `null` like `undefined`.
+  const storageKey = () =>
+    props.storageKey === undefined ? "solidix-funnel-exit-intent" : props.storageKey;
 
   const wasShown = () => {
     const key = storageKey();

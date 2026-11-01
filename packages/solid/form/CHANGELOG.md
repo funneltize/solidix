@@ -1,5 +1,14 @@
 # @solidix/form
 
+## 0.1.6
+
+### Patch Changes
+
+- Fix custom matchers running twice per validation: each matcher is now invoked once and its return value captured, so side-effecting matchers run exactly once and no promise is dropped.
+- Updated dependencies
+  - @solidix/primitive@0.3.0
+  - @solidix/label@0.1.6
+
 ## 0.1.5
 
 ### Patch Changes

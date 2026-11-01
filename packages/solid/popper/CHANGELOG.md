@@ -1,5 +1,14 @@
 # @solidix/popper
 
+## 0.1.6
+
+### Patch Changes
+
+- Document the per-frame cost of `updatePositionStrategy="always"` on the `PopperContent` prop so consumers know to prefer the default `"optimized"` strategy.
+- Updated dependencies
+  - @solidix/primitive@0.3.0
+  - @solidix/arrow@0.1.6
+
 ## 0.1.5
 
 ### Patch Changes

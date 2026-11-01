@@ -1,6 +1,6 @@
 {
   "name": "@solidix/tooltip",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Tooltip primitive (port of @radix-ui/react-tooltip).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -34,7 +34,6 @@
     "@solidix/primitive": "workspace:*",
     "@solidix/slot": "workspace:*",
     "@solidix/use-controllable-state": "workspace:*",
-    "@solidix/use-layout-effect": "workspace:*",
     "@solidix/visually-hidden": "workspace:*"
   },
   "devDependencies": {

@@ -452,6 +452,21 @@ describe("ExitIntent", () => {
     document.dispatchEvent(new MouseEvent("mouseout", { clientY: 0, relatedTarget: null }));
     expect(screen.queryByText("Disabled body")).toBe(null);
   });
+
+  test("storageKey null disables frequency capping", async () => {
+    // A recently shown default key must not cap an uncapped popup.
+    window.localStorage.setItem("solidix-funnel-exit-intent", String(Date.now()));
+    const { unmount } = render(() => (
+      <ExitIntent title="No cap" storageKey={null}>
+        <p>Uncapped body</p>
+      </ExitIntent>
+    ));
+    document.dispatchEvent(new MouseEvent("mouseout", { clientY: 0, relatedTarget: null }));
+    expect(await screen.findByText("Uncapped body")).toBeTruthy();
+    // Showing an uncapped popup writes no key.
+    expect(window.localStorage.length).toBe(1);
+    unmount();
+  });
 });
 
 describe("Footer", () => {

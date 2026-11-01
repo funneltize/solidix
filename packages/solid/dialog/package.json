@@ -1,6 +1,6 @@
 {
   "name": "@solidix/dialog",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Dialog primitive (port of @radix-ui/react-dialog).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -34,9 +34,7 @@
     "@solidix/presence": "workspace:*",
     "@solidix/primitive": "workspace:*",
     "@solidix/remove-scroll": "workspace:*",
-    "@solidix/slot": "workspace:*",
-    "@solidix/use-controllable-state": "workspace:*",
-    "@solidix/use-layout-effect": "workspace:*"
+    "@solidix/use-controllable-state": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

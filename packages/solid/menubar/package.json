@@ -1,6 +1,6 @@
 {
   "name": "@solidix/menubar",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Menubar primitive (port of @radix-ui/react-menubar).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -27,13 +27,10 @@
     "@solidix/compose-refs": "workspace:*",
     "@solidix/context": "workspace:*",
     "@solidix/direction": "workspace:*",
-    "@solidix/focus-scope": "workspace:*",
     "@solidix/id": "workspace:*",
     "@solidix/menu": "workspace:*",
     "@solidix/primitive": "workspace:*",
-    "@solidix/remove-scroll": "workspace:*",
     "@solidix/roving-focus": "workspace:*",
-    "@solidix/slot": "workspace:*",
     "@solidix/use-controllable-state": "workspace:*"
   },
   "devDependencies": {

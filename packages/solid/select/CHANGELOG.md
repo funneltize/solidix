@@ -1,5 +1,22 @@
 # @solidix/select
 
+## 0.1.7
+
+### Patch Changes
+
+- Remove unused dependencies (22 runtime entries plus orphaned charts type packages) and delete the unreferenced `env-check` index stub. No runtime or API changes.
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/popper@0.1.6
+  - @solidix/primitive@0.3.0
+  - @solidix/collection@0.1.6
+  - @solidix/dismissable-layer@0.1.6
+  - @solidix/focus-scope@0.1.6
+  - @solidix/portal@0.1.6
+  - @solidix/visually-hidden@0.1.6
+  - @solidix/use-controllable-state@0.1.7
+
 ## 0.1.6
 
 ### Patch Changes

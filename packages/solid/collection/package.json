@@ -1,6 +1,6 @@
 {
   "name": "@solidix/collection",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Ordered item collections (port of @radix-ui/react-collection).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -25,9 +25,7 @@
   "dependencies": {
     "@solidix/compose-refs": "workspace:*",
     "@solidix/context": "workspace:*",
-    "@solidix/primitive": "workspace:*",
-    "@solidix/slot": "workspace:*",
-    "@solidix/use-layout-effect": "workspace:*"
+    "@solidix/slot": "workspace:*"
   },
   "devDependencies": {
     "@repo/builder": "workspace:*",

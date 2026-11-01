@@ -1,6 +1,6 @@
 {
   "name": "@solidix/dropdown-menu",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Dropdown-menu primitive (port of @radix-ui/react-dropdown-menu).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -25,12 +25,9 @@
   "dependencies": {
     "@solidix/compose-refs": "workspace:*",
     "@solidix/context": "workspace:*",
-    "@solidix/focus-scope": "workspace:*",
     "@solidix/id": "workspace:*",
     "@solidix/menu": "workspace:*",
     "@solidix/primitive": "workspace:*",
-    "@solidix/remove-scroll": "workspace:*",
-    "@solidix/slot": "workspace:*",
     "@solidix/use-controllable-state": "workspace:*"
   },
   "devDependencies": {

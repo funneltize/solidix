@@ -1,5 +1,14 @@
 # @solidix/scroll-area
 
+## 0.1.6
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @solidix/primitive@0.3.0
+  - @solidix/env-check@0.1.5
+
 ## 0.1.5
 
 ### Patch Changes

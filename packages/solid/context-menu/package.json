@@ -1,6 +1,6 @@
 {
   "name": "@solidix/context-menu",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Context-menu primitive (port of @radix-ui/react-context-menu).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -25,11 +25,8 @@
   "dependencies": {
     "@solidix/context": "workspace:*",
     "@solidix/env-check": "workspace:*",
-    "@solidix/focus-scope": "workspace:*",
     "@solidix/menu": "workspace:*",
     "@solidix/primitive": "workspace:*",
-    "@solidix/remove-scroll": "workspace:*",
-    "@solidix/slot": "workspace:*",
     "@solidix/use-controllable-state": "workspace:*"
   },
   "devDependencies": {

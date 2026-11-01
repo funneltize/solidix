@@ -283,9 +283,6 @@ importers:
       '@solidix/collection':
         specifier: workspace:*
         version: link:../collection
-      '@solidix/compose-refs':
-        specifier: workspace:*
-        version: link:../compose-refs
       '@solidix/context':
         specifier: workspace:*
         version: link:../context
@@ -469,9 +466,6 @@ importers:
 
   packages/solid/charts:
     dependencies:
-      '@solidix/compose-refs':
-        specifier: workspace:*
-        version: link:../compose-refs
       '@solidix/context':
         specifier: workspace:*
         version: link:../context
@@ -484,9 +478,6 @@ importers:
       '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      d3-array:
-        specifier: 3.2.4
-        version: 3.2.4
       d3-format:
         specifier: 3.1.2
         version: 3.1.2
@@ -496,9 +487,6 @@ importers:
       d3-shape:
         specifier: 3.2.0
         version: 3.2.0
-      d3-time:
-        specifier: 3.1.0
-        version: 3.1.0
       d3-time-format:
         specifier: 4.1.0
         version: 4.1.0
@@ -518,9 +506,6 @@ importers:
       '@testing-library/user-event':
         specifier: 14.6.8
         version: 14.6.8(@testing-library/dom@10.4.2)
-      '@types/d3-array':
-        specifier: 3.2.2
-        version: 3.2.2
       '@types/d3-format':
         specifier: 3.0.4
         version: 3.0.4
@@ -530,9 +515,6 @@ importers:
       '@types/d3-shape':
         specifier: 3.2.0
         version: 3.2.0
-      '@types/d3-time':
-        specifier: 3.0.4
-        version: 3.0.4
       '@types/d3-time-format':
         specifier: 4.0.3
         version: 4.0.3
@@ -628,15 +610,9 @@ importers:
       '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@solidix/primitive':
-        specifier: workspace:*
-        version: link:../primitive
       '@solidix/slot':
         specifier: workspace:*
         version: link:../slot
-      '@solidix/use-layout-effect':
-        specifier: workspace:*
-        version: link:../use-layout-effect
     devDependencies:
       '@repo/builder':
         specifier: workspace:*
@@ -695,21 +671,12 @@ importers:
       '@solidix/env-check':
         specifier: workspace:*
         version: link:../../core/env-check
-      '@solidix/focus-scope':
-        specifier: workspace:*
-        version: link:../focus-scope
       '@solidix/menu':
         specifier: workspace:*
         version: link:../menu
       '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@solidix/remove-scroll':
-        specifier: workspace:*
-        version: link:../remove-scroll
-      '@solidix/slot':
-        specifier: workspace:*
-        version: link:../slot
       '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
@@ -768,15 +735,9 @@ importers:
       '@solidix/remove-scroll':
         specifier: workspace:*
         version: link:../remove-scroll
-      '@solidix/slot':
-        specifier: workspace:*
-        version: link:../slot
       '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@solidix/use-layout-effect':
-        specifier: workspace:*
-        version: link:../use-layout-effect
     devDependencies:
       '@repo/builder':
         specifier: workspace:*
@@ -854,9 +815,6 @@ importers:
       '@solidix/context':
         specifier: workspace:*
         version: link:../context
-      '@solidix/focus-scope':
-        specifier: workspace:*
-        version: link:../focus-scope
       '@solidix/id':
         specifier: workspace:*
         version: link:../id
@@ -866,12 +824,6 @@ importers:
       '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@solidix/remove-scroll':
-        specifier: workspace:*
-        version: link:../remove-scroll
-      '@solidix/slot':
-        specifier: workspace:*
-        version: link:../slot
       '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
@@ -1022,9 +974,6 @@ importers:
       '@solidix/id':
         specifier: workspace:*
         version: link:../id
-      '@solidix/label':
-        specifier: workspace:*
-        version: link:../label
       '@solidix/navigation-menu':
         specifier: workspace:*
         version: link:../navigation-menu
@@ -1186,9 +1135,6 @@ importers:
       '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@solidix/slot':
-        specifier: workspace:*
-        version: link:../slot
       '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
@@ -1299,9 +1245,6 @@ importers:
       '@solidix/roving-focus':
         specifier: workspace:*
         version: link:../roving-focus
-      '@solidix/slot':
-        specifier: workspace:*
-        version: link:../slot
       '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
@@ -1339,9 +1282,6 @@ importers:
       '@solidix/direction':
         specifier: workspace:*
         version: link:../direction
-      '@solidix/focus-scope':
-        specifier: workspace:*
-        version: link:../focus-scope
       '@solidix/id':
         specifier: workspace:*
         version: link:../id
@@ -1351,15 +1291,9 @@ importers:
       '@solidix/primitive':
         specifier: workspace:*
         version: link:../primitive
-      '@solidix/remove-scroll':
-        specifier: workspace:*
-        version: link:../remove-scroll
       '@solidix/roving-focus':
         specifier: workspace:*
         version: link:../roving-focus
-      '@solidix/slot':
-        specifier: workspace:*
-        version: link:../slot
       '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
@@ -1985,9 +1919,6 @@ importers:
       '@solidix/remove-scroll':
         specifier: workspace:*
         version: link:../remove-scroll
-      '@solidix/slot':
-        specifier: workspace:*
-        version: link:../slot
       '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
@@ -2509,9 +2440,6 @@ importers:
       '@solidix/use-controllable-state':
         specifier: workspace:*
         version: link:../use-controllable-state
-      '@solidix/use-layout-effect':
-        specifier: workspace:*
-        version: link:../use-layout-effect
       '@solidix/visually-hidden':
         specifier: workspace:*
         version: link:../visually-hidden
@@ -4192,9 +4120,6 @@ packages:
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
-
-  '@types/d3-array@3.2.2':
-    resolution: {integrity: sha512-hOLWVbm7uRza0BYXpIIW5pxfrKe0W+D5lrFiAEYR+pb6w3N2SwSMaJbXdUfSEv+dT4MfHBLtn5js0LAWaO6otw==}
 
   '@types/d3-format@3.0.4':
     resolution: {integrity: sha512-fALi2aI6shfg7vM5KiR1wNJnZ7r6UuggVqtDA+xiEdPZQwy/trcQaHnwShLuLdta2rTymCNpxYTiMZX/e09F4g==}
@@ -6309,8 +6234,6 @@ snapshots:
     dependencies:
       '@types/deep-eql': 4.0.2
       assertion-error: 2.0.1
-
-  '@types/d3-array@3.2.2': {}
 
   '@types/d3-format@3.0.4': {}
 

@@ -342,22 +342,30 @@ const FormControl: Component<ScopedProps<FormControlProps>> = (props) => {
     // 3. split sync and async custom matcher entries
 
     const customMatcherEntries = validationContext.getFieldCustomMatcherEntries(fieldName);
-    const syncCustomMatcherEntries: Array<SyncCustomMatcherEntry> = [];
-    const ayncCustomMatcherEntries: Array<AsyncCustomMatcherEntry> = [];
+    // Each matcher runs at most once per validation: sync-declared matchers are
+    // invoked here and their return value is captured, so no second invocation
+    // is needed to classify them and no promise is dropped. Declared-async
+    // matchers stay deferred so they still run only when no sync errors exist.
+    const syncCustomErrors: Array<readonly [string, boolean]> = [];
+    const pendingAsyncCustomErrors: Array<Promise<readonly [string, boolean]>> = [];
+    const asyncCustomMatcherEntries: Array<AsyncCustomMatcherEntry> = [];
     customMatcherEntries.forEach((customMatcherEntry) => {
-      if (isAsyncCustomMatcherEntry(customMatcherEntry, matcherArgs)) {
-        ayncCustomMatcherEntries.push(customMatcherEntry);
+      const { id, match } = customMatcherEntry;
+      if (match.constructor.name === "AsyncFunction") {
+        asyncCustomMatcherEntries.push(customMatcherEntry as AsyncCustomMatcherEntry);
+        return;
+      }
+      const result = match(...matcherArgs);
+      if (result instanceof Promise) {
+        pendingAsyncCustomErrors.push(result.then((matches) => [id, matches] as const));
       } else if (isSyncCustomMatcherEntry(customMatcherEntry)) {
-        syncCustomMatcherEntries.push(customMatcherEntry);
+        syncCustomErrors.push([id, result] as const);
       }
     });
 
     //------------------------------------------------------------------------------------------
-    // 4. run sync custom matchers and update control validity / internal validity + errors
+    // 4. report sync custom matcher results and update control validity / internal validity + errors
 
-    const syncCustomErrors = syncCustomMatcherEntries.map(({ id, match }) => {
-      return [id, match(...matcherArgs)] as const;
-    });
     const syncCustomErrorsById = Object.fromEntries(syncCustomErrors);
     const hasSyncCustomErrors = Object.values(syncCustomErrorsById).some(Boolean);
     const hasCustomError = hasSyncCustomErrors;
@@ -369,11 +377,17 @@ const FormControl: Component<ScopedProps<FormControlProps>> = (props) => {
     //------------------------------------------------------------------------------------------
     // 5. run async custom matchers and update control validity / internal validity + errors
 
-    if (!hasSyncCustomErrors && ayncCustomMatcherEntries.length > 0) {
-      const promisedCustomErrors = ayncCustomMatcherEntries.map(({ id, match }) =>
+    if (
+      !hasSyncCustomErrors &&
+      (pendingAsyncCustomErrors.length > 0 || asyncCustomMatcherEntries.length > 0)
+    ) {
+      const promisedCustomErrors = asyncCustomMatcherEntries.map(({ id, match }) =>
         match(...matcherArgs).then((matches) => [id, matches] as const),
       );
-      const asyncCustomErrors = await Promise.all(promisedCustomErrors);
+      const asyncCustomErrors = await Promise.all([
+        ...pendingAsyncCustomErrors,
+        ...promisedCustomErrors,
+      ]);
       const asyncCustomErrorsById = Object.fromEntries(asyncCustomErrors);
       const hasAsyncCustomErrors = Object.values(asyncCustomErrorsById).some(Boolean);
       const hasCustomError = hasAsyncCustomErrors;
@@ -721,19 +735,8 @@ function getFirstInvalidControl(form: HTMLFormElement): HTMLElement | null {
   return firstInvalidControl ?? null;
 }
 
-function isAsyncCustomMatcherEntry(
-  entry: CustomMatcherEntry,
-  args: CustomMatcherArgs,
-): entry is AsyncCustomMatcherEntry {
-  return entry.match.constructor.name === "AsyncFunction" || returnsPromise(entry.match, args);
-}
-
 function isSyncCustomMatcherEntry(entry: CustomMatcherEntry): entry is SyncCustomMatcherEntry {
   return entry.match.constructor.name === "Function";
-}
-
-function returnsPromise(func: CustomMatcher, args: CustomMatcherArgs) {
-  return func(...args) instanceof Promise;
 }
 
 function hasBuiltInError(validity: ValidityState) {

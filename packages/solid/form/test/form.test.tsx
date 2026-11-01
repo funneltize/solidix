@@ -690,6 +690,41 @@ describe("Form.Message with a custom `match`", () => {
     fireEvent.click(message);
     expect(onClick).toHaveBeenCalled();
   });
+
+  test("invokes a sync custom matcher exactly once per validation", async () => {
+    const match = vi.fn((value: string) => value.length < 3);
+    render(() => (
+      <Form>
+        <FormField name="username">
+          <FormControl data-testid="control" />
+          <FormMessage match={match}>Too short</FormMessage>
+        </FormField>
+      </Form>
+    ));
+
+    const control = (await screen.findByTestId("control")) as HTMLInputElement;
+    fireEvent.change(control, { target: { value: "ab" } });
+    // The error still surfaces from the single captured result.
+    expect(await screen.findByText("Too short")).toBeTruthy();
+    expect(match).toHaveBeenCalledTimes(1);
+  });
+
+  test("invokes a promise-returning custom matcher exactly once per validation", async () => {
+    const match = vi.fn((value: string) => Promise.resolve(value.length < 3));
+    render(() => (
+      <Form>
+        <FormField name="username">
+          <FormControl data-testid="control" />
+          <FormMessage match={match}>Too short</FormMessage>
+        </FormField>
+      </Form>
+    ));
+
+    const control = (await screen.findByTestId("control")) as HTMLInputElement;
+    fireEvent.change(control, { target: { value: "ab" } });
+    expect(await screen.findByText("Too short")).toBeTruthy();
+    expect(match).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe("Form.Submit", () => {

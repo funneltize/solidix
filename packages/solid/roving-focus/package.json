@@ -1,6 +1,6 @@
 {
   "name": "@solidix/roving-focus",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Roving tabindex group (port of @radix-ui/react-roving-focus).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {

@@ -1,5 +1,14 @@
 # @solidix/charts
 
+## 0.2.1
+
+### Patch Changes
+
+- Remove unused dependencies (22 runtime entries plus orphaned charts type packages) and delete the unreferenced `env-check` index stub. No runtime or API changes.
+- Updated dependencies
+  - @solidix/primitive@0.3.0
+  - @solidix/use-controllable-state@0.1.7
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@solidix/hover-card",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Hover-card primitive (port of @radix-ui/react-hover-card).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -31,7 +31,6 @@
     "@solidix/portal": "workspace:*",
     "@solidix/presence": "workspace:*",
     "@solidix/primitive": "workspace:*",
-    "@solidix/slot": "workspace:*",
     "@solidix/use-controllable-state": "workspace:*"
   },
   "devDependencies": {

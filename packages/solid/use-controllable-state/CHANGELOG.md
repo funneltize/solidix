@@ -1,5 +1,12 @@
 # @solidix/use-controllable-state
 
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies
+  - @solidix/env-check@0.1.5
+
 ## 0.1.6
 
 ### Patch Changes

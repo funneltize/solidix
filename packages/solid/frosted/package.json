@@ -1,6 +1,6 @@
 {
   "name": "@solidix/frosted",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Solid port of frosted-ui: styled, themeable components built on @solidix/* primitives.",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -44,7 +44,6 @@
     "@solidix/form": "workspace:*",
     "@solidix/hover-card": "workspace:*",
     "@solidix/id": "workspace:*",
-    "@solidix/label": "workspace:*",
     "@solidix/navigation-menu": "workspace:*",
     "@solidix/one-time-password-field": "workspace:*",
     "@solidix/popover": "workspace:*",

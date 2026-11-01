@@ -1,5 +1,47 @@
 # solidix
 
+## 0.2.3
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/form@0.1.6
+  - @solidix/funnel@0.6.1
+  - @solidix/frosted@0.2.3
+  - @solidix/accordion@0.1.7
+  - @solidix/charts@0.2.1
+  - @solidix/context-menu@0.1.7
+  - @solidix/dialog@0.1.7
+  - @solidix/dropdown-menu@0.1.7
+  - @solidix/hover-card@0.1.7
+  - @solidix/menubar@0.1.7
+  - @solidix/select@0.1.7
+  - @solidix/tooltip@0.1.7
+  - @solidix/popover@0.1.7
+  - @solidix/alert-dialog@0.1.7
+  - @solidix/aspect-ratio@0.1.6
+  - @solidix/avatar@0.1.6
+  - @solidix/checkbox@0.1.7
+  - @solidix/collapsible@0.1.7
+  - @solidix/label@0.1.6
+  - @solidix/navigation-menu@0.1.7
+  - @solidix/one-time-password-field@0.1.7
+  - @solidix/password-toggle-field@0.1.7
+  - @solidix/progress@0.1.6
+  - @solidix/radio-group@0.1.7
+  - @solidix/scroll-area@0.1.6
+  - @solidix/separator@0.1.6
+  - @solidix/slider@0.1.7
+  - @solidix/switch@0.1.7
+  - @solidix/tabs@0.1.7
+  - @solidix/toast@0.1.7
+  - @solidix/toggle@0.1.7
+  - @solidix/toggle-group@0.1.7
+  - @solidix/toolbar@0.1.7
+
 ## 0.2.2
 
 ### Patch Changes

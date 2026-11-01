@@ -11,6 +11,8 @@ export {
   isFrame,
 } from "./dom";
 export { canUseDOM } from "./can-use-dom";
+export { cx } from "./cx";
+export type { CxInput } from "./cx";
 export { hideOthers, inertOthers, supportsInert, suppressOthers } from "./aria-hidden";
 export type { Undo } from "./aria-hidden";
 export type { Timeout, Interval, Immediate } from "./types";

@@ -1,5 +1,39 @@
 # @solidix/frosted
 
+## 0.2.3
+
+### Patch Changes
+
+- Move the `cx` class-name helper (plus `CxInput` type) into `@solidix/primitive` as the single shared implementation; frosted and funnel now re-export it. Frosted's public `cx` API is unchanged; funnel's internal copy adopts the shared classnames-compatible semantics (all falsy entries dropped) and its `ctaAttrs` helper types `class` as `JSX.ClassValue` instead of `unknown`.
+- Remove unused dependencies (22 runtime entries plus orphaned charts type packages) and delete the unreferenced `env-check` index stub. No runtime or API changes.
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @solidix/form@0.1.6
+  - @solidix/primitive@0.3.0
+  - @solidix/accordion@0.1.7
+  - @solidix/context-menu@0.1.7
+  - @solidix/dialog@0.1.7
+  - @solidix/dropdown-menu@0.1.7
+  - @solidix/hover-card@0.1.7
+  - @solidix/select@0.1.7
+  - @solidix/tooltip@0.1.7
+  - @solidix/popover@0.1.7
+  - @solidix/alert-dialog@0.1.7
+  - @solidix/avatar@0.1.6
+  - @solidix/checkbox@0.1.7
+  - @solidix/navigation-menu@0.1.7
+  - @solidix/one-time-password-field@0.1.7
+  - @solidix/progress@0.1.6
+  - @solidix/radio-group@0.1.7
+  - @solidix/scroll-area@0.1.6
+  - @solidix/separator@0.1.6
+  - @solidix/slider@0.1.7
+  - @solidix/switch@0.1.7
+  - @solidix/tabs@0.1.7
+  - @solidix/visually-hidden@0.1.6
+  - @solidix/use-controllable-state@0.1.7
+
 ## 0.2.2
 
 ### Patch Changes

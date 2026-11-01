@@ -1,5 +1,18 @@
 # @solidix/menubar
 
+## 0.1.7
+
+### Patch Changes
+
+- Remove unused dependencies (22 runtime entries plus orphaned charts type packages) and delete the unreferenced `env-check` index stub. No runtime or API changes.
+- Updated dependencies
+- Updated dependencies
+  - @solidix/primitive@0.3.0
+  - @solidix/collection@0.1.6
+  - @solidix/menu@0.1.7
+  - @solidix/roving-focus@0.1.7
+  - @solidix/use-controllable-state@0.1.7
+
 ## 0.1.6
 
 ### Patch Changes

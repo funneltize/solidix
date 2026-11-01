@@ -1,5 +1,11 @@
 # @solidix/env-check
 
+## 0.1.5
+
+### Patch Changes
+
+- Remove unused dependencies (22 runtime entries plus orphaned charts type packages) and delete the unreferenced `env-check` index stub. No runtime or API changes.
+
 ## 0.1.4
 
 ### Patch Changes

@@ -77,7 +77,7 @@ function ctaAttrs(
     glow?: boolean | undefined;
     part?: string | undefined;
     partIndex?: number | string | undefined;
-    class?: unknown | undefined;
+    class?: JSX.ClassValue | undefined;
   },
   editable: boolean,
 ) {

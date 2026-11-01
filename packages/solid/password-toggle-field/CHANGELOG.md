@@ -1,5 +1,15 @@
 # @solidix/password-toggle-field
 
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @solidix/primitive@0.3.0
+  - @solidix/env-check@0.1.5
+  - @solidix/use-controllable-state@0.1.7
+
 ## 0.1.6
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @solidix/primitive
 
+## 0.3.0
+
+### Minor Changes
+
+- Move the `cx` class-name helper (plus `CxInput` type) into `@solidix/primitive` as the single shared implementation; frosted and funnel now re-export it. Frosted's public `cx` API is unchanged; funnel's internal copy adopts the shared classnames-compatible semantics (all falsy entries dropped) and its `ctaAttrs` helper types `class` as `JSX.ClassValue` instead of `unknown`.
+
+### Patch Changes
+
+- Updated dependencies
+  - @solidix/env-check@0.1.5
+
 ## 0.2.1
 
 ### Patch Changes
