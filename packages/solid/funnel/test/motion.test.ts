@@ -44,7 +44,7 @@ describe("motion", () => {
     const css = readSrc("blocks.css");
     expect(css).toContain('.fx-faq-content[data-state="open"]');
     expect(css).toContain('.fx-faq-content[data-state="closed"]');
-    expect(css).toContain("var(--radix-accordion-content-height)");
+    expect(css).toContain("var(--radix-accordion-content-height, auto)");
     expect(css).toMatch(/\.fx-pricing-toggle-option\s*\{[^}]*transition:/s);
     expect(css).toContain('.fx-exit-intent-overlay[data-state="open"]');
     expect(css).toContain('.fx-exit-intent-content[data-state="open"]');

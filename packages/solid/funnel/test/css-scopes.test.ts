@@ -133,6 +133,37 @@ describe("wrap balance", () => {
   });
 });
 
+describe("block rendering defects", () => {
+  test("FAQ keyframes fall back when the accordion height var is unset", () => {
+    const css = blocksCss();
+    // Consumers whose accordion does not set the measured height var must
+    // still animate to a valid height instead of dropping the declaration.
+    expect(css).toContain("height: var(--radix-accordion-content-height, auto);");
+    expect(css).not.toContain("height: var(--radix-accordion-content-height);");
+  });
+
+  test("video box anchors the absolute play overlay", () => {
+    expect(ruleBody(blocksCss(), ".fx-video-box")).toContain("position: relative;");
+  });
+
+  test("star rating clips fractional fills on exact star boundaries", () => {
+    const css = blocksCss();
+    // Shrink-to-fit root: as a flex item the row otherwise stretches to the
+    // card width and the percentage clip resolves against that width.
+    expect(ruleBody(css, ".fx-star-rating")).toContain("align-self: flex-start;");
+    // Gapless rows make the clip percentage land exactly on star edges.
+    expect(ruleBody(css, ".fx-star-rating-track,")).toContain("gap: 0;");
+    // Unshrunk fill SVGs overflow the clip instead of squeezing into it.
+    expect(ruleBody(css, ".fx-star-rating-fill svg")).toContain("flex: none;");
+  });
+
+  test("stats bar values use tabular figures", () => {
+    expect(ruleBody(blocksCss(), ".fx-stats-bar-value")).toContain(
+      "font-variant-numeric: tabular-nums;",
+    );
+  });
+});
+
 describe("form fields", () => {
   test("inputs use dedicated field tokens that tones never re-scope", () => {
     const css = blocksCss();

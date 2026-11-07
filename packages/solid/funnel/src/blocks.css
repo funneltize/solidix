@@ -415,6 +415,7 @@
 
 /* StarRating: clipped fill row over an empty track. */
 .fx-star-rating {
+  align-self: flex-start;
   display: inline-block;
   position: relative;
 }
@@ -422,7 +423,7 @@
 .fx-star-rating-track,
 .fx-star-rating-fill {
   display: inline-flex;
-  gap: var(--solidix-funnel-space-1);
+  gap: 0;
 }
 
 .fx-star-rating-track svg {
@@ -433,6 +434,7 @@
 
 .fx-star-rating-fill svg {
   fill: var(--solidix-funnel-star);
+  flex: none;
   height: 1.125rem;
   width: 1.125rem;
 }
@@ -618,6 +620,7 @@
 .fx-stats-bar-value {
   color: var(--solidix-funnel-ink);
   font-size: var(--solidix-funnel-text-h2);
+  font-variant-numeric: tabular-nums;
   font-weight: var(--solidix-funnel-weight-extrabold);
   letter-spacing: var(--solidix-funnel-tracking-tight);
   margin: 0;
@@ -1179,13 +1182,13 @@
   }
 
   to {
-    height: var(--radix-accordion-content-height);
+    height: var(--radix-accordion-content-height, auto);
   }
 }
 
 @keyframes fx-faq-close {
   from {
-    height: var(--radix-accordion-content-height);
+    height: var(--radix-accordion-content-height, auto);
   }
 
   to {
@@ -1309,6 +1312,7 @@
 .fx-video-box {
   border-radius: var(--solidix-funnel-radius-xl);
   overflow: hidden;
+  position: relative;
 }
 
 .fx-video-thumbnail {
