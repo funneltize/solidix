@@ -1,5 +1,27 @@
 # solidix
 
+## 0.3.0
+
+### Minor Changes
+
+- a726af9: Add the date stack (new `@solidix/calendar` with Frosted Calendar,
+  DatePicker, and DateRangePicker) and deepen the native components:
+  combobox auto-flip placement, Sheet detents, Toast limit and tones,
+  pointer-based sortable drag, SplitPane persistence and reset, funnel
+  inverse tokens with rich hero titles and slots, gallery demos for the
+  new packages, a bundle size budget, and structural a11y checks.
+- a726af9: Add native editor foundations: Frosted Toast with a signal queue,
+  Combobox and CommandMenu, Sheet, SplitPane, DataTable, and styled
+  Sortable parts; new headless `@solidix/combobox` and `@solidix/sortable`
+  packages, re-exported from the `solidix` meta package.
+
+### Patch Changes
+
+- Updated dependencies [a726af9]
+- Updated dependencies [a726af9]
+- Updated dependencies [a726af9]
+  - @solidix/frosted@0.3.0
+
 ## 0.2.4
 
 ### Patch Changes
