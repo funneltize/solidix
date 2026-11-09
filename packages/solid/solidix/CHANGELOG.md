@@ -1,5 +1,13 @@
 # solidix
 
+## 0.5.1
+
+### Patch Changes
+
+- Funnel canvas affordance: `data-funnel-part` markers show their outline on hover and focus only, so the studio canvas reads as the shipped page at rest instead of a permanent dashed wireframe.
+- Updated dependencies
+  - @solidix/funnel@0.8.1
+
 ## 0.5.0
 
 ### Minor Changes
