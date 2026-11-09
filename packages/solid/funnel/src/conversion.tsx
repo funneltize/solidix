@@ -536,7 +536,9 @@ type StickyBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
    * Brand mark seated inline at the start of the message, composed with
    * the title-price line. Omit for a text-only bar.
    */
-  mark?: { src: string; name: string; srcSet?: string | undefined; sizes?: string | undefined } | undefined;
+  mark?:
+    | { src: string; name: string; srcSet?: string | undefined; sizes?: string | undefined }
+    | undefined;
   /** Applies the CTA glow treatment to the bar CTA (primary only in CSS). */
   glow?: boolean | undefined;
 };
