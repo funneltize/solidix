@@ -7,6 +7,7 @@ import {
   Footer,
   Hero,
   OptInForm,
+  Root,
   StickyBar,
   VideoFrame,
 } from "../src/index";
@@ -449,6 +450,23 @@ describe("ExitIntent", () => {
     expect(await screen.findByText("Popup body")).toBeTruthy();
     expect(screen.getByText("Wait - 20% off")).toBeTruthy();
     expect(window.localStorage.getItem("solidix-funnel-exit-intent")).not.toBe(null);
+  });
+
+  test("portals into the Root scope, not document.body", async () => {
+    render(() => (
+      <Root>
+        <ExitIntent title="Wait - 20% off">
+          <p>Scoped body</p>
+        </ExitIntent>
+      </Root>
+    ));
+    document.dispatchEvent(new MouseEvent("mouseout", { clientY: 0, relatedTarget: null }));
+    const body = await screen.findByText("Scoped body");
+    const host = document.querySelector("[data-funnel-portal]");
+    expect(host).toBeTruthy();
+    expect(host!.contains(body)).toBe(true);
+    // Nothing was mirrored or mounted directly on the body.
+    expect(document.body.querySelector(":scope > .fx-exit-intent-content")).toBe(null);
   });
 
   test("stays closed when recently shown or disabled", () => {

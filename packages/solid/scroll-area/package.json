@@ -38,9 +38,9 @@
     "@repo/builder": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@solidjs/testing-library": "1.0.0-rc.2",
-    "@solidjs/web": "2.0.0-rc.18",
+    "@solidjs/web": "2.0.0-rc.21",
     "@testing-library/user-event": "14.6.8",
-    "solid-js": "2.0.0-rc.18"
+    "solid-js": "2.0.0-rc.21"
   },
   "peerDependencies": {
     "@solidjs/web": ">=2.0.0-rc.18 <2.1.0",

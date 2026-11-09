@@ -1841,3 +1841,7 @@
   outline: 2px dashed var(--solidix-funnel-brand);
   outline-offset: 2px;
 }
+
+.fx-portal-host {
+  display: contents;
+}

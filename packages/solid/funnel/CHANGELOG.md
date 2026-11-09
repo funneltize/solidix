@@ -1,5 +1,11 @@
 # @solidix/funnel
 
+## 0.8.0
+
+### Minor Changes
+
+- Scoped funnel portal: `Root` now renders a portal host inside its own token scope and the exit-intent dialog mounts into it, so portaled funnel blocks inherit the canvas token overrides and theme attributes instead of landing on `document.body`. Hosts no longer need to mirror token values onto the body. Also bumps the workspace to Solid 2.0.0-rc.21 (peer floor unchanged at rc.18).
+
 ## 0.7.0
 
 ### Minor Changes

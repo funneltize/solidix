@@ -14,7 +14,7 @@ import { Form, FormControl, FormField, FormLabel, FormMessage, FormSubmit } from
 import { Primitive, type PrimitivePropsWithRef } from "@solidix/primitive";
 import { CTAButton } from "./cta-button";
 import { dispatchFunnelEvent } from "./events";
-import { useFunnelEditable, useFunnelVariant } from "./root";
+import { useFunnelEditable, useFunnelPortalContainer, useFunnelVariant } from "./root";
 import type { FunnelElementProps } from "./types";
 import { cx } from "./utils";
 
@@ -536,7 +536,7 @@ type StickyBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
    * Brand mark seated inline at the start of the message, composed with
    * the title-price line. Omit for a text-only bar.
    */
-  mark?: { src: string; name: string } | undefined;
+  mark?: { src: string; name: string; srcSet?: string | undefined; sizes?: string | undefined } | undefined;
   /** Applies the CTA glow treatment to the bar CTA (primary only in CSS). */
   glow?: boolean | undefined;
 };
@@ -614,6 +614,8 @@ const StickyBar: Component<StickyBarProps> = (props) => {
           <img
             class="fx-sticky-bar-logo"
             src={props.mark!.src}
+            srcset={props.mark!.srcSet}
+            sizes={props.mark!.sizes}
             alt={props.mark!.name}
             loading="lazy"
             decoding="async"
@@ -703,7 +705,10 @@ const ExitIntent: Component<ExitIntentProps> = (props) => {
 
   return (
     <Dialog open={open()} onOpenChange={setOpen}>
-      <DialogPortal>
+      {/* Scoped portal: mounts inside the funnel Root's token scope when
+          one is present, so the dialog inherits canvas tokens instead of
+          needing them mirrored onto document.body. */}
+      <DialogPortal container={useFunnelPortalContainer()}>
         <DialogOverlay class="fx-exit-intent-overlay" />
         <DialogContent class="fx-exit-intent-content" data-funnel-block="exit-intent">
           <DialogTitle

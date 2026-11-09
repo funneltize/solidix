@@ -3,9 +3,9 @@ packages:
   - "packages/*"
   - "packages/*/*"
 minimumReleaseAgeExclude:
-  - "@solidjs/signals@2.0.0-rc.18"
-  - "@solidjs/web@2.0.0-rc.18"
-  - solid-js@2.0.0-rc.18
+  - "@solidjs/signals@2.0.0-rc.21"
+  - "@solidjs/web@2.0.0-rc.21"
+  - solid-js@2.0.0-rc.21
   - seroval-plugins@1.7.0
   - autoprefixer@10.6.2
   - postcss@8.5.32

@@ -1,6 +1,6 @@
 {
   "name": "@solidix/funnel",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Design language for direct-response landing pages: design tokens plus themed funnel blocks built on Solidix primitives.",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -43,9 +43,9 @@
     "@repo/builder": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@solidjs/testing-library": "1.0.0-rc.2",
-    "@solidjs/web": "2.0.0-rc.18",
+    "@solidjs/web": "2.0.0-rc.21",
     "@testing-library/user-event": "14.6.8",
-    "solid-js": "2.0.0-rc.18"
+    "solid-js": "2.0.0-rc.21"
   },
   "peerDependencies": {
     "@solidjs/web": ">=2.0.0-rc.18 <2.1.0",
