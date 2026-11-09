@@ -35,24 +35,32 @@ function ruleBody(css: string, selector: string): string {
 // in their own block: a tone scope must never define a token in terms of
 // another token it also overrides, or the page token silently wins.
 describe("tone scopes", () => {
-  test("inverse tone sets literal dark surfaces, not self-referencing vars", () => {
+  test("inverse tone consumes the dedicated inverse tokens, not literals", () => {
     const body = ruleBody(blocksCss(), '.fx-section[data-tone="inverse"]');
-    expect(body).toContain("--solidix-funnel-paper: #0f172a;");
-    expect(body).toContain("--solidix-funnel-ink: #f8fafc;");
-    expect(body).not.toContain("var(--solidix-funnel-ink)");
-    expect(body).not.toContain("var(--solidix-funnel-paper)");
+    expect(body).toContain("--solidix-funnel-paper: var(--solidix-funnel-inverse-paper);");
+    expect(body).toContain("--solidix-funnel-ink: var(--solidix-funnel-inverse-ink);");
+    expect(body).not.toContain("#0f172a");
+    // The palette itself lives in the token source, where consumers override it.
+    const tokens = readFileSync(
+      workspaceFile("packages", "solid", "funnel", "src", "tokens.css"),
+      "utf8",
+    );
+    expect(tokens).toContain("--solidix-funnel-inverse-paper: #0f172a;");
   });
 
   test("dark scopes keep error text and eyebrows legible", () => {
     const body = ruleBody(blocksCss(), '.fx-section[data-tone="inverse"]');
-    expect(body).toContain("--solidix-funnel-danger: #f87171;");
-    expect(body).toContain("--solidix-funnel-brand-strong: #fdba74;");
+    expect(body).toContain("--solidix-funnel-danger: var(--solidix-funnel-inverse-danger);");
+    expect(body).toContain(
+      "--solidix-funnel-brand-strong: var(--solidix-funnel-inverse-brand-strong);",
+    );
   });
 
-  test("highlighted pricing re-scopes its surface instead of inheriting it", () => {
+  test("highlighted pricing re-scopes from the inverse tokens", () => {
     const body = ruleBody(blocksCss(), ".fx-pricing-plan[data-highlighted]");
-    expect(body).toContain("--solidix-funnel-paper: #0f172a;");
+    expect(body).toContain("--solidix-funnel-paper: var(--solidix-funnel-inverse-paper);");
     expect(body).toContain("background: var(--solidix-funnel-paper);");
+    expect(body).not.toContain("#0f172a");
   });
 
   test("comparison scroller contains clipped labels within the page", () => {

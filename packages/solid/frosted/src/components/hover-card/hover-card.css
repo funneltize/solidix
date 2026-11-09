@@ -44,8 +44,8 @@
   /* Animations */
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      transform 150ms ease-out,
-      opacity 150ms ease-out;
+      transform var(--duration-2) ease-out,
+      opacity var(--duration-2) ease-out;
 
     &[data-state="closed"] {
       opacity: 0;
@@ -73,14 +73,14 @@
 .fui-HoverCardContent {
   &:where(.fui-r-size-1) {
     --hover-card-content-padding: var(--space-3);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
   }
   &:where(.fui-r-size-2) {
     --hover-card-content-padding: var(--space-4);
-    border-radius: 12px;
+    border-radius: var(--radius-5);
   }
   &:where(.fui-r-size-3) {
     --hover-card-content-padding: var(--space-5);
-    border-radius: 16px;
+    border-radius: var(--radius-6);
   }
 }

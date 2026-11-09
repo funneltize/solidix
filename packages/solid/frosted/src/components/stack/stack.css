@@ -1,0 +1,74 @@
+/**
+ * Layout primitives (Solidix-native, not a frosted-ui port).
+ *
+ * Stack and Row own the spacing between their children through the
+ * `--space-*` scale, so composed layouts set rhythm in one place
+ * instead of restating margins per child. The gap, align, and justify
+ * classes are shared by both components.
+ */
+.fui-Stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.fui-Row {
+  display: flex;
+  flex-direction: row;
+}
+
+.fui-r-gap-0 {
+  gap: 0;
+}
+.fui-r-gap-1 {
+  gap: var(--space-1);
+}
+.fui-r-gap-2 {
+  gap: var(--space-2);
+}
+.fui-r-gap-3 {
+  gap: var(--space-3);
+}
+.fui-r-gap-4 {
+  gap: var(--space-4);
+}
+.fui-r-gap-5 {
+  gap: var(--space-5);
+}
+.fui-r-gap-6 {
+  gap: var(--space-6);
+}
+.fui-r-gap-7 {
+  gap: var(--space-7);
+}
+.fui-r-gap-8 {
+  gap: var(--space-8);
+}
+.fui-r-gap-9 {
+  gap: var(--space-9);
+}
+
+.fui-r-align-stretch {
+  align-items: stretch;
+}
+.fui-r-align-start {
+  align-items: flex-start;
+}
+.fui-r-align-center {
+  align-items: center;
+}
+.fui-r-align-end {
+  align-items: flex-end;
+}
+
+.fui-r-justify-start {
+  justify-content: flex-start;
+}
+.fui-r-justify-center {
+  justify-content: center;
+}
+.fui-r-justify-end {
+  justify-content: flex-end;
+}
+.fui-r-justify-between {
+  justify-content: space-between;
+}

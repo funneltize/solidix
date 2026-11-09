@@ -1,0 +1,98 @@
+/**
+ * Combobox and command menu styles (Solidix-native).
+ * Surfaces take corners and elevation from the role tokens.
+ */
+.fui-Combobox {
+  position: relative;
+}
+
+.fui-ComboboxInput {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-2);
+  color: var(--gray-12);
+  background: var(--color-surface);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-control);
+}
+
+.fui-ComboboxListbox {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + var(--space-1));
+  z-index: 50;
+  max-height: 20rem;
+  overflow: auto;
+  margin: 0;
+  padding: var(--space-1);
+  list-style: none;
+  background: var(--color-panel-solid);
+  border: 1px solid var(--gray-a5);
+  border-radius: var(--radius-popover);
+  box-shadow: var(--elevation-popover);
+}
+
+.fui-ComboboxOption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  font-size: var(--font-size-2);
+  color: var(--gray-11);
+  border-radius: var(--radius-3);
+  cursor: pointer;
+}
+
+.fui-ComboboxOption[data-highlighted] {
+  background: var(--gray-a3);
+  color: var(--gray-12);
+}
+
+.fui-ComboboxOption[data-selected] {
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-12);
+}
+
+/* Command menu: a dialog that hosts a combobox, so most chrome is the list. */
+.fui-CommandMenu {
+  width: min(36rem, calc(100vw - var(--space-6)));
+  padding: 0;
+  overflow: hidden;
+}
+
+.fui-CommandMenu .fui-ComboboxInput {
+  border: 0;
+  border-bottom: 1px solid var(--gray-a4);
+  border-radius: 0;
+  padding: var(--space-3);
+  background: transparent;
+}
+
+.fui-CommandMenu .fui-ComboboxListbox {
+  position: static;
+  max-height: 22rem;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fui-CommandMenuGroupLabel {
+  padding: var(--space-2) var(--space-2) var(--space-1);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gray-10);
+}
+
+.fui-CommandMenuEmpty {
+  padding: var(--space-4);
+  font-size: var(--font-size-2);
+  color: var(--gray-10);
+  text-align: center;
+}
+
+.fui-Combobox[data-placement="top"] .fui-ComboboxListbox {
+  top: auto;
+  bottom: calc(100% + var(--space-1));
+}

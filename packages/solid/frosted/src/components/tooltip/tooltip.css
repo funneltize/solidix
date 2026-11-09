@@ -34,8 +34,8 @@
   /* Animations */
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      opacity 100ms ease-out,
-      transform 100ms ease-out;
+      opacity var(--duration-1) ease-out,
+      transform var(--duration-1) ease-out;
 
     &[data-state="closed"] {
       opacity: 0;

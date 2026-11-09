@@ -100,7 +100,8 @@ const Eyebrow: Component<EyebrowProps> = (props) => {
 /** Props for the SectionHeading component. */
 type SectionHeadingProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
   eyebrow?: string | undefined;
-  title: string;
+  /** Heading; rich nodes allowed so consumers can place accent spans. */
+  title: JSX.Element;
   description?: string | undefined;
   /** Alignment. Defaults to `center`. */
   align?: "center" | "left" | undefined;

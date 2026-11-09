@@ -6,6 +6,12 @@
 @import "../fonts.css";
 
 .frosted-ui {
+  /* Micro type (Solidix-native): the smallest readable step, for counts,
+     captions, and dense metadata. Below the ported scale on purpose, so
+     reaching for it is a deliberate choice, not a default. */
+  --font-size-micro: 11px;
+  --line-height-micro: 16px;
+
   --font-size-0: 10px;
   --font-size-1: 12px;
   --font-size-2: 14px;

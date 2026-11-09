@@ -1,4 +1,6 @@
 import animation from "../../../docs/animation.md?raw";
+import appShell from "../../../docs/app-shell.md?raw";
+import frostedPrinciples from "../../../docs/frosted-principles.md?raw";
 import charts from "../../../docs/charts.md?raw";
 import composition from "../../../docs/composition.md?raw";
 import forms from "../../../docs/forms.md?raw";
@@ -15,6 +17,18 @@ export type GuideEntry = {
 };
 
 export const guides: GuideEntry[] = [
+  {
+    slug: "frosted-principles",
+    title: "Frosted principles",
+    description: "Tokens first, parents own spacing, one tempo: the rules behind the styled layer.",
+    markdown: frostedPrinciples,
+  },
+  {
+    slug: "app-shell",
+    title: "App shell and data patterns",
+    description: "Editor shells, command palettes, data tables, sortable lists, and feedback.",
+    markdown: appShell,
+  },
   {
     slug: "migrating",
     title: "Migrating from Radix",

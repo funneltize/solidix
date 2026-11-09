@@ -61,13 +61,13 @@
 .fui-TextFieldRoot:where(.fui-r-size-1) {
   font-size: var(--font-size-1);
   letter-spacing: var(--letter-spacing-1);
-  --text-field-border-radius: max(6px, var(--radius-full));
+  --text-field-border-radius: max(var(--radius-3), var(--radius-full));
   --text-field-input-height: var(--space-5);
 }
 .fui-TextFieldRoot:where(.fui-r-size-2) {
   font-size: var(--font-size-2);
   letter-spacing: var(--letter-spacing-2);
-  --text-field-border-radius: max(8px, var(--radius-full));
+  --text-field-border-radius: max(var(--radius-4), var(--radius-full));
   --text-field-input-height: var(--space-6);
 }
 .fui-TextFieldRoot:where(.fui-r-size-3) {
@@ -116,7 +116,7 @@
 
     &:where(:first-child) {
       /* Clip text to the visible border radius */
-      border-radius: max(6px, var(--radius-full));
+      border-radius: max(var(--radius-3), var(--radius-full));
       /* Equivalent to padding-left, but doesn't cut off long values when cursor is at the end. */
       text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
     }
@@ -128,7 +128,7 @@
 
     &:where(:first-child) {
       /* Clip text to the visible border radius */
-      border-radius: max(8px, var(--radius-full));
+      border-radius: max(var(--radius-4), var(--radius-full));
       /* Equivalent to padding-left, but doesn't cut off long values when ;cursor is at the end */
       text-indent: calc(var(--space-2) - var(--text-field-border-width));
     }

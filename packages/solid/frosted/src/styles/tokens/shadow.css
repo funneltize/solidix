@@ -38,6 +38,15 @@
     0 12px 60px var(--black-a3),
     0 16px 64px var(--gray-a2),
     0 16px 36px -20px var(--gray-a7);
+
+  /* Elevation roles (Solidix-native): the height a surface floats at,
+     aliasing the steps the components already use, so new styles name
+     the role instead of picking a step by eye. The dark block below
+     redefines the steps, and the roles follow it. */
+  --elevation-card: var(--shadow-2);
+  --elevation-popover: var(--shadow-5);
+  --elevation-menu: var(--shadow-5);
+  --elevation-dialog: var(--shadow-6);
 }
 
 /* prettier-ignore */

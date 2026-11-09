@@ -43,8 +43,13 @@ type HeroCta = {
 /** Props for the Hero component. */
 type HeroProps = Omit<PrimitivePropsWithRef<"div">, "children" | "title"> & {
   eyebrow?: string | undefined;
-  title: string;
+  /** Headline; rich nodes allowed so consumers can place accent spans (e.g. .fx-serif-accent). */
+  title: JSX.Element;
   subtitle?: string | undefined;
+  /** Slot rendered at the top of the copy column, above the eyebrow. */
+  badge?: JSX.Element | undefined;
+  /** Slot rendered under the CTA cluster, for fine print and assurances. */
+  microcopy?: JSX.Element | undefined;
   primaryCta: HeroCta;
   secondaryCta?: HeroCta | undefined;
   media?: HeroMedia | undefined;
@@ -90,6 +95,8 @@ const Hero: Component<HeroProps> = (props) => {
     "eyebrow",
     "title",
     "subtitle",
+    "badge",
+    "microcopy",
     "primaryCta",
     "secondaryCta",
     "media",
@@ -121,6 +128,7 @@ const Hero: Component<HeroProps> = (props) => {
       ref={composedRef}
     >
       <div class="fx-hero-copy">
+        <Show when={props.badge}>{props.badge}</Show>
         <Show when={props.eyebrow}>
           <p
             class="fx-hero-eyebrow"
@@ -161,6 +169,7 @@ const Hero: Component<HeroProps> = (props) => {
             </CTAButton>
           </Show>
         </div>
+        <Show when={props.microcopy}>{props.microcopy}</Show>
       </div>
       <Show when={props.media}>
         <div class="fx-hero-media">

@@ -95,6 +95,77 @@ export { Inset } from "./components/inset/inset";
 export { insetPropDefs } from "./components/inset/inset.props";
 export type { InsetProps } from "./components/inset/inset";
 
+export { Row, Stack } from "./components/stack";
+export { rowPropDefs, stackPropDefs } from "./components/stack";
+export type { RowProps, StackProps } from "./components/stack";
+
+export {
+  Toast,
+  ToastAction,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+  Toaster,
+  useToast,
+} from "./components/toast";
+export { Calendar, DatePicker, DateRangePicker } from "./components/calendar";
+export type {
+  CalendarDay,
+  CalendarProps,
+  CalendarRange,
+  DatePickerProps,
+  DateRangePickerProps,
+} from "./components/calendar";
+export {
+  Combobox,
+  ComboboxInput,
+  ComboboxListbox,
+  ComboboxOption,
+  CommandMenu,
+} from "./components/combobox";
+export type {
+  ComboboxInputProps,
+  ComboboxListboxProps,
+  ComboboxOptionProps,
+  ComboboxProps,
+  CommandMenuGroup,
+  CommandMenuItem,
+  CommandMenuProps,
+} from "./components/combobox";
+export { SplitPane, SplitPanePanel } from "./components/split-pane";
+export type { SplitPanePanelProps, SplitPaneProps } from "./components/split-pane";
+export { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "./components/sheet";
+export type {
+  SheetCloseProps,
+  SheetContentProps,
+  SheetProps,
+  SheetTitleProps,
+  SheetTriggerProps,
+} from "./components/sheet";
+export { DataTable } from "./components/data-table";
+export type {
+  DataTableColumn,
+  DataTableProps,
+  DataTableSortDirection,
+} from "./components/data-table";
+export { Sortable, SortableHandle, SortableItem } from "./components/sortable";
+export type { SortableHandleProps, SortableItemProps, SortableProps } from "./components/sortable";
+
+export type {
+  ToastActionProps,
+  ToastCloseProps,
+  ToastDescriptionProps,
+  ToastItem,
+  ToastProps,
+  ToastProviderProps,
+  ToastQueue,
+  ToastTitleProps,
+  ToastViewportProps,
+  ToasterProps,
+} from "./components/toast";
+
 export { Separator } from "./components/separator/separator";
 export { separatorPropDefs } from "./components/separator/separator.props";
 export type {

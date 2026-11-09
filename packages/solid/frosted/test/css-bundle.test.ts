@@ -50,4 +50,36 @@ describe("frosted stylesheet bundle", () => {
   it("keeps the text-area chrome layer click-through", () => {
     expect(bundle).toMatch(/\.fui-TextAreaChrome\s*\{[^}]*pointer-events:\s*none/s);
   });
+
+  it("carries the native motion and role tokens", () => {
+    expect(bundle).toContain("--duration-2: 150ms");
+    expect(bundle).toContain("--duration-dialog: var(--duration-4)");
+    expect(bundle).toContain("--radius-dialog: var(--radius-6)");
+    expect(bundle).toContain("--elevation-dialog: var(--shadow-6)");
+    expect(bundle).toContain("--font-size-micro: 11px");
+  });
+
+  it("routes component timing and corners through the tokens", () => {
+    expect(bundle).toMatch(/\.fui-DialogContent\s*\{[^}]*var\(--elevation-dialog\)/s);
+    expect(bundle).toMatch(/opacity var\(--duration-2\)/);
+    expect(bundle).toMatch(/border-radius:\s*var\(--radius-5\)/);
+  });
+
+  it("stays inside the bundle size budget", () => {
+    // Budgets with headroom over the current bundles (about 412KB full,
+    // 316KB lite): growth past this needs a deliberate bump, not drift.
+    const full = bundle.length;
+    const lite = readFileSync(
+      workspaceFile("packages", "solid", "frosted", "src", "styles.lite.css"),
+      "utf8",
+    ).length;
+    expect(full).toBeLessThan(470_000);
+    expect(lite).toBeLessThan(370_000);
+  });
+
+  it("carries the Stack and Row layout primitives", () => {
+    expect(bundle).toMatch(/\.fui-Stack\s*\{[^}]*flex-direction:\s*column/s);
+    expect(bundle).toMatch(/\.fui-Row\s*\{[^}]*flex-direction:\s*row/s);
+    expect(bundle).toMatch(/\.fui-r-gap-4\s*\{[^}]*gap:\s*var\(--space-4\)/s);
+  });
 });

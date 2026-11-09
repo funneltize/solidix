@@ -21,7 +21,7 @@
   letter-spacing: 0.06em;
 }
 .fui-AccordionTriggerIcon {
-  transition: 300ms transform ease-out;
+  transition: var(--duration-3) transform ease-out;
   transform-origin: center;
   transform: rotate(180deg);
 }
@@ -31,7 +31,7 @@
 .fui-AccordionContent {
   overflow: hidden;
   height: var(--accordion-panel-height);
-  transition: height 300ms ease-out;
+  transition: height var(--duration-3) ease-out;
 
   &[data-starting-style],
   &[data-ending-style] {

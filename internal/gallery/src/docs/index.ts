@@ -1,5 +1,8 @@
 import type { PrimitiveDoc } from "./types";
 import { doc as accordion } from "./accordion";
+import { doc as calendar } from "./calendar";
+import { doc as combobox } from "./combobox";
+import { doc as sortable } from "./sortable";
 import { doc as alertDialog } from "./alert-dialog";
 import { doc as announce } from "./announce";
 import { doc as aspectRatio } from "./aspect-ratio";
@@ -37,6 +40,9 @@ import { doc as tooltip } from "./tooltip";
 
 export const docs: Record<string, PrimitiveDoc> = {
   accordion: accordion,
+  calendar: calendar,
+  combobox: combobox,
+  sortable: sortable,
   "alert-dialog": alertDialog,
   announce: announce,
   "aspect-ratio": aspectRatio,

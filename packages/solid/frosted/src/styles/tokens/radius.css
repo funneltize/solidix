@@ -14,4 +14,12 @@
   --radius-4: 8px;
   --radius-5: 12px;
   --radius-6: 16px;
+
+  /* Semantic roles (Solidix-native): the corner a surface plays, so new
+     styles name the role instead of picking a step by eye. Changing a
+     role retunes every surface that plays it. */
+  --radius-control: var(--radius-4);
+  --radius-card: var(--radius-5);
+  --radius-popover: var(--radius-5);
+  --radius-dialog: var(--radius-6);
 }

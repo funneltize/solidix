@@ -16,7 +16,7 @@
 }
 
 .fui-PopoverContent {
-  box-shadow: var(--shadow-5);
+  box-shadow: var(--elevation-popover);
   min-width: var(--radix-popper-anchor-width);
   outline: 0;
   overflow: auto;
@@ -42,8 +42,8 @@
   /* Animations */
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      transform 150ms ease-out,
-      opacity 150ms ease-out;
+      transform var(--duration-2) ease-out,
+      opacity var(--duration-2) ease-out;
 
     &[data-state="closed"] {
       opacity: 0;
@@ -71,15 +71,15 @@
 .fui-PopoverContent {
   &:where(.fui-r-size-1) {
     --popover-content-padding: var(--space-3);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
   }
   &:where(.fui-r-size-2) {
     --popover-content-padding: var(--space-4);
-    border-radius: 12px;
+    border-radius: var(--radius-5);
   }
   &:where(.fui-r-size-3) {
     --popover-content-padding: var(--space-5);
-    border-radius: 16px;
+    border-radius: var(--radius-6);
   }
   &:where(.fui-r-size-4) {
     --popover-content-padding: var(--space-6);

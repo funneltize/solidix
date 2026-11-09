@@ -1,0 +1,41 @@
+/**
+ * Sortable styles (Solidix-native): a hairline list whose rows lift
+ * while dragged or grabbed. Feedback only; layout belongs to Stack.
+ */
+.fui-Sortable {
+  display: flex;
+  flex-direction: column;
+}
+
+.fui-SortableItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-panel);
+  border-bottom: 1px solid var(--gray-a4);
+}
+
+.fui-SortableItem[data-dragging],
+.fui-SortableItem[data-grabbed] {
+  background: var(--gray-a3);
+  box-shadow: var(--elevation-card);
+}
+
+.fui-SortableHandle {
+  flex: none;
+  padding: var(--space-1);
+  font-size: var(--font-size-2);
+  line-height: 1;
+  color: var(--gray-9);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-control);
+  cursor: grab;
+}
+
+.fui-SortableHandle:hover,
+.fui-SortableHandle:focus-visible {
+  color: var(--gray-12);
+  background: var(--gray-a3);
+}

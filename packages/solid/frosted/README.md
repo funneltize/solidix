@@ -1,6 +1,6 @@
 # @solidix/frosted
 
-Styled component library for Solid 2, ported from [frosted-ui](https://github.com/frosted-ui) (pinned upstream commit `56787900bfe0`). Where the headless `@solidix/*` primitives ship unstyled, frosted ships theme tokens plus styled components with `fui-*` classes: Wave 1 typography (text, headings, links, code, blockquotes, kbd, separators, skeletons, spinners), Wave 2 form controls (buttons, text fields, text areas, number fields, selects, checkboxes, radio groups, switches, sliders, fields, fieldsets, forms, OTP fields), Wave 3 overlays (dialog, alert-dialog, drawer, popover, tooltip, hover-card, dropdown-menu, context-menu, lightbox), Wave 4 navigation and data display (tabs, tabs-nav, segmented-control family, breadcrumbs, scroll-area, progress, circular-progress, data-list, table, card, badge, callout, avatar with group/stack, scroll-gallery), and Wave 5 complex and remainder (strong, shine, empty-state, portal, visually-hidden, filter-chip, country-flag, stacked-horizontal-bar-chart, widget-stack, accordion, credit-card, bot-avatar). Not ported: sheet, toast, combobox, autocomplete, calendar, date-picker, date-range-picker (see below).
+Styled component library for Solid 2, ported from [frosted-ui](https://github.com/frosted-ui) (pinned upstream commit `56787900bfe0`). Where the headless `@solidix/*` primitives ship unstyled, frosted ships theme tokens plus styled components with `fui-*` classes: Wave 1 typography (text, headings, links, code, blockquotes, kbd, separators, skeletons, spinners), Wave 2 form controls (buttons, text fields, text areas, number fields, selects, checkboxes, radio groups, switches, sliders, fields, fieldsets, forms, OTP fields), Wave 3 overlays (dialog, alert-dialog, drawer, popover, tooltip, hover-card, dropdown-menu, context-menu, lightbox), Wave 4 navigation and data display (tabs, tabs-nav, segmented-control family, breadcrumbs, scroll-area, progress, circular-progress, data-list, table, card, badge, callout, avatar with group/stack, scroll-gallery), and Wave 5 complex and remainder (strong, shine, empty-state, portal, visually-hidden, filter-chip, country-flag, stacked-horizontal-bar-chart, widget-stack, accordion, credit-card, bot-avatar). Native additions beyond the port: toast with a signal queue, combobox and command menu, sheet, split pane, data table, and sortable. Not ported: autocomplete, calendar, date-picker, date-range-picker (see below).
 
 ## Usage
 
@@ -62,12 +62,32 @@ Props stay close to frosted-ui names, adapted to Solid conventions: `className` 
 
 Docs-site route: `#/docs/frosted`.
 
+## Solidix-native discipline layer
+
+Beyond the port, frosted carries a small native layer so consumers stop
+restating design values per component:
+
+- **Role tokens.** `--radius-control`, `--radius-card`, `--radius-popover`,
+  and `--radius-dialog` name corners by surface; `--elevation-card`,
+  `--elevation-popover`, `--elevation-menu`, and `--elevation-dialog` do
+  the same for shadow steps; `--font-size-micro` and `--line-height-micro`
+  give dense metadata one named step instead of arbitrary sizes.
+- **Motion tokens.** `--duration-1` (100ms) through `--duration-4` (400ms),
+  with `--duration-fast`, `--duration-normal`, `--duration-slow`, and
+  `--duration-dialog` aliases, plus `--ease-standard`. Component styles
+  take interaction timing from this scale; bespoke animation choreography
+  (spinner delays, avatar morphs) stays local to its component.
+- **Layout primitives.** `Stack` and `Row` own the spacing between their
+  children through the `--space-*` scale (`gap`, `align`, `justify`), so
+  composed layouts set rhythm in one place instead of restating margins.
+
 ## Differences from frosted-ui
 
 - Slot (`render` prop) merges parent props onto the child imperatively; child wins for `class`/`style`, handlers run child-first then parent (see `@solidix/slot`).
 - `Separator` wraps `@solidix/separator` instead of Base UI; `role`, `aria-orientation`, and `data-orientation` travel with the merged props and explicit caller props still win.
 - `Skeleton` avatar size/shape are inline props (default size `3`, circle); upstream reads these from a sibling `avatar.props.ts` that does not exist at the pinned commit.
 - `Spinner` with `loading={false}` renders children bare with no wrapper; a bare spinner renders when `loading` is true without children.
+- `Stack` and `Row` are Solidix-native layout components with no frosted-ui counterpart; they render a plain div with `fui-Stack` / `fui-Row` plus gap, align, and justify classes from the shared prop defs.
 - `Inset` applies no margins and is non-responsive, matching upstream source.
 - Upstream `useLayoutEffect` ports to `onSettled`; there is no `asChild`, contexts render as their own provider (`<Ctx value={...}>`).
 - Form controls wrap the matching `@solidix/*` headless primitives (`Button`/`IconButton` over base-button, `Checkbox`, `RadioGroup`, `RadioButtonGroup`, `Switch`, `Slider`, `Select`, `NumberField`, `TextField`, `TextArea`, `OTPField`, `Field`, `Fieldset`, `Form`); controlled/uncontrolled state flows through `@solidix/use-controllable-state`.
@@ -94,4 +114,5 @@ Docs-site route: `#/docs/frosted`.
 - `CreditCard` has no headless base and is ported as a custom compound (faces, trigger, face slots, brand logos, fieldset, fields, inputs) with brand detection via `credit-card-type` (pinned `10.1.2`, matching upstream's lockfile). Card fields reuse the extracted `useFieldRootState` hook under the card class instead of `fui-FieldRoot`; number/expiry inputs format on `input` events and fire the consumer `onChange` per keystroke (React `onChange` parity). `useCreditCard` returns accessors for the reactive values (Solid adaptation of the upstream plain values).
 - `BotAvatar` has no headless base and is ported as custom logic (identity hash, expression catalogue, face fit, gaze priority, pointer tracking, imperative handle) with the support modules verbatim. Reactive hook values are accessors; the root forwards a `ref` (upstream drops it).
 - `StackedHorizontalBarChart` self-provides a `TooltipProvider` (the headless tooltip requires one; upstream Base UI tooltips stand alone), so segment tooltips work with no setup. `Portal` narrows `container` to `Element` (Solid portals cannot mount fragments).
-- Not ported (blocked on missing foundations, same as Wave 2 `date-field`): `sheet` (needs `vaul-base` drag physics), `toast` (needs the Base UI imperative toast-manager architecture; the headless toast is declarative with no manager), `combobox`/`autocomplete` (Base UI primitives with no headless equivalent; Radix itself has no combobox), and `calendar`/`date-picker`/`date-range-picker` (need the `@react-aria`/`@react-stately` date stack). Their CSS ships only when the components do.
+- Native additions with no frosted-ui counterpart: `Toast` parts plus a `Toaster` signal queue (the headless toast is declarative, so no imperative manager is needed), `Combobox` and `CommandMenu` on the native `@solidix/combobox`, `Sheet` (a bottom-anchored dialog with drag-to-dismiss instead of vaul physics), `SplitPane`, `DataTable` (sorting, selection, pagination over `Table`), and styled `Sortable` parts on `@solidix/sortable`.
+- Not ported (blocked on missing foundations, same as Wave 2 `date-field`): `autocomplete` and `calendar`/`date-picker`/`date-range-picker` (need the `@react-aria`/`@react-stately` date stack). Their CSS ships only when the components do.

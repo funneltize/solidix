@@ -1,5 +1,14 @@
 import type { Component } from "solid-js";
 import AccordionDemo from "./accordion";
+import CalendarDemo from "./calendar";
+import CalendarDemoCode from "./calendar?raw";
+import CalendarCss from "./calendar.css?url";
+import ComboboxDemo from "./combobox";
+import ComboboxDemoCode from "./combobox?raw";
+import ComboboxCss from "./combobox.css?url";
+import SortableDemo from "./sortable";
+import SortableDemoCode from "./sortable?raw";
+import SortableCss from "./sortable.css?url";
 import AccordionDemoCode from "./accordion?raw";
 import AccordionCss from "./accordion.css?url";
 import AlertDialogDemo from "./alert-dialog";
@@ -273,6 +282,27 @@ export const demos: DemoEntry[] = [
   { slug: "switch", title: "Switch", component: SwitchDemo, css: SwitchCss, code: SwitchDemoCode },
   { slug: "tabs", title: "Tabs", component: TabsDemo, css: TabsCss, code: TabsDemoCode },
   { slug: "toast", title: "Toast", component: ToastDemo, css: ToastCss, code: ToastDemoCode },
+  {
+    slug: "calendar",
+    title: "Calendar",
+    component: CalendarDemo,
+    css: CalendarCss,
+    code: CalendarDemoCode,
+  },
+  {
+    slug: "combobox",
+    title: "Combobox",
+    component: ComboboxDemo,
+    css: ComboboxCss,
+    code: ComboboxDemoCode,
+  },
+  {
+    slug: "sortable",
+    title: "Sortable",
+    component: SortableDemo,
+    css: SortableCss,
+    code: SortableDemoCode,
+  },
   { slug: "toggle", title: "Toggle", component: ToggleDemo, css: ToggleCss, code: ToggleDemoCode },
   {
     slug: "toggle-group",

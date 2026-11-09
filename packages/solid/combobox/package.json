@@ -1,0 +1,41 @@
+{
+  "name": "@solidix/combobox",
+  "version": "0.1.0",
+  "description": "Combobox primitive (Solidix-native; no Radix equivalent).",
+  "homepage": "https://github.com/funneltize/solidix",
+  "bugs": {
+    "url": "https://github.com/funneltize/solidix/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/funneltize/solidix.git",
+    "directory": "packages/solid/combobox"
+  },
+  "source": "./src/index.ts",
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "scripts": {
+    "lint": "oxlint --max-warnings 0 src test",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@solidix/primitive": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*"
+  },
+  "devDependencies": {
+    "@repo/builder": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@solidjs/testing-library": "1.0.0-rc.2",
+    "@solidjs/web": "2.0.0-rc.18",
+    "@testing-library/user-event": "14.6.8",
+    "solid-js": "2.0.0-rc.18"
+  },
+  "peerDependencies": {
+    "@solidjs/web": ">=2.0.0-rc.18 <2.1.0",
+    "solid-js": ">=2.0.0-rc.18 <2.1.0"
+  }
+}

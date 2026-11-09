@@ -8,8 +8,12 @@ export * as AspectRatio from "@solidix/aspect-ratio";
 export * as Avatar from "@solidix/avatar";
 /** Charts package (chart primitives: bar, line, area, pie, scatter, sparkline, gauge, radar, radial, candlestick, heatmap, funnel, sankey, brush, zoom). */
 export * as Charts from "@solidix/charts";
+/** Calendar primitive (Solidix-native; no Radix equivalent). */
+export * as Calendar from "@solidix/calendar";
 /** Checkbox primitive (port of @radix-ui/react-checkbox). */
 export * as Checkbox from "@solidix/checkbox";
+/** Combobox primitive (Solidix-native; no Radix equivalent). */
+export * as Combobox from "@solidix/combobox";
 /** Collapsible primitive (port of @radix-ui/react-collapsible). */
 export * as Collapsible from "@solidix/collapsible";
 /** Context-menu primitive (port of @radix-ui/react-context-menu). */
@@ -46,6 +50,8 @@ export * as RadioGroup from "@solidix/radio-group";
 export * as ScrollArea from "@solidix/scroll-area";
 /** Select primitive (port of @radix-ui/react-select). */
 export * as Select from "@solidix/select";
+/** Sortable list primitive (Solidix-native; no Radix equivalent). */
+export * as Sortable from "@solidix/sortable";
 /** Separator primitive (port of @radix-ui/react-separator). */
 export * as Separator from "@solidix/separator";
 /** Slider primitive (port of @radix-ui/react-slider). */

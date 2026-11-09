@@ -1,0 +1,47 @@
+/**
+ * Sheet styles (Solidix-native): a bottom-anchored dialog panel.
+ * Corners and elevation come from the role tokens; only the top
+ * corners are rounded, since the bottom edge meets the screen edge.
+ */
+.fui-SheetOverlay {
+  position: fixed;
+  inset: 0;
+  background: var(--black-a6);
+  z-index: 60;
+}
+
+.fui-SheetContent {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 61;
+  max-height: 88vh;
+  overflow: auto;
+  padding: 0 var(--space-4) var(--space-5);
+  background: var(--color-panel-solid);
+  border-top: 1px solid var(--gray-a5);
+  border-radius: var(--radius-dialog) var(--radius-dialog) 0 0;
+  box-shadow: var(--elevation-dialog);
+}
+
+.fui-SheetHandle {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-3) 0 var(--space-2);
+  cursor: grab;
+  touch-action: none;
+}
+
+.fui-SheetHandleBar {
+  width: var(--space-8);
+  height: var(--space-1);
+  background: var(--gray-a6);
+  border-radius: var(--radius-thumb);
+}
+
+.fui-SheetTitle {
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-12);
+  margin: 0 0 var(--space-2);
+}

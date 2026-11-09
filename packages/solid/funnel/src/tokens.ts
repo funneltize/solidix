@@ -41,6 +41,19 @@ export const lightTokens: TokenSet = {
   "--solidix-funnel-star-empty": "#e2e8f0",
   /* Color: skimmer highlighter (2 to 4 critical words per viewport) */
   "--solidix-funnel-highlight": "#fef08a",
+  /* Color: inverse palette (dedicated tokens, so tone scopes consume
+     consumer overrides instead of painting slate literals) */
+  "--solidix-funnel-inverse-paper": "#0f172a",
+  "--solidix-funnel-inverse-ink": "#f8fafc",
+  "--solidix-funnel-inverse-ink-body": "#cbd5e1",
+  "--solidix-funnel-inverse-muted": "#94a3b8",
+  "--solidix-funnel-inverse-line": "#334155",
+  "--solidix-funnel-inverse-line-soft": "#1e293b",
+  "--solidix-funnel-inverse-subtle": "#1e293b",
+  "--solidix-funnel-inverse-brand": "#fb923c",
+  "--solidix-funnel-inverse-brand-strong": "#fdba74",
+  "--solidix-funnel-inverse-danger": "#f87171",
+  "--solidix-funnel-inverse-star-empty": "#334155",
   /* Color: form fields (always light, never re-scoped by tones) */
   "--solidix-funnel-field-bg": "#ffffff",
   "--solidix-funnel-field-ink": "#0f172a",
@@ -90,6 +103,7 @@ export const lightTokens: TokenSet = {
   "--solidix-funnel-space-24": "6rem",
   /* Layout rhythm: three strict container tiers (proof/hero/reading) */
   "--solidix-funnel-section-pad": "clamp(3.5rem, 7vw, 6.5rem)",
+  "--solidix-funnel-section-pad-subtle": "clamp(2.5rem, 5vw, 4.5rem)",
   "--solidix-funnel-container-wide": "75rem",
   "--solidix-funnel-container-standard": "67.5rem",
   "--solidix-funnel-container-reading": "42.5rem",

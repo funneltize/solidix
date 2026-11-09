@@ -82,7 +82,7 @@
 .fui-TextAreaRoot {
   &:where(.fui-r-size-1) {
     min-height: var(--space-8);
-    border-radius: 6px;
+    border-radius: var(--radius-3);
 
     & :where(.fui-TextAreaInput) {
       --text-area-padding-y: calc(var(--space-1) - var(--text-area-border-width));
@@ -94,7 +94,7 @@
   }
   &:where(.fui-r-size-2) {
     min-height: var(--space-9);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
 
     & :where(.fui-TextAreaInput) {
       --text-area-padding-y: calc(var(--space-1) * 1.5 - var(--text-area-border-width));

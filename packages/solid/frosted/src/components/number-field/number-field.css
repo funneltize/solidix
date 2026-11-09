@@ -44,13 +44,13 @@
   &:where(.fui-r-size-1) {
     width: var(--space-5);
     height: var(--space-5);
-    border-radius: max(6px, var(--radius-full));
+    border-radius: max(var(--radius-3), var(--radius-full));
   }
 
   &:where(.fui-r-size-2) {
     width: var(--space-6);
     height: var(--space-6);
-    border-radius: max(8px, var(--radius-full));
+    border-radius: max(var(--radius-4), var(--radius-full));
   }
 
   &:where(.fui-r-size-3) {
@@ -180,10 +180,12 @@
     /* Make sure the focus outline stays on top of the button group */
     z-index: -1;
     &:where(.fui-r-size-1) {
-      border-radius: max(6px, var(--radius-full)) 0 0 max(6px, var(--radius-full));
+      border-radius: max(var(--radius-3), var(--radius-full)) 0 0
+        max(var(--radius-3), var(--radius-full));
     }
     &:where(.fui-r-size-2) {
-      border-radius: max(8px, var(--radius-full)) 0 0 max(8px, var(--radius-full));
+      border-radius: max(var(--radius-4), var(--radius-full)) 0 0
+        max(var(--radius-4), var(--radius-full));
     }
     &:where(.fui-r-size-3) {
       border-radius: max(10px, var(--radius-full)) 0 0 max(10px, var(--radius-full));
@@ -199,10 +201,12 @@
     /* Make sure the focus outline stays on top of the button group */
     z-index: -1;
     &:where(.fui-r-size-1) {
-      border-radius: 0 max(6px, var(--radius-full)) max(6px, var(--radius-full)) 0;
+      border-radius: 0 max(var(--radius-3), var(--radius-full))
+        max(var(--radius-3), var(--radius-full)) 0;
     }
     &:where(.fui-r-size-2) {
-      border-radius: 0 max(8px, var(--radius-full)) max(8px, var(--radius-full)) 0;
+      border-radius: 0 max(var(--radius-4), var(--radius-full))
+        max(var(--radius-4), var(--radius-full)) 0;
     }
     &:where(.fui-r-size-3) {
       border-radius: 0 max(10px, var(--radius-full)) max(10px, var(--radius-full)) 0;
@@ -232,11 +236,13 @@
 
     &:where(.fui-r-size-1) {
       text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
-      border-radius: max(6px, var(--radius-full)) 0 0 max(6px, var(--radius-full));
+      border-radius: max(var(--radius-3), var(--radius-full)) 0 0
+        max(var(--radius-3), var(--radius-full));
     }
     &:where(.fui-r-size-2) {
       text-indent: calc(var(--space-2) - var(--text-field-border-width));
-      border-radius: max(8px, var(--radius-full)) 0 0 max(8px, var(--radius-full));
+      border-radius: max(var(--radius-4), var(--radius-full)) 0 0
+        max(var(--radius-4), var(--radius-full));
     }
     &:where(.fui-r-size-3) {
       text-indent: calc(var(--space-3) - var(--text-field-border-width));
@@ -297,11 +303,11 @@
 
     &:where(.fui-r-size-1) {
       text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
-      border-radius: max(6px, var(--radius-full));
+      border-radius: max(var(--radius-3), var(--radius-full));
     }
     &:where(.fui-r-size-2) {
       text-indent: calc(var(--space-2) - var(--text-field-border-width));
-      border-radius: max(8px, var(--radius-full));
+      border-radius: max(var(--radius-4), var(--radius-full));
     }
     &:where(.fui-r-size-3) {
       text-indent: calc(var(--space-3) - var(--text-field-border-width));

@@ -30,7 +30,7 @@
   box-sizing: border-box;
   background-color: var(--color-panel-solid);
 
-  border-radius: 12px;
+  border-radius: var(--radius-5);
   box-shadow: 0px 0px 0px 1px var(--gray-a5);
   outline: none;
   --drawer-content-padding: 16px;
@@ -90,8 +90,8 @@
     /* Default: hidden off-screen (for keepMounted initial state) */
     transform: translateX(calc(100% + 8px)) scale(1);
     transition:
-      transform 400ms cubic-bezier(0.32, 0.72, 0, 1),
-      filter 300ms cubic-bezier(0.32, 0.72, 0, 1);
+      transform var(--duration-4) cubic-bezier(0.32, 0.72, 0, 1),
+      filter var(--duration-3) cubic-bezier(0.32, 0.72, 0, 1);
 
     /* When open: slide in, accounting for nested drawer offset */
     &[data-state="open"] {

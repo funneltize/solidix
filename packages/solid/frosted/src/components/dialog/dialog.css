@@ -41,7 +41,7 @@
   outline: none;
   overflow: auto;
   background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-6);
+  box-shadow: var(--elevation-dialog);
   box-sizing: border-box;
 
   position: relative;
@@ -73,19 +73,19 @@
     --dialog-title-mb: var(--space-1);
     --dialog-description-mb: var(--space-3);
     --dialog-content-padding: var(--space-3);
-    border-radius: 8px;
+    border-radius: var(--radius-4);
   }
   &:where(.fui-r-size-2) {
     --dialog-title-mb: var(--space-2);
     --dialog-description-mb: var(--space-4);
     --dialog-content-padding: var(--space-4);
-    border-radius: 12px;
+    border-radius: var(--radius-5);
   }
   &:where(.fui-r-size-3) {
     --dialog-title-mb: var(--space-3);
     --dialog-description-mb: 20px;
     --dialog-content-padding: 20px;
-    border-radius: 16px;
+    border-radius: var(--radius-6);
   }
   &:where(.fui-r-size-4) {
     --dialog-title-mb: var(--space-3);
@@ -115,8 +115,8 @@
     backdrop-filter: blur(0px) brightness(1);
     opacity: 0;
     transition:
-      backdrop-filter 400ms cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter var(--duration-4) cubic-bezier(0.16, 1, 0.3, 1),
+      opacity var(--duration-4) cubic-bezier(0.16, 1, 0.3, 1);
 
     /* When open: show blur effect */
     &[data-state="open"] {
@@ -134,10 +134,10 @@
   .fui-DialogContent {
     opacity: 1;
     transition:
-      opacity 150ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 400ms cubic-bezier(0.32, 0.72, 0, 1),
-      translate 400ms cubic-bezier(0.32, 0.72, 0, 1),
-      filter 300ms cubic-bezier(0.32, 0.72, 0, 1);
+      opacity var(--duration-2) cubic-bezier(0.16, 1, 0.3, 1),
+      transform var(--duration-4) cubic-bezier(0.32, 0.72, 0, 1),
+      translate var(--duration-4) cubic-bezier(0.32, 0.72, 0, 1),
+      filter var(--duration-3) cubic-bezier(0.32, 0.72, 0, 1);
 
     &[data-state="closed"] {
       opacity: 0;

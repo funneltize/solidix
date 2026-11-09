@@ -11,7 +11,11 @@
 }
 
 .fx-section[data-tone="subtle"] {
-  --solidix-funnel-paper: var(--solidix-funnel-subtle);
+  /* Background only: paper stays itself on descendants, so filled cards
+     keep their surface instead of melting into the wash. Subtle sections
+     also take the tighter density step. */
+  background: var(--solidix-funnel-subtle);
+  padding-block: var(--solidix-funnel-section-pad-subtle);
 }
 
 .fx-section[data-compact] {
@@ -19,19 +23,19 @@
 }
 
 .fx-section[data-tone="inverse"] {
-  /* Literals, not vars: custom properties resolve against the overrides in
-   * this same block, which would keep the light values. */
-  --solidix-funnel-paper: #0f172a;
-  --solidix-funnel-ink: #f8fafc;
-  --solidix-funnel-ink-body: #cbd5e1;
-  --solidix-funnel-muted: #94a3b8;
-  --solidix-funnel-line: #334155;
-  --solidix-funnel-line-soft: #1e293b;
-  --solidix-funnel-subtle: #1e293b;
-  --solidix-funnel-brand: #fb923c;
-  --solidix-funnel-brand-strong: #fdba74;
-  --solidix-funnel-danger: #f87171;
-  --solidix-funnel-star-empty: #334155;
+  /* Dedicated inverse tokens, so consumers re-point the palette through
+   * tokens instead of the scope painting slate literals. */
+  --solidix-funnel-paper: var(--solidix-funnel-inverse-paper);
+  --solidix-funnel-ink: var(--solidix-funnel-inverse-ink);
+  --solidix-funnel-ink-body: var(--solidix-funnel-inverse-ink-body);
+  --solidix-funnel-muted: var(--solidix-funnel-inverse-muted);
+  --solidix-funnel-line: var(--solidix-funnel-inverse-line);
+  --solidix-funnel-line-soft: var(--solidix-funnel-inverse-line-soft);
+  --solidix-funnel-subtle: var(--solidix-funnel-inverse-subtle);
+  --solidix-funnel-brand: var(--solidix-funnel-inverse-brand);
+  --solidix-funnel-brand-strong: var(--solidix-funnel-inverse-brand-strong);
+  --solidix-funnel-danger: var(--solidix-funnel-inverse-danger);
+  --solidix-funnel-star-empty: var(--solidix-funnel-inverse-star-empty);
 }
 
 /* Container: three strict tiers with fluid gutters. */
@@ -389,6 +393,14 @@
   border: 2px solid transparent;
   isolation: isolate;
   position: relative;
+}
+
+.fx-cta-button[data-variant="primary"][data-glow="static"] {
+  animation-name: none;
+}
+
+.fx-cta-button[data-variant="primary"][data-glow="static"]::before {
+  animation-name: none;
 }
 
 .fx-cta-button[data-variant="primary"][data-glow]::before {
@@ -892,10 +904,11 @@
 }
 
 .fx-pricing-plan[data-highlighted] {
-  --solidix-funnel-paper: #0f172a;
-  --solidix-funnel-ink: #f8fafc;
-  --solidix-funnel-muted: #94a3b8;
-  --solidix-funnel-line: #334155;
+  /* Same inverse palette as the tone scope, derived from theme tokens. */
+  --solidix-funnel-paper: var(--solidix-funnel-inverse-paper);
+  --solidix-funnel-ink: var(--solidix-funnel-inverse-ink);
+  --solidix-funnel-muted: var(--solidix-funnel-inverse-muted);
+  --solidix-funnel-line: var(--solidix-funnel-inverse-line);
   background: var(--solidix-funnel-paper);
   border-color: var(--solidix-funnel-paper);
   color: var(--solidix-funnel-ink);
@@ -1290,8 +1303,15 @@
 }
 
 .fx-hero-frame {
+  border: 1px solid var(--solidix-funnel-line);
   border-radius: var(--solidix-funnel-radius-xl);
+  box-shadow: var(--solidix-funnel-shadow-lg);
   overflow: hidden;
+}
+
+.fx-hero-frame[data-bleed] {
+  border: 0;
+  box-shadow: none;
 }
 
 .fx-hero-image {

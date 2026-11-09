@@ -98,7 +98,7 @@
 .fui-ScrollAreaScrollbar {
   background-color: var(--gray-a3);
   border-radius: var(--scrollarea-scrollbar-border-radius);
-  transition: opacity 150ms ease-out;
+  transition: opacity var(--duration-2) ease-out;
 
   &:where([data-orientation="horizontal"]) {
     margin-top: var(--scrollarea-scrollbar-horizontal-margin-top);
@@ -117,7 +117,7 @@
 .fui-ScrollAreaThumb {
   background-color: var(--gray-a8);
   border-radius: inherit;
-  transition: background-color 100ms;
+  transition: background-color var(--duration-1);
 
   @media (hover: hover) {
     &:where(:hover) {

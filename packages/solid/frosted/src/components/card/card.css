@@ -34,15 +34,15 @@
 .fui-Card {
   &:where(.fui-r-size-1) {
     --card-padding: 12px;
-    --card-border-radius: 12px;
+    --card-border-radius: var(--radius-5);
   }
   &:where(.fui-r-size-2) {
     --card-padding: 16px;
-    --card-border-radius: 16px;
+    --card-border-radius: var(--radius-6);
   }
   &:where(.fui-r-size-3) {
     --card-padding: 24px;
-    --card-border-radius: 16px;
+    --card-border-radius: var(--radius-6);
   }
   &:where(.fui-r-size-4) {
     --card-padding: 32px;

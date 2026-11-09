@@ -1,0 +1,26 @@
+/**
+ * Motion tokens (Solidix-native, not a frosted-ui port).
+ *
+ * Component stylesheets must take interaction timing from this scale
+ * instead of restating millisecond literals, so the system's tempo can
+ * be retuned in one place. Only four steps exist on purpose: a value
+ * that fits none of them is bespoke animation choreography (a spinner
+ * leaf delay, an avatar morph) and stays local to its component with a
+ * comment saying so.
+ */
+.frosted-ui {
+  --duration-1: 100ms;
+  --duration-2: 150ms;
+  --duration-3: 300ms;
+  --duration-4: 400ms;
+
+  /* Semantic aliases: the role a duration plays, for new styles. */
+  --duration-fast: var(--duration-1);
+  --duration-normal: var(--duration-2);
+  --duration-slow: var(--duration-3);
+  --duration-dialog: var(--duration-4);
+
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: ease-out;
+  --ease-in-out: ease-in-out;
+}

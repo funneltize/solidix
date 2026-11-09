@@ -1,0 +1,111 @@
+/**
+ * Calendar and date picker styles (Solidix-native).
+ * Selected days take the accent; range days take a quiet wash; today is
+ * ringed, never filled, so selection stays unambiguous.
+ */
+.fui-Calendar {
+  padding: var(--space-3);
+  background: var(--color-panel-solid);
+  border: 1px solid var(--gray-a5);
+  border-radius: var(--radius-card);
+  box-shadow: var(--elevation-card);
+}
+
+.fui-Calendar [data-calendar-header] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.fui-Calendar [data-calendar-heading] {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-12);
+}
+
+.fui-Calendar [data-calendar-header] button {
+  width: var(--space-6);
+  height: var(--space-6);
+  font-size: var(--font-size-3);
+  color: var(--gray-11);
+  background: transparent;
+  border: 1px solid var(--gray-a5);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+.fui-Calendar table {
+  border-collapse: collapse;
+}
+
+.fui-Calendar th {
+  width: var(--space-7);
+  height: var(--space-6);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-10);
+}
+
+.fui-Calendar td {
+  padding: 0;
+}
+
+.fui-Calendar td button {
+  width: var(--space-7);
+  height: var(--space-7);
+  font-size: var(--font-size-1);
+  font-variant-numeric: tabular-nums;
+  color: var(--gray-12);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+.fui-Calendar td button:hover:not(:disabled) {
+  background: var(--gray-a3);
+}
+
+.fui-Calendar td button[data-outside] {
+  color: var(--gray-8);
+}
+
+.fui-Calendar td button[data-today] {
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+}
+
+.fui-Calendar td button[data-in-range] {
+  background: var(--accent-a3);
+  border-radius: 0;
+}
+
+.fui-Calendar td button[data-selected] {
+  background: var(--accent-9);
+  color: white;
+}
+
+.fui-Calendar td button:disabled {
+  color: var(--gray-7);
+  cursor: default;
+}
+
+.fui-DatePickerTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-2);
+  color: var(--gray-12);
+  background: var(--color-surface);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+.fui-DatePickerContent {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}

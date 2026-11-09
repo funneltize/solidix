@@ -98,7 +98,7 @@
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
   .fui-PopperContent:where([data-state="open"]) {
-    animation-duration: 300ms;
+    animation-duration: var(--duration-3);
   }
 
   .fui-PopperContent:where([data-state="open"]):where([data-side="top"]) {
@@ -115,7 +115,7 @@
   }
 
   .fui-PopperContent:where([data-state="closed"]) {
-    animation-duration: 150ms;
+    animation-duration: var(--duration-2);
   }
 
   .fui-PopperContent:where([data-state="closed"]):where([data-side="top"]) {
@@ -131,7 +131,7 @@
     animation-name: fui-slide-to-right, fui-fade-out;
   }
   .fui-PopperContent:where([data-open]) {
-    animation-duration: 300ms;
+    animation-duration: var(--duration-3);
   }
 
   .fui-PopperContent:where([data-open]):where([data-side="top"]) {
@@ -148,7 +148,7 @@
   }
 
   .fui-PopperContent:where([data-ending-style]) {
-    animation-duration: 150ms;
+    animation-duration: var(--duration-2);
   }
 
   .fui-PopperContent:where([data-ending-style]):where([data-side="top"]) {
@@ -3699,6 +3699,10 @@
   --radius-4: 8px;
   --radius-5: 12px;
   --radius-6: 16px;
+  --radius-control: var(--radius-4);
+  --radius-card: var(--radius-5);
+  --radius-popover: var(--radius-5);
+  --radius-dialog: var(--radius-6);
 }
 
 @supports (color: color(display-p3 1 1 1)) {
@@ -3774,6 +3778,10 @@
   --shadow-6:
     0 0 0 1px var(--gray-a3), 0 12px 60px var(--black-a3), 0 16px 64px var(--gray-a2),
     0 16px 36px -20px var(--gray-a7);
+  --elevation-card: var(--shadow-2);
+  --elevation-popover: var(--shadow-5);
+  --elevation-menu: var(--shadow-5);
+  --elevation-dialog: var(--shadow-6);
   --base-button-classic-active-filter: brightness(0.92) saturate(1.1);
   --base-button-classic-high-contrast-hover-filter: contrast(0.88) saturate(1.1) brightness(1.1);
   --base-button-classic-high-contrast-active-filter: contrast(0.82) saturate(1.2) brightness(1.16);
@@ -5455,6 +5463,9 @@
   --space-7: 40px;
   --space-8: 48px;
   --space-9: 64px;
+  --font-size-micro: 11px;
+  --line-height-micro: 16px;
+
   --font-size-0: 10px;
   --font-size-1: 12px;
   --font-size-2: 14px;
@@ -5566,6 +5577,18 @@
   text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --duration-1: 100ms;
+  --duration-2: 150ms;
+  --duration-3: 300ms;
+  --duration-4: 400ms;
+  --duration-fast: var(--duration-1);
+  --duration-normal: var(--duration-2);
+  --duration-slow: var(--duration-3);
+  --duration-dialog: var(--duration-4);
+
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: ease-out;
+  --ease-in-out: ease-in-out;
   --scrollarea-scrollbar-horizontal-margin-top: var(--space-1);
   --scrollarea-scrollbar-horizontal-margin-bottom: var(--space-1);
   --scrollarea-scrollbar-horizontal-margin-left: var(--space-1);
@@ -5801,14 +5824,14 @@
 .fui-BaseButton:where(.fui-r-size-1) {
   --base-button-classic-active-padding-top: 1px;
   --base-button-height: var(--space-5);
-  border-radius: 6px;
+  border-radius: var(--radius-3);
   --base-button-spinner-size: 12px;
 }
 
 .fui-BaseButton:where(.fui-r-size-2) {
   --base-button-classic-active-padding-top: 2px;
   --base-button-height: var(--space-6);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
   --base-button-spinner-size: 16px;
 }
 
@@ -6189,7 +6212,7 @@
   color: var(--accent-a11);
   background-color: var(--accent-a3);
   padding: 12px;
-  border-radius: 12px;
+  border-radius: var(--radius-5);
 }
 
 .fui-CalloutIcon {
@@ -6231,7 +6254,7 @@
   gap: 8px;
   padding-left: 12px;
   padding-right: 12px;
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-2);
@@ -6322,17 +6345,17 @@
 
 .fui-Card:where(.fui-r-size-1) {
   --card-padding: 12px;
-  --card-border-radius: 12px;
+  --card-border-radius: var(--radius-5);
 }
 
 .fui-Card:where(.fui-r-size-2) {
   --card-padding: 16px;
-  --card-border-radius: 16px;
+  --card-border-radius: var(--radius-6);
 }
 
 .fui-Card:where(.fui-r-size-3) {
   --card-padding: 24px;
-  --card-border-radius: 16px;
+  --card-border-radius: var(--radius-6);
 }
 
 .fui-Card:where(.fui-r-size-4) {
@@ -7372,7 +7395,7 @@
   outline: none;
   overflow: auto;
   background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-6);
+  box-shadow: var(--elevation-dialog);
   box-sizing: border-box;
 
   position: relative;
@@ -7400,21 +7423,21 @@
   --dialog-title-mb: var(--space-1);
   --dialog-description-mb: var(--space-3);
   --dialog-content-padding: var(--space-3);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 }
 
 .fui-DialogContent:where(.fui-r-size-2) {
   --dialog-title-mb: var(--space-2);
   --dialog-description-mb: var(--space-4);
   --dialog-content-padding: var(--space-4);
-  border-radius: 12px;
+  border-radius: var(--radius-5);
 }
 
 .fui-DialogContent:where(.fui-r-size-3) {
   --dialog-title-mb: var(--space-3);
   --dialog-description-mb: 20px;
   --dialog-content-padding: 20px;
-  border-radius: 16px;
+  border-radius: var(--radius-6);
 }
 
 .fui-DialogContent:where(.fui-r-size-4) {
@@ -7437,8 +7460,8 @@
     backdrop-filter: blur(0px) brightness(1);
     opacity: 0;
     transition:
-      backdrop-filter 400ms cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter var(--duration-4) cubic-bezier(0.16, 1, 0.3, 1),
+      opacity var(--duration-4) cubic-bezier(0.16, 1, 0.3, 1);
   }
   .fui-DialogBackdrop[data-state="open"] {
     backdrop-filter: blur(4px) brightness(0.7);
@@ -7452,10 +7475,10 @@
   .fui-DialogContent {
     opacity: 1;
     transition:
-      opacity 150ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 400ms cubic-bezier(0.32, 0.72, 0, 1),
-      translate 400ms cubic-bezier(0.32, 0.72, 0, 1),
-      filter 300ms cubic-bezier(0.32, 0.72, 0, 1);
+      opacity var(--duration-2) cubic-bezier(0.16, 1, 0.3, 1),
+      transform var(--duration-4) cubic-bezier(0.32, 0.72, 0, 1),
+      translate var(--duration-4) cubic-bezier(0.32, 0.72, 0, 1),
+      filter var(--duration-3) cubic-bezier(0.32, 0.72, 0, 1);
   }
 
   .fui-DialogContent[data-state="closed"] {
@@ -7479,7 +7502,7 @@
   box-sizing: border-box;
   background-color: var(--color-panel-solid);
 
-  border-radius: 12px;
+  border-radius: var(--radius-5);
   box-shadow: 0px 0px 0px 1px var(--gray-a5);
   outline: none;
   --drawer-content-padding: 16px;
@@ -7523,8 +7546,8 @@
   .fui-DrawerContent {
     transform: translateX(calc(100% + 8px)) scale(1);
     transition:
-      transform 400ms cubic-bezier(0.32, 0.72, 0, 1),
-      filter 300ms cubic-bezier(0.32, 0.72, 0, 1);
+      transform var(--duration-4) cubic-bezier(0.32, 0.72, 0, 1),
+      filter var(--duration-3) cubic-bezier(0.32, 0.72, 0, 1);
   }
   .fui-DrawerContent[data-state="open"] {
     transform: translateX(calc(-1 * var(--nested-dialogs) * 8px))
@@ -7568,7 +7591,7 @@
   --base-menu-content-padding: var(--space-1);
   --base-menu-bg: var(--color-panel-translucent);
   backdrop-filter: var(--backdrop-filter-panel);
-  box-shadow: var(--shadow-5);
+  box-shadow: var(--elevation-menu);
   outline: 0.5px solid var(--color-base-menu-outline) !important;
   --base-menu-content-padding: var(--space-1);
   --base-menu-bg: var(--color-panel-translucent);
@@ -7765,30 +7788,30 @@
   --base-menu-item-padding-left: 8px;
   --base-menu-item-padding-right: 8px;
   --base-menu-item-height: var(--space-5);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
   --base-menu-item-padding-left: 8px;
   --base-menu-item-padding-right: 8px;
   --base-menu-item-height: var(--space-5);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
   --base-menu-item-padding-left: 8px;
   --base-menu-item-padding-right: 8px;
   --base-menu-item-height: var(--space-5);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 }
 
 .fui-BaseMenuContent:where(.fui-r-size-1) :where(.fui-BaseMenuItem) {
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
-  border-radius: 4px;
+  border-radius: var(--radius-2);
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
-  border-radius: 4px;
+  border-radius: var(--radius-2);
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
-  border-radius: 4px;
+  border-radius: var(--radius-2);
 }
 
 .fui-BaseMenuContent:where(.fui-r-size-1) :where(.fui-BaseMenuGroupLabel) {
@@ -7849,17 +7872,17 @@
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
-  border-radius: 6px;
+  border-radius: var(--radius-3);
   border-radius: var(--radius-3);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
-  border-radius: 6px;
+  border-radius: var(--radius-3);
   border-radius: var(--radius-3);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
-  border-radius: 6px;
+  border-radius: var(--radius-3);
 }
 
 .fui-BaseMenuContent:where(.fui-r-size-2) :where(.fui-BaseMenuGroupLabel) {
@@ -7904,30 +7927,30 @@
   --base-menu-item-padding-left: 12px;
   --base-menu-item-padding-right: 12px;
   --base-menu-item-height: var(--space-7);
-  border-radius: 12px;
+  border-radius: var(--radius-5);
   --base-menu-item-padding-left: 12px;
   --base-menu-item-padding-right: 12px;
   --base-menu-item-height: var(--space-7);
-  border-radius: 12px;
+  border-radius: var(--radius-5);
   --base-menu-item-padding-left: 12px;
   --base-menu-item-padding-right: 12px;
   --base-menu-item-height: var(--space-7);
-  border-radius: 12px;
+  border-radius: var(--radius-5);
 }
 
 .fui-BaseMenuContent:where(.fui-r-size-3) :where(.fui-BaseMenuItem) {
   font-size: var(--font-size-3);
   line-height: var(--line-height-3);
   letter-spacing: var(--letter-spacing-3);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
   font-size: var(--font-size-3);
   line-height: var(--line-height-3);
   letter-spacing: var(--letter-spacing-3);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
   font-size: var(--font-size-3);
   line-height: var(--line-height-3);
   letter-spacing: var(--letter-spacing-3);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 }
 
 .fui-BaseMenuContent:where(.fui-r-size-3) :where(.fui-BaseMenuGroupLabel) {
@@ -8028,13 +8051,13 @@
     transform-origin: var(--radix-popper-transform-origin);
 
     transition:
-      transform 150ms,
-      opacity 150ms;
+      transform var(--duration-2),
+      opacity var(--duration-2);
     transform-origin: var(--radix-popper-transform-origin);
 
     transition:
-      transform 150ms,
-      opacity 150ms;
+      transform var(--duration-2),
+      opacity var(--duration-2);
   }
 
   .fui-BaseMenuContent[data-starting-style] {
@@ -8046,8 +8069,8 @@
     opacity: 0;
     transform: scale(0.95);
     transition:
-      transform 150ms,
-      opacity 150ms;
+      transform var(--duration-2),
+      opacity var(--duration-2);
   }
   .fui-BaseMenuSubContent[data-starting-style],
   .fui-BaseMenuSubContent[data-ending-style] {
@@ -8122,8 +8145,8 @@
 @media (prefers-reduced-motion: no-preference) {
   .fui-HoverCardContent {
     transition:
-      transform 150ms ease-out,
-      opacity 150ms ease-out;
+      transform var(--duration-2) ease-out,
+      opacity var(--duration-2) ease-out;
   }
 
   .fui-HoverCardContent[data-state="closed"] {
@@ -8134,17 +8157,17 @@
 
 .fui-HoverCardContent:where(.fui-r-size-1) {
   --hover-card-content-padding: var(--space-3);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 }
 
 .fui-HoverCardContent:where(.fui-r-size-2) {
   --hover-card-content-padding: var(--space-4);
-  border-radius: 12px;
+  border-radius: var(--radius-5);
 }
 
 .fui-HoverCardContent:where(.fui-r-size-3) {
   --hover-card-content-padding: var(--space-5);
-  border-radius: 16px;
+  border-radius: var(--radius-6);
 }
 .fui-LightboxTrigger {
   transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -8341,7 +8364,7 @@
 }
 
 .fui-PopoverContent {
-  box-shadow: var(--shadow-5);
+  box-shadow: var(--elevation-popover);
   min-width: var(--radix-popper-anchor-width);
   outline: 0;
   overflow: auto;
@@ -8369,8 +8392,8 @@
 @media (prefers-reduced-motion: no-preference) {
   .fui-PopoverContent {
     transition:
-      transform 150ms ease-out,
-      opacity 150ms ease-out;
+      transform var(--duration-2) ease-out,
+      opacity var(--duration-2) ease-out;
   }
 
   .fui-PopoverContent[data-state="closed"] {
@@ -8381,17 +8404,17 @@
 
 .fui-PopoverContent:where(.fui-r-size-1) {
   --popover-content-padding: var(--space-3);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 }
 
 .fui-PopoverContent:where(.fui-r-size-2) {
   --popover-content-padding: var(--space-4);
-  border-radius: 12px;
+  border-radius: var(--radius-5);
 }
 
 .fui-PopoverContent:where(.fui-r-size-3) {
   --popover-content-padding: var(--space-5);
-  border-radius: 16px;
+  border-radius: var(--radius-6);
 }
 
 .fui-PopoverContent:where(.fui-r-size-4) {
@@ -8466,8 +8489,8 @@
 @media (prefers-reduced-motion: no-preference) {
   .fui-TooltipContent {
     transition:
-      opacity 100ms ease-out,
-      transform 100ms ease-out;
+      opacity var(--duration-1) ease-out,
+      transform var(--duration-1) ease-out;
   }
 
   .fui-TooltipContent[data-state="closed"] {
@@ -8497,6 +8520,460 @@
 
 .fui-TooltipArrow {
   fill: transparent;
+}
+.fui-ToastViewport {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: min(24rem, calc(100vw - var(--space-6)));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fui-Toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-panel-solid);
+  border: 1px solid var(--gray-a5);
+  border-radius: var(--radius-card);
+  box-shadow: var(--elevation-dialog);
+}
+
+.fui-ToastBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.fui-ToastTitle {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-2);
+  color: var(--gray-12);
+}
+
+.fui-ToastDescription {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  color: var(--gray-11);
+}
+
+.fui-ToastAction {
+  flex: none;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-medium);
+  color: var(--accent-11);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+.fui-ToastClose {
+  flex: none;
+  padding: 0 var(--space-1);
+  font-size: var(--font-size-3);
+  line-height: 1;
+  color: var(--gray-10);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fui-Toast[data-state="open"] {
+    animation: fui-toast-in var(--duration-normal) var(--ease-standard);
+  }
+}
+
+@keyframes fui-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-2));
+  }
+}
+
+.fui-Toast[data-variant="success"] {
+  border-left: 3px solid var(--green-9, #30a46c);
+}
+
+.fui-Toast[data-variant="danger"] {
+  border-left: 3px solid var(--red-9, #e5484d);
+}
+.fui-Combobox {
+  position: relative;
+}
+
+.fui-ComboboxInput {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-2);
+  color: var(--gray-12);
+  background: var(--color-surface);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-control);
+}
+
+.fui-ComboboxListbox {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + var(--space-1));
+  z-index: 50;
+  max-height: 20rem;
+  overflow: auto;
+  margin: 0;
+  padding: var(--space-1);
+  list-style: none;
+  background: var(--color-panel-solid);
+  border: 1px solid var(--gray-a5);
+  border-radius: var(--radius-popover);
+  box-shadow: var(--elevation-popover);
+}
+
+.fui-ComboboxOption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  font-size: var(--font-size-2);
+  color: var(--gray-11);
+  border-radius: var(--radius-3);
+  cursor: pointer;
+}
+
+.fui-ComboboxOption[data-highlighted] {
+  background: var(--gray-a3);
+  color: var(--gray-12);
+}
+
+.fui-ComboboxOption[data-selected] {
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-12);
+}
+.fui-CommandMenu {
+  width: min(36rem, calc(100vw - var(--space-6)));
+  padding: 0;
+  overflow: hidden;
+}
+
+.fui-CommandMenu .fui-ComboboxInput {
+  border: 0;
+  border-bottom: 1px solid var(--gray-a4);
+  border-radius: 0;
+  padding: var(--space-3);
+  background: transparent;
+}
+
+.fui-CommandMenu .fui-ComboboxListbox {
+  position: static;
+  max-height: 22rem;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fui-CommandMenuGroupLabel {
+  padding: var(--space-2) var(--space-2) var(--space-1);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gray-10);
+}
+
+.fui-CommandMenuEmpty {
+  padding: var(--space-4);
+  font-size: var(--font-size-2);
+  color: var(--gray-10);
+  text-align: center;
+}
+
+.fui-Combobox[data-placement="top"] .fui-ComboboxListbox {
+  top: auto;
+  bottom: calc(100% + var(--space-1));
+}
+.fui-Calendar {
+  padding: var(--space-3);
+  background: var(--color-panel-solid);
+  border: 1px solid var(--gray-a5);
+  border-radius: var(--radius-card);
+  box-shadow: var(--elevation-card);
+}
+
+.fui-Calendar [data-calendar-header] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.fui-Calendar [data-calendar-heading] {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-12);
+}
+
+.fui-Calendar [data-calendar-header] button {
+  width: var(--space-6);
+  height: var(--space-6);
+  font-size: var(--font-size-3);
+  color: var(--gray-11);
+  background: transparent;
+  border: 1px solid var(--gray-a5);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+.fui-Calendar table {
+  border-collapse: collapse;
+}
+
+.fui-Calendar th {
+  width: var(--space-7);
+  height: var(--space-6);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-10);
+}
+
+.fui-Calendar td {
+  padding: 0;
+}
+
+.fui-Calendar td button {
+  width: var(--space-7);
+  height: var(--space-7);
+  font-size: var(--font-size-1);
+  font-variant-numeric: tabular-nums;
+  color: var(--gray-12);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+.fui-Calendar td button:hover:not(:disabled) {
+  background: var(--gray-a3);
+}
+
+.fui-Calendar td button[data-outside] {
+  color: var(--gray-8);
+}
+
+.fui-Calendar td button[data-today] {
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+}
+
+.fui-Calendar td button[data-in-range] {
+  background: var(--accent-a3);
+  border-radius: 0;
+}
+
+.fui-Calendar td button[data-selected] {
+  background: var(--accent-9);
+  color: white;
+}
+
+.fui-Calendar td button:disabled {
+  color: var(--gray-7);
+  cursor: default;
+}
+
+.fui-DatePickerTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-2);
+  color: var(--gray-12);
+  background: var(--color-surface);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+.fui-DatePickerContent {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.fui-SplitPane {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.fui-SplitPane[data-vertical] {
+  flex-direction: column;
+}
+
+.fui-SplitPanePanel {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+.fui-SplitPaneHandle {
+  flex: none;
+  width: var(--space-2);
+  margin: 0 calc(var(--space-1) * -1);
+  cursor: col-resize;
+  touch-action: none;
+  border-radius: var(--radius-full, 9999px);
+  outline: none;
+}
+
+.fui-SplitPane[data-vertical] .fui-SplitPaneHandle {
+  width: auto;
+  height: var(--space-2);
+  margin: calc(var(--space-1) * -1) 0;
+  cursor: row-resize;
+}
+
+.fui-SplitPaneHandle:hover,
+.fui-SplitPaneHandle:focus-visible {
+  background: var(--accent-9);
+}
+.fui-SheetOverlay {
+  position: fixed;
+  inset: 0;
+  background: var(--black-a6);
+  z-index: 60;
+}
+
+.fui-SheetContent {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 61;
+  max-height: 88vh;
+  overflow: auto;
+  padding: 0 var(--space-4) var(--space-5);
+  background: var(--color-panel-solid);
+  border-top: 1px solid var(--gray-a5);
+  border-radius: var(--radius-dialog) var(--radius-dialog) 0 0;
+  box-shadow: var(--elevation-dialog);
+}
+
+.fui-SheetHandle {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-3) 0 var(--space-2);
+  cursor: grab;
+  touch-action: none;
+}
+
+.fui-SheetHandleBar {
+  width: var(--space-8);
+  height: var(--space-1);
+  background: var(--gray-a6);
+  border-radius: var(--radius-thumb);
+}
+
+.fui-SheetTitle {
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-12);
+  margin: 0 0 var(--space-2);
+}
+.fui-DataTableCheckbox {
+  width: var(--space-4);
+  height: var(--space-4);
+  accent-color: var(--accent-9);
+  cursor: pointer;
+}
+
+.fui-DataTableSortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0;
+  font: inherit;
+  font-weight: var(--font-weight-semibold);
+  color: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.fui-DataTableEmpty {
+  padding: var(--space-5);
+  font-size: var(--font-size-2);
+  color: var(--gray-10);
+  text-align: center;
+}
+
+.fui-DataTablePagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  font-size: var(--font-size-1);
+  color: var(--gray-11);
+}
+
+.fui-DataTablePagination button {
+  padding: var(--space-1) var(--space-2);
+  font: inherit;
+  color: var(--gray-12);
+  background: var(--color-surface);
+  border: 1px solid var(--gray-a6);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+.fui-DataTablePagination button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.fui-Sortable {
+  display: flex;
+  flex-direction: column;
+}
+
+.fui-SortableItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-panel);
+  border-bottom: 1px solid var(--gray-a4);
+}
+
+.fui-SortableItem[data-dragging],
+.fui-SortableItem[data-grabbed] {
+  background: var(--gray-a3);
+  box-shadow: var(--elevation-card);
+}
+
+.fui-SortableHandle {
+  flex: none;
+  padding: var(--space-1);
+  font-size: var(--font-size-2);
+  line-height: 1;
+  color: var(--gray-9);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-control);
+  cursor: grab;
+}
+
+.fui-SortableHandle:hover,
+.fui-SortableHandle:focus-visible {
+  color: var(--gray-12);
+  background: var(--gray-a3);
 }
 
 .fui-FieldRoot {
@@ -8799,7 +9276,7 @@
 
   --tabs-trigger-inner-padding-x: 6px;
   --tabs-trigger-inner-padding-y: 4px;
-  --tabs-trigger-inner-border-radius: 4px;
+  --tabs-trigger-inner-border-radius: var(--radius-2);
 }
 
 .fui-BaseTabsList:where(.fui-r-size-2) {
@@ -8811,7 +9288,7 @@
 
   --tabs-trigger-inner-padding-x: 10px;
   --tabs-trigger-inner-padding-y: 4px;
-  --tabs-trigger-inner-border-radius: 6px;
+  --tabs-trigger-inner-border-radius: var(--radius-3);
 }
 
 .fui-BaseTabsList:where(.fui-high-contrast) {
@@ -8891,7 +9368,7 @@
   touch-action: none;
   background-color: var(--gray-a3);
   border-radius: var(--scrollarea-scrollbar-border-radius);
-  transition: opacity 150ms ease-out;
+  transition: opacity var(--duration-2) ease-out;
 }
 
 .fui-ScrollAreaScrollbar:where([data-orientation="vertical"]) {
@@ -8918,7 +9395,7 @@
   height: var(--scroll-area-thumb-height);
   background-color: var(--gray-a8);
   border-radius: inherit;
-  transition: background-color 100ms;
+  transition: background-color var(--duration-1);
 }
 
 .fui-ScrollAreaThumb::before {
@@ -9028,7 +9505,7 @@
   padding: 24px;
   text-align: center;
   text-wrap: balance;
-  border-radius: 16px;
+  border-radius: var(--radius-6);
   --max-content-width: 400px;
 }
 
@@ -9352,7 +9829,7 @@
   letter-spacing: 0.06em;
 }
 .fui-AccordionTriggerIcon {
-  transition: 300ms transform ease-out;
+  transition: var(--duration-3) transform ease-out;
   transform-origin: center;
   transform: rotate(180deg);
 }
@@ -9362,7 +9839,7 @@
 .fui-AccordionContent {
   overflow: hidden;
   height: var(--accordion-panel-height);
-  transition: height 300ms ease-out;
+  transition: height var(--duration-3) ease-out;
 }
 .fui-AccordionContent[data-starting-style],
 .fui-AccordionContent[data-ending-style] {
@@ -9377,7 +9854,7 @@
   width: 360px;
   aspect-ratio: 1.586;
   perspective: 1000px;
-  border-radius: 12px;
+  border-radius: var(--radius-5);
   text-align: left;
 }
 
@@ -9561,7 +10038,7 @@
   letter-spacing: var(--letter-spacing-3);
   line-height: var(--line-height-3);
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-2);
   color: var(--credit-card-text);
   background-color: var(--credit-card-input-bg);
   -webkit-tap-highlight-color: transparent;
@@ -9740,7 +10217,7 @@
 
   background-color: var(--accent-9);
   clip-path: var(--bot-avatar-clip);
-  transition: background-color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color var(--duration-3) cubic-bezier(0.16, 1, 0.3, 1);
 }
 :where(.fui-BotAvatarRoot.fui-high-contrast) .fui-BotAvatarShape {
   background-color: var(--accent-12);
@@ -9775,7 +10252,7 @@
 .fui-BotAvatarEye,
 .fui-BotAvatarMouth {
   fill: var(--accent-9-contrast);
-  transition: fill 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: fill var(--duration-3) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :where(.fui-BotAvatarRoot.fui-high-contrast) .fui-BotAvatarEye,
@@ -9791,20 +10268,20 @@
   .fui-BotAvatarEye {
     transition:
       d var(--bot-avatar-morph-duration) var(--bot-avatar-morph-ease),
-      fill 300ms cubic-bezier(0.16, 1, 0.3, 1);
+      fill var(--duration-3) cubic-bezier(0.16, 1, 0.3, 1);
     animation: fui-bot-avatar-blink 5.2s linear infinite;
     animation-delay: var(--bot-avatar-life-delay, 0ms);
   }
   .fui-BotAvatarMouth {
     transition:
       d var(--bot-avatar-morph-duration) var(--bot-avatar-morph-ease) 70ms,
-      fill 300ms cubic-bezier(0.16, 1, 0.3, 1);
+      fill var(--duration-3) cubic-bezier(0.16, 1, 0.3, 1);
   }
   .fui-BotAvatarRoot:where(.fui-blinking) .fui-BotAvatarEye {
     animation: fui-bot-avatar-forced-blink 340ms ease-in-out;
   }
   .fui-BotAvatarFace {
-    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform var(--duration-3) cubic-bezier(0.16, 1, 0.3, 1);
   }
   .fui-BotAvatarFaceMotion {
     animation: fui-bot-avatar-gaze-drift 9s ease-in-out infinite;
@@ -10283,7 +10760,7 @@
 
 .fui-TextAreaRoot:where(.fui-r-size-1) {
   min-height: var(--space-8);
-  border-radius: 6px;
+  border-radius: var(--radius-3);
 }
 
 .fui-TextAreaRoot:where(.fui-r-size-1) :where(.fui-TextAreaInput) {
@@ -10296,7 +10773,7 @@
 
 .fui-TextAreaRoot:where(.fui-r-size-2) {
   min-height: var(--space-9);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 }
 
 .fui-TextAreaRoot:where(.fui-r-size-2) :where(.fui-TextAreaInput) {
@@ -10556,13 +11033,13 @@
 .fui-TextFieldRoot:where(.fui-r-size-1) {
   font-size: var(--font-size-1);
   letter-spacing: var(--letter-spacing-1);
-  --text-field-border-radius: max(6px, var(--radius-full));
+  --text-field-border-radius: max(var(--radius-3), var(--radius-full));
   --text-field-input-height: var(--space-5);
 }
 .fui-TextFieldRoot:where(.fui-r-size-2) {
   font-size: var(--font-size-2);
   letter-spacing: var(--letter-spacing-2);
-  --text-field-border-radius: max(8px, var(--radius-full));
+  --text-field-border-radius: max(var(--radius-4), var(--radius-full));
   --text-field-input-height: var(--space-6);
 }
 .fui-TextFieldRoot:where(.fui-r-size-3) {
@@ -10608,7 +11085,7 @@
 }
 
 .fui-TextFieldInput:where(.fui-r-size-1):where(:first-child) {
-  border-radius: max(6px, var(--radius-full));
+  border-radius: max(var(--radius-3), var(--radius-full));
   text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
 }
 
@@ -10618,7 +11095,7 @@
 }
 
 .fui-TextFieldInput:where(.fui-r-size-2):where(:first-child) {
-  border-radius: max(8px, var(--radius-full));
+  border-radius: max(var(--radius-4), var(--radius-full));
   text-indent: calc(var(--space-2) - var(--text-field-border-width));
 }
 
@@ -11306,6 +11783,72 @@
     var(--margin-left-override);
   border-radius: var(--inset-border-radius-calc);
 }
+.fui-Stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.fui-Row {
+  display: flex;
+  flex-direction: row;
+}
+
+.fui-r-gap-0 {
+  gap: 0;
+}
+.fui-r-gap-1 {
+  gap: var(--space-1);
+}
+.fui-r-gap-2 {
+  gap: var(--space-2);
+}
+.fui-r-gap-3 {
+  gap: var(--space-3);
+}
+.fui-r-gap-4 {
+  gap: var(--space-4);
+}
+.fui-r-gap-5 {
+  gap: var(--space-5);
+}
+.fui-r-gap-6 {
+  gap: var(--space-6);
+}
+.fui-r-gap-7 {
+  gap: var(--space-7);
+}
+.fui-r-gap-8 {
+  gap: var(--space-8);
+}
+.fui-r-gap-9 {
+  gap: var(--space-9);
+}
+
+.fui-r-align-stretch {
+  align-items: stretch;
+}
+.fui-r-align-start {
+  align-items: flex-start;
+}
+.fui-r-align-center {
+  align-items: center;
+}
+.fui-r-align-end {
+  align-items: flex-end;
+}
+
+.fui-r-justify-start {
+  justify-content: flex-start;
+}
+.fui-r-justify-center {
+  justify-content: center;
+}
+.fui-r-justify-end {
+  justify-content: flex-end;
+}
+.fui-r-justify-between {
+  justify-content: space-between;
+}
 
 .fui-Kbd {
   box-sizing: border-box;
@@ -11468,12 +12011,12 @@
 .fui-NumberFieldButton:where(.fui-r-size-1) {
   width: var(--space-5);
   height: var(--space-5);
-  border-radius: max(6px, var(--radius-full));
+  border-radius: max(var(--radius-3), var(--radius-full));
 }
 .fui-NumberFieldButton:where(.fui-r-size-2) {
   width: var(--space-6);
   height: var(--space-6);
-  border-radius: max(8px, var(--radius-full));
+  border-radius: max(var(--radius-4), var(--radius-full));
 }
 .fui-NumberFieldButton:where(.fui-r-size-3) {
   width: var(--space-7);
@@ -11596,11 +12139,13 @@
 }
 
 .fui-NumberFieldRoot.fui-button-layout-split > .fui-NumberFieldDecrement:where(.fui-r-size-1) {
-  border-radius: max(6px, var(--radius-full)) 0 0 max(6px, var(--radius-full));
+  border-radius: max(var(--radius-3), var(--radius-full)) 0 0
+    max(var(--radius-3), var(--radius-full));
 }
 
 .fui-NumberFieldRoot.fui-button-layout-split > .fui-NumberFieldDecrement:where(.fui-r-size-2) {
-  border-radius: max(8px, var(--radius-full)) 0 0 max(8px, var(--radius-full));
+  border-radius: max(var(--radius-4), var(--radius-full)) 0 0
+    max(var(--radius-4), var(--radius-full));
 }
 
 .fui-NumberFieldRoot.fui-button-layout-split > .fui-NumberFieldDecrement:where(.fui-r-size-3) {
@@ -11612,11 +12157,13 @@
 }
 
 .fui-NumberFieldRoot.fui-button-layout-split > .fui-NumberFieldIncrement:where(.fui-r-size-1) {
-  border-radius: 0 max(6px, var(--radius-full)) max(6px, var(--radius-full)) 0;
+  border-radius: 0 max(var(--radius-3), var(--radius-full)) max(var(--radius-3), var(--radius-full))
+    0;
 }
 
 .fui-NumberFieldRoot.fui-button-layout-split > .fui-NumberFieldIncrement:where(.fui-r-size-2) {
-  border-radius: 0 max(8px, var(--radius-full)) max(8px, var(--radius-full)) 0;
+  border-radius: 0 max(var(--radius-4), var(--radius-full)) max(var(--radius-4), var(--radius-full))
+    0;
 }
 
 .fui-NumberFieldRoot.fui-button-layout-split > .fui-NumberFieldIncrement:where(.fui-r-size-3) {
@@ -11641,12 +12188,14 @@
 
 .fui-NumberFieldRoot.fui-button-layout-trailing > .fui-NumberFieldInput:where(.fui-r-size-1) {
   text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
-  border-radius: max(6px, var(--radius-full)) 0 0 max(6px, var(--radius-full));
+  border-radius: max(var(--radius-3), var(--radius-full)) 0 0
+    max(var(--radius-3), var(--radius-full));
 }
 
 .fui-NumberFieldRoot.fui-button-layout-trailing > .fui-NumberFieldInput:where(.fui-r-size-2) {
   text-indent: calc(var(--space-2) - var(--text-field-border-width));
-  border-radius: max(8px, var(--radius-full)) 0 0 max(8px, var(--radius-full));
+  border-radius: max(var(--radius-4), var(--radius-full)) 0 0
+    max(var(--radius-4), var(--radius-full));
 }
 
 .fui-NumberFieldRoot.fui-button-layout-trailing > .fui-NumberFieldInput:where(.fui-r-size-3) {
@@ -11715,13 +12264,13 @@
 .fui-NumberFieldRoot:not(:has(.fui-NumberFieldButton))
   > .fui-NumberFieldInput:where(.fui-r-size-1) {
   text-indent: calc(var(--space-1) * 1.5 - var(--text-field-border-width));
-  border-radius: max(6px, var(--radius-full));
+  border-radius: max(var(--radius-3), var(--radius-full));
 }
 
 .fui-NumberFieldRoot:not(:has(.fui-NumberFieldButton))
   > .fui-NumberFieldInput:where(.fui-r-size-2) {
   text-indent: calc(var(--space-2) - var(--text-field-border-width));
-  border-radius: max(8px, var(--radius-full));
+  border-radius: max(var(--radius-4), var(--radius-full));
 }
 
 .fui-NumberFieldRoot:not(:has(.fui-NumberFieldButton))
@@ -12039,7 +12588,7 @@
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
-  border-radius: 6px;
+  border-radius: var(--radius-3);
 
   padding-left: var(--space-2);
   padding-right: var(--space-2);
@@ -12056,7 +12605,7 @@
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 
   padding-left: var(--space-3);
   padding-right: var(--space-3);
@@ -12108,7 +12657,7 @@
   --select-item-height: var(--space-5);
   --select-item-indicator-width: calc(var(--space-5) / 1.2);
   --select-separator-margin-right: var(--space-2);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 }
 
 .fui-SelectContent:where(.fui-r-size-1) :where(.fui-SelectLabel) {
@@ -12121,7 +12670,7 @@
   font-size: var(--font-size-1);
   line-height: var(--line-height-1);
   letter-spacing: var(--letter-spacing-1);
-  border-radius: 4px;
+  border-radius: var(--radius-2);
 }
 
 .fui-SelectContent:where(.fui-r-size-1) :where(.fui-SelectItemIndicatorIcon) {
@@ -12146,7 +12695,7 @@
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   letter-spacing: var(--letter-spacing-2);
-  border-radius: 6px;
+  border-radius: var(--radius-3);
 }
 
 .fui-SelectContent:where(.fui-r-size-2) :where(.fui-SelectItemIndicatorIcon) {
@@ -12158,7 +12707,7 @@
   --select-item-height: var(--space-7);
   --select-item-indicator-width: calc(var(--space-7) / 1.2);
   --select-separator-margin-right: var(--space-2);
-  border-radius: 12px;
+  border-radius: var(--radius-5);
 }
 
 .fui-SelectContent:where(.fui-r-size-3) :where(.fui-SelectLabel) {
@@ -12171,7 +12720,7 @@
   font-size: var(--font-size-3);
   line-height: var(--line-height-3);
   letter-spacing: var(--letter-spacing-3);
-  border-radius: 8px;
+  border-radius: var(--radius-4);
 }
 
 .fui-SelectContent:where(.fui-r-size-3) :where(.fui-SelectItemIndicatorIcon) {
@@ -12373,7 +12922,7 @@
   transform-origin: var(--radix-select-content-transform-origin);
   opacity: 1;
   transform: scale(1);
-  transition: opacity 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--duration-2) cubic-bezier(0.16, 1, 0.3, 1);
   --select-content-padding: var(--space-1);
 }
 

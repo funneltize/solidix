@@ -99,7 +99,7 @@
 
     /* Radix UI (legacy) */
     &:where([data-state="open"]) {
-      animation-duration: 300ms;
+      animation-duration: var(--duration-3);
 
       &:where([data-side="top"]) {
         animation-name: fui-slide-from-top, fui-fade-in;
@@ -116,7 +116,7 @@
     }
 
     &:where([data-state="closed"]) {
-      animation-duration: 150ms;
+      animation-duration: var(--duration-2);
 
       &:where([data-side="top"]) {
         animation-name: fui-slide-to-top, fui-fade-out;
@@ -134,7 +134,7 @@
 
     /* Base UI */
     &:where([data-open]) {
-      animation-duration: 300ms;
+      animation-duration: var(--duration-3);
 
       &:where([data-side="top"]) {
         animation-name: fui-slide-from-top, fui-fade-in;
@@ -151,7 +151,7 @@
     }
 
     &:where([data-ending-style]) {
-      animation-duration: 150ms;
+      animation-duration: var(--duration-2);
 
       &:where([data-side="top"]) {
         animation-name: fui-slide-to-top, fui-fade-out;
