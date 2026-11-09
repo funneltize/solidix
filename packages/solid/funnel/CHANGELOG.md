@@ -1,5 +1,14 @@
 # @solidix/funnel
 
+## 0.7.0
+
+### Minor Changes
+
+- 17001ac: Compose brand marks natively in the funnel chrome: Header groups a
+  logo with its wordmark in one brand group, StickyBar seats a `mark`
+  inline with its message, and both take a `glow` prop for their CTA, so
+  consumers no longer seat marks or stamp glow after mount.
+
 ## 0.6.2
 
 ### Patch Changes
