@@ -532,11 +532,29 @@ type StickyBarProps = Omit<PrimitivePropsWithRef<"div">, "children"> & {
    * desktop header together. When set, `observe` and `showAfter` are ignored.
    */
   visible?: boolean | undefined;
+  /**
+   * Brand mark seated inline at the start of the message, composed with
+   * the title-price line. Omit for a text-only bar.
+   */
+  mark?: { src: string; name: string } | undefined;
+  /** Applies the CTA glow treatment to the bar CTA (primary only in CSS). */
+  glow?: boolean | undefined;
 };
 
 /** Mobile sticky bottom bar that reveals a compact CTA once the hero trigger scrolls out of view. */
 const StickyBar: Component<StickyBarProps> = (props) => {
-  const rest = omit(props, "message", "cta", "showAfter", "observe", "visible", "class", "ref");
+  const rest = omit(
+    props,
+    "message",
+    "cta",
+    "showAfter",
+    "observe",
+    "visible",
+    "mark",
+    "glow",
+    "class",
+    "ref",
+  );
   const editable = useFunnelEditable();
   const threshold = () => props.showAfter ?? 600;
   const [internal, setInternal] = createSignal(
@@ -592,9 +610,24 @@ const StickyBar: Component<StickyBarProps> = (props) => {
         data-funnel-part={editable ? "message" : undefined}
         tabindex={editable ? 0 : undefined}
       >
+        <Show when={props.mark}>
+          <img
+            class="fx-sticky-bar-logo"
+            src={props.mark!.src}
+            alt={props.mark!.name}
+            loading="lazy"
+            decoding="async"
+          />
+        </Show>
         {props.message}
       </p>
-      <CTAButton href={props.cta.href} size="md" tabindex={shown() ? undefined : -1} part="cta">
+      <CTAButton
+        href={props.cta.href}
+        size="md"
+        tabindex={shown() ? undefined : -1}
+        part="cta"
+        glow={props.glow}
+      >
         {props.cta.label}
       </CTAButton>
     </Primitive.div>

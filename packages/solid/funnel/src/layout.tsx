@@ -198,11 +198,13 @@ type HeaderProps = FunnelElementProps<"header", HTMLElement> & {
    * assistive tech, and tab order; omitted or `true` shows it.
    */
   visible?: boolean | undefined;
+  /** Applies the CTA glow treatment to the header CTA (primary only in CSS). */
+  glow?: boolean | undefined;
 };
 
 /** Slim brand bar with wordmark, nav links, and CTA; scrolls away on mobile in favor of the sticky bar. */
 const Header: Component<HeaderProps> = (props) => {
-  const rest = omit(props, "brand", "cta", "sticky", "visible", "class", "ref");
+  const rest = omit(props, "brand", "cta", "sticky", "visible", "glow", "class", "ref");
   const brand = () => props.brand;
   const editable = useFunnelEditable();
   const hidden = () => props.visible === false;
@@ -229,17 +231,32 @@ const Header: Component<HeaderProps> = (props) => {
             </span>
           }
         >
-          <img
-            class="fx-header-logo"
-            src={(brand() as { src: string }).src}
-            alt={(brand() as { name: string }).name}
-            loading="eager"
-            decoding="async"
-            data-funnel-part={editable ? "brand" : undefined}
-            tabindex={editable ? 0 : undefined}
-          />
+          {/* Logo plus wordmark composition: the mark and its name ride in
+              one group, so the row keeps brand-left, CTA-right without the
+              consumer seating the pair after mount. An empty name leaves
+              the mark standing alone. */}
+          <span class="fx-header-brand">
+            <img
+              class="fx-header-logo"
+              src={(brand() as { src: string }).src}
+              alt={(brand() as { name: string }).name}
+              loading="eager"
+              decoding="async"
+              data-funnel-part={editable ? "brand" : undefined}
+              tabindex={editable ? 0 : undefined}
+            />
+            <Show when={(brand() as { name: string }).name}>
+              <span class="fx-header-wordmark">{(brand() as { name: string }).name}</span>
+            </Show>
+          </span>
         </Show>
-        <CTAButton href={props.cta.href} size="md" tabindex={hidden() ? -1 : undefined} part="cta">
+        <CTAButton
+          href={props.cta.href}
+          size="md"
+          tabindex={hidden() ? -1 : undefined}
+          part="cta"
+          glow={props.glow}
+        >
           {props.cta.label}
         </CTAButton>
       </div>

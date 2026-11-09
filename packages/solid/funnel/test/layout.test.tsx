@@ -95,6 +95,24 @@ describe("layout atoms", () => {
     expect(logo.getAttribute("decoding")).toBe("async");
   });
 
+  test("Header composes logo and wordmark in one brand group", () => {
+    render(() => (
+      <Header brand={{ src: "/logo.svg", name: "Acme" }} cta={{ label: "Start", href: "#join" }} />
+    ));
+    const logo = screen.getByAltText("Acme");
+    const group = logo.closest(".fx-header-brand");
+    expect(group).toBeTruthy();
+    // The wordmark rides in the same group, not as a sibling the consumer
+    // must seat after mount.
+    expect(group!.querySelector(".fx-header-wordmark")?.textContent).toBe("Acme");
+    expect(group!.parentElement?.classList.contains("fx-header-inner")).toBe(true);
+  });
+
+  test("Header passes glow to its CTA", () => {
+    render(() => <Header brand="Acme" cta={{ label: "Start", href: "#join" }} glow />);
+    expect(screen.getByRole("link", { name: "Start" }).hasAttribute("data-glow")).toBe(true);
+  });
+
   test("Header hides from AT and tab order when visible is false", () => {
     render(() => (
       <Header

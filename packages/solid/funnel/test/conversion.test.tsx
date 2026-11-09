@@ -338,6 +338,25 @@ describe("StickyBar", () => {
     expect(screen.getByRole("link", { name: "Claim seat" }).getAttribute("href")).toBe("/checkout");
   });
 
+  test("seats the brand mark inline with the message and glows its CTA", () => {
+    render(() => (
+      <StickyBar
+        message="Cohort 12 closes Friday."
+        cta={{ label: "Claim seat", href: "/checkout" }}
+        mark={{ src: "/logo.svg", name: "Acme" }}
+        visible
+        glow
+      />
+    ));
+    const message = screen.getByText("Cohort 12 closes Friday.");
+    const mark = message.querySelector(".fx-sticky-bar-logo");
+    expect(mark?.getAttribute("src")).toBe("/logo.svg");
+    // The mark is the first thing in the message line, composed by the
+    // block rather than seated after mount.
+    expect(message.firstElementChild).toBe(mark);
+    expect(screen.getByRole("link", { name: "Claim seat" }).hasAttribute("data-glow")).toBe(true);
+  });
+
   test("follows a controlled visible signal and ignores scroll", async () => {
     const [visible, setVisible] = createSignal(false);
     render(() => (

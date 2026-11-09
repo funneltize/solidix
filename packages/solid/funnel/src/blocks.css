@@ -186,6 +186,13 @@
   padding: var(--solidix-funnel-space-3) var(--solidix-funnel-container-pad);
 }
 
+.fx-header-brand {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--solidix-funnel-space-2);
+  min-width: 0;
+}
+
 .fx-header-wordmark {
   color: var(--solidix-funnel-ink);
   font-size: var(--solidix-funnel-text-body);
@@ -1547,6 +1554,15 @@
 .fx-sticky-bar[data-visible] {
   transform: translateY(0);
   visibility: visible;
+}
+
+.fx-sticky-bar-logo {
+  border-radius: var(--solidix-funnel-radius-sm);
+  display: inline-block;
+  height: 1.25rem;
+  margin-right: var(--solidix-funnel-space-2);
+  vertical-align: -0.25rem;
+  width: auto;
 }
 
 .fx-sticky-bar-message {
