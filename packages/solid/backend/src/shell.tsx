@@ -165,15 +165,23 @@ export type NavListProps = Omit<JSX.IntrinsicElements["nav"], "ref" | "children"
  * Data in, event out: selection is reported, routing stays in the app.
  */
 export const NavList: Component<NavListProps> = (props) => {
-  const rest = omit(props, "class", "groups", "items", "activeId", "defaultActiveId", "onActiveChange", "collapsed");
+  const rest = omit(
+    props,
+    "class",
+    "groups",
+    "items",
+    "activeId",
+    "defaultActiveId",
+    "onActiveChange",
+    "collapsed",
+  );
   const [activeId, setActiveId] = useControllableState<string>({
     prop: () => props.activeId,
     defaultProp: props.defaultActiveId ?? "",
     onChange: props.onActiveChange as ((value: string) => void) | undefined,
     caller: "NavList",
   });
-  const groups = (): NavGroup[] =>
-    props.groups ?? (props.items ? [{ items: props.items }] : []);
+  const groups = (): NavGroup[] => props.groups ?? (props.items ? [{ items: props.items }] : []);
   const select = (item: NavItem) => {
     if (item.disabled) return;
     setActiveId(item.id);
@@ -189,7 +197,9 @@ export const NavList: Component<NavListProps> = (props) => {
       <For each={groups()}>
         {(group) => (
           <div class="sbx-nav-group">
-            {group.label && !props.collapsed ? <p class="sbx-nav-group-label">{group.label}</p> : null}
+            {group.label && !props.collapsed ? (
+              <p class="sbx-nav-group-label">{group.label}</p>
+            ) : null}
             <ul class="sbx-nav-items">
               <For each={group.items}>
                 {(item) => {
@@ -268,7 +278,15 @@ export type SettingsLayoutProps = Omit<JSX.IntrinsicElements["div"], "ref" | "on
  * the right. The app renders panel content for the active section.
  */
 export const SettingsLayout: Component<SettingsLayoutProps> = (props) => {
-  const rest = omit(props, "class", "children", "sections", "activeId", "defaultActiveId", "onActiveChange");
+  const rest = omit(
+    props,
+    "class",
+    "children",
+    "sections",
+    "activeId",
+    "defaultActiveId",
+    "onActiveChange",
+  );
   const [activeId, setActiveId] = useControllableState<string>({
     prop: () => props.activeId,
     defaultProp: props.defaultActiveId ?? props.sections[0]?.id ?? "",
@@ -323,10 +341,14 @@ export const FieldRow: Component<FieldRowProps> = (props) => {
   const rest = omit(props, "class", "children", "label", "htmlFor", "hint", "error");
   return (
     <div data-backend-part="field-row" class={cx("sbx-field-row", props.class)} {...rest}>
-      <label class="sbx-field-label" for={props.htmlFor}>{props.label}</label>
+      <label class="sbx-field-label" for={props.htmlFor}>
+        {props.label}
+      </label>
       <div class="sbx-field-control">{props.children}</div>
       {props.error ? (
-        <p class="sbx-field-error" role="alert">{props.error}</p>
+        <p class="sbx-field-error" role="alert">
+          {props.error}
+        </p>
       ) : props.hint ? (
         <p class="sbx-field-hint">{props.hint}</p>
       ) : null}

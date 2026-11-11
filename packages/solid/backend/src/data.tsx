@@ -73,7 +73,9 @@ export const DataList: Component<DataListProps> = (props) => {
         props.empty
       ) : (
         <For each={props.records}>
-          {(record) => <DataRow record={record} selected={props.selectedIds?.includes(record.id)} />}
+          {(record) => (
+            <DataRow record={record} selected={props.selectedIds?.includes(record.id)} />
+          )}
         </For>
       )}
     </div>
@@ -144,7 +146,9 @@ export type DataTableProps<T extends { id: string }> = Omit<
    * Opt-in windowing for large row sets. Renders only the visible
    * window plus overscan inside a fixed-height scroller.
    */
-  virtual?: { rowHeight?: number | undefined; height?: number | undefined; overscan?: number | undefined } | undefined;
+  virtual?:
+    | { rowHeight?: number | undefined; height?: number | undefined; overscan?: number | undefined }
+    | undefined;
   /** Content shown when `rows` is empty. */
   empty?: JSX.Element | undefined;
   /** Accessible name for the table. */
@@ -181,7 +185,10 @@ export function DataTable<T extends { id: string }>(props: DataTableProps<T>): J
     return [...props.rows].sort((a, b) => {
       const av = get(a);
       const bv = get(b);
-      const cmp = typeof av === "number" && typeof bv === "number" ? av - bv : String(av).localeCompare(String(bv));
+      const cmp =
+        typeof av === "number" && typeof bv === "number"
+          ? av - bv
+          : String(av).localeCompare(String(bv));
       return active.direction === "asc" ? cmp : -cmp;
     });
   };
@@ -189,7 +196,8 @@ export function DataTable<T extends { id: string }>(props: DataTableProps<T>): J
     const current = selectedIds();
     setSelectedIds(checked ? [...current, id] : current.filter((x) => x !== id));
   };
-  const allSelected = () => props.rows.length > 0 && props.rows.every((r) => selectedIds().includes(r.id));
+  const allSelected = () =>
+    props.rows.length > 0 && props.rows.every((r) => selectedIds().includes(r.id));
   const toggleAll = (checked: boolean) => {
     setSelectedIds(checked ? props.rows.map((r) => r.id) : []);
   };
@@ -214,7 +222,8 @@ export function DataTable<T extends { id: string }>(props: DataTableProps<T>): J
     const th = (event.currentTarget as HTMLElement).closest("th");
     const startX = event.clientX;
     const startWidth = th?.getBoundingClientRect().width ?? 120;
-    const onMove = (move: PointerEvent) => setWidthPx(column.key, startWidth + move.clientX - startX);
+    const onMove = (move: PointerEvent) =>
+      setWidthPx(column.key, startWidth + move.clientX - startX);
     const onUp = () => {
       document.removeEventListener("pointermove", onMove);
       document.removeEventListener("pointerup", onUp);
@@ -239,14 +248,36 @@ export function DataTable<T extends { id: string }>(props: DataTableProps<T>): J
     const start = Math.max(0, Math.floor(scrollTop() / rowHeight()) - overscan());
     const count = Math.ceil(viewHeight() / rowHeight()) + overscan() * 2;
     const slice = all.slice(start, start + count);
-    return { rows: slice, topPad: start * rowHeight(), bottomPad: Math.max(0, (all.length - start - slice.length) * rowHeight()) };
+    return {
+      rows: slice,
+      topPad: start * rowHeight(),
+      bottomPad: Math.max(0, (all.length - start - slice.length) * rowHeight()),
+    };
   };
-  const rest = omit(props as unknown as DataTableProps<{ id: string }>, "class", "columns", "rows", "selectable", "selectedIds", "defaultSelectedIds", "onSelectionChange", "sort", "defaultSort", "onSortChange", "sortMode", "virtual", "empty", "caption");
+  const rest = omit(
+    props as unknown as DataTableProps<{ id: string }>,
+    "class",
+    "columns",
+    "rows",
+    "selectable",
+    "selectedIds",
+    "defaultSelectedIds",
+    "onSelectionChange",
+    "sort",
+    "defaultSort",
+    "onSortChange",
+    "sortMode",
+    "virtual",
+    "empty",
+    "caption",
+  );
   return (
     <div
       data-backend-part="data-table"
       class={cx("sbx-table-wrap", (props as { class?: string }).class)}
-      style={props.virtual ? { "max-height": `${viewHeight()}px`, "overflow-y": "auto" } : undefined}
+      style={
+        props.virtual ? { "max-height": `${viewHeight()}px`, "overflow-y": "auto" } : undefined
+      }
       onScroll={props.virtual ? (e) => setScrollTop(e.currentTarget.scrollTop) : undefined}
       {...rest}
     >
@@ -272,12 +303,24 @@ export function DataTable<T extends { id: string }>(props: DataTableProps<T>): J
                     scope="col"
                     class={cx("sbx-table-th", column.align === "end" && "sbx-table-end")}
                     style={{ width: widthOf(column) }}
-                    aria-sort={isSorted() ? (sort()?.direction === "asc" ? "ascending" : "descending") : undefined}
+                    aria-sort={
+                      isSorted()
+                        ? sort()?.direction === "asc"
+                          ? "ascending"
+                          : "descending"
+                        : undefined
+                    }
                   >
                     {column.sortable ? (
-                      <button type="button" class="sbx-table-sort" onClick={() => activateSort(column)}>
+                      <button
+                        type="button"
+                        class="sbx-table-sort"
+                        onClick={() => activateSort(column)}
+                      >
                         {column.header}
-                        <span aria-hidden="true">{isSorted() ? (sort()?.direction === "asc" ? " ↑" : " ↓") : ""}</span>
+                        <span aria-hidden="true">
+                          {isSorted() ? (sort()?.direction === "asc" ? " ↑" : " ↓") : ""}
+                        </span>
                       </button>
                     ) : (
                       column.header
@@ -301,11 +344,19 @@ export function DataTable<T extends { id: string }>(props: DataTableProps<T>): J
         </thead>
         <tbody>
           {props.virtual && visibleRows().topPad > 0 ? (
-            <tr aria-hidden="true"><td style={{ height: `${visibleRows().topPad}px`, padding: "0", border: "0" }} colspan="99" /></tr>
+            <tr aria-hidden="true">
+              <td
+                style={{ height: `${visibleRows().topPad}px`, padding: "0", border: "0" }}
+                colspan="99"
+              />
+            </tr>
           ) : null}
           <For each={visibleRows().rows}>
             {(row) => (
-              <tr data-selected={selectedIds().includes(row.id) ? "true" : undefined} class="sbx-table-row">
+              <tr
+                data-selected={selectedIds().includes(row.id) ? "true" : undefined}
+                class="sbx-table-row"
+              >
                 {props.selectable ? (
                   <td class="sbx-table-select">
                     <input
@@ -319,7 +370,9 @@ export function DataTable<T extends { id: string }>(props: DataTableProps<T>): J
                 <For each={props.columns}>
                   {(column) => (
                     <td class={cx("sbx-table-td", column.align === "end" && "sbx-table-end")}>
-                      {column.render ? column.render(row) : String((row as Record<string, unknown>)[column.key] ?? "")}
+                      {column.render
+                        ? column.render(row)
+                        : String((row as Record<string, unknown>)[column.key] ?? "")}
                     </td>
                   )}
                 </For>
@@ -327,7 +380,12 @@ export function DataTable<T extends { id: string }>(props: DataTableProps<T>): J
             )}
           </For>
           {props.virtual && visibleRows().bottomPad > 0 ? (
-            <tr aria-hidden="true"><td style={{ height: `${visibleRows().bottomPad}px`, padding: "0", border: "0" }} colspan="99" /></tr>
+            <tr aria-hidden="true">
+              <td
+                style={{ height: `${visibleRows().bottomPad}px`, padding: "0", border: "0" }}
+                colspan="99"
+              />
+            </tr>
           ) : null}
         </tbody>
       </table>
@@ -355,7 +413,13 @@ export const DataSkeleton: Component<DataSkeletonProps> = (props) => {
   const rowCount = () => props.rows ?? 5;
   const colCount = () => props.columns ?? 3;
   return (
-    <div data-backend-part="data-skeleton" class={cx("sbx-skeleton", props.class)} role="status" aria-label="Loading" {...rest}>
+    <div
+      data-backend-part="data-skeleton"
+      class={cx("sbx-skeleton", props.class)}
+      role="status"
+      aria-label="Loading"
+      {...rest}
+    >
       <For each={Array.from({ length: rowCount() })}>
         {() => (
           <div class="sbx-skeleton-row" aria-hidden="true">
@@ -387,7 +451,16 @@ export type FilterBarProps = Omit<JSX.IntrinsicElements["div"], "ref"> & {
 
 /** Search input, filter controls slot, and result count in one bar. */
 export const FilterBar: Component<FilterBarProps> = (props) => {
-  const rest = omit(props, "class", "children", "query", "defaultQuery", "onQueryChange", "placeholder", "resultCount");
+  const rest = omit(
+    props,
+    "class",
+    "children",
+    "query",
+    "defaultQuery",
+    "onQueryChange",
+    "placeholder",
+    "resultCount",
+  );
   const [query, setQuery] = useControllableState<string>({
     prop: () => props.query,
     defaultProp: props.defaultQuery ?? "",
@@ -396,7 +469,9 @@ export const FilterBar: Component<FilterBarProps> = (props) => {
   });
   return (
     <div data-backend-part="filter-bar" class={cx("sbx-filter-bar", props.class)} {...rest}>
-      <label class="sbx-visually-hidden" for="sbx-filter-search">Search</label>
+      <label class="sbx-visually-hidden" for="sbx-filter-search">
+        Search
+      </label>
       <input
         id="sbx-filter-search"
         class="sbx-filter-search"
@@ -432,8 +507,18 @@ export const Pagination: Component<PaginationProps> = (props) => {
     if (next !== props.page) props.onPageChange(next);
   };
   return (
-    <nav data-backend-part="pagination" class={cx("sbx-pagination", props.class)} aria-label="Pagination" {...rest}>
-      <button type="button" class="sbx-page-btn" disabled={props.page <= 1} onClick={() => go(props.page - 1)}>
+    <nav
+      data-backend-part="pagination"
+      class={cx("sbx-pagination", props.class)}
+      aria-label="Pagination"
+      {...rest}
+    >
+      <button
+        type="button"
+        class="sbx-page-btn"
+        disabled={props.page <= 1}
+        onClick={() => go(props.page - 1)}
+      >
         Previous
       </button>
       <For each={pages()}>
@@ -479,7 +564,12 @@ export const BulkBar: Component<BulkBarProps> = (props) => {
   const rest = omit(props, "class", "children", "selectedCount", "onClear");
   return (
     <Show when={props.selectedCount > 0}>
-      <div data-backend-part="bulk-bar" class={cx("sbx-bulk-bar", props.class)} role="status" {...rest}>
+      <div
+        data-backend-part="bulk-bar"
+        class={cx("sbx-bulk-bar", props.class)}
+        role="status"
+        {...rest}
+      >
         <span class="sbx-bulk-count">{props.selectedCount} selected</span>
         <div class="sbx-bulk-actions">{props.children}</div>
         <button type="button" class="sbx-bulk-clear" onClick={() => props.onClear()}>

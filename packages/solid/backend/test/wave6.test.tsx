@@ -41,7 +41,10 @@ describe("column width and resizing", () => {
   test("non-resizable columns render no handle", async () => {
     const { findByText, queryByLabelText } = render(() => (
       <BackendTheme>
-        <DataTable rows={[{ id: "a", name: "Ada", spend: 10 }]} columns={[{ key: "name", header: "Name" }]} />
+        <DataTable
+          rows={[{ id: "a", name: "Ada", spend: 10 }]}
+          columns={[{ key: "name", header: "Name" }]}
+        />
       </BackendTheme>
     ));
     expect(await findByText("Ada")).toBeTruthy();
@@ -51,7 +54,11 @@ describe("column width and resizing", () => {
 
 describe("virtualized rendering", () => {
   test("renders only the visible window plus overscan", async () => {
-    const rows: Row[] = Array.from({ length: 100 }, (_, i) => ({ id: `r${i}`, name: `Row ${i}`, spend: i }));
+    const rows: Row[] = Array.from({ length: 100 }, (_, i) => ({
+      id: `r${i}`,
+      name: `Row ${i}`,
+      spend: i,
+    }));
     const { container, findByText } = render(() => (
       <BackendTheme>
         <DataTable
@@ -68,7 +75,11 @@ describe("virtualized rendering", () => {
   });
 
   test("without virtual, every row renders", async () => {
-    const rows: Row[] = Array.from({ length: 30 }, (_, i) => ({ id: `r${i}`, name: `Row ${i}`, spend: i }));
+    const rows: Row[] = Array.from({ length: 30 }, (_, i) => ({
+      id: `r${i}`,
+      name: `Row ${i}`,
+      spend: i,
+    }));
     const { container, findByText } = render(() => (
       <BackendTheme>
         <DataTable rows={rows} columns={[{ key: "name", header: "Name" }]} />

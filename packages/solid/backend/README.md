@@ -4,10 +4,10 @@ Compact SaaS backend UI for Solidix: app shell, density, and data patterns built
 
 ## Solid API mapping
 
-| Frosted / Radix idea | Backend (Solid) |
-| --- | --- |
-| `className` | `class` |
-| Theme `appearance` | Passed through to Frosted `Theme` via `BackendTheme` |
+| Frosted / Radix idea       | Backend (Solid)                                         |
+| -------------------------- | ------------------------------------------------------- |
+| `className`                | `class`                                                 |
+| Theme `appearance`         | Passed through to Frosted `Theme` via `BackendTheme`    |
 | Density prop per component | One `density` on `BackendTheme`, inherited by all parts |
 
 Guide: `docs/backend-ui-design.md`. Gallery demo: `backend` route when wired.
@@ -23,7 +23,15 @@ Copy `src/tokens.css` and `src/backend.css` from this package into your project 
 ## Quick start
 
 ```tsx
-import { AppShell, BackendTheme, DataRow, Main, PageHeader, Sidebar, TopBar } from "@solidix/backend";
+import {
+  AppShell,
+  BackendTheme,
+  DataRow,
+  Main,
+  PageHeader,
+  Sidebar,
+  TopBar,
+} from "@solidix/backend";
 
 export function App() {
   return (
@@ -33,7 +41,15 @@ export function App() {
         <Main>
           <TopBar>Acme Console</TopBar>
           <PageHeader title="Customers" description="All accounts" />
-          <DataRow record={{ id: "c1", primary: "Ada Lovelace", secondary: "ada@example.com", value: "$1,240", status: "Active" }} />
+          <DataRow
+            record={{
+              id: "c1",
+              primary: "Ada Lovelace",
+              secondary: "ada@example.com",
+              value: "$1,240",
+              status: "Active",
+            }}
+          />
         </Main>
       </AppShell>
     </BackendTheme>

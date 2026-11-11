@@ -36,7 +36,13 @@ const BackendDemo = () => {
                   { id: "billing", label: "Billing" },
                 ],
               },
-              { label: "Workspace", items: [{ id: "editor", label: "Editor" }, { id: "settings", label: "Settings" }] },
+              {
+                label: "Workspace",
+                items: [
+                  { id: "editor", label: "Editor" },
+                  { id: "settings", label: "Settings" },
+                ],
+              },
             ]}
             activeId={page()}
             onActiveChange={setPage}
@@ -66,21 +72,52 @@ const BackendDemo = () => {
             <>
               <Backend.PageHeader title="Overview" description="Workspace health at a glance." />
               <Backend.StatGrid>
-                <Backend.Stat label="Monthly revenue" value="$48,200" delta="+12% vs last month" deltaDirection="up" />
-                <Backend.Stat label="Active customers" value="1,284" delta="+86 this week" deltaDirection="up" />
+                <Backend.Stat
+                  label="Monthly revenue"
+                  value="$48,200"
+                  delta="+12% vs last month"
+                  deltaDirection="up"
+                />
+                <Backend.Stat
+                  label="Active customers"
+                  value="1,284"
+                  delta="+86 this week"
+                  deltaDirection="up"
+                />
                 <Backend.Stat label="Churn" value="2.1%" delta="+0.3 pts" deltaDirection="down" />
-                <Backend.Stat label="Open tickets" value="17" delta="-4 today" deltaDirection="up" />
+                <Backend.Stat
+                  label="Open tickets"
+                  value="17"
+                  delta="-4 today"
+                  deltaDirection="up"
+                />
               </Backend.StatGrid>
-              <Backend.SaveBar visible={dirty()} onSave={() => setDirty(false)} onDiscard={() => setDirty(false)} />
+              <Backend.SaveBar
+                visible={dirty()}
+                onSave={() => setDirty(false)}
+                onDiscard={() => setDirty(false)}
+              />
               {!dirty() ? (
-                <Backend.EmptyState title="All caught up" description="No pending changes. Press Cmd+K to jump to Customers or Settings." />
+                <Backend.EmptyState
+                  title="All caught up"
+                  description="No pending changes. Press Cmd+K to jump to Customers or Settings."
+                />
               ) : null}
             </>
           ) : page() === "editor" ? (
             <>
-              <Backend.PageHeader title="Editor" description="Outline, canvas, and inspector in one shell. The inspector region overlays on narrow windows." />
+              <Backend.PageHeader
+                title="Editor"
+                description="Outline, canvas, and inspector in one shell. The inspector region overlays on narrow windows."
+              />
               <div style={{ display: "flex", gap: "0", "min-height": "260px" }}>
-                <div style={{ width: "200px", flex: "none", "border-right": "1px solid var(--solidix-backend-line)" }}>
+                <div
+                  style={{
+                    width: "200px",
+                    flex: "none",
+                    "border-right": "1px solid var(--solidix-backend-line)",
+                  }}
+                >
                   <Backend.DataList
                     records={[
                       { id: "o1", primary: "Introduction", secondary: "Section 1" },
@@ -92,14 +129,20 @@ const BackendDemo = () => {
                 </div>
                 <div style={{ flex: "1 1 auto", padding: "20px" }}>
                   <strong>Getting started</strong>
-                  <p>Canvas area. Regions scroll independently, so the outline and inspector keep their place while you edit.</p>
+                  <p>
+                    Canvas area. Regions scroll independently, so the outline and inspector keep
+                    their place while you edit.
+                  </p>
                   <Backend.DataSkeleton rows={2} columns={2} />
                 </div>
               </div>
             </>
           ) : page() === "settings" ? (
             <>
-              <Backend.PageHeader title="Settings" description="Workspace settings in one rhythm." />
+              <Backend.PageHeader
+                title="Settings"
+                description="Workspace settings in one rhythm."
+              />
               <Backend.SettingsLayout
                 sections={[
                   { id: "profile", label: "Profile", description: "Name and public identity." },
@@ -131,7 +174,10 @@ const BackendDemo = () => {
               ) : (
                 <Backend.FilterBar
                   query={query()}
-                  onQueryChange={(q) => { setQuery(q); setCurrentPage(1); }}
+                  onQueryChange={(q) => {
+                    setQuery(q);
+                    setCurrentPage(1);
+                  }}
                   placeholder="Search customers"
                   resultCount={`${filtered().length} results`}
                 />
@@ -143,9 +189,21 @@ const BackendDemo = () => {
                 onSelectionChange={setSelected}
                 rows={pageRows()}
                 columns={[
-                  { key: "name", header: "Name", sortable: true, sortValue: (r: Customer) => r.name },
+                  {
+                    key: "name",
+                    header: "Name",
+                    sortable: true,
+                    sortValue: (r: Customer) => r.name,
+                  },
                   { key: "email", header: "Email" },
-                  { key: "spend", header: "Spend", align: "end", sortable: true, sortValue: (r: Customer) => r.spend, render: (r: Customer) => `$${r.spend.toLocaleString()}` },
+                  {
+                    key: "spend",
+                    header: "Spend",
+                    align: "end",
+                    sortable: true,
+                    sortValue: (r: Customer) => r.spend,
+                    render: (r: Customer) => `$${r.spend.toLocaleString()}`,
+                  },
                   { key: "status", header: "Status" },
                 ]}
                 empty={<p>No customers match your filters.</p>}
@@ -161,8 +219,12 @@ const BackendDemo = () => {
         {page() === "editor" ? (
           <Backend.Inspector>
             <strong>Inspector</strong>
-            <Backend.FieldRow label="Title" htmlFor="ed-title"><input id="ed-title" value="Getting started" /></Backend.FieldRow>
-            <Backend.FieldRow label="Slug" htmlFor="ed-slug" hint="URL path for this section."><input id="ed-slug" value="getting-started" /></Backend.FieldRow>
+            <Backend.FieldRow label="Title" htmlFor="ed-title">
+              <input id="ed-title" value="Getting started" />
+            </Backend.FieldRow>
+            <Backend.FieldRow label="Slug" htmlFor="ed-slug" hint="URL path for this section.">
+              <input id="ed-slug" value="getting-started" />
+            </Backend.FieldRow>
           </Backend.Inspector>
         ) : null}
       </Backend.AppShell>

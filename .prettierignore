@@ -4,3 +4,4 @@
 # `pnpm --filter @solidix/motion gen:springs` instead of editing.
 packages/solid/funnel/src/tokens.css
 packages/solid/motion/src/springs.css
+packages/solid/backend/src/tokens.css

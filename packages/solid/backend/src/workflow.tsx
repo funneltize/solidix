@@ -103,7 +103,9 @@ export const EmptyState: Component<EmptyStateProps> = (props) => {
             <FrostedEmptyState.Description>{props.description}</FrostedEmptyState.Description>
           ) : null}
         </FrostedEmptyState.Header>
-        {props.action ? <FrostedEmptyState.Actions>{props.action}</FrostedEmptyState.Actions> : null}
+        {props.action ? (
+          <FrostedEmptyState.Actions>{props.action}</FrostedEmptyState.Actions>
+        ) : null}
       </FrostedEmptyState.Root>
     </div>
   );
@@ -225,10 +227,24 @@ export type SaveBarProps = Omit<JSX.IntrinsicElements["div"], "ref"> & {
 
 /** Sticky dirty-state bar with save and optional discard actions. */
 export const SaveBar: Component<SaveBarProps> = (props) => {
-  const rest = omit(props, "class", "children", "visible", "message", "onSave", "onDiscard", "saveLabel");
+  const rest = omit(
+    props,
+    "class",
+    "children",
+    "visible",
+    "message",
+    "onSave",
+    "onDiscard",
+    "saveLabel",
+  );
   return (
     <Show when={props.visible}>
-      <div data-backend-part="save-bar" class={cx("sbx-save-bar", props.class)} role="status" {...rest}>
+      <div
+        data-backend-part="save-bar"
+        class={cx("sbx-save-bar", props.class)}
+        role="status"
+        {...rest}
+      >
         <span class="sbx-save-message">{props.message ?? "Unsaved changes"}</span>
         <div class="sbx-save-actions">
           {props.children}

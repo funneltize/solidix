@@ -315,12 +315,12 @@ Frosted leaves as repeated app composition.
 
 ### Ships in backend (new)
 
-| Group    | Components                                                   | Job |
-| -------- | ------------------------------------------------------------ | --- |
-| Shell    | `BackendTheme`, `AppShell` (Sidebar, TopBar, Main, Inspector), `PageHeader`, `NavList` (grouped sidebar nav with badges) | Frame, navigation, page chrome |
-| Data     | `DataTable` (sort, selection, pagination slots), `DataList`, `FilterBar`, `Pagination`, `BulkBar` (appears on selection) | Dense, scannable records |
-| Workflow | `CommandMenu` (Cmd+K), `EmptyState`, `Stat` plus `StatGrid`, `Confirm` (destructive naming pattern), `SaveBar` (dirty-state bar) | Recurring SaaS tasks |
-| Settings | `SettingsLayout` (section nav plus panel), `FieldRow` (label, control, hint, error in one row rhythm) | Settings-heavy products |
+| Group    | Components                                                                                                                       | Job                            |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| Shell    | `BackendTheme`, `AppShell` (Sidebar, TopBar, Main, Inspector), `PageHeader`, `NavList` (grouped sidebar nav with badges)         | Frame, navigation, page chrome |
+| Data     | `DataTable` (sort, selection, pagination slots), `DataList`, `FilterBar`, `Pagination`, `BulkBar` (appears on selection)         | Dense, scannable records       |
+| Workflow | `CommandMenu` (Cmd+K), `EmptyState`, `Stat` plus `StatGrid`, `Confirm` (destructive naming pattern), `SaveBar` (dirty-state bar) | Recurring SaaS tasks           |
+| Settings | `SettingsLayout` (section nav plus panel), `FieldRow` (label, control, hint, error in one row rhythm)                            | Settings-heavy products        |
 
 ### Composed from Frosted (never reimplemented)
 
@@ -439,16 +439,16 @@ page chrome per page (shell-first rule plus PageHeader).
 
 ## 12. Anti-patterns
 
-| Never | Why | Do instead |
-| ----- | --- | ---------- |
-| Repaint a Frosted component inside backend | Two sources of truth for one control | Compose it; fix gaps in Frosted |
-| Hardcode a hex, px size, or duration | Breaks theming, density, and dark mode | Add or alias a token role |
-| Wrap a table in a floating card | Destroys row rhythm and wastes frame | Edge-to-edge rows with dividers |
-| Per-page shell or header markup | Every page drifts; agents cannot navigate | AppShell plus PageHeader slots |
-| Twenty-prop mega component | Unguessable for humans and agents | Compound parts with context |
-| Fetch or route inside a component | Couples library to app policy | Data in, events out |
-| Placeholder-only form labels | Fails accessibility and completion | Static labels (Frosted Field) |
-| Density prop on every component | Subtrees drift out of rhythm | BackendTheme density, inherited |
+| Never                                      | Why                                       | Do instead                      |
+| ------------------------------------------ | ----------------------------------------- | ------------------------------- |
+| Repaint a Frosted component inside backend | Two sources of truth for one control      | Compose it; fix gaps in Frosted |
+| Hardcode a hex, px size, or duration       | Breaks theming, density, and dark mode    | Add or alias a token role       |
+| Wrap a table in a floating card            | Destroys row rhythm and wastes frame      | Edge-to-edge rows with dividers |
+| Per-page shell or header markup            | Every page drifts; agents cannot navigate | AppShell plus PageHeader slots  |
+| Twenty-prop mega component                 | Unguessable for humans and agents         | Compound parts with context     |
+| Fetch or route inside a component          | Couples library to app policy             | Data in, events out             |
+| Placeholder-only form labels               | Fails accessibility and completion        | Static labels (Frosted Field)   |
+| Density prop on every component            | Subtrees drift out of rhythm              | BackendTheme density, inherited |
 
 ## 13. Phased waves
 

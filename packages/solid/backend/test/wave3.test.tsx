@@ -1,7 +1,15 @@
 import { fireEvent, render, screen } from "@solidjs/testing-library";
 import { createSignal, flush } from "solid-js";
 import { beforeEach, describe, expect, test, vi } from "vitest";
-import { BackendTheme, CommandMenu, Confirm, EmptyState, SaveBar, Stat, StatGrid } from "../src/index";
+import {
+  BackendTheme,
+  CommandMenu,
+  Confirm,
+  EmptyState,
+  SaveBar,
+  Stat,
+  StatGrid,
+} from "../src/index";
 
 // Frosted `Theme` reads `window.matchMedia`, which jsdom does not provide.
 beforeEach(() => {
@@ -24,7 +32,13 @@ describe("CommandMenu", () => {
       <BackendTheme>
         <CommandMenu
           groups={[
-            { label: "Pages", items: [{ value: "customers", label: "Customers" }, { value: "billing", label: "Billing" }] },
+            {
+              label: "Pages",
+              items: [
+                { value: "customers", label: "Customers" },
+                { value: "billing", label: "Billing" },
+              ],
+            },
           ]}
           onSelect={onSelect}
           placeholder="Search commands"
@@ -47,7 +61,11 @@ describe("CommandMenu", () => {
   test("shortcut=false disables the global shortcut", async () => {
     const { queryByPlaceholderText } = render(() => (
       <BackendTheme>
-        <CommandMenu shortcut={false} groups={[{ label: "Pages", items: [{ value: "x", label: "Xray" }] }]} placeholder="Search commands" />
+        <CommandMenu
+          shortcut={false}
+          groups={[{ label: "Pages", items: [{ value: "x", label: "Xray" }] }]}
+          placeholder="Search commands"
+        />
       </BackendTheme>
     ));
     fireEvent.keyDown(document, { key: "k", metaKey: true });
@@ -60,7 +78,11 @@ describe("EmptyState, Stat, SaveBar", () => {
   test("EmptyState composes Frosted parts with an action slot", async () => {
     const { findByText, container } = render(() => (
       <BackendTheme>
-        <EmptyState title="No customers yet" description="Import or invite your first customer." action={<button type="button">Add customer</button>} />
+        <EmptyState
+          title="No customers yet"
+          description="Import or invite your first customer."
+          action={<button type="button">Add customer</button>}
+        />
       </BackendTheme>
     ));
     expect(await findByText("No customers yet")).toBeTruthy();
@@ -75,10 +97,22 @@ describe("EmptyState, Stat, SaveBar", () => {
     const { findByText, queryByText, container } = render(() => (
       <BackendTheme>
         <StatGrid>
-          <Stat label="Monthly revenue" value="$48,200" delta="+12% vs last month" deltaDirection="up" />
+          <Stat
+            label="Monthly revenue"
+            value="$48,200"
+            delta="+12% vs last month"
+            deltaDirection="up"
+          />
           <Stat label="Churn" value="2.1%" delta="+0.3 pts" deltaDirection="down" />
         </StatGrid>
-        <SaveBar visible={dirty()} onSave={() => { onSave(); setDirty(false); }} onDiscard={onDiscard} />
+        <SaveBar
+          visible={dirty()}
+          onSave={() => {
+            onSave();
+            setDirty(false);
+          }}
+          onDiscard={onDiscard}
+        />
       </BackendTheme>
     ));
     expect(await findByText("$48,200")).toBeTruthy();
@@ -96,7 +130,9 @@ describe("Confirm", () => {
     const [open, setOpen] = createSignal(false);
     const { findByText } = render(() => (
       <BackendTheme>
-        <button type="button" onClick={() => setOpen(true)}>Delete workspace</button>
+        <button type="button" onClick={() => setOpen(true)}>
+          Delete workspace
+        </button>
         <Confirm
           open={open()}
           onOpenChange={setOpen}

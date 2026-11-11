@@ -19,7 +19,13 @@ describe("NavList", () => {
       <BackendTheme>
         <NavList
           groups={[
-            { label: "General", items: [{ id: "overview", label: "Overview" }, { id: "customers", label: "Customers", badge: 12 }] },
+            {
+              label: "General",
+              items: [
+                { id: "overview", label: "Overview" },
+                { id: "customers", label: "Customers", badge: 12 },
+              ],
+            },
             { label: "Workspace", items: [{ id: "settings", label: "Settings" }] },
           ]}
           defaultActiveId="overview"

@@ -17,8 +17,16 @@ export type BackendPropDef = {
 
 /** Prop definitions for `BackendTheme`. */
 export const backendThemePropDefs = {
-  density: { type: '"compact" | "comfortable"', values: ["compact", "comfortable"], default: "compact", description: "Density inherited by every backend part." },
-  appearance: { type: '"inherit" | "light" | "dark"', description: "Passed through to Frosted Theme." },
+  density: {
+    type: '"compact" | "comfortable"',
+    values: ["compact", "comfortable"],
+    default: "compact",
+    description: "Density inherited by every backend part.",
+  },
+  appearance: {
+    type: '"inherit" | "light" | "dark"',
+    description: "Passed through to Frosted Theme.",
+  },
 } satisfies Record<string, BackendPropDef>;
 
 /** Prop definitions for `NavList`. */
@@ -27,16 +35,32 @@ export const navListPropDefs = {
   items: { type: "NavItem[]", description: "Ungrouped entries, shorthand for one group." },
   activeId: { type: "string", description: "Controlled active item id." },
   defaultActiveId: { type: "string", description: "Initial active item id for uncontrolled use." },
-  collapsed: { type: "boolean", default: false, description: "Icon-rail mode: labels hide, names remain." },
+  collapsed: {
+    type: "boolean",
+    default: false,
+    description: "Icon-rail mode: labels hide, names remain.",
+  },
 } satisfies Record<string, BackendPropDef>;
 
 /** Prop definitions for `DataTable`. */
 export const dataTablePropDefs = {
   columns: { type: "DataColumn[]", description: "Column definitions in display order." },
   rows: { type: "Row[]", description: "Rows to present; the app owns fetching." },
-  selectable: { type: "boolean", default: false, description: "Row checkboxes keyed by stable id." },
-  sortMode: { type: '"client" | "server"', values: ["client", "server"], default: "client", description: "Server mode reports sort without reordering rows." },
-  virtual: { type: "{ rowHeight?: number; height?: number; overscan?: number }", description: "Opt-in windowing for large row sets." },
+  selectable: {
+    type: "boolean",
+    default: false,
+    description: "Row checkboxes keyed by stable id.",
+  },
+  sortMode: {
+    type: '"client" | "server"',
+    values: ["client", "server"],
+    default: "client",
+    description: "Server mode reports sort without reordering rows.",
+  },
+  virtual: {
+    type: "{ rowHeight?: number; height?: number; overscan?: number }",
+    description: "Opt-in windowing for large row sets.",
+  },
   caption: { type: "string", description: "Accessible table caption." },
 } satisfies Record<string, BackendPropDef>;
 
@@ -44,7 +68,11 @@ export const dataTablePropDefs = {
 export const filterBarPropDefs = {
   query: { type: "string", description: "Controlled search query." },
   defaultQuery: { type: "string", default: "", description: "Initial query for uncontrolled use." },
-  placeholder: { type: "string", default: "Search", description: "Search input placeholder, never its label." },
+  placeholder: {
+    type: "string",
+    default: "Search",
+    description: "Search input placeholder, never its label.",
+  },
   resultCount: { type: "string", description: "Result count text after the filters." },
 } satisfies Record<string, BackendPropDef>;
 
@@ -58,7 +86,10 @@ export const paginationPropDefs = {
 export const settingsLayoutPropDefs = {
   sections: { type: "SettingsSection[]", description: "Sections in display order." },
   activeId: { type: "string", description: "Controlled active section id." },
-  defaultActiveId: { type: "string", description: "Initial section; defaults to the first section." },
+  defaultActiveId: {
+    type: "string",
+    description: "Initial section; defaults to the first section.",
+  },
 } satisfies Record<string, BackendPropDef>;
 
 /** Prop definitions for `SaveBar`. */

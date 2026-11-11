@@ -43,13 +43,18 @@ describe("theme and density matrix", () => {
         expect(await findByText("Ada Lovelace")).toBeTruthy();
         const root = container.querySelector("[data-backend-root]");
         expect(root?.getAttribute("data-density")).toBe(density);
-        expect(root?.getAttribute("data-backend-theme")).toBe(appearance === "dark" ? "dark" : null);
+        expect(root?.getAttribute("data-backend-theme")).toBe(
+          appearance === "dark" ? "dark" : null,
+        );
       });
     }
   }
 
   test("comfortable overrides only density tokens, never colors", () => {
-    const css = readFileSync(workspaceFile("packages", "solid", "backend", "src", "tokens.css"), "utf8");
+    const css = readFileSync(
+      workspaceFile("packages", "solid", "backend", "src", "tokens.css"),
+      "utf8",
+    );
     const comfortable = css.slice(css.indexOf('[data-density="comfortable"]'));
     expect(comfortable).toContain("--solidix-backend-row-height: 48px");
     expect(comfortable).not.toContain("--solidix-backend-ink:");
@@ -92,7 +97,12 @@ describe("keyboard and assistive pass", () => {
           selectable
           rows={[{ id: "c1", name: "Ada", spend: 10 }]}
           columns={[
-            { key: "name", header: "Name", sortable: true, sortValue: (r: { name: string }) => r.name },
+            {
+              key: "name",
+              header: "Name",
+              sortable: true,
+              sortValue: (r: { name: string }) => r.name,
+            },
             { key: "spend", header: "Spend" },
           ]}
         />
@@ -108,7 +118,10 @@ describe("keyboard and assistive pass", () => {
   });
 
   test("focus and reduced-motion guards ship in the token layer", () => {
-    const css = readFileSync(workspaceFile("packages", "solid", "backend", "src", "tokens.css"), "utf8");
+    const css = readFileSync(
+      workspaceFile("packages", "solid", "backend", "src", "tokens.css"),
+      "utf8",
+    );
     expect(css).toContain("[data-backend-root] :focus-visible");
     expect(css).toContain("prefers-reduced-motion");
   });
@@ -118,7 +131,14 @@ describe("keyboard and assistive pass", () => {
       <Backend.BackendTheme>
         <Backend.DataTable
           rows={[{ id: "c1", name: "Ada" }]}
-          columns={[{ key: "name", header: "Name", sortable: true, sortValue: (r: { name: string }) => r.name }]}
+          columns={[
+            {
+              key: "name",
+              header: "Name",
+              sortable: true,
+              sortValue: (r: { name: string }) => r.name,
+            },
+          ]}
           defaultSort={{ key: "name", direction: "asc" }}
         />
       </Backend.BackendTheme>

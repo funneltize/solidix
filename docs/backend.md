@@ -12,7 +12,15 @@ Render `BackendTheme` once, then the shell. Regions scroll
 independently; content never invents its own chrome.
 
 ```tsx
-import { AppShell, BackendTheme, Main, NavList, PageHeader, Sidebar, TopBar } from "@solidix/backend";
+import {
+  AppShell,
+  BackendTheme,
+  Main,
+  NavList,
+  PageHeader,
+  Sidebar,
+  TopBar,
+} from "@solidix/backend";
 
 <BackendTheme density="compact">
   <AppShell>
@@ -29,7 +37,7 @@ import { AppShell, BackendTheme, Main, NavList, PageHeader, Sidebar, TopBar } fr
       {/* one content type per page */}
     </Main>
   </AppShell>
-</BackendTheme>
+</BackendTheme>;
 ```
 
 Copy `tokens.css` and `backend.css` from the package into your

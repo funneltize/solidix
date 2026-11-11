@@ -21,7 +21,14 @@ const customers: Customer[] = [
 const columns = [
   { key: "name", header: "Name", sortable: true, sortValue: (r: Customer) => r.name },
   { key: "email", header: "Email" },
-  { key: "spend", header: "Spend", align: "end" as const, sortable: true, sortValue: (r: Customer) => r.spend, render: (r: Customer) => `$${r.spend}` },
+  {
+    key: "spend",
+    header: "Spend",
+    align: "end" as const,
+    sortable: true,
+    sortValue: (r: Customer) => r.spend,
+    render: (r: Customer) => `$${r.spend}`,
+  },
   { key: "status", header: "Status" },
 ];
 
@@ -36,7 +43,9 @@ describe("DataTable", () => {
     fireEvent.click(await findByText("Name"));
     flush();
     expect(onSortChange).toHaveBeenCalledWith({ key: "name", direction: "asc" });
-    const cells = [...container.querySelectorAll("tbody tr td:nth-child(1)")].map((c) => c.textContent);
+    const cells = [...container.querySelectorAll("tbody tr td:nth-child(1)")].map(
+      (c) => c.textContent,
+    );
     expect(cells).toEqual(["Ada Lovelace", "Alan Turing", "Grace Hopper"]);
     const nameHeader = (await findByText("Name")).closest("th");
     expect(nameHeader?.getAttribute("aria-sort")).toBe("ascending");
@@ -49,7 +58,13 @@ describe("DataTable", () => {
     const [selected, setSelected] = createSignal<string[]>([]);
     const { findByLabelText, findByText } = render(() => (
       <BackendTheme>
-        <DataTable columns={columns} rows={customers} selectable selectedIds={selected()} onSelectionChange={setSelected} />
+        <DataTable
+          columns={columns}
+          rows={customers}
+          selectable
+          selectedIds={selected()}
+          onSelectionChange={setSelected}
+        />
         <span>{selected().length} chosen</span>
       </BackendTheme>
     ));
@@ -77,7 +92,11 @@ describe("FilterBar, Pagination, BulkBar, DataList", () => {
     const onQueryChange = vi.fn();
     const { findByPlaceholderText, findByText } = render(() => (
       <BackendTheme>
-        <FilterBar onQueryChange={onQueryChange} resultCount="3 results" placeholder="Search customers" />
+        <FilterBar
+          onQueryChange={onQueryChange}
+          resultCount="3 results"
+          placeholder="Search customers"
+        />
       </BackendTheme>
     ));
     const input = await findByPlaceholderText("Search customers");
@@ -121,7 +140,9 @@ describe("FilterBar, Pagination, BulkBar, DataList", () => {
     fireEvent.click(await findByText("Clear"));
     flush();
     expect(onClear).toHaveBeenCalledTimes(1);
-    expect(container.querySelector('[data-backend-part="data-row"]')?.getAttribute("data-selected")).toBe("true");
+    expect(
+      container.querySelector('[data-backend-part="data-row"]')?.getAttribute("data-selected"),
+    ).toBe("true");
     const emptyRender = render(() => (
       <BackendTheme>
         <BulkBar selectedCount={0} onClear={onClear} />

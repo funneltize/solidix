@@ -43,7 +43,13 @@ export const BackendTheme: Component<BackendThemeProps> = (props) => {
   const themeProps = omit(props, "density", "children", "class");
   return (
     <Theme {...themeProps}>
-      <BackendContext value={{ get density() { return density(); } }}>
+      <BackendContext
+        value={{
+          get density() {
+            return density();
+          },
+        }}
+      >
         <div
           data-backend-root=""
           data-backend-theme={props.appearance === "dark" ? "dark" : undefined}
