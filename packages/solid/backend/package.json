@@ -1,0 +1,52 @@
+{
+  "name": "@solidix/backend",
+  "version": "0.2.0",
+  "description": "Compact SaaS backend UI for Solidix: app shell, density, and data patterns built on @solidix/frosted.",
+  "homepage": "https://github.com/funneltize/solidix",
+  "bugs": {
+    "url": "https://github.com/funneltize/solidix/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funneltize/solidix.git",
+    "directory": "packages/solid/backend"
+  },
+  "source": "./src/index.ts",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tokens.css": "./src/tokens.css",
+    "./backend.css": "./src/backend.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "lint": "oxlint --max-warnings 0 src test",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "solidix-build && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "gen:tokens": "node scripts/gen-tokens.mjs",
+    "smoke:staged": "node scripts/smoke-staged.mjs"
+  },
+  "dependencies": {
+    "@solidix/frosted": "workspace:*",
+    "@solidix/primitive": "workspace:*",
+    "@solidix/use-controllable-state": "workspace:*"
+  },
+  "devDependencies": {
+    "@repo/builder": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@solidjs/testing-library": "1.0.0-rc.2",
+    "@solidjs/web": "2.0.0-rc.21",
+    "@testing-library/user-event": "14.6.8",
+    "solid-js": "2.0.0-rc.21"
+  },
+  "peerDependencies": {
+    "@solidjs/web": ">=2.0.0-rc.18 <2.1.0",
+    "solid-js": ">=2.0.0-rc.18 <2.1.0"
+  }
+}

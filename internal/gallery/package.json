@@ -21,6 +21,7 @@
     "@solidix/announce": "workspace:*",
     "@solidix/aspect-ratio": "workspace:*",
     "@solidix/avatar": "workspace:*",
+    "@solidix/backend": "workspace:*",
     "@solidix/charts": "workspace:*",
     "@solidix/checkbox": "workspace:*",
     "@solidix/collapsible": "workspace:*",

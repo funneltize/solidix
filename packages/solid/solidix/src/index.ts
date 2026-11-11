@@ -6,6 +6,8 @@ export * as AlertDialog from "@solidix/alert-dialog";
 export * as AspectRatio from "@solidix/aspect-ratio";
 /** Avatar primitive (port of @radix-ui/react-avatar). */
 export * as Avatar from "@solidix/avatar";
+/** Compact SaaS backend UI: app shell, density, and data patterns built on Frosted. */
+export * as Backend from "@solidix/backend";
 /** Charts package (chart primitives: bar, line, area, pie, scatter, sparkline, gauge, radar, radial, candlestick, heatmap, funnel, sankey, brush, zoom). */
 export * as Charts from "@solidix/charts";
 /** Calendar primitive (Solidix-native; no Radix equivalent). */

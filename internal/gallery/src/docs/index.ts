@@ -7,6 +7,7 @@ import { doc as alertDialog } from "./alert-dialog";
 import { doc as announce } from "./announce";
 import { doc as aspectRatio } from "./aspect-ratio";
 import { doc as avatar } from "./avatar";
+import { doc as backend } from "./backend";
 import { doc as charts } from "./charts";
 import { doc as checkbox } from "./checkbox";
 import { doc as collapsible } from "./collapsible";
@@ -47,6 +48,7 @@ export const docs: Record<string, PrimitiveDoc> = {
   announce: announce,
   "aspect-ratio": aspectRatio,
   avatar: avatar,
+  backend: backend,
   charts: charts,
   checkbox: checkbox,
   collapsible: collapsible,

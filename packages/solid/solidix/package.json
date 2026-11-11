@@ -1,6 +1,6 @@
 {
   "name": "solidix",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Umbrella package re-exporting all Solidix primitives (port of radix-ui).",
   "homepage": "https://github.com/funneltize/solidix",
   "bugs": {
@@ -27,6 +27,7 @@
     "@solidix/alert-dialog": "workspace:*",
     "@solidix/aspect-ratio": "workspace:*",
     "@solidix/avatar": "workspace:*",
+    "@solidix/backend": "workspace:*",
     "@solidix/calendar": "workspace:*",
     "@solidix/charts": "workspace:*",
     "@solidix/checkbox": "workspace:*",

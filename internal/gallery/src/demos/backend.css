@@ -1,0 +1,14 @@
+@import "@solidix/frosted/styles.css";
+@import "@solidix/backend/backend.css";
+
+/* Backend Wave 0 reference: shell plus dense data rows inside the docs stage. */
+.demo-stage [data-backend-root] {
+  min-height: 420px;
+  border: 1px solid var(--solidix-backend-line);
+  border-radius: var(--solidix-backend-radius-card);
+  overflow: hidden;
+}
+
+.demo-stage .sbx-shell {
+  min-height: 420px;
+}

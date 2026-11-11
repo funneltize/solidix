@@ -1,5 +1,6 @@
 import animation from "../../../docs/animation.md?raw";
 import appShell from "../../../docs/app-shell.md?raw";
+import backend from "../../../docs/backend.md?raw";
 import frostedPrinciples from "../../../docs/frosted-principles.md?raw";
 import charts from "../../../docs/charts.md?raw";
 import composition from "../../../docs/composition.md?raw";
@@ -17,6 +18,12 @@ export type GuideEntry = {
 };
 
 export const guides: GuideEntry[] = [
+  {
+    slug: "backend",
+    title: "Backend UI",
+    description: "Frame-first SaaS shell, dense data pages, settings, and workflow patterns.",
+    markdown: backend,
+  },
   {
     slug: "frosted-principles",
     title: "Frosted principles",

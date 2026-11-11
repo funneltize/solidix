@@ -23,6 +23,9 @@ import AspectRatioCss from "./aspect-ratio.css?url";
 import AvatarDemo from "./avatar";
 import AvatarDemoCode from "./avatar?raw";
 import AvatarCss from "./avatar.css?url";
+import BackendDemo from "./backend";
+import BackendDemoCode from "./backend?raw";
+import BackendCss from "./backend.css?url";
 import ChartsDemo from "./charts";
 import ChartsDemoCode from "./charts?raw";
 import ChartsCss from "./charts.css?url";
@@ -158,6 +161,13 @@ export const demos: DemoEntry[] = [
     code: AspectRatioDemoCode,
   },
   { slug: "avatar", title: "Avatar", component: AvatarDemo, css: AvatarCss, code: AvatarDemoCode },
+  {
+    slug: "backend",
+    title: "Backend",
+    component: BackendDemo,
+    css: BackendCss,
+    code: BackendDemoCode,
+  },
   { slug: "charts", title: "Charts", component: ChartsDemo, css: ChartsCss, code: ChartsDemoCode },
   {
     slug: "checkbox",

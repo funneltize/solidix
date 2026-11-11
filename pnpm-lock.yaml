@@ -74,6 +74,9 @@ importers:
       '@solidix/avatar':
         specifier: workspace:*
         version: link:../../packages/solid/avatar
+      '@solidix/backend':
+        specifier: workspace:*
+        version: link:../../packages/solid/backend
       '@solidix/charts':
         specifier: workspace:*
         version: link:../../packages/solid/charts
@@ -444,6 +447,37 @@ importers:
       '@solidix/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
+    devDependencies:
+      '@repo/builder':
+        specifier: workspace:*
+        version: link:../../../internal/builder
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../../internal/typescript-config
+      '@solidjs/testing-library':
+        specifier: 1.0.0-rc.2
+        version: 1.0.0-rc.2(@solidjs/web@2.0.0-rc.21(solid-js@2.0.0-rc.21))(solid-js@2.0.0-rc.21)
+      '@solidjs/web':
+        specifier: 2.0.0-rc.21
+        version: 2.0.0-rc.21(solid-js@2.0.0-rc.21)
+      '@testing-library/user-event':
+        specifier: 14.6.8
+        version: 14.6.8(@testing-library/dom@10.4.2)
+      solid-js:
+        specifier: 2.0.0-rc.21
+        version: 2.0.0-rc.21
+
+  packages/solid/backend:
+    dependencies:
+      '@solidix/frosted':
+        specifier: workspace:*
+        version: link:../frosted
+      '@solidix/primitive':
+        specifier: workspace:*
+        version: link:../primitive
+      '@solidix/use-controllable-state':
+        specifier: workspace:*
+        version: link:../use-controllable-state
     devDependencies:
       '@repo/builder':
         specifier: workspace:*
@@ -2129,6 +2163,9 @@ importers:
       '@solidix/avatar':
         specifier: workspace:*
         version: link:../avatar
+      '@solidix/backend':
+        specifier: workspace:*
+        version: link:../backend
       '@solidix/calendar':
         specifier: workspace:*
         version: link:../calendar
