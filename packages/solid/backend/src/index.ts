@@ -12,7 +12,7 @@ export {
 export type { BackendPropDef } from "./props";
 export { backendComponents } from "./components";
 export type { BackendComponentInfo } from "./components";
-export { BackendTheme, useBackend } from "./theme";
+export { BackendTheme, BackendTheme as Root, useBackend } from "./theme";
 export type { BackendContextValue, BackendDensity, BackendThemeProps } from "./theme";
 export {
   AppShell,

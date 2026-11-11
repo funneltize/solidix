@@ -6,6 +6,7 @@ const NAMESPACES = [
   "AlertDialog",
   "AspectRatio",
   "Avatar",
+  "Backend",
   "Calendar",
   "Charts",
   "Checkbox",

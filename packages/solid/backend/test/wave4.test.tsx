@@ -153,7 +153,8 @@ describe("public surface completeness", () => {
   test("every runtime export is in the machine-readable index", () => {
     const indexed = new Set(Backend.backendComponents.map((c) => c.name));
     const runtimeExports = Object.keys(Backend).filter(
-      (key) => /^[A-Z]/.test(key) && !["backendComponents"].includes(key),
+      // `Root` is the umbrella-convention alias of `BackendTheme`, indexed once.
+      (key) => /^[A-Z]/.test(key) && !["backendComponents", "Root"].includes(key),
     );
     for (const name of runtimeExports) {
       expect(indexed.has(name), `${name} missing from components.json`).toBe(true);
